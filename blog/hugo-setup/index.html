@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  🚀 Hugo &#43; GitHub Pages Setup (User Site)
+  #
+
+Minimal setup using hugo-book theme inside a Conda environment, with GitHub Pages deployment.
+
+
+  1. Create and Activate Conda Environment
+  #
+
+conda create -n hugo-env
+conda activate hugo-env
+
+
+  2. Install Hugo &amp; Create Hugo Site with hugo-book Theme
+  #
+
+# Install Hugo
+sudo apt install hugo         # Or: brew install hugo
+
+# Create Hugo site
+hugo new site hugo-site
+cd hugo-site
+
+# Initialize git and add theme
+git init
+git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
+
+
+  3. Configure config.toml
+  #
+
+baseURL = &#39;https://your-username.github.io/&#39;
+languageCode = &#39;en-us&#39;
+title = &#39;My Hugo Site&#39;
+theme = &#39;hugo-book&#39;
+
+[params]
+  BookTheme = &#39;light&#39;
+  BookToC = true
+  BookCollapseSection = true
+  BookFlatSection = false
+
+[[menu.sidebar]]
+  name = &#34;Knowledge Graph&#34;
+  url = &#34;/kg/&#34;
+  weight = 1
+
+
+  4. Create Content and _index.md Files
+  #
+
+# Create directories and content
+mkdir -p content/kg/topic1
+touch content/_index.md
+touch content/kg/_index.md
+touch content/kg/topic1/_index.md
+hugo new kg/topic1/intro.md
+
+  Directory Structure
+  #
+
+content/
+├── _index.md
+├── kg/
+│   ├── _index.md
+│   └── topic1/
+│       ├── _index.md
+│       └── intro.md
+
+  _index.md contents
+  #
+
+content/_index.md">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/blog/hugo-setup/">
+  <meta property="og:site_name" content="Inhee Park --- AI in Healthcare">
+  <meta property="og:title" content="Hugo Setup and Deploy">
+  <meta property="og:description" content="🚀 Hugo &#43; GitHub Pages Setup (User Site) # Minimal setup using hugo-book theme inside a Conda environment, with GitHub Pages deployment.
+1. Create and Activate Conda Environment # conda create -n hugo-env conda activate hugo-env 2. Install Hugo &amp; Create Hugo Site with hugo-book Theme # # Install Hugo sudo apt install hugo # Or: brew install hugo # Create Hugo site hugo new site hugo-site cd hugo-site # Initialize git and add theme git init git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book 3. Configure config.toml # baseURL = &#39;https://your-username.github.io/&#39; languageCode = &#39;en-us&#39; title = &#39;My Hugo Site&#39; theme = &#39;hugo-book&#39; [params] BookTheme = &#39;light&#39; BookToC = true BookCollapseSection = true BookFlatSection = false [[menu.sidebar]] name = &#34;Knowledge Graph&#34; url = &#34;/kg/&#34; weight = 1 4. Create Content and _index.md Files # # Create directories and content mkdir -p content/kg/topic1 touch content/_index.md touch content/kg/_index.md touch content/kg/topic1/_index.md hugo new kg/topic1/intro.md Directory Structure # content/ ├── _index.md ├── kg/ │ ├── _index.md │ └── topic1/ │ ├── _index.md │ └── intro.md _index.md contents # content/_index.md">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-03-20T21:23:49-07:00">
+    <meta property="article:modified_time" content="2025-03-20T21:23:49-07:00">
+<title>Hugo Setup and Deploy | Inhee Park --- AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/blog/hugo-setup/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.efa9317a8e279b1d5d330611313c5c81bd2a66d037680c243815cdc60c7ee071.js" integrity="sha256-76kxeo4nmx1dMwYRMTxcgb0qZtA3aAwkOBXNxgx&#43;4HE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Inhee Park --- AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a0ecbdb426fb47f6015c5ae0f7d15200" class="toggle" checked />
+    <label for="section-a0ecbdb426fb47f6015c5ae0f7d15200" class="flex justify-between">
+      <a role="button" class="">Blogs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/blog/hugo-setup/" class="active">Hugo Setup and Deploy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97e70c3af1dade68e2174282b384e2c3" class="toggle"  />
+    <label for="section-97e70c3af1dade68e2174282b384e2c3" class="flex justify-between">
+      <a role="button" class="">Causal Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_ai/" class="">Causal AI</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_inference/" class="">Causal Inference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle"  />
+    <label for="section-ada98cdddc633c21823a7a219fb44de2" class="flex justify-between">
+      <a role="button" class="">Healthcare Courses</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/ai_healthcare_coursera/" class="">AI in Healthcare Specialization — Stanford</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d119b829f014f9502a5a7375f2a782a1" class="toggle"  />
+    <label for="section-d119b829f014f9502a5a7375f2a782a1" class="flex justify-between">
+      <a role="button" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e4ab51e1ab1158cb32439638c6b1b72" class="toggle"  />
+    <label for="section-0e4ab51e1ab1158cb32439638c6b1b72" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b408a192ef91e92a11af6b8d0a08801a" class="toggle"  />
+    <label for="section-b408a192ef91e92a11af6b8d0a08801a" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph Enhanced RAG</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/resume/" class="">Resume</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Hugo Setup and Deploy</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-hugo--github-pages-setup-user-site">🚀 Hugo + GitHub Pages Setup (User Site)</a>
+      <ul>
+        <li><a href="#1-create-and-activate-conda-environment">1. Create and Activate Conda Environment</a></li>
+        <li><a href="#2-install-hugo--create-hugo-site-with-hugo-book-theme">2. Install Hugo &amp; Create Hugo Site with <code>hugo-book</code> Theme</a></li>
+        <li><a href="#3-configure-configtoml">3. Configure <code>config.toml</code></a></li>
+        <li><a href="#4-create-content-and-_indexmd-files">4. Create Content and <code>_index.md</code> Files</a>
+          <ul>
+            <li><a href="#directory-structure">Directory Structure</a></li>
+            <li><a href="#_indexmd-contents"><code>_index.md</code> contents</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-create-github-repository">5. Create GitHub Repository</a></li>
+        <li><a href="#6-github-deployment">6. GitHub Deployment</a>
+          <ul>
+            <li><a href="#a-generate-a-personal-access-token-pat">a. Generate a Personal Access Token (PAT)</a></li>
+            <li><a href="#b-initial-deployment-one-time">b. Initial Deployment (One-Time)</a></li>
+            <li><a href="#c-create-auto-deploy-script">c. Create Auto Deploy Script</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-check-deployment">7. Check Deployment</a></li>
+        <li><a href="#8-notes">8. Notes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-hugo--github-pages-setup-user-site">
+  🚀 Hugo + GitHub Pages Setup (User Site)
+  <a class="anchor" href="#-hugo--github-pages-setup-user-site">#</a>
+</h1>
+<p>Minimal setup using <code>hugo-book</code> theme inside a Conda environment, with GitHub Pages deployment.</p>
+<hr>
+<h2 id="1-create-and-activate-conda-environment">
+  1. Create and Activate Conda Environment
+  <a class="anchor" href="#1-create-and-activate-conda-environment">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n hugo-env
+</span></span><span style="display:flex;"><span>conda activate hugo-env
+</span></span></code></pre></div><hr>
+<h2 id="2-install-hugo--create-hugo-site-with-hugo-book-theme">
+  2. Install Hugo &amp; Create Hugo Site with <code>hugo-book</code> Theme
+  <a class="anchor" href="#2-install-hugo--create-hugo-site-with-hugo-book-theme">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Install Hugo</span>
+</span></span><span style="display:flex;"><span>sudo apt install hugo         <span style="color:#9ca0b0;font-style:italic"># Or: brew install hugo</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Create Hugo site</span>
+</span></span><span style="display:flex;"><span>hugo new site hugo-site
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">cd</span> hugo-site
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Initialize git and add theme</span>
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
+</span></span></code></pre></div><hr>
+<h2 id="3-configure-configtoml">
+  3. Configure <code>config.toml</code>
+  <a class="anchor" href="#3-configure-configtoml">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>baseURL = <span style="color:#40a02b">&#39;https://your-username.github.io/&#39;</span>
+</span></span><span style="display:flex;"><span>languageCode = <span style="color:#40a02b">&#39;en-us&#39;</span>
+</span></span><span style="display:flex;"><span>title = <span style="color:#40a02b">&#39;My Hugo Site&#39;</span>
+</span></span><span style="display:flex;"><span>theme = <span style="color:#40a02b">&#39;hugo-book&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[params]
+</span></span><span style="display:flex;"><span>  BookTheme = <span style="color:#40a02b">&#39;light&#39;</span>
+</span></span><span style="display:flex;"><span>  BookToC = <span style="color:#fe640b">true</span>
+</span></span><span style="display:flex;"><span>  BookCollapseSection = <span style="color:#fe640b">true</span>
+</span></span><span style="display:flex;"><span>  BookFlatSection = <span style="color:#fe640b">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[[menu.sidebar]]
+</span></span><span style="display:flex;"><span>  name = <span style="color:#40a02b">&#34;Knowledge Graph&#34;</span>
+</span></span><span style="display:flex;"><span>  url = <span style="color:#40a02b">&#34;/kg/&#34;</span>
+</span></span><span style="display:flex;"><span>  weight = <span style="color:#fe640b">1</span>
+</span></span></code></pre></div><hr>
+<h2 id="4-create-content-and-_indexmd-files">
+  4. Create Content and <code>_index.md</code> Files
+  <a class="anchor" href="#4-create-content-and-_indexmd-files">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Create directories and content</span>
+</span></span><span style="display:flex;"><span>mkdir -p content/kg/topic1
+</span></span><span style="display:flex;"><span>touch content/_index.md
+</span></span><span style="display:flex;"><span>touch content/kg/_index.md
+</span></span><span style="display:flex;"><span>touch content/kg/topic1/_index.md
+</span></span><span style="display:flex;"><span>hugo new kg/topic1/intro.md
+</span></span></code></pre></div><h3 id="directory-structure">
+  Directory Structure
+  <a class="anchor" href="#directory-structure">#</a>
+</h3>
+<pre tabindex="0"><code>content/
+├── _index.md
+├── kg/
+│   ├── _index.md
+│   └── topic1/
+│       ├── _index.md
+│       └── intro.md
+</code></pre><h3 id="_indexmd-contents">
+  <code>_index.md</code> contents
+  <a class="anchor" href="#_indexmd-contents">#</a>
+</h3>
+<p><strong>content/_index.md</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;Home&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><p><strong>content/kg/_index.md</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;Knowledge Graph&#34;
+</span></span><span style="display:flex;"><span>bookFlatSection: false
+</span></span><span style="display:flex;"><span>bookCollapseSection: true
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><p><strong>content/kg/topic1/_index.md</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;Topic 1&#34;
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><hr>
+<h2 id="5-create-github-repository">
+  5. Create GitHub Repository
+  <a class="anchor" href="#5-create-github-repository">#</a>
+</h2>
+<ul>
+<li>Create repo: <code>your-username.github.io</code><br>
+(Required for GitHub <strong>User Pages</strong>)</li>
+</ul>
+<hr>
+<h2 id="6-github-deployment">
+  6. GitHub Deployment
+  <a class="anchor" href="#6-github-deployment">#</a>
+</h2>
+<h3 id="a-generate-a-personal-access-token-pat">
+  a. Generate a Personal Access Token (PAT)
+  <a class="anchor" href="#a-generate-a-personal-access-token-pat">#</a>
+</h3>
+<ul>
+<li>Visit: <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></li>
+<li>Create a <strong>classic token</strong> with <code>repo</code> scope</li>
+</ul>
+<hr>
+<h3 id="b-initial-deployment-one-time">
+  b. Initial Deployment (One-Time)
+  <a class="anchor" href="#b-initial-deployment-one-time">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">cd</span> public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git checkout -b main
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/your-username/your-username.github.io.git
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#40a02b">&#34;Initial deploy&#34;</span>
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">cd</span> ..
+</span></span></code></pre></div><hr>
+<h3 id="c-create-auto-deploy-script">
+  c. Create Auto Deploy Script
+  <a class="anchor" href="#c-create-auto-deploy-script">#</a>
+</h3>
+<p><strong>deploy.sh</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"></span>hugo -D <span style="color:#04a5e5;font-weight:bold">&amp;&amp;</span> <span style="color:#04a5e5">cd</span> public <span style="color:#04a5e5;font-weight:bold">&amp;&amp;</span> git add . <span style="color:#04a5e5;font-weight:bold">&amp;&amp;</span> git commit -m <span style="color:#40a02b">&#34;Updated site&#34;</span> <span style="color:#04a5e5;font-weight:bold">&amp;&amp;</span> git push origin main <span style="color:#04a5e5;font-weight:bold">&amp;&amp;</span> <span style="color:#04a5e5">cd</span> ..
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">echo</span> <span style="color:#40a02b">&#34;✅ Deployment Complete!&#34;</span>
+</span></span></code></pre></div><p>Make executable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x deploy.sh
+</span></span></code></pre></div><p>Run anytime:</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./deploy.sh
+</span></span></code></pre></div><hr>
+<h2 id="7-check-deployment">
+  7. Check Deployment
+  <a class="anchor" href="#7-check-deployment">#</a>
+</h2>
+<ul>
+<li>GitHub → Repository → Settings → Pages
+<ul>
+<li>Source: <code>main</code></li>
+<li>Folder: <code>/ (root)</code></li>
+</ul>
+</li>
+<li>Live Site: <code>https://your-username.github.io/</code></li>
+</ul>
+<hr>
+<h2 id="8-notes">
+  8. Notes
+  <a class="anchor" href="#8-notes">#</a>
+</h2>
+<ul>
+<li><code>_index.md</code> files define sections and sidebar headings</li>
+<li><code>bookFlatSection = false</code> preserves folder hierarchy</li>
+<li><code>bookCollapseSection = true</code> enables collapsible sidebar</li>
+<li><code>hugo -D</code> includes drafts when building</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-hugo--github-pages-setup-user-site">🚀 Hugo + GitHub Pages Setup (User Site)</a>
+      <ul>
+        <li><a href="#1-create-and-activate-conda-environment">1. Create and Activate Conda Environment</a></li>
+        <li><a href="#2-install-hugo--create-hugo-site-with-hugo-book-theme">2. Install Hugo &amp; Create Hugo Site with <code>hugo-book</code> Theme</a></li>
+        <li><a href="#3-configure-configtoml">3. Configure <code>config.toml</code></a></li>
+        <li><a href="#4-create-content-and-_indexmd-files">4. Create Content and <code>_index.md</code> Files</a>
+          <ul>
+            <li><a href="#directory-structure">Directory Structure</a></li>
+            <li><a href="#_indexmd-contents"><code>_index.md</code> contents</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-create-github-repository">5. Create GitHub Repository</a></li>
+        <li><a href="#6-github-deployment">6. GitHub Deployment</a>
+          <ul>
+            <li><a href="#a-generate-a-personal-access-token-pat">a. Generate a Personal Access Token (PAT)</a></li>
+            <li><a href="#b-initial-deployment-one-time">b. Initial Deployment (One-Time)</a></li>
+            <li><a href="#c-create-auto-deploy-script">c. Create Auto Deploy Script</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-check-deployment">7. Check Deployment</a></li>
+        <li><a href="#8-notes">8. Notes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
