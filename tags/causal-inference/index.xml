@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Causal Inference on AI in Healthcare</title>
+    <link>http://localhost:1313/tags/causal-inference/</link>
+    <description>Recent content in Causal Inference on AI in Healthcare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/causal-inference/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Time of Event</title>
+      <link>http://localhost:1313/healthcare_glossary/time-of-event/</link>
+      <pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/healthcare_glossary/time-of-event/</guid>
+      <description>&lt;h3 id=&#34;definition&#34;&gt;&#xA;  Definition&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#definition&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Time of event&lt;/strong&gt; refers to the specific point in time at which a defined event occurs in a clinical, observational, or healthcare setting. This could relate to symptom onset, treatment administration, exposure, or diagnosis.&lt;/p&gt;&#xA;&lt;h3 id=&#34;context&#34;&gt;&#xA;  Context&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#context&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Accurate recording of time-of-event is essential for &lt;strong&gt;temporal reasoning&lt;/strong&gt;, &lt;strong&gt;causal modeling&lt;/strong&gt;, and &lt;strong&gt;clinical trial protocol adherence&lt;/strong&gt;. It enables analysis of time-dependent variables and outcomes (e.g., survival analysis, time-to-event modeling).&lt;/p&gt;&#xA;&lt;p&gt;In observational studies, knowing the exact time of exposure or outcome event supports &lt;strong&gt;time-alignment&lt;/strong&gt; and &lt;strong&gt;confounding control&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
