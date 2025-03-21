@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://imipark.github.io/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare_courses/ai_healthcare_coursera/</loc>
+    <loc>https://imipark.github.io/healthcare_courses/ai_healthcare_coursera/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://imipark.github.io/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/causal_reasoning/causal_ai/</loc>
+    <loc>https://imipark.github.io/causal_reasoning/causal_ai/</loc>
   </url><url>
-    <loc>http://localhost:1313/causal_reasoning/causal_inference/</loc>
+    <loc>https://imipark.github.io/causal_reasoning/causal_inference/</loc>
   </url><url>
-    <loc>http://localhost:1313/causal_reasoning/</loc>
+    <loc>https://imipark.github.io/causal_reasoning/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare_courses/</loc>
+    <loc>https://imipark.github.io/healthcare_courses/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare_data/</loc>
+    <loc>https://imipark.github.io/healthcare_data/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare_data/healthcare_layers/</loc>
+    <loc>https://imipark.github.io/healthcare_data/healthcare_layers/</loc>
   </url><url>
-    <loc>http://localhost:1313/knowledge_graph/</loc>
+    <loc>https://imipark.github.io/knowledge_graph/</loc>
   </url><url>
-    <loc>http://localhost:1313/kg_rag/</loc>
+    <loc>https://imipark.github.io/kg_rag/</loc>
   </url><url>
-    <loc>http://localhost:1313/resume/</loc>
+    <loc>https://imipark.github.io/resume/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://imipark.github.io/tags/</loc>
   </url>
 </urlset>

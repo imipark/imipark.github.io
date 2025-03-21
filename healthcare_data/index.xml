@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Healthcare Data on Inhee Park, PhD - AI in Healthcare</title>
-    <link>http://localhost:1313/healthcare_data/</link>
-    <description>Recent content in Healthcare Data on Inhee Park, PhD - AI in Healthcare</description>
+    <title>Healthcare Data on Inhee Park --- AI in Healthcare</title>
+    <link>https://imipark.github.io/healthcare_data/</link>
+    <description>Recent content in Healthcare Data on Inhee Park --- AI in Healthcare</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/healthcare_data/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://imipark.github.io/healthcare_data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Healthcare Data Layers</title>
-      <link>http://localhost:1313/healthcare_data/healthcare_layers/</link>
+      <link>https://imipark.github.io/healthcare_data/healthcare_layers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/healthcare_data/healthcare_layers/</guid>
+      <guid>https://imipark.github.io/healthcare_data/healthcare_layers/</guid>
       <description>&lt;h1 id=&#34;healthcare-data-layers&#34;&gt;&#xA;  Healthcare Data Layers&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#healthcare-data-layers&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;1️⃣ Data Sources (Raw Data &amp;amp; Collection Level)&#xA;These are the foundational data sources used in healthcare analysis, originating from clinical trials, hospitals, insurance claims, and patient records.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Clinical Data (RCTs, EHR, OMOP, CDM)&lt;/strong&gt; – Structured, controlled, and often randomized data used for regulatory and research applications.&#xA;&lt;strong&gt;Real-World Data (RWD: EHR, Claims, Registries)&lt;/strong&gt; – Observational and confounded, requiring advanced causal inference methods to extract meaningful insights.&lt;/p&gt;</description>
     </item>
   </channel>
