@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.145.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  AI in Healthcare Agenda
+  #
+
+
+  Healthcare Data – From Clinical Trials to Real-World Data
+  #
+
+
+Hands-On Healthcare Data – Healthcare Informatics &amp; Knowledge Graph (Book – Andrew Nguyen)
+AI in Healthcare – Clinical Data, Evaluations of AI Applications (Coursera – Stanford)
+Clinical Data Science – Hands-on training in structured clinical data (EHR, OMOP, CDM), computational phenotyping, predictive modeling, and clinical NLP (Coursera – UColorado)
+Data Science with RWD in Pharma – Observational study designs, confounding control, and regulatory-grade RWE generation for drug approvals and payer decision-making (Coursera – Genentech)
+
+
+  Causal Reasoning for Healthcare Decision
+  #
+
+
+A Crash Course in Causality – Inferring Causal Effects from Observational Data (Coursera – PennMed)
+Causal AI – Structural Causal Models (SCMs) using DoWhy, enabling automated causal discovery, counterfactual reasoning, and intervention-based AI systems (altdeep.ai)
+
+
+  Knowledge-Driven Healthcare Decision
+  #
+
+
+Knowledge Graphs – Enabling structured reasoning for clinical decision support (Neo4j).
+Knowledge Graph-Enhanced RAG – Combining structured medical knowledge with AI-driven retrieval to deliver context-aware, accurate, and explainable clinical insights (Neo4j with LangChain).
+
+
+  Regulatory Drivers of AI in Healthcare
+  #
+
+
+21st Century Cures Act (2016)
+FDA RWE Framework (2018)
+CMS &amp; ONC Interoperability Rule (2020)
+FDA AI/ML SaMD Framework (2021)
+FDA AI-Generated Synthetic Control Arms (2021)
+HIPAA Updates for AI (2023)
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/">
+  <meta property="og:site_name" content="Inhee Park, PhD - AI in Healthcare">
+  <meta property="og:title" content="Inhee Park, PhD - AI in Healthcare">
+  <meta property="og:description" content="AI in Healthcare Agenda # Healthcare Data – From Clinical Trials to Real-World Data # Hands-On Healthcare Data – Healthcare Informatics &amp; Knowledge Graph (Book – Andrew Nguyen) AI in Healthcare – Clinical Data, Evaluations of AI Applications (Coursera – Stanford) Clinical Data Science – Hands-on training in structured clinical data (EHR, OMOP, CDM), computational phenotyping, predictive modeling, and clinical NLP (Coursera – UColorado) Data Science with RWD in Pharma – Observational study designs, confounding control, and regulatory-grade RWE generation for drug approvals and payer decision-making (Coursera – Genentech) Causal Reasoning for Healthcare Decision # A Crash Course in Causality – Inferring Causal Effects from Observational Data (Coursera – PennMed) Causal AI – Structural Causal Models (SCMs) using DoWhy, enabling automated causal discovery, counterfactual reasoning, and intervention-based AI systems (altdeep.ai) Knowledge-Driven Healthcare Decision # Knowledge Graphs – Enabling structured reasoning for clinical decision support (Neo4j). Knowledge Graph-Enhanced RAG – Combining structured medical knowledge with AI-driven retrieval to deliver context-aware, accurate, and explainable clinical insights (Neo4j with LangChain). Regulatory Drivers of AI in Healthcare # 21st Century Cures Act (2016) FDA RWE Framework (2018) CMS &amp; ONC Interoperability Rule (2020) FDA AI/ML SaMD Framework (2021) FDA AI-Generated Synthetic Control Arms (2021) HIPAA Updates for AI (2023)">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title> | Inhee Park, PhD - AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.457a55f23e0892f474cbedec7081a16b93fdb5cce837d436d7ff6e9a7a661ef7.js" integrity="sha256-RXpV8j4IkvR0y&#43;3scIGha5P9tczoN9Q21/9umnpmHvc=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="Inhee Park, PhD - AI in Healthcare" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Inhee Park, PhD - AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97e70c3af1dade68e2174282b384e2c3" class="toggle"  />
+    <label for="section-97e70c3af1dade68e2174282b384e2c3" class="flex justify-between">
+      <a role="button" class="">Causal Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_ai/" class="">Causal AI</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_inference/" class="">Causal Inference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle"  />
+    <label for="section-ada98cdddc633c21823a7a219fb44de2" class="flex justify-between">
+      <a role="button" class="">Healthcare Courses</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/ai_healthcare_coursera/" class="">AI in Healthcare Specialization — Stanford</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d119b829f014f9502a5a7375f2a782a1" class="toggle"  />
+    <label for="section-d119b829f014f9502a5a7375f2a782a1" class="flex justify-between">
+      <a role="button" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e4ab51e1ab1158cb32439638c6b1b72" class="toggle"  />
+    <label for="section-0e4ab51e1ab1158cb32439638c6b1b72" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b408a192ef91e92a11af6b8d0a08801a" class="toggle"  />
+    <label for="section-b408a192ef91e92a11af6b8d0a08801a" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph Enhanced RAG</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/resume/" class="">Resume</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3></h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#ai-in-healthcare-agenda">AI in Healthcare Agenda</a>
+          <ul>
+            <li><a href="#healthcare-data--from-clinical-trials-to-real-world-data">Healthcare Data – From Clinical Trials to Real-World Data</a></li>
+            <li><a href="#causal-reasoning-for-healthcare-decision">Causal Reasoning for Healthcare Decision</a></li>
+            <li><a href="#knowledge-driven-healthcare-decision">Knowledge-Driven Healthcare Decision</a></li>
+            <li><a href="#regulatory-drivers-of-ai-in-healthcare">Regulatory Drivers of AI in Healthcare</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="ai-in-healthcare-agenda">
+  AI in Healthcare Agenda
+  <a class="anchor" href="#ai-in-healthcare-agenda">#</a>
+</h2>
+<h3 id="healthcare-data--from-clinical-trials-to-real-world-data">
+  Healthcare Data – From Clinical Trials to Real-World Data
+  <a class="anchor" href="#healthcare-data--from-clinical-trials-to-real-world-data">#</a>
+</h3>
+<ul>
+<li><strong>Hands-On Healthcare Data</strong> – <em>Healthcare Informatics &amp; Knowledge Graph</em> (Book – Andrew Nguyen)</li>
+<li><strong>AI in Healthcare</strong> – Clinical Data, Evaluations of AI Applications (<em>Coursera – Stanford</em>)</li>
+<li><strong>Clinical Data Science</strong> – Hands-on training in structured clinical data (<em>EHR, OMOP, CDM</em>), computational phenotyping, predictive modeling, and clinical NLP (<em>Coursera – UColorado</em>)</li>
+<li><strong>Data Science with RWD in Pharma</strong> – Observational study designs, confounding control, and regulatory-grade RWE generation for drug approvals and payer decision-making (<em>Coursera – Genentech</em>)</li>
+</ul>
+<h3 id="causal-reasoning-for-healthcare-decision">
+  Causal Reasoning for Healthcare Decision
+  <a class="anchor" href="#causal-reasoning-for-healthcare-decision">#</a>
+</h3>
+<ul>
+<li><strong>A Crash Course in Causality</strong> – Inferring Causal Effects from Observational Data (<em>Coursera – PennMed</em>)</li>
+<li><strong>Causal AI</strong> – Structural Causal Models (<em>SCMs</em>) using DoWhy, enabling automated causal discovery, counterfactual reasoning, and intervention-based AI systems (<em>altdeep.ai</em>)</li>
+</ul>
+<h3 id="knowledge-driven-healthcare-decision">
+  Knowledge-Driven Healthcare Decision
+  <a class="anchor" href="#knowledge-driven-healthcare-decision">#</a>
+</h3>
+<ul>
+<li><strong>Knowledge Graphs</strong> – Enabling structured reasoning for clinical decision support (<em>Neo4j</em>).</li>
+<li><strong>Knowledge Graph-Enhanced RAG</strong> – Combining structured medical knowledge with AI-driven retrieval to deliver context-aware, accurate, and explainable clinical insights (<em>Neo4j with LangChain</em>).</li>
+</ul>
+<h3 id="regulatory-drivers-of-ai-in-healthcare">
+  Regulatory Drivers of AI in Healthcare
+  <a class="anchor" href="#regulatory-drivers-of-ai-in-healthcare">#</a>
+</h3>
+<ul>
+<li>21st Century Cures Act (2016)</li>
+<li>FDA RWE Framework (2018)</li>
+<li>CMS &amp; ONC Interoperability Rule (2020)</li>
+<li>FDA AI/ML SaMD Framework (2021)</li>
+<li>FDA AI-Generated Synthetic Control Arms (2021)</li>
+<li>HIPAA Updates for AI (2023)</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#ai-in-healthcare-agenda">AI in Healthcare Agenda</a>
+          <ul>
+            <li><a href="#healthcare-data--from-clinical-trials-to-real-world-data">Healthcare Data – From Clinical Trials to Real-World Data</a></li>
+            <li><a href="#causal-reasoning-for-healthcare-decision">Causal Reasoning for Healthcare Decision</a></li>
+            <li><a href="#knowledge-driven-healthcare-decision">Knowledge-Driven Healthcare Decision</a></li>
+            <li><a href="#regulatory-drivers-of-ai-in-healthcare">Regulatory Drivers of AI in Healthcare</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

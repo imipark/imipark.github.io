@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/</loc>
+  </url><url>
+    <loc>http://localhost:1313/healthcare_courses/ai_healthcare_coursera/</loc>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/causal_reasoning/causal_ai/</loc>
+  </url><url>
+    <loc>http://localhost:1313/causal_reasoning/causal_inference/</loc>
+  </url><url>
+    <loc>http://localhost:1313/causal_reasoning/</loc>
+  </url><url>
+    <loc>http://localhost:1313/healthcare_courses/</loc>
+  </url><url>
+    <loc>http://localhost:1313/healthcare_data/</loc>
+  </url><url>
+    <loc>http://localhost:1313/healthcare_data/healthcare_layers/</loc>
+  </url><url>
+    <loc>http://localhost:1313/knowledge_graph/</loc>
+  </url><url>
+    <loc>http://localhost:1313/kg_rag/</loc>
+  </url><url>
+    <loc>http://localhost:1313/resume/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+  </url>
+</urlset>

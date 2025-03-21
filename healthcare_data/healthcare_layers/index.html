@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Healthcare Data Layers
+  #
+
+1️⃣ Data Sources (Raw Data &amp; Collection Level)
+These are the foundational data sources used in healthcare analysis, originating from clinical trials, hospitals, insurance claims, and patient records.
+Clinical Data (RCTs, EHR, OMOP, CDM) – Structured, controlled, and often randomized data used for regulatory and research applications.
+Real-World Data (RWD: EHR, Claims, Registries) – Observational and confounded, requiring advanced causal inference methods to extract meaningful insights.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare_data/healthcare_layers/">
+  <meta property="og:site_name" content="Inhee Park, PhD - AI in Healthcare">
+  <meta property="og:title" content="Healthcare Data Layers">
+  <meta property="og:description" content="Healthcare Data Layers # 1️⃣ Data Sources (Raw Data &amp; Collection Level) These are the foundational data sources used in healthcare analysis, originating from clinical trials, hospitals, insurance claims, and patient records.
+Clinical Data (RCTs, EHR, OMOP, CDM) – Structured, controlled, and often randomized data used for regulatory and research applications. Real-World Data (RWD: EHR, Claims, Registries) – Observational and confounded, requiring advanced causal inference methods to extract meaningful insights.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare_data">
+<title>Healthcare Data Layers | Inhee Park, PhD - AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/healthcare_data/healthcare_layers/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.457a55f23e0892f474cbedec7081a16b93fdb5cce837d436d7ff6e9a7a661ef7.js" integrity="sha256-RXpV8j4IkvR0y&#43;3scIGha5P9tczoN9Q21/9umnpmHvc=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Inhee Park, PhD - AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97e70c3af1dade68e2174282b384e2c3" class="toggle"  />
+    <label for="section-97e70c3af1dade68e2174282b384e2c3" class="flex justify-between">
+      <a role="button" class="">Causal Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_ai/" class="">Causal AI</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_inference/" class="">Causal Inference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle"  />
+    <label for="section-ada98cdddc633c21823a7a219fb44de2" class="flex justify-between">
+      <a role="button" class="">Healthcare Courses</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/ai_healthcare_coursera/" class="">AI in Healthcare Specialization — Stanford</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d119b829f014f9502a5a7375f2a782a1" class="toggle" checked />
+    <label for="section-d119b829f014f9502a5a7375f2a782a1" class="flex justify-between">
+      <a role="button" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_layers/" class="active">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e4ab51e1ab1158cb32439638c6b1b72" class="toggle"  />
+    <label for="section-0e4ab51e1ab1158cb32439638c6b1b72" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b408a192ef91e92a11af6b8d0a08801a" class="toggle"  />
+    <label for="section-b408a192ef91e92a11af6b8d0a08801a" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph Enhanced RAG</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/resume/" class="">Resume</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Healthcare Data Layers</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#healthcare-data-layers">Healthcare Data Layers</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="healthcare-data-layers">
+  Healthcare Data Layers
+  <a class="anchor" href="#healthcare-data-layers">#</a>
+</h1>
+<p>1️⃣ Data Sources (Raw Data &amp; Collection Level)
+These are the foundational data sources used in healthcare analysis, originating from clinical trials, hospitals, insurance claims, and patient records.</p>
+<p><strong>Clinical Data (RCTs, EHR, OMOP, CDM)</strong> – Structured, controlled, and often randomized data used for regulatory and research applications.
+<strong>Real-World Data (RWD: EHR, Claims, Registries)</strong> – Observational and confounded, requiring advanced causal inference methods to extract meaningful insights.</p>
+<p>🔗 <strong>Relationship:</strong> Clinical Data is typically highly structured and standardized, whereas RWD is heterogeneous, requiring bias correction.</p>
+<hr>
+<p>2️⃣ Data Management &amp; Standardization (Processing &amp; Infrastructure Level)
+This layer ensures that raw clinical &amp; real-world data are cleaned, structured, and made interoperable for analysis.</p>
+<p><strong>Healthcare Informatics</strong> – The framework for data integration, ETL processes, standardization (OMOP, FHIR, CDMs), interoperability, and terminology mapping (SNOMED, LOINC, ICD).</p>
+<p>🔗 <strong>Relationship:</strong></p>
+<ul>
+<li>Healthcare Informatics acts as a bridge between data collection (clinical &amp; RWD) and analytics.</li>
+<li>Without informatics, AI models and statistical analyses would lack clean, structured, and standardized data.</li>
+</ul>
+<hr>
+<p>3️⃣ Data Analytics &amp; Decision Intelligence (AI &amp; Statistical Analysis Level)
+This layer applies statistical, machine learning (ML), and deep learning (DL) models to structured and unstructured healthcare data for actionable insights.</p>
+<p><strong>Traditional Data Science &amp; Statistical Analysis (Used for both Clinical &amp; RWD)</strong></p>
+<ul>
+<li>Biostatistics, Bayesian Methods, Survival Analysis, Causal Inference (PSM, DAGs, DiD)</li>
+<li>Used to control bias, estimate treatment effects, and generate regulatory-grade evidence (RWE).</li>
+</ul>
+<p><strong>AI in Healthcare (Machine Learning &amp; Deep Learning Applications)</strong></p>
+<ul>
+<li><strong>Supervised Learning</strong> (Logistic Regression, Decision Trees, Random Forests)</li>
+<li><strong>Deep Learning</strong> (CNNs, Transformers, NLP, Reinforcement Learning)</li>
+<li><strong>Model Interpretability</strong> (SHAP, LIME) and <strong>AI Fairness</strong> (Bias Mitigation)</li>
+</ul>
+<p>🔗 <strong>Relationship:</strong></p>
+<ul>
+<li>AI &amp; ML rely on structured, clean data (from Healthcare Informatics) and leverage Clinical Data &amp; RWD to generate predictions and automate decision-making.</li>
+<li>Statistical analysis methods (causal inference, survival analysis) are critical for ensuring valid results before AI is applied.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#healthcare-data-layers">Healthcare Data Layers</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

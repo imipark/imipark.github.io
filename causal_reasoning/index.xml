@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Causal Reasoning on Inhee Park, PhD - AI in Healthcare</title>
+    <link>http://localhost:1313/causal_reasoning/</link>
+    <description>Recent content in Causal Reasoning on Inhee Park, PhD - AI in Healthcare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/causal_reasoning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Causal AI</title>
+      <link>http://localhost:1313/causal_reasoning/causal_ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/causal_reasoning/causal_ai/</guid>
+      <description>&lt;h1 id=&#34;causal-ai&#34;&gt;&#xA;  Causal AI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#causal-ai&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title>Causal Inference</title>
+      <link>http://localhost:1313/causal_reasoning/causal_inference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/causal_reasoning/causal_inference/</guid>
+      <description>&lt;h1 id=&#34;causal-inference&#34;&gt;&#xA;  Causal Inference&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#causal-inference&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>
