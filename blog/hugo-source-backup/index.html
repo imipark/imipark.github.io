@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  🔒 Hugo Source Backup Guide
+  🔒 Hugo Source Backup
   #
 
 This guide outlines how to back up your Hugo source files (excluding the public/ folder) to a private GitHub repository.
@@ -51,21 +51,23 @@ Create a file named backup.sh in the root of your Hugo project:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/blog/hugo-source-backup/">
-  <meta property="og:site_name" content="Inhee Park --- AI in Healthcare">
-  <meta property="og:title" content="Inhee Park --- AI in Healthcare">
-  <meta property="og:description" content="🔒 Hugo Source Backup Guide # This guide outlines how to back up your Hugo source files (excluding the public/ folder) to a private GitHub repository.
+  <meta property="og:site_name" content="Inhee Park, PhD">
+  <meta property="og:title" content="Hugo Source Backup">
+  <meta property="og:description" content="🔒 Hugo Source Backup # This guide outlines how to back up your Hugo source files (excluding the public/ folder) to a private GitHub repository.
 📁 Folder Structure # Typical Hugo project structure:
 hugo-site/ ├── archetypes/ ├── content/ ├── layouts/ ├── static/ ├── themes/ ├── config.toml ├── public/ # &lt;- This is ignored for source backup └── backup.sh # Backup script ✅ 1. Create a Private GitHub Repo # Go to https://github.com/new Name it something like hugo-source Set visibility to Private Don’t initialize with README or license ✅ 2. Initialize Git in Your Hugo Site (if not already) # git init git remote add origin https://github.com/&lt;your-username&gt;/hugo-source.git echo &#34;public/&#34; &gt;&gt; .gitignore ✅ 3. Create the Backup Script # Create a file named backup.sh in the root of your Hugo project:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="blog">
-<title>Hugo Source Backup | Inhee Park --- AI in Healthcare</title>
+    <meta property="article:published_time" content="2025-03-20T21:23:49-07:00">
+    <meta property="article:modified_time" content="2025-03-20T21:23:49-07:00">
+<title>Hugo Source Backup | Inhee Park, PhD</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/blog/hugo-source-backup/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b4ede6cad5478c18f4b0e7f237c582f6099130bc04d6858fd94e14f4803e5a42.js" integrity="sha256-tO3mytVHjBj0sOfyN8WC9gmRMLwE1oWP2U4U9IA&#43;WkI=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.abfe1bf295357b496b5714c57b9da20d75fe65b69d4a281a575a0f36260c8f82.js" integrity="sha256-q/4b8pU1e0lrVxTFe52iDXX&#43;ZbadSigaV1oPNiYMj4I=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -81,7 +83,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>Inhee Park --- AI in Healthcare</span>
+  <a class="flex align-center" href="/"><span>Inhee Park, PhD</span>
   </a>
 </h2>
 
@@ -119,10 +121,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a0ecbdb426fb47f6015c5ae0f7d15200" class="toggle" checked />
-    <label for="section-a0ecbdb426fb47f6015c5ae0f7d15200" class="flex justify-between">
-      <a role="button" class="">Blogs</a>
-    </label>
+    <span>Blog</span>
   
 
           
@@ -241,7 +240,7 @@ https://github.com/alex-shpak/hugo-book
       
     
       
-        <li>
+        <li class="book-section-flat" >
           
   
   
@@ -344,6 +343,12 @@ https://github.com/alex-shpak/hugo-book
 <ul>
   
   <li>
+    <a href="/blog/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
     <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
         GitHub
       </a>
@@ -398,7 +403,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-hugo-source-backup-guide">🔒 Hugo Source Backup Guide</a>
+    <li><a href="#-hugo-source-backup">🔒 Hugo Source Backup</a>
       <ul>
         <li><a href="#-folder-structure">📁 Folder Structure</a></li>
         <li><a href="#-1-create-a-private-github-repo">✅ 1. Create a Private GitHub Repo</a></li>
@@ -420,9 +425,9 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="-hugo-source-backup-guide">
-  🔒 Hugo Source Backup Guide
-  <a class="anchor" href="#-hugo-source-backup-guide">#</a>
+  <article class="markdown book-article"><h1 id="-hugo-source-backup">
+  🔒 Hugo Source Backup
+  <a class="anchor" href="#-hugo-source-backup">#</a>
 </h1>
 <p>This guide outlines how to back up your <strong>Hugo source files</strong> (excluding the <code>public/</code> folder) to a <strong>private GitHub repository</strong>.</p>
 <hr>
@@ -531,7 +536,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-hugo-source-backup-guide">🔒 Hugo Source Backup Guide</a>
+    <li><a href="#-hugo-source-backup">🔒 Hugo Source Backup</a>
       <ul>
         <li><a href="#-folder-structure">📁 Folder Structure</a></li>
         <li><a href="#-1-create-a-private-github-repo">✅ 1. Create a Private GitHub Repo</a></li>

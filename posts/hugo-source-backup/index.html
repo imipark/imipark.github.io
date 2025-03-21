@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  🔒 Hugo Source Backup
+  #
+
+This guide outlines how to back up your Hugo source files (excluding the public/ folder) to a private GitHub repository.
+
+
+  📁 Folder Structure
+  #
+
+Typical Hugo project structure:
+hugo-site/
+├── archetypes/
+├── content/
+├── layouts/
+├── static/
+├── themes/
+├── config.toml
+├── public/           # &lt;- This is ignored for source backup
+└── backup.sh         # Backup script
+
+
+  ✅ 1. Create a Private GitHub Repo
+  #
+
+
+Go to https://github.com/new
+Name it something like hugo-source
+Set visibility to Private
+Don’t initialize with README or license
+
+
+
+  ✅ 2. Initialize Git in Your Hugo Site (if not already)
+  #
+
+git init
+git remote add origin https://github.com/&lt;your-username&gt;/hugo-source.git
+echo &#34;public/&#34; &gt;&gt; .gitignore
+
+
+  ✅ 3. Create the Backup Script
+  #
+
+Create a file named backup.sh in the root of your Hugo project:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/posts/hugo-source-backup/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="Hugo Source Backup">
+  <meta property="og:description" content="🔒 Hugo Source Backup # This guide outlines how to back up your Hugo source files (excluding the public/ folder) to a private GitHub repository.
+📁 Folder Structure # Typical Hugo project structure:
+hugo-site/ ├── archetypes/ ├── content/ ├── layouts/ ├── static/ ├── themes/ ├── config.toml ├── public/ # &lt;- This is ignored for source backup └── backup.sh # Backup script ✅ 1. Create a Private GitHub Repo # Go to https://github.com/new Name it something like hugo-source Set visibility to Private Don’t initialize with README or license ✅ 2. Initialize Git in Your Hugo Site (if not already) # git init git remote add origin https://github.com/&lt;your-username&gt;/hugo-source.git echo &#34;public/&#34; &gt;&gt; .gitignore ✅ 3. Create the Backup Script # Create a file named backup.sh in the root of your Hugo project:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-20T21:23:49-07:00">
+    <meta property="article:modified_time" content="2025-03-20T21:23:49-07:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Deploy">
+    <meta property="article:tag" content="Github">
+<title>Hugo Source Backup | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/posts/hugo-source-backup/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.a408ab359fb2a84526293c1ff85fd8b68933bb09a0a1868ede2e639d2f82e61a.js" integrity="sha256-pAirNZ&#43;yqEUmKTwf&#43;F/YtokzuwmgoYaO3i5jnS&#43;C5ho=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle"  />
+    <label for="section-ada98cdddc633c21823a7a219fb44de2" class="flex justify-between">
+      <a role="button" class="">Healthcare Courses</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/ai_healthcare_coursera/" class="">AI in Healthcare Specialization — Stanford</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d119b829f014f9502a5a7375f2a782a1" class="toggle"  />
+    <label for="section-d119b829f014f9502a5a7375f2a782a1" class="flex justify-between">
+      <a role="button" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e4ab51e1ab1158cb32439638c6b1b72" class="toggle"  />
+    <label for="section-0e4ab51e1ab1158cb32439638c6b1b72" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b408a192ef91e92a11af6b8d0a08801a" class="toggle"  />
+    <label for="section-b408a192ef91e92a11af6b8d0a08801a" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph Enhanced RAG</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97e70c3af1dade68e2174282b384e2c3" class="toggle"  />
+    <label for="section-97e70c3af1dade68e2174282b384e2c3" class="flex justify-between">
+      <a role="button" class="">Causal Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_ai/" class="">Causal AI</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_inference/" class="">Causal Inference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Hugo Source Backup</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-hugo-source-backup">🔒 Hugo Source Backup</a>
+      <ul>
+        <li><a href="#-folder-structure">📁 Folder Structure</a></li>
+        <li><a href="#-1-create-a-private-github-repo">✅ 1. Create a Private GitHub Repo</a></li>
+        <li><a href="#-2-initialize-git-in-your-hugo-site-if-not-already">✅ 2. Initialize Git in Your Hugo Site (if not already)</a></li>
+        <li><a href="#-3-create-the-backup-script">✅ 3. Create the Backup Script</a></li>
+        <li><a href="#-4-use-it">✅ 4. Use It!</a></li>
+        <li><a href="#-notes">📝 Notes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h2>
+    Hugo Source Backup
+  </h2>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/svg/calendar.svg" class="book-icon " alt="" />
+    <span>March 20, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/web/">Web</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/hugo/">Hugo</a>, 
+      <a href="/tags/deploy/">Deploy</a>, 
+      <a href="/tags/github/">Github</a>
+  </div>
+  
+
+
+  <div class="book-post-content"><h1 id="-hugo-source-backup">
+  🔒 Hugo Source Backup
+  <a class="anchor" href="#-hugo-source-backup">#</a>
+</h1>
+<p>This guide outlines how to back up your <strong>Hugo source files</strong> (excluding the <code>public/</code> folder) to a <strong>private GitHub repository</strong>.</p>
+<hr>
+<h2 id="-folder-structure">
+  📁 Folder Structure
+  <a class="anchor" href="#-folder-structure">#</a>
+</h2>
+<p>Typical Hugo project structure:</p>
+<pre tabindex="0"><code>hugo-site/
+├── archetypes/
+├── content/
+├── layouts/
+├── static/
+├── themes/
+├── config.toml
+├── public/           # &lt;- This is ignored for source backup
+└── backup.sh         # Backup script
+</code></pre><hr>
+<h2 id="-1-create-a-private-github-repo">
+  ✅ 1. Create a Private GitHub Repo
+  <a class="anchor" href="#-1-create-a-private-github-repo">#</a>
+</h2>
+<ul>
+<li>Go to <a href="https://github.com/new">https://github.com/new</a></li>
+<li>Name it something like <code>hugo-source</code></li>
+<li>Set visibility to <strong>Private</strong></li>
+<li>Don’t initialize with README or license</li>
+</ul>
+<hr>
+<h2 id="-2-initialize-git-in-your-hugo-site-if-not-already">
+  ✅ 2. Initialize Git in Your Hugo Site (if not already)
+  <a class="anchor" href="#-2-initialize-git-in-your-hugo-site-if-not-already">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/&lt;your-username&gt;/hugo-source.git
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">echo</span> <span style="color:#40a02b">&#34;public/&#34;</span> &gt;&gt; .gitignore
+</span></span></code></pre></div><hr>
+<h2 id="-3-create-the-backup-script">
+  ✅ 3. Create the Backup Script
+  <a class="anchor" href="#-3-create-the-backup-script">#</a>
+</h2>
+<p>Create a file named <code>backup.sh</code> in the root of your Hugo project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"></span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#40a02b">&#34;🔒 Backup: </span><span style="color:#8839ef">$(</span>date +<span style="color:#40a02b">&#39;%Y-%m-%d %H:%M:%S&#39;</span><span style="color:#8839ef">)</span><span style="color:#40a02b">&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin main
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">echo</span> <span style="color:#40a02b">&#34;✅ Backup Complete!&#34;</span>
+</span></span></code></pre></div><p>Make it executable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x backup.sh
+</span></span></code></pre></div><hr>
+<h2 id="-4-use-it">
+  ✅ 4. Use It!
+  <a class="anchor" href="#-4-use-it">#</a>
+</h2>
+<p>To back up your source files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./backup.sh
+</span></span></code></pre></div><hr>
+<h2 id="-notes">
+  📝 Notes
+  <a class="anchor" href="#-notes">#</a>
+</h2>
+<ul>
+<li>Only your <strong>source files</strong> are backed up.</li>
+<li>The <code>public/</code> folder is excluded (it’s where the generated site lives).</li>
+<li>Combine with <code>deploy.sh</code> for full workflow automation.</li>
+</ul>
+<hr>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-hugo-source-backup">🔒 Hugo Source Backup</a>
+      <ul>
+        <li><a href="#-folder-structure">📁 Folder Structure</a></li>
+        <li><a href="#-1-create-a-private-github-repo">✅ 1. Create a Private GitHub Repo</a></li>
+        <li><a href="#-2-initialize-git-in-your-hugo-site-if-not-already">✅ 2. Initialize Git in Your Hugo Site (if not already)</a></li>
+        <li><a href="#-3-create-the-backup-script">✅ 3. Create the Backup Script</a></li>
+        <li><a href="#-4-use-it">✅ 4. Use It!</a></li>
+        <li><a href="#-notes">📝 Notes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

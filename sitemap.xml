@@ -2,42 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://imipark.github.io/</loc>
-    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
-  </url><url>
-    <loc>https://imipark.github.io/blog/</loc>
-    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
-  </url><url>
-    <loc>https://imipark.github.io/blog/hugo/</loc>
-    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
-  </url><url>
-    <loc>https://imipark.github.io/blog/hugo/hugo-setup/</loc>
-    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
-  </url><url>
-    <loc>https://imipark.github.io/blog/hugo/hugo-source-backup/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare_courses/ai_healthcare_coursera/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/categories/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/causal_reasoning/causal_ai/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/causal_reasoning/causal_inference/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/causal_reasoning/</loc>
-  </url><url>
     <loc>https://imipark.github.io/healthcare_courses/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare_data/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare_data/healthcare_layers/</loc>
   </url><url>
     <loc>https://imipark.github.io/knowledge_graph/</loc>
   </url><url>
     <loc>https://imipark.github.io/kg_rag/</loc>
   </url><url>
-    <loc>https://imipark.github.io/resume/</loc>
+    <loc>https://imipark.github.io/causal_reasoning/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/posts/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/categories/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/tags/deploy/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/tags/github/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/tags/hugo/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/posts/hugo-setup/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/posts/hugo-source-backup/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
   </url><url>
     <loc>https://imipark.github.io/tags/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/categories/web/</loc>
+    <lastmod>2025-03-20T21:23:49-07:00</lastmod>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare_courses/ai_healthcare_coursera/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/causal_reasoning/causal_ai/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/causal_reasoning/causal_inference/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare_data/healthcare_layers/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ipark/</loc>
   </url>
 </urlset>
