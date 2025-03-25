@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clinical Data on AI in Healthcare</title>
+    <link>http://localhost:1313/tags/clinical-data/</link>
+    <description>Recent content in Clinical Data on AI in Healthcare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/clinical-data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Healthcare Data Sources</title>
+      <link>http://localhost:1313/healthcare_data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/healthcare_data/</guid>
+      <description>&lt;p&gt;Welcome to the &lt;strong&gt;Healthcare Data Sources&lt;/strong&gt; section. This page is a curated collection of high-quality datasets, knowledgebases, and platforms used in clinical research, biomedical informatics, and healthcare AI applications.&lt;/p&gt;&#xA;&lt;p&gt;These resources are critical for:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Defining phenotypes and cohorts&lt;/li&gt;&#xA;&lt;li&gt;Extracting features from EHRs&lt;/li&gt;&#xA;&lt;li&gt;Building ML pipelines in healthcare&lt;/li&gt;&#xA;&lt;li&gt;Creating interoperable clinical models&lt;/li&gt;&#xA;&lt;li&gt;Enabling causal inference studies&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-featured-data-sources&#34;&gt;&#xA;  🔍 Featured Data Sources&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-featured-data-sources&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;phenotype-knowledgebase-phekb&#34;&gt;&#xA;  &lt;a href=&#34;https://www.phekb.org/&#34;&gt;Phenotype KnowledgeBase (PheKB)&lt;/a&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#phenotype-knowledgebase-phekb&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;:&lt;br&gt;&#xA;A collaborative portal for sharing and validating electronic phenotype definitions used in observational health research.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
