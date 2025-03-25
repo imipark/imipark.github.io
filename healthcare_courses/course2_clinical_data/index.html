@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  🧠 Course 2: Clinical Data – Module-by-Module Mental Flows
+  #
+
+A strategic mental map for each module using 5 guiding questions.
+
+
+  🧭 Module 1: Asking and Answering Questions via Clinical Data Mining
+  #
+
+
+
+What&rsquo;s the Problem?
+Clinicians have important questions but don&rsquo;t know how to systematically answer them using data.
+
+
+Why Does It Matter?
+Better questions → better care. Good questions drive data use and decision-making.
+
+
+Core Idea
+The 4-step data mining workflow:
+(1) Pose question → (2) Find data → (3) Transform data → (4) Analyze">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare_courses/course2_clinical_data/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="🧠 Course 2: Clinical Data – Module-by-Module Mental Flows # A strategic mental map for each module using 5 guiding questions.
+🧭 Module 1: Asking and Answering Questions via Clinical Data Mining # What’s the Problem?
+Clinicians have important questions but don’t know how to systematically answer them using data.
+Why Does It Matter?
+Better questions → better care. Good questions drive data use and decision-making.
+Core Idea
+The 4-step data mining workflow:
+(1) Pose question → (2) Find data → (3) Transform data → (4) Analyze">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Course2 Clinical Data | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare_courses/course2_clinical_data/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.c10f127b5c7df474b59fc316b7c9400f7648bf6ed7fafa4f45ccf0126b1477c5.js" integrity="sha256-wQ8Se1x99HS1n8MWt8lAD3ZIv27X&#43;vpPRczwEmsUd8U=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/healthcare_courses/course2_clinical_data/index.xml" title="AI in Healthcare" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle" checked />
+    <label for="section-ada98cdddc633c21823a7a219fb44de2" class="flex justify-between">
+      <a role="button" class="">Healthcare Courses</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a4a2c6f08a23ba8dec0f13c8829fd092" class="toggle" checked />
+    <label for="section-a4a2c6f08a23ba8dec0f13c8829fd092" class="flex justify-between">
+      <a href="/healthcare_courses/course2_clinical_data/" class="active">Course2 Clinical Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/clinical_text_mining_pipeline/" class="">Clinical Text Mining Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/missing_values/" class="">Missing Values</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/nlp_clinical_text/" class="">Nlp Clinical Text</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/ai_healthcare_coursera/" class="">AI in Healthcare Specialization — Stanford</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d119b829f014f9502a5a7375f2a782a1" class="toggle"  />
+    <label for="section-d119b829f014f9502a5a7375f2a782a1" class="flex justify-between">
+      <a role="button" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_glossary/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e4ab51e1ab1158cb32439638c6b1b72" class="toggle"  />
+    <label for="section-0e4ab51e1ab1158cb32439638c6b1b72" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b408a192ef91e92a11af6b8d0a08801a" class="toggle"  />
+    <label for="section-b408a192ef91e92a11af6b8d0a08801a" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph Enhanced RAG</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97e70c3af1dade68e2174282b384e2c3" class="toggle"  />
+    <label for="section-97e70c3af1dade68e2174282b384e2c3" class="flex justify-between">
+      <a href="/causal_reasoning/" class="">Causal Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_ai/" class="">Causal AI</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_inference/" class="">Causal Inference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Course2 Clinical Data</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-course-2-clinical-data--module-by-module-mental-flows">🧠 Course 2: Clinical Data – Module-by-Module Mental Flows</a>
+      <ul>
+        <li><a href="#-module-1-asking-and-answering-questions-via-clinical-data-mining">🧭 Module 1: Asking and Answering Questions via Clinical Data Mining</a></li>
+        <li><a href="#-module-2-data-available-from-healthcare-systems">🏥 Module 2: Data Available from Healthcare Systems</a></li>
+        <li><a href="#-module-3-representing-time-in-clinical-data">🕰️ Module 3: Representing Time in Clinical Data</a></li>
+        <li><a href="#-module-4-creating-analysis-ready-datasets">🧱 Module 4: Creating Analysis-Ready Datasets</a></li>
+        <li><a href="#-module-5-handling-unstructured-data-text-images-signals">📄 Module 5: Handling Unstructured Data (Text, Images, Signals)</a></li>
+        <li><a href="#-module-6-electronic-phenotyping">🧬 Module 6: Electronic Phenotyping</a></li>
+        <li><a href="#-module-7-clinical-data-ethics">⚖️ Module 7: Clinical Data Ethics</a></li>
+      </ul>
+    </li>
+    <li><a href="#-final-integration-flow">🧠 Final Integration Flow</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-course-2-clinical-data--module-by-module-mental-flows">
+  🧠 Course 2: Clinical Data – Module-by-Module Mental Flows
+  <a class="anchor" href="#-course-2-clinical-data--module-by-module-mental-flows">#</a>
+</h1>
+<p>A strategic mental map for each module using 5 guiding questions.</p>
+<hr>
+<h2 id="-module-1-asking-and-answering-questions-via-clinical-data-mining">
+  🧭 Module 1: Asking and Answering Questions via Clinical Data Mining
+  <a class="anchor" href="#-module-1-asking-and-answering-questions-via-clinical-data-mining">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>What&rsquo;s the Problem?</strong><br>
+Clinicians have important questions but don&rsquo;t know how to systematically answer them using data.</p>
+</li>
+<li>
+<p><strong>Why Does It Matter?</strong><br>
+Better questions → better care. Good questions drive data use and decision-making.</p>
+</li>
+<li>
+<p><strong>Core Idea</strong><br>
+The 4-step data mining workflow:<br>
+(1) Pose question → (2) Find data → (3) Transform data → (4) Analyze</p>
+</li>
+<li>
+<p><strong>How It Works</strong><br>
+Frame a question (e.g. SLE + clot risk), identify cohorts, extract patient timelines, compute outcomes.</p>
+</li>
+<li>
+<p><strong>How It Connects</strong><br>
+Foundation for the entire course. All downstream steps depend on having a well-framed question.</p>
+</li>
+</ol>
+<hr>
+<h2 id="-module-2-data-available-from-healthcare-systems">
+  🏥 Module 2: Data Available from Healthcare Systems
+  <a class="anchor" href="#-module-2-data-available-from-healthcare-systems">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>What&rsquo;s the Problem?</strong><br>
+Clinical data is complex, biased, and scattered across different sources.</p>
+</li>
+<li>
+<p><strong>Why Does It Matter?</strong><br>
+Understanding data provenance is essential for valid interpretation and modeling.</p>
+</li>
+<li>
+<p><strong>Core Idea</strong><br>
+Types of healthcare data (structured, unstructured), who produces them, and common biases/errors.</p>
+</li>
+<li>
+<p><strong>How It Works</strong><br>
+Learn data sources: EMRs, claims, pharmacies, registries. Understand missingness, selection bias, coding issues.</p>
+</li>
+<li>
+<p><strong>How It Connects</strong><br>
+These data sources fuel patient timelines and features (Modules 3–4). Knowing their limitations is critical.</p>
+</li>
+</ol>
+<hr>
+<h2 id="-module-3-representing-time-in-clinical-data">
+  🕰️ Module 3: Representing Time in Clinical Data
+  <a class="anchor" href="#-module-3-representing-time-in-clinical-data">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>What&rsquo;s the Problem?</strong><br>
+Most clinical events happen over time, but databases don&rsquo;t naturally express time relationships.</p>
+</li>
+<li>
+<p><strong>Why Does It Matter?</strong><br>
+Misaligned event timing distorts exposures and outcomes — ruins inference and prediction.</p>
+</li>
+<li>
+<p><strong>Core Idea</strong><br>
+Use patient timelines. Choose timescales, bins, and encode order of events.</p>
+</li>
+<li>
+<p><strong>How It Works</strong><br>
+Define index time (exposure), align with outcome, handle right-censoring, test for non-stationarity.</p>
+</li>
+<li>
+<p><strong>How It Connects</strong><br>
+Prepares data for feature engineering (Module 4). Enables temporal reasoning in phenotyping (Module 6).</p>
+</li>
+</ol>
+<hr>
+<h2 id="-module-4-creating-analysis-ready-datasets">
+  🧱 Module 4: Creating Analysis-Ready Datasets
+  <a class="anchor" href="#-module-4-creating-analysis-ready-datasets">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>What&rsquo;s the Problem?</strong><br>
+Raw timeline data is too messy for analysis or ML.</p>
+</li>
+<li>
+<p><strong>Why Does It Matter?</strong><br>
+Poorly engineered features → invalid conclusions and unfair models.</p>
+</li>
+<li>
+<p><strong>Core Idea</strong><br>
+Construct a patient-feature matrix. Engineer features from timeline + structured data.</p>
+</li>
+<li>
+<p><strong>How It Works</strong><br>
+Clean → normalize → impute → reduce → create new features. Use knowledge graphs for semantics.</p>
+</li>
+<li>
+<p><strong>How It Connects</strong><br>
+Structured input for downstream modeling and phenotyping. Builds on Module 3 and supports Module 6.</p>
+</li>
+</ol>
+<hr>
+<h2 id="-module-5-handling-unstructured-data-text-images-signals">
+  📄 Module 5: Handling Unstructured Data (Text, Images, Signals)
+  <a class="anchor" href="#-module-5-handling-unstructured-data-text-images-signals">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>What&rsquo;s the Problem?</strong><br>
+Important clinical info is buried in unstructured formats like notes, scans, signals.</p>
+</li>
+<li>
+<p><strong>Why Does It Matter?</strong><br>
+Ignoring this info causes mislabeling or missing key predictors.</p>
+</li>
+<li>
+<p><strong>Core Idea</strong><br>
+Use NLP and signal/image processing to extract structured features.</p>
+</li>
+<li>
+<p><strong>How It Works</strong><br>
+NLP → detect negation/context → extract features using knowledge graphs. Apply to text/images/signals.</p>
+</li>
+<li>
+<p><strong>How It Connects</strong><br>
+Complements Module 4. Enables richer feature sets and more accurate phenotyping (Module 6).</p>
+</li>
+</ol>
+<hr>
+<h2 id="-module-6-electronic-phenotyping">
+  🧬 Module 6: Electronic Phenotyping
+  <a class="anchor" href="#-module-6-electronic-phenotyping">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>What&rsquo;s the Problem?</strong><br>
+We need to determine who really has the condition of interest, but it’s not always explicit in data.</p>
+</li>
+<li>
+<p><strong>Why Does It Matter?</strong><br>
+Phenotyping determines cohort inclusion and outcome labeling — critical for valid research.</p>
+</li>
+<li>
+<p><strong>Core Idea</strong><br>
+Use rule-based or machine learning–based methods to define presence of disease/condition.</p>
+</li>
+<li>
+<p><strong>How It Works</strong><br>
+Define inclusion/exclusion criteria (rules), or train classifiers using imperfect labels and anchors.</p>
+</li>
+<li>
+<p><strong>How It Connects</strong><br>
+Relies on timelines (3), features (4), and text (5). Prepares labeled cohorts for modeling or trial selection.</p>
+</li>
+</ol>
+<hr>
+<h2 id="-module-7-clinical-data-ethics">
+  ⚖️ Module 7: Clinical Data Ethics
+  <a class="anchor" href="#-module-7-clinical-data-ethics">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>What&rsquo;s the Problem?</strong><br>
+Using clinical data without safeguards risks privacy violations and public mistrust.</p>
+</li>
+<li>
+<p><strong>Why Does It Matter?</strong><br>
+Ethics is essential for legal compliance, public trust, and fairness in AI.</p>
+</li>
+<li>
+<p><strong>Core Idea</strong><br>
+Apply ethical frameworks (Belmont Report, Learning Health System) to govern data use and consent.</p>
+</li>
+<li>
+<p><strong>How It Works</strong><br>
+Use informed consent, de-identification, appropriate return of results, and respect patient autonomy.</p>
+</li>
+<li>
+<p><strong>How It Connects</strong><br>
+Applies across all modules. Ensures responsible use of all clinical data workflows and AI tools.</p>
+</li>
+</ol>
+<hr>
+<h1 id="-final-integration-flow">
+  🧠 Final Integration Flow
+  <a class="anchor" href="#-final-integration-flow">#</a>
+</h1>
+<blockquote>
+<p><strong>Ask Smart Questions</strong> (Module 1) →<br>
+<strong>Understand Data Sources &amp; Biases</strong> (Module 2) →<br>
+<strong>Track Time and Events Correctly</strong> (Module 3) →<br>
+<strong>Transform into Clean Features</strong> (Module 4) →<br>
+<strong>Extract from Unstructured Formats</strong> (Module 5) →<br>
+<strong>Define Conditions Precisely</strong> (Module 6) →<br>
+<strong>Use Ethically &amp; Fairly</strong> (Module 7)</p></blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-course-2-clinical-data--module-by-module-mental-flows">🧠 Course 2: Clinical Data – Module-by-Module Mental Flows</a>
+      <ul>
+        <li><a href="#-module-1-asking-and-answering-questions-via-clinical-data-mining">🧭 Module 1: Asking and Answering Questions via Clinical Data Mining</a></li>
+        <li><a href="#-module-2-data-available-from-healthcare-systems">🏥 Module 2: Data Available from Healthcare Systems</a></li>
+        <li><a href="#-module-3-representing-time-in-clinical-data">🕰️ Module 3: Representing Time in Clinical Data</a></li>
+        <li><a href="#-module-4-creating-analysis-ready-datasets">🧱 Module 4: Creating Analysis-Ready Datasets</a></li>
+        <li><a href="#-module-5-handling-unstructured-data-text-images-signals">📄 Module 5: Handling Unstructured Data (Text, Images, Signals)</a></li>
+        <li><a href="#-module-6-electronic-phenotyping">🧬 Module 6: Electronic Phenotyping</a></li>
+        <li><a href="#-module-7-clinical-data-ethics">⚖️ Module 7: Clinical Data Ethics</a></li>
+      </ul>
+    </li>
+    <li><a href="#-final-integration-flow">🧠 Final Integration Flow</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

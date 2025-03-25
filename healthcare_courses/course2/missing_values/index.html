@@ -111,7 +111,7 @@ Rationale: The missingness depends on the unobserved value and may carry predict
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare_courses/missing_values/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare_courses/course2/missing_values/">
   <meta property="og:site_name" content="AI in Healthcare">
   <meta property="og:title" content="AI in Healthcare">
   <meta property="og:description" content="Missing Data Scenarios in Healthcare Modeling # 1. Should Be Measured But Wasn’t # Description: The value is expected but is missing due to random or procedural issues (e.g., lab error, missed test). Technical Term: MCAR: Missing Completely At Random MAR: Missing At Random Example: A routine blood test wasn’t recorded because the sample was lost. Strategy: Impute (mean, median, or model-based). Add a missingness indicator variable (e.g., var_missing = 1). Rationale: The missingness is unrelated to the value itself, so estimation is relatively safe. 2. Mostly Zero Due to Rare Occurrence # Description: Not truly missing — the value is zero or absent for most patients because the condition/event is rare. Technical Term: Not Missing (No abbreviation needed) Example: HIV diagnosis column is 0 for most patients. Strategy: Do not impute — the 0s are meaningful and reflect true absence. Rationale: These are real values, and zeros carry clinical meaning. 3. Deliberately Not Recorded # Description: Clinician or system chooses not to record a value based on context (e.g., patient clearly stable or too ill). Technical Term: MNAR: Missing Not At Random Example: Sodium level not tested because the patient was clearly stable. Strategy: Avoid imputation if possible — it may introduce bias. Use models that handle missingness natively (e.g., decision trees, XGBoost, LightGBM). Consider adding a missingness indicator. Rationale: The missingness depends on the unobserved value and may carry predictive signal. Summary Table # Case Description Abbreviation Impute? Extra Notes 1 Should be measured but wasn’t MCAR / MAR ✅ Yes Add indicator if signal is likely 2 Mostly zero (rare condition) Not Missing 🚫 No Keep as is — zeros are informative 3 Deliberately not recorded MNAR ⚠️ Caution Use native handling &#43; possible indicator">
@@ -121,10 +121,10 @@ Rationale: The missingness depends on the unobserved value and may carry predict
 <title>Missing Values | AI in Healthcare</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/healthcare_courses/missing_values/">
+<link rel="canonical" href="http://localhost:1313/healthcare_courses/course2/missing_values/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.f9ce11a9506f3429765fd45fb52b2f7b0be67d7804167041b1e48a473d93831e.js" integrity="sha256-&#43;c4RqVBvNCl2X9RftSsvewvmfXgEFnBBseSKRz2Tgx4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.be054d276f97673ca6857961d80878b69ee633a9fd6dd086508e9c2890b6fd74.js" integrity="sha256-vgVNJ2&#43;XZzymhXlh2Ah4tp7mM6n9bdCGUI6cKJC2/XQ=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -194,7 +194,33 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/healthcare_courses/clinical_text_mining_pipeline/" class="">Clinical Text Mining Pipeline</a>
+    <a href="/healthcare_courses/course2/clinical_text_mining_pipeline/" class="">Clinical Text Mining Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2/missing_values/" class="active">Missing Values</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2/nlp_clinical_text/" class="">Nlp Clinical Text</a>
   
 
         </li>
@@ -208,32 +234,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/healthcare_courses/course2_clinical_data/" class="">Course2 Clinical Data</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare_courses/missing_values/" class="active">Missing Values</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare_courses/nlp_clinical_text/" class="">Nlp Clinical Text</a>
   
 
         </li>
