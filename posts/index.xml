@@ -6,8 +6,15 @@
     <description>Recent content in Blog on AI in Healthcare</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Mar 2025 21:23:49 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 25 Mar 2025 13:19:10 -0700</lastBuildDate>
     <atom:link href="https://imipark.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5 Steps Learning Template</title>
+      <link>https://imipark.github.io/posts/5_steps_learning_template/</link>
+      <pubDate>Tue, 25 Mar 2025 13:19:10 -0700</pubDate>
+      <guid>https://imipark.github.io/posts/5_steps_learning_template/</guid>
+      <description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;What&amp;rsquo;s the Problem?&#xA;&lt;em&gt;What is the issue, gap, or challenge this module/concept is trying to address?&lt;/em&gt;&#xA;→ &lt;strong&gt;Transition&lt;/strong&gt;: “So what if this problem exists?”&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Why Does It Matter?&#xA;&lt;em&gt;What are the real-world stakes or consequences of not solving this problem? Who or what is affected?&lt;/em&gt;&#xA;→ &lt;strong&gt;Transition&lt;/strong&gt;: “Given this urgency, what’s the smart way to tackle it?”&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;What’s the Core Idea?&#xA;&lt;em&gt;What is the central concept, structure, or strategy introduced to solve the problem?&lt;/em&gt;&#xA;→ &lt;strong&gt;Transition&lt;/strong&gt;: “Okay, so how would I actually &lt;em&gt;apply&lt;/em&gt; or &lt;em&gt;build&lt;/em&gt; this?”&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hugo Setup and Deploy</title>
       <link>https://imipark.github.io/posts/hugo-setup/</link>
