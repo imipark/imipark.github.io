@@ -23,6 +23,13 @@
     </item>
     <item>
       <title></title>
+      <link>https://imipark.github.io/healthcare_courses/course2_clinical_data/ethics_in_ai_healthcare_qna/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/healthcare_courses/course2_clinical_data/ethics_in_ai_healthcare_qna/</guid>
+      <description>&lt;h1 id=&#34;ethics-in-ai-for-healthcare-a-guided-qa-framework&#34;&gt;&#xA;  Ethics in AI for Healthcare: A Guided Q&amp;amp;A Framework&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#ethics-in-ai-for-healthcare-a-guided-qa-framework&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;This document presents a structured chain-of-thought (CoT) using guiding questions and answers to understand ethical considerations in the development and deployment of AI in healthcare, based on Module 7 from the Stanford &amp;ldquo;Introduction to Clinical Data&amp;rdquo; course.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-why-is-ethics-important-in-the-context-of-ai-in-healthcare&#34;&gt;&#xA;  1. Why is ethics important in the context of AI in healthcare?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-why-is-ethics-important-in-the-context-of-ai-in-healthcare&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt;&lt;br&gt;&#xA;AI tools impact patients directly or indirectly, whether through their development (research) or their deployment (clinical practice). Each of these domains carries different ethical responsibilities that must be considered and governed carefully.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
       <link>https://imipark.github.io/healthcare_courses/course2_clinical_data/missing_values/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://imipark.github.io/healthcare_courses/course2_clinical_data/missing_values/</guid>
