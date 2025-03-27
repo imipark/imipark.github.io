@@ -4,73 +4,155 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  🔒 Hugo Source Backup
+  📘 Course 3: Fundamentals of Machine Learning for Healthcare
   #
 
-This guide outlines how to back up your Hugo source files (excluding the public/ folder) to a private GitHub repository.
+This course provides a foundational understanding of how machine learning (ML) is applied in the healthcare setting — from basic concepts to real-world considerations.
 
 
-  📁 Folder Structure
-  #
-
-Typical Hugo project structure:
-hugo-site/
-├── archetypes/
-├── content/
-├── layouts/
-├── static/
-├── themes/
-├── config.toml
-├── public/           # &lt;- This is ignored for source backup
-└── backup.sh         # Backup script
-
-
-  ✅ 1. Create a Private GitHub Repo
+  Module 1: Why Machine Learning in Healthcare?
   #
 
 
-Go to https://github.com/new
-Name it something like hugo-source
-Set visibility to Private
-Don’t initialize with README or license
+📌 Motivation
+
+Explosion of digital health data
+Need for scalable decision support
+
+
+🧠 Key Concepts
+
+ML can improve diagnostics, predictions, efficiency
+Everyone in healthcare should understand ML basics
 
 
 
-  ✅ 2. Initialize Git in Your Hugo Site (if not already)
+
+
+  Module 2: ML Concepts and Principles
   #
 
-git init
-git remote add origin https://github.com/&lt;your-username&gt;/hugo-source.git
-echo &#34;public/&#34; &gt;&gt; .gitignore
+
+🔍 Learning Types
+
+Supervised, Unsupervised, Reinforcement Learning
 
 
-  ✅ 3. Create the Backup Script
+🧪 Model Training
+
+Input: Features and Labels
+Output: Predictions
+
+
+⚖️ Overfitting vs. Underfitting
+
+Underfit = too simple
+Overfit = too specific
+
+
+
+
+
+  Module 3: Deep Learning
   #
 
-Create a file named backup.sh in the root of your Hugo project:">
+
+🧠 Neural Networks
+
+Layers of learning units (neurons)
+
+
+🖼️ CNNs for Imaging
+
+Used in radiology and dermatology
+
+
+📄 NLP in Healthcare
+
+Use of RNNs and Transformers for text like clinical notes
+
+
+
+
+
+  Module 4: Evaluation Metrics
+  #
+
+
+📊 Key Metrics
+
+Accuracy, Precision, Recall, ROC-AUC, PR-AUC
+
+
+⚠️ Confusion Matrix
+
+True/False Positives/Negatives
+
+
+🔁 Class Imbalance Handling
+
+Resampling, stratified sampling, alternate metrics
+
+
+
+
+
+  Module 5: Challenges in ML for Healthcare
+  #
+
+
+❗ Limitations
+
+Data quality issues
+Label noise
+Distribution shift
+
+
+⚠️ Causation vs. Correlation
+
+ML finds patterns, not causes
+
+
+
+
+
+  Module 6: Clinical Impact and Teamwork
+  #
+
+
+💡 OAP Framework
+
+Link model output to real clinical action
+
+
+👥 Multidisciplinary Teams
+
+Clinicians, ML experts, ethicists, IT
+
+
+🛠️ Deployment Considerations
+
+Interpretability, ethics, workflow integration
+
+
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/posts/hugo-source-backup/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare_courses/course3_ml_healthcare/">
   <meta property="og:site_name" content="AI in Healthcare">
-  <meta property="og:title" content="Hugo Source Backup">
-  <meta property="og:description" content="🔒 Hugo Source Backup # This guide outlines how to back up your Hugo source files (excluding the public/ folder) to a private GitHub repository.
-📁 Folder Structure # Typical Hugo project structure:
-hugo-site/ ├── archetypes/ ├── content/ ├── layouts/ ├── static/ ├── themes/ ├── config.toml ├── public/ # &lt;- This is ignored for source backup └── backup.sh # Backup script ✅ 1. Create a Private GitHub Repo # Go to https://github.com/new Name it something like hugo-source Set visibility to Private Don’t initialize with README or license ✅ 2. Initialize Git in Your Hugo Site (if not already) # git init git remote add origin https://github.com/&lt;your-username&gt;/hugo-source.git echo &#34;public/&#34; &gt;&gt; .gitignore ✅ 3. Create the Backup Script # Create a file named backup.sh in the root of your Hugo project:">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="📘 Course 3: Fundamentals of Machine Learning for Healthcare # This course provides a foundational understanding of how machine learning (ML) is applied in the healthcare setting — from basic concepts to real-world considerations.
+Module 1: Why Machine Learning in Healthcare? # 📌 Motivation Explosion of digital health data Need for scalable decision support 🧠 Key Concepts ML can improve diagnostics, predictions, efficiency Everyone in healthcare should understand ML basics Module 2: ML Concepts and Principles # 🔍 Learning Types Supervised, Unsupervised, Reinforcement Learning 🧪 Model Training Input: Features and Labels Output: Predictions ⚖️ Overfitting vs. Underfitting Underfit = too simple Overfit = too specific Module 3: Deep Learning # 🧠 Neural Networks Layers of learning units (neurons) 🖼️ CNNs for Imaging Used in radiology and dermatology 📄 NLP in Healthcare Use of RNNs and Transformers for text like clinical notes Module 4: Evaluation Metrics # 📊 Key Metrics Accuracy, Precision, Recall, ROC-AUC, PR-AUC ⚠️ Confusion Matrix True/False Positives/Negatives 🔁 Class Imbalance Handling Resampling, stratified sampling, alternate metrics Module 5: Challenges in ML for Healthcare # ❗ Limitations Data quality issues Label noise Distribution shift ⚠️ Causation vs. Correlation ML finds patterns, not causes Module 6: Clinical Impact and Teamwork # 💡 OAP Framework Link model output to real clinical action 👥 Multidisciplinary Teams Clinicians, ML experts, ethicists, IT 🛠️ Deployment Considerations Interpretability, ethics, workflow integration">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-03-20T21:23:49-07:00">
-    <meta property="article:modified_time" content="2025-03-20T21:23:49-07:00">
-    <meta property="article:tag" content="Hugo">
-    <meta property="article:tag" content="Deploy">
-    <meta property="article:tag" content="Github">
-<title>Hugo Source Backup | AI in Healthcare</title>
+  <meta property="og:type" content="website">
+<title>Course3 Ml Healthcare | AI in Healthcare</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/posts/hugo-source-backup/">
+<link rel="canonical" href="https://imipark.github.io/healthcare_courses/course3_ml_healthcare/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.58973346cb5d706eabbd073e5338ffefe813a52ab2cddef5ceb89138bfb601ea.js" integrity="sha256-WJczRstdcG6rvQc&#43;Uzj/7&#43;gTpSqyzd71zriROL&#43;2Aeo=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/healthcare_courses/course3_ml_healthcare/index.xml" title="AI in Healthcare" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -124,7 +206,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle"  />
+    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle" checked />
     <label for="section-ada98cdddc633c21823a7a219fb44de2" class="flex justify-between">
       <a role="button" class="">Healthcare Courses</a>
     </label>
@@ -239,9 +321,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-cde480e8f6f57efc35d6187d44186d7e" class="toggle"  />
+    <input type="checkbox" id="section-cde480e8f6f57efc35d6187d44186d7e" class="toggle" checked />
     <label for="section-cde480e8f6f57efc35d6187d44186d7e" class="flex justify-between">
-      <a href="/healthcare_courses/course3_ml_healthcare/" class="">Course3 Ml Healthcare</a>
+      <a href="/healthcare_courses/course3_ml_healthcare/" class="active">Course3 Ml Healthcare</a>
     </label>
   
 
@@ -536,7 +618,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Hugo Source Backup</h3>
+  <h3>Course3 Ml Healthcare</h3>
 
   <label for="toc-control">
     
@@ -552,14 +634,14 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-hugo-source-backup">🔒 Hugo Source Backup</a>
+    <li><a href="#-course-3-fundamentals-of-machine-learning-for-healthcare">📘 Course 3: Fundamentals of Machine Learning for Healthcare</a>
       <ul>
-        <li><a href="#-folder-structure">📁 Folder Structure</a></li>
-        <li><a href="#-1-create-a-private-github-repo">✅ 1. Create a Private GitHub Repo</a></li>
-        <li><a href="#-2-initialize-git-in-your-hugo-site-if-not-already">✅ 2. Initialize Git in Your Hugo Site (if not already)</a></li>
-        <li><a href="#-3-create-the-backup-script">✅ 3. Create the Backup Script</a></li>
-        <li><a href="#-4-use-it">✅ 4. Use It!</a></li>
-        <li><a href="#-notes">📝 Notes</a></li>
+        <li><a href="#module-1-why-machine-learning-in-healthcare">Module 1: Why Machine Learning in Healthcare?</a></li>
+        <li><a href="#module-2-ml-concepts-and-principles">Module 2: ML Concepts and Principles</a></li>
+        <li><a href="#module-3-deep-learning">Module 3: Deep Learning</a></li>
+        <li><a href="#module-4-evaluation-metrics">Module 4: Evaluation Metrics</a></li>
+        <li><a href="#module-5-challenges-in-ml-for-healthcare">Module 5: Challenges in ML for Healthcare</a></li>
+        <li><a href="#module-6-clinical-impact-and-teamwork">Module 6: Clinical Impact and Teamwork</a></li>
       </ul>
     </li>
   </ul>
@@ -574,106 +656,139 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-<article class="markdown book-post">
-  <h2>
-    Hugo Source Backup
-  </h2>
-  
-  <div class="flex align-center text-small book-post-date">
-    <img src="/svg/calendar.svg" class="book-icon " alt="" />
-    <span>March 20, 2025</span>
-  </div>
-
-
-
-  
-  <div class="text-small">
-    
-      <a href="/categories/web/">Web</a>
-  </div>
-  
-
-  
-  <div class="text-small">
-    
-      <a href="/tags/hugo/">Hugo</a>, 
-      <a href="/tags/deploy/">Deploy</a>, 
-      <a href="/tags/github/">Github</a>
-  </div>
-  
-
-
-  <div class="book-post-content"><h1 id="-hugo-source-backup">
-  🔒 Hugo Source Backup
-  <a class="anchor" href="#-hugo-source-backup">#</a>
+  <article class="markdown book-article"><h1 id="-course-3-fundamentals-of-machine-learning-for-healthcare">
+  📘 Course 3: Fundamentals of Machine Learning for Healthcare
+  <a class="anchor" href="#-course-3-fundamentals-of-machine-learning-for-healthcare">#</a>
 </h1>
-<p>This guide outlines how to back up your <strong>Hugo source files</strong> (excluding the <code>public/</code> folder) to a <strong>private GitHub repository</strong>.</p>
+<p>This course provides a foundational understanding of how machine learning (ML) is applied in the healthcare setting — from basic concepts to real-world considerations.</p>
 <hr>
-<h2 id="-folder-structure">
-  📁 Folder Structure
-  <a class="anchor" href="#-folder-structure">#</a>
-</h2>
-<p>Typical Hugo project structure:</p>
-<pre tabindex="0"><code>hugo-site/
-├── archetypes/
-├── content/
-├── layouts/
-├── static/
-├── themes/
-├── config.toml
-├── public/           # &lt;- This is ignored for source backup
-└── backup.sh         # Backup script
-</code></pre><hr>
-<h2 id="-1-create-a-private-github-repo">
-  ✅ 1. Create a Private GitHub Repo
-  <a class="anchor" href="#-1-create-a-private-github-repo">#</a>
+<h2 id="module-1-why-machine-learning-in-healthcare">
+  Module 1: Why Machine Learning in Healthcare?
+  <a class="anchor" href="#module-1-why-machine-learning-in-healthcare">#</a>
 </h2>
 <ul>
-<li>Go to <a href="https://github.com/new">https://github.com/new</a></li>
-<li>Name it something like <code>hugo-source</code></li>
-<li>Set visibility to <strong>Private</strong></li>
-<li>Don’t initialize with README or license</li>
+<li>📌 <strong>Motivation</strong>
+<ul>
+<li>Explosion of digital health data</li>
+<li>Need for scalable decision support</li>
+</ul>
+</li>
+<li>🧠 <strong>Key Concepts</strong>
+<ul>
+<li>ML can improve diagnostics, predictions, efficiency</li>
+<li>Everyone in healthcare should understand ML basics</li>
+</ul>
+</li>
 </ul>
 <hr>
-<h2 id="-2-initialize-git-in-your-hugo-site-if-not-already">
-  ✅ 2. Initialize Git in Your Hugo Site (if not already)
-  <a class="anchor" href="#-2-initialize-git-in-your-hugo-site-if-not-already">#</a>
-</h2>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git remote add origin https://github.com/&lt;your-username&gt;/hugo-source.git
-</span></span><span style="display:flex;"><span><span style="color:#04a5e5">echo</span> <span style="color:#40a02b">&#34;public/&#34;</span> &gt;&gt; .gitignore
-</span></span></code></pre></div><hr>
-<h2 id="-3-create-the-backup-script">
-  ✅ 3. Create the Backup Script
-  <a class="anchor" href="#-3-create-the-backup-script">#</a>
-</h2>
-<p>Create a file named <code>backup.sh</code> in the root of your Hugo project:</p>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"></span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#40a02b">&#34;🔒 Backup: </span><span style="color:#8839ef">$(</span>date +<span style="color:#40a02b">&#39;%Y-%m-%d %H:%M:%S&#39;</span><span style="color:#8839ef">)</span><span style="color:#40a02b">&#34;</span>
-</span></span><span style="display:flex;"><span>git push origin main
-</span></span><span style="display:flex;"><span><span style="color:#04a5e5">echo</span> <span style="color:#40a02b">&#34;✅ Backup Complete!&#34;</span>
-</span></span></code></pre></div><p>Make it executable:</p>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x backup.sh
-</span></span></code></pre></div><hr>
-<h2 id="-4-use-it">
-  ✅ 4. Use It!
-  <a class="anchor" href="#-4-use-it">#</a>
-</h2>
-<p>To back up your source files:</p>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./backup.sh
-</span></span></code></pre></div><hr>
-<h2 id="-notes">
-  📝 Notes
-  <a class="anchor" href="#-notes">#</a>
+<h2 id="module-2-ml-concepts-and-principles">
+  Module 2: ML Concepts and Principles
+  <a class="anchor" href="#module-2-ml-concepts-and-principles">#</a>
 </h2>
 <ul>
-<li>Only your <strong>source files</strong> are backed up.</li>
-<li>The <code>public/</code> folder is excluded (it’s where the generated site lives).</li>
-<li>Combine with <code>deploy.sh</code> for full workflow automation.</li>
+<li>🔍 <strong>Learning Types</strong>
+<ul>
+<li>Supervised, Unsupervised, Reinforcement Learning</li>
+</ul>
+</li>
+<li>🧪 <strong>Model Training</strong>
+<ul>
+<li>Input: Features and Labels</li>
+<li>Output: Predictions</li>
+</ul>
+</li>
+<li>⚖️ <strong>Overfitting vs. Underfitting</strong>
+<ul>
+<li>Underfit = too simple</li>
+<li>Overfit = too specific</li>
+</ul>
+</li>
 </ul>
 <hr>
-</div>
+<h2 id="module-3-deep-learning">
+  Module 3: Deep Learning
+  <a class="anchor" href="#module-3-deep-learning">#</a>
+</h2>
+<ul>
+<li>🧠 <strong>Neural Networks</strong>
+<ul>
+<li>Layers of learning units (neurons)</li>
+</ul>
+</li>
+<li>🖼️ <strong>CNNs for Imaging</strong>
+<ul>
+<li>Used in radiology and dermatology</li>
+</ul>
+</li>
+<li>📄 <strong>NLP in Healthcare</strong>
+<ul>
+<li>Use of RNNs and Transformers for text like clinical notes</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="module-4-evaluation-metrics">
+  Module 4: Evaluation Metrics
+  <a class="anchor" href="#module-4-evaluation-metrics">#</a>
+</h2>
+<ul>
+<li>📊 <strong>Key Metrics</strong>
+<ul>
+<li>Accuracy, Precision, Recall, ROC-AUC, PR-AUC</li>
+</ul>
+</li>
+<li>⚠️ <strong>Confusion Matrix</strong>
+<ul>
+<li>True/False Positives/Negatives</li>
+</ul>
+</li>
+<li>🔁 <strong>Class Imbalance Handling</strong>
+<ul>
+<li>Resampling, stratified sampling, alternate metrics</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="module-5-challenges-in-ml-for-healthcare">
+  Module 5: Challenges in ML for Healthcare
+  <a class="anchor" href="#module-5-challenges-in-ml-for-healthcare">#</a>
+</h2>
+<ul>
+<li>❗ <strong>Limitations</strong>
+<ul>
+<li>Data quality issues</li>
+<li>Label noise</li>
+<li>Distribution shift</li>
+</ul>
+</li>
+<li>⚠️ <strong>Causation vs. Correlation</strong>
+<ul>
+<li>ML finds patterns, not causes</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="module-6-clinical-impact-and-teamwork">
+  Module 6: Clinical Impact and Teamwork
+  <a class="anchor" href="#module-6-clinical-impact-and-teamwork">#</a>
+</h2>
+<ul>
+<li>💡 <strong>OAP Framework</strong>
+<ul>
+<li>Link model output to real clinical action</li>
+</ul>
+</li>
+<li>👥 <strong>Multidisciplinary Teams</strong>
+<ul>
+<li>Clinicians, ML experts, ethicists, IT</li>
+</ul>
+</li>
+<li>🛠️ <strong>Deployment Considerations</strong>
+<ul>
+<li>Interpretability, ethics, workflow integration</li>
+</ul>
+</li>
+</ul>
 </article>
  
       
@@ -715,14 +830,14 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-hugo-source-backup">🔒 Hugo Source Backup</a>
+    <li><a href="#-course-3-fundamentals-of-machine-learning-for-healthcare">📘 Course 3: Fundamentals of Machine Learning for Healthcare</a>
       <ul>
-        <li><a href="#-folder-structure">📁 Folder Structure</a></li>
-        <li><a href="#-1-create-a-private-github-repo">✅ 1. Create a Private GitHub Repo</a></li>
-        <li><a href="#-2-initialize-git-in-your-hugo-site-if-not-already">✅ 2. Initialize Git in Your Hugo Site (if not already)</a></li>
-        <li><a href="#-3-create-the-backup-script">✅ 3. Create the Backup Script</a></li>
-        <li><a href="#-4-use-it">✅ 4. Use It!</a></li>
-        <li><a href="#-notes">📝 Notes</a></li>
+        <li><a href="#module-1-why-machine-learning-in-healthcare">Module 1: Why Machine Learning in Healthcare?</a></li>
+        <li><a href="#module-2-ml-concepts-and-principles">Module 2: ML Concepts and Principles</a></li>
+        <li><a href="#module-3-deep-learning">Module 3: Deep Learning</a></li>
+        <li><a href="#module-4-evaluation-metrics">Module 4: Evaluation Metrics</a></li>
+        <li><a href="#module-5-challenges-in-ml-for-healthcare">Module 5: Challenges in ML for Healthcare</a></li>
+        <li><a href="#module-6-clinical-impact-and-teamwork">Module 6: Clinical Impact and Teamwork</a></li>
       </ul>
     </li>
   </ul>
