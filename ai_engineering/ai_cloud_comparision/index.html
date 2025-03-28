@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Market Analysis: Azure vs AWS for AI/ML/GenAI
+  #
+
+
+  
+      
+          Feature
+          Azure
+          AWS
+      
+  
+  
+      
+          Market Share
+          ~23%
+          ~31% (still largest)
+      
+      
+          Enterprise Adoption
+          Strong in healthcare, finance, gov (esp. with Microsoft 365/Teams/EHR ties)
+          Strong with startups, research, media, big tech
+      
+      
+          AI/ML Tools
+          Azure Machine Learning, OpenAI on Azure, Synapse, Cognitive Services
+          SageMaker, Bedrock, Comprehend, Rekognition
+      
+      
+          GenAI Integration
+          🔥 Deep OpenAI partnership (GPT, Codex, DALL·E via Azure OpenAI Service)
+          Bedrock (Anthropic, Stability, Cohere), Titan (Amazon’s own)
+      
+      
+          Ease of Use
+          More integrated across MS ecosystem (Power BI, Excel, VS Code)
+          More flexible but often messier to set up
+      
+      
+          Learning Curve
+          Smoother onboarding if familiar with Microsoft tools
+          More customizable, but steeper learning curve
+      
+      
+          Certifications
+          Azure AI Engineer, Data Scientist, OpenAI Engineer (in preview)
+          AWS ML Specialty, Solutions Architect, Bedrock tracks
+      
+  
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai_engineering/ai_cloud_comparision/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="Market Analysis: Azure vs AWS for AI/ML/GenAI # Feature Azure AWS Market Share ~23% ~31% (still largest) Enterprise Adoption Strong in healthcare, finance, gov (esp. with Microsoft 365/Teams/EHR ties) Strong with startups, research, media, big tech AI/ML Tools Azure Machine Learning, OpenAI on Azure, Synapse, Cognitive Services SageMaker, Bedrock, Comprehend, Rekognition GenAI Integration 🔥 Deep OpenAI partnership (GPT, Codex, DALL·E via Azure OpenAI Service) Bedrock (Anthropic, Stability, Cohere), Titan (Amazon’s own) Ease of Use More integrated across MS ecosystem (Power BI, Excel, VS Code) More flexible but often messier to set up Learning Curve Smoother onboarding if familiar with Microsoft tools More customizable, but steeper learning curve Certifications Azure AI Engineer, Data Scientist, OpenAI Engineer (in preview) AWS ML Specialty, Solutions Architect, Bedrock tracks">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai_engineering">
+<title>Ai Cloud Comparision | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai_engineering/ai_cloud_comparision/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.ec80625dc6e71e72c1a46638609d512dcd9f07b02aa6f7f0ee278fd4be68f674.js" integrity="sha256-7IBiXcbnHnLBpGY4YJ1RLc2fB7Aqpvfw7ieP1L5o9nQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle"  />
+    <label for="section-ada98cdddc633c21823a7a219fb44de2" class="flex justify-between">
+      <a role="button" class="">Healthcare Courses</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a4a2c6f08a23ba8dec0f13c8829fd092" class="toggle"  />
+    <label for="section-a4a2c6f08a23ba8dec0f13c8829fd092" class="flex justify-between">
+      <a href="/healthcare_courses/course2_clinical_data/" class="">Course2 Clinical Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/clinical_text_mining_pipeline/" class="">Clinical Text Mining Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/diabetes_phenotype_pipeline/" class="">Diabetes Phenotype Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/ethics_in_ai_healthcare_qna/" class="">Ethics in Ai Healthcare Qn A</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/missing_values/" class="">Missing Values</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/nlp_clinical_text/" class="">Nlp Clinical Text</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/omop_vs_rlhf_comparison/" class="">Omop vs Rlhf Comparison</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cde480e8f6f57efc35d6187d44186d7e" class="toggle"  />
+    <label for="section-cde480e8f6f57efc35d6187d44186d7e" class="flex justify-between">
+      <a href="/healthcare_courses/course3_ml_healthcare/" class="">Course3 Ml Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course3_ml_healthcare/precision_vs_recall_in_healthcare/" class="">Precision vs Recall in Healthcare</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c604e34171cbc1f85611e323ccbab65" class="toggle"  />
+    <label for="section-9c604e34171cbc1f85611e323ccbab65" class="flex justify-between">
+      <a href="/healthcare_courses/course4_ai_evalulation/" class="">Course4 Ai Evalulation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/ai_healthcare_coursera/" class="">AI in Healthcare Specialization — Stanford</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d119b829f014f9502a5a7375f2a782a1" class="toggle"  />
+    <label for="section-d119b829f014f9502a5a7375f2a782a1" class="flex justify-between">
+      <a href="/healthcare_data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_glossary/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e4ab51e1ab1158cb32439638c6b1b72" class="toggle"  />
+    <label for="section-0e4ab51e1ab1158cb32439638c6b1b72" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a0d48b231088952a2d5ded2c7155e05a" class="toggle" checked />
+    <label for="section-a0d48b231088952a2d5ded2c7155e05a" class="flex justify-between">
+      <a role="button" class="">AI Engineering for Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54413be91fa8840dbbbacf4e0da2cb36" class="toggle"  />
+    <label for="section-54413be91fa8840dbbbacf4e0da2cb36" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph Enhanced RAG</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai_engineering/ai_cloud_comparision/" class="active">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97e70c3af1dade68e2174282b384e2c3" class="toggle"  />
+    <label for="section-97e70c3af1dade68e2174282b384e2c3" class="flex justify-between">
+      <a href="/causal_reasoning/" class="">Causal Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_ai/" class="">Causal AI</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_inference/" class="">Causal Inference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Ai Cloud Comparision</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#market-analysis-azure-vs-aws-for-aimlgenai">Market Analysis: Azure vs AWS for AI/ML/GenAI</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="market-analysis-azure-vs-aws-for-aimlgenai">
+  Market Analysis: Azure vs AWS for AI/ML/GenAI
+  <a class="anchor" href="#market-analysis-azure-vs-aws-for-aimlgenai">#</a>
+</h1>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Azure</th>
+          <th>AWS</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Market Share</strong></td>
+          <td>~23%</td>
+          <td>~31% (still largest)</td>
+      </tr>
+      <tr>
+          <td><strong>Enterprise Adoption</strong></td>
+          <td>Strong in healthcare, finance, gov (esp. with Microsoft 365/Teams/EHR ties)</td>
+          <td>Strong with startups, research, media, big tech</td>
+      </tr>
+      <tr>
+          <td><strong>AI/ML Tools</strong></td>
+          <td>Azure Machine Learning, OpenAI on Azure, Synapse, Cognitive Services</td>
+          <td>SageMaker, Bedrock, Comprehend, Rekognition</td>
+      </tr>
+      <tr>
+          <td><strong>GenAI Integration</strong></td>
+          <td>🔥 Deep OpenAI partnership (GPT, Codex, DALL·E via Azure OpenAI Service)</td>
+          <td>Bedrock (Anthropic, Stability, Cohere), Titan (Amazon’s own)</td>
+      </tr>
+      <tr>
+          <td><strong>Ease of Use</strong></td>
+          <td>More integrated across MS ecosystem (Power BI, Excel, VS Code)</td>
+          <td>More flexible but often messier to set up</td>
+      </tr>
+      <tr>
+          <td><strong>Learning Curve</strong></td>
+          <td>Smoother onboarding if familiar with Microsoft tools</td>
+          <td>More customizable, but steeper learning curve</td>
+      </tr>
+      <tr>
+          <td><strong>Certifications</strong></td>
+          <td>Azure AI Engineer, Data Scientist, OpenAI Engineer (in preview)</td>
+          <td>AWS ML Specialty, Solutions Architect, Bedrock tracks</td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#market-analysis-azure-vs-aws-for-aimlgenai">Market Analysis: Azure vs AWS for AI/ML/GenAI</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

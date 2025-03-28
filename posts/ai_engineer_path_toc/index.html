@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  The AI Engineer Path – Scrimba
+  #
+
+https://www.coursera.org/specializations/ai-engineering#courses
+
+  Intro to AI Engineering (104 min)
+  #
+
+
+Welcome to The AI Engineer Path!
+AI Engineering basics
+The code so far
+Polygon API sign-up &amp; key
+Get an OpenAI API Key
+Overview of how the API works
+An API call: OpenAI dependency
+An API call: Instance and model
+An API call: The messages array
+A quick word about models
+Prompt Engineering and a challenge
+Adding AI to the App
+Tokens
+The OpenAI Playground
+Temperature
+The &ldquo;Few Shot&rdquo; Approach
+Adding Examples
+Stop Sequence
+Frequency and Presence Penalties
+Fine-tuning
+Creating Images with the DALL·E 3 API
+Intro to AI Safety
+Safety Best Practices
+Solo Project - PollyGlot
+You made it!
+
+
+  Deployment (50 min)
+  #
+
+
+Learn secure &amp; robust deployment strategies
+Create a Cloudflare worker
+Connect your worker to OpenAI
+Update client side data fetching
+Handle CORS and preflight requests
+OpenAI API requests &amp; responses
+Create an AI Gateway
+Error handling
+Create &amp; deploy the Polygon API worker
+Fetch the stock data
+Download files and push to GitHub
+Deploy your site with Cloudflare Pages
+Custom domains with Cloudflare
+Recap &amp; next steps
+
+
+  Open-source Models (33 min)
+  #
+
+
+Open source vs closed source
+Intro To HuggingFace.js Inference
+Text To Speech With HuggingFace.js Inference
+Transforming Images with HuggingFace.js Inference
+AI Models In The Browser With Transformers.js
+Download and Run AI Models on Your Computer with Ollama
+Section Recap
+
+
+  Embeddings and Vector Databases (94 min)
+  #
+
+
+Your next big step in AI engineering
+What are embeddings?
+Set up environment variables
+Create an embedding
+Challenge: Pair text with embedding
+Vector databases
+Set up your vector database
+Store vector embeddings
+Semantic search
+Query embeddings using similarity search
+Create a conversational response using OpenAI
+Chunking text from documents
+Challenge: Split text, get vectors, insert into Supabase
+Error handling
+Query database and manage multiple matches
+AI chatbot proof of concept
+Retrieval-augmented generation (RAG)
+Solo Project: PopChoice
+
+
+  Agents (117 min)
+  #
+
+
+AI Agent Intro
+Prompt Engineering 101
+Control Response Formats
+Zooming Out
+Agent Setup
+Introduction to ReAct prompting
+Build action functions
+Write ReAct prompt - part 1 - planning
+ReAct Agent - part 2 - ReAct prompt
+ReAct Agent - part 3 - how does the &ldquo;loop&rdquo; work?
+ReAct Agent - part 4 - code setup
+ReAct Agent - part 5 - Plan for parsing the response
+ReAct Agent - part 6 - Parsing the Action
+ReAct Agent - part 7 - Calling the function
+ReAct Agent - part 8 - Housekeeping
+ReAct Agent - part 9 - Finally! The loop!
+OpenAI Functions Agent - part 1 - Intro
+OpenAI Functions Agent - part 2 - Demo day
+OpenAI Functions Agent - part 3 - Tools
+OpenAI Functions Agent - Part 4 - Loop Logic
+OpenAI Functions Agent - Part 5 - Setup Challenge
+OpenAI Functions Agent - Part 6 - Tool Calls
+OpenAI Functions Agent - Part 7 - Pushing to messages
+OpenAI Functions Agent - Part 8 - Adding arguments
+OpenAI Functions Agent - Part 9 - Automatic function calls
+Adding UI to agent - proof of concept
+Solo Project - AI Travel Agent
+Nice work!
+
+
+  Multimodality (62 min)
+  #
+
+
+Introduction
+Generate original images from a text prompt
+Response formats
+Prompting for image generation
+Size, quality and style
+Editing images
+Image generation challenge
+Image generation challenge solution
+GPT-4 with Vision - Part 1
+GPT-4 with Vision - Part 2
+Image generation &amp; Vision recap
+
+
+  OpenAI&rsquo;s Assistants API (30 min)
+  #
+
+
+Introducing the Assistants API
+How OpenAI Assistants work
+Create an Assistant
+Create a thread and messages
+Running an Assistant
+Bring it all together
+More to explore
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/posts/ai_engineer_path_toc/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="The AI Engineer Path – Scrimba">
+  <meta property="og:description" content="The AI Engineer Path – Scrimba # https://www.coursera.org/specializations/ai-engineering#courses
+Intro to AI Engineering (104 min) # Welcome to The AI Engineer Path! AI Engineering basics The code so far Polygon API sign-up &amp; key Get an OpenAI API Key Overview of how the API works An API call: OpenAI dependency An API call: Instance and model An API call: The messages array A quick word about models Prompt Engineering and a challenge Adding AI to the App Tokens The OpenAI Playground Temperature The “Few Shot” Approach Adding Examples Stop Sequence Frequency and Presence Penalties Fine-tuning Creating Images with the DALL·E 3 API Intro to AI Safety Safety Best Practices Solo Project - PollyGlot You made it! Deployment (50 min) # Learn secure &amp; robust deployment strategies Create a Cloudflare worker Connect your worker to OpenAI Update client side data fetching Handle CORS and preflight requests OpenAI API requests &amp; responses Create an AI Gateway Error handling Create &amp; deploy the Polygon API worker Fetch the stock data Download files and push to GitHub Deploy your site with Cloudflare Pages Custom domains with Cloudflare Recap &amp; next steps Open-source Models (33 min) # Open source vs closed source Intro To HuggingFace.js Inference Text To Speech With HuggingFace.js Inference Transforming Images with HuggingFace.js Inference AI Models In The Browser With Transformers.js Download and Run AI Models on Your Computer with Ollama Section Recap Embeddings and Vector Databases (94 min) # Your next big step in AI engineering What are embeddings? Set up environment variables Create an embedding Challenge: Pair text with embedding Vector databases Set up your vector database Store vector embeddings Semantic search Query embeddings using similarity search Create a conversational response using OpenAI Chunking text from documents Challenge: Split text, get vectors, insert into Supabase Error handling Query database and manage multiple matches AI chatbot proof of concept Retrieval-augmented generation (RAG) Solo Project: PopChoice Agents (117 min) # AI Agent Intro Prompt Engineering 101 Control Response Formats Zooming Out Agent Setup Introduction to ReAct prompting Build action functions Write ReAct prompt - part 1 - planning ReAct Agent - part 2 - ReAct prompt ReAct Agent - part 3 - how does the “loop” work? ReAct Agent - part 4 - code setup ReAct Agent - part 5 - Plan for parsing the response ReAct Agent - part 6 - Parsing the Action ReAct Agent - part 7 - Calling the function ReAct Agent - part 8 - Housekeeping ReAct Agent - part 9 - Finally! The loop! OpenAI Functions Agent - part 1 - Intro OpenAI Functions Agent - part 2 - Demo day OpenAI Functions Agent - part 3 - Tools OpenAI Functions Agent - Part 4 - Loop Logic OpenAI Functions Agent - Part 5 - Setup Challenge OpenAI Functions Agent - Part 6 - Tool Calls OpenAI Functions Agent - Part 7 - Pushing to messages OpenAI Functions Agent - Part 8 - Adding arguments OpenAI Functions Agent - Part 9 - Automatic function calls Adding UI to agent - proof of concept Solo Project - AI Travel Agent Nice work! Multimodality (62 min) # Introduction Generate original images from a text prompt Response formats Prompting for image generation Size, quality and style Editing images Image generation challenge Image generation challenge solution GPT-4 with Vision - Part 1 GPT-4 with Vision - Part 2 Image generation &amp; Vision recap OpenAI’s Assistants API (30 min) # Introducing the Assistants API How OpenAI Assistants work Create an Assistant Create a thread and messages Running an Assistant Bring it all together More to explore">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-27T00:00:00+00:00">
+    <meta property="article:tag" content="AI Engineer">
+    <meta property="article:tag" content="Deploy">
+    <meta property="article:tag" content="OpenAI API">
+<title>The AI Engineer Path – Scrimba | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/posts/ai_engineer_path_toc/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.ec80625dc6e71e72c1a46638609d512dcd9f07b02aa6f7f0ee278fd4be68f674.js" integrity="sha256-7IBiXcbnHnLBpGY4YJ1RLc2fB7Aqpvfw7ieP1L5o9nQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ada98cdddc633c21823a7a219fb44de2" class="toggle"  />
+    <label for="section-ada98cdddc633c21823a7a219fb44de2" class="flex justify-between">
+      <a role="button" class="">Healthcare Courses</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a4a2c6f08a23ba8dec0f13c8829fd092" class="toggle"  />
+    <label for="section-a4a2c6f08a23ba8dec0f13c8829fd092" class="flex justify-between">
+      <a href="/healthcare_courses/course2_clinical_data/" class="">Course2 Clinical Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/clinical_text_mining_pipeline/" class="">Clinical Text Mining Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/diabetes_phenotype_pipeline/" class="">Diabetes Phenotype Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/ethics_in_ai_healthcare_qna/" class="">Ethics in Ai Healthcare Qn A</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/missing_values/" class="">Missing Values</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/nlp_clinical_text/" class="">Nlp Clinical Text</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course2_clinical_data/omop_vs_rlhf_comparison/" class="">Omop vs Rlhf Comparison</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cde480e8f6f57efc35d6187d44186d7e" class="toggle"  />
+    <label for="section-cde480e8f6f57efc35d6187d44186d7e" class="flex justify-between">
+      <a href="/healthcare_courses/course3_ml_healthcare/" class="">Course3 Ml Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/course3_ml_healthcare/precision_vs_recall_in_healthcare/" class="">Precision vs Recall in Healthcare</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c604e34171cbc1f85611e323ccbab65" class="toggle"  />
+    <label for="section-9c604e34171cbc1f85611e323ccbab65" class="flex justify-between">
+      <a href="/healthcare_courses/course4_ai_evalulation/" class="">Course4 Ai Evalulation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_courses/ai_healthcare_coursera/" class="">AI in Healthcare Specialization — Stanford</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d119b829f014f9502a5a7375f2a782a1" class="toggle"  />
+    <label for="section-d119b829f014f9502a5a7375f2a782a1" class="flex justify-between">
+      <a href="/healthcare_data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare_glossary/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e4ab51e1ab1158cb32439638c6b1b72" class="toggle"  />
+    <label for="section-0e4ab51e1ab1158cb32439638c6b1b72" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a0d48b231088952a2d5ded2c7155e05a" class="toggle"  />
+    <label for="section-a0d48b231088952a2d5ded2c7155e05a" class="flex justify-between">
+      <a role="button" class="">AI Engineering for Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54413be91fa8840dbbbacf4e0da2cb36" class="toggle"  />
+    <label for="section-54413be91fa8840dbbbacf4e0da2cb36" class="flex justify-between">
+      <a role="button" class="">Knowledge Graph Enhanced RAG</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai_engineering/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97e70c3af1dade68e2174282b384e2c3" class="toggle"  />
+    <label for="section-97e70c3af1dade68e2174282b384e2c3" class="flex justify-between">
+      <a href="/causal_reasoning/" class="">Causal Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_ai/" class="">Causal AI</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/causal_reasoning/causal_inference/" class="">Causal Inference</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>The AI Engineer Path – Scrimba</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-ai-engineer-path--scrimba">The AI Engineer Path – Scrimba</a>
+      <ul>
+        <li><a href="#intro-to-ai-engineering-104-min">Intro to AI Engineering (104 min)</a></li>
+        <li><a href="#deployment-50-min">Deployment (50 min)</a></li>
+        <li><a href="#open-source-models-33-min">Open-source Models (33 min)</a></li>
+        <li><a href="#embeddings-and-vector-databases-94-min">Embeddings and Vector Databases (94 min)</a></li>
+        <li><a href="#agents-117-min">Agents (117 min)</a></li>
+        <li><a href="#multimodality-62-min">Multimodality (62 min)</a></li>
+        <li><a href="#openais-assistants-api-30-min">OpenAI&rsquo;s Assistants API (30 min)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h2>
+    The AI Engineer Path – Scrimba
+  </h2>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/svg/calendar.svg" class="book-icon " alt="" />
+    <span>March 27, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/web/">Web</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/ai-engineer/">AI Engineer</a>, 
+      <a href="/tags/deploy/">Deploy</a>, 
+      <a href="/tags/openai-api/">OpenAI API</a>
+  </div>
+  
+
+
+  <div class="book-post-content"><h1 id="the-ai-engineer-path--scrimba">
+  The AI Engineer Path – Scrimba
+  <a class="anchor" href="#the-ai-engineer-path--scrimba">#</a>
+</h1>
+<p><a href="https://www.coursera.org/specializations/ai-engineering#courses">https://www.coursera.org/specializations/ai-engineering#courses</a></p>
+<h2 id="intro-to-ai-engineering-104-min">
+  Intro to AI Engineering (104 min)
+  <a class="anchor" href="#intro-to-ai-engineering-104-min">#</a>
+</h2>
+<ul>
+<li>Welcome to The AI Engineer Path!</li>
+<li>AI Engineering basics</li>
+<li>The code so far</li>
+<li>Polygon API sign-up &amp; key</li>
+<li>Get an OpenAI API Key</li>
+<li>Overview of how the API works</li>
+<li>An API call: OpenAI dependency</li>
+<li>An API call: Instance and model</li>
+<li>An API call: The messages array</li>
+<li>A quick word about models</li>
+<li>Prompt Engineering and a challenge</li>
+<li>Adding AI to the App</li>
+<li>Tokens</li>
+<li>The OpenAI Playground</li>
+<li>Temperature</li>
+<li>The &ldquo;Few Shot&rdquo; Approach</li>
+<li>Adding Examples</li>
+<li>Stop Sequence</li>
+<li>Frequency and Presence Penalties</li>
+<li>Fine-tuning</li>
+<li>Creating Images with the DALL·E 3 API</li>
+<li>Intro to AI Safety</li>
+<li>Safety Best Practices</li>
+<li>Solo Project - PollyGlot</li>
+<li>You made it!</li>
+</ul>
+<h2 id="deployment-50-min">
+  Deployment (50 min)
+  <a class="anchor" href="#deployment-50-min">#</a>
+</h2>
+<ul>
+<li>Learn secure &amp; robust deployment strategies</li>
+<li>Create a Cloudflare worker</li>
+<li>Connect your worker to OpenAI</li>
+<li>Update client side data fetching</li>
+<li>Handle CORS and preflight requests</li>
+<li>OpenAI API requests &amp; responses</li>
+<li>Create an AI Gateway</li>
+<li>Error handling</li>
+<li>Create &amp; deploy the Polygon API worker</li>
+<li>Fetch the stock data</li>
+<li>Download files and push to GitHub</li>
+<li>Deploy your site with Cloudflare Pages</li>
+<li>Custom domains with Cloudflare</li>
+<li>Recap &amp; next steps</li>
+</ul>
+<h2 id="open-source-models-33-min">
+  Open-source Models (33 min)
+  <a class="anchor" href="#open-source-models-33-min">#</a>
+</h2>
+<ul>
+<li>Open source vs closed source</li>
+<li>Intro To HuggingFace.js Inference</li>
+<li>Text To Speech With HuggingFace.js Inference</li>
+<li>Transforming Images with HuggingFace.js Inference</li>
+<li>AI Models In The Browser With Transformers.js</li>
+<li>Download and Run AI Models on Your Computer with Ollama</li>
+<li>Section Recap</li>
+</ul>
+<h2 id="embeddings-and-vector-databases-94-min">
+  Embeddings and Vector Databases (94 min)
+  <a class="anchor" href="#embeddings-and-vector-databases-94-min">#</a>
+</h2>
+<ul>
+<li>Your next big step in AI engineering</li>
+<li>What are embeddings?</li>
+<li>Set up environment variables</li>
+<li>Create an embedding</li>
+<li>Challenge: Pair text with embedding</li>
+<li>Vector databases</li>
+<li>Set up your vector database</li>
+<li>Store vector embeddings</li>
+<li>Semantic search</li>
+<li>Query embeddings using similarity search</li>
+<li>Create a conversational response using OpenAI</li>
+<li>Chunking text from documents</li>
+<li>Challenge: Split text, get vectors, insert into Supabase</li>
+<li>Error handling</li>
+<li>Query database and manage multiple matches</li>
+<li>AI chatbot proof of concept</li>
+<li>Retrieval-augmented generation (RAG)</li>
+<li>Solo Project: PopChoice</li>
+</ul>
+<h2 id="agents-117-min">
+  Agents (117 min)
+  <a class="anchor" href="#agents-117-min">#</a>
+</h2>
+<ul>
+<li>AI Agent Intro</li>
+<li>Prompt Engineering 101</li>
+<li>Control Response Formats</li>
+<li>Zooming Out</li>
+<li>Agent Setup</li>
+<li>Introduction to ReAct prompting</li>
+<li>Build action functions</li>
+<li>Write ReAct prompt - part 1 - planning</li>
+<li>ReAct Agent - part 2 - ReAct prompt</li>
+<li>ReAct Agent - part 3 - how does the &ldquo;loop&rdquo; work?</li>
+<li>ReAct Agent - part 4 - code setup</li>
+<li>ReAct Agent - part 5 - Plan for parsing the response</li>
+<li>ReAct Agent - part 6 - Parsing the Action</li>
+<li>ReAct Agent - part 7 - Calling the function</li>
+<li>ReAct Agent - part 8 - Housekeeping</li>
+<li>ReAct Agent - part 9 - Finally! The loop!</li>
+<li>OpenAI Functions Agent - part 1 - Intro</li>
+<li>OpenAI Functions Agent - part 2 - Demo day</li>
+<li>OpenAI Functions Agent - part 3 - Tools</li>
+<li>OpenAI Functions Agent - Part 4 - Loop Logic</li>
+<li>OpenAI Functions Agent - Part 5 - Setup Challenge</li>
+<li>OpenAI Functions Agent - Part 6 - Tool Calls</li>
+<li>OpenAI Functions Agent - Part 7 - Pushing to messages</li>
+<li>OpenAI Functions Agent - Part 8 - Adding arguments</li>
+<li>OpenAI Functions Agent - Part 9 - Automatic function calls</li>
+<li>Adding UI to agent - proof of concept</li>
+<li>Solo Project - AI Travel Agent</li>
+<li>Nice work!</li>
+</ul>
+<h2 id="multimodality-62-min">
+  Multimodality (62 min)
+  <a class="anchor" href="#multimodality-62-min">#</a>
+</h2>
+<ul>
+<li>Introduction</li>
+<li>Generate original images from a text prompt</li>
+<li>Response formats</li>
+<li>Prompting for image generation</li>
+<li>Size, quality and style</li>
+<li>Editing images</li>
+<li>Image generation challenge</li>
+<li>Image generation challenge solution</li>
+<li>GPT-4 with Vision - Part 1</li>
+<li>GPT-4 with Vision - Part 2</li>
+<li>Image generation &amp; Vision recap</li>
+</ul>
+<h2 id="openais-assistants-api-30-min">
+  OpenAI&rsquo;s Assistants API (30 min)
+  <a class="anchor" href="#openais-assistants-api-30-min">#</a>
+</h2>
+<ul>
+<li>Introducing the Assistants API</li>
+<li>How OpenAI Assistants work</li>
+<li>Create an Assistant</li>
+<li>Create a thread and messages</li>
+<li>Running an Assistant</li>
+<li>Bring it all together</li>
+<li>More to explore</li>
+</ul>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-ai-engineer-path--scrimba">The AI Engineer Path – Scrimba</a>
+      <ul>
+        <li><a href="#intro-to-ai-engineering-104-min">Intro to AI Engineering (104 min)</a></li>
+        <li><a href="#deployment-50-min">Deployment (50 min)</a></li>
+        <li><a href="#open-source-models-33-min">Open-source Models (33 min)</a></li>
+        <li><a href="#embeddings-and-vector-databases-94-min">Embeddings and Vector Databases (94 min)</a></li>
+        <li><a href="#agents-117-min">Agents (117 min)</a></li>
+        <li><a href="#multimodality-62-min">Multimodality (62 min)</a></li>
+        <li><a href="#openais-assistants-api-30-min">OpenAI&rsquo;s Assistants API (30 min)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
