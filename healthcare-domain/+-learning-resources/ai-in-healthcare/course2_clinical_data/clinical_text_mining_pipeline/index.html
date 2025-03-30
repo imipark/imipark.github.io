@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  🏥 Clinical Text Mining Pipeline (Steps 1–5)
+  #
+
+This document outlines a high-level clinical text mining pipeline using knowledge graphs, NLP, and structured indexing. The goal is to extract, enrich, and analyze clinical concepts from raw EMR text.
+
+
+  🧾 Step 1: Preprocessing Clinical Documents
+  #
+
+Goal: Prepare and normalize clinical notes for processing.
+Tools: Text cleaning, sentence segmentation, tokenizer.
+# Example: Clean and split into sentences
+import re
+
+clinical_note = &#34;Pt c/o chest pain. No signs of pneumonia. History of stroke. Prescribed metformin.&#34;
+sentences = re.split(r&#39;\.\s*&#39;, clinical_note.lower())
+
+
+  🧠 Step 2: Extract Terms Using Knowledge Graph &#43; NLP
+  #
+
+Goal: Identify medical terms using a knowledge graph and remove ambiguous, negated, or contextual mentions.
+Tools: Knowledge Graph (e.g., UMLS), NegEx, ConText">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/clinical_text_mining_pipeline/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="🏥 Clinical Text Mining Pipeline (Steps 1–5) # This document outlines a high-level clinical text mining pipeline using knowledge graphs, NLP, and structured indexing. The goal is to extract, enrich, and analyze clinical concepts from raw EMR text.
+🧾 Step 1: Preprocessing Clinical Documents # Goal: Prepare and normalize clinical notes for processing.
+Tools: Text cleaning, sentence segmentation, tokenizer.
+# Example: Clean and split into sentences import re clinical_note = &#34;Pt c/o chest pain. No signs of pneumonia. History of stroke. Prescribed metformin.&#34; sentences = re.split(r&#39;\.\s*&#39;, clinical_note.lower()) 🧠 Step 2: Extract Terms Using Knowledge Graph &#43; NLP # Goal: Identify medical terms using a knowledge graph and remove ambiguous, negated, or contextual mentions.
+Tools: Knowledge Graph (e.g., UMLS), NegEx, ConText">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare-domain">
+<title>Clinical Text Mining Pipeline | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/clinical_text_mining_pipeline/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.e5c728dc7ddcf8f524fc601b47ac1ec0f497012f4c590bc78413309275444efd.js" integrity="sha256-5cco3H3c&#43;PUk/GAbR6wewPSXAS9MWQvHhBMwknVETv0=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d7f2d3843c488d879d4864b4e374cc8e" class="toggle" checked />
+    <label for="section-d7f2d3843c488d879d4864b4e374cc8e" class="flex justify-between">
+      <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-824cb44925690a083a1b00f803215f07" class="toggle" checked />
+    <label for="section-824cb44925690a083a1b00f803215f07" class="flex justify-between">
+      <a href="/healthcare-domain/&#43;-learning-resources/" class="">Learning Resources</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/" class="">Ai In Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c0fe5777c95cacd1e61c09eed12823c" class="toggle" checked />
+    <label for="section-9c0fe5777c95cacd1e61c09eed12823c" class="flex justify-between">
+      <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/" class="">Course2 Clinical Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/clinical_text_mining_pipeline/" class="active">Clinical Text Mining Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/diabetes_phenotype_pipeline/" class="">Diabetes Phenotype Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/ethics_in_ai_healthcare_qna/" class="">Ethics in Ai Healthcare Qn A</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/missing_values/" class="">Missing Values</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/nlp_clinical_text/" class="">Nlp Clinical Text</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course2_clinical_data/omop_vs_rlhf_comparison/" class="">Omop vs Rlhf Comparison</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2ea7826ee10a2728c4380114b42b5a23" class="toggle"  />
+    <label for="section-2ea7826ee10a2728c4380114b42b5a23" class="flex justify-between">
+      <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course3_ml_healthcare/" class="">Course3 Ml Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course3_ml_healthcare/oap_framework_healthcare/" class="">Oap Framework Healthcare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course3_ml_healthcare/precision_vs_recall_in_healthcare/" class="">Precision vs Recall in Healthcare</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ee9c75f51c4dd9fda34def75380e65" class="toggle"  />
+    <label for="section-13ee9c75f51c4dd9fda34def75380e65" class="flex justify-between">
+      <a href="/healthcare-domain/&#43;-learning-resources/ai-in-healthcare/course4_ai_evalulation/" class="">Course4 Ai Evalulation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/ai-in-medicine/" class="">Ai In Medicine</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/causal-inference-observational/" class="">Causal Inference Observational</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/data-science-in-healthcare/" class="">Data Science In Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-learning-resources/hands-on-healthcare-data/" class="">Hands On Healthcare Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-53648da1fe195b25a8bf3c9ed1d356af" class="toggle"  />
+    <label for="section-53648da1fe195b25a8bf3c9ed1d356af" class="flex justify-between">
+      <a href="/healthcare-domain/&#43;-data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/&#43;-data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c18ca78f72318b8ad06622f367d0c259" class="toggle"  />
+    <label for="section-c18ca78f72318b8ad06622f367d0c259" class="flex justify-between">
+      <a href="/healthcare-domain/&#43;-tools/" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4e04d97ae6d9da830ed7f2f26cf11f29" class="toggle"  />
+    <label for="section-4e04d97ae6d9da830ed7f2f26cf11f29" class="flex justify-between">
+      <a href="/ai-workflows/" class="">AI Workflows</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causal Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal Ai</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff2d69858aecd394d2b4219aa1c7867" class="toggle"  />
+    <label for="section-cff2d69858aecd394d2b4219aa1c7867" class="flex justify-between">
+      <a href="/ai-workflows/modeling-techniques/" class="">Modeling Techniques</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/computer-vision/" class="">Computer Vision</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/genai-llm/" class="">Genai Llm</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fbeb9803a78c32a66a4e8222ff25bc8" class="toggle"  />
+    <label for="section-3fbeb9803a78c32a66a4e8222ff25bc8" class="flex justify-between">
+      <a href="/ai-workflows/engineering/" class="">AI Engineering for Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/engineering/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d035664fd2085c43ba4844188502144" class="toggle"  />
+    <label for="section-7d035664fd2085c43ba4844188502144" class="flex justify-between">
+      <a href="/use_cases/" class="">AI Use Cases in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Clinical Text Mining Pipeline</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-clinical-text-mining-pipeline-steps-15">🏥 Clinical Text Mining Pipeline (Steps 1–5)</a>
+      <ul>
+        <li><a href="#-step-1-preprocessing-clinical-documents">🧾 <strong>Step 1: Preprocessing Clinical Documents</strong></a></li>
+        <li><a href="#-step-2-extract-terms-using-knowledge-graph--nlp">🧠 <strong>Step 2: Extract Terms Using Knowledge Graph + NLP</strong></a></li>
+        <li><a href="#-step-3-index-positive-present-mentions">🗂️ <strong>Step 3: Index Positive, Present Mentions</strong></a></li>
+        <li><a href="#-step-4-query-time-semantic-expansion">🧭 <strong>Step 4: Query-Time Semantic Expansion</strong></a></li>
+        <li><a href="#-step-5-build-patient-feature-matrix-for-analysis">📊 <strong>Step 5: Build Patient-Feature Matrix for Analysis</strong></a></li>
+        <li><a href="#-summary">✅ Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-clinical-text-mining-pipeline-steps-15">
+  🏥 Clinical Text Mining Pipeline (Steps 1–5)
+  <a class="anchor" href="#-clinical-text-mining-pipeline-steps-15">#</a>
+</h1>
+<p>This document outlines a high-level clinical text mining pipeline using knowledge graphs, NLP, and structured indexing. The goal is to extract, enrich, and analyze clinical concepts from raw EMR text.</p>
+<hr>
+<h2 id="-step-1-preprocessing-clinical-documents">
+  🧾 <strong>Step 1: Preprocessing Clinical Documents</strong>
+  <a class="anchor" href="#-step-1-preprocessing-clinical-documents">#</a>
+</h2>
+<p><strong>Goal:</strong> Prepare and normalize clinical notes for processing.<br>
+<strong>Tools:</strong> Text cleaning, sentence segmentation, tokenizer.</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Example: Clean and split into sentences</span>
+</span></span><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">re</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>clinical_note <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#40a02b">&#34;Pt c/o chest pain. No signs of pneumonia. History of stroke. Prescribed metformin.&#34;</span>
+</span></span><span style="display:flex;"><span>sentences <span style="color:#04a5e5;font-weight:bold">=</span> re<span style="color:#04a5e5;font-weight:bold">.</span>split(<span style="color:#d20f39">r</span><span style="color:#40a02b">&#39;\.\s*&#39;</span>, clinical_note<span style="color:#04a5e5;font-weight:bold">.</span>lower())
+</span></span></code></pre></div><hr>
+<h2 id="-step-2-extract-terms-using-knowledge-graph--nlp">
+  🧠 <strong>Step 2: Extract Terms Using Knowledge Graph + NLP</strong>
+  <a class="anchor" href="#-step-2-extract-terms-using-knowledge-graph--nlp">#</a>
+</h2>
+<p><strong>Goal:</strong> Identify medical terms using a knowledge graph and remove ambiguous, negated, or contextual mentions.<br>
+<strong>Tools:</strong> Knowledge Graph (e.g., UMLS), NegEx, ConText</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Simulated medical term dictionary (knowledge graph-based)</span>
+</span></span><span style="display:flex;"><span>medical_terms <span style="color:#04a5e5;font-weight:bold">=</span> {<span style="color:#40a02b">&#34;chest pain&#34;</span>: <span style="color:#40a02b">&#34;symptom&#34;</span>, <span style="color:#40a02b">&#34;pneumonia&#34;</span>: <span style="color:#40a02b">&#34;disease&#34;</span>, <span style="color:#40a02b">&#34;stroke&#34;</span>: <span style="color:#40a02b">&#34;disease&#34;</span>, <span style="color:#40a02b">&#34;metformin&#34;</span>: <span style="color:#40a02b">&#34;drug&#34;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Filtered sentences (simulate negation/context removal)</span>
+</span></span><span style="display:flex;"><span>filtered_mentions <span style="color:#04a5e5;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> s <span style="color:#04a5e5;font-weight:bold">in</span> sentences:
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">if</span> <span style="color:#40a02b">&#34;no &#34;</span> <span style="color:#04a5e5;font-weight:bold">in</span> s <span style="color:#04a5e5;font-weight:bold">or</span> <span style="color:#40a02b">&#34;history of&#34;</span> <span style="color:#04a5e5;font-weight:bold">in</span> s:
+</span></span><span style="display:flex;"><span>        <span style="color:#8839ef">continue</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">for</span> term <span style="color:#04a5e5;font-weight:bold">in</span> medical_terms:
+</span></span><span style="display:flex;"><span>        <span style="color:#8839ef">if</span> term <span style="color:#04a5e5;font-weight:bold">in</span> s:
+</span></span><span style="display:flex;"><span>            filtered_mentions<span style="color:#04a5e5;font-weight:bold">.</span>append(term)
+</span></span></code></pre></div><hr>
+<h2 id="-step-3-index-positive-present-mentions">
+  🗂️ <strong>Step 3: Index Positive, Present Mentions</strong>
+  <a class="anchor" href="#-step-3-index-positive-present-mentions">#</a>
+</h2>
+<p><strong>Goal:</strong> Store structured, filtered term mentions for later search.<br>
+<strong>Tools:</strong> JSON/DB-based indexing, storing patient-term mappings.</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>indexed_mentions <span style="color:#04a5e5;font-weight:bold">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#40a02b">&#34;patient_id&#34;</span>: <span style="color:#fe640b">1</span>, <span style="color:#40a02b">&#34;term&#34;</span>: <span style="color:#40a02b">&#34;chest pain&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#40a02b">&#34;patient_id&#34;</span>: <span style="color:#fe640b">1</span>, <span style="color:#40a02b">&#34;term&#34;</span>: <span style="color:#40a02b">&#34;metformin&#34;</span>},
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><hr>
+<h2 id="-step-4-query-time-semantic-expansion">
+  🧭 <strong>Step 4: Query-Time Semantic Expansion</strong>
+  <a class="anchor" href="#-step-4-query-time-semantic-expansion">#</a>
+</h2>
+<p><strong>Goal:</strong> Expand the user’s query using KG (synonyms, variants, etc.) and disambiguate based on context.<br>
+<strong>Tools:</strong> Knowledge Graph (UMLS), synonym/semantic type lookup, optional filters</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>query <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#40a02b">&#34;stroke&#34;</span>
+</span></span><span style="display:flex;"><span>expanded_terms <span style="color:#04a5e5;font-weight:bold">=</span> [<span style="color:#40a02b">&#34;stroke&#34;</span>, <span style="color:#40a02b">&#34;cva&#34;</span>, <span style="color:#40a02b">&#34;cerebrovascular accident&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Disambiguate (simplified)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">def</span> <span style="color:#1e66f5">is_valid</span>(term, patient_age, season):
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">return</span> <span style="color:#04a5e5;font-weight:bold">not</span> (term <span style="color:#04a5e5;font-weight:bold">==</span> <span style="color:#40a02b">&#34;heatstroke&#34;</span> <span style="color:#04a5e5;font-weight:bold">and</span> patient_age <span style="color:#04a5e5;font-weight:bold">&lt;</span> <span style="color:#fe640b">18</span> <span style="color:#04a5e5;font-weight:bold">and</span> season <span style="color:#04a5e5;font-weight:bold">==</span> <span style="color:#40a02b">&#34;summer&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="-step-5-build-patient-feature-matrix-for-analysis">
+  📊 <strong>Step 5: Build Patient-Feature Matrix for Analysis</strong>
+  <a class="anchor" href="#-step-5-build-patient-feature-matrix-for-analysis">#</a>
+</h2>
+<p><strong>Goal:</strong> Aggregate term mentions per patient for cohort selection and modeling.<br>
+<strong>Tools:</strong> Pandas, matrix construction, temporal tagging</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">collections</span> <span style="color:#179299">import</span> defaultdict
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>feature_matrix <span style="color:#04a5e5;font-weight:bold">=</span> defaultdict(<span style="color:#8839ef">lambda</span>: {<span style="color:#40a02b">&#34;stroke_mention&#34;</span>: <span style="color:#fe640b">0</span>})
+</span></span><span style="display:flex;"><span>patient_metadata <span style="color:#04a5e5;font-weight:bold">=</span> {<span style="color:#fe640b">1</span>: {<span style="color:#40a02b">&#34;age&#34;</span>: <span style="color:#fe640b">65</span>, <span style="color:#40a02b">&#34;season&#34;</span>: <span style="color:#40a02b">&#34;spring&#34;</span>}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> mention <span style="color:#04a5e5;font-weight:bold">in</span> indexed_mentions:
+</span></span><span style="display:flex;"><span>    pid <span style="color:#04a5e5;font-weight:bold">=</span> mention[<span style="color:#40a02b">&#34;patient_id&#34;</span>]
+</span></span><span style="display:flex;"><span>    term <span style="color:#04a5e5;font-weight:bold">=</span> mention[<span style="color:#40a02b">&#34;term&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">if</span> term <span style="color:#04a5e5;font-weight:bold">in</span> expanded_terms <span style="color:#04a5e5;font-weight:bold">and</span> is_valid(term, patient_metadata[pid][<span style="color:#40a02b">&#34;age&#34;</span>], patient_metadata[pid][<span style="color:#40a02b">&#34;season&#34;</span>]):
+</span></span><span style="display:flex;"><span>        feature_matrix[pid][<span style="color:#40a02b">&#34;stroke_mention&#34;</span>] <span style="color:#04a5e5;font-weight:bold">+=</span> <span style="color:#fe640b">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(<span style="color:#04a5e5">dict</span>(feature_matrix))
+</span></span></code></pre></div><hr>
+<h2 id="-summary">
+  ✅ Summary
+  <a class="anchor" href="#-summary">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Step</th>
+          <th>Goal</th>
+          <th>Tools</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Clean &amp; tokenize notes</td>
+          <td>Regex, NLP</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Extract clean medical terms</td>
+          <td>KG, NegEx, filtering</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Store structured mentions</td>
+          <td>JSON, DB</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Expand/interpret queries</td>
+          <td>KG, synonyms, disambiguation</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>Analyze for research</td>
+          <td>Patient-feature matrix, Pandas</td>
+      </tr>
+  </tbody>
+</table>
+<p>This modular pipeline separates <strong>data preparation</strong> from <strong>query-time flexibility</strong>, making it robust and reusable.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-clinical-text-mining-pipeline-steps-15">🏥 Clinical Text Mining Pipeline (Steps 1–5)</a>
+      <ul>
+        <li><a href="#-step-1-preprocessing-clinical-documents">🧾 <strong>Step 1: Preprocessing Clinical Documents</strong></a></li>
+        <li><a href="#-step-2-extract-terms-using-knowledge-graph--nlp">🧠 <strong>Step 2: Extract Terms Using Knowledge Graph + NLP</strong></a></li>
+        <li><a href="#-step-3-index-positive-present-mentions">🗂️ <strong>Step 3: Index Positive, Present Mentions</strong></a></li>
+        <li><a href="#-step-4-query-time-semantic-expansion">🧭 <strong>Step 4: Query-Time Semantic Expansion</strong></a></li>
+        <li><a href="#-step-5-build-patient-feature-matrix-for-analysis">📊 <strong>Step 5: Build Patient-Feature Matrix for Analysis</strong></a></li>
+        <li><a href="#-summary">✅ Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

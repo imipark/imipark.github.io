@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -111,7 +111,7 @@ Rationale: The missingness depends on the unobserved value and may carry predict
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare_courses/course2_clinical_data/missing_values/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare_courses/course2_clinical_data/missing_values/">
   <meta property="og:site_name" content="AI in Healthcare">
   <meta property="og:title" content="AI in Healthcare">
   <meta property="og:description" content="Missing Data Scenarios in Healthcare Modeling # 1. Should Be Measured But Wasn’t # Description: The value is expected but is missing due to random or procedural issues (e.g., lab error, missed test). Technical Term: MCAR: Missing Completely At Random MAR: Missing At Random Example: A routine blood test wasn’t recorded because the sample was lost. Strategy: Impute (mean, median, or model-based). Add a missingness indicator variable (e.g., var_missing = 1). Rationale: The missingness is unrelated to the value itself, so estimation is relatively safe. 2. Mostly Zero Due to Rare Occurrence # Description: Not truly missing — the value is zero or absent for most patients because the condition/event is rare. Technical Term: Not Missing (No abbreviation needed) Example: HIV diagnosis column is 0 for most patients. Strategy: Do not impute — the 0s are meaningful and reflect true absence. Rationale: These are real values, and zeros carry clinical meaning. 3. Deliberately Not Recorded # Description: Clinician or system chooses not to record a value based on context (e.g., patient clearly stable or too ill). Technical Term: MNAR: Missing Not At Random Example: Sodium level not tested because the patient was clearly stable. Strategy: Avoid imputation if possible — it may introduce bias. Use models that handle missingness natively (e.g., decision trees, XGBoost, LightGBM). Consider adding a missingness indicator. Rationale: The missingness depends on the unobserved value and may carry predictive signal. Summary Table # Case Description Abbreviation Impute? Extra Notes 1 Should be measured but wasn’t MCAR / MAR ✅ Yes Add indicator if signal is likely 2 Mostly zero (rare condition) Not Missing 🚫 No Keep as is — zeros are informative 3 Deliberately not recorded MNAR ⚠️ Caution Use native handling &#43; possible indicator">
@@ -121,10 +121,10 @@ Rationale: The missingness depends on the unobserved value and may carry predict
 <title>Missing Values | AI in Healthcare</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/healthcare_courses/course2_clinical_data/missing_values/">
+<link rel="canonical" href="http://localhost:1313/healthcare_courses/course2_clinical_data/missing_values/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.aae03ed09ea4bb5198339ca5a23ae490b77d60aff6ad0a63ddac3b5e4593dfb3.js" integrity="sha256-quA&#43;0J6ku1GYM5ylojrkkLd9YK/2rQpj3aw7XkWT37M=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.15e498404e3821042c1c6a7ff226acedeb46d3731f3ee2325ab1752e4cf8c8cb.js" integrity="sha256-FeSYQE44IQQsHGp/8ias7etG03MfPuIyWrF1Lkz4yMs=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -572,6 +572,402 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Structures</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/" class="">Ai Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/engineering/" class="">Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/modeling-techniques/" class="">Modeling Techniques</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/modeling-techniques/computer-vision/" class="">Computer Vision</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/modeling-techniques/genai-llm/" class="">Genai Llm</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/structural-reasoning/causal-ai/" class="">Causal Ai</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/structural-reasoning/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/structural-reasoning/graphrag/" class="">Graphrag</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/ai-workflows/structural-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/learning-resources/" class="">Learning Resources</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/learning-resources/ai-in-healthcare/" class="">Ai In Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/learning-resources/ai-in-medicine/" class="">Ai In Medicine</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/learning-resources/causal-inference-observational/" class="">Causal Inference Observational</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/learning-resources/data-science-in-healthcare/" class="">Data Science In Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/learning-resources/hands-on-healthcare-data/" class="">Hands On Healthcare Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/terminology/" class="">Terminology</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/healthcare-domain/tools/" class="">Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/structure/use_cases/" class="">Reference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
     
   </ul>
 

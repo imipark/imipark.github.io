@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Healthcare Glossary on AI in Healthcare</title>
-    <link>https://imipark.github.io/healthcare_glossary/</link>
+    <link>http://localhost:1313/healthcare_glossary/</link>
     <description>Recent content in Healthcare Glossary on AI in Healthcare</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://imipark.github.io/healthcare_glossary/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/healthcare_glossary/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
