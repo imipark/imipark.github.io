@@ -6,8 +6,6 @@
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning-resources/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/structural-reasoning/causality/</loc>
-  </url><url>
     <loc>https://imipark.github.io/healthcare-domain/data/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/terminology/</loc>
@@ -23,6 +21,8 @@
     <loc>https://imipark.github.io/ai-workflows/engineering/</loc>
   </url><url>
     <loc>https://imipark.github.io/use_cases/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/projects/</loc>
   </url><url>
     <loc>https://imipark.github.io/</loc>
     <lastmod>2025-03-27T00:00:00+00:00</lastmod>
@@ -100,6 +100,8 @@
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning-resources/causal-inference-observational/</loc>
   </url><url>
+    <loc>https://imipark.github.io/ai-workflows/structural-reasoning/causality/</loc>
+  </url><url>
     <loc>https://imipark.github.io/ai-workflows/modeling-techniques/computer-vision/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning-resources/data-science-in-healthcare/</loc>
@@ -107,6 +109,8 @@
     <loc>https://imipark.github.io/ai-workflows/modeling-techniques/genai-llm/</loc>
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/graphs/graphrag/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/structural-reasoning/graphs/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning-resources/hands-on-healthcare-data/</loc>
   </url><url>
