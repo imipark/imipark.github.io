@@ -4,7 +4,7 @@
   <url>
     <loc>https://imipark.github.io/healthcare-domain/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/data/</loc>
   </url><url>
@@ -68,43 +68,43 @@
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/engineering/ai_cloud_comparision/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course2_clinical_data/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course2_clinical_data/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course2_clinical_data/clinical_text_mining_pipeline/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course2_clinical_data/clinical_text_mining_pipeline/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course2_clinical_data/diabetes_phenotype_pipeline/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course2_clinical_data/diabetes_phenotype_pipeline/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course2_clinical_data/ethics_in_ai_healthcare_qna/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course2_clinical_data/ethics_in_ai_healthcare_qna/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course2_clinical_data/missing_values/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course2_clinical_data/missing_values/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course2_clinical_data/nlp_clinical_text/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course2_clinical_data/nlp_clinical_text/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course2_clinical_data/omop_vs_rlhf_comparison/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course2_clinical_data/omop_vs_rlhf_comparison/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course3_ml_healthcare/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course3_ml_healthcare/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course3_ml_healthcare/oap_framework_healthcare/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course3_ml_healthcare/oap_framework_healthcare/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course3_ml_healthcare/precision_vs_recall_in_healthcare/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course3_ml_healthcare/precision_vs_recall_in_healthcare/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/course4_ai_evalulation/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/course4_ai_evalulation/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-healthcare/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/causal-inference-observational-data/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/ai-in-medicine/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-medicine/</loc>
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/causality/causal-ai/</loc>
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/causality/causal-inference/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/causal-inference-observational/</loc>
-  </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/causality/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/computer-vision/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/clinical-data-science/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/data-science-in-healthcare/</loc>
+    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/computer-vision/</loc>
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/modeling-techniques/genai-llm/</loc>
   </url><url>
@@ -112,7 +112,7 @@
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/graphs/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning-resources/hands-on-healthcare-data/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/hands-on-healthcare-data/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/data/healthcare_layers/</loc>
   </url><url>

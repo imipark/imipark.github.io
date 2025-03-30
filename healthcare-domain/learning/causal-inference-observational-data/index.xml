@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>A Crash Course in Causality: Inferring Causal Effects from Observational Data on AI in Healthcare</title>
+    <link>https://imipark.github.io/healthcare-domain/learning/causal-inference-observational-data/</link>
+    <description>Recent content in A Crash Course in Causality: Inferring Causal Effects from Observational Data on AI in Healthcare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://imipark.github.io/healthcare-domain/learning/causal-inference-observational-data/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
