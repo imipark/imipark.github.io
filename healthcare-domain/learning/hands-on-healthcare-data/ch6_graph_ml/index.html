@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Chapter 6 Summary: Machine Learning &amp; Graph-Based Analytics
+  #
+
+
+
+  Part 1: Q&amp;A Summary
+  #
+
+
+  1. What is the difference between cleaning, harmonization, and feature engineering?
+  #
+
+
+Cleaning: Removing errors or inconsistencies in the raw data.
+Harmonization: Mapping and aligning data semantically across datasets (e.g., converting NDC to RxNorm).
+Feature Engineering: Transforming data to fit the needs of specific algorithms or analysis (e.g., PCA, one-hot encoding).
+
+
+  2. Why are graphs more useful for harmonization than feature engineering?
+  #
+
+
+Graphs help link concepts across vocabularies, terminologies, or systems.
+Feature engineering tends to be model-specific and harder to generalize.
+
+
+  3. What are the downsides of repeating cleaning/harmonization for each project?
+  #
+
+
+Redundancy: Same steps are repeated across projects.
+Inefficiency: Each team member duplicates similar work.
+Inconsistency: No central source of truth for processed data.
+
+
+  4. What is a feature store and how does it help?
+  #
+
+
+A feature store centralizes reusable, preprocessed features.
+Helps reduce redundancy and promotes consistency.
+
+
+  5. How do knowledge graphs improve the pipeline?
+  #
+
+
+Data is cleaned and harmonized once at the graph level.
+All downstream users can reuse the harmonized view via queries or APIs.
+
+
+  6. What assumptions are made when using a knowledge graph?
+  #
+
+
+Patient-level data and terminology concepts are stored in the same graph.
+Nodes/edges are tagged with metadata (e.g., timestamps, source).
+The graph is a supergraph enabling subgraph extraction.
+
+
+  7. What are graph embeddings and why are they useful?
+  #
+
+
+They convert graph structures into vectors usable in ML models.
+Enable pattern detection, similarity analysis, and deep learning.
+
+
+  8. What is node2vec?
+  #
+
+
+Random walk-based graph embedding technique.
+Uses return (p) and in-out (q) parameters to tune graph walk.
+Captures homophily and structural equivalence.
+
+
+  9. What is cui2vec?
+  #
+
+
+Embeds UMLS CUIs based on co-occurrence in various RWD sources.
+Context-aware (claims, notes, publications).
+Useful for understanding concept similarity.
+
+
+  10. What is med2vec?
+  #
+
+
+Uses temporal sequence of medical events to create visit-based embeddings.
+Retains longitudinal context.
+
+
+  11. What is snomed2vec?
+  #
+
+
+Embeds SNOMED CT concepts using hierarchical and network-based methods.
+Includes alternatives like metapath2vec and Poincaré embeddings.
+
+
+  12. What are some challenges with pretrained embeddings?
+  #
+
+
+Risk of overfitting to training data domain (e.g., CMS claims).
+May not generalize well to other populations or use cases.
+Introduces extra model layer to maintain and tune.
+
+
+
+  Part 2: Curriculum-Style Breakdown with &ldquo;Why&rdquo;
+  #
+
+
+  🧭 Phase 1: Understand the Motivation
+  #
+
+
+Task: Read and distinguish between cleaning, harmonization, and feature engineering.
+
+Why: Clarifies each pipeline component and prevents misuse of graphs for tasks like feature engineering.
+
+
+
+
+  🧱 Phase 2: Explore Pipeline Challenges
+  #
+
+
+Task: Analyze Figures 6-6 to 6-9 on pipeline repetition and inefficiency.
+
+Why: Understand how lack of standardization leads to duplicated efforts.
+
+
+
+
+  🧠 Phase 3: Learn about Feature Stores
+  #
+
+
+Task: Study how feature stores centralize and reuse engineered features.
+
+Why: Saves time, increases reproducibility, and reduces tech debt.
+
+
+
+
+  🌐 Phase 4: Integrate Knowledge Graphs
+  #
+
+
+Task: Understand what goes into a knowledge graph (patient data &#43; ontologies).
+
+Why: Enables one-time harmonization per data source, allowing scalable reuse.
+
+
+
+
+  🧩 Phase 5: Explore Graph Embedding Techniques
+  #
+
+
+Task: Implement node2vec on a small graph.
+
+Why: Learn homophily vs structural equivalence, key for biomedical graph reasoning.
+
+
+
+
+  🧬 Phase 6: Biomedical Concept Embeddings
+  #
+
+
+Task: Compare and contrast cui2vec, med2vec, and snomed2vec.
+
+Why: Appreciate how embeddings differ by data type (temporal, co-occurrence, hierarchical).
+
+
+
+
+  ⚠️ Phase 7: Real-World Concerns with Embeddings
+  #
+
+
+Task: Evaluate pretrained embeddings and consider limitations (overfitting, generalizability).
+
+Why: Embeddings may look good on paper but can fail in new domains.
+
+
+
+
+  🔁 Phase 8: Apply to Your Use Case
+  #
+
+
+Task: Pick a small real-world use case and simulate a pipeline using a knowledge graph and embedding.
+
+Why: Reinforces learning and identifies operational gaps in pipeline design.
+
+
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="╰──Ch6. ML and Graph Analytics">
+  <meta property="og:description" content="Chapter 6 Summary: Machine Learning &amp; Graph-Based Analytics # Part 1: Q&amp;A Summary # 1. What is the difference between cleaning, harmonization, and feature engineering? # Cleaning: Removing errors or inconsistencies in the raw data. Harmonization: Mapping and aligning data semantically across datasets (e.g., converting NDC to RxNorm). Feature Engineering: Transforming data to fit the needs of specific algorithms or analysis (e.g., PCA, one-hot encoding). 2. Why are graphs more useful for harmonization than feature engineering? # Graphs help link concepts across vocabularies, terminologies, or systems. Feature engineering tends to be model-specific and harder to generalize. 3. What are the downsides of repeating cleaning/harmonization for each project? # Redundancy: Same steps are repeated across projects. Inefficiency: Each team member duplicates similar work. Inconsistency: No central source of truth for processed data. 4. What is a feature store and how does it help? # A feature store centralizes reusable, preprocessed features. Helps reduce redundancy and promotes consistency. 5. How do knowledge graphs improve the pipeline? # Data is cleaned and harmonized once at the graph level. All downstream users can reuse the harmonized view via queries or APIs. 6. What assumptions are made when using a knowledge graph? # Patient-level data and terminology concepts are stored in the same graph. Nodes/edges are tagged with metadata (e.g., timestamps, source). The graph is a supergraph enabling subgraph extraction. 7. What are graph embeddings and why are they useful? # They convert graph structures into vectors usable in ML models. Enable pattern detection, similarity analysis, and deep learning. 8. What is node2vec? # Random walk-based graph embedding technique. Uses return (p) and in-out (q) parameters to tune graph walk. Captures homophily and structural equivalence. 9. What is cui2vec? # Embeds UMLS CUIs based on co-occurrence in various RWD sources. Context-aware (claims, notes, publications). Useful for understanding concept similarity. 10. What is med2vec? # Uses temporal sequence of medical events to create visit-based embeddings. Retains longitudinal context. 11. What is snomed2vec? # Embeds SNOMED CT concepts using hierarchical and network-based methods. Includes alternatives like metapath2vec and Poincaré embeddings. 12. What are some challenges with pretrained embeddings? # Risk of overfitting to training data domain (e.g., CMS claims). May not generalize well to other populations or use cases. Introduces extra model layer to maintain and tune. Part 2: Curriculum-Style Breakdown with “Why” # 🧭 Phase 1: Understand the Motivation # Task: Read and distinguish between cleaning, harmonization, and feature engineering. Why: Clarifies each pipeline component and prevents misuse of graphs for tasks like feature engineering. 🧱 Phase 2: Explore Pipeline Challenges # Task: Analyze Figures 6-6 to 6-9 on pipeline repetition and inefficiency. Why: Understand how lack of standardization leads to duplicated efforts. 🧠 Phase 3: Learn about Feature Stores # Task: Study how feature stores centralize and reuse engineered features. Why: Saves time, increases reproducibility, and reduces tech debt. 🌐 Phase 4: Integrate Knowledge Graphs # Task: Understand what goes into a knowledge graph (patient data &#43; ontologies). Why: Enables one-time harmonization per data source, allowing scalable reuse. 🧩 Phase 5: Explore Graph Embedding Techniques # Task: Implement node2vec on a small graph. Why: Learn homophily vs structural equivalence, key for biomedical graph reasoning. 🧬 Phase 6: Biomedical Concept Embeddings # Task: Compare and contrast cui2vec, med2vec, and snomed2vec. Why: Appreciate how embeddings differ by data type (temporal, co-occurrence, hierarchical). ⚠️ Phase 7: Real-World Concerns with Embeddings # Task: Evaluate pretrained embeddings and consider limitations (overfitting, generalizability). Why: Embeddings may look good on paper but can fail in new domains. 🔁 Phase 8: Apply to Your Use Case # Task: Pick a small real-world use case and simulate a pipeline using a knowledge graph and embedding. Why: Reinforces learning and identifies operational gaps in pipeline design.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare-domain">
+<title>╰──Ch6. ML and Graph Analytics | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b7d90e659446e418f232dd08eebfec353e3d81a8e880d7c787de754210b3542c.js" integrity="sha256-t9kOZZRG5BjyMt0I7r/sNT49gajogNfHh951QhCzVCw=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle" checked />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-72de9da937e308a049255f7e18188aec" class="toggle"  />
+    <label for="section-72de9da937e308a049255f7e18188aec" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/" class="">Clinical Text Mining Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/" class="">Diabetes Phenotype Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/" class="">Ethics in Ai Healthcare Qn A</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/" class="">Missing Values</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/" class="">Nlp Clinical Text</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/omop_vs_rlhf_comparison/" class="">Omop vs Rlhf Comparison</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-aa2a9a49ce65c575d64c3664166fb741" class="toggle"  />
+    <label for="section-aa2a9a49ce65c575d64c3664166fb741" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/oap_framework_healthcare/" class="">Oap Framework Healthcare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/" class="">Precision vs Recall in Healthcare</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7410a0d85d9a2c0e159aa20e739703c8" class="toggle"  />
+    <label for="section-7410a0d85d9a2c0e159aa20e739703c8" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-afbb7d0e15883efe1045c614f150a446" class="toggle"  />
+    <label for="section-afbb7d0e15883efe1045c614f150a446" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-medicine/" class="">AI in Medicine</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle" checked />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">╰──Ch4. EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="active">╰──Ch6. ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff2d69858aecd394d2b4219aa1c7867" class="toggle"  />
+    <label for="section-cff2d69858aecd394d2b4219aa1c7867" class="flex justify-between">
+      <a href="/ai-workflows/modeling-techniques/" class="">Modeling Techniques</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/computer-vision/" class="">Computer Vision</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/" class="">NLP/LLM/GenAI</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/bert_cls_classification_summary/" class="">Bert Cls Classification Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/self_attention_summary/" class="">Self Attention Summary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fbeb9803a78c32a66a4e8222ff25bc8" class="toggle"  />
+    <label for="section-3fbeb9803a78c32a66a4e8222ff25bc8" class="flex justify-between">
+      <a href="/ai-workflows/engineering/" class="">AI Engineering</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/engineering/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d035664fd2085c43ba4844188502144" class="toggle"  />
+    <label for="section-7d035664fd2085c43ba4844188502144" class="flex justify-between">
+      <a href="/use_cases/" class="">Use Cases</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>╰──Ch6. ML and Graph Analytics</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#chapter-6-summary-machine-learning--graph-based-analytics">Chapter 6 Summary: Machine Learning &amp; Graph-Based Analytics</a>
+      <ul>
+        <li><a href="#part-1-qa-summary">Part 1: Q&amp;A Summary</a>
+          <ul>
+            <li><a href="#1-what-is-the-difference-between-cleaning-harmonization-and-feature-engineering">1. What is the difference between cleaning, harmonization, and feature engineering?</a></li>
+            <li><a href="#2-why-are-graphs-more-useful-for-harmonization-than-feature-engineering">2. Why are graphs more useful for harmonization than feature engineering?</a></li>
+            <li><a href="#3-what-are-the-downsides-of-repeating-cleaningharmonization-for-each-project">3. What are the downsides of repeating cleaning/harmonization for each project?</a></li>
+            <li><a href="#4-what-is-a-feature-store-and-how-does-it-help">4. What is a feature store and how does it help?</a></li>
+            <li><a href="#5-how-do-knowledge-graphs-improve-the-pipeline">5. How do knowledge graphs improve the pipeline?</a></li>
+            <li><a href="#6-what-assumptions-are-made-when-using-a-knowledge-graph">6. What assumptions are made when using a knowledge graph?</a></li>
+            <li><a href="#7-what-are-graph-embeddings-and-why-are-they-useful">7. What are graph embeddings and why are they useful?</a></li>
+            <li><a href="#8-what-is-node2vec">8. What is <code>node2vec</code>?</a></li>
+            <li><a href="#9-what-is-cui2vec">9. What is <code>cui2vec</code>?</a></li>
+            <li><a href="#10-what-is-med2vec">10. What is <code>med2vec</code>?</a></li>
+            <li><a href="#11-what-is-snomed2vec">11. What is <code>snomed2vec</code>?</a></li>
+            <li><a href="#12-what-are-some-challenges-with-pretrained-embeddings">12. What are some challenges with pretrained embeddings?</a></li>
+          </ul>
+        </li>
+        <li><a href="#part-2-curriculum-style-breakdown-with-why">Part 2: Curriculum-Style Breakdown with &ldquo;Why&rdquo;</a>
+          <ul>
+            <li><a href="#-phase-1-understand-the-motivation">🧭 Phase 1: Understand the Motivation</a></li>
+            <li><a href="#-phase-2-explore-pipeline-challenges">🧱 Phase 2: Explore Pipeline Challenges</a></li>
+            <li><a href="#-phase-3-learn-about-feature-stores">🧠 Phase 3: Learn about Feature Stores</a></li>
+            <li><a href="#-phase-4-integrate-knowledge-graphs">🌐 Phase 4: Integrate Knowledge Graphs</a></li>
+            <li><a href="#-phase-5-explore-graph-embedding-techniques">🧩 Phase 5: Explore Graph Embedding Techniques</a></li>
+            <li><a href="#-phase-6-biomedical-concept-embeddings">🧬 Phase 6: Biomedical Concept Embeddings</a></li>
+            <li><a href="#-phase-7-real-world-concerns-with-embeddings">⚠️ Phase 7: Real-World Concerns with Embeddings</a></li>
+            <li><a href="#-phase-8-apply-to-your-use-case">🔁 Phase 8: Apply to Your Use Case</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="chapter-6-summary-machine-learning--graph-based-analytics">
+  Chapter 6 Summary: Machine Learning &amp; Graph-Based Analytics
+  <a class="anchor" href="#chapter-6-summary-machine-learning--graph-based-analytics">#</a>
+</h1>
+<hr>
+<h2 id="part-1-qa-summary">
+  Part 1: Q&amp;A Summary
+  <a class="anchor" href="#part-1-qa-summary">#</a>
+</h2>
+<h3 id="1-what-is-the-difference-between-cleaning-harmonization-and-feature-engineering">
+  1. What is the difference between cleaning, harmonization, and feature engineering?
+  <a class="anchor" href="#1-what-is-the-difference-between-cleaning-harmonization-and-feature-engineering">#</a>
+</h3>
+<ul>
+<li><strong>Cleaning</strong>: Removing errors or inconsistencies in the raw data.</li>
+<li><strong>Harmonization</strong>: Mapping and aligning data semantically across datasets (e.g., converting NDC to RxNorm).</li>
+<li><strong>Feature Engineering</strong>: Transforming data to fit the needs of specific algorithms or analysis (e.g., PCA, one-hot encoding).</li>
+</ul>
+<h3 id="2-why-are-graphs-more-useful-for-harmonization-than-feature-engineering">
+  2. Why are graphs more useful for harmonization than feature engineering?
+  <a class="anchor" href="#2-why-are-graphs-more-useful-for-harmonization-than-feature-engineering">#</a>
+</h3>
+<ul>
+<li>Graphs help link concepts across vocabularies, terminologies, or systems.</li>
+<li>Feature engineering tends to be model-specific and harder to generalize.</li>
+</ul>
+<h3 id="3-what-are-the-downsides-of-repeating-cleaningharmonization-for-each-project">
+  3. What are the downsides of repeating cleaning/harmonization for each project?
+  <a class="anchor" href="#3-what-are-the-downsides-of-repeating-cleaningharmonization-for-each-project">#</a>
+</h3>
+<ul>
+<li>Redundancy: Same steps are repeated across projects.</li>
+<li>Inefficiency: Each team member duplicates similar work.</li>
+<li>Inconsistency: No central source of truth for processed data.</li>
+</ul>
+<h3 id="4-what-is-a-feature-store-and-how-does-it-help">
+  4. What is a feature store and how does it help?
+  <a class="anchor" href="#4-what-is-a-feature-store-and-how-does-it-help">#</a>
+</h3>
+<ul>
+<li>A <strong>feature store</strong> centralizes reusable, preprocessed features.</li>
+<li>Helps reduce redundancy and promotes consistency.</li>
+</ul>
+<h3 id="5-how-do-knowledge-graphs-improve-the-pipeline">
+  5. How do knowledge graphs improve the pipeline?
+  <a class="anchor" href="#5-how-do-knowledge-graphs-improve-the-pipeline">#</a>
+</h3>
+<ul>
+<li>Data is cleaned and harmonized once at the graph level.</li>
+<li>All downstream users can reuse the harmonized view via queries or APIs.</li>
+</ul>
+<h3 id="6-what-assumptions-are-made-when-using-a-knowledge-graph">
+  6. What assumptions are made when using a knowledge graph?
+  <a class="anchor" href="#6-what-assumptions-are-made-when-using-a-knowledge-graph">#</a>
+</h3>
+<ul>
+<li>Patient-level data and terminology concepts are stored in the same graph.</li>
+<li>Nodes/edges are tagged with metadata (e.g., timestamps, source).</li>
+<li>The graph is a supergraph enabling subgraph extraction.</li>
+</ul>
+<h3 id="7-what-are-graph-embeddings-and-why-are-they-useful">
+  7. What are graph embeddings and why are they useful?
+  <a class="anchor" href="#7-what-are-graph-embeddings-and-why-are-they-useful">#</a>
+</h3>
+<ul>
+<li>They convert graph structures into vectors usable in ML models.</li>
+<li>Enable pattern detection, similarity analysis, and deep learning.</li>
+</ul>
+<h3 id="8-what-is-node2vec">
+  8. What is <code>node2vec</code>?
+  <a class="anchor" href="#8-what-is-node2vec">#</a>
+</h3>
+<ul>
+<li>Random walk-based graph embedding technique.</li>
+<li>Uses return (p) and in-out (q) parameters to tune graph walk.</li>
+<li>Captures homophily and structural equivalence.</li>
+</ul>
+<h3 id="9-what-is-cui2vec">
+  9. What is <code>cui2vec</code>?
+  <a class="anchor" href="#9-what-is-cui2vec">#</a>
+</h3>
+<ul>
+<li>Embeds UMLS CUIs based on co-occurrence in various RWD sources.</li>
+<li>Context-aware (claims, notes, publications).</li>
+<li>Useful for understanding concept similarity.</li>
+</ul>
+<h3 id="10-what-is-med2vec">
+  10. What is <code>med2vec</code>?
+  <a class="anchor" href="#10-what-is-med2vec">#</a>
+</h3>
+<ul>
+<li>Uses temporal sequence of medical events to create visit-based embeddings.</li>
+<li>Retains longitudinal context.</li>
+</ul>
+<h3 id="11-what-is-snomed2vec">
+  11. What is <code>snomed2vec</code>?
+  <a class="anchor" href="#11-what-is-snomed2vec">#</a>
+</h3>
+<ul>
+<li>Embeds SNOMED CT concepts using hierarchical and network-based methods.</li>
+<li>Includes alternatives like metapath2vec and Poincaré embeddings.</li>
+</ul>
+<h3 id="12-what-are-some-challenges-with-pretrained-embeddings">
+  12. What are some challenges with pretrained embeddings?
+  <a class="anchor" href="#12-what-are-some-challenges-with-pretrained-embeddings">#</a>
+</h3>
+<ul>
+<li>Risk of overfitting to training data domain (e.g., CMS claims).</li>
+<li>May not generalize well to other populations or use cases.</li>
+<li>Introduces extra model layer to maintain and tune.</li>
+</ul>
+<hr>
+<h2 id="part-2-curriculum-style-breakdown-with-why">
+  Part 2: Curriculum-Style Breakdown with &ldquo;Why&rdquo;
+  <a class="anchor" href="#part-2-curriculum-style-breakdown-with-why">#</a>
+</h2>
+<h3 id="-phase-1-understand-the-motivation">
+  🧭 Phase 1: Understand the Motivation
+  <a class="anchor" href="#-phase-1-understand-the-motivation">#</a>
+</h3>
+<ul>
+<li><strong>Task</strong>: Read and distinguish between cleaning, harmonization, and feature engineering.
+<ul>
+<li><strong>Why</strong>: Clarifies each pipeline component and prevents misuse of graphs for tasks like feature engineering.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-phase-2-explore-pipeline-challenges">
+  🧱 Phase 2: Explore Pipeline Challenges
+  <a class="anchor" href="#-phase-2-explore-pipeline-challenges">#</a>
+</h3>
+<ul>
+<li><strong>Task</strong>: Analyze Figures 6-6 to 6-9 on pipeline repetition and inefficiency.
+<ul>
+<li><strong>Why</strong>: Understand how lack of standardization leads to duplicated efforts.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-phase-3-learn-about-feature-stores">
+  🧠 Phase 3: Learn about Feature Stores
+  <a class="anchor" href="#-phase-3-learn-about-feature-stores">#</a>
+</h3>
+<ul>
+<li><strong>Task</strong>: Study how feature stores centralize and reuse engineered features.
+<ul>
+<li><strong>Why</strong>: Saves time, increases reproducibility, and reduces tech debt.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-phase-4-integrate-knowledge-graphs">
+  🌐 Phase 4: Integrate Knowledge Graphs
+  <a class="anchor" href="#-phase-4-integrate-knowledge-graphs">#</a>
+</h3>
+<ul>
+<li><strong>Task</strong>: Understand what goes into a knowledge graph (patient data + ontologies).
+<ul>
+<li><strong>Why</strong>: Enables one-time harmonization per data source, allowing scalable reuse.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-phase-5-explore-graph-embedding-techniques">
+  🧩 Phase 5: Explore Graph Embedding Techniques
+  <a class="anchor" href="#-phase-5-explore-graph-embedding-techniques">#</a>
+</h3>
+<ul>
+<li><strong>Task</strong>: Implement <code>node2vec</code> on a small graph.
+<ul>
+<li><strong>Why</strong>: Learn homophily vs structural equivalence, key for biomedical graph reasoning.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-phase-6-biomedical-concept-embeddings">
+  🧬 Phase 6: Biomedical Concept Embeddings
+  <a class="anchor" href="#-phase-6-biomedical-concept-embeddings">#</a>
+</h3>
+<ul>
+<li><strong>Task</strong>: Compare and contrast <code>cui2vec</code>, <code>med2vec</code>, and <code>snomed2vec</code>.
+<ul>
+<li><strong>Why</strong>: Appreciate how embeddings differ by data type (temporal, co-occurrence, hierarchical).</li>
+</ul>
+</li>
+</ul>
+<h3 id="-phase-7-real-world-concerns-with-embeddings">
+  ⚠️ Phase 7: Real-World Concerns with Embeddings
+  <a class="anchor" href="#-phase-7-real-world-concerns-with-embeddings">#</a>
+</h3>
+<ul>
+<li><strong>Task</strong>: Evaluate pretrained embeddings and consider limitations (overfitting, generalizability).
+<ul>
+<li><strong>Why</strong>: Embeddings may look good on paper but can fail in new domains.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-phase-8-apply-to-your-use-case">
+  🔁 Phase 8: Apply to Your Use Case
+  <a class="anchor" href="#-phase-8-apply-to-your-use-case">#</a>
+</h3>
+<ul>
+<li><strong>Task</strong>: Pick a small real-world use case and simulate a pipeline using a knowledge graph and embedding.
+<ul>
+<li><strong>Why</strong>: Reinforces learning and identifies operational gaps in pipeline design.</li>
+</ul>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#chapter-6-summary-machine-learning--graph-based-analytics">Chapter 6 Summary: Machine Learning &amp; Graph-Based Analytics</a>
+      <ul>
+        <li><a href="#part-1-qa-summary">Part 1: Q&amp;A Summary</a>
+          <ul>
+            <li><a href="#1-what-is-the-difference-between-cleaning-harmonization-and-feature-engineering">1. What is the difference between cleaning, harmonization, and feature engineering?</a></li>
+            <li><a href="#2-why-are-graphs-more-useful-for-harmonization-than-feature-engineering">2. Why are graphs more useful for harmonization than feature engineering?</a></li>
+            <li><a href="#3-what-are-the-downsides-of-repeating-cleaningharmonization-for-each-project">3. What are the downsides of repeating cleaning/harmonization for each project?</a></li>
+            <li><a href="#4-what-is-a-feature-store-and-how-does-it-help">4. What is a feature store and how does it help?</a></li>
+            <li><a href="#5-how-do-knowledge-graphs-improve-the-pipeline">5. How do knowledge graphs improve the pipeline?</a></li>
+            <li><a href="#6-what-assumptions-are-made-when-using-a-knowledge-graph">6. What assumptions are made when using a knowledge graph?</a></li>
+            <li><a href="#7-what-are-graph-embeddings-and-why-are-they-useful">7. What are graph embeddings and why are they useful?</a></li>
+            <li><a href="#8-what-is-node2vec">8. What is <code>node2vec</code>?</a></li>
+            <li><a href="#9-what-is-cui2vec">9. What is <code>cui2vec</code>?</a></li>
+            <li><a href="#10-what-is-med2vec">10. What is <code>med2vec</code>?</a></li>
+            <li><a href="#11-what-is-snomed2vec">11. What is <code>snomed2vec</code>?</a></li>
+            <li><a href="#12-what-are-some-challenges-with-pretrained-embeddings">12. What are some challenges with pretrained embeddings?</a></li>
+          </ul>
+        </li>
+        <li><a href="#part-2-curriculum-style-breakdown-with-why">Part 2: Curriculum-Style Breakdown with &ldquo;Why&rdquo;</a>
+          <ul>
+            <li><a href="#-phase-1-understand-the-motivation">🧭 Phase 1: Understand the Motivation</a></li>
+            <li><a href="#-phase-2-explore-pipeline-challenges">🧱 Phase 2: Explore Pipeline Challenges</a></li>
+            <li><a href="#-phase-3-learn-about-feature-stores">🧠 Phase 3: Learn about Feature Stores</a></li>
+            <li><a href="#-phase-4-integrate-knowledge-graphs">🌐 Phase 4: Integrate Knowledge Graphs</a></li>
+            <li><a href="#-phase-5-explore-graph-embedding-techniques">🧩 Phase 5: Explore Graph Embedding Techniques</a></li>
+            <li><a href="#-phase-6-biomedical-concept-embeddings">🧬 Phase 6: Biomedical Concept Embeddings</a></li>
+            <li><a href="#-phase-7-real-world-concerns-with-embeddings">⚠️ Phase 7: Real-World Concerns with Embeddings</a></li>
+            <li><a href="#-phase-8-apply-to-your-use-case">🔁 Phase 8: Apply to Your Use Case</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
