@@ -107,19 +107,19 @@ COVID-19 Testing in High-Risk Areas: Broad detection to prevent spread, even if 
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/">
   <meta property="og:site_name" content="AI in Healthcare">
-  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:title" content="Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare">
   <meta property="og:description" content="Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare # This guide summarizes two key scenarios in healthcare where we might prefer:
 High Precision but Lower Recall High Recall but Lower Precision (1) High Precision, Lower Recall # ✅ When to Use: # When false positives are costly or harmful When resources are limited In early screening/filtering stages 📌 Justification: # You want to be very confident before taking action. Missing some real cases is acceptable if wrongly flagging someone leads to emotional, financial, or clinical harm. 💡 Examples: # Genetic Testing for Rare Diseases: Only flag patients when you’re very sure. A false positive could cause unnecessary panic or life changes. ICU Bed Allocation: If you only have 5 beds, you’d want to use them for patients who are most certainly critical. Drug Discovery Pre-Screening: Select molecules that are most likely to work, even if some potential candidates are missed. (2) High Recall, Lower Precision # ✅ When to Use: # When missing a real case is dangerous When early detection can improve outcomes When follow-up tests or actions are safe and cheap 📌 Justification: # It’s better to catch every possible case, even if you have some false alarms. Especially important in serious or rapidly progressing conditions. 💡 Examples: # Cancer Screening: Better to flag more patients for follow-up than miss someone with early-stage cancer. Sepsis Prediction in ER: Alerting the care team early—even with some false alarms—can save lives. COVID-19 Testing in High-Risk Areas: Broad detection to prevent spread, even if some healthy people test positive. 🧠 Summary Table # Scenario Priority Justification Example High Precision, Lower Recall Precision 🟢 Avoid harm/cost from false positives Genetic testing, ICU triage High Recall, Lower Precision Recall 🟢 Avoid missing critical or contagious conditions Cancer screening, sepsis alert">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="healthcare-domain">
-<title>Precision vs Recall in Healthcare | AI in Healthcare</title>
+<title>Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare | AI in Healthcare</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b7d90e659446e418f232dd08eebfec353e3d81a8e880d7c787de754210b3542c.js" integrity="sha256-t9kOZZRG5BjyMt0I7r/sNT49gajogNfHh951QhCzVCw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.43dd7f4439b5f3bfb8eba410d4ab6d2ac9af532092521421fa95854aa6c24c90.js" integrity="sha256-Q91/RDm187&#43;466QQ1KttKsmvUyCSUhQh&#43;pWFSqbCTJA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -218,92 +218,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-72de9da937e308a049255f7e18188aec" class="toggle"  />
-    <label for="section-72de9da937e308a049255f7e18188aec" class="flex justify-between">
-      <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
-    </label>
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
   
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/" class="">Clinical Text Mining Pipeline</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/" class="">Diabetes Phenotype Pipeline</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/" class="">Ethics in Ai Healthcare Qn A</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/" class="">Missing Values</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/" class="">Nlp Clinical Text</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/omop_vs_rlhf_comparison/" class="">Omop vs Rlhf Comparison</a>
-  
-
-        </li>
-      
     
   </ul>
 
@@ -317,40 +236,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-aa2a9a49ce65c575d64c3664166fb741" class="toggle" checked />
-    <label for="section-aa2a9a49ce65c575d64c3664166fb741" class="flex justify-between">
-      <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
-    </label>
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
   
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/oap_framework_healthcare/" class="">Oap Framework Healthcare</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/" class="active">Precision vs Recall in Healthcare</a>
-  
-
-        </li>
-      
     
   </ul>
 
@@ -364,10 +254,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7410a0d85d9a2c0e159aa20e739703c8" class="toggle"  />
-    <label for="section-7410a0d85d9a2c0e159aa20e739703c8" class="flex justify-between">
-      <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
-    </label>
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
   
 
           
@@ -781,32 +668,6 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/bert_cls_classification_summary/" class="">Bert Cls Classification Summary</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/self_attention_summary/" class="">Self Attention Summary</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -975,7 +836,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Precision vs Recall in Healthcare</h3>
+  <h3>Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare</h3>
 
   <label for="toc-control">
     

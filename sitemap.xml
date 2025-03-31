@@ -68,29 +68,9 @@
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/engineering/ai_cloud_comparision/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/bert_cls_classification_summary/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/self_attention_summary/</loc>
-  </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/</loc>
   </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/omop_vs_rlhf_comparison/</loc>
-  </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/oap_framework_healthcare/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/</loc>
   </url><url>
@@ -112,7 +92,13 @@
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/clinical-data-science/</loc>
   </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/</loc>
+  </url><url>
     <loc>https://imipark.github.io/ai-workflows/modeling-techniques/computer-vision/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/</loc>
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/graphs/graphrag/</loc>
   </url><url>
@@ -128,6 +114,20 @@
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/graphs/knowledge-graphs/</loc>
   </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/</loc>
+  </url><url>
     <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/omop_vs_rlhf_comparison/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/oap_framework_healthcare/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/bert_cls_classification_summary/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/self_attention_summary/</loc>
   </url>
 </urlset>
