@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/foundational_llms_chain_of_thought_hugo_complete/</loc>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/foundational_llms_chain_of_thought_hugo_complete/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/</loc>
   </url><url>
@@ -16,11 +16,11 @@
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/</loc>
   </url><url>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/</loc>
+  </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/ai-workflows/engineering/</loc>
+    <loc>https://imipark.github.io/ai-workflows/llmops/</loc>
   </url><url>
     <loc>https://imipark.github.io/use_cases/</loc>
   </url><url>
@@ -68,7 +68,9 @@
     <loc>https://imipark.github.io/posts/hugo-source-backup/</loc>
     <lastmod>2025-03-20T21:23:49-07:00</lastmod>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/engineering/ai_cloud_comparision/</loc>
+    <loc>https://imipark.github.io/ai-workflows/llmops/ai_cloud_comparision/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/llmops/clinical_nlp_genai/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/</loc>
   </url><url>
@@ -80,7 +82,7 @@
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/</loc>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/</loc>
   </url><url>
@@ -100,8 +102,6 @@
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/computer-vision/</loc>
-  </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/</loc>
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/structural-reasoning/graphs/graphrag/</loc>
@@ -120,8 +120,6 @@
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/</loc>
-  </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/omop_vs_rlhf_comparison/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/oap_framework_healthcare/</loc>
@@ -130,10 +128,10 @@
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/transformer_attention_concepts/</loc>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/transformer_attention_concepts/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/bert_cls_classification_summary/</loc>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/bert_cls_classification_summary/</loc>
   </url><url>
-    <loc>https://imipark.github.io/ai-workflows/modeling-techniques/nlp-llm-genai/self_attention_summary/</loc>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/self_attention_summary/</loc>
   </url>
 </urlset>
