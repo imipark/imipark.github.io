@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Day 3 – Agents: Chain-of-Thought (CoT) Summary
+  #
+
+
+
+  1. Introduction to Agents
+  #
+
+AI agents represent a leap from passive LLMs to goal-oriented, reasoning-capable systems that operate autonomously. Each agent is built with:
+
+A model (e.g., LLM or multimodal base)
+Tools (APIs, functions, data access)
+An orchestration layer (for memory, planning, reasoning with CoT, ReAct, etc.)
+
+
+This brings up the question: How do we actually operate and evaluate such complex entities?">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_agents_cot_summary_final/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="Day 3 – Agents: Chain-of-Thought (CoT) Summary # 1. Introduction to Agents # AI agents represent a leap from passive LLMs to goal-oriented, reasoning-capable systems that operate autonomously. Each agent is built with:
+A model (e.g., LLM or multimodal base) Tools (APIs, functions, data access) An orchestration layer (for memory, planning, reasoning with CoT, ReAct, etc.) This brings up the question: How do we actually operate and evaluate such complex entities?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Day3 Agents Co T Summary Final | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_agents_cot_summary_final/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.375afcde30e2b45daf0968045c11bfab09ca98afc4b892cc8859157e1e6ca685.js" integrity="sha256-N1r83jDitF2vCWgEXBG/qwnKmK/EuJLMiFkVfh5spoU=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-afbb7d0e15883efe1045c614f150a446" class="toggle"  />
+    <label for="section-afbb7d0e15883efe1045c614f150a446" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-medicine/" class="">AI in Medicine</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">╰──Ch4. EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">╰──Ch6. ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-34244c046af3dd0acc0bbb74c663a8d3" class="toggle" checked />
+    <label for="section-34244c046af3dd0acc0bbb74c663a8d3" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-84a2fcdd2f4a95b774882e612724819f" class="toggle" checked />
+    <label for="section-84a2fcdd2f4a95b774882e612724819f" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day1 Foundational Llm Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day1 Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day2 Embeddings Vector Db</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_agents_cot_summary_final/" class="active">Day3 Agents Co T Summary Final</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbe83d85d2dedf5aa04a12e107d4def9" class="toggle"  />
+    <label for="section-dbe83d85d2dedf5aa04a12e107d4def9" class="flex justify-between">
+      <a href="/ai-workflows/llmops/" class="">LLMops</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/llmops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/llmops/clinical_nlp_genai/" class="">Clinical Nlp Gen Ai</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d035664fd2085c43ba4844188502144" class="toggle"  />
+    <label for="section-7d035664fd2085c43ba4844188502144" class="flex justify-between">
+      <a href="/use_cases/" class="">Use Cases</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Day3 Agents Co T Summary Final</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#day-3--agents-chain-of-thought-cot-summary">Day 3 – Agents: Chain-of-Thought (CoT) Summary</a>
+      <ul>
+        <li><a href="#1-introduction-to-agents">1. Introduction to Agents</a></li>
+        <li><a href="#2-agentops-and-related-practices">2. AgentOps and Related Practices</a></li>
+        <li><a href="#3-agent-success-metrics">3. Agent Success Metrics</a></li>
+        <li><a href="#4-agent-evaluation">4. Agent Evaluation</a></li>
+        <li><a href="#5-multi-agent-systems--design-patterns">5. Multi-Agent Systems &amp; Design Patterns</a></li>
+        <li><a href="#6-architecture-of-multi-agent-systems">6. Architecture of Multi-Agent Systems</a></li>
+        <li><a href="#7-challenges-in-multi-agent-systems">7. Challenges in Multi-Agent Systems</a></li>
+        <li><a href="#8-evaluating-multi-agent-systems">8. Evaluating Multi-Agent Systems</a></li>
+        <li><a href="#9-agentic-rag-autonomous-retrieval-augmented-generation">9. Agentic RAG: Autonomous Retrieval-Augmented Generation</a></li>
+        <li><a href="#10-rag-optimization-techniques">10. RAG Optimization Techniques</a></li>
+        <li><a href="#11-agents-in-the-enterprise">11. Agents in the Enterprise</a></li>
+        <li><a href="#12-google-agentspace-and-notebooklm">12. Google Agentspace and NotebookLM</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-3--agents-1st-half-cot-summary">✅ Done: Day 3 – Agents (1st Half) CoT Summary</a>
+      <ul>
+        <li><a href="#13-from-agents-to-contractors">13. From Agents to Contractors</a></li>
+        <li><a href="#14-agent-contracts-in-action">14. Agent Contracts in Action</a></li>
+        <li><a href="#15-case-study-googles-ai-co-scientist">15. Case Study: Google’s AI Co-Scientist</a></li>
+        <li><a href="#16-real-world-deployment-automotive-ai">16. Real-World Deployment: Automotive AI</a></li>
+        <li><a href="#17-multi-agent-patterns-in-automotive-use">17. Multi-Agent Patterns in Automotive Use</a></li>
+        <li><a href="#18-vertex-ai-agent-builder--tooling">18. Vertex AI Agent Builder &amp; Tooling</a></li>
+        <li><a href="#19-summary-10-key-takeaways">19. Summary: 10 Key Takeaways</a></li>
+        <li><a href="#20-future-of-agents">20. Future of Agents</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-3--agents-full-cot-summary-parts-12">✅ Done: Day 3 – Agents (Full CoT Summary, Parts 1–2)</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="day-3--agents-chain-of-thought-cot-summary">
+  Day 3 – Agents: Chain-of-Thought (CoT) Summary
+  <a class="anchor" href="#day-3--agents-chain-of-thought-cot-summary">#</a>
+</h1>
+<hr>
+<h2 id="1-introduction-to-agents">
+  1. Introduction to Agents
+  <a class="anchor" href="#1-introduction-to-agents">#</a>
+</h2>
+<p>AI agents represent a leap from passive LLMs to <strong>goal-oriented, reasoning-capable systems</strong> that operate autonomously. Each agent is built with:</p>
+<ul>
+<li>A <strong>model</strong> (e.g., LLM or multimodal base)</li>
+<li><strong>Tools</strong> (APIs, functions, data access)</li>
+<li>An <strong>orchestration layer</strong> (for memory, planning, reasoning with CoT, ReAct, etc.)</li>
+</ul>
+<blockquote>
+<p>This brings up the question: <strong>How do we actually operate and evaluate such complex entities?</strong></p></blockquote>
+<hr>
+<h2 id="2-agentops-and-related-practices">
+  2. AgentOps and Related Practices
+  <a class="anchor" href="#2-agentops-and-related-practices">#</a>
+</h2>
+<p>AgentOps is the operational discipline of building, deploying, monitoring, and evaluating agents—just like DevOps or MLOps for software and ML.</p>
+<ul>
+<li><strong>AgentOps includes</strong>: versioning, CI/CD, metrics, observability, tool orchestration, memory handling.</li>
+<li>Sits alongside PromptOps and RAGOps under GenAIOps.</li>
+</ul>
+<blockquote>
+<p>If we can observe agents well, we can improve them effectively—so let’s define the success metrics.</p></blockquote>
+<hr>
+<h2 id="3-agent-success-metrics">
+  3. Agent Success Metrics
+  <a class="anchor" href="#3-agent-success-metrics">#</a>
+</h2>
+<p>Metrics guide production decisions. Key metrics include:</p>
+<ul>
+<li><strong>Goal completion rate</strong></li>
+<li><strong>Critical task success</strong></li>
+<li><strong>Telemetry</strong> (latency, error rates)</li>
+<li><strong>Human feedback</strong> (thumbs up/down, rating forms)</li>
+</ul>
+<p>Traces and logs help with internal observability—especially critical for debugging LLM-driven actions.</p>
+<blockquote>
+<p>Now let’s shift to evaluating not just what agents do—but <strong>how</strong> they do it.</p></blockquote>
+<hr>
+<h2 id="4-agent-evaluation">
+  4. Agent Evaluation
+  <a class="anchor" href="#4-agent-evaluation">#</a>
+</h2>
+<p>Agent evaluation isn’t just final outputs—it includes <strong>decision-making and trajectories</strong>. Three major areas:</p>
+<ol>
+<li><strong>Assessing Capabilities</strong> (reasoning, tool use, planning)</li>
+<li><strong>Evaluating Trajectories</strong> (step-by-step plans)</li>
+<li><strong>Evaluating Final Response</strong> (does it hit the goal?)</li>
+</ol>
+<p>Approaches:</p>
+<ul>
+<li>Use public benchmarks (AgentBench, PlanBench, τ-bench)</li>
+<li>Ground-truth trajectory evaluations (exact match, in-order match, recall, precision)</li>
+<li>Autoraters (LLMs judging LLMs)</li>
+<li>Human-in-the-loop (direct assessment, user studies)</li>
+</ul>
+<blockquote>
+<p>But how does this scale when we go from one agent to many?</p></blockquote>
+<hr>
+<h2 id="5-multi-agent-systems--design-patterns">
+  5. Multi-Agent Systems &amp; Design Patterns
+  <a class="anchor" href="#5-multi-agent-systems--design-patterns">#</a>
+</h2>
+<p>Multi-agent systems are teams of autonomous agents with specialized roles:</p>
+<ul>
+<li><strong>Planner, Retriever, Execution, Evaluator agents</strong></li>
+<li><strong>Design patterns</strong>: Sequential, Hierarchical, Collaborative, Competitive</li>
+</ul>
+<p>Advantages:</p>
+<ul>
+<li>Accuracy, Parallelism, Specialization</li>
+<li>Reduced bias and hallucination</li>
+<li>Better scalability and fault tolerance</li>
+</ul>
+<blockquote>
+<p>With this power comes complexity—what components make this work?</p></blockquote>
+<hr>
+<h2 id="6-architecture-of-multi-agent-systems">
+  6. Architecture of Multi-Agent Systems
+  <a class="anchor" href="#6-architecture-of-multi-agent-systems">#</a>
+</h2>
+<p>Key components:</p>
+<ul>
+<li>Interaction Wrappers</li>
+<li>Memory (short/long, shared)</li>
+<li>Reasoning engine (CoT, ReAct, ToT)</li>
+<li>Tool registry / dynamic usage</li>
+<li>Routing/Delegation</li>
+<li>Communication protocols</li>
+<li>Feedback Loops</li>
+<li>Agent Mesh (ontology, discovery, registry)</li>
+</ul>
+<blockquote>
+<p>This architecture unlocks new potential—but also introduces major challenges.</p></blockquote>
+<hr>
+<h2 id="7-challenges-in-multi-agent-systems">
+  7. Challenges in Multi-Agent Systems
+  <a class="anchor" href="#7-challenges-in-multi-agent-systems">#</a>
+</h2>
+<ul>
+<li>Task communication and handoffs</li>
+<li>Context management across async sessions</li>
+<li>Coordinating reasoning and planning</li>
+<li>Debugging and observability</li>
+<li>Runtime and latency cost</li>
+<li>Overall system complexity</li>
+</ul>
+<blockquote>
+<p>So, how do we evaluate multi-agent systems as a whole?</p></blockquote>
+<hr>
+<h2 id="8-evaluating-multi-agent-systems">
+  8. Evaluating Multi-Agent Systems
+  <a class="anchor" href="#8-evaluating-multi-agent-systems">#</a>
+</h2>
+<p>Same principles as single-agent—plus:</p>
+<ul>
+<li><strong>Agent Utilization</strong>: Did the right agents get used?</li>
+<li><strong>Plan adherence</strong>: Did agents stay on task?</li>
+<li><strong>Coordination</strong>: How well did they collaborate?</li>
+<li>Evaluate trajectories <strong>at agent-level and system-level</strong></li>
+</ul>
+<blockquote>
+<p>All this sets the stage for next-gen use cases like <strong>Agentic RAG</strong>.</p></blockquote>
+<hr>
+<h2 id="9-agentic-rag-autonomous-retrieval-augmented-generation">
+  9. Agentic RAG: Autonomous Retrieval-Augmented Generation
+  <a class="anchor" href="#9-agentic-rag-autonomous-retrieval-augmented-generation">#</a>
+</h2>
+<p>Agentic RAG improves standard RAG pipelines using agent autonomy:</p>
+<ul>
+<li>Query expansion</li>
+<li>Multi-step reasoning</li>
+<li>Adaptive source selection</li>
+<li>Retrieval validation</li>
+</ul>
+<p>Enhances accuracy and adaptability for complex use cases (legal, scientific, healthcare).</p>
+<blockquote>
+<p>For maximum benefit, we also need to upgrade our <strong>search and grounding stack</strong>.</p></blockquote>
+<hr>
+<h2 id="10-rag-optimization-techniques">
+  10. RAG Optimization Techniques
+  <a class="anchor" href="#10-rag-optimization-techniques">#</a>
+</h2>
+<p>To improve search:</p>
+<ul>
+<li>Use <strong>semantic chunking</strong> (e.g., Vertex Layout Parser)</li>
+<li>Add metadata for filtering and ranking</li>
+<li>Fine-tune embeddings or adaptors</li>
+<li>Use faster vector DBs (like Vertex AI Vector Search)</li>
+<li>Add re-rankers and grounding checkers</li>
+</ul>
+<blockquote>
+<p>Now let’s look at <strong>enterprise-level deployments</strong> using agents.</p></blockquote>
+<hr>
+<h2 id="11-agents-in-the-enterprise">
+  11. Agents in the Enterprise
+  <a class="anchor" href="#11-agents-in-the-enterprise">#</a>
+</h2>
+<p>Two major types:</p>
+<ol>
+<li><strong>Assistants</strong> – interact with users, return results</li>
+<li><strong>Automation agents</strong> – work in background, monitor events, trigger workflows</li>
+</ol>
+<p>Knowledge workers become <strong>managers of agents</strong>, orchestrating tasks via UIs. Tools like <strong>Google Agentspace</strong> enable:</p>
+<ul>
+<li>Low/no-code agent creation</li>
+<li>Access control</li>
+<li>Multi-agent orchestration</li>
+<li>Monitoring and dashboards</li>
+</ul>
+<blockquote>
+<p>Google’s tools take this even further with <strong>secure, multimodal, grounded RAG agents.</strong></p></blockquote>
+<hr>
+<h2 id="12-google-agentspace-and-notebooklm">
+  12. Google Agentspace and NotebookLM
+  <a class="anchor" href="#12-google-agentspace-and-notebooklm">#</a>
+</h2>
+<p><strong>Agentspace</strong> offers:</p>
+<ul>
+<li>Multimodal RAG</li>
+<li>Enterprise access control and governance</li>
+<li>Personalization via user context/history</li>
+<li>Prebuilt SaaS connectors</li>
+<li>Support for async workflows</li>
+</ul>
+<p><strong>NotebookLM Enterprise</strong>:</p>
+<ul>
+<li>AI-powered research assistant</li>
+<li>Summarization, question answering, audio synthesis</li>
+<li>Built-in enterprise-grade security and compliance</li>
+</ul>
+<blockquote>
+<p>Together, these form the basis for scalable, customizable AI agents for real business impact.</p></blockquote>
+<hr>
+<h1 id="-done-day-3--agents-1st-half-cot-summary">
+  ✅ Done: Day 3 – Agents (1st Half) CoT Summary
+  <a class="anchor" href="#-done-day-3--agents-1st-half-cot-summary">#</a>
+</h1>
+<hr>
+<h2 id="13-from-agents-to-contractors">
+  13. From Agents to Contractors
+  <a class="anchor" href="#13-from-agents-to-contractors">#</a>
+</h2>
+<p>To increase agent reliability, the next evolution is <strong>contract-adhering agents</strong>. Instead of vague goals, agents now operate under formalized contracts with:</p>
+<ul>
+<li>Clear outcomes</li>
+<li>Task scopes</li>
+<li>Cost/duration expectations</li>
+<li>Negotiation mechanisms</li>
+<li>Feedback loops</li>
+<li>Subcontracts for decomposition</li>
+</ul>
+<p>This transforms agents from “best-effort responders” into <strong>accountable entities</strong> with measurable deliverables.</p>
+<hr>
+<h2 id="14-agent-contracts-in-action">
+  14. Agent Contracts in Action
+  <a class="anchor" href="#14-agent-contracts-in-action">#</a>
+</h2>
+<ul>
+<li><strong>Contracts</strong> define deliverables, specs, reporting cadence.</li>
+<li><strong>Negotiation</strong> handles ambiguity, cost, scope.</li>
+<li><strong>Subcontracts</strong> allow recursive breakdown of tasks.</li>
+<li><strong>Contract lifecycle</strong> includes definition → negotiation → execution → feedback.</li>
+</ul>
+<blockquote>
+<p>This formal structure enables agents to work like reliable, scalable freelancers.</p></blockquote>
+<hr>
+<h2 id="15-case-study-googles-ai-co-scientist">
+  15. Case Study: Google’s AI Co-Scientist
+  <a class="anchor" href="#15-case-study-googles-ai-co-scientist">#</a>
+</h2>
+<p>A live example of multi-agent architecture in scientific discovery:</p>
+<ul>
+<li><strong>Data Processing Agents</strong>: Handle large-scale biological data.</li>
+<li><strong>Hypothesis Generators</strong>: Use prior knowledge to propose explanations.</li>
+<li><strong>Validation Agents</strong>: Simulate and verify hypotheses.</li>
+<li><strong>Collaboration Agents</strong>: Share learnings across research teams.</li>
+</ul>
+<p>Used in liver fibrosis research to discover new mechanisms and drugs.</p>
+<hr>
+<h2 id="16-real-world-deployment-automotive-ai">
+  16. Real-World Deployment: Automotive AI
+  <a class="anchor" href="#16-real-world-deployment-automotive-ai">#</a>
+</h2>
+<p>A showcase of agents deployed in vehicles:</p>
+<ul>
+<li><strong>Navigation Agent</strong></li>
+<li><strong>Media Agent</strong></li>
+<li><strong>Messaging Agent</strong></li>
+<li><strong>Manual Agent</strong></li>
+<li><strong>General Knowledge Agent</strong></li>
+</ul>
+<p>Each agent specializes in a domain. Together, they form a seamless in-car experience with fast local inference + cloud augmentation.</p>
+<hr>
+<h2 id="17-multi-agent-patterns-in-automotive-use">
+  17. Multi-Agent Patterns in Automotive Use
+  <a class="anchor" href="#17-multi-agent-patterns-in-automotive-use">#</a>
+</h2>
+<p><strong>Hierarchical Pattern</strong></p>
+<ul>
+<li>Orchestrator delegates to specialized agents</li>
+<li>Maintains context, handles fallback</li>
+</ul>
+<p><strong>Diamond Pattern</strong></p>
+<ul>
+<li>Rephraser modifies responses before user delivery</li>
+<li>Adjusts tone/style for context or user preference</li>
+</ul>
+<p><strong>Peer-to-Peer</strong></p>
+<ul>
+<li>Agents can hand off tasks between each other</li>
+<li>Adds resilience when routing fails</li>
+</ul>
+<p><strong>Collaborative Pattern</strong></p>
+<ul>
+<li>Agents contribute complementary parts of an answer</li>
+<li>Response Mixer combines them for completeness</li>
+</ul>
+<p><strong>Adaptive Loop Pattern</strong></p>
+<ul>
+<li>Agents iterate through query reformulations</li>
+<li>Continuously refine results until satisfied</li>
+</ul>
+<hr>
+<h2 id="18-vertex-ai-agent-builder--tooling">
+  18. Vertex AI Agent Builder &amp; Tooling
+  <a class="anchor" href="#18-vertex-ai-agent-builder--tooling">#</a>
+</h2>
+<p>Google Cloud&rsquo;s ecosystem for agent dev:</p>
+<ul>
+<li><strong>Vertex AI Agent Engine</strong>: Build/deploy agents across frameworks</li>
+<li><strong>Eval Service</strong>: Benchmarks, trajectory evals, autoraters</li>
+<li><strong>Vertex Search / RAG Engine</strong>: Retrieval APIs</li>
+<li><strong>Gen AI Toolbox</strong>: DB access, API integrations</li>
+<li><strong>Apigee Hub</strong>: Turn APIs into secure agent tools</li>
+<li><strong>Gemini &amp; Model Garden</strong>: Backbone LLMs</li>
+</ul>
+<hr>
+<h2 id="19-summary-10-key-takeaways">
+  19. Summary: 10 Key Takeaways
+  <a class="anchor" href="#19-summary-10-key-takeaways">#</a>
+</h2>
+<ol>
+<li><strong>AgentOps is essential</strong> – Instrumentation, monitoring, trace.</li>
+<li><strong>Metrics matter</strong> – From business KPIs to fine-grained logs.</li>
+<li><strong>Automated evals save time</strong> – Trajectory + response.</li>
+<li><strong>Human-in-loop complements automation</strong></li>
+<li><strong>Multi-agent = accuracy, scale, fault tolerance</strong></li>
+<li><strong>Agentic RAG &gt; vanilla RAG</strong></li>
+<li><strong>Optimize search first</strong></li>
+<li><strong>Registries for agents &amp; tools scale operations</strong></li>
+<li><strong>Security is non-negotiable</strong></li>
+<li><strong>Don’t reinvent – use managed tooling where possible</strong></li>
+</ol>
+<hr>
+<h2 id="20-future-of-agents">
+  20. Future of Agents
+  <a class="anchor" href="#20-future-of-agents">#</a>
+</h2>
+<p>R&amp;D focus areas:</p>
+<ul>
+<li>Evaluation frameworks (process-based, benchmarked)</li>
+<li>Multi-agent coordination protocols</li>
+<li>Real-world dynamic adaptation</li>
+<li>Explainability and memory</li>
+<li>From agents → contractors with clear agreements</li>
+</ul>
+<blockquote>
+<p>The future is modular, scalable, explainable AI — <strong>agentic by design</strong>.</p></blockquote>
+<hr>
+<h1 id="-done-day-3--agents-full-cot-summary-parts-12">
+  ✅ Done: Day 3 – Agents (Full CoT Summary, Parts 1–2)
+  <a class="anchor" href="#-done-day-3--agents-full-cot-summary-parts-12">#</a>
+</h1>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#day-3--agents-chain-of-thought-cot-summary">Day 3 – Agents: Chain-of-Thought (CoT) Summary</a>
+      <ul>
+        <li><a href="#1-introduction-to-agents">1. Introduction to Agents</a></li>
+        <li><a href="#2-agentops-and-related-practices">2. AgentOps and Related Practices</a></li>
+        <li><a href="#3-agent-success-metrics">3. Agent Success Metrics</a></li>
+        <li><a href="#4-agent-evaluation">4. Agent Evaluation</a></li>
+        <li><a href="#5-multi-agent-systems--design-patterns">5. Multi-Agent Systems &amp; Design Patterns</a></li>
+        <li><a href="#6-architecture-of-multi-agent-systems">6. Architecture of Multi-Agent Systems</a></li>
+        <li><a href="#7-challenges-in-multi-agent-systems">7. Challenges in Multi-Agent Systems</a></li>
+        <li><a href="#8-evaluating-multi-agent-systems">8. Evaluating Multi-Agent Systems</a></li>
+        <li><a href="#9-agentic-rag-autonomous-retrieval-augmented-generation">9. Agentic RAG: Autonomous Retrieval-Augmented Generation</a></li>
+        <li><a href="#10-rag-optimization-techniques">10. RAG Optimization Techniques</a></li>
+        <li><a href="#11-agents-in-the-enterprise">11. Agents in the Enterprise</a></li>
+        <li><a href="#12-google-agentspace-and-notebooklm">12. Google Agentspace and NotebookLM</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-3--agents-1st-half-cot-summary">✅ Done: Day 3 – Agents (1st Half) CoT Summary</a>
+      <ul>
+        <li><a href="#13-from-agents-to-contractors">13. From Agents to Contractors</a></li>
+        <li><a href="#14-agent-contracts-in-action">14. Agent Contracts in Action</a></li>
+        <li><a href="#15-case-study-googles-ai-co-scientist">15. Case Study: Google’s AI Co-Scientist</a></li>
+        <li><a href="#16-real-world-deployment-automotive-ai">16. Real-World Deployment: Automotive AI</a></li>
+        <li><a href="#17-multi-agent-patterns-in-automotive-use">17. Multi-Agent Patterns in Automotive Use</a></li>
+        <li><a href="#18-vertex-ai-agent-builder--tooling">18. Vertex AI Agent Builder &amp; Tooling</a></li>
+        <li><a href="#19-summary-10-key-takeaways">19. Summary: 10 Key Takeaways</a></li>
+        <li><a href="#20-future-of-agents">20. Future of Agents</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-3--agents-full-cot-summary-parts-12">✅ Done: Day 3 – Agents (Full CoT Summary, Parts 1–2)</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

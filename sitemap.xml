@@ -2,8 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/foundational_llms_chain_of_thought_hugo_complete/</loc>
-  </url><url>
     <loc>https://imipark.github.io/healthcare-domain/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/</loc>
@@ -71,6 +69,18 @@
     <loc>https://imipark.github.io/ai-workflows/llmops/ai_cloud_comparision/</loc>
   </url><url>
     <loc>https://imipark.github.io/ai-workflows/llmops/clinical_nlp_genai/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/</loc>
+  </url><url>
+    <loc>https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day5_mlops/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/</loc>
   </url><url>

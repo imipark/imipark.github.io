@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Day 4 – Domain-Specific LLMs: Chain-of-Thought (CoT) Summary
+  #
+
+
+
+  1. Introduction: Why Domain-Specific LLMs?
+  #
+
+LLMs have emerged as transformative tools across sectors, but general-purpose models often fall short in highly specialized domains. This whitepaper highlights two domains—cybersecurity and healthcare—to show how domain-specific LLMs can drive real-world impact.
+
+This raises the question: what challenges make domain adaptation necessary?
+
+
+  2. Cybersecurity: The Case for SecLM
+  #
+
+
+  2.1 Industry Challenges
+  #
+
+Cybersecurity practitioners face:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecificllms_cot_summary/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="Day 4 – Domain-Specific LLMs: Chain-of-Thought (CoT) Summary # 1. Introduction: Why Domain-Specific LLMs? # LLMs have emerged as transformative tools across sectors, but general-purpose models often fall short in highly specialized domains. This whitepaper highlights two domains—cybersecurity and healthcare—to show how domain-specific LLMs can drive real-world impact.
+This raises the question: what challenges make domain adaptation necessary?
+2. Cybersecurity: The Case for SecLM # 2.1 Industry Challenges # Cybersecurity practitioners face:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Day4 Domain Specific Llms Co T Summary | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecificllms_cot_summary/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.375afcde30e2b45daf0968045c11bfab09ca98afc4b892cc8859157e1e6ca685.js" integrity="sha256-N1r83jDitF2vCWgEXBG/qwnKmK/EuJLMiFkVfh5spoU=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-afbb7d0e15883efe1045c614f150a446" class="toggle"  />
+    <label for="section-afbb7d0e15883efe1045c614f150a446" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-medicine/" class="">AI in Medicine</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">╰──Ch4. EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">╰──Ch6. ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-34244c046af3dd0acc0bbb74c663a8d3" class="toggle" checked />
+    <label for="section-34244c046af3dd0acc0bbb74c663a8d3" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-84a2fcdd2f4a95b774882e612724819f" class="toggle" checked />
+    <label for="section-84a2fcdd2f4a95b774882e612724819f" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day1 Foundational Llm Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day1 Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day2 Embeddings Vector Db</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/" class="">Day3 Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecificllms_cot_summary/" class="active">Day4 Domain Specific Llms Co T Summary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbe83d85d2dedf5aa04a12e107d4def9" class="toggle"  />
+    <label for="section-dbe83d85d2dedf5aa04a12e107d4def9" class="flex justify-between">
+      <a href="/ai-workflows/llmops/" class="">LLMops</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/llmops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/llmops/clinical_nlp_genai/" class="">Clinical Nlp Gen Ai</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d035664fd2085c43ba4844188502144" class="toggle"  />
+    <label for="section-7d035664fd2085c43ba4844188502144" class="flex justify-between">
+      <a href="/use_cases/" class="">Use Cases</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Day4 Domain Specific Llms Co T Summary</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#day-4--domain-specific-llms-chain-of-thought-cot-summary">Day 4 – Domain-Specific LLMs: Chain-of-Thought (CoT) Summary</a>
+      <ul>
+        <li><a href="#1-introduction-why-domain-specific-llms">1. Introduction: Why Domain-Specific LLMs?</a></li>
+        <li><a href="#2-cybersecurity-the-case-for-seclm">2. Cybersecurity: The Case for SecLM</a>
+          <ul>
+            <li><a href="#21-industry-challenges">2.1 Industry Challenges</a></li>
+            <li><a href="#22-how-genai-tackles-security-challenges">2.2 How GenAI Tackles Security Challenges</a></li>
+            <li><a href="#23-seclm-architecture--design">2.3 SecLM Architecture &amp; Design</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-training-security-focused-llms">3. Training Security-Focused LLMs</a></li>
+        <li><a href="#4-seclm-in-action">4. SecLM in Action</a>
+          <ul>
+            <li><a href="#41-example-multi-step-threat-analysis">4.1 Example: Multi-step Threat Analysis</a></li>
+            <li><a href="#42-example-script-analysis">4.2 Example: Script Analysis</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-medlm-and-healthcare-transformation">5. MedLM and Healthcare Transformation</a>
+          <ul>
+            <li><a href="#51-the-medical-qa-challenge">5.1 The Medical QA Challenge</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-med-palm-and-medlm">6. Med-PaLM and MedLM</a>
+          <ul>
+            <li><a href="#61-model-evolution">6.1 Model Evolution</a></li>
+            <li><a href="#62-evaluation-approach">6.2 Evaluation Approach</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-real-world-integration--safety">7. Real-World Integration &amp; Safety</a></li>
+        <li><a href="#8-medlm-use-cases">8. MedLM Use Cases</a></li>
+        <li><a href="#9-med-palm-2-training-strategies">9. Med-PaLM 2 Training Strategies</a></li>
+        <li><a href="#10-key-takeaways">10. Key Takeaways</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-4--domain-specific-llms-full-cot-summary">✅ Done: Day 4 – Domain-Specific LLMs (Full CoT Summary)</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="day-4--domain-specific-llms-chain-of-thought-cot-summary">
+  Day 4 – Domain-Specific LLMs: Chain-of-Thought (CoT) Summary
+  <a class="anchor" href="#day-4--domain-specific-llms-chain-of-thought-cot-summary">#</a>
+</h1>
+<hr>
+<h2 id="1-introduction-why-domain-specific-llms">
+  1. Introduction: Why Domain-Specific LLMs?
+  <a class="anchor" href="#1-introduction-why-domain-specific-llms">#</a>
+</h2>
+<p>LLMs have emerged as transformative tools across sectors, but general-purpose models often fall short in highly specialized domains. This whitepaper highlights two domains—<strong>cybersecurity</strong> and <strong>healthcare</strong>—to show how domain-specific LLMs can drive real-world impact.</p>
+<blockquote>
+<p>This raises the question: <strong>what challenges make domain adaptation necessary?</strong></p></blockquote>
+<hr>
+<h2 id="2-cybersecurity-the-case-for-seclm">
+  2. Cybersecurity: The Case for SecLM
+  <a class="anchor" href="#2-cybersecurity-the-case-for-seclm">#</a>
+</h2>
+<h3 id="21-industry-challenges">
+  2.1 Industry Challenges
+  <a class="anchor" href="#21-industry-challenges">#</a>
+</h3>
+<p>Cybersecurity practitioners face:</p>
+<ul>
+<li>Constantly evolving threats</li>
+<li>High toil due to repetitive tasks</li>
+<li>A talent shortage of skilled experts</li>
+</ul>
+<blockquote>
+<p>So how can LLMs actually help in these settings?</p></blockquote>
+<hr>
+<h3 id="22-how-genai-tackles-security-challenges">
+  2.2 How GenAI Tackles Security Challenges
+  <a class="anchor" href="#22-how-genai-tackles-security-challenges">#</a>
+</h3>
+<p><strong>SecLM</strong> (Security Language Model) assists across roles:</p>
+<ul>
+<li>Translates natural language to query languages</li>
+<li>Assists with reverse engineering, fuzz testing, access policy design</li>
+<li>Synthesizes large volumes of threat data</li>
+</ul>
+<p>Structured as a layered platform:</p>
+<ul>
+<li>Top: security tools</li>
+<li>Middle: planning + LLM API</li>
+<li>Bottom: data sources</li>
+</ul>
+<hr>
+<h3 id="23-seclm-architecture--design">
+  2.3 SecLM Architecture &amp; Design
+  <a class="anchor" href="#23-seclm-architecture--design">#</a>
+</h3>
+<p>Key design principles:</p>
+<ul>
+<li>Handles real-time threat data</li>
+<li>Processes sensitive, user-specific data securely</li>
+<li>Uses flexible planning and reasoning across tools and APIs</li>
+</ul>
+<blockquote>
+<p>Next question: <strong>how are these models trained and evaluated?</strong></p></blockquote>
+<hr>
+<h2 id="3-training-security-focused-llms">
+  3. Training Security-Focused LLMs
+  <a class="anchor" href="#3-training-security-focused-llms">#</a>
+</h2>
+<ul>
+<li>Uses foundation models pre-trained on massive general corpora</li>
+<li>Security-specific fine-tuning via curated content (blogs, alerts, scripts)</li>
+<li>Tasks: malware analysis, command interpretation, event summarization</li>
+</ul>
+<p>Evaluation:</p>
+<ul>
+<li>Classification metrics</li>
+<li>Preference comparisons</li>
+<li>Human expert scoring</li>
+</ul>
+<blockquote>
+<p>With SecLM, generalization and domain safety are ensured through layered evaluation and PET methods.</p></blockquote>
+<hr>
+<h2 id="4-seclm-in-action">
+  4. SecLM in Action
+  <a class="anchor" href="#4-seclm-in-action">#</a>
+</h2>
+<h3 id="41-example-multi-step-threat-analysis">
+  4.1 Example: Multi-step Threat Analysis
+  <a class="anchor" href="#41-example-multi-step-threat-analysis">#</a>
+</h3>
+<p>Given a question about APT41:</p>
+<ul>
+<li>Retrieves threat info</li>
+<li>Extracts indicators</li>
+<li>Translates to SIEM query</li>
+<li>Aggregates event logs</li>
+<li>Synthesizes response</li>
+</ul>
+<h3 id="42-example-script-analysis">
+  4.2 Example: Script Analysis
+  <a class="anchor" href="#42-example-script-analysis">#</a>
+</h3>
+<ul>
+<li>Decodes obfuscated PowerShell</li>
+<li>Combines tool use + LLM reasoning</li>
+<li>Wins over general LLMs in 53–79% of tasks</li>
+</ul>
+<blockquote>
+<p>Next domain: <strong>Medicine and MedLM</strong>.</p></blockquote>
+<hr>
+<h2 id="5-medlm-and-healthcare-transformation">
+  5. MedLM and Healthcare Transformation
+  <a class="anchor" href="#5-medlm-and-healthcare-transformation">#</a>
+</h2>
+<h3 id="51-the-medical-qa-challenge">
+  5.1 The Medical QA Challenge
+  <a class="anchor" href="#51-the-medical-qa-challenge">#</a>
+</h3>
+<p>Medical knowledge is vast, evolving, and context-sensitive. Med-PaLM and MedLM aim to:</p>
+<ul>
+<li>Empower patient-clinician dialog</li>
+<li>Summarize EHR and triage messages</li>
+<li>Act as AI consults</li>
+</ul>
+<blockquote>
+<p>Built on PaLM, MedLM began with QA as a foundational task.</p></blockquote>
+<hr>
+<h2 id="6-med-palm-and-medlm">
+  6. Med-PaLM and MedLM
+  <a class="anchor" href="#6-med-palm-and-medlm">#</a>
+</h2>
+<h3 id="61-model-evolution">
+  6.1 Model Evolution
+  <a class="anchor" href="#61-model-evolution">#</a>
+</h3>
+<ul>
+<li><strong>Med-PaLM</strong>: First AI to surpass passing mark on USMLE-style questions</li>
+<li><strong>Med-PaLM 2</strong>: Accuracy jumped to 86.5% (expert level)</li>
+</ul>
+<p>Used <strong>instruction tuning</strong>, <strong>CoT prompting</strong>, and <strong>self-consistency</strong></p>
+<hr>
+<h3 id="62-evaluation-approach">
+  6.2 Evaluation Approach
+  <a class="anchor" href="#62-evaluation-approach">#</a>
+</h3>
+<p><strong>Quantitative</strong>:</p>
+<ul>
+<li>Benchmarks like USMLE</li>
+</ul>
+<p><strong>Qualitative</strong>:</p>
+<ul>
+<li>Human expert rubric: factuality, reasoning, harm, equity</li>
+</ul>
+<p>Blinded evaluation vs physicians showed:</p>
+<ul>
+<li>LLM responses are competitive</li>
+<li>More nuanced improvements are needed</li>
+</ul>
+<hr>
+<h2 id="7-real-world-integration--safety">
+  7. Real-World Integration &amp; Safety
+  <a class="anchor" href="#7-real-world-integration--safety">#</a>
+</h2>
+<p>AI must work in:</p>
+<ul>
+<li>Retrospective studies</li>
+<li>Prospective, non-interventional trials</li>
+<li>Clinical workflows</li>
+</ul>
+<p>Emphasis on:</p>
+<ul>
+<li>IRB approval</li>
+<li>Privacy and autonomy</li>
+<li>Partnering with clinicians</li>
+</ul>
+<hr>
+<h2 id="8-medlm-use-cases">
+  8. MedLM Use Cases
+  <a class="anchor" href="#8-medlm-use-cases">#</a>
+</h2>
+<p>MedLM isn&rsquo;t limited to clinical diagnosis:</p>
+<ul>
+<li>Enables research (e.g., genomics)</li>
+<li>Supports healthcare operations</li>
+<li>Extends into multimodal settings (EHR, images, wearables)</li>
+</ul>
+<hr>
+<h2 id="9-med-palm-2-training-strategies">
+  9. Med-PaLM 2 Training Strategies
+  <a class="anchor" href="#9-med-palm-2-training-strategies">#</a>
+</h2>
+<ul>
+<li>Datasets: MedQA, MedMCQA, LiveQA, etc.</li>
+<li>Techniques: CoT prompting, self-consistency, ensemble refinement (ER)</li>
+</ul>
+<p><strong>ER</strong>: Generates multiple reasoning chains → refines final response</p>
+<hr>
+<h2 id="10-key-takeaways">
+  10. Key Takeaways
+  <a class="anchor" href="#10-key-takeaways">#</a>
+</h2>
+<ul>
+<li>General LLMs need adaptation to tackle real-world problems</li>
+<li>SecLM addresses cybersecurity via planning + domain knowledge</li>
+<li>MedLM shows that safe and responsible GenAI in medicine is possible</li>
+<li>Vertical-specific LLMs will become the foundation for real-world AI</li>
+</ul>
+<hr>
+<h1 id="-done-day-4--domain-specific-llms-full-cot-summary">
+  ✅ Done: Day 4 – Domain-Specific LLMs (Full CoT Summary)
+  <a class="anchor" href="#-done-day-4--domain-specific-llms-full-cot-summary">#</a>
+</h1>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#day-4--domain-specific-llms-chain-of-thought-cot-summary">Day 4 – Domain-Specific LLMs: Chain-of-Thought (CoT) Summary</a>
+      <ul>
+        <li><a href="#1-introduction-why-domain-specific-llms">1. Introduction: Why Domain-Specific LLMs?</a></li>
+        <li><a href="#2-cybersecurity-the-case-for-seclm">2. Cybersecurity: The Case for SecLM</a>
+          <ul>
+            <li><a href="#21-industry-challenges">2.1 Industry Challenges</a></li>
+            <li><a href="#22-how-genai-tackles-security-challenges">2.2 How GenAI Tackles Security Challenges</a></li>
+            <li><a href="#23-seclm-architecture--design">2.3 SecLM Architecture &amp; Design</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-training-security-focused-llms">3. Training Security-Focused LLMs</a></li>
+        <li><a href="#4-seclm-in-action">4. SecLM in Action</a>
+          <ul>
+            <li><a href="#41-example-multi-step-threat-analysis">4.1 Example: Multi-step Threat Analysis</a></li>
+            <li><a href="#42-example-script-analysis">4.2 Example: Script Analysis</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-medlm-and-healthcare-transformation">5. MedLM and Healthcare Transformation</a>
+          <ul>
+            <li><a href="#51-the-medical-qa-challenge">5.1 The Medical QA Challenge</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-med-palm-and-medlm">6. Med-PaLM and MedLM</a>
+          <ul>
+            <li><a href="#61-model-evolution">6.1 Model Evolution</a></li>
+            <li><a href="#62-evaluation-approach">6.2 Evaluation Approach</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-real-world-integration--safety">7. Real-World Integration &amp; Safety</a></li>
+        <li><a href="#8-medlm-use-cases">8. MedLM Use Cases</a></li>
+        <li><a href="#9-med-palm-2-training-strategies">9. Med-PaLM 2 Training Strategies</a></li>
+        <li><a href="#10-key-takeaways">10. Key Takeaways</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-4--domain-specific-llms-full-cot-summary">✅ Done: Day 4 – Domain-Specific LLMs (Full CoT Summary)</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

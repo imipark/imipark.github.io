@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Day-2: Embeddings &amp; Vector Stores – CoT Summary
+  #
+
+
+
+  1. Introduction to Embeddings
+  #
+
+We begin with a fundamental challenge: how to represent diverse data types (text, image, speech, structured data) in a way that ML models can use effectively. The answer is embeddings—low-dimensional numerical vectors that compress data while preserving semantic meaning.
+
+This leads to the next insight: how are these embeddings created and used in practice across different domains?">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb_cot_summary_final/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="Day-2: Embeddings &amp; Vector Stores – CoT Summary # 1. Introduction to Embeddings # We begin with a fundamental challenge: how to represent diverse data types (text, image, speech, structured data) in a way that ML models can use effectively. The answer is embeddings—low-dimensional numerical vectors that compress data while preserving semantic meaning.
+This leads to the next insight: how are these embeddings created and used in practice across different domains?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Day2 Embeddings Vector Db Co T Summary Final | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb_cot_summary_final/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.375afcde30e2b45daf0968045c11bfab09ca98afc4b892cc8859157e1e6ca685.js" integrity="sha256-N1r83jDitF2vCWgEXBG/qwnKmK/EuJLMiFkVfh5spoU=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-afbb7d0e15883efe1045c614f150a446" class="toggle"  />
+    <label for="section-afbb7d0e15883efe1045c614f150a446" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-medicine/" class="">AI in Medicine</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">╰──Ch4. EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">╰──Ch6. ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-34244c046af3dd0acc0bbb74c663a8d3" class="toggle" checked />
+    <label for="section-34244c046af3dd0acc0bbb74c663a8d3" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-84a2fcdd2f4a95b774882e612724819f" class="toggle" checked />
+    <label for="section-84a2fcdd2f4a95b774882e612724819f" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day1 Foundational Llm Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day1 Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb_cot_summary_final/" class="active">Day2 Embeddings Vector Db Co T Summary Final</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dbe83d85d2dedf5aa04a12e107d4def9" class="toggle"  />
+    <label for="section-dbe83d85d2dedf5aa04a12e107d4def9" class="flex justify-between">
+      <a href="/ai-workflows/llmops/" class="">LLMops</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/llmops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/llmops/clinical_nlp_genai/" class="">Clinical Nlp Gen Ai</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d035664fd2085c43ba4844188502144" class="toggle"  />
+    <label for="section-7d035664fd2085c43ba4844188502144" class="flex justify-between">
+      <a href="/use_cases/" class="">Use Cases</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Day2 Embeddings Vector Db Co T Summary Final</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#day-2-embeddings--vector-stores--cot-summary">Day-2: Embeddings &amp; Vector Stores – CoT Summary</a>
+      <ul>
+        <li><a href="#1-introduction-to-embeddings">1. Introduction to Embeddings</a></li>
+        <li><a href="#2-the-power-of-embeddings">2. The Power of Embeddings</a></li>
+        <li><a href="#3-evaluating-embedding-quality">3. Evaluating Embedding Quality</a></li>
+        <li><a href="#4-embeddings-in-action">4. Embeddings in Action</a>
+          <ul>
+            <li><a href="#41-rag-based-search-systems">4.1 RAG-Based Search Systems</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-real-world-example">5. Real-World Example</a>
+          <ul>
+            <li><a href="#51-semantic-search-with-code">5.1 Semantic Search with Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-types-of-embeddings">6. Types of Embeddings</a>
+          <ul>
+            <li><a href="#61-text-embeddings">6.1 Text Embeddings</a></li>
+            <li><a href="#62-word-embeddings">6.2 Word Embeddings</a></li>
+            <li><a href="#63-document-embeddings">6.3 Document Embeddings</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-pretrained-language-models">7. Pretrained Language Models</a>
+          <ul>
+            <li><a href="#71-deep-embedding-architectures">7.1 Deep Embedding Architectures</a></li>
+            <li><a href="#72-embedding-with-vertex-ai--tensorflow">7.2 Embedding with Vertex AI &amp; TensorFlow</a></li>
+          </ul>
+        </li>
+        <li><a href="#8-image-and-multimodal-embeddings">8. Image and Multimodal Embeddings</a>
+          <ul>
+            <li><a href="#81-image-embeddings">8.1 Image Embeddings</a></li>
+            <li><a href="#82-multimodal-embeddings">8.2 Multimodal Embeddings</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-2-embeddings--vector-stores--full-cot-summary">✅ Done: Day-2 Embeddings &amp; Vector Stores – Full CoT Summary</a>
+      <ul>
+        <li><a href="#9-structured-and-graph-data-embeddings">9. Structured and Graph Data Embeddings</a>
+          <ul>
+            <li><a href="#91-structured-data">9.1 Structured Data</a></li>
+            <li><a href="#92-graph-embeddings">9.2 Graph Embeddings</a></li>
+          </ul>
+        </li>
+        <li><a href="#10-embedding-model-training">10. Embedding Model Training</a></li>
+        <li><a href="#11-vector-search-essentials">11. Vector Search Essentials</a></li>
+        <li><a href="#12-ann-search-techniques">12. ANN Search Techniques</a>
+          <ul>
+            <li><a href="#121-lsh--trees">12.1 LSH &amp; Trees</a></li>
+            <li><a href="#122-hnsw-hierarchical-navigable-small-world">12.2 HNSW (Hierarchical Navigable Small World)</a></li>
+          </ul>
+        </li>
+        <li><a href="#13-vertex-ai-vector-search--rag">13. Vertex AI Vector Search &amp; RAG</a></li>
+        <li><a href="#14-scann-scalable-nearest-neighbor-search">14. ScaNN (Scalable Nearest Neighbor Search)</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-2-embeddings--vector-stores--full-cot-summary-final-part">✅ Done: Day-2 Embeddings &amp; Vector Stores – Full CoT Summary (Final Part)</a>
+      <ul>
+        <li><a href="#15-tensorflow-recommenders--scann">15. TensorFlow Recommenders + ScaNN</a></li>
+        <li><a href="#16-vector-databases--hybrid-search">16. Vector Databases &amp; Hybrid Search</a></li>
+        <li><a href="#17-operational-considerations">17. Operational Considerations</a></li>
+        <li><a href="#18-application-use-cases">18. Application Use Cases</a></li>
+        <li><a href="#19-rag-retrieval-augmented-generation">19. RAG (Retrieval-Augmented Generation)</a></li>
+        <li><a href="#20-summary">20. Summary</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-2-embeddings--vector-stores--final-cot-summary-parts-14">✅ Done: Day-2 Embeddings &amp; Vector Stores – Final CoT Summary (Parts 1–4)</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="day-2-embeddings--vector-stores--cot-summary">
+  Day-2: Embeddings &amp; Vector Stores – CoT Summary
+  <a class="anchor" href="#day-2-embeddings--vector-stores--cot-summary">#</a>
+</h1>
+<hr>
+<h2 id="1-introduction-to-embeddings">
+  1. Introduction to Embeddings
+  <a class="anchor" href="#1-introduction-to-embeddings">#</a>
+</h2>
+<p>We begin with a fundamental challenge: <em>how to represent diverse data types (text, image, speech, structured data) in a way that ML models can use effectively</em>. The answer is <strong>embeddings</strong>—low-dimensional numerical vectors that compress data while preserving semantic meaning.</p>
+<blockquote>
+<p>This leads to the next insight: <strong>how are these embeddings created and used in practice across different domains?</strong></p></blockquote>
+<hr>
+<h2 id="2-the-power-of-embeddings">
+  2. The Power of Embeddings
+  <a class="anchor" href="#2-the-power-of-embeddings">#</a>
+</h2>
+<p>Embeddings allow for efficient <em>comparison</em> and <em>search</em> across large datasets by projecting different objects (words, images, queries) into a shared vector space. If two vectors are close, the original items they represent are semantically similar.</p>
+<ul>
+<li>Analogy: Just like latitude and longitude represent location coordinates, embeddings locate data points in a semantic space.</li>
+<li>Use cases: Search engines, recommendations, ads, fraud detection, etc.</li>
+</ul>
+<blockquote>
+<p>So the next logical step is: <strong>how do we evaluate the effectiveness of embeddings in such tasks?</strong></p></blockquote>
+<hr>
+<h2 id="3-evaluating-embedding-quality">
+  3. Evaluating Embedding Quality
+  <a class="anchor" href="#3-evaluating-embedding-quality">#</a>
+</h2>
+<p>Quality is often measured through <em>retrieval performance</em>—can the model find the most relevant items?</p>
+<ul>
+<li><strong>Precision@k</strong>: Of the top k results, how many are relevant?</li>
+<li><strong>Recall@k</strong>: Of all relevant items, how many are found in top k?</li>
+<li><strong>nDCG@k</strong>: Takes ranking into account—gives higher score if most relevant documents appear earlier.</li>
+</ul>
+<p>Benchmarks like <strong>BEIR</strong> and <strong>MTEB</strong> are standard. Evaluation libraries like <code>trec_eval</code> and <code>pytrec_eval</code> make comparisons easy and reproducible.</p>
+<blockquote>
+<p>Having laid the groundwork, we now ask: <strong>how are embeddings used in retrieval-based search systems?</strong></p></blockquote>
+<hr>
+<h2 id="4-embeddings-in-action">
+  4. Embeddings in Action
+  <a class="anchor" href="#4-embeddings-in-action">#</a>
+</h2>
+<h3 id="41-rag-based-search-systems">
+  4.1 RAG-Based Search Systems
+  <a class="anchor" href="#41-rag-based-search-systems">#</a>
+</h3>
+<p>Retrieval-Augmented Generation (RAG) uses embeddings to retrieve relevant documents that are then fed into LLMs for summarization or answer generation.</p>
+<p>Two phases:</p>
+<ol>
+<li><strong>Index Creation</strong>: Documents are chunked, embedded (via dual encoders), and stored in a <strong>vector database</strong>.</li>
+<li><strong>Query Time</strong>: User input is embedded and matched to similar document vectors in milliseconds.</li>
+</ol>
+<blockquote>
+<p>This raises a practical question: <strong>what tools and code can we use to implement such systems?</strong></p></blockquote>
+<hr>
+<h2 id="5-real-world-example">
+  5. Real-World Example
+  <a class="anchor" href="#5-real-world-example">#</a>
+</h2>
+<h3 id="51-semantic-search-with-code">
+  5.1 Semantic Search with Code
+  <a class="anchor" href="#51-semantic-search-with-code">#</a>
+</h3>
+<p>The paper presents a full example using:</p>
+<ul>
+<li>Google VertexAI’s embedding API (with <code>RETRIEVAL_DOCUMENT</code> and <code>RETRIEVAL_QUERY</code> modes),</li>
+<li><code>faiss</code> for vector indexing and nearest neighbor search,</li>
+<li><code>pytrec_eval</code> for quality metrics (precision, recall, nDCG).</li>
+</ul>
+<p>Example query: “Is caffeinated tea really dehydrating?”<br>
+Retrieved document: A summary of scientific findings indicating no difference between tea and water hydration effects.</p>
+<p>Average results from the evaluation:</p>
+<pre tabindex="0"><code>P@1        = 0.517
+Recall@10  = 0.204
+nDCG@10    = 0.403
+</code></pre><blockquote>
+<p>With this setup, developers can implement powerful retrieval systems using simple APIs and standard libraries.</p></blockquote>
+<hr>
+<h2 id="6-types-of-embeddings">
+  6. Types of Embeddings
+  <a class="anchor" href="#6-types-of-embeddings">#</a>
+</h2>
+<p>We now zoom into the diverse <strong>data types</strong> that embeddings can represent. The goal is always the same—capture essential information in low-dimensional vectors, but the strategies differ.</p>
+<hr>
+<h3 id="61-text-embeddings">
+  6.1 Text Embeddings
+  <a class="anchor" href="#61-text-embeddings">#</a>
+</h3>
+<h4 id="lifecycle-of-text-to-embedding">
+  Lifecycle of Text to Embedding:
+  <a class="anchor" href="#lifecycle-of-text-to-embedding">#</a>
+</h4>
+<ol>
+<li><strong>Tokenization</strong> – breaking down text into words or sub-words.</li>
+<li><strong>ID Assignment</strong> – map each token to an integer.</li>
+<li><strong>One-hot Encoding</strong> – (optional) binary sparse representation.</li>
+<li><strong>Embedding</strong> – transform to dense semantic vectors.</li>
+</ol>
+<blockquote>
+<p>At this point, we can ask: <em>what are the key algorithms that power word-level embeddings?</em></p></blockquote>
+<hr>
+<h3 id="62-word-embeddings">
+  6.2 Word Embeddings
+  <a class="anchor" href="#62-word-embeddings">#</a>
+</h3>
+<h4 id="algorithms">
+  Algorithms:
+  <a class="anchor" href="#algorithms">#</a>
+</h4>
+<ul>
+<li><strong>Word2Vec (CBOW &amp; Skip-Gram)</strong> – local word context.</li>
+<li><strong>GloVe</strong> – global word co-occurrence statistics.</li>
+<li><strong>SWIVEL</strong> – fast, distributed word embedding training using matrix factorization.</li>
+</ul>
+<blockquote>
+<p>Question now becomes: <em>how do we embed entire documents, not just words?</em></p></blockquote>
+<hr>
+<h3 id="63-document-embeddings">
+  6.3 Document Embeddings
+  <a class="anchor" href="#63-document-embeddings">#</a>
+</h3>
+<p>Two main approaches:</p>
+<ul>
+<li><strong>Shallow (BoW-based):</strong> TF-IDF, LSA, LDA</li>
+<li><strong>Neural (Doc2Vec):</strong> learns document-specific vector plus word vectors</li>
+</ul>
+<blockquote>
+<p>These methods evolve with the rise of deeper neural models—let&rsquo;s go there next.</p></blockquote>
+<hr>
+<h2 id="7-pretrained-language-models">
+  7. Pretrained Language Models
+  <a class="anchor" href="#7-pretrained-language-models">#</a>
+</h2>
+<h3 id="71-deep-embedding-architectures">
+  7.1 Deep Embedding Architectures
+  <a class="anchor" href="#71-deep-embedding-architectures">#</a>
+</h3>
+<ul>
+<li><strong>BERT:</strong> Contextual embeddings using transformers + MLM objective.</li>
+<li><strong>Derived Models:</strong> Sentence-BERT, SimCSE, GTR, Sentence-T5</li>
+<li><strong>Multi-vector Models:</strong> ColBERT, XTR, Matryoshka</li>
+</ul>
+<blockquote>
+<p>These models power modern search and retrieval tasks—and they’re integrated into platforms like Vertex AI.</p></blockquote>
+<hr>
+<h3 id="72-embedding-with-vertex-ai--tensorflow">
+  7.2 Embedding with Vertex AI &amp; TensorFlow
+  <a class="anchor" href="#72-embedding-with-vertex-ai--tensorflow">#</a>
+</h3>
+<p>You can:</p>
+<ul>
+<li>Embed using <code>TextEmbeddingModel</code> from Vertex AI</li>
+<li>Use TensorFlow Hub layers (like Sentence-T5)</li>
+<li>Embed directly inside <code>tf.data.Dataset</code> pipelines</li>
+<li>Train downstream classifiers with Keras</li>
+</ul>
+<blockquote>
+<p>But text isn’t the only modality—what about images and multimodal documents?</p></blockquote>
+<hr>
+<h2 id="8-image-and-multimodal-embeddings">
+  8. Image and Multimodal Embeddings
+  <a class="anchor" href="#8-image-and-multimodal-embeddings">#</a>
+</h2>
+<h3 id="81-image-embeddings">
+  8.1 Image Embeddings
+  <a class="anchor" href="#81-image-embeddings">#</a>
+</h3>
+<p>Use penultimate layers of CNNs or ViTs trained on tasks like ImageNet. These capture discriminative features useful for retrieval or classification.</p>
+<h3 id="82-multimodal-embeddings">
+  8.2 Multimodal Embeddings
+  <a class="anchor" href="#82-multimodal-embeddings">#</a>
+</h3>
+<p>Combine embeddings of text + image into a shared vector space. Example: <strong>ColPali</strong> enables retrieval on web-like image-text documents <em>without OCR</em>.</p>
+<blockquote>
+<p>Enables use cases like searching documents, screenshots, or slides based on text queries.</p></blockquote>
+<hr>
+<h1 id="-done-day-2-embeddings--vector-stores--full-cot-summary">
+  ✅ Done: Day-2 Embeddings &amp; Vector Stores – Full CoT Summary
+  <a class="anchor" href="#-done-day-2-embeddings--vector-stores--full-cot-summary">#</a>
+</h1>
+<h2 id="9-structured-and-graph-data-embeddings">
+  9. Structured and Graph Data Embeddings
+  <a class="anchor" href="#9-structured-and-graph-data-embeddings">#</a>
+</h2>
+<h3 id="91-structured-data">
+  9.1 Structured Data
+  <a class="anchor" href="#91-structured-data">#</a>
+</h3>
+<h4 id="general-structured-data">
+  General Structured Data:
+  <a class="anchor" href="#general-structured-data">#</a>
+</h4>
+<ul>
+<li>Tables with fixed schema (like databases)</li>
+<li>Use dimensionality reduction (e.g., PCA) to embed rows</li>
+<li>Useful for tasks like anomaly detection and classification</li>
+</ul>
+<h4 id="user-item-data">
+  User-Item Data:
+  <a class="anchor" href="#user-item-data">#</a>
+</h4>
+<ul>
+<li>Embeddings for users + items (e.g., products) based on interaction data</li>
+<li>Key for recommender systems</li>
+<li>Often combined with unstructured data (e.g., images of products)</li>
+</ul>
+<hr>
+<h3 id="92-graph-embeddings">
+  9.2 Graph Embeddings
+  <a class="anchor" href="#92-graph-embeddings">#</a>
+</h3>
+<ul>
+<li>Capture semantic + relational data</li>
+<li>Embed both node features and their neighborhood info</li>
+<li>Applications: link prediction, recommendation, node classification</li>
+<li>Algorithms: DeepWalk, Node2Vec, GraphSAGE, LINE</li>
+</ul>
+<hr>
+<h2 id="10-embedding-model-training">
+  10. Embedding Model Training
+  <a class="anchor" href="#10-embedding-model-training">#</a>
+</h2>
+<ul>
+<li><strong>Dual encoder architecture</strong> (e.g., query/document towers)</li>
+<li><strong>Contrastive loss</strong> pulls similar items together</li>
+<li>Fine-tuning via labeled, synthetic, or distilled data</li>
+<li>Embedding can be frozen or jointly trained with downstream layers</li>
+<li>Tools: Vertex AI, TensorFlow Hub</li>
+</ul>
+<hr>
+<h2 id="11-vector-search-essentials">
+  11. Vector Search Essentials
+  <a class="anchor" href="#11-vector-search-essentials">#</a>
+</h2>
+<ul>
+<li><strong>Why Vector Search?</strong> Traditional keyword search fails for semantic similarity</li>
+<li><strong>How it works:</strong> Embed everything into vector space, then match query via similarity</li>
+<li><strong>Metrics:</strong> Cosine similarity, Euclidean distance, Dot product</li>
+</ul>
+<hr>
+<h2 id="12-ann-search-techniques">
+  12. ANN Search Techniques
+  <a class="anchor" href="#12-ann-search-techniques">#</a>
+</h2>
+<h3 id="121-lsh--trees">
+  12.1 LSH &amp; Trees
+  <a class="anchor" href="#121-lsh--trees">#</a>
+</h3>
+<ul>
+<li><strong>Locality Sensitive Hashing (LSH):</strong> Groups similar vectors into buckets</li>
+<li><strong>KD-Tree / Ball Tree:</strong> Use dimensions or radial splits for fast nearest neighbor search</li>
+<li><strong>Tradeoffs:</strong> Balance speed, recall, and false positives</li>
+</ul>
+<h3 id="122-hnsw-hierarchical-navigable-small-world">
+  12.2 HNSW (Hierarchical Navigable Small World)
+  <a class="anchor" href="#122-hnsw-hierarchical-navigable-small-world">#</a>
+</h3>
+<ul>
+<li>Multi-layer proximity graph</li>
+<li>Top-down greedy search</li>
+<li>Used in FAISS, scales well with high recall</li>
+</ul>
+<hr>
+<h2 id="13-vertex-ai-vector-search--rag">
+  13. Vertex AI Vector Search &amp; RAG
+  <a class="anchor" href="#13-vertex-ai-vector-search--rag">#</a>
+</h2>
+<ul>
+<li><strong>Create and deploy ANN index</strong></li>
+<li><strong>Search and retrieve vectors</strong> for LLM prompt construction</li>
+<li>Use with LangChain + Gemini/LLMs for context-grounded responses</li>
+</ul>
+<hr>
+<h2 id="14-scann-scalable-nearest-neighbor-search">
+  14. ScaNN (Scalable Nearest Neighbor Search)
+  <a class="anchor" href="#14-scann-scalable-nearest-neighbor-search">#</a>
+</h2>
+<ul>
+<li>Google’s ANN library</li>
+<li>Combines clustering + quantization + reranking</li>
+<li>Optimized for large-scale, high-speed semantic search</li>
+<li>Used internally at Google and exposed via Vertex AI &amp; BigQuery</li>
+</ul>
+<hr>
+<h1 id="-done-day-2-embeddings--vector-stores--full-cot-summary-final-part">
+  ✅ Done: Day-2 Embeddings &amp; Vector Stores – Full CoT Summary (Final Part)
+  <a class="anchor" href="#-done-day-2-embeddings--vector-stores--full-cot-summary-final-part">#</a>
+</h1>
+<h2 id="15-tensorflow-recommenders--scann">
+  15. TensorFlow Recommenders + ScaNN
+  <a class="anchor" href="#15-tensorflow-recommenders--scann">#</a>
+</h2>
+<ul>
+<li>Use <code>tfrs.layers.factorized_top_k.ScaNN</code> for ANN over embedding tensors.</li>
+<li>Distance metrics like dot product enable fast similarity search.</li>
+<li>Embeddings must be structured as TensorFlow Datasets.</li>
+</ul>
+<hr>
+<h2 id="16-vector-databases--hybrid-search">
+  16. Vector Databases &amp; Hybrid Search
+  <a class="anchor" href="#16-vector-databases--hybrid-search">#</a>
+</h2>
+<p>Vector DBs combine:</p>
+<ol>
+<li>Semantic search (via ANN on embeddings)</li>
+<li>Traditional search (via keyword filters)</li>
+</ol>
+<p>Popular tools:</p>
+<ul>
+<li><strong>Vertex AI Vector Search</strong> (ScaNN)</li>
+<li><strong>AlloyDB / Postgres + pgvector</strong></li>
+<li><strong>Pinecone</strong>, <strong>Weaviate</strong>, <strong>ChromaDB</strong></li>
+</ul>
+<hr>
+<h2 id="17-operational-considerations">
+  17. Operational Considerations
+  <a class="anchor" href="#17-operational-considerations">#</a>
+</h2>
+<ul>
+<li>Embeddings can drift → model/version control required</li>
+<li>Hybrid strategies may be needed for domain-specific lookups (e.g., combining keyword and vector search)</li>
+<li>Use OLTP DBs for frequent updates; OLAP for batch analytical workloads</li>
+<li>Important to balance freshness, accuracy, compute cost</li>
+</ul>
+<hr>
+<h2 id="18-application-use-cases">
+  18. Application Use Cases
+  <a class="anchor" href="#18-application-use-cases">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Task</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Retrieval</td>
+          <td>Semantic search, Q&amp;A, Recommenders</td>
+      </tr>
+      <tr>
+          <td>Semantic Text Similarity</td>
+          <td>Paraphrase detection, duplicate detection, etc.</td>
+      </tr>
+      <tr>
+          <td>Classification</td>
+          <td>Binary, multiclass, multilabel tasks</td>
+      </tr>
+      <tr>
+          <td>Clustering</td>
+          <td>Group similar items</td>
+      </tr>
+      <tr>
+          <td>Reranking</td>
+          <td>Sort results based on contextual relevance</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="19-rag-retrieval-augmented-generation">
+  19. RAG (Retrieval-Augmented Generation)
+  <a class="anchor" href="#19-rag-retrieval-augmented-generation">#</a>
+</h2>
+<ul>
+<li>Retrieve relevant chunks → augment prompt → generate response</li>
+<li>Mitigates hallucinations by grounding answers in source data</li>
+<li>Vertex AI + LangChain allows end-to-end implementation</li>
+<li>Example: Deploy ANN index, use <code>RetrievalQA</code>, and include source citations</li>
+</ul>
+<hr>
+<h2 id="20-summary">
+  20. Summary
+  <a class="anchor" href="#20-summary">#</a>
+</h2>
+<ul>
+<li>Choose embedding model based on modality, domain, and use case</li>
+<li>Use managed vector DBs for scalability and security</li>
+<li>Fine-tune if necessary, especially when data distribution shifts</li>
+<li>Combine semantic and syntactic search when precision is critical</li>
+<li>Core applications include Search, Recommendations, RAG, and Anomaly Detection</li>
+</ul>
+<hr>
+<h1 id="-done-day-2-embeddings--vector-stores--final-cot-summary-parts-14">
+  ✅ Done: Day-2 Embeddings &amp; Vector Stores – Final CoT Summary (Parts 1–4)
+  <a class="anchor" href="#-done-day-2-embeddings--vector-stores--final-cot-summary-parts-14">#</a>
+</h1>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#day-2-embeddings--vector-stores--cot-summary">Day-2: Embeddings &amp; Vector Stores – CoT Summary</a>
+      <ul>
+        <li><a href="#1-introduction-to-embeddings">1. Introduction to Embeddings</a></li>
+        <li><a href="#2-the-power-of-embeddings">2. The Power of Embeddings</a></li>
+        <li><a href="#3-evaluating-embedding-quality">3. Evaluating Embedding Quality</a></li>
+        <li><a href="#4-embeddings-in-action">4. Embeddings in Action</a>
+          <ul>
+            <li><a href="#41-rag-based-search-systems">4.1 RAG-Based Search Systems</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-real-world-example">5. Real-World Example</a>
+          <ul>
+            <li><a href="#51-semantic-search-with-code">5.1 Semantic Search with Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-types-of-embeddings">6. Types of Embeddings</a>
+          <ul>
+            <li><a href="#61-text-embeddings">6.1 Text Embeddings</a></li>
+            <li><a href="#62-word-embeddings">6.2 Word Embeddings</a></li>
+            <li><a href="#63-document-embeddings">6.3 Document Embeddings</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-pretrained-language-models">7. Pretrained Language Models</a>
+          <ul>
+            <li><a href="#71-deep-embedding-architectures">7.1 Deep Embedding Architectures</a></li>
+            <li><a href="#72-embedding-with-vertex-ai--tensorflow">7.2 Embedding with Vertex AI &amp; TensorFlow</a></li>
+          </ul>
+        </li>
+        <li><a href="#8-image-and-multimodal-embeddings">8. Image and Multimodal Embeddings</a>
+          <ul>
+            <li><a href="#81-image-embeddings">8.1 Image Embeddings</a></li>
+            <li><a href="#82-multimodal-embeddings">8.2 Multimodal Embeddings</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-2-embeddings--vector-stores--full-cot-summary">✅ Done: Day-2 Embeddings &amp; Vector Stores – Full CoT Summary</a>
+      <ul>
+        <li><a href="#9-structured-and-graph-data-embeddings">9. Structured and Graph Data Embeddings</a>
+          <ul>
+            <li><a href="#91-structured-data">9.1 Structured Data</a></li>
+            <li><a href="#92-graph-embeddings">9.2 Graph Embeddings</a></li>
+          </ul>
+        </li>
+        <li><a href="#10-embedding-model-training">10. Embedding Model Training</a></li>
+        <li><a href="#11-vector-search-essentials">11. Vector Search Essentials</a></li>
+        <li><a href="#12-ann-search-techniques">12. ANN Search Techniques</a>
+          <ul>
+            <li><a href="#121-lsh--trees">12.1 LSH &amp; Trees</a></li>
+            <li><a href="#122-hnsw-hierarchical-navigable-small-world">12.2 HNSW (Hierarchical Navigable Small World)</a></li>
+          </ul>
+        </li>
+        <li><a href="#13-vertex-ai-vector-search--rag">13. Vertex AI Vector Search &amp; RAG</a></li>
+        <li><a href="#14-scann-scalable-nearest-neighbor-search">14. ScaNN (Scalable Nearest Neighbor Search)</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-2-embeddings--vector-stores--full-cot-summary-final-part">✅ Done: Day-2 Embeddings &amp; Vector Stores – Full CoT Summary (Final Part)</a>
+      <ul>
+        <li><a href="#15-tensorflow-recommenders--scann">15. TensorFlow Recommenders + ScaNN</a></li>
+        <li><a href="#16-vector-databases--hybrid-search">16. Vector Databases &amp; Hybrid Search</a></li>
+        <li><a href="#17-operational-considerations">17. Operational Considerations</a></li>
+        <li><a href="#18-application-use-cases">18. Application Use Cases</a></li>
+        <li><a href="#19-rag-retrieval-augmented-generation">19. RAG (Retrieval-Augmented Generation)</a></li>
+        <li><a href="#20-summary">20. Summary</a></li>
+      </ul>
+    </li>
+    <li><a href="#-done-day-2-embeddings--vector-stores--final-cot-summary-parts-14">✅ Done: Day-2 Embeddings &amp; Vector Stores – Final CoT Summary (Parts 1–4)</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
