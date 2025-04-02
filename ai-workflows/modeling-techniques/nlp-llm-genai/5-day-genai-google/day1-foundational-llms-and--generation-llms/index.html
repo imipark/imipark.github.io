@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Day1: Foundational LLMs &amp; Text Generation
+  #
+
+
+  Day1-1: LLMs
+  #
+
+
+  1. Why Language Models Matter
+  #
+
+We start with the need for understanding and generating human language. Traditional NLP systems were narrow, but Large Language Models (LLMs) offer general-purpose capabilities like translation, Q&amp;A, and summarization—all without explicit task-specific programming.
+
+This naturally leads to the question: how do LLMs work under the hood?
+
+
+  2. What Powers LLMs: The Transformer
+  #
+
+The Transformer is the core architecture enabling LLMs. Unlike RNNs that process data sequentially, Transformers handle inputs in parallel using self-attention, allowing them to model long-range dependencies more efficiently and scale training.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/day1-foundational-llms-and--generation-llms/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="Day1: Foundational LLMs &amp; Text Generation # Day1-1: LLMs # 1. Why Language Models Matter # We start with the need for understanding and generating human language. Traditional NLP systems were narrow, but Large Language Models (LLMs) offer general-purpose capabilities like translation, Q&amp;A, and summarization—all without explicit task-specific programming.
+This naturally leads to the question: how do LLMs work under the hood?
+2. What Powers LLMs: The Transformer # The Transformer is the core architecture enabling LLMs. Unlike RNNs that process data sequentially, Transformers handle inputs in parallel using self-attention, allowing them to model long-range dependencies more efficiently and scale training.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Day1 Foundational Llms and Generation Llms | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/day1-foundational-llms-and--generation-llms/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.8b45f3df868efd727ccdc0a9a8a74f13ae324410885e92944fb081bdcf82d8c3.js" integrity="sha256-i0Xz34aO/XJ8zcCpqKdPE64yRBCIXpKUT7CBvc&#43;C2MM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-afbb7d0e15883efe1045c614f150a446" class="toggle"  />
+    <label for="section-afbb7d0e15883efe1045c614f150a446" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-medicine/" class="">AI in Medicine</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">╰──Ch4. EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">╰──Ch6. ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff2d69858aecd394d2b4219aa1c7867" class="toggle" checked />
+    <label for="section-cff2d69858aecd394d2b4219aa1c7867" class="flex justify-between">
+      <a href="/ai-workflows/modeling-techniques/" class="">Modeling Techniques</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/computer-vision/" class="">Computer Vision</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/" class="">NLP/LLM/GenAI</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/" class="">5-Day Gen AI Intensive Course with Google Learn Guide</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/foundational_llms_chain_of_thought_hugo_complete/" class="">Foundational LLMs &amp; Text Generation – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/day1-foundational-llms-and--generation-llms/" class="active">Day1 Foundational Llms and Generation Llms</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fbeb9803a78c32a66a4e8222ff25bc8" class="toggle"  />
+    <label for="section-3fbeb9803a78c32a66a4e8222ff25bc8" class="flex justify-between">
+      <a href="/ai-workflows/engineering/" class="">AI Engineering</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/engineering/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d035664fd2085c43ba4844188502144" class="toggle"  />
+    <label for="section-7d035664fd2085c43ba4844188502144" class="flex justify-between">
+      <a href="/use_cases/" class="">Use Cases</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Day1 Foundational Llms and Generation Llms</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#day1-foundational-llms--text-generation">Day1: Foundational LLMs &amp; Text Generation</a>
+      <ul>
+        <li><a href="#day1-1-llms">Day1-1: LLMs</a>
+          <ul>
+            <li><a href="#1-why-language-models-matter">1. Why Language Models Matter</a></li>
+            <li><a href="#2-what-powers-llms-the-transformer">2. What Powers LLMs: The Transformer</a></li>
+            <li><a href="#3-input-preparation--embedding">3. Input Preparation &amp; Embedding</a></li>
+            <li><a href="#4-self-attention-and-multi-head-attention">4. Self-Attention and Multi-Head Attention</a></li>
+            <li><a href="#5-layer-normalization-and-residual-connections">5. Layer Normalization and Residual Connections</a></li>
+            <li><a href="#6-feedforward-layers">6. Feedforward Layers</a></li>
+            <li><a href="#7-encoder-decoder-architecture">7. Encoder-Decoder Architecture</a></li>
+            <li><a href="#8-mixture-of-experts-moe">8. Mixture of Experts (MoE)</a></li>
+            <li><a href="#9-building-reasoning-into-llms">9. Building Reasoning into LLMs</a></li>
+            <li><a href="#10-training-the-transformer">10. Training the Transformer</a></li>
+            <li><a href="#11-model-specific-training-strategies">11. Model-Specific Training Strategies</a></li>
+            <li><a href="#-closing-the-loop">✅ Closing the Loop</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="day1-foundational-llms--text-generation">
+  Day1: Foundational LLMs &amp; Text Generation
+  <a class="anchor" href="#day1-foundational-llms--text-generation">#</a>
+</h1>
+<h2 id="day1-1-llms">
+  Day1-1: LLMs
+  <a class="anchor" href="#day1-1-llms">#</a>
+</h2>
+<h3 id="1-why-language-models-matter">
+  1. Why Language Models Matter
+  <a class="anchor" href="#1-why-language-models-matter">#</a>
+</h3>
+<p>We start with the <em>need for understanding and generating human language</em>. Traditional NLP systems were narrow, but Large Language Models (LLMs) offer general-purpose capabilities like translation, Q&amp;A, and summarization—all without explicit task-specific programming.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do LLMs work under the hood?</strong></p></blockquote>
+<hr>
+<h3 id="2-what-powers-llms-the-transformer">
+  2. What Powers LLMs: The Transformer
+  <a class="anchor" href="#2-what-powers-llms-the-transformer">#</a>
+</h3>
+<p>The Transformer is the core architecture enabling LLMs. Unlike RNNs that process data sequentially, Transformers handle inputs in parallel using <strong>self-attention</strong>, allowing them to model long-range dependencies more efficiently and scale training.</p>
+<blockquote>
+<p>But to understand how Transformers process input, we need to examine how input data is prepared.</p></blockquote>
+<hr>
+<h3 id="3-input-preparation--embedding">
+  3. Input Preparation &amp; Embedding
+  <a class="anchor" href="#3-input-preparation--embedding">#</a>
+</h3>
+<p>Before data enters the transformer, it’s tokenized, embedded into high-dimensional vectors, and enhanced with <strong>positional encodings</strong> to preserve word order. These embeddings become the input that feeds into attention mechanisms.</p>
+<blockquote>
+<p>So, once we have these embeddings—<strong>how does the model understand relationships within the input?</strong></p></blockquote>
+<hr>
+<h3 id="4-self-attention-and-multi-head-attention">
+  4. Self-Attention and Multi-Head Attention
+  <a class="anchor" href="#4-self-attention-and-multi-head-attention">#</a>
+</h3>
+<p>The <strong>self-attention</strong> mechanism calculates how each word relates to every other word. Multi-head attention expands on this by letting the model attend to different relationships in parallel (e.g., syntax, co-reference). This enables rich, contextual understanding.</p>
+<blockquote>
+<p>To manage this complexity across layers, the architecture needs stabilization techniques.</p></blockquote>
+<hr>
+<h3 id="5-layer-normalization-and-residual-connections">
+  5. Layer Normalization and Residual Connections
+  <a class="anchor" href="#5-layer-normalization-and-residual-connections">#</a>
+</h3>
+<p>To avoid training instability and gradient issues, Transformers use <strong>residual connections</strong> and <strong>layer normalization</strong>, ensuring smooth learning across deep layers.</p>
+<blockquote>
+<p>After stabilizing, each layer further transforms the data with an extra module…</p></blockquote>
+<hr>
+<h3 id="6-feedforward-layers">
+  6. Feedforward Layers
+  <a class="anchor" href="#6-feedforward-layers">#</a>
+</h3>
+<p>Each token&rsquo;s representation is independently refined using <strong>position-wise feedforward networks</strong> that add depth and non-linearity—enhancing the model’s ability to capture abstract patterns.</p>
+<blockquote>
+<p>With these components, we now have building blocks for the full Transformer structure.</p></blockquote>
+<hr>
+<h3 id="7-encoder-decoder-architecture">
+  7. Encoder-Decoder Architecture
+  <a class="anchor" href="#7-encoder-decoder-architecture">#</a>
+</h3>
+<p>In the original Transformer, the <strong>encoder</strong> turns input text into a contextual representation, and the <strong>decoder</strong> autoregressively generates output using that context. However, modern LLMs like GPT simplify this by using <strong>decoder-only</strong> models for direct generation.</p>
+<blockquote>
+<p>As LLMs scale, new architectures emerge to improve efficiency and specialization.</p></blockquote>
+<hr>
+<h3 id="8-mixture-of-experts-moe">
+  8. Mixture of Experts (MoE)
+  <a class="anchor" href="#8-mixture-of-experts-moe">#</a>
+</h3>
+<p>MoE architectures use <strong>specialized sub-models</strong> (experts) activated selectively via a gating mechanism. This allows LLMs to scale massively while using only a portion of the model per input—enabling high performance with lower cost.</p>
+<blockquote>
+<p>But performance isn’t just about architecture—<strong>reasoning capabilities</strong> are equally vital.</p></blockquote>
+<hr>
+<h3 id="9-building-reasoning-into-llms">
+  9. Building Reasoning into LLMs
+  <a class="anchor" href="#9-building-reasoning-into-llms">#</a>
+</h3>
+<p>Reasoning is enabled via multiple strategies:</p>
+<ul>
+<li><strong>Chain-of-Thought prompting</strong>: Guide the model to generate intermediate steps.</li>
+<li><strong>Tree-of-Thoughts</strong>: Explore reasoning paths via branching.</li>
+<li><strong>Least-to-Most</strong>: Build up from simpler subproblems.</li>
+<li><strong>Fine-tuning on reasoning datasets</strong> and <strong>RLHF</strong> further optimize for correctness and coherence.</li>
+</ul>
+<blockquote>
+<p>To train these reasoning patterns, we need carefully prepared data and efficient training pipelines.</p></blockquote>
+<hr>
+<h3 id="10-training-the-transformer">
+  10. Training the Transformer
+  <a class="anchor" href="#10-training-the-transformer">#</a>
+</h3>
+<p>Training involves:</p>
+<ul>
+<li><strong>Data preparation</strong>: Clean, tokenize, and build vocabulary.</li>
+<li><strong>Loss calculation</strong>: Compare outputs to targets using cross-entropy.</li>
+<li><strong>Backpropagation</strong>: Update weights with optimizers (e.g., Adam).</li>
+</ul>
+<blockquote>
+<p>Depending on the architecture, training objectives differ.</p></blockquote>
+<hr>
+<h3 id="11-model-specific-training-strategies">
+  11. Model-Specific Training Strategies
+  <a class="anchor" href="#11-model-specific-training-strategies">#</a>
+</h3>
+<ul>
+<li><strong>Decoder-only (e.g., GPT)</strong>: Predict next token from prior sequence.</li>
+<li><strong>Encoder-only (e.g., BERT)</strong>: Mask tokens and reconstruct.</li>
+<li><strong>Encoder-decoder (e.g., T5)</strong>: Learn input-to-output mapping for tasks like translation or summarization.</li>
+</ul>
+<p>Training quality is influenced by <strong>context length</strong>—longer context allows better modeling of dependencies, but at higher compute cost.</p>
+<hr>
+<h3 id="-closing-the-loop">
+  ✅ Closing the Loop
+  <a class="anchor" href="#-closing-the-loop">#</a>
+</h3>
+<p>The document sets a <strong>complete foundation</strong>—from <em>why</em> LLMs matter, to <em>how</em> they work, to <em>how</em> they are trained and made more intelligent through architectures like MoE and reasoning techniques. It ends by showing how these foundational elements culminate in real-world applications: from summarization to code generation to multimodal AI.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#day1-foundational-llms--text-generation">Day1: Foundational LLMs &amp; Text Generation</a>
+      <ul>
+        <li><a href="#day1-1-llms">Day1-1: LLMs</a>
+          <ul>
+            <li><a href="#1-why-language-models-matter">1. Why Language Models Matter</a></li>
+            <li><a href="#2-what-powers-llms-the-transformer">2. What Powers LLMs: The Transformer</a></li>
+            <li><a href="#3-input-preparation--embedding">3. Input Preparation &amp; Embedding</a></li>
+            <li><a href="#4-self-attention-and-multi-head-attention">4. Self-Attention and Multi-Head Attention</a></li>
+            <li><a href="#5-layer-normalization-and-residual-connections">5. Layer Normalization and Residual Connections</a></li>
+            <li><a href="#6-feedforward-layers">6. Feedforward Layers</a></li>
+            <li><a href="#7-encoder-decoder-architecture">7. Encoder-Decoder Architecture</a></li>
+            <li><a href="#8-mixture-of-experts-moe">8. Mixture of Experts (MoE)</a></li>
+            <li><a href="#9-building-reasoning-into-llms">9. Building Reasoning into LLMs</a></li>
+            <li><a href="#10-training-the-transformer">10. Training the Transformer</a></li>
+            <li><a href="#11-model-specific-training-strategies">11. Model-Specific Training Strategies</a></li>
+            <li><a href="#-closing-the-loop">✅ Closing the Loop</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

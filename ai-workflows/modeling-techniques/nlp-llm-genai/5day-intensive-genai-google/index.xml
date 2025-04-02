@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>5-Day Gen AI Intensive Course with Google Learn Guide on AI in Healthcare</title>
+    <link>http://localhost:1313/ai-workflows/modeling-techniques/nlp-llm-genai/5day-intensive-genai-google/</link>
+    <description>Recent content in 5-Day Gen AI Intensive Course with Google Learn Guide on AI in Healthcare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/ai-workflows/modeling-techniques/nlp-llm-genai/5day-intensive-genai-google/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/ai-workflows/modeling-techniques/nlp-llm-genai/5day-intensive-genai-google/day1-foundational-llms-and--generation-llms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ai-workflows/modeling-techniques/nlp-llm-genai/5day-intensive-genai-google/day1-foundational-llms-and--generation-llms/</guid>
+      <description>&lt;h1 id=&#34;day1-foundational-llms--text-generation&#34;&gt;&#xA;  Day1: Foundational LLMs &amp;amp; Text Generation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#day1-foundational-llms--text-generation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;day1-1-llms&#34;&gt;&#xA;  Day1-1: LLMs&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#day1-1-llms&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-why-language-models-matter&#34;&gt;&#xA;  1. Why Language Models Matter&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-why-language-models-matter&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;We start with the &lt;em&gt;need for understanding and generating human language&lt;/em&gt;. Traditional NLP systems were narrow, but Large Language Models (LLMs) offer general-purpose capabilities like translation, Q&amp;amp;A, and summarization—all without explicit task-specific programming.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;This naturally leads to the question: &lt;strong&gt;how do LLMs work under the hood?&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;2-what-powers-llms-the-transformer&#34;&gt;&#xA;  2. What Powers LLMs: The Transformer&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#2-what-powers-llms-the-transformer&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;The Transformer is the core architecture enabling LLMs. Unlike RNNs that process data sequentially, Transformers handle inputs in parallel using &lt;strong&gt;self-attention&lt;/strong&gt;, allowing them to model long-range dependencies more efficiently and scale training.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

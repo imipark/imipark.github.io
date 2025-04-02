@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  5-Day Gen AI Intensive Course with Google – Structured Learning Guide
+  #
+
+This self-paced course offers a comprehensive deep dive into Generative AI, LLMs, agents, MLOps, and domain-specific models. Below is an organized breakdown by theme: whitepapers, code labs, tools, and supplemental resources.
+
+
+  Day 1 – Foundational LLMs &amp; Prompt Engineering
+  #
+
+Topics:
+
+Evolution of LLMs: Transformers, Fine-tuning, Inference acceleration
+Prompt engineering techniques
+
+Whitepapers:
+
+Foundational Large Language Models &amp; Text Generation
+Prompt Engineering
+
+Code Labs:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/genai_intensive_course_guide/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="5-Day Gen AI Intensive Course with Google – Structured Learning Guide # This self-paced course offers a comprehensive deep dive into Generative AI, LLMs, agents, MLOps, and domain-specific models. Below is an organized breakdown by theme: whitepapers, code labs, tools, and supplemental resources.
+Day 1 – Foundational LLMs &amp; Prompt Engineering # Topics:
+Evolution of LLMs: Transformers, Fine-tuning, Inference acceleration Prompt engineering techniques Whitepapers:
+Foundational Large Language Models &amp; Text Generation Prompt Engineering Code Labs:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Genai Intensive Course Guide | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/genai_intensive_course_guide/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.0542d45d4871ad9e35afe26c83230ef2f456c48b55bdf38c0a5fc06f3af85d26.js" integrity="sha256-BULUXUhxrZ41r&#43;JsgyMO8vRWxItVvfOMCl/Abzr4XSY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-afbb7d0e15883efe1045c614f150a446" class="toggle"  />
+    <label for="section-afbb7d0e15883efe1045c614f150a446" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-medicine/" class="">AI in Medicine</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">╰──Ch4. EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">╰──Ch6. ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff2d69858aecd394d2b4219aa1c7867" class="toggle" checked />
+    <label for="section-cff2d69858aecd394d2b4219aa1c7867" class="flex justify-between">
+      <a href="/ai-workflows/modeling-techniques/" class="">Modeling Techniques</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/computer-vision/" class="">Computer Vision</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/" class="">NLP/LLM/GenAI</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-58bf6d107e918adfdb1cece6776de741" class="toggle" checked />
+    <label for="section-58bf6d107e918adfdb1cece6776de741" class="flex justify-between">
+      <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/foundational_llms_chain_of_thought_hugo_complete/" class="">Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/modeling-techniques/nlp-llm-genai/5-day-genai-google/genai_intensive_course_guide/" class="active">Genai Intensive Course Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fbeb9803a78c32a66a4e8222ff25bc8" class="toggle"  />
+    <label for="section-3fbeb9803a78c32a66a4e8222ff25bc8" class="flex justify-between">
+      <a href="/ai-workflows/engineering/" class="">AI Engineering</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/engineering/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d035664fd2085c43ba4844188502144" class="toggle"  />
+    <label for="section-7d035664fd2085c43ba4844188502144" class="flex justify-between">
+      <a href="/use_cases/" class="">Use Cases</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Genai Intensive Course Guide</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#5-day-gen-ai-intensive-course-with-google--structured-learning-guide">5-Day Gen AI Intensive Course with Google – Structured Learning Guide</a>
+      <ul>
+        <li><a href="#day-1--foundational-llms--prompt-engineering">Day 1 – Foundational LLMs &amp; Prompt Engineering</a></li>
+        <li><a href="#day-2--embeddings-and-vector-storesdatabases">Day 2 – Embeddings and Vector Stores/Databases</a></li>
+        <li><a href="#day-3--generative-ai-agents">Day 3 – Generative AI Agents</a></li>
+        <li><a href="#day-4--domain-specific-llms">Day 4 – Domain-Specific LLMs</a></li>
+        <li><a href="#day-5--mlops-for-generative-ai">Day 5 – MLOps for Generative AI</a></li>
+        <li><a href="#bonus-assignment">Bonus Assignment</a></li>
+        <li><a href="#setup-and-prerequisites">Setup and Prerequisites</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="5-day-gen-ai-intensive-course-with-google--structured-learning-guide">
+  5-Day Gen AI Intensive Course with Google – Structured Learning Guide
+  <a class="anchor" href="#5-day-gen-ai-intensive-course-with-google--structured-learning-guide">#</a>
+</h1>
+<p>This self-paced course offers a comprehensive deep dive into Generative AI, LLMs, agents, MLOps, and domain-specific models. Below is an organized breakdown by theme: whitepapers, code labs, tools, and supplemental resources.</p>
+<hr>
+<h2 id="day-1--foundational-llms--prompt-engineering">
+  Day 1 – Foundational LLMs &amp; Prompt Engineering
+  <a class="anchor" href="#day-1--foundational-llms--prompt-engineering">#</a>
+</h2>
+<p><strong>Topics:</strong></p>
+<ul>
+<li>Evolution of LLMs: Transformers, Fine-tuning, Inference acceleration</li>
+<li>Prompt engineering techniques</li>
+</ul>
+<p><strong>Whitepapers:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/whitepaper-foundational-llm-and-text-generation">Foundational Large Language Models &amp; Text Generation</a></li>
+<li><a href="https://www.kaggle.com/whitepaper-prompt-engineering">Prompt Engineering</a></li>
+</ul>
+<p><strong>Code Labs:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/code/markishere/day-1-prompting">Day 1 Prompting Code Lab</a></li>
+</ul>
+<p><strong>Extra Reading:</strong></p>
+<ul>
+<li><a href="https://cloud.google.com/blog/products/ai-machine-learning/how-commerzbank-is-transforming-financial-advisory-workflows-with-gen-ai?e=48754805">Case Study: Financial Advisory with GenAI</a></li>
+</ul>
+<p><strong>Talk:</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=kpRyiJUUFxY">YouTube Livestream (Day 1)</a></li>
+</ul>
+<hr>
+<h2 id="day-2--embeddings-and-vector-storesdatabases">
+  Day 2 – Embeddings and Vector Stores/Databases
+  <a class="anchor" href="#day-2--embeddings-and-vector-storesdatabases">#</a>
+</h2>
+<p><strong>Topics:</strong></p>
+<ul>
+<li>Embeddings theory and use cases</li>
+<li>Vector search and RAG systems</li>
+</ul>
+<p><strong>Whitepaper:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/whitepaper-embeddings-and-vector-stores">Embeddings and Vector Stores</a></li>
+</ul>
+<p><strong>Code Labs:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/code/markishere/day-2-document-q-a-with-rag">Document Q&amp;A with RAG</a></li>
+<li><a href="https://www.kaggle.com/code/markishere/day-2-embeddings-and-similarity-scores">Text Similarity with Embeddings</a></li>
+<li><a href="https://www.kaggle.com/code/markishere/day-2-classifying-embeddings-with-keras">Keras Neural Classifier with Embeddings</a></li>
+</ul>
+<p><strong>Talk:</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=86GZC56rQCc">YouTube Livestream (Day 2)</a></li>
+</ul>
+<hr>
+<h2 id="day-3--generative-ai-agents">
+  Day 3 – Generative AI Agents
+  <a class="anchor" href="#day-3--generative-ai-agents">#</a>
+</h2>
+<p><strong>Topics:</strong></p>
+<ul>
+<li>Agent architecture and components</li>
+<li>Tool integration (SQL, LangGraph)</li>
+</ul>
+<p><strong>Whitepaper:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/whitepaper-agents">Generative AI Agents</a></li>
+</ul>
+<p><strong>Code Labs:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/code/markishere/day-3-function-calling-with-the-gemini-api">Function Calling with Gemini API</a></li>
+<li><a href="https://www.kaggle.com/code/markishere/day-3-building-an-agent-with-langgraph">LangGraph Agent for Café Orders</a></li>
+</ul>
+<p><strong>Extra Reading:</strong></p>
+<ul>
+<li><a href="https://cloud.google.com/blog/products/ai-machine-learning/regnology-automates-ticket-to-code-with-genai-on-vertex-ai?e=48754805">Case Study: Regulatory Ticket-to-Code Automation</a></li>
+</ul>
+<p><strong>Talk:</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=HQUtMWoTAD4">YouTube Livestream (Day 3)</a></li>
+</ul>
+<hr>
+<h2 id="day-4--domain-specific-llms">
+  Day 4 – Domain-Specific LLMs
+  <a class="anchor" href="#day-4--domain-specific-llms">#</a>
+</h2>
+<p><strong>Topics:</strong></p>
+<ul>
+<li>MedLM, SecLM, grounding with Google Search</li>
+<li>Fine-tuning Gemini for task-specific use</li>
+</ul>
+<p><strong>Whitepaper:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/whitepaper-solving-domains-specific-problems-using-llms">Solving Domain-Specific Problems Using LLMs</a></li>
+</ul>
+<p><strong>Code Labs:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/code/markishere/day-4-google-search-grounding">Grounding with Google Search</a></li>
+<li><a href="https://www.kaggle.com/code/markishere/day-4-fine-tuning-a-custom-model">Fine-Tune Gemini on Custom Data</a></li>
+</ul>
+<p><strong>Talk:</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=odvuLMJWUSU">YouTube Livestream (Day 4)</a></li>
+</ul>
+<hr>
+<h2 id="day-5--mlops-for-generative-ai">
+  Day 5 – MLOps for Generative AI
+  <a class="anchor" href="#day-5--mlops-for-generative-ai">#</a>
+</h2>
+<p><strong>Topics:</strong></p>
+<ul>
+<li>Productionizing GenAI with Vertex AI</li>
+<li>MLOps pipeline strategies</li>
+</ul>
+<p><strong>Whitepaper:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/whitepaper-operationalizing-generative-ai-on-vertex-ai-using-mlops">MLOps for Generative AI</a></li>
+</ul>
+<p><strong>Code Resource:</strong></p>
+<ul>
+<li><a href="https://goo.gle/e2e-gen-ai-app-starter-pack">End-to-End Gen AI App Starter Pack</a></li>
+</ul>
+<p><strong>Talk:</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=uCFW0i9xrBc">YouTube Livestream (Day 5)</a></li>
+</ul>
+<hr>
+<h2 id="bonus-assignment">
+  Bonus Assignment
+  <a class="anchor" href="#bonus-assignment">#</a>
+</h2>
+<p><strong>Extra Notebook:</strong></p>
+<ul>
+<li><a href="https://www.kaggle.com/code/markishere/bonus-day-extra-api-features-to-try/">Bonus Notebook – Advanced Gemini API Features</a></li>
+</ul>
+<p><strong>Feedback:</strong></p>
+<ul>
+<li><a href="https://forms.gle/PW7Cwr9G31oqZoW56">Outreach Form</a></li>
+</ul>
+<hr>
+<h2 id="setup-and-prerequisites">
+  Setup and Prerequisites
+  <a class="anchor" href="#setup-and-prerequisites">#</a>
+</h2>
+<ol>
+<li>
+<p><a href="https://www.kaggle.com/">Kaggle Account Setup</a></p>
+<ul>
+<li><a href="https://www.kaggle.com/docs/notebooks">Notebook Docs</a></li>
+<li><a href="https://www.kaggle.com/settings">Phone Verification</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://aistudio.google.com/">Google AI Studio Account</a></p>
+<ul>
+<li><a href="https://aistudio.google.com/app/apikey">API Key Setup</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://discord.gg/C8pKnH5K">Join Kaggle Discord</a></p>
+<ul>
+<li><a href="https://kaggle.com/discord/confirmation">Link Account</a></li>
+</ul>
+</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#5-day-gen-ai-intensive-course-with-google--structured-learning-guide">5-Day Gen AI Intensive Course with Google – Structured Learning Guide</a>
+      <ul>
+        <li><a href="#day-1--foundational-llms--prompt-engineering">Day 1 – Foundational LLMs &amp; Prompt Engineering</a></li>
+        <li><a href="#day-2--embeddings-and-vector-storesdatabases">Day 2 – Embeddings and Vector Stores/Databases</a></li>
+        <li><a href="#day-3--generative-ai-agents">Day 3 – Generative AI Agents</a></li>
+        <li><a href="#day-4--domain-specific-llms">Day 4 – Domain-Specific LLMs</a></li>
+        <li><a href="#day-5--mlops-for-generative-ai">Day 5 – MLOps for Generative AI</a></li>
+        <li><a href="#bonus-assignment">Bonus Assignment</a></li>
+        <li><a href="#setup-and-prerequisites">Setup and Prerequisites</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
