@@ -8,28 +8,24 @@
   #
 
 
-  Foundations of Prompt Engineering
+
+  Introduction &amp; Prompting Fundamentals
   #
 
 
-  1. Prompt engineering is for everyone
+  1. Why Prompt Engineering Matters
   #
 
+We start with the need for controlling LLM behavior. Although everyone can write prompts, crafting high-quality prompts is complex. The model, structure, tone, and context all affect the outcome. Prompt engineering is an iterative process requiring optimization and experimentation.
 
-The paper emphasizes that crafting prompts doesn&rsquo;t require being a data scientist or ML engineer. While anyone can write prompts, making them effective is a nuanced, iterative process influenced by word choice, structure, and configuration.
-
-  2. Why prompt engineering matters
-  #
-
-
-Because LLMs generate outputs based on probabilistic token predictions, poorly designed prompts can lead to vague or misleading results. Hence, optimizing prompts is crucial to extract accurate and relevant responses.">
+This naturally leads to the question: how do we guide LLMs effectively without retraining them?">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/">
   <meta property="og:site_name" content="AI in Healthcare">
   <meta property="og:title" content="AI in Healthcare">
-  <meta property="og:description" content="Day 1 – Prompt Engineering – CoT Summary # Foundations of Prompt Engineering # 1. Prompt engineering is for everyone # The paper emphasizes that crafting prompts doesn’t require being a data scientist or ML engineer. While anyone can write prompts, making them effective is a nuanced, iterative process influenced by word choice, structure, and configuration.
-2. Why prompt engineering matters # Because LLMs generate outputs based on probabilistic token predictions, poorly designed prompts can lead to vague or misleading results. Hence, optimizing prompts is crucial to extract accurate and relevant responses.">
+  <meta property="og:description" content="Day 1 – Prompt Engineering – CoT Summary # Introduction &amp; Prompting Fundamentals # 1. Why Prompt Engineering Matters # We start with the need for controlling LLM behavior. Although everyone can write prompts, crafting high-quality prompts is complex. The model, structure, tone, and context all affect the outcome. Prompt engineering is an iterative process requiring optimization and experimentation.
+This naturally leads to the question: how do we guide LLMs effectively without retraining them?">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="ai-workflows">
@@ -39,7 +35,7 @@ Because LLMs generate outputs based on probabilistic token predictions, poorly d
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.bfe5c508c6112bbe4cfdc096530434c5178b7fdc3be6c2e77bf066d861d1db43.js" integrity="sha256-v&#43;XFCMYRK75M/cCWUwQ0xReLf9w75sLne/Bm2GHR20M=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.167fac9824356d566d1ccc1d73a546b3bdde79b3ce708ee03faecf2b60fa5ad7.js" integrity="sha256-Fn&#43;smCQ1bVZtHMwdc6VGs73eebPOcI7gP67PK2D6Wtc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -856,136 +852,113 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#day-1--prompt-engineering--cot-summary">Day 1 – Prompt Engineering – CoT Summary</a>
       <ul>
-        <li><a href="#foundations-of-prompt-engineering">Foundations of Prompt Engineering</a>
+        <li><a href="#introduction--prompting-fundamentals">Introduction &amp; Prompting Fundamentals</a>
           <ul>
-            <li><a href="#1-prompt-engineering-is-for-everyone">1. Prompt engineering is for everyone</a></li>
-            <li><a href="#2-why-prompt-engineering-matters">2. Why prompt engineering matters</a></li>
-            <li><a href="#3-focus-on-direct-model-access">3. Focus on direct model access</a></li>
+            <li><a href="#1-why-prompt-engineering-matters">1. Why Prompt Engineering Matters</a></li>
+            <li><a href="#2-how-llms-predict-text">2. How LLMs Predict Text</a></li>
           </ul>
         </li>
         <li><a href="#llm-output-configuration">LLM Output Configuration</a>
           <ul>
-            <li><a href="#4-output-length-settings">4. Output length settings</a></li>
-            <li><a href="#5-prompt-design-implications">5. Prompt design implications</a></li>
-            <li><a href="#6-token-prediction-is-probabilistic">6. Token prediction is probabilistic</a></li>
+            <li><a href="#3-controlling-output-length">3. Controlling Output Length</a></li>
+            <li><a href="#4-temperature--controlling-randomness">4. Temperature – Controlling Randomness</a></li>
           </ul>
         </li>
-        <li><a href="#sampling-strategies">Sampling Strategies</a>
+        <li><a href="#sampling-techniques-top-k-and-top-p">Sampling Techniques: Top-K and Top-P</a>
           <ul>
-            <li><a href="#7-temperature-randomness-vs-determinism">7. Temperature: randomness vs determinism</a></li>
-            <li><a href="#8-top-k-sampling">8. Top-K sampling</a></li>
-            <li><a href="#9-top-p-nucleus-sampling">9. Top-P (nucleus) sampling</a></li>
+            <li><a href="#5-top-k-vs-top-p">5. Top-K vs. Top-P</a></li>
+            <li><a href="#6-putting-sampling-together">6. Putting Sampling Together</a></li>
           </ul>
         </li>
-        <li><a href="#coordinating-configuration-values">Coordinating Configuration Values</a>
+        <li><a href="#prompting-techniques">Prompting Techniques</a>
           <ul>
-            <li><a href="#10-interplay-of-settings">10. Interplay of settings</a></li>
-            <li><a href="#11-recommended-starter-values">11. Recommended starter values</a></li>
-            <li><a href="#12-common-failure-repetition-loops">12. Common failure: repetition loops</a></li>
+            <li><a href="#7-zero-shot-prompting">7. Zero-shot Prompting</a></li>
           </ul>
         </li>
-        <li><a href="#prompting-techniques-begin">Prompting Techniques Begin</a>
+        <li><a href="#prompting-techniques-continued">Prompting Techniques Continued</a>
           <ul>
-            <li><a href="#13-prompting-techniques-overview">13. Prompting techniques overview</a></li>
-            <li><a href="#14-zero-shot-prompting">14. Zero-shot prompting</a></li>
+            <li><a href="#8-one-shot-and-few-shot-prompting">8. One-shot and Few-shot Prompting</a></li>
+            <li><a href="#9-system-prompting">9. System Prompting</a></li>
+            <li><a href="#10-role-prompting">10. Role Prompting</a></li>
+            <li><a href="#11-contextual-prompting">11. Contextual Prompting</a></li>
           </ul>
         </li>
-        <li><a href="#prompting-techniques-continued">Prompting Techniques (Continued)</a>
+        <li><a href="#reasoning-techniques">Reasoning Techniques</a>
           <ul>
-            <li><a href="#15-zero-shot-prompting-example-and-logging">15. Zero-shot prompting example and logging</a></li>
-            <li><a href="#16-when-zero-shot-isnt-enough">16. When zero-shot isn’t enough</a></li>
-            <li><a href="#17-few-shot-prompting-example">17. Few-shot prompting example</a></li>
+            <li><a href="#12-step-back-prompting">12. Step-back Prompting</a></li>
           </ul>
         </li>
-        <li><a href="#system-contextual-and-role-prompting">System, Contextual, and Role Prompting</a>
+        <li><a href="#reasoning-techniques-continued">Reasoning Techniques Continued</a>
           <ul>
-            <li><a href="#18-differentiating-the-three-styles">18. Differentiating the three styles</a></li>
-            <li><a href="#19-system-prompting-in-action">19. System prompting in action</a></li>
-            <li><a href="#20-system-prompting-for-safety">20. System prompting for safety</a></li>
-            <li><a href="#21-role-prompting-definition-and-benefits">21. Role prompting definition and benefits</a></li>
-            <li><a href="#22-role-prompting-examples">22. Role prompting examples</a></li>
-            <li><a href="#23-style-templates">23. Style templates</a></li>
-            <li><a href="#24-contextual-prompting-example">24. Contextual prompting example</a></li>
+            <li><a href="#13-chain-of-thought-cot">13. Chain of Thought (CoT)</a></li>
+            <li><a href="#14-self-consistency">14. Self-Consistency</a></li>
           </ul>
         </li>
-        <li><a href="#step-back-prompting">Step-back Prompting</a>
+        <li><a href="#advanced-prompting-patterns">Advanced Prompting Patterns</a>
           <ul>
-            <li><a href="#25-step-back-prompting-concept">25. Step-back prompting concept</a></li>
+            <li><a href="#15-tree-of-thoughts-tot">15. Tree of Thoughts (ToT)</a></li>
+            <li><a href="#16-react-reason--act">16. ReAct (Reason + Act)</a></li>
           </ul>
         </li>
-        <li><a href="#step-back-chain-of-thought-and-advanced-prompting-techniques">Step-back, Chain-of-Thought, and Advanced Prompting Techniques</a>
+        <li><a href="#automating-prompt-engineering">Automating Prompt Engineering</a>
           <ul>
-            <li><a href="#26-step-back-prompting-example">26. Step-back prompting example</a></li>
-            <li><a href="#27-applying-step-back-for-storyline-quality">27. Applying step-back for storyline quality</a></li>
+            <li><a href="#17-automatic-prompt-engineering-ape">17. Automatic Prompt Engineering (APE)</a></li>
           </ul>
         </li>
-        <li><a href="#chain-of-thought-cot">Chain of Thought (CoT)</a>
+        <li><a href="#code-prompting-techniques">Code Prompting Techniques</a>
           <ul>
-            <li><a href="#28-chain-of-thought-introduction">28. Chain of Thought introduction</a></li>
-            <li><a href="#29-zero-shot-vs-cot-example">29. Zero-shot vs CoT example</a></li>
-            <li><a href="#30-few-shot-cot-for-reasoning-accuracy">30. Few-shot CoT for reasoning accuracy</a></li>
+            <li><a href="#18-prompts-for-writing-code">18. Prompts for Writing Code</a></li>
+            <li><a href="#19-prompts-for-explaining-code">19. Prompts for Explaining Code</a></li>
+            <li><a href="#20-prompts-for-translating-code">20. Prompts for Translating Code</a></li>
+            <li><a href="#21-prompts-for-debugging-and-reviewing-code">21. Prompts for Debugging and Reviewing Code</a></li>
           </ul>
         </li>
-        <li><a href="#self-consistency">Self-Consistency</a>
+        <li><a href="#other-techniques--best-practices">Other Techniques &amp; Best Practices</a>
           <ul>
-            <li><a href="#31-self-consistency-definition">31. Self-consistency definition</a></li>
-            <li><a href="#32-email-classification-example">32. Email classification example</a></li>
+            <li><a href="#22-multimodal-prompting">22. Multimodal Prompting</a></li>
+            <li><a href="#23-best-practice--provide-examples">23. Best Practice – Provide Examples</a></li>
           </ul>
         </li>
-        <li><a href="#tree-of-thoughts-tot">Tree of Thoughts (ToT)</a>
+        <li><a href="#best-practices-for-prompt-engineering">Best Practices for Prompt Engineering</a>
           <ul>
-            <li><a href="#33-tree-of-thoughts-overview">33. Tree of Thoughts overview</a></li>
+            <li><a href="#24-design-with-simplicity">24. Design with Simplicity</a></li>
+            <li><a href="#25-be-specific-about-output">25. Be Specific About Output</a></li>
+            <li><a href="#26-use-variables">26. Use Variables</a></li>
+            <li><a href="#27-experiment-with-formats-and-styles">27. Experiment with Formats and Styles</a></li>
           </ul>
         </li>
-        <li><a href="#react-reason--act">ReAct (Reason &amp; Act)</a>
+        <li><a href="#advanced-prompting--cot-guidelines">Advanced Prompting &amp; CoT Guidelines</a>
           <ul>
-            <li><a href="#34-react-prompting-concept">34. ReAct prompting concept</a></li>
-            <li><a href="#35-react-code-example">35. ReAct code example</a></li>
+            <li><a href="#28-work-with-schemas">28. Work With Schemas</a></li>
+            <li><a href="#29-best-practices-for-chain-of-thought-cot">29. Best Practices for Chain-of-Thought (CoT)</a></li>
           </ul>
         </li>
-        <li><a href="#automatic-prompt-engineering-ape">Automatic Prompt Engineering (APE)</a>
+        <li><a href="#prompt-documentation--summary">Prompt Documentation &amp; Summary</a>
           <ul>
-            <li><a href="#36-ape-introduction">36. APE introduction</a></li>
-            <li><a href="#37-ape-example-for-t-shirt-orders">37. APE example for t-shirt orders</a></li>
+            <li><a href="#30-document-prompt-experiments">30. Document Prompt Experiments</a></li>
           </ul>
         </li>
-        <li><a href="#code-prompting">Code Prompting</a>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#final-best-practices-and-wrap-up">Final Best Practices and Wrap-Up</a>
           <ul>
-            <li><a href="#38-prompts-for-writing-code">38. Prompts for writing code</a></li>
-            <li><a href="#39-prompts-for-explaining-code">39. Prompts for explaining code</a></li>
-            <li><a href="#40-prompts-for-translating-code">40. Prompts for translating code</a></li>
-            <li><a href="#41-prompts-for-debugging-and-reviewing-code">41. Prompts for debugging and reviewing code</a></li>
-            <li><a href="#42-what-about-multimodal-prompting">42. What about multimodal prompting?</a></li>
+            <li><a href="#24-design-with-simplicity-1">24. Design with Simplicity</a></li>
+            <li><a href="#25-be-specific-about-output-1">25. Be Specific About Output</a></li>
+            <li><a href="#26-prefer-instructions-over-constraints">26. Prefer Instructions Over Constraints</a></li>
           </ul>
         </li>
-        <li><a href="#best-practices">Best Practices</a>
+        <li><a href="#variables-versions-and-formats">Variables, Versions, and Formats</a>
           <ul>
-            <li><a href="#43-provide-examples">43. Provide examples</a></li>
+            <li><a href="#27-use-variables-in-prompts">27. Use Variables in Prompts</a></li>
+            <li><a href="#28-experiment-with-input-and-output-formats">28. Experiment with Input and Output Formats</a></li>
           </ul>
         </li>
-        <li><a href="#best-practices-continued">Best Practices (Continued)</a>
+        <li><a href="#prompt-engineering-discipline">Prompt Engineering Discipline</a>
           <ul>
-            <li><a href="#44-design-with-simplicity">44. Design with simplicity</a></li>
-            <li><a href="#45-be-specific-about-the-output">45. Be specific about the output</a></li>
-            <li><a href="#46-use-instructions-over-constraints">46. Use instructions over constraints</a></li>
-            <li><a href="#47-control-the-max-token-length">47. Control the max token length</a></li>
-            <li><a href="#48-use-variables-in-prompts">48. Use variables in prompts</a></li>
-            <li><a href="#49-experiment-with-input-formats-and-writing-styles">49. Experiment with input formats and writing styles</a></li>
-            <li><a href="#50-for-few-shot-classification-mix-up-class-order">50. For few-shot classification, mix up class order</a></li>
-            <li><a href="#51-adapt-to-model-updates">51. Adapt to model updates</a></li>
-            <li><a href="#52-experiment-with-output-formats">52. Experiment with output formats</a></li>
-            <li><a href="#53-json-repair-for-incomplete-generations">53. JSON repair for incomplete generations</a></li>
-            <li><a href="#54-working-with-schemas">54. Working with schemas</a></li>
-            <li><a href="#55-experiment-with-other-prompt-engineers">55. Experiment with other prompt engineers</a></li>
-            <li><a href="#56-cot-best-practices">56. CoT best practices</a></li>
-            <li><a href="#57-document-the-various-prompt-attempts">57. Document the various prompt attempts</a></li>
+            <li><a href="#29-use-schemas-for-input-and-output">29. Use Schemas for Input and Output</a></li>
+            <li><a href="#30-document-prompt-versions">30. Document Prompt Versions</a></li>
           </ul>
         </li>
-        <li><a href="#summary">Summary</a>
-          <ul>
-            <li><a href="#58-summary-of-key-techniques">58. Summary of key techniques</a></li>
-          </ul>
-        </li>
+        <li><a href="#summary-1">Summary</a></li>
       </ul>
     </li>
   </ul>
@@ -1004,558 +977,380 @@ https://github.com/alex-shpak/hugo-book
   Day 1 – Prompt Engineering – CoT Summary
   <a class="anchor" href="#day-1--prompt-engineering--cot-summary">#</a>
 </h1>
-<h2 id="foundations-of-prompt-engineering">
-  Foundations of Prompt Engineering
-  <a class="anchor" href="#foundations-of-prompt-engineering">#</a>
+<hr>
+<h2 id="introduction--prompting-fundamentals">
+  Introduction &amp; Prompting Fundamentals
+  <a class="anchor" href="#introduction--prompting-fundamentals">#</a>
 </h2>
-<h3 id="1-prompt-engineering-is-for-everyone">
-  1. Prompt engineering is for everyone
-  <a class="anchor" href="#1-prompt-engineering-is-for-everyone">#</a>
+<h3 id="1-why-prompt-engineering-matters">
+  1. Why Prompt Engineering Matters
+  <a class="anchor" href="#1-why-prompt-engineering-matters">#</a>
 </h3>
+<p>We start with the <em>need for controlling LLM behavior</em>. Although everyone can write prompts, crafting high-quality prompts is complex. The model, structure, tone, and context all affect the outcome. Prompt engineering is an iterative process requiring optimization and experimentation.</p>
 <blockquote>
-<p>The paper emphasizes that crafting prompts doesn&rsquo;t require being a data scientist or ML engineer. While anyone can write prompts, making them effective is a nuanced, iterative process influenced by word choice, structure, and configuration.</p></blockquote>
-<h3 id="2-why-prompt-engineering-matters">
-  2. Why prompt engineering matters
-  <a class="anchor" href="#2-why-prompt-engineering-matters">#</a>
+<p>This naturally leads to the question: <strong>how do we guide LLMs effectively without retraining them?</strong></p></blockquote>
+<h3 id="2-how-llms-predict-text">
+  2. How LLMs Predict Text
+  <a class="anchor" href="#2-how-llms-predict-text">#</a>
 </h3>
+<p>LLMs are <em>token prediction machines</em>. They predict the next likely token based on previous tokens and training data. Prompt engineering means designing inputs that lead the model toward the desired outputs using this prediction mechanism.</p>
 <blockquote>
-<p>Because LLMs generate outputs based on probabilistic token predictions, poorly designed prompts can lead to vague or misleading results. Hence, optimizing prompts is crucial to extract accurate and relevant responses.</p></blockquote>
-<h3 id="3-focus-on-direct-model-access">
-  3. Focus on direct model access
-  <a class="anchor" href="#3-focus-on-direct-model-access">#</a>
-</h3>
-<blockquote>
-<p>Although people use Gemini chatbots informally, this whitepaper is focused on structured prompt engineering via Vertex AI or API usage, where full control of configurations like temperature is available.</p></blockquote>
-<blockquote>
-<p>Having laid the foundation, the paper now shifts from the “what” and “why” of prompt engineering to “how” — diving into the mechanics of controlling LLM output.</p></blockquote>
+<p>This naturally leads to the question: <strong>how do prompt structure and context impact token prediction?</strong></p></blockquote>
 <h2 id="llm-output-configuration">
   LLM Output Configuration
   <a class="anchor" href="#llm-output-configuration">#</a>
 </h2>
-<h3 id="4-output-length-settings">
-  4. Output length settings
-  <a class="anchor" href="#4-output-length-settings">#</a>
+<h3 id="3-controlling-output-length">
+  3. Controlling Output Length
+  <a class="anchor" href="#3-controlling-output-length">#</a>
 </h3>
+<p>Setting the number of output tokens affects cost, latency, and completeness. Shorter outputs don’t make the model more concise—they just truncate the output. Prompts must be adapted accordingly.</p>
 <blockquote>
-<p>The number of tokens to generate is a critical setting. More tokens mean more computation and cost. But simply reducing token count doesn’t make responses “shorter and better”—it just truncates them.</p></blockquote>
-<h3 id="5-prompt-design-implications">
-  5. Prompt design implications
-  <a class="anchor" href="#5-prompt-design-implications">#</a>
+<p>This naturally leads to the question: <strong>how do we engineer prompts to work well with shorter output limits?</strong></p></blockquote>
+<h3 id="4-temperature--controlling-randomness">
+  4. Temperature – Controlling Randomness
+  <a class="anchor" href="#4-temperature--controlling-randomness">#</a>
 </h3>
+<p>Temperature tunes the <em>creativity vs. determinism</em> of responses. Lower = more deterministic. Higher = more diverse. Temperature = 0 means always selecting the highest-probability token.</p>
 <blockquote>
-<p>For techniques like ReAct, failing to restrict output length can cause unnecessary token generation beyond the useful response. Prompt engineering must consider task-specific output size.</p></blockquote>
-<h3 id="6-token-prediction-is-probabilistic">
-  6. Token prediction is probabilistic
-  <a class="anchor" href="#6-token-prediction-is-probabilistic">#</a>
-</h3>
-<blockquote>
-<p>LLMs don’t output a single token deterministically. They assign probabilities to all potential next tokens and sample from this distribution—this is where configuration controls like temperature, top-K, and top-P come in.</p></blockquote>
-<blockquote>
-<p>Now that the importance of token-level configuration is established, the document moves into how each of these sampling strategies work and interact.</p></blockquote>
-<h2 id="sampling-strategies">
-  Sampling Strategies
-  <a class="anchor" href="#sampling-strategies">#</a>
+<p>This naturally leads to the question: <strong>what randomness level best matches your use case: precision or creativity?</strong></p></blockquote>
+<h2 id="sampling-techniques-top-k-and-top-p">
+  Sampling Techniques: Top-K and Top-P
+  <a class="anchor" href="#sampling-techniques-top-k-and-top-p">#</a>
 </h2>
-<h3 id="7-temperature-randomness-vs-determinism">
-  7. Temperature: randomness vs determinism
-  <a class="anchor" href="#7-temperature-randomness-vs-determinism">#</a>
+<h3 id="5-top-k-vs-top-p">
+  5. Top-K vs. Top-P
+  <a class="anchor" href="#5-top-k-vs-top-p">#</a>
 </h3>
-<blockquote>
-<p>A low temperature (like 0) produces deterministic, predictable outputs by always picking the highest probability token. Higher values increase randomness, ideal for creative generation. It&rsquo;s analogous to adjusting softmax sharpness in ML.</p></blockquote>
-<h3 id="8-top-k-sampling">
-  8. Top-K sampling
-  <a class="anchor" href="#8-top-k-sampling">#</a>
-</h3>
-<blockquote>
-<p>Limits next-token options to the top <em>K</em> most likely tokens. Low <em>K</em> = deterministic/factual; high <em>K</em> = creative/diverse. Top-K of 1 is equivalent to greedy decoding.</p></blockquote>
-<h3 id="9-top-p-nucleus-sampling">
-  9. Top-P (nucleus) sampling
-  <a class="anchor" href="#9-top-p-nucleus-sampling">#</a>
-</h3>
-<blockquote>
-<p>Instead of a fixed <em>K</em>, this selects the smallest set of tokens whose cumulative probability exceeds <em>P</em>. More dynamic than top-K. A <em>P</em> near 1 considers nearly the entire vocabulary.</p></blockquote>
-<blockquote>
-<p>After explaining individual knobs, the whitepaper explores how they behave in combination and influence each other.</p></blockquote>
-<h2 id="coordinating-configuration-values">
-  Coordinating Configuration Values
-  <a class="anchor" href="#coordinating-configuration-values">#</a>
-</h2>
-<h3 id="10-interplay-of-settings">
-  10. Interplay of settings
-  <a class="anchor" href="#10-interplay-of-settings">#</a>
-</h3>
-<blockquote>
-<p>If temperature is 0, sampling is deterministic and other settings (top-K/P) don’t matter. Conversely, very high top-K or top-P includes all tokens, making randomness dominate.</p></blockquote>
-<h3 id="11-recommended-starter-values">
-  11. Recommended starter values
-  <a class="anchor" href="#11-recommended-starter-values">#</a>
-</h3>
-<blockquote>
 <ul>
-<li>Balanced: temp=0.2, top-P=0.95, top-K=30</li>
-<li>Creative: temp=0.9, top-P=0.99, top-K=40</li>
-<li>Factual: temp=0.1, top-P=0.9, top-K=20</li>
-<li>For single-correct answers (e.g., math): temp=0</li>
-</ul></blockquote>
-<h3 id="12-common-failure-repetition-loops">
-  12. Common failure: repetition loops
-  <a class="anchor" href="#12-common-failure-repetition-loops">#</a>
+<li><strong>Top-K</strong> selects from the K most likely tokens.</li>
+<li><strong>Top-P</strong> includes tokens whose cumulative probability is under P.</li>
+</ul>
+<p>Together with temperature, they control diversity. Improper values can lead to repetition loops or incoherence.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>what is the optimal balance between relevance and novelty?</strong></p></blockquote>
+<h3 id="6-putting-sampling-together">
+  6. Putting Sampling Together
+  <a class="anchor" href="#6-putting-sampling-together">#</a>
 </h3>
+<p>The sampling settings interact:</p>
+<ul>
+<li>Temp=0 overrides others (most probable token only)</li>
+<li>Top-K=1 behaves similarly (greedy decoding)</li>
+<li>At extremes, sampling settings may cancel out or be ignored</li>
+</ul>
 <blockquote>
-<p>A classic LLM failure is infinite filler repetition, often caused by poor configuration. At low temperatures, the model repeats high-probability paths. At high temperatures, randomness may loop back to previous states. Balance is key.</p></blockquote>
-<blockquote>
-<p>Once output control is understood, the paper transitions from tuning outputs to crafting effective prompt formats — starting with the simplest: zero-shot prompting.</p></blockquote>
-<h2 id="prompting-techniques-begin">
-  Prompting Techniques Begin
-  <a class="anchor" href="#prompting-techniques-begin">#</a>
+<p>This naturally leads to the question: <strong>how do we experiment with sampling settings to avoid repetition and improve quality?</strong></p></blockquote>
+<h2 id="prompting-techniques">
+  Prompting Techniques
+  <a class="anchor" href="#prompting-techniques">#</a>
 </h2>
-<h3 id="13-prompting-techniques-overview">
-  13. Prompting techniques overview
-  <a class="anchor" href="#13-prompting-techniques-overview">#</a>
+<h3 id="7-zero-shot-prompting">
+  7. Zero-shot Prompting
+  <a class="anchor" href="#7-zero-shot-prompting">#</a>
 </h3>
+<p>The simplest form—just a task or question without examples. Effective when LLMs are pre-trained well. Clarity in phrasing is key.</p>
 <blockquote>
-<p>The paper now pivots to prompt design strategies. It highlights that LLMs respond better to clarity, and there are structured techniques to improve results—moving next into examples.</p></blockquote>
-<h3 id="14-zero-shot-prompting">
-  14. Zero-shot prompting
-  <a class="anchor" href="#14-zero-shot-prompting">#</a>
-</h3>
-<blockquote>
-<p>This basic form gives the LLM a task with no examples—just instructions or a prompt. It’s the fastest to try, but may not always yield optimal results for complex tasks.</p></blockquote>
-<blockquote>
-<p>The logical next step is to enhance zero-shot performance via few-shot, role-based, or CoT techniques — to be explored in upcoming sections.</p></blockquote>
+<p>This naturally leads to the question: <strong>how do we design zero-shot prompts that still get structured, accurate answers?</strong></p></blockquote>
 <h2 id="prompting-techniques-continued">
-  Prompting Techniques (Continued)
+  Prompting Techniques Continued
   <a class="anchor" href="#prompting-techniques-continued">#</a>
 </h2>
-<h3 id="15-zero-shot-prompting-example-and-logging">
-  15. Zero-shot prompting example and logging
-  <a class="anchor" href="#15-zero-shot-prompting-example-and-logging">#</a>
+<h3 id="8-one-shot-and-few-shot-prompting">
+  8. One-shot and Few-shot Prompting
+  <a class="anchor" href="#8-one-shot-and-few-shot-prompting">#</a>
 </h3>
-<blockquote>
-<p>Vertex AI Studio allows experimenting with prompts interactively. Documenting prompts using structured tables (e.g., goal, temperature, output) helps track iterations. For example, a movie review classification task shows how even a complex sentence can be correctly classified with low temperature and default top-K/P values.</p></blockquote>
-<h3 id="16-when-zero-shot-isnt-enough">
-  16. When zero-shot isn’t enough
-  <a class="anchor" href="#16-when-zero-shot-isnt-enough">#</a>
-</h3>
-<blockquote>
-<p>If results aren&rsquo;t accurate, move to one-shot or few-shot prompting. Providing examples helps guide output format and structure. One-shot gives a single example. Few-shot offers a pattern to follow, making responses more consistent.</p></blockquote>
-<h3 id="17-few-shot-prompting-example">
-  17. Few-shot prompting example
-  <a class="anchor" href="#17-few-shot-prompting-example">#</a>
-</h3>
-<blockquote>
-<p>A pizza ordering task shows how multiple structured examples lead the model to produce structured JSON output. The configuration (gemini-pro, temperature 0.1) supports deterministic parsing. Including examples for edge cases is key to model generalization.</p></blockquote>
-<h2 id="system-contextual-and-role-prompting">
-  System, Contextual, and Role Prompting
-  <a class="anchor" href="#system-contextual-and-role-prompting">#</a>
-</h2>
-<h3 id="18-differentiating-the-three-styles">
-  18. Differentiating the three styles
-  <a class="anchor" href="#18-differentiating-the-three-styles">#</a>
-</h3>
-<blockquote>
-<p>These styles guide generation but serve distinct functions:</p>
 <ul>
-<li>System: Overall capability and purpose.</li>
-<li>Contextual: Task-specific guidance.</li>
-<li>Role: Assigned identity or perspective (e.g., travel guide).
-Each can overlap, but they influence tone, structure, and accuracy differently.</li>
-</ul></blockquote>
-<h3 id="19-system-prompting-in-action">
-  19. System prompting in action
-  <a class="anchor" href="#19-system-prompting-in-action">#</a>
-</h3>
+<li><strong>One-shot</strong>: One example is provided before the prompt.</li>
+<li><strong>Few-shot</strong>: Multiple examples guide the model’s pattern recognition.
+Ideal for steering structure and increasing precision.</li>
+</ul>
 <blockquote>
-<p>Tables 3 and 4 show system prompts for movie review classification, including structured JSON output. Clear instructions prevent unnecessary text. JSON format is especially useful for reducing hallucination and enforcing structure.</p></blockquote>
-<h3 id="20-system-prompting-for-safety">
-  20. System prompting for safety
-  <a class="anchor" href="#20-system-prompting-for-safety">#</a>
+<p>This naturally leads to the question: <strong>how many examples are enough for complex or high-variance tasks?</strong></p></blockquote>
+<h3 id="9-system-prompting">
+  9. System Prompting
+  <a class="anchor" href="#9-system-prompting">#</a>
 </h3>
+<p>Defines the LLM’s role and constraints at a high level—such as format, safety rules, or output requirements. It’s useful to enforce style, format, or structure like JSON outputs.</p>
 <blockquote>
-<p>Adding phrases like “be respectful” or requiring structured formats enhances control over model behavior, especially for safety-critical use cases.</p></blockquote>
-<h3 id="21-role-prompting-definition-and-benefits">
-  21. Role prompting definition and benefits
-  <a class="anchor" href="#21-role-prompting-definition-and-benefits">#</a>
+<p>This naturally leads to the question: <strong>how can we use system prompts to enforce safety and structured outputs?</strong></p></blockquote>
+<h3 id="10-role-prompting">
+  10. Role Prompting
+  <a class="anchor" href="#10-role-prompting">#</a>
 </h3>
+<p>Assigns a persona (e.g., travel guide, teacher). This helps shape tone, depth, and relevance of the response. Adding style (humorous, formal) further guides model behavior.</p>
 <blockquote>
-<p>Assigning a role (e.g., travel guide, teacher) tailors responses with specific tone and content. It improves quality by narrowing the response space. The model emulates the behavior and expertise of the assigned persona.</p></blockquote>
-<h3 id="22-role-prompting-examples">
-  22. Role prompting examples
-  <a class="anchor" href="#22-role-prompting-examples">#</a>
+<p>This naturally leads to the question: <strong>how do personas influence LLM outputs in nuanced ways?</strong></p></blockquote>
+<h3 id="11-contextual-prompting">
+  11. Contextual Prompting
+  <a class="anchor" href="#11-contextual-prompting">#</a>
 </h3>
+<p>Injects situational context into the prompt to make responses more accurate. Effective for dynamic environments (e.g., blogs, customer support).</p>
 <blockquote>
-<p>When prompted as a travel guide in Table 5, the model gives informative travel suggestions. In Table 6, with a humorous tone, the same prompt returns creative, playful results — showing tone/style shaping output.</p></blockquote>
-<h3 id="23-style-templates">
-  23. Style templates
-  <a class="anchor" href="#23-style-templates">#</a>
-</h3>
-<blockquote>
-<p>Suggested styles include descriptive, humorous, formal, inspirational, etc. These guide output flavor and help match user expectations for tone and clarity.</p></blockquote>
-<h3 id="24-contextual-prompting-example">
-  24. Contextual prompting example
-  <a class="anchor" href="#24-contextual-prompting-example">#</a>
-</h3>
-<blockquote>
-<p>Table 7 presents a blog writing task where context (“retro 80s arcade video games”) helps the model generate relevant and creative article ideas. The clearer the background, the sharper and more aligned the results.</p></blockquote>
-<h2 id="step-back-prompting">
-  Step-back Prompting
-  <a class="anchor" href="#step-back-prompting">#</a>
+<p>This naturally leads to the question: <strong>how can contextual prompts adapt to real-time or user-specific tasks?</strong></p></blockquote>
+<h2 id="reasoning-techniques">
+  Reasoning Techniques
+  <a class="anchor" href="#reasoning-techniques">#</a>
 </h2>
-<h3 id="25-step-back-prompting-concept">
-  25. Step-back prompting concept
-  <a class="anchor" href="#25-step-back-prompting-concept">#</a>
+<h3 id="12-step-back-prompting">
+  12. Step-back Prompting
+  <a class="anchor" href="#12-step-back-prompting">#</a>
 </h3>
+<p>Starts with a general question to activate background knowledge before solving a specific task. Encourages critical thinking and can reduce bias.</p>
 <blockquote>
-<p>This technique asks the model a general question before diving into the specific task. This activates background knowledge and leads to richer responses. It’s useful for improving accuracy, reducing bias, and leveraging latent reasoning.</p></blockquote>
-<blockquote>
-<p>The next section compares traditional prompting versus step-back prompting to illustrate these improvements.</p></blockquote>
-<h2 id="step-back-chain-of-thought-and-advanced-prompting-techniques">
-  Step-back, Chain-of-Thought, and Advanced Prompting Techniques
-  <a class="anchor" href="#step-back-chain-of-thought-and-advanced-prompting-techniques">#</a>
+<p>This naturally leads to the question: <strong>how do we leverage LLMs&rsquo; latent knowledge more strategically?</strong></p></blockquote>
+<h2 id="reasoning-techniques-continued">
+  Reasoning Techniques Continued
+  <a class="anchor" href="#reasoning-techniques-continued">#</a>
 </h2>
-<h3 id="26-step-back-prompting-example">
-  26. Step-back prompting example
-  <a class="anchor" href="#26-step-back-prompting-example">#</a>
+<h3 id="13-chain-of-thought-cot">
+  13. Chain of Thought (CoT)
+  <a class="anchor" href="#13-chain-of-thought-cot">#</a>
 </h3>
+<p>LLMs struggle with math and logic unless they break problems into steps. Chain of Thought (CoT) prompting makes the model reason step by step. This adds interpretability, reduces drift across models, and improves answer accuracy.</p>
 <blockquote>
-<p>Instead of jumping straight into generating a storyline, a “step-back” prompt first explores common settings in FPS games. This primes the model with thematic context, allowing for more grounded and relevant final outputs.</p></blockquote>
-<h3 id="27-applying-step-back-for-storyline-quality">
-  27. Applying step-back for storyline quality
-  <a class="anchor" href="#27-applying-step-back-for-storyline-quality">#</a>
+<p>This naturally leads to the question: <strong>how can we make reasoning visible to both developers and users?</strong></p></blockquote>
+<h3 id="14-self-consistency">
+  14. Self-Consistency
+  <a class="anchor" href="#14-self-consistency">#</a>
 </h3>
+<p>Instead of relying on a single reasoning path, Self-Consistency samples multiple responses (with higher temperature), then picks the majority answer. It increases reliability—especially for ambiguous or hard-to-evaluate tasks.</p>
 <blockquote>
-<p>By using the generated themes from the step-back as context, the LLM creates a more vivid, logical, and relevant storyline. This improves coherence and task alignment.</p></blockquote>
-<h2 id="chain-of-thought-cot">
-  Chain of Thought (CoT)
-  <a class="anchor" href="#chain-of-thought-cot">#</a>
+<p>This naturally leads to the question: <strong>how can we trade off cost for improved reliability in decision-critical tasks?</strong></p></blockquote>
+<h2 id="advanced-prompting-patterns">
+  Advanced Prompting Patterns
+  <a class="anchor" href="#advanced-prompting-patterns">#</a>
 </h2>
-<h3 id="28-chain-of-thought-introduction">
-  28. Chain of Thought introduction
-  <a class="anchor" href="#28-chain-of-thought-introduction">#</a>
+<h3 id="15-tree-of-thoughts-tot">
+  15. Tree of Thoughts (ToT)
+  <a class="anchor" href="#15-tree-of-thoughts-tot">#</a>
 </h3>
+<p>Generalizes CoT by enabling multiple reasoning paths at once. Like a decision tree, the model explores and evaluates different intermediate steps before selecting the best route. Powerful for complex planning and exploration.</p>
 <blockquote>
-<p>CoT improves reasoning by asking LLMs to show intermediate steps. It requires no model fine-tuning and increases interpretability, portability across LLM versions, and robustness. Downsides include increased token usage and response time.</p></blockquote>
-<h3 id="29-zero-shot-vs-cot-example">
-  29. Zero-shot vs CoT example
-  <a class="anchor" href="#29-zero-shot-vs-cot-example">#</a>
+<p>This naturally leads to the question: <strong>what’s the best way to structure exploration and backtracking in LLM reasoning?</strong></p></blockquote>
+<h3 id="16-react-reason--act">
+  16. ReAct (Reason + Act)
+  <a class="anchor" href="#16-react-reason--act">#</a>
 </h3>
+<p>ReAct prompts mix reasoning with external tool calls (e.g., Google Search). It creates a loop: Think → Act → Observe → Rethink. This enables LLMs to handle multi-step problems using real-world data or APIs.</p>
 <blockquote>
-<p>A math reasoning task produces a wildly incorrect result when no reasoning is asked. Adding “Let’s think step by step” enables the LLM to deduce the correct age using intermediate steps.</p></blockquote>
-<h3 id="30-few-shot-cot-for-reasoning-accuracy">
-  30. Few-shot CoT for reasoning accuracy
-  <a class="anchor" href="#30-few-shot-cot-for-reasoning-accuracy">#</a>
-</h3>
-<blockquote>
-<p>By including a reasoning example before the target problem, the LLM mimics the logic path more reliably. Few-shot CoT reduces error-proneness and helps in structured reasoning tasks such as math, coding, or structured text generation.</p></blockquote>
-<h2 id="self-consistency">
-  Self-Consistency
-  <a class="anchor" href="#self-consistency">#</a>
+<p>This naturally leads to the question: <strong>how can we design LLMs that interactively use tools and adapt in real time?</strong></p></blockquote>
+<h2 id="automating-prompt-engineering">
+  Automating Prompt Engineering
+  <a class="anchor" href="#automating-prompt-engineering">#</a>
 </h2>
-<h3 id="31-self-consistency-definition">
-  31. Self-consistency definition
-  <a class="anchor" href="#31-self-consistency-definition">#</a>
+<h3 id="17-automatic-prompt-engineering-ape">
+  17. Automatic Prompt Engineering (APE)
+  <a class="anchor" href="#17-automatic-prompt-engineering-ape">#</a>
 </h3>
+<p>Prompts are hard to write. APE uses LLMs to generate and refine their own prompts. You ask the model to create N variations of a task prompt, then rank and select the best one based on performance metrics (e.g., BLEU, ROUGE).</p>
 <blockquote>
-<p>Instead of relying on a single deterministic reasoning path, the model is run multiple times with higher temperature to generate different reasoning paths. The most frequent conclusion is selected, improving overall response reliability.</p></blockquote>
-<h3 id="32-email-classification-example">
-  32. Email classification example
-  <a class="anchor" href="#32-email-classification-example">#</a>
-</h3>
-<blockquote>
-<p>The same email is classified as both “IMPORTANT” and “NOT IMPORTANT” depending on the model’s interpretation. Self-consistency surfaces commonalities by comparing multiple Chains of Thought to select the dominant interpretation.</p></blockquote>
-<h2 id="tree-of-thoughts-tot">
-  Tree of Thoughts (ToT)
-  <a class="anchor" href="#tree-of-thoughts-tot">#</a>
+<p>Final insight: <strong>what happens when LLMs become their own prompt engineers—and how can we guide that process safely?</strong></p></blockquote>
+<h2 id="code-prompting-techniques">
+  Code Prompting Techniques
+  <a class="anchor" href="#code-prompting-techniques">#</a>
 </h2>
-<h3 id="33-tree-of-thoughts-overview">
-  33. Tree of Thoughts overview
-  <a class="anchor" href="#33-tree-of-thoughts-overview">#</a>
+<h3 id="18-prompts-for-writing-code">
+  18. Prompts for Writing Code
+  <a class="anchor" href="#18-prompts-for-writing-code">#</a>
 </h3>
+<p>LLMs like Gemini can generate well-documented scripts, e.g., renaming files with Bash. It reduces developer overhead for common tasks. Prompts should include goal, language, and behavior clearly.</p>
 <blockquote>
-<p>ToT generalizes CoT by exploring multiple reasoning paths simultaneously, maintaining a tree of thoughts. This supports complex tasks requiring exploration rather than single-path logic. It&rsquo;s well-suited for strategic or creative tasks.</p></blockquote>
-<h2 id="react-reason--act">
-  ReAct (Reason &amp; Act)
-  <a class="anchor" href="#react-reason--act">#</a>
+<p>This naturally leads to the question: <strong>how do we craft prompts that result in reusable, safe, and tested code?</strong></p></blockquote>
+<h3 id="19-prompts-for-explaining-code">
+  19. Prompts for Explaining Code
+  <a class="anchor" href="#19-prompts-for-explaining-code">#</a>
+</h3>
+<p>LLMs can reverse-engineer logic from code. Useful in team settings or code reviews. Helps onboard new developers or document legacy scripts.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do we evaluate explanation correctness—especially for critical systems?</strong></p></blockquote>
+<h3 id="20-prompts-for-translating-code">
+  20. Prompts for Translating Code
+  <a class="anchor" href="#20-prompts-for-translating-code">#</a>
+</h3>
+<p>Language models can convert code between languages (e.g., Bash → Python). This helps modernize or modularize projects while preserving logic.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>what risks emerge in translation—syntax, dependencies, or behavior drift?</strong></p></blockquote>
+<h3 id="21-prompts-for-debugging-and-reviewing-code">
+  21. Prompts for Debugging and Reviewing Code
+  <a class="anchor" href="#21-prompts-for-debugging-and-reviewing-code">#</a>
+</h3>
+<p>Prompting LLMs to diagnose bugs or suggest improvements enhances development speed. Common mistakes like undefined functions can be spotted easily.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do we ensure debugging prompts scale with complex codebases?</strong></p></blockquote>
+<h2 id="other-techniques--best-practices">
+  Other Techniques &amp; Best Practices
+  <a class="anchor" href="#other-techniques--best-practices">#</a>
 </h2>
-<h3 id="34-react-prompting-concept">
-  34. ReAct prompting concept
-  <a class="anchor" href="#34-react-prompting-concept">#</a>
+<h3 id="22-multimodal-prompting">
+  22. Multimodal Prompting
+  <a class="anchor" href="#22-multimodal-prompting">#</a>
 </h3>
+<p>Combines inputs like text, images, and audio. Enables more flexible, human-like interaction. Useful in complex workflows or accessibility tasks.</p>
 <blockquote>
-<p>ReAct combines natural language reasoning with tool use (e.g., search APIs) to create an agent loop. The LLM reasons, acts, observes, and re-reasons until it finds a solution. This mirrors human-like decision making.</p></blockquote>
-<h3 id="35-react-code-example">
-  35. ReAct code example
-  <a class="anchor" href="#35-react-code-example">#</a>
+<p>This naturally leads to the question: <strong>how do we design for alignment across different input modalities?</strong></p></blockquote>
+<h3 id="23-best-practice--provide-examples">
+  23. Best Practice – Provide Examples
+  <a class="anchor" href="#23-best-practice--provide-examples">#</a>
 </h3>
+<p>Incorporating examples (one-shot or few-shot) within prompts is the most reliable way to guide output. Acts as a template and sets style/tone expectations.</p>
 <blockquote>
-<p>Using LangChain, VertexAI, and SerpAPI, a ReAct agent queries how many kids each Metallica band member has. It iteratively searches and aggregates results using a reasoning loop, demonstrating dynamic interaction with external tools.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">langchain.agents</span> <span style="color:#179299">import</span> load_tools
-</span></span><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">langchain.agents</span> <span style="color:#179299">import</span> initialize_agent
-</span></span><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">langchain.agents</span> <span style="color:#179299">import</span> AgentType
-</span></span><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">langchain.llms</span> <span style="color:#179299">import</span> VertexAI
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>prompt <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#40a02b">&#34;How many kids do the band members of Metallica have?&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>llm <span style="color:#04a5e5;font-weight:bold">=</span> VertexAI(temperature<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">0.1</span>)
-</span></span><span style="display:flex;"><span>tools <span style="color:#04a5e5;font-weight:bold">=</span> load_tools([<span style="color:#40a02b">&#34;serpapi&#34;</span>], llm<span style="color:#04a5e5;font-weight:bold">=</span>llm)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>agent <span style="color:#04a5e5;font-weight:bold">=</span> initialize_agent(tools, llm,  
-</span></span><span style="display:flex;"><span>agent<span style="color:#04a5e5;font-weight:bold">=</span>AgentType<span style="color:#04a5e5;font-weight:bold">.</span>ZERO_SHOT_REACT_DESCRIPTION, verbose<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">True</span>)
-</span></span><span style="display:flex;"><span>agent<span style="color:#04a5e5;font-weight:bold">.</span>run(prompt)
-</span></span></code></pre></div><blockquote>
-<p>ReAct executes searches and chains observations to converge on a final answer — in this case, the band has a total of 10 children. It is the foundation for future LLM agents.</p></blockquote>
-<h2 id="automatic-prompt-engineering-ape">
-  Automatic Prompt Engineering (APE)
-  <a class="anchor" href="#automatic-prompt-engineering-ape">#</a>
+<p>Final reflection: <strong>prompt engineering is more than writing—it&rsquo;s designing a user interface for the LLM.</strong></p></blockquote>
+<h2 id="best-practices-for-prompt-engineering">
+  Best Practices for Prompt Engineering
+  <a class="anchor" href="#best-practices-for-prompt-engineering">#</a>
 </h2>
-<h3 id="36-ape-introduction">
-  36. APE introduction
-  <a class="anchor" href="#36-ape-introduction">#</a>
+<h3 id="24-design-with-simplicity">
+  24. Design with Simplicity
+  <a class="anchor" href="#24-design-with-simplicity">#</a>
 </h3>
+<p>Clear, concise prompts yield better responses. Avoid overloading with context or ambiguous language. Use active verbs and break down complex requests.</p>
 <blockquote>
-<p>Writing high-quality prompts can be automated. APE enables LLMs to generate prompt variants themselves, which can then be scored and refined using standard metrics (e.g., BLEU or ROUGE).</p></blockquote>
-<h3 id="37-ape-example-for-t-shirt-orders">
-  37. APE example for t-shirt orders
-  <a class="anchor" href="#37-ape-example-for-t-shirt-orders">#</a>
+<p>This naturally leads to the question: <strong>how do we optimize for both human and machine comprehension in prompt design?</strong></p></blockquote>
+<h3 id="25-be-specific-about-output">
+  25. Be Specific About Output
+  <a class="anchor" href="#25-be-specific-about-output">#</a>
 </h3>
+<p>Specify the desired format, length, tone, and structure to reduce ambiguity and improve relevance. Instructions guide better than vague constraints.</p>
 <blockquote>
-<p>An LLM is asked to generate 10 variants of the same instruction (“Order one Metallica t-shirt, size S”). These are then scored, and the highest-ranked variant is selected or further refined.</p></blockquote>
+<p>This naturally leads to the question: <strong>how can we use instructions to improve precision without overconstraining the model?</strong></p></blockquote>
+<h3 id="26-use-variables">
+  26. Use Variables
+  <a class="anchor" href="#26-use-variables">#</a>
+</h3>
+<p>Abstract prompts using variables (e.g., {city}) to enhance reusability in apps or RAG systems. Helps modularize and scale prompt templates.</p>
 <blockquote>
-<p>This method is helpful for training systems like chatbots, where linguistic diversity helps generalization across user phrasings.</p></blockquote>
-<h2 id="code-prompting">
-  Code Prompting
-  <a class="anchor" href="#code-prompting">#</a>
+<p>This naturally leads to the question: <strong>how can prompt modularity boost automation and maintainability?</strong></p></blockquote>
+<h3 id="27-experiment-with-formats-and-styles">
+  27. Experiment with Formats and Styles
+  <a class="anchor" href="#27-experiment-with-formats-and-styles">#</a>
+</h3>
+<p>Vary phrasing—questions, statements, or instructions. Try structured outputs (e.g., JSON) and track results for consistency and quality.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do output formats affect hallucination, readability, and parse-ability?</strong></p></blockquote>
+<h2 id="advanced-prompting--cot-guidelines">
+  Advanced Prompting &amp; CoT Guidelines
+  <a class="anchor" href="#advanced-prompting--cot-guidelines">#</a>
 </h2>
-<h3 id="38-prompts-for-writing-code">
-  38. Prompts for writing code
-  <a class="anchor" href="#38-prompts-for-writing-code">#</a>
+<h3 id="28-work-with-schemas">
+  28. Work With Schemas
+  <a class="anchor" href="#28-work-with-schemas">#</a>
 </h3>
+<p>Use structured input/output formats like JSON Schema to guide the model’s understanding. This enables field-level alignment and supports reasoning over attributes.</p>
 <blockquote>
-<p>You can use Gemini in Vertex AI Studio to generate code. A practical example shows how a Bash script can rename all files in a folder by prepending “draft_”. The LLM generates well-commented, working code that can be copied, saved, and tested locally.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"></span><span style="color:#04a5e5">echo</span> <span style="color:#40a02b">&#34;Enter the folder name: &#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#04a5e5">read</span> folder_name
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8839ef">if</span> <span style="color:#04a5e5;font-weight:bold">[</span> ! -d <span style="color:#40a02b">&#34;</span><span style="color:#dc8a78">$folder_name</span><span style="color:#40a02b">&#34;</span> <span style="color:#04a5e5;font-weight:bold">]</span>; <span style="color:#8839ef">then</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#04a5e5">echo</span> <span style="color:#40a02b">&#34;Folder does not exist.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#04a5e5">exit</span> <span style="color:#fe640b">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#8839ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#dc8a78">files</span><span style="color:#04a5e5;font-weight:bold">=(</span> <span style="color:#40a02b">&#34;</span><span style="color:#dc8a78">$folder_name</span><span style="color:#40a02b">&#34;</span>/* <span style="color:#04a5e5;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> file in <span style="color:#40a02b">&#34;</span><span style="color:#40a02b">${</span><span style="color:#dc8a78">files</span>[@]<span style="color:#40a02b">}</span><span style="color:#40a02b">&#34;</span>; <span style="color:#8839ef">do</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#dc8a78">new_file_name</span><span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#40a02b">&#34;draft_</span><span style="color:#8839ef">$(</span>basename <span style="color:#40a02b">&#34;</span><span style="color:#dc8a78">$file</span><span style="color:#40a02b">&#34;</span><span style="color:#8839ef">)</span><span style="color:#40a02b">&#34;</span>
-</span></span><span style="display:flex;"><span>  mv <span style="color:#40a02b">&#34;</span><span style="color:#dc8a78">$file</span><span style="color:#40a02b">&#34;</span> <span style="color:#40a02b">&#34;</span><span style="color:#dc8a78">$new_file_name</span><span style="color:#40a02b">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#8839ef">done</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#04a5e5">echo</span> <span style="color:#40a02b">&#34;Files renamed successfully.&#34;</span>
-</span></span></code></pre></div><h3 id="39-prompts-for-explaining-code">
-  39. Prompts for explaining code
-  <a class="anchor" href="#39-prompts-for-explaining-code">#</a>
+<p>This naturally leads to the question: <strong>how do schemas improve accuracy in structured reasoning tasks like RAG or product gen?</strong></p></blockquote>
+<h3 id="29-best-practices-for-chain-of-thought-cot">
+  29. Best Practices for Chain-of-Thought (CoT)
+  <a class="anchor" href="#29-best-practices-for-chain-of-thought-cot">#</a>
 </h3>
+<ul>
+<li>Always place the final answer after reasoning</li>
+<li>Use temperature=0 for deterministic outputs</li>
+<li>Separate reasoning from the final output for evals</li>
+</ul>
 <blockquote>
-<p>Gemini can also explain code. The same Bash script is passed to the LLM without comments. The output walks through each step: taking input, checking folder existence, listing files, renaming them, and providing confirmation.</p></blockquote>
-<h3 id="40-prompts-for-translating-code">
-  40. Prompts for translating code
-  <a class="anchor" href="#40-prompts-for-translating-code">#</a>
-</h3>
-<blockquote>
-<p>You can prompt Gemini to translate Bash code into Python. The LLM returns a valid Python script replicating the Bash logic. This is especially useful for reusability or integrating with web apps.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">os</span>
-</span></span><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">shutil</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>folder_name <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#04a5e5">input</span>(<span style="color:#40a02b">&#34;Enter the folder name: &#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8839ef">if</span> <span style="color:#04a5e5;font-weight:bold">not</span> os<span style="color:#04a5e5;font-weight:bold">.</span>path<span style="color:#04a5e5;font-weight:bold">.</span>isdir(folder_name):
-</span></span><span style="display:flex;"><span>    <span style="color:#04a5e5">print</span>(<span style="color:#40a02b">&#34;Folder does not exist.&#34;</span>)
-</span></span><span style="display:flex;"><span>    exit(<span style="color:#fe640b">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>files <span style="color:#04a5e5;font-weight:bold">=</span> os<span style="color:#04a5e5;font-weight:bold">.</span>listdir(folder_name)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> file <span style="color:#04a5e5;font-weight:bold">in</span> files:
-</span></span><span style="display:flex;"><span>    new_file_name <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;draft_</span><span style="color:#40a02b">{</span>file<span style="color:#40a02b">}</span><span style="color:#40a02b">&#34;</span>
-</span></span><span style="display:flex;"><span>    shutil<span style="color:#04a5e5;font-weight:bold">.</span>move(os<span style="color:#04a5e5;font-weight:bold">.</span>path<span style="color:#04a5e5;font-weight:bold">.</span>join(folder_name, file), os<span style="color:#04a5e5;font-weight:bold">.</span>path<span style="color:#04a5e5;font-weight:bold">.</span>join(folder_name, new_file_name))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(<span style="color:#40a02b">&#34;Files renamed successfully.&#34;</span>)
-</span></span></code></pre></div><h3 id="41-prompts-for-debugging-and-reviewing-code">
-  41. Prompts for debugging and reviewing code
-  <a class="anchor" href="#41-prompts-for-debugging-and-reviewing-code">#</a>
-</h3>
-<blockquote>
-<p>A broken version of the previous script causes a <code>NameError</code> due to using <code>toUpperCase()</code> instead of Python’s correct <code>.upper()</code> method. Gemini is prompted to identify and fix this error, and it also suggests broader improvements: handling spaces, keeping file extensions, adding error handling, and using formatted strings.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">os</span>
-</span></span><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">shutil</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>folder_name <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#04a5e5">input</span>(<span style="color:#40a02b">&#34;Enter the folder name: &#34;</span>)
-</span></span><span style="display:flex;"><span>prefix <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#04a5e5">input</span>(<span style="color:#40a02b">&#34;Enter the string to prepend to the filename: &#34;</span>)
-</span></span><span style="display:flex;"><span>text <span style="color:#04a5e5;font-weight:bold">=</span> prefix<span style="color:#04a5e5;font-weight:bold">.</span>upper()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8839ef">if</span> <span style="color:#04a5e5;font-weight:bold">not</span> os<span style="color:#04a5e5;font-weight:bold">.</span>path<span style="color:#04a5e5;font-weight:bold">.</span>isdir(folder_name):
-</span></span><span style="display:flex;"><span>    <span style="color:#04a5e5">print</span>(<span style="color:#40a02b">&#34;Folder does not exist.&#34;</span>)
-</span></span><span style="display:flex;"><span>    exit(<span style="color:#fe640b">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>files <span style="color:#04a5e5;font-weight:bold">=</span> os<span style="color:#04a5e5;font-weight:bold">.</span>listdir(folder_name)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> file <span style="color:#04a5e5;font-weight:bold">in</span> files:
-</span></span><span style="display:flex;"><span>    ext <span style="color:#04a5e5;font-weight:bold">=</span> os<span style="color:#04a5e5;font-weight:bold">.</span>path<span style="color:#04a5e5;font-weight:bold">.</span>splitext(file)[<span style="color:#fe640b">1</span>]
-</span></span><span style="display:flex;"><span>    new_filename <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;</span><span style="color:#40a02b">{</span>text<span style="color:#40a02b">}</span><span style="color:#40a02b">_</span><span style="color:#40a02b">{</span>os<span style="color:#04a5e5;font-weight:bold">.</span>path<span style="color:#04a5e5;font-weight:bold">.</span>splitext(file)[<span style="color:#fe640b">0</span>]<span style="color:#40a02b">}{</span>ext<span style="color:#40a02b">}</span><span style="color:#40a02b">&#34;</span>
-</span></span><span style="display:flex;"><span>    old_path <span style="color:#04a5e5;font-weight:bold">=</span> os<span style="color:#04a5e5;font-weight:bold">.</span>path<span style="color:#04a5e5;font-weight:bold">.</span>join(folder_name, file)
-</span></span><span style="display:flex;"><span>    new_path <span style="color:#04a5e5;font-weight:bold">=</span> os<span style="color:#04a5e5;font-weight:bold">.</span>path<span style="color:#04a5e5;font-weight:bold">.</span>join(folder_name, new_filename)
-</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">try</span>:
-</span></span><span style="display:flex;"><span>        shutil<span style="color:#04a5e5;font-weight:bold">.</span>move(old_path, new_path)
-</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">except</span> <span style="color:#fe640b">Exception</span> <span style="color:#8839ef">as</span> e:
-</span></span><span style="display:flex;"><span>        <span style="color:#04a5e5">print</span>(<span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;An error occurred while moving the file </span><span style="color:#40a02b">{</span>file<span style="color:#40a02b">}</span><span style="color:#40a02b">: </span><span style="color:#40a02b">{</span>e<span style="color:#40a02b">}</span><span style="color:#40a02b">&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#04a5e5">print</span>(<span style="color:#40a02b">&#34;Files renamed successfully.&#34;</span>)
-</span></span></code></pre></div><h3 id="42-what-about-multimodal-prompting">
-  42. What about multimodal prompting?
-  <a class="anchor" href="#42-what-about-multimodal-prompting">#</a>
-</h3>
-<blockquote>
-<p>Code prompting still falls under text-based LLMs. Multimodal prompting, however, involves using other data types (e.g., text + image) as inputs. This is a distinct concern and requires models trained for multimodal understanding.</p></blockquote>
-<h2 id="best-practices">
-  Best Practices
-  <a class="anchor" href="#best-practices">#</a>
+<p>This naturally leads to the question: <strong>how do we reliably extract and score CoT answers in evaluation pipelines?</strong></p></blockquote>
+<h2 id="prompt-documentation--summary">
+  Prompt Documentation &amp; Summary
+  <a class="anchor" href="#prompt-documentation--summary">#</a>
 </h2>
-<h3 id="43-provide-examples">
-  43. Provide examples
-  <a class="anchor" href="#43-provide-examples">#</a>
+<h3 id="30-document-prompt-experiments">
+  30. Document Prompt Experiments
+  <a class="anchor" href="#30-document-prompt-experiments">#</a>
 </h3>
+<p>Track prompt versions, models, sampling settings, and outputs using a table or Google Sheet. Log RAG details and system changes to trace variation.</p>
 <blockquote>
-<p>One of the most powerful tools in prompt engineering is providing examples. Whether one-shot or few-shot, examples serve as explicit guidance for LLMs, helping shape the desired style, structure, and correctness of the output.</p></blockquote>
-<h2 id="best-practices-continued">
-  Best Practices (Continued)
-  <a class="anchor" href="#best-practices-continued">#</a>
-</h2>
-<h3 id="44-design-with-simplicity">
-  44. Design with simplicity
-  <a class="anchor" href="#44-design-with-simplicity">#</a>
-</h3>
-<blockquote>
-<p>Keep prompts concise and clear. Avoid complex sentences or extraneous information. Use direct action verbs (e.g., &ldquo;Act&rdquo;, &ldquo;Describe&rdquo;, &ldquo;List&rdquo;) to clarify intent. Rewrite confusing natural prompts into concise task-driven ones.</p></blockquote>
-<h3 id="45-be-specific-about-the-output">
-  45. Be specific about the output
-  <a class="anchor" href="#45-be-specific-about-the-output">#</a>
-</h3>
-<blockquote>
-<p>Always define the expected format, structure, and tone of the output. Vague prompts like “write a blog post” yield lower-quality results than clearly specifying paragraphs, tone, or topic scope.</p></blockquote>
-<h3 id="46-use-instructions-over-constraints">
-  46. Use instructions over constraints
-  <a class="anchor" href="#46-use-instructions-over-constraints">#</a>
-</h3>
-<blockquote>
-<p>Positive instructions are more effective than negative constraints. Rather than saying “Do not list game names,” it&rsquo;s clearer to say “Only list the console, company, and release year.” Instructions encourage creativity within boundaries.</p></blockquote>
-<h3 id="47-control-the-max-token-length">
-  47. Control the max token length
-  <a class="anchor" href="#47-control-the-max-token-length">#</a>
-</h3>
-<blockquote>
-<p>Limit tokens either by configuration or direct prompt phrasing (e.g., “Explain quantum physics in a tweet”). This ensures brevity and prevents cost/token overflow.</p></blockquote>
-<h3 id="48-use-variables-in-prompts">
-  48. Use variables in prompts
-  <a class="anchor" href="#48-use-variables-in-prompts">#</a>
-</h3>
-<blockquote>
-<p>Parameterize prompts with variables like <code>{city}</code> to promote reusability in applications. This approach supports dynamic data injection for scale and consistency.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>{city} = &#34;Amsterdam&#34;
-</span></span><span style="display:flex;"><span>Prompt: You are a travel guide. Tell me a fact about the city: {city}
-</span></span></code></pre></div><h3 id="49-experiment-with-input-formats-and-writing-styles">
-  49. Experiment with input formats and writing styles
-  <a class="anchor" href="#49-experiment-with-input-formats-and-writing-styles">#</a>
-</h3>
-<blockquote>
-<p>The same topic can be phrased as a question, statement, or instruction — each yields different results. Try multiple formulations to optimize clarity and relevance.</p></blockquote>
-<h3 id="50-for-few-shot-classification-mix-up-class-order">
-  50. For few-shot classification, mix up class order
-  <a class="anchor" href="#50-for-few-shot-classification-mix-up-class-order">#</a>
-</h3>
-<blockquote>
-<p>Changing class example order avoids the model memorizing position instead of learning distinctions. Mixing examples ensures stronger generalization across input patterns.</p></blockquote>
-<h3 id="51-adapt-to-model-updates">
-  51. Adapt to model updates
-  <a class="anchor" href="#51-adapt-to-model-updates">#</a>
-</h3>
-<blockquote>
-<p>Track model version, capabilities, and data changes. When updates roll out, revalidate and iterate on prompt formats using environments like Vertex AI Studio.</p></blockquote>
-<h3 id="52-experiment-with-output-formats">
-  52. Experiment with output formats
-  <a class="anchor" href="#52-experiment-with-output-formats">#</a>
-</h3>
-<blockquote>
-<p>Structured formats like JSON or XML are more reliable for data extraction tasks. JSON enforces structure, reduces hallucinations, enables sorting and type-awareness.</p></blockquote>
-<h3 id="53-json-repair-for-incomplete-generations">
-  53. JSON repair for incomplete generations
-  <a class="anchor" href="#53-json-repair-for-incomplete-generations">#</a>
-</h3>
-<blockquote>
-<p>JSON output may be truncated due to token limits. Use libraries like <code>json-repair</code> to auto-correct malformed outputs and ensure continuity in parsing pipelines.</p></blockquote>
-<h3 id="54-working-with-schemas">
-  54. Working with schemas
-  <a class="anchor" href="#54-working-with-schemas">#</a>
-</h3>
-<blockquote>
-<p>Define JSON schemas for input as well as output. This improves LLM focus, supports large-scale automation, and enables features like time-awareness, type enforcement, and structural validation.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#8839ef">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;object&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#8839ef">&#34;properties&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">&#34;name&#34;</span>: { <span style="color:#8839ef">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;string&#34;</span> },
-</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">&#34;category&#34;</span>: { <span style="color:#8839ef">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;string&#34;</span> },
-</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">&#34;price&#34;</span>: { <span style="color:#8839ef">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;number&#34;</span> },
-</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">&#34;features&#34;</span>: { <span style="color:#8839ef">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;array&#34;</span>, <span style="color:#8839ef">&#34;items&#34;</span>: { <span style="color:#8839ef">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;string&#34;</span> } },
-</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">&#34;release_date&#34;</span>: { <span style="color:#8839ef">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;string&#34;</span>, <span style="color:#8839ef">&#34;format&#34;</span>: <span style="color:#40a02b">&#34;date&#34;</span> }
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="55-experiment-with-other-prompt-engineers">
-  55. Experiment with other prompt engineers
-  <a class="anchor" href="#55-experiment-with-other-prompt-engineers">#</a>
-</h3>
-<blockquote>
-<p>Multiple people following best practices can yield diverse, high-quality prompts. Prompt variation enables benchmarking, cross-testing, and discovering novel phrasings.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#8839ef">&#34;name&#34;</span>: <span style="color:#40a02b">&#34;Wireless Headphones&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#8839ef">&#34;category&#34;</span>: <span style="color:#40a02b">&#34;Electronics&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#8839ef">&#34;price&#34;</span>: <span style="color:#fe640b">99.99</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#8839ef">&#34;features&#34;</span>: [<span style="color:#40a02b">&#34;Noise cancellation&#34;</span>, <span style="color:#40a02b">&#34;Bluetooth 5.0&#34;</span>, <span style="color:#40a02b">&#34;20-hour battery life&#34;</span>],
-</span></span><span style="display:flex;"><span>  <span style="color:#8839ef">&#34;release_date&#34;</span>: <span style="color:#40a02b">&#34;2023-10-27&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="56-cot-best-practices">
-  56. CoT best practices
-  <a class="anchor" href="#56-cot-best-practices">#</a>
-</h3>
-<blockquote>
-<p>For CoT, always place the final answer after the reasoning. Use greedy decoding (temperature = 0) for deterministic output. This ensures coherence and reproducibility.</p></blockquote>
-<h3 id="57-document-the-various-prompt-attempts">
-  57. Document the various prompt attempts
-  <a class="anchor" href="#57-document-the-various-prompt-attempts">#</a>
-</h3>
-<blockquote>
-<p>Maintain a tracking sheet of prompt iterations with model, configuration, output, and feedback. Tools like Google Sheets or built-in Vertex AI prompt saves make this easier.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Name: [Prompt Name]
-</span></span><span style="display:flex;"><span>Goal: [Purpose]
-</span></span><span style="display:flex;"><span>Model: [LLM version]
-</span></span><span style="display:flex;"><span>Temperature: [Value] Token Limit: [#]
-</span></span><span style="display:flex;"><span>Prompt: [Full prompt]
-</span></span><span style="display:flex;"><span>Output: [Expected/observed output]
-</span></span></code></pre></div><h2 id="summary">
+<p>Final principle: <strong>prompting is experimental—track what you try, and improve iteratively.</strong></p></blockquote>
+<h2 id="summary">
   Summary
   <a class="anchor" href="#summary">#</a>
 </h2>
-<h3 id="58-summary-of-key-techniques">
-  58. Summary of key techniques
-  <a class="anchor" href="#58-summary-of-key-techniques">#</a>
-</h3>
-<blockquote>
-<p>This whitepaper introduced prompt engineering fundamentals and advanced techniques including:</p>
+<p>Day 1 covered the full spectrum of prompt engineering:</p>
 <ul>
-<li>Zero-shot, One-shot, Few-shot</li>
-<li>System, Role, and Contextual prompting</li>
-<li>Step-back, CoT, Self-consistency</li>
-<li>Tree of Thoughts, ReAct, and APE</li>
-<li>Code generation, explanation, debugging, translation</li>
-<li>Multimodal and structured prompting</li>
-</ul></blockquote>
+<li>Prompt types: zero/few-shot, role, system, contextual</li>
+<li>Reasoning: CoT, ToT, ReAct, Self-consistency, Step-back</li>
+<li>Automation: APE</li>
+<li>Code prompting: generate, translate, debug</li>
+<li>Multimodal and schema-guided prompting</li>
+<li>Best practices: output format, variables, simplicity, documentation</li>
+</ul>
 <blockquote>
-<p>It concludes with a set of practical best practices and emphasizes that prompt engineering is iterative. Testing, documenting, and adapting is critical for scalable and maintainable prompt systems.</p></blockquote>
+<p>Core Insight: <strong>Prompting is a design discipline—blending clarity, creativity, logic, and iteration to unlock the full power of LLMs.</strong></p></blockquote>
+<h2 id="final-best-practices-and-wrap-up">
+  Final Best Practices and Wrap-Up
+  <a class="anchor" href="#final-best-practices-and-wrap-up">#</a>
+</h2>
+<h3 id="24-design-with-simplicity-1">
+  24. Design with Simplicity
+  <a class="anchor" href="#24-design-with-simplicity-1">#</a>
+</h3>
+<p>Use concise language and clear goals. Overly complex or vague prompts confuse both the user and the model.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do we turn messy input into structured guidance for LLMs?</strong></p></blockquote>
+<h3 id="25-be-specific-about-output-1">
+  25. Be Specific About Output
+  <a class="anchor" href="#25-be-specific-about-output-1">#</a>
+</h3>
+<p>Specificity in instructions (e.g., format, style, length) yields more relevant, focused outputs.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do we align prompts with precise user needs and formats?</strong></p></blockquote>
+<h3 id="26-prefer-instructions-over-constraints">
+  26. Prefer Instructions Over Constraints
+  <a class="anchor" href="#26-prefer-instructions-over-constraints">#</a>
+</h3>
+<p>Positive instructions are more intuitive than a list of “don’ts.” Use constraints when safety or exact formatting is critical.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do we encourage creativity while staying on target?</strong></p></blockquote>
+<h2 id="variables-versions-and-formats">
+  Variables, Versions, and Formats
+  <a class="anchor" href="#variables-versions-and-formats">#</a>
+</h2>
+<h3 id="27-use-variables-in-prompts">
+  27. Use Variables in Prompts
+  <a class="anchor" href="#27-use-variables-in-prompts">#</a>
+</h3>
+<p>Dynamic placeholders (e.g., <code>{city}</code>) improve reusability and maintainability—especially in production pipelines.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do we modularize prompt logic for reuse across systems?</strong></p></blockquote>
+<h3 id="28-experiment-with-input-and-output-formats">
+  28. Experiment with Input and Output Formats
+  <a class="anchor" href="#28-experiment-with-input-and-output-formats">#</a>
+</h3>
+<p>Try different styles—question, statement, instruction—and output formats like JSON. JSON helps structure data and reduce hallucinations.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how do we balance human readability with system parsing needs?</strong></p></blockquote>
+<h2 id="prompt-engineering-discipline">
+  Prompt Engineering Discipline
+  <a class="anchor" href="#prompt-engineering-discipline">#</a>
+</h2>
+<h3 id="29-use-schemas-for-input-and-output">
+  29. Use Schemas for Input and Output
+  <a class="anchor" href="#29-use-schemas-for-input-and-output">#</a>
+</h3>
+<p>JSON schemas define structure and types—great for grounding LLM understanding and making output usable in applications.</p>
+<blockquote>
+<p>This naturally leads to the question: <strong>how can we give LLMs structured &ldquo;expectations&rdquo; to reduce drift?</strong></p></blockquote>
+<h3 id="30-document-prompt-versions">
+  30. Document Prompt Versions
+  <a class="anchor" href="#30-document-prompt-versions">#</a>
+</h3>
+<p>Track all attempts, model versions, and outcomes in structured logs. Helps with reproducibility, debugging, and future upgrades.</p>
+<blockquote>
+<p>Final insight: <strong>prompt engineering is iterative design—every prompt is a versioned artifact.</strong></p></blockquote>
+<h2 id="summary-1">
+  Summary
+  <a class="anchor" href="#summary-1">#</a>
+</h2>
+<p>This module explored the full scope of prompt engineering:</p>
+<ul>
+<li>Prompt types (zero-shot to step-back)</li>
+<li>Reasoning methods (CoT, ToT, Self-consistency, ReAct)</li>
+<li>Automated methods (APE)</li>
+<li>Code, multimodal, and structured prompting</li>
+<li>Evaluation, formatting, variables, and documentation</li>
+</ul>
+<blockquote>
+<p>The journey from text to structured reasoning begins with a well-crafted prompt.</p></blockquote>
 </article>
  
       
@@ -1599,136 +1394,113 @@ Each can overlap, but they influence tone, structure, and accuracy differently.<
   <ul>
     <li><a href="#day-1--prompt-engineering--cot-summary">Day 1 – Prompt Engineering – CoT Summary</a>
       <ul>
-        <li><a href="#foundations-of-prompt-engineering">Foundations of Prompt Engineering</a>
+        <li><a href="#introduction--prompting-fundamentals">Introduction &amp; Prompting Fundamentals</a>
           <ul>
-            <li><a href="#1-prompt-engineering-is-for-everyone">1. Prompt engineering is for everyone</a></li>
-            <li><a href="#2-why-prompt-engineering-matters">2. Why prompt engineering matters</a></li>
-            <li><a href="#3-focus-on-direct-model-access">3. Focus on direct model access</a></li>
+            <li><a href="#1-why-prompt-engineering-matters">1. Why Prompt Engineering Matters</a></li>
+            <li><a href="#2-how-llms-predict-text">2. How LLMs Predict Text</a></li>
           </ul>
         </li>
         <li><a href="#llm-output-configuration">LLM Output Configuration</a>
           <ul>
-            <li><a href="#4-output-length-settings">4. Output length settings</a></li>
-            <li><a href="#5-prompt-design-implications">5. Prompt design implications</a></li>
-            <li><a href="#6-token-prediction-is-probabilistic">6. Token prediction is probabilistic</a></li>
+            <li><a href="#3-controlling-output-length">3. Controlling Output Length</a></li>
+            <li><a href="#4-temperature--controlling-randomness">4. Temperature – Controlling Randomness</a></li>
           </ul>
         </li>
-        <li><a href="#sampling-strategies">Sampling Strategies</a>
+        <li><a href="#sampling-techniques-top-k-and-top-p">Sampling Techniques: Top-K and Top-P</a>
           <ul>
-            <li><a href="#7-temperature-randomness-vs-determinism">7. Temperature: randomness vs determinism</a></li>
-            <li><a href="#8-top-k-sampling">8. Top-K sampling</a></li>
-            <li><a href="#9-top-p-nucleus-sampling">9. Top-P (nucleus) sampling</a></li>
+            <li><a href="#5-top-k-vs-top-p">5. Top-K vs. Top-P</a></li>
+            <li><a href="#6-putting-sampling-together">6. Putting Sampling Together</a></li>
           </ul>
         </li>
-        <li><a href="#coordinating-configuration-values">Coordinating Configuration Values</a>
+        <li><a href="#prompting-techniques">Prompting Techniques</a>
           <ul>
-            <li><a href="#10-interplay-of-settings">10. Interplay of settings</a></li>
-            <li><a href="#11-recommended-starter-values">11. Recommended starter values</a></li>
-            <li><a href="#12-common-failure-repetition-loops">12. Common failure: repetition loops</a></li>
+            <li><a href="#7-zero-shot-prompting">7. Zero-shot Prompting</a></li>
           </ul>
         </li>
-        <li><a href="#prompting-techniques-begin">Prompting Techniques Begin</a>
+        <li><a href="#prompting-techniques-continued">Prompting Techniques Continued</a>
           <ul>
-            <li><a href="#13-prompting-techniques-overview">13. Prompting techniques overview</a></li>
-            <li><a href="#14-zero-shot-prompting">14. Zero-shot prompting</a></li>
+            <li><a href="#8-one-shot-and-few-shot-prompting">8. One-shot and Few-shot Prompting</a></li>
+            <li><a href="#9-system-prompting">9. System Prompting</a></li>
+            <li><a href="#10-role-prompting">10. Role Prompting</a></li>
+            <li><a href="#11-contextual-prompting">11. Contextual Prompting</a></li>
           </ul>
         </li>
-        <li><a href="#prompting-techniques-continued">Prompting Techniques (Continued)</a>
+        <li><a href="#reasoning-techniques">Reasoning Techniques</a>
           <ul>
-            <li><a href="#15-zero-shot-prompting-example-and-logging">15. Zero-shot prompting example and logging</a></li>
-            <li><a href="#16-when-zero-shot-isnt-enough">16. When zero-shot isn’t enough</a></li>
-            <li><a href="#17-few-shot-prompting-example">17. Few-shot prompting example</a></li>
+            <li><a href="#12-step-back-prompting">12. Step-back Prompting</a></li>
           </ul>
         </li>
-        <li><a href="#system-contextual-and-role-prompting">System, Contextual, and Role Prompting</a>
+        <li><a href="#reasoning-techniques-continued">Reasoning Techniques Continued</a>
           <ul>
-            <li><a href="#18-differentiating-the-three-styles">18. Differentiating the three styles</a></li>
-            <li><a href="#19-system-prompting-in-action">19. System prompting in action</a></li>
-            <li><a href="#20-system-prompting-for-safety">20. System prompting for safety</a></li>
-            <li><a href="#21-role-prompting-definition-and-benefits">21. Role prompting definition and benefits</a></li>
-            <li><a href="#22-role-prompting-examples">22. Role prompting examples</a></li>
-            <li><a href="#23-style-templates">23. Style templates</a></li>
-            <li><a href="#24-contextual-prompting-example">24. Contextual prompting example</a></li>
+            <li><a href="#13-chain-of-thought-cot">13. Chain of Thought (CoT)</a></li>
+            <li><a href="#14-self-consistency">14. Self-Consistency</a></li>
           </ul>
         </li>
-        <li><a href="#step-back-prompting">Step-back Prompting</a>
+        <li><a href="#advanced-prompting-patterns">Advanced Prompting Patterns</a>
           <ul>
-            <li><a href="#25-step-back-prompting-concept">25. Step-back prompting concept</a></li>
+            <li><a href="#15-tree-of-thoughts-tot">15. Tree of Thoughts (ToT)</a></li>
+            <li><a href="#16-react-reason--act">16. ReAct (Reason + Act)</a></li>
           </ul>
         </li>
-        <li><a href="#step-back-chain-of-thought-and-advanced-prompting-techniques">Step-back, Chain-of-Thought, and Advanced Prompting Techniques</a>
+        <li><a href="#automating-prompt-engineering">Automating Prompt Engineering</a>
           <ul>
-            <li><a href="#26-step-back-prompting-example">26. Step-back prompting example</a></li>
-            <li><a href="#27-applying-step-back-for-storyline-quality">27. Applying step-back for storyline quality</a></li>
+            <li><a href="#17-automatic-prompt-engineering-ape">17. Automatic Prompt Engineering (APE)</a></li>
           </ul>
         </li>
-        <li><a href="#chain-of-thought-cot">Chain of Thought (CoT)</a>
+        <li><a href="#code-prompting-techniques">Code Prompting Techniques</a>
           <ul>
-            <li><a href="#28-chain-of-thought-introduction">28. Chain of Thought introduction</a></li>
-            <li><a href="#29-zero-shot-vs-cot-example">29. Zero-shot vs CoT example</a></li>
-            <li><a href="#30-few-shot-cot-for-reasoning-accuracy">30. Few-shot CoT for reasoning accuracy</a></li>
+            <li><a href="#18-prompts-for-writing-code">18. Prompts for Writing Code</a></li>
+            <li><a href="#19-prompts-for-explaining-code">19. Prompts for Explaining Code</a></li>
+            <li><a href="#20-prompts-for-translating-code">20. Prompts for Translating Code</a></li>
+            <li><a href="#21-prompts-for-debugging-and-reviewing-code">21. Prompts for Debugging and Reviewing Code</a></li>
           </ul>
         </li>
-        <li><a href="#self-consistency">Self-Consistency</a>
+        <li><a href="#other-techniques--best-practices">Other Techniques &amp; Best Practices</a>
           <ul>
-            <li><a href="#31-self-consistency-definition">31. Self-consistency definition</a></li>
-            <li><a href="#32-email-classification-example">32. Email classification example</a></li>
+            <li><a href="#22-multimodal-prompting">22. Multimodal Prompting</a></li>
+            <li><a href="#23-best-practice--provide-examples">23. Best Practice – Provide Examples</a></li>
           </ul>
         </li>
-        <li><a href="#tree-of-thoughts-tot">Tree of Thoughts (ToT)</a>
+        <li><a href="#best-practices-for-prompt-engineering">Best Practices for Prompt Engineering</a>
           <ul>
-            <li><a href="#33-tree-of-thoughts-overview">33. Tree of Thoughts overview</a></li>
+            <li><a href="#24-design-with-simplicity">24. Design with Simplicity</a></li>
+            <li><a href="#25-be-specific-about-output">25. Be Specific About Output</a></li>
+            <li><a href="#26-use-variables">26. Use Variables</a></li>
+            <li><a href="#27-experiment-with-formats-and-styles">27. Experiment with Formats and Styles</a></li>
           </ul>
         </li>
-        <li><a href="#react-reason--act">ReAct (Reason &amp; Act)</a>
+        <li><a href="#advanced-prompting--cot-guidelines">Advanced Prompting &amp; CoT Guidelines</a>
           <ul>
-            <li><a href="#34-react-prompting-concept">34. ReAct prompting concept</a></li>
-            <li><a href="#35-react-code-example">35. ReAct code example</a></li>
+            <li><a href="#28-work-with-schemas">28. Work With Schemas</a></li>
+            <li><a href="#29-best-practices-for-chain-of-thought-cot">29. Best Practices for Chain-of-Thought (CoT)</a></li>
           </ul>
         </li>
-        <li><a href="#automatic-prompt-engineering-ape">Automatic Prompt Engineering (APE)</a>
+        <li><a href="#prompt-documentation--summary">Prompt Documentation &amp; Summary</a>
           <ul>
-            <li><a href="#36-ape-introduction">36. APE introduction</a></li>
-            <li><a href="#37-ape-example-for-t-shirt-orders">37. APE example for t-shirt orders</a></li>
+            <li><a href="#30-document-prompt-experiments">30. Document Prompt Experiments</a></li>
           </ul>
         </li>
-        <li><a href="#code-prompting">Code Prompting</a>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#final-best-practices-and-wrap-up">Final Best Practices and Wrap-Up</a>
           <ul>
-            <li><a href="#38-prompts-for-writing-code">38. Prompts for writing code</a></li>
-            <li><a href="#39-prompts-for-explaining-code">39. Prompts for explaining code</a></li>
-            <li><a href="#40-prompts-for-translating-code">40. Prompts for translating code</a></li>
-            <li><a href="#41-prompts-for-debugging-and-reviewing-code">41. Prompts for debugging and reviewing code</a></li>
-            <li><a href="#42-what-about-multimodal-prompting">42. What about multimodal prompting?</a></li>
+            <li><a href="#24-design-with-simplicity-1">24. Design with Simplicity</a></li>
+            <li><a href="#25-be-specific-about-output-1">25. Be Specific About Output</a></li>
+            <li><a href="#26-prefer-instructions-over-constraints">26. Prefer Instructions Over Constraints</a></li>
           </ul>
         </li>
-        <li><a href="#best-practices">Best Practices</a>
+        <li><a href="#variables-versions-and-formats">Variables, Versions, and Formats</a>
           <ul>
-            <li><a href="#43-provide-examples">43. Provide examples</a></li>
+            <li><a href="#27-use-variables-in-prompts">27. Use Variables in Prompts</a></li>
+            <li><a href="#28-experiment-with-input-and-output-formats">28. Experiment with Input and Output Formats</a></li>
           </ul>
         </li>
-        <li><a href="#best-practices-continued">Best Practices (Continued)</a>
+        <li><a href="#prompt-engineering-discipline">Prompt Engineering Discipline</a>
           <ul>
-            <li><a href="#44-design-with-simplicity">44. Design with simplicity</a></li>
-            <li><a href="#45-be-specific-about-the-output">45. Be specific about the output</a></li>
-            <li><a href="#46-use-instructions-over-constraints">46. Use instructions over constraints</a></li>
-            <li><a href="#47-control-the-max-token-length">47. Control the max token length</a></li>
-            <li><a href="#48-use-variables-in-prompts">48. Use variables in prompts</a></li>
-            <li><a href="#49-experiment-with-input-formats-and-writing-styles">49. Experiment with input formats and writing styles</a></li>
-            <li><a href="#50-for-few-shot-classification-mix-up-class-order">50. For few-shot classification, mix up class order</a></li>
-            <li><a href="#51-adapt-to-model-updates">51. Adapt to model updates</a></li>
-            <li><a href="#52-experiment-with-output-formats">52. Experiment with output formats</a></li>
-            <li><a href="#53-json-repair-for-incomplete-generations">53. JSON repair for incomplete generations</a></li>
-            <li><a href="#54-working-with-schemas">54. Working with schemas</a></li>
-            <li><a href="#55-experiment-with-other-prompt-engineers">55. Experiment with other prompt engineers</a></li>
-            <li><a href="#56-cot-best-practices">56. CoT best practices</a></li>
-            <li><a href="#57-document-the-various-prompt-attempts">57. Document the various prompt attempts</a></li>
+            <li><a href="#29-use-schemas-for-input-and-output">29. Use Schemas for Input and Output</a></li>
+            <li><a href="#30-document-prompt-versions">30. Document Prompt Versions</a></li>
           </ul>
         </li>
-        <li><a href="#summary">Summary</a>
-          <ul>
-            <li><a href="#58-summary-of-key-techniques">58. Summary of key techniques</a></li>
-          </ul>
-        </li>
+        <li><a href="#summary-1">Summary</a></li>
       </ul>
     </li>
   </ul>
