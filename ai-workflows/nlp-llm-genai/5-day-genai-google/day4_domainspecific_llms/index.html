@@ -18,14 +18,24 @@
 
 We start with the evolution of LLMs from general-purpose to domain-specific tools. This shift was driven by challenges in fields like cybersecurity and medicine, where technical language and sensitive use cases demand more than general knowledge.
 
-This naturally leads to the question: why do general-purpose LLMs struggle in specialized domains?">
+→ why do general-purpose LLMs struggle in specialized domains?
+
+  SecLM and Cybersecurity
+  #
+
+
+  2. The Challenges in Cybersecurity
+  #
+
+Cybersecurity experts face three main issues: rapidly evolving threats, repetitive manual work (toil), and a shortage of skilled talent. These bottlenecks make it hard to keep up with modern security needs.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/">
   <meta property="og:site_name" content="AI in Healthcare">
   <meta property="og:title" content="AI in Healthcare">
   <meta property="og:description" content="Day 4 – Domain-Specific LLMs – CoT Summary # Introduction # 1. The Rise of Specialized LLMs # We start with the evolution of LLMs from general-purpose to domain-specific tools. This shift was driven by challenges in fields like cybersecurity and medicine, where technical language and sensitive use cases demand more than general knowledge.
-This naturally leads to the question: why do general-purpose LLMs struggle in specialized domains?">
+→ why do general-purpose LLMs struggle in specialized domains?
+SecLM and Cybersecurity # 2. The Challenges in Cybersecurity # Cybersecurity experts face three main issues: rapidly evolving threats, repetitive manual work (toil), and a shortage of skilled talent. These bottlenecks make it hard to keep up with modern security needs.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="ai-workflows">
@@ -35,7 +45,7 @@ This naturally leads to the question: why do general-purpose LLMs struggle in sp
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5bb4c453e86cbc7f39671fded08d844fb4af1388a4a2cd7dbf5b750e278b2f4f.js" integrity="sha256-W7TEU&#43;hsvH85Zx/e0I2ET7SvE4ikos19v1t1DieLL08=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.ea074297c239b48ffccdea283c2ac1d1e2259730f98ae43533a7eb2ba23e1cdc.js" integrity="sha256-6gdCl8I5tI/8zeooPCrB0eIllzD5iuQ1M6frK6I&#43;HNw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -912,7 +922,7 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>We start with the <em>evolution of LLMs</em> from general-purpose to domain-specific tools. This shift was driven by challenges in fields like cybersecurity and medicine, where technical language and sensitive use cases demand more than general knowledge.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>why do general-purpose LLMs struggle in specialized domains?</strong></p></blockquote>
+<p>→ <strong>why do general-purpose LLMs struggle in specialized domains?</strong></p></blockquote>
 <h2 id="seclm-and-cybersecurity">
   SecLM and Cybersecurity
   <a class="anchor" href="#seclm-and-cybersecurity">#</a>
@@ -923,14 +933,14 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>Cybersecurity experts face three main issues: rapidly evolving threats, repetitive manual work (toil), and a shortage of skilled talent. These bottlenecks make it hard to keep up with modern security needs.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how can AI reduce toil, bridge talent gaps, and counter fast-evolving threats?</strong></p></blockquote>
+<p>→ <strong>how can AI reduce toil, bridge talent gaps, and counter fast-evolving threats?</strong></p></blockquote>
 <h3 id="3-the-role-of-genai-in-security">
   3. The Role of GenAI in Security
   <a class="anchor" href="#3-the-role-of-genai-in-security">#</a>
 </h3>
 <p>GenAI can assist various security personas—from analysts to CISOs—by translating queries, reverse-engineering code, planning remediation, and summarizing threats. This enables both automation and augmentation of expertise.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>what kind of architecture supports this AI augmentation effectively?</strong></p></blockquote>
+<p>→ <strong>what kind of architecture supports this AI augmentation effectively?</strong></p></blockquote>
 <h2 id="seclm-architecture">
   SecLM Architecture
   <a class="anchor" href="#seclm-architecture">#</a>
@@ -941,14 +951,14 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>SecLM combines tools (top layer), a reasoning API (middle layer), and secure data sources (bottom layer). This allows for contextual responses using live data and tailored planning.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how do we ensure accuracy and freshness without retraining LLMs constantly?</strong></p></blockquote>
+<p>→ <strong>how do we ensure accuracy and freshness without retraining LLMs constantly?</strong></p></blockquote>
 <h3 id="5-domain-specific-model-training">
   5. Domain-Specific Model Training
   <a class="anchor" href="#5-domain-specific-model-training">#</a>
 </h3>
 <p>SecLM trains on open-source and licensed security content, fine-tuned for tasks like alert summarization and command analysis. It uses parameter-efficient tuning and RAG for freshness.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how does the system generalize to unseen tasks or environments?</strong></p></blockquote>
+<p>→ <strong>how does the system generalize to unseen tasks or environments?</strong></p></blockquote>
 <h2 id="reasoning-framework">
   Reasoning Framework
   <a class="anchor" href="#reasoning-framework">#</a>
@@ -959,14 +969,14 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>SecLM decomposes broad questions (e.g., about an APT group) into steps like retrieving intel, translating to SIEM queries, and synthesizing responses—showcasing multi-agent, tool-augmented reasoning.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how does this compare with general-purpose LLMs?</strong></p></blockquote>
+<p>→ <strong>how does this compare with general-purpose LLMs?</strong></p></blockquote>
 <h3 id="7-performance-and-evaluation">
   7. Performance and Evaluation
   <a class="anchor" href="#7-performance-and-evaluation">#</a>
 </h3>
 <p>Through expert evaluations and automated metrics, SecLM outperforms general models on security-specific tasks, demonstrating the need for full-stack, domain-focused platforms.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>can this platform be generalized to other domains like health tech?</strong></p></blockquote>
+<p>→ <strong>can this platform be generalized to other domains like health tech?</strong></p></blockquote>
 <h2 id="medlm-and-health-tech">
   MedLM and Health Tech
   <a class="anchor" href="#medlm-and-health-tech">#</a>
@@ -977,14 +987,14 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>Medical question-answering (QA) demands deep reasoning, evolving knowledge, and accurate synthesis. LLMs like Med-PaLM show potential by answering USMLE-style questions and sourcing info from varied medical content.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how can we ensure these answers are trustworthy and context-aware?</strong></p></blockquote>
+<p>→ <strong>how can we ensure these answers are trustworthy and context-aware?</strong></p></blockquote>
 <h3 id="9-opportunities-for-genai-in-medicine">
   9. Opportunities for GenAI in Medicine
   <a class="anchor" href="#9-opportunities-for-genai-in-medicine">#</a>
 </h3>
 <p>Use cases range from contextual Q&amp;A on patient history to triaging clinician messages and real-time patient-clinician dialogue support. GenAI systems can enhance decision-making, patient engagement, and clinician efficiency.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>what safeguards ensure these capabilities are safe, equitable, and accurate?</strong></p></blockquote>
+<p>→ <strong>what safeguards ensure these capabilities are safe, equitable, and accurate?</strong></p></blockquote>
 <h2 id="designing-med-palm">
   Designing Med-PaLM
   <a class="anchor" href="#designing-med-palm">#</a>
@@ -995,14 +1005,14 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>Med-PaLM aims to support flexible interaction—combining structured clinical expertise with empathetic, human-centric dialogue. It was built to scale reasoning and bring compassion into AI-assisted medicine.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how do we evaluate such models beyond technical accuracy?</strong></p></blockquote>
+<p>→ <strong>how do we evaluate such models beyond technical accuracy?</strong></p></blockquote>
 <h3 id="11-evaluation-frameworks-for-medical-llms">
   11. Evaluation Frameworks for Medical LLMs
   <a class="anchor" href="#11-evaluation-frameworks-for-medical-llms">#</a>
 </h3>
 <p>Med-PaLM uses USMLE-style exams and qualitative rubrics to assess reasoning, factuality, and harm potential. Human experts assess each dimension, comparing outputs to clinicians&rsquo; answers in blinded evaluations.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how does Med-PaLM compare to human experts in real scenarios?</strong></p></blockquote>
+<p>→ <strong>how does Med-PaLM compare to human experts in real scenarios?</strong></p></blockquote>
 <h2 id="clinical-deployment-considerations">
   Clinical Deployment Considerations
   <a class="anchor" href="#clinical-deployment-considerations">#</a>
@@ -1013,7 +1023,7 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>Rigorous validation is required for real-world use—starting with retrospective studies, then prospective ones, all before interventional deployment. Past learnings (e.g., from diabetic retinopathy screening) stress this need.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how can we responsibly scale these tools into clinical settings?</strong></p></blockquote>
+<p>→ <strong>how can we responsibly scale these tools into clinical settings?</strong></p></blockquote>
 <h2 id="advancing-medlm">
   Advancing MedLM
   <a class="anchor" href="#advancing-medlm">#</a>
@@ -1024,21 +1034,21 @@ https://github.com/alex-shpak/hugo-book
 </h3>
 <p>While Med-PaLM 2 shows expert-level performance on QA tasks, its capabilities must be validated across each medical subdomain. Mental health assessments, for example, require specialized evaluation and adaptation.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>can a high-performing model generalize across all medical use cases without fine-tuning?</strong></p></blockquote>
+<p>→ <strong>can a high-performing model generalize across all medical use cases without fine-tuning?</strong></p></blockquote>
 <h3 id="14-toward-multimodal-healthcare-ai">
   14. Toward Multimodal Healthcare AI
   <a class="anchor" href="#14-toward-multimodal-healthcare-ai">#</a>
 </h3>
 <p>Medicine is inherently multimodal—spanning text, images, genomics, EHRs, and sensors. MedLM is expanding into multimodal models, which are in early research stages but promise broader clinical utility.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>how can AI integrate and reason across multiple data modalities safely and meaningfully?</strong></p></blockquote>
+<p>→ <strong>how can AI integrate and reason across multiple data modalities safely and meaningfully?</strong></p></blockquote>
 <h3 id="15-training-innovations-in-med-palm-2">
   15. Training Innovations in Med-PaLM 2
   <a class="anchor" href="#15-training-innovations-in-med-palm-2">#</a>
 </h3>
 <p>Med-PaLM 2 leverages instruction tuning on diverse QA datasets and advanced prompting strategies like chain-of-thought, self-consistency, and ensemble refinement. These enhance stepwise reasoning and output reliability.</p>
 <blockquote>
-<p>This naturally leads to the question: <strong>which techniques most boost reasoning performance in sensitive domains like healthcare?</strong></p></blockquote>
+<p>→ <strong>which techniques most boost reasoning performance in sensitive domains like healthcare?</strong></p></blockquote>
 <h2 id="conclusion">
   Conclusion
   <a class="anchor" href="#conclusion">#</a>
