@@ -22,28 +22,28 @@
           1
           Foundational LLMs &amp; Prompt Engineering
           Foundational LLMs &amp; Text GenerationPrompt Engineering
-          -Prompting Fundamentals
+          1. Prompting Fundamentals
           Case Study
       
       
           2
           Embeddings &amp; Vector Stores/Databases
           Embeddings
-          -RAG QA System-Text Similarity-Classification with Keras
+          2. RAG QA System3. Text Similarity4. Classification with Keras
           
       
       
           3
           Generative Agents
           Agents
-          -Function Calling-LangGraph Agent
+          5. Function Calling6. LangGraph Agent
           Case Study
       
       
           4
           Domain-Specific LLMs
           Domain-Specific LLMs
-          -Google Search Grounding-Custom Fine-Tuning
+          7. Google Search Grounding8. Custom Fine-Tuning
           
       
       
@@ -55,18 +55,28 @@
       
   
 
-">
+
+
+  FAQ on Large Language Models (LLMs) and Generative AI
+  #
+
+
+  1. What are the fundamental components that enable Large Language Models (LLMs) to process and generate text?
+  #
+
+
+LLMs are primarily powered by the Transformer architecture. This architecture utilizes mechanisms like self-attention and multi-head attention to weigh the importance of different words in the input sequence. Input text is prepared through tokenization and embedding into vector representations. The Transformer often employs encoder and decoder components, along with techniques like layer normalization and residual connections, and in some cases, Mixture of Experts (MoE) for efficient scaling. Training these models involves feeding them vast amounts of text data and employing various strategies to optimize their ability to predict the next word or token in a sequence.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/">
   <meta property="og:site_name" content="AI in Healthcare">
   <meta property="og:title" content="5-Day GenAI with Google">
   <meta property="og:description" content="5-Day Gen AI Intensive Course with Google – Resource Overview # Day Topic Whitepaper Code Labs Case Study 1 Foundational LLMs &amp; Prompt Engineering Foundational LLMs &amp; Text Generation
-Prompt Engineering -Prompting Fundamentals Case Study 2 Embeddings &amp; Vector Stores/Databases Embeddings -RAG QA System
--Text Similarity
--Classification with Keras 3 Generative Agents Agents -Function Calling
--LangGraph Agent Case Study 4 Domain-Specific LLMs Domain-Specific LLMs -Google Search Grounding
--Custom Fine-Tuning 5 MLOps for Generative AI MLOps No code labs. See: E2E Gen AI Starter Pack">
+Prompt Engineering 1. Prompting Fundamentals Case Study 2 Embeddings &amp; Vector Stores/Databases Embeddings 2. RAG QA System
+3. Text Similarity
+4. Classification with Keras 3 Generative Agents Agents 5. Function Calling
+6. LangGraph Agent Case Study 4 Domain-Specific LLMs Domain-Specific LLMs 7. Google Search Grounding
+8. Custom Fine-Tuning 5 MLOps for Generative AI MLOps No code labs. See: E2E Gen AI Starter Pack FAQ on Large Language Models (LLMs) and Generative AI # 1. What are the fundamental components that enable Large Language Models (LLMs) to process and generate text? # LLMs are primarily powered by the Transformer architecture. This architecture utilizes mechanisms like self-attention and multi-head attention to weigh the importance of different words in the input sequence. Input text is prepared through tokenization and embedding into vector representations. The Transformer often employs encoder and decoder components, along with techniques like layer normalization and residual connections, and in some cases, Mixture of Experts (MoE) for efficient scaling. Training these models involves feeding them vast amounts of text data and employing various strategies to optimize their ability to predict the next word or token in a sequence.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>5-Day GenAI with Google | AI in Healthcare</title>
@@ -75,7 +85,7 @@ Prompt Engineering -Prompting Fundamentals Case Study 2 Embeddings &amp; Vector 
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ea074297c239b48ffccdea283c2ac1d1e2259730f98ae43533a7eb2ba23e1cdc.js" integrity="sha256-6gdCl8I5tI/8zeooPCrB0eIllzD5iuQ1M6frK6I&#43;HNw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.df090d344129ddf2fc23394adc05cffa30d63bcf3fa772c7c057b21644817a1c.js" integrity="sha256-3wkNNEEp3fL8IzlK3AXP&#43;jDWO88/p3LHwFeyFkSBehw=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/nlp-llm-genai/5-day-genai-google/index.xml" title="AI in Healthcare" />
 <!--
 Made with Book Theme
@@ -873,6 +883,18 @@ https://github.com/alex-shpak/hugo-book
     <li>
       <ul>
         <li><a href="#5-day-gen-ai-intensive-course-with-google--resource-overview">5-Day Gen AI Intensive Course with Google – Resource Overview</a></li>
+        <li><a href="#faq-on-large-language-models-llms-and-generative-ai">FAQ on Large Language Models (LLMs) and Generative AI</a>
+          <ul>
+            <li><a href="#1-what-are-the-fundamental-components-that-enable-large-language-models-llms-to-process-and-generate-text">1. What are the fundamental components that enable Large Language Models (LLMs) to process and generate text?</a></li>
+            <li><a href="#2-how-have-llm-architectures-evolved-over-time-and-what-key-breakthroughs-characterize-this-evolution">2. How have LLM architectures evolved over time, and what key breakthroughs characterize this evolution?</a></li>
+            <li><a href="#3-what-are-the-primary-techniques-for-adapting-pre-trained-llms-for-specific-tasks-or-domains">3. What are the primary techniques for adapting pre-trained LLMs for specific tasks or domains?</a></li>
+            <li><a href="#4-why-is-prompt-engineering-crucial-for-effectively-utilizing-llms-and-what-are-some-key-prompting-techniques">4. Why is prompt engineering crucial for effectively utilizing LLMs, and what are some key prompting techniques?</a></li>
+            <li><a href="#5-what-are-embeddings-and-vector-databases-and-how-do-they-facilitate-advanced-applications-of-llms-like-retrieval-augmented-generation-rag">5. What are embeddings and vector databases, and how do they facilitate advanced applications of LLMs like Retrieval-Augmented Generation (RAG)?</a></li>
+            <li><a href="#6-what-are-generative-agents-and-what-considerations-are-important-when-developing-and-evaluating-them-particularly-in-multi-agent-systems">6. What are generative agents, and what considerations are important when developing and evaluating them, particularly in multi-agent systems?</a></li>
+            <li><a href="#7-how-are-domain-specific-llms-being-developed-and-applied-in-fields-like-cybersecurity-seclm-and-healthcare-medlm">7. How are domain-specific LLMs being developed and applied in fields like cybersecurity (SecLM) and healthcare (MedLM)?</a></li>
+            <li><a href="#8-what-are-the-key-aspects-of-mlops-for-generative-ai-systems-and-how-does-it-differ-from-traditional-mlops">8. What are the key aspects of MLOps for Generative AI systems, and how does it differ from traditional MLOps?</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -906,28 +928,28 @@ https://github.com/alex-shpak/hugo-book
           <td><strong>1</strong></td>
           <td>Foundational LLMs &amp; Prompt Engineering</td>
           <td><a href="https://www.kaggle.com/whitepaper-foundational-llm-and-text-generation">Foundational LLMs &amp; Text Generation</a><br><a href="https://www.kaggle.com/whitepaper-prompt-engineering">Prompt Engineering</a></td>
-          <td><a href="https://www.kaggle.com/code/markishere/day-1-prompting">-Prompting Fundamentals</a></td>
+          <td><a href="https://www.kaggle.com/code/markishere/day-1-prompting">1. Prompting Fundamentals</a></td>
           <td><a href="https://cloud.google.com/blog/products/ai-machine-learning/how-commerzbank-is-transforming-financial-advisory-workflows-with-gen-ai?e=48754805">Case Study</a></td>
       </tr>
       <tr>
           <td><strong>2</strong></td>
           <td>Embeddings &amp; Vector Stores/Databases</td>
           <td><a href="https://www.kaggle.com/whitepaper-embeddings-and-vector-stores">Embeddings</a></td>
-          <td><a href="https://www.kaggle.com/code/markishere/day-2-document-q-a-with-rag">-RAG QA System</a><br><a href="https://www.kaggle.com/code/markishere/day-2-embeddings-and-similarity-scores">-Text Similarity</a><br><a href="https://www.kaggle.com/code/markishere/day-2-classifying-embeddings-with-keras">-Classification with Keras</a></td>
+          <td><a href="https://www.kaggle.com/code/markishere/day-2-document-q-a-with-rag">2. RAG QA System</a><br><a href="https://www.kaggle.com/code/markishere/day-2-embeddings-and-similarity-scores">3. Text Similarity</a><br><a href="https://www.kaggle.com/code/markishere/day-2-classifying-embeddings-with-keras">4. Classification with Keras</a></td>
           <td></td>
       </tr>
       <tr>
           <td><strong>3</strong></td>
           <td>Generative Agents</td>
           <td><a href="https://www.kaggle.com/whitepaper-agents">Agents</a></td>
-          <td><a href="https://www.kaggle.com/code/markishere/day-3-function-calling-with-the-gemini-api">-Function Calling</a><br><a href="https://www.kaggle.com/code/markishere/day-3-building-an-agent-with-langgraph">-LangGraph Agent</a></td>
+          <td><a href="https://www.kaggle.com/code/markishere/day-3-function-calling-with-the-gemini-api">5. Function Calling</a><br><a href="https://www.kaggle.com/code/markishere/day-3-building-an-agent-with-langgraph">6. LangGraph Agent</a></td>
           <td><a href="https://cloud.google.com/blog/products/ai-machine-learning/regnology-automates-ticket-to-code-with-genai-on-vertex-ai?e=48754805">Case Study</a></td>
       </tr>
       <tr>
           <td><strong>4</strong></td>
           <td>Domain-Specific LLMs</td>
           <td><a href="https://www.kaggle.com/whitepaper-solving-domains-specific-problems-using-llms">Domain-Specific LLMs</a></td>
-          <td><a href="https://www.kaggle.com/code/markishere/day-4-google-search-grounding">-Google Search Grounding</a><br><a href="https://www.kaggle.com/code/markishere/day-4-fine-tuning-a-custom-model">-Custom Fine-Tuning</a></td>
+          <td><a href="https://www.kaggle.com/code/markishere/day-4-google-search-grounding">7. Google Search Grounding</a><br><a href="https://www.kaggle.com/code/markishere/day-4-fine-tuning-a-custom-model">8. Custom Fine-Tuning</a></td>
           <td></td>
       </tr>
       <tr>
@@ -940,6 +962,58 @@ https://github.com/alex-shpak/hugo-book
   </tbody>
 </table>
 <hr>
+<h2 id="faq-on-large-language-models-llms-and-generative-ai">
+  FAQ on Large Language Models (LLMs) and Generative AI
+  <a class="anchor" href="#faq-on-large-language-models-llms-and-generative-ai">#</a>
+</h2>
+<h3 id="1-what-are-the-fundamental-components-that-enable-large-language-models-llms-to-process-and-generate-text">
+  1. What are the fundamental components that enable Large Language Models (LLMs) to process and generate text?
+  <a class="anchor" href="#1-what-are-the-fundamental-components-that-enable-large-language-models-llms-to-process-and-generate-text">#</a>
+</h3>
+<blockquote>
+<p>LLMs are primarily powered by the Transformer architecture. This architecture utilizes mechanisms like self-attention and multi-head attention to weigh the importance of different words in the input sequence. Input text is prepared through tokenization and embedding into vector representations. The Transformer often employs encoder and decoder components, along with techniques like layer normalization and residual connections, and in some cases, Mixture of Experts (MoE) for efficient scaling. Training these models involves feeding them vast amounts of text data and employing various strategies to optimize their ability to predict the next word or token in a sequence.</p></blockquote>
+<h3 id="2-how-have-llm-architectures-evolved-over-time-and-what-key-breakthroughs-characterize-this-evolution">
+  2. How have LLM architectures evolved over time, and what key breakthroughs characterize this evolution?
+  <a class="anchor" href="#2-how-have-llm-architectures-evolved-over-time-and-what-key-breakthroughs-characterize-this-evolution">#</a>
+</h3>
+<blockquote>
+<p>The evolution began with the shift towards attention mechanisms and culminated in the Transformer. Key breakthroughs include GPT-1&rsquo;s unsupervised pre-training, BERT&rsquo;s deep contextual understanding through masked language modeling, GPT-2&rsquo;s zero-shot learning capabilities arising from scale, and the emergence of generalist reasoners like GPT-3 and GPT-4 through instruction tuning. Other notable developments include dialogue-focused models (LaMDA), explorations of scaling laws (Chinchilla), efficient scaling with MoE (GLaM, Mixtral), the development of multimodal models (Gemini), and the rise of open-source alternatives (Gemma, LLaMA series). These advancements highlight a trend towards larger, more capable models with improved reasoning, generalization, and multimodal understanding.</p></blockquote>
+<h3 id="3-what-are-the-primary-techniques-for-adapting-pre-trained-llms-for-specific-tasks-or-domains">
+  3. What are the primary techniques for adapting pre-trained LLMs for specific tasks or domains?
+  <a class="anchor" href="#3-what-are-the-primary-techniques-for-adapting-pre-trained-llms-for-specific-tasks-or-domains">#</a>
+</h3>
+<blockquote>
+<p>The main techniques for adapting LLMs include fine-tuning, which involves further training the model on a smaller, task-specific dataset. Supervised Fine-Tuning (SFT) is a common approach. Reinforcement Learning from Human Feedback (RLHF) is used to align models with human preferences. Parameter Efficient Fine-Tuning (PEFT) methods allow for adaptation with fewer trainable parameters. Effective use of LLMs also relies heavily on prompt engineering, which involves crafting specific instructions to guide the model&rsquo;s output, along with selecting appropriate sampling techniques to control the style and randomness of the generated text.</p></blockquote>
+<h3 id="4-why-is-prompt-engineering-crucial-for-effectively-utilizing-llms-and-what-are-some-key-prompting-techniques">
+  4. Why is prompt engineering crucial for effectively utilizing LLMs, and what are some key prompting techniques?
+  <a class="anchor" href="#4-why-is-prompt-engineering-crucial-for-effectively-utilizing-llms-and-what-are-some-key-prompting-techniques">#</a>
+</h3>
+<blockquote>
+<p>Prompt engineering is critical because it directly influences the output and behavior of LLMs. By carefully designing prompts, users can guide the model to perform specific tasks, adopt certain roles, and reason through complex problems. Key techniques include zero-shot prompting (relying solely on the prompt), one-shot and few-shot prompting (providing examples), system prompting (setting the overall context), role prompting (assigning a persona), contextual prompting (providing relevant information), and advanced reasoning techniques like Chain of Thought (CoT), Step-back Prompting, and Tree of Thoughts (ToT).</p></blockquote>
+<h3 id="5-what-are-embeddings-and-vector-databases-and-how-do-they-facilitate-advanced-applications-of-llms-like-retrieval-augmented-generation-rag">
+  5. What are embeddings and vector databases, and how do they facilitate advanced applications of LLMs like Retrieval-Augmented Generation (RAG)?
+  <a class="anchor" href="#5-what-are-embeddings-and-vector-databases-and-how-do-they-facilitate-advanced-applications-of-llms-like-retrieval-augmented-generation-rag">#</a>
+</h3>
+<blockquote>
+<p>Embeddings are vector representations of data (text, images, etc.) that capture their semantic meaning, allowing for similarity comparisons. Vector databases are specialized databases designed to efficiently store and search these high-dimensional vector embeddings. In Retrieval-Augmented Generation (RAG), user queries are embedded and used to retrieve relevant information from a knowledge base stored as vector embeddings. This retrieved information is then incorporated into the prompt, allowing the LLM to generate more accurate and contextually grounded responses.</p></blockquote>
+<h3 id="6-what-are-generative-agents-and-what-considerations-are-important-when-developing-and-evaluating-them-particularly-in-multi-agent-systems">
+  6. What are generative agents, and what considerations are important when developing and evaluating them, particularly in multi-agent systems?
+  <a class="anchor" href="#6-what-are-generative-agents-and-what-considerations-are-important-when-developing-and-evaluating-them-particularly-in-multi-agent-systems">#</a>
+</h3>
+<blockquote>
+<p>Generative agents are autonomous entities powered by LLMs that can perceive their environment, make decisions, and take actions. Their architecture typically involves components for planning, memory, and action execution. Operationalizing agents (AgentOps) requires attention to observability and metrics. Evaluation involves assessing core capabilities, the trajectory of agent behavior, and the quality of final responses, often incorporating human feedback. In multi-agent systems, evaluating the interactions and coordination between agents becomes crucial, and specialized architectures and design patterns are employed.</p></blockquote>
+<h3 id="7-how-are-domain-specific-llms-being-developed-and-applied-in-fields-like-cybersecurity-seclm-and-healthcare-medlm">
+  7. How are domain-specific LLMs being developed and applied in fields like cybersecurity (SecLM) and healthcare (MedLM)?
+  <a class="anchor" href="#7-how-are-domain-specific-llms-being-developed-and-applied-in-fields-like-cybersecurity-seclm-and-healthcare-medlm">#</a>
+</h3>
+<blockquote>
+<p>Domain-specific LLMs are created by training models on large datasets specific to a particular domain, often combined with general pre-training. SecLM for cybersecurity aims to assist with tasks like threat detection and analysis by understanding security-related language and concepts. MedLM in healthcare focuses on medical knowledge and reasoning, with applications in medical Q&amp;A, diagnosis support, and clinical documentation. The development of these models requires careful consideration of domain-specific challenges, such as data privacy and the need for high accuracy, as well as specialized evaluation frameworks and deployment considerations.</p></blockquote>
+<h3 id="8-what-are-the-key-aspects-of-mlops-for-generative-ai-systems-and-how-does-it-differ-from-traditional-mlops">
+  8. What are the key aspects of MLOps for Generative AI systems, and how does it differ from traditional MLOps?
+  <a class="anchor" href="#8-what-are-the-key-aspects-of-mlops-for-generative-ai-systems-and-how-does-it-differ-from-traditional-mlops">#</a>
+</h3>
+<blockquote>
+<p>MLOps for Generative AI addresses the lifecycle of these complex systems, including model discovery, development, tuning, deployment, monitoring, and governance. It shares core principles with traditional MLOps but has unique considerations due to the nature of foundation models and prompted systems. This includes managing and versioning prompts, dealing with synthetic data, specialized evaluation techniques, the deployment of large foundation models, and the importance of continuous tuning and monitoring for drift and safety. AI platforms provide tools and infrastructure to support these GenAI-specific MLOps workflows.</p></blockquote>
 </article>
  
       
@@ -984,6 +1058,18 @@ https://github.com/alex-shpak/hugo-book
     <li>
       <ul>
         <li><a href="#5-day-gen-ai-intensive-course-with-google--resource-overview">5-Day Gen AI Intensive Course with Google – Resource Overview</a></li>
+        <li><a href="#faq-on-large-language-models-llms-and-generative-ai">FAQ on Large Language Models (LLMs) and Generative AI</a>
+          <ul>
+            <li><a href="#1-what-are-the-fundamental-components-that-enable-large-language-models-llms-to-process-and-generate-text">1. What are the fundamental components that enable Large Language Models (LLMs) to process and generate text?</a></li>
+            <li><a href="#2-how-have-llm-architectures-evolved-over-time-and-what-key-breakthroughs-characterize-this-evolution">2. How have LLM architectures evolved over time, and what key breakthroughs characterize this evolution?</a></li>
+            <li><a href="#3-what-are-the-primary-techniques-for-adapting-pre-trained-llms-for-specific-tasks-or-domains">3. What are the primary techniques for adapting pre-trained LLMs for specific tasks or domains?</a></li>
+            <li><a href="#4-why-is-prompt-engineering-crucial-for-effectively-utilizing-llms-and-what-are-some-key-prompting-techniques">4. Why is prompt engineering crucial for effectively utilizing LLMs, and what are some key prompting techniques?</a></li>
+            <li><a href="#5-what-are-embeddings-and-vector-databases-and-how-do-they-facilitate-advanced-applications-of-llms-like-retrieval-augmented-generation-rag">5. What are embeddings and vector databases, and how do they facilitate advanced applications of LLMs like Retrieval-Augmented Generation (RAG)?</a></li>
+            <li><a href="#6-what-are-generative-agents-and-what-considerations-are-important-when-developing-and-evaluating-them-particularly-in-multi-agent-systems">6. What are generative agents, and what considerations are important when developing and evaluating them, particularly in multi-agent systems?</a></li>
+            <li><a href="#7-how-are-domain-specific-llms-being-developed-and-applied-in-fields-like-cybersecurity-seclm-and-healthcare-medlm">7. How are domain-specific LLMs being developed and applied in fields like cybersecurity (SecLM) and healthcare (MedLM)?</a></li>
+            <li><a href="#8-what-are-the-key-aspects-of-mlops-for-generative-ai-systems-and-how-does-it-differ-from-traditional-mlops">8. What are the key aspects of MLOps for Generative AI systems, and how does it differ from traditional MLOps?</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
