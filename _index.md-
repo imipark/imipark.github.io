@@ -1,0 +1,27 @@
+## AI in Healthcare Agenda
+
+### Healthcare Data – From Clinical Trials to Real-World Data
+
+- **AI in Healthcare** – Clinical Data, Evaluations of AI Applications (*Coursera – Stanford*)
+- **Clinical Data Science** – Hands-on training in structured clinical data (*EHR, OMOP, CDM*), computational phenotyping, predictive modeling, and clinical NLP (*Coursera – UColorado*)
+- **Hands-On Healthcare Data** – *Healthcare Informatics & Knowledge Graph* (Book – Andrew Nguyen)
+
+### Causal Reasoning for Healthcare Decision
+
+- **A Crash Course in Causality** – Inferring Causal Effects from Observational Data (*Coursera – PennMed*) 
+- **Causal AI** – Structural Causal Models (*SCMs*) using DoWhy, enabling automated causal discovery, counterfactual reasoning, and intervention-based AI systems (*altdeep.ai*)
+
+### Knowledge-Driven Healthcare Decision
+
+- **Knowledge Graphs** – Enabling structured reasoning for clinical decision support (*Neo4j*).
+- **Knowledge Graph-Enhanced RAG** – Combining structured medical knowledge with AI-driven retrieval to deliver context-aware, accurate, and explainable clinical insights (*Neo4j with LangChain*).
+
+### Regulatory Drivers of AI in Healthcare
+
+- 21st Century Cures Act (2016)
+- FDA RWE Framework (2018)
+- CMS & ONC Interoperability Rule (2020)
+- FDA AI/ML SaMD Framework (2021)
+- FDA AI-Generated Synthetic Control Arms (2021)
+- HIPAA Updates for AI (2023)
+
