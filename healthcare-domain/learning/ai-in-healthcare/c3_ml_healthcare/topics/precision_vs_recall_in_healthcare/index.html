@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare
+  #
+
+This guide summarizes two key scenarios in healthcare where we might prefer:
+
+High Precision but Lower Recall
+High Recall but Lower Precision
+
+
+
+  (1) High Precision, Lower Recall
+  #
+
+
+  ✅ When to Use:
+  #
+
+
+When false positives are costly or harmful
+When resources are limited
+In early screening/filtering stages
+
+
+  📌 Justification:
+  #
+
+
+You want to be very confident before taking action.
+Missing some real cases is acceptable if wrongly flagging someone leads to emotional, financial, or clinical harm.
+
+
+  💡 Examples:
+  #
+
+
+Genetic Testing for Rare Diseases: Only flag patients when you&rsquo;re very sure. A false positive could cause unnecessary panic or life changes.
+ICU Bed Allocation: If you only have 5 beds, you’d want to use them for patients who are most certainly critical.
+Drug Discovery Pre-Screening: Select molecules that are most likely to work, even if some potential candidates are missed.
+
+
+
+  (2) High Recall, Lower Precision
+  #
+
+
+  ✅ When to Use:
+  #
+
+
+When missing a real case is dangerous
+When early detection can improve outcomes
+When follow-up tests or actions are safe and cheap
+
+
+  📌 Justification:
+  #
+
+
+It&rsquo;s better to catch every possible case, even if you have some false alarms.
+Especially important in serious or rapidly progressing conditions.
+
+
+  💡 Examples:
+  #
+
+
+Cancer Screening: Better to flag more patients for follow-up than miss someone with early-stage cancer.
+Sepsis Prediction in ER: Alerting the care team early—even with some false alarms—can save lives.
+COVID-19 Testing in High-Risk Areas: Broad detection to prevent spread, even if some healthy people test positive.
+
+
+
+  🧠 Summary Table
+  #
+
+
+  
+      
+          Scenario
+          Priority
+          Justification
+          Example
+      
+  
+  
+      
+          High Precision, Lower Recall
+          Precision 🟢
+          Avoid harm/cost from false positives
+          Genetic testing, ICU triage
+      
+      
+          High Recall, Lower Precision
+          Recall 🟢
+          Avoid missing critical or contagious conditions
+          Cancer screening, sepsis alert
+      
+  
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/topics/precision_vs_recall_in_healthcare/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare">
+  <meta property="og:description" content="Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare # This guide summarizes two key scenarios in healthcare where we might prefer:
+High Precision but Lower Recall High Recall but Lower Precision (1) High Precision, Lower Recall # ✅ When to Use: # When false positives are costly or harmful When resources are limited In early screening/filtering stages 📌 Justification: # You want to be very confident before taking action. Missing some real cases is acceptable if wrongly flagging someone leads to emotional, financial, or clinical harm. 💡 Examples: # Genetic Testing for Rare Diseases: Only flag patients when you’re very sure. A false positive could cause unnecessary panic or life changes. ICU Bed Allocation: If you only have 5 beds, you’d want to use them for patients who are most certainly critical. Drug Discovery Pre-Screening: Select molecules that are most likely to work, even if some potential candidates are missed. (2) High Recall, Lower Precision # ✅ When to Use: # When missing a real case is dangerous When early detection can improve outcomes When follow-up tests or actions are safe and cheap 📌 Justification: # It’s better to catch every possible case, even if you have some false alarms. Especially important in serious or rapidly progressing conditions. 💡 Examples: # Cancer Screening: Better to flag more patients for follow-up than miss someone with early-stage cancer. Sepsis Prediction in ER: Alerting the care team early—even with some false alarms—can save lives. COVID-19 Testing in High-Risk Areas: Broad detection to prevent spread, even if some healthy people test positive. 🧠 Summary Table # Scenario Priority Justification Example High Precision, Lower Recall Precision 🟢 Avoid harm/cost from false positives Genetic testing, ICU triage High Recall, Lower Precision Recall 🟢 Avoid missing critical or contagious conditions Cancer screening, sepsis alert">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare-domain">
+<title>Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/topics/precision_vs_recall_in_healthcare/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.8176a19d21e1634b413df325c07e4873d22859635e333540571aab3019458da6.js" integrity="sha256-gXahnSHhY0tBPfMlwH5Ic9IoWWNeMzVAVxqrMBlFjaY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle" checked />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle" checked />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-34244c046af3dd0acc0bbb74c663a8d3" class="toggle"  />
+    <label for="section-34244c046af3dd0acc0bbb74c663a8d3" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-84a2fcdd2f4a95b774882e612724819f" class="toggle"  />
+    <label for="section-84a2fcdd2f4a95b774882e612724819f" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day1 Foundational Llm Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day1 Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day2 Embeddings Vector Db</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/" class="">Day3 Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/" class="">Day4 Domain Specific Llms</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day5_mlops/" class="">Day5 Mlops</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f57a08bac84df3f46191c3cbf417807e" class="toggle"  />
+    <label for="section-f57a08bac84df3f46191c3cbf417807e" class="flex justify-between">
+      <a href="/ai-workflows/mlops/" class="">MLOps</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/clinical_nlp_genai/" class="">Clinical Nlp Gen Ai</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#tradeoffs-in-machine-learning-precision-vs-recall-in-healthcare">Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare</a>
+      <ul>
+        <li><a href="#1-high-precision-lower-recall">(1) High Precision, Lower Recall</a>
+          <ul>
+            <li><a href="#-when-to-use">✅ When to Use:</a></li>
+            <li><a href="#-justification">📌 Justification:</a></li>
+            <li><a href="#-examples">💡 Examples:</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-high-recall-lower-precision">(2) High Recall, Lower Precision</a>
+          <ul>
+            <li><a href="#-when-to-use-1">✅ When to Use:</a></li>
+            <li><a href="#-justification-1">📌 Justification:</a></li>
+            <li><a href="#-examples-1">💡 Examples:</a></li>
+          </ul>
+        </li>
+        <li><a href="#-summary-table">🧠 Summary Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="tradeoffs-in-machine-learning-precision-vs-recall-in-healthcare">
+  Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare
+  <a class="anchor" href="#tradeoffs-in-machine-learning-precision-vs-recall-in-healthcare">#</a>
+</h1>
+<p>This guide summarizes two key scenarios in healthcare where we might prefer:</p>
+<ol>
+<li><strong>High Precision but Lower Recall</strong></li>
+<li><strong>High Recall but Lower Precision</strong></li>
+</ol>
+<hr>
+<h2 id="1-high-precision-lower-recall">
+  (1) High Precision, Lower Recall
+  <a class="anchor" href="#1-high-precision-lower-recall">#</a>
+</h2>
+<h3 id="-when-to-use">
+  ✅ When to Use:
+  <a class="anchor" href="#-when-to-use">#</a>
+</h3>
+<ul>
+<li>When <strong>false positives are costly or harmful</strong></li>
+<li>When <strong>resources are limited</strong></li>
+<li>In <strong>early screening/filtering stages</strong></li>
+</ul>
+<h3 id="-justification">
+  📌 Justification:
+  <a class="anchor" href="#-justification">#</a>
+</h3>
+<ul>
+<li>You want to be <strong>very confident</strong> before taking action.</li>
+<li><strong>Missing some real cases</strong> is acceptable if <strong>wrongly flagging someone</strong> leads to <strong>emotional, financial, or clinical harm</strong>.</li>
+</ul>
+<h3 id="-examples">
+  💡 Examples:
+  <a class="anchor" href="#-examples">#</a>
+</h3>
+<ul>
+<li><strong>Genetic Testing for Rare Diseases</strong>: Only flag patients when you&rsquo;re very sure. A false positive could cause unnecessary panic or life changes.</li>
+<li><strong>ICU Bed Allocation</strong>: If you only have 5 beds, you’d want to use them for patients who are most certainly critical.</li>
+<li><strong>Drug Discovery Pre-Screening</strong>: Select molecules that are most likely to work, even if some potential candidates are missed.</li>
+</ul>
+<hr>
+<h2 id="2-high-recall-lower-precision">
+  (2) High Recall, Lower Precision
+  <a class="anchor" href="#2-high-recall-lower-precision">#</a>
+</h2>
+<h3 id="-when-to-use-1">
+  ✅ When to Use:
+  <a class="anchor" href="#-when-to-use-1">#</a>
+</h3>
+<ul>
+<li>When <strong>missing a real case is dangerous</strong></li>
+<li>When <strong>early detection can improve outcomes</strong></li>
+<li>When <strong>follow-up tests or actions are safe and cheap</strong></li>
+</ul>
+<h3 id="-justification-1">
+  📌 Justification:
+  <a class="anchor" href="#-justification-1">#</a>
+</h3>
+<ul>
+<li>It&rsquo;s better to <strong>catch every possible case</strong>, even if you have some false alarms.</li>
+<li>Especially important in <strong>serious or rapidly progressing conditions</strong>.</li>
+</ul>
+<h3 id="-examples-1">
+  💡 Examples:
+  <a class="anchor" href="#-examples-1">#</a>
+</h3>
+<ul>
+<li><strong>Cancer Screening</strong>: Better to flag more patients for follow-up than miss someone with early-stage cancer.</li>
+<li><strong>Sepsis Prediction in ER</strong>: Alerting the care team early—even with some false alarms—can save lives.</li>
+<li><strong>COVID-19 Testing in High-Risk Areas</strong>: Broad detection to prevent spread, even if some healthy people test positive.</li>
+</ul>
+<hr>
+<h2 id="-summary-table">
+  🧠 Summary Table
+  <a class="anchor" href="#-summary-table">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Scenario</th>
+          <th>Priority</th>
+          <th>Justification</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>High Precision, Lower Recall</td>
+          <td>Precision 🟢</td>
+          <td>Avoid harm/cost from false positives</td>
+          <td>Genetic testing, ICU triage</td>
+      </tr>
+      <tr>
+          <td>High Recall, Lower Precision</td>
+          <td>Recall 🟢</td>
+          <td>Avoid missing critical or contagious conditions</td>
+          <td>Cancer screening, sepsis alert</td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#tradeoffs-in-machine-learning-precision-vs-recall-in-healthcare">Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare</a>
+      <ul>
+        <li><a href="#1-high-precision-lower-recall">(1) High Precision, Lower Recall</a>
+          <ul>
+            <li><a href="#-when-to-use">✅ When to Use:</a></li>
+            <li><a href="#-justification">📌 Justification:</a></li>
+            <li><a href="#-examples">💡 Examples:</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-high-recall-lower-precision">(2) High Recall, Lower Precision</a>
+          <ul>
+            <li><a href="#-when-to-use-1">✅ When to Use:</a></li>
+            <li><a href="#-justification-1">📌 Justification:</a></li>
+            <li><a href="#-examples-1">💡 Examples:</a></li>
+          </ul>
+        </li>
+        <li><a href="#-summary-table">🧠 Summary Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
