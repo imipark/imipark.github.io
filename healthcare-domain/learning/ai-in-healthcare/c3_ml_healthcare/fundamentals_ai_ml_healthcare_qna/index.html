@@ -1,125 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare
-  #
-
-This guide summarizes two key scenarios in healthcare where we might prefer:
-
-High Precision but Lower Recall
-High Recall but Lower Precision
-
-
-
-  (1) High Precision, Lower Recall
+  📘 Fundamentals of AI and Machine Learning for Healthcare
   #
 
 
-  ✅ When to Use:
+
+  MODULE 3: Concepts and Principles of ML in Healthcare
   #
 
-
-When false positives are costly or harmful
-When resources are limited
-In early screening/filtering stages
-
-
-  📌 Justification:
-  #
-
-
-You want to be very confident before taking action.
-Missing some real cases is acceptable if wrongly flagging someone leads to emotional, financial, or clinical harm.
-
-
-  💡 Examples:
-  #
-
-
-Genetic Testing for Rare Diseases: Only flag patients when you&rsquo;re very sure. A false positive could cause unnecessary panic or life changes.
-ICU Bed Allocation: If you only have 5 beds, you’d want to use them for patients who are most certainly critical.
-Drug Discovery Pre-Screening: Select molecules that are most likely to work, even if some potential candidates are missed.
-
-
-
-  (2) High Recall, Lower Precision
-  #
-
-
-  ✅ When to Use:
-  #
-
-
-When missing a real case is dangerous
-When early detection can improve outcomes
-When follow-up tests or actions are safe and cheap
-
-
-  📌 Justification:
-  #
-
-
-It&rsquo;s better to catch every possible case, even if you have some false alarms.
-Especially important in serious or rapidly progressing conditions.
-
-
-  💡 Examples:
-  #
-
-
-Cancer Screening: Better to flag more patients for follow-up than miss someone with early-stage cancer.
-Sepsis Prediction in ER: Alerting the care team early—even with some false alarms—can save lives.
-COVID-19 Testing in High-Risk Areas: Broad detection to prevent spread, even if some healthy people test positive.
-
-
-
-  🧠 Summary Table
-  #
-
-
-  
-      
-          Scenario
-          Priority
-          Justification
-          Example
-      
-  
-  
-      
-          High Precision, Lower Recall
-          Precision 🟢
-          Avoid harm/cost from false positives
-          Genetic testing, ICU triage
-      
-      
-          High Recall, Lower Precision
-          Recall 🟢
-          Avoid missing critical or contagious conditions
-          Cancer screening, sepsis alert
-      
-  
-">
+1. What makes deep learning different from traditional ML?
+Deep learning organizes parameters into hierarchical layers allowing models to learn complex functions beyond input feature limits.
+2. How does a deep learning model transform data through layers?
+By repeatedly applying linear combinations and nonlinear activation functions (e.g., ReLU), the model generates meaningful features.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/fundamentals_ai_ml_healthcare_qna/">
   <meta property="og:site_name" content="AI in Healthcare">
-  <meta property="og:title" content="Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare">
-  <meta property="og:description" content="Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare # This guide summarizes two key scenarios in healthcare where we might prefer:
-High Precision but Lower Recall High Recall but Lower Precision (1) High Precision, Lower Recall # ✅ When to Use: # When false positives are costly or harmful When resources are limited In early screening/filtering stages 📌 Justification: # You want to be very confident before taking action. Missing some real cases is acceptable if wrongly flagging someone leads to emotional, financial, or clinical harm. 💡 Examples: # Genetic Testing for Rare Diseases: Only flag patients when you’re very sure. A false positive could cause unnecessary panic or life changes. ICU Bed Allocation: If you only have 5 beds, you’d want to use them for patients who are most certainly critical. Drug Discovery Pre-Screening: Select molecules that are most likely to work, even if some potential candidates are missed. (2) High Recall, Lower Precision # ✅ When to Use: # When missing a real case is dangerous When early detection can improve outcomes When follow-up tests or actions are safe and cheap 📌 Justification: # It’s better to catch every possible case, even if you have some false alarms. Especially important in serious or rapidly progressing conditions. 💡 Examples: # Cancer Screening: Better to flag more patients for follow-up than miss someone with early-stage cancer. Sepsis Prediction in ER: Alerting the care team early—even with some false alarms—can save lives. COVID-19 Testing in High-Risk Areas: Broad detection to prevent spread, even if some healthy people test positive. 🧠 Summary Table # Scenario Priority Justification Example High Precision, Lower Recall Precision 🟢 Avoid harm/cost from false positives Genetic testing, ICU triage High Recall, Lower Precision Recall 🟢 Avoid missing critical or contagious conditions Cancer screening, sepsis alert">
+  <meta property="og:title" content="AI in Healthcare">
+  <meta property="og:description" content="📘 Fundamentals of AI and Machine Learning for Healthcare # MODULE 3: Concepts and Principles of ML in Healthcare # 1. What makes deep learning different from traditional ML?
+Deep learning organizes parameters into hierarchical layers allowing models to learn complex functions beyond input feature limits.
+2. How does a deep learning model transform data through layers?
+By repeatedly applying linear combinations and nonlinear activation functions (e.g., ReLU), the model generates meaningful features.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="healthcare-domain">
-<title>Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare | AI in Healthcare</title>
+<title>Fundamentals Ai Ml Healthcare Qn A | AI in Healthcare</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/">
+<link rel="canonical" href="http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/fundamentals_ai_ml_healthcare_qna/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.066fd7e09b57cfd97623c7b55047fdf884eb1073b1cdea7c5641e4c66e5305ba.js" integrity="sha256-Bm/X4JtXz9l2I8e1UEf9&#43;ITrEHOxzep8VkHkxm5TBbo=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.22c7077e3aa314fffd196f3e1c8b6bab78c08bd6ef7d493010fbf004589ce38c.js" integrity="sha256-IscHfjqjFP/9GW8&#43;HItrq3jAi9bvfUkwEPvwBFic44w=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -241,6 +156,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/fundamentals_ai_ml_healthcare_qna/" class="active">Fundamentals Ai Ml Healthcare Qn A</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -876,7 +804,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare</h3>
+  <h3>Fundamentals Ai Ml Healthcare Qn A</h3>
 
   <label for="toc-control">
     
@@ -892,23 +820,20 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#tradeoffs-in-machine-learning-precision-vs-recall-in-healthcare">Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare</a>
+    <li><a href="#-fundamentals-of-ai-and-machine-learning-for-healthcare">📘 Fundamentals of AI and Machine Learning for Healthcare</a>
       <ul>
-        <li><a href="#1-high-precision-lower-recall">(1) High Precision, Lower Recall</a>
+        <li>
           <ul>
-            <li><a href="#-when-to-use">✅ When to Use:</a></li>
-            <li><a href="#-justification">📌 Justification:</a></li>
-            <li><a href="#-examples">💡 Examples:</a></li>
+            <li><a href="#module-3-concepts-and-principles-of-ml-in-healthcare">MODULE 3: Concepts and Principles of ML in Healthcare</a></li>
+            <li><a href="#representing-unstructured-data">REPRESENTING UNSTRUCTURED DATA</a></li>
+            <li><a href="#advanced-networks-and-tasks">ADVANCED NETWORKS AND TASKS</a></li>
+            <li><a href="#module-4-evaluation-and-metrics-for-ml-in-healthcare">MODULE 4: Evaluation and Metrics for ML in Healthcare</a></li>
+            <li><a href="#module-5-strategies-and-challenges-in-ml-for-healthcare">MODULE 5: Strategies and Challenges in ML for Healthcare</a></li>
+            <li><a href="#data-quality-and-bias-challenges">DATA QUALITY AND BIAS CHALLENGES</a></li>
+            <li><a href="#module-6-best-practices-teams-and-launching-ml-in-healthcare">MODULE 6: Best Practices, Teams, and Launching ML in Healthcare</a></li>
+            <li><a href="#final-takeaways">FINAL TAKEAWAYS</a></li>
           </ul>
         </li>
-        <li><a href="#2-high-recall-lower-precision">(2) High Recall, Lower Precision</a>
-          <ul>
-            <li><a href="#-when-to-use-1">✅ When to Use:</a></li>
-            <li><a href="#-justification-1">📌 Justification:</a></li>
-            <li><a href="#-examples-1">💡 Examples:</a></li>
-          </ul>
-        </li>
-        <li><a href="#-summary-table">🧠 Summary Table</a></li>
       </ul>
     </li>
   </ul>
@@ -923,106 +848,171 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="tradeoffs-in-machine-learning-precision-vs-recall-in-healthcare">
-  Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare
-  <a class="anchor" href="#tradeoffs-in-machine-learning-precision-vs-recall-in-healthcare">#</a>
+  <article class="markdown book-article"><h1 id="-fundamentals-of-ai-and-machine-learning-for-healthcare">
+  📘 Fundamentals of AI and Machine Learning for Healthcare
+  <a class="anchor" href="#-fundamentals-of-ai-and-machine-learning-for-healthcare">#</a>
 </h1>
-<p>This guide summarizes two key scenarios in healthcare where we might prefer:</p>
-<ol>
-<li><strong>High Precision but Lower Recall</strong></li>
-<li><strong>High Recall but Lower Precision</strong></li>
-</ol>
 <hr>
-<h2 id="1-high-precision-lower-recall">
-  (1) High Precision, Lower Recall
-  <a class="anchor" href="#1-high-precision-lower-recall">#</a>
-</h2>
-<h3 id="-when-to-use">
-  ✅ When to Use:
-  <a class="anchor" href="#-when-to-use">#</a>
+<h3 id="module-3-concepts-and-principles-of-ml-in-healthcare">
+  MODULE 3: Concepts and Principles of ML in Healthcare
+  <a class="anchor" href="#module-3-concepts-and-principles-of-ml-in-healthcare">#</a>
 </h3>
+<p><strong>1. What makes deep learning different from traditional ML?</strong><br>
+Deep learning organizes parameters into hierarchical layers allowing models to learn complex functions beyond input feature limits.</p>
+<p><strong>2. How does a deep learning model transform data through layers?</strong><br>
+By repeatedly applying linear combinations and nonlinear activation functions (e.g., ReLU), the model generates meaningful features.</p>
+<p><strong>3. What is a dense layer in neural networks?</strong><br>
+A dense or fully connected layer has neurons applying transformations to the same input, forming a building block of deep nets.</p>
+<p><strong>4. What does the training loop in deep learning involve?</strong><br>
+Prediction → Loss calculation → Parameter update (gradient descent) → Validation → Hyperparameter tuning.</p>
+<p><strong>5. How do different loss functions behave?</strong></p>
 <ul>
-<li>When <strong>false positives are costly or harmful</strong></li>
-<li>When <strong>resources are limited</strong></li>
-<li>In <strong>early screening/filtering stages</strong></li>
+<li><strong>MSE</strong> penalizes large errors.</li>
+<li><strong>MAE</strong> treats all errors equally.</li>
+<li><strong>Cross-entropy</strong> is preferred for classification tasks.</li>
 </ul>
-<h3 id="-justification">
-  📌 Justification:
-  <a class="anchor" href="#-justification">#</a>
+<p><strong>6. How does gradient descent work?</strong><br>
+It computes the gradient (slope) of the loss and adjusts model parameters to reduce the error.</p>
+<p><strong>7. Why is backpropagation crucial?</strong><br>
+It enables computing gradients layer-by-layer from output to input, allowing efficient updates in deep networks.</p>
+<hr>
+<h3 id="representing-unstructured-data">
+  REPRESENTING UNSTRUCTURED DATA
+  <a class="anchor" href="#representing-unstructured-data">#</a>
 </h3>
+<p><strong>8. How are images and text represented?</strong></p>
 <ul>
-<li>You want to be <strong>very confident</strong> before taking action.</li>
-<li><strong>Missing some real cases</strong> is acceptable if <strong>wrongly flagging someone</strong> leads to <strong>emotional, financial, or clinical harm</strong>.</li>
+<li><strong>Images:</strong> Pixel grids, 0–255 intensity values.</li>
+<li><strong>Text:</strong> Word embeddings in high-dimensional space (300–1024 dims).</li>
 </ul>
-<h3 id="-examples">
-  💡 Examples:
-  <a class="anchor" href="#-examples">#</a>
+<p><strong>9. Why use CNNs for image tasks?</strong><br>
+CNNs preserve spatial structure and use filters to detect visual patterns efficiently.</p>
+<p><strong>10. How do CNN layers increase feature abstraction?</strong><br>
+Each layer has a larger receptive field, allowing detection of complex features from simple edges.</p>
+<p><strong>11. What makes RNNs fit for NLP tasks?</strong><br>
+They handle sequential data by maintaining a context vector across time steps.</p>
+<p><strong>12. How do Transformers improve over RNNs?</strong><br>
+They use self-attention to capture long-term dependencies in parallel, improving speed and accuracy.</p>
+<hr>
+<h3 id="advanced-networks-and-tasks">
+  ADVANCED NETWORKS AND TASKS
+  <a class="anchor" href="#advanced-networks-and-tasks">#</a>
 </h3>
+<p><strong>13. What are key CNN architectures?</strong></p>
 <ul>
-<li><strong>Genetic Testing for Rare Diseases</strong>: Only flag patients when you&rsquo;re very sure. A false positive could cause unnecessary panic or life changes.</li>
-<li><strong>ICU Bed Allocation</strong>: If you only have 5 beds, you’d want to use them for patients who are most certainly critical.</li>
-<li><strong>Drug Discovery Pre-Screening</strong>: Select molecules that are most likely to work, even if some potential candidates are missed.</li>
+<li><strong>AlexNet:</strong> First with ReLU, 8 layers.</li>
+<li><strong>VGG:</strong> Deeper with small filters.</li>
+<li><strong>GoogLeNet/Inception:</strong> Parallel filter paths.</li>
+<li><strong>ResNet:</strong> Skip connections, 152+ layers.</li>
+</ul>
+<p><strong>14. What are vision tasks beyond classification?</strong></p>
+<ul>
+<li><strong>Semantic segmentation:</strong> Per-pixel classification.</li>
+<li><strong>Object detection:</strong> Bounding boxes.</li>
+<li><strong>Instance segmentation:</strong> Combines both.</li>
+</ul>
+<p><strong>15. What is reinforcement learning (RL) and why is it hard in healthcare?</strong><br>
+RL needs simulatable environments and reward structures, both difficult in clinical settings.</p>
+<hr>
+<h3 id="module-4-evaluation-and-metrics-for-ml-in-healthcare">
+  MODULE 4: Evaluation and Metrics for ML in Healthcare
+  <a class="anchor" href="#module-4-evaluation-and-metrics-for-ml-in-healthcare">#</a>
+</h3>
+<p><strong>16. How should we split data for evaluation?</strong><br>
+Typical splits: Train (70–80%), Validation, Test. Use k-fold cross-validation for small datasets.</p>
+<p><strong>17. What is underfitting vs overfitting?</strong></p>
+<ul>
+<li><strong>Underfitting:</strong> Too simple to learn patterns.</li>
+<li><strong>Overfitting:</strong> Memorizes training data noise.</li>
+</ul>
+<p><strong>18. How do you detect fitting issues?</strong><br>
+Use <strong>learning curves</strong> to visualize loss and accuracy trends on train vs validation data.</p>
+<p><strong>19. How to combat overfitting?</strong><br>
+Regularization (L1/L2, Dropout), data augmentation, simpler models.</p>
+<p><strong>20. Why is accuracy misleading in imbalanced data?</strong><br>
+It may hide poor minority-class performance; use metrics like precision, recall, ROC/PR curves.</p>
+<p><strong>21. What are ROC and PR curves?</strong></p>
+<ul>
+<li><strong>ROC:</strong> TPR vs FPR across thresholds.</li>
+<li><strong>PR:</strong> Precision vs Recall; better for imbalanced datasets.</li>
 </ul>
 <hr>
-<h2 id="2-high-recall-lower-precision">
-  (2) High Recall, Lower Precision
-  <a class="anchor" href="#2-high-recall-lower-precision">#</a>
-</h2>
-<h3 id="-when-to-use-1">
-  ✅ When to Use:
-  <a class="anchor" href="#-when-to-use-1">#</a>
+<h3 id="module-5-strategies-and-challenges-in-ml-for-healthcare">
+  MODULE 5: Strategies and Challenges in ML for Healthcare
+  <a class="anchor" href="#module-5-strategies-and-challenges-in-ml-for-healthcare">#</a>
 </h3>
+<p><strong>22. Why is causation vs correlation important?</strong><br>
+ML often learns correlations that may not reflect true medical causes—leading to misleading outcomes.</p>
+<p><strong>23. What are confounding variables in healthcare ML?</strong><br>
+Spurious patterns (e.g., gray hair as predictor of heart disease) that mislead models.</p>
+<p><strong>24. What is the “black box” problem?</strong><br>
+Complex models lack interpretability. Trade-off exists between accuracy and explainability.</p>
+<p><strong>25. How can we interpret black-box models?</strong><br>
+Use <strong>saliency maps</strong>, <strong>gradients</strong>, <strong>CAMs</strong>, and visualize neuron activations.</p>
+<p><strong>26. What makes a model interpretable?</strong></p>
 <ul>
-<li>When <strong>missing a real case is dangerous</strong></li>
-<li>When <strong>early detection can improve outcomes</strong></li>
-<li>When <strong>follow-up tests or actions are safe and cheap</strong></li>
+<li><strong>Transparent:</strong> Easily understood logic.</li>
+<li><strong>Explainable:</strong> Clear rationale for output.</li>
+<li><strong>Inspectable:</strong> Internally examinable.</li>
 </ul>
-<h3 id="-justification-1">
-  📌 Justification:
-  <a class="anchor" href="#-justification-1">#</a>
-</h3>
+<p><strong>27. What is intrinsic vs post-hoc interpretability?</strong></p>
 <ul>
-<li>It&rsquo;s better to <strong>catch every possible case</strong>, even if you have some false alarms.</li>
-<li>Especially important in <strong>serious or rapidly progressing conditions</strong>.</li>
-</ul>
-<h3 id="-examples-1">
-  💡 Examples:
-  <a class="anchor" href="#-examples-1">#</a>
-</h3>
-<ul>
-<li><strong>Cancer Screening</strong>: Better to flag more patients for follow-up than miss someone with early-stage cancer.</li>
-<li><strong>Sepsis Prediction in ER</strong>: Alerting the care team early—even with some false alarms—can save lives.</li>
-<li><strong>COVID-19 Testing in High-Risk Areas</strong>: Broad detection to prevent spread, even if some healthy people test positive.</li>
+<li><strong>Intrinsic:</strong> Built-in simplicity (e.g., LACE index).</li>
+<li><strong>Post-hoc:</strong> Retrospective interpretation (e.g., heatmaps).</li>
 </ul>
 <hr>
-<h2 id="-summary-table">
-  🧠 Summary Table
-  <a class="anchor" href="#-summary-table">#</a>
-</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Scenario</th>
-          <th>Priority</th>
-          <th>Justification</th>
-          <th>Example</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>High Precision, Lower Recall</td>
-          <td>Precision 🟢</td>
-          <td>Avoid harm/cost from false positives</td>
-          <td>Genetic testing, ICU triage</td>
-      </tr>
-      <tr>
-          <td>High Recall, Lower Precision</td>
-          <td>Recall 🟢</td>
-          <td>Avoid missing critical or contagious conditions</td>
-          <td>Cancer screening, sepsis alert</td>
-      </tr>
-  </tbody>
-</table>
+<h3 id="data-quality-and-bias-challenges">
+  DATA QUALITY AND BIAS CHALLENGES
+  <a class="anchor" href="#data-quality-and-bias-challenges">#</a>
+</h3>
+<p><strong>28. Why is data quality so crucial?</strong><br>
+“Garbage in, garbage out.” Bad data → bad models. Data should be clean, recent, relevant, labeled.</p>
+<p><strong>29. What is the class imbalance problem?</strong><br>
+Rare-event labels skew performance and metrics. Address via resampling, proper metrics, or specialized models.</p>
+<p><strong>30. Does more data always help?</strong><br>
+Not necessarily—older data may degrade performance. Focus on <strong>adding information</strong>, not just volume.</p>
+<p><strong>31. How to handle label noise?</strong><br>
+Use expert-reviewed subsets, triangulation with multiple labels, and accept some noise with large datasets.</p>
+<hr>
+<h3 id="module-6-best-practices-teams-and-launching-ml-in-healthcare">
+  MODULE 6: Best Practices, Teams, and Launching ML in Healthcare
+  <a class="anchor" href="#module-6-best-practices-teams-and-launching-ml-in-healthcare">#</a>
+</h3>
+<p><strong>32. What is the Output-Action Pair (OAP)?</strong><br>
+A framework linking model prediction to clinical action (e.g., sepsis alert → early intervention).</p>
+<p><strong>33. Why multidisciplinary teams matter?</strong><br>
+Clinicians, statisticians, ML engineers, IT staff, and ethicists ensure models are usable, reliable, ethical.</p>
+<p><strong>34. What roles are essential in clinical ML teams?</strong></p>
+<ul>
+<li><strong>Data scientist</strong> (features, metrics)</li>
+<li><strong>ML engineer</strong> (model building &amp; deployment)</li>
+<li><strong>Statistician</strong> (study design, validation)</li>
+<li><strong>Healthcare IT</strong> (integration)</li>
+<li><strong>Domain expert</strong> (clinical relevance)</li>
+</ul>
+<p><strong>35. What governance and ethics concerns exist?</strong></p>
+<ul>
+<li>Risk of re-identification</li>
+<li>Informed consent</li>
+<li>Algorithmic bias</li>
+<li>Health equity</li>
+</ul>
+<p><strong>36. What is automation bias?</strong><br>
+Over-trusting ML systems leads to reduced vigilance—counteract with calibrated risk scores and human oversight.</p>
+<p><strong>37. Will ML replace healthcare jobs?</strong><br>
+Not fully—ML will augment routine tasks but jobs requiring empathy, judgment, and interaction remain essential.</p>
+<hr>
+<h3 id="final-takeaways">
+  FINAL TAKEAWAYS
+  <a class="anchor" href="#final-takeaways">#</a>
+</h3>
+<ul>
+<li>Simpler models are often more deployable.</li>
+<li>Be skeptical of great metrics—investigate false positives/negatives.</li>
+<li>Use external datasets and real-world data for true performance estimates.</li>
+<li>Multidisciplinary feedback loops are essential for trust and improvement.</li>
+</ul>
+<hr>
 </article>
  
       
@@ -1064,23 +1054,20 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#tradeoffs-in-machine-learning-precision-vs-recall-in-healthcare">Tradeoffs in Machine Learning: Precision vs. Recall in Healthcare</a>
+    <li><a href="#-fundamentals-of-ai-and-machine-learning-for-healthcare">📘 Fundamentals of AI and Machine Learning for Healthcare</a>
       <ul>
-        <li><a href="#1-high-precision-lower-recall">(1) High Precision, Lower Recall</a>
+        <li>
           <ul>
-            <li><a href="#-when-to-use">✅ When to Use:</a></li>
-            <li><a href="#-justification">📌 Justification:</a></li>
-            <li><a href="#-examples">💡 Examples:</a></li>
+            <li><a href="#module-3-concepts-and-principles-of-ml-in-healthcare">MODULE 3: Concepts and Principles of ML in Healthcare</a></li>
+            <li><a href="#representing-unstructured-data">REPRESENTING UNSTRUCTURED DATA</a></li>
+            <li><a href="#advanced-networks-and-tasks">ADVANCED NETWORKS AND TASKS</a></li>
+            <li><a href="#module-4-evaluation-and-metrics-for-ml-in-healthcare">MODULE 4: Evaluation and Metrics for ML in Healthcare</a></li>
+            <li><a href="#module-5-strategies-and-challenges-in-ml-for-healthcare">MODULE 5: Strategies and Challenges in ML for Healthcare</a></li>
+            <li><a href="#data-quality-and-bias-challenges">DATA QUALITY AND BIAS CHALLENGES</a></li>
+            <li><a href="#module-6-best-practices-teams-and-launching-ml-in-healthcare">MODULE 6: Best Practices, Teams, and Launching ML in Healthcare</a></li>
+            <li><a href="#final-takeaways">FINAL TAKEAWAYS</a></li>
           </ul>
         </li>
-        <li><a href="#2-high-recall-lower-precision">(2) High Recall, Lower Precision</a>
-          <ul>
-            <li><a href="#-when-to-use-1">✅ When to Use:</a></li>
-            <li><a href="#-justification-1">📌 Justification:</a></li>
-            <li><a href="#-examples-1">💡 Examples:</a></li>
-          </ul>
-        </li>
-        <li><a href="#-summary-table">🧠 Summary Table</a></li>
       </ul>
     </li>
   </ul>
