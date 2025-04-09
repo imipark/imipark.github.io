@@ -1,0 +1,7 @@
+---
+title: Blog
+bookHidden: true 
+---
+
+
+{{< list-table >}}

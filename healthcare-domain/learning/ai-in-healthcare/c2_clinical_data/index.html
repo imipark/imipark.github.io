@@ -4,8 +4,56 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Course 2: Clinical Data  &ndash; 7 Modules
+  📘 Course 2: Clinical Data  &ndash; 7 Modules
   #
+
+
+
+  
+    
+      Topics Table
+    
+  
+  
+    
+      
+        ToC of Course 2
+      
+      
+    
+      
+        Clinical Text Feature Extraction Using Dictionary-Based Filtering
+      
+      
+    
+      
+        Clinical Text Mining Pipeline (Steps 1–5)
+      
+      
+    
+      
+        Ethics in AI for Healthcare
+      
+      
+    
+      
+        Missing Data Scenarios in Healthcare Modeling
+      
+      
+    
+      
+        OMOP vs. RLHF
+      
+      
+    
+      
+        Rule-Based Electronic Phenotyping Example: Type 2 Diabetes
+      
+      
+    
+  
+
+
 
 
 
@@ -13,22 +61,14 @@
   #
 
 1. What&rsquo;s the Problem?
-Clinicians and researchers have important questions but lack a structured approach to answering them using clinical data.
-2. Why Does It Matter?
-Without a systematic workflow, decisions may rely on anecdotal evidence or outdated knowledge, leading to suboptimal care.
-3. What&rsquo;s the Core Idea?
-The 4-step clinical data mining workflow: (1) Ask the right question → (2) Find suitable data → (3) Extract/transform data → (4) Analyze and iterate.">
+Clinicians and researchers have important questions but lack a structured approach to answering them using clinical data.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/">
   <meta property="og:site_name" content="AI in Healthcare">
-  <meta property="og:title" content="AI in Healthcare">
-  <meta property="og:description" content="Course 2: Clinical Data – 7 Modules # 🧭 Module 1: Asking and Answering Questions via Clinical Data Mining # 1. What’s the Problem?
-Clinicians and researchers have important questions but lack a structured approach to answering them using clinical data.
-2. Why Does It Matter?
-Without a systematic workflow, decisions may rely on anecdotal evidence or outdated knowledge, leading to suboptimal care.
-3. What’s the Core Idea?
-The 4-step clinical data mining workflow: (1) Ask the right question → (2) Find suitable data → (3) Extract/transform data → (4) Analyze and iterate.">
+  <meta property="og:title" content="C2 Clinical Data">
+  <meta property="og:description" content="📘 Course 2: Clinical Data – 7 Modules # Topics Table ToC of Course 2 Clinical Text Feature Extraction Using Dictionary-Based Filtering Clinical Text Mining Pipeline (Steps 1–5) Ethics in AI for Healthcare Missing Data Scenarios in Healthcare Modeling OMOP vs. RLHF Rule-Based Electronic Phenotyping Example: Type 2 Diabetes 🧭 Module 1: Asking and Answering Questions via Clinical Data Mining # 1. What’s the Problem?
+Clinicians and researchers have important questions but lack a structured approach to answering them using clinical data.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>C2 Clinical Data | AI in Healthcare</title>
@@ -37,7 +77,7 @@ The 4-step clinical data mining workflow: (1) Ask the right question → (2) Fin
 <link rel="canonical" href="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.3493980181c7ea4575686705a2a61136cd797fc75371f8d97452465b0e88e3d3.js" integrity="sha256-NJOYAYHH6kV1aGcFoqYRNs15f8dTcfjZdFJGWw6I49M=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.25c09edb18ebe11bbf848209be1bca91a8a7eea89b1871a289a62abad1d950ae.js" integrity="sha256-JcCe2xjr4Ru/hIIJvhvKkain7qibGHGiiaYqutHZUK4=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/index.xml" title="AI in Healthcare" />
 <!--
 Made with Book Theme
@@ -137,6 +177,24 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c1_healthcare/" class="">C1 Introduction to Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="active">C2 Clinical Data</a>
   
 
@@ -155,7 +213,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 Ml Healthcare</a>
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
   
 
           
@@ -173,7 +231,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 Ai Evaluation</a>
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>C5 Capstone Projects</span>
   
 
           
@@ -811,9 +887,9 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#course-2-clinical-data---7-modules">Course 2: Clinical Data  &ndash; 7 Modules</a>
+    <li>
       <ul>
-        <li>
+        <li><a href="#-course-2-clinical-data---7-modules">📘 Course 2: Clinical Data  &ndash; 7 Modules</a>
           <ul>
             <li><a href="#-module-1-asking-and-answering-questions-via-clinical-data-mining">🧭 Module 1: Asking and Answering Questions via Clinical Data Mining</a></li>
             <li><a href="#-module-2-data-available-from-healthcare-systems">🏥 Module 2: Data Available from Healthcare Systems</a></li>
@@ -839,10 +915,58 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="course-2-clinical-data---7-modules">
-  Course 2: Clinical Data  &ndash; 7 Modules
-  <a class="anchor" href="#course-2-clinical-data---7-modules">#</a>
-</h1>
+  <article class="markdown book-article"><h2 id="-course-2-clinical-data---7-modules">
+  📘 Course 2: Clinical Data  &ndash; 7 Modules
+  <a class="anchor" href="#-course-2-clinical-data---7-modules">#</a>
+</h2>
+<hr>
+<table>
+  <thead>
+    <tr>
+      <th>Topics Table</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr>
+        <td><a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/toc_course2/">ToC of Course 2</a></td>
+      </tr>
+      
+    
+      <tr>
+        <td><a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/">Clinical Text Feature Extraction Using Dictionary-Based Filtering</a></td>
+      </tr>
+      
+    
+      <tr>
+        <td><a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/">Clinical Text Mining Pipeline (Steps 1–5)</a></td>
+      </tr>
+      
+    
+      <tr>
+        <td><a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/">Ethics in AI for Healthcare</a></td>
+      </tr>
+      
+    
+      <tr>
+        <td><a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/">Missing Data Scenarios in Healthcare Modeling</a></td>
+      </tr>
+      
+    
+      <tr>
+        <td><a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/omop_vs_rlhf_comparison/">OMOP vs. RLHF</a></td>
+      </tr>
+      
+    
+      <tr>
+        <td><a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/">Rule-Based Electronic Phenotyping Example: Type 2 Diabetes</a></td>
+      </tr>
+      
+    
+  </tbody>
+</table>
+
+
 <hr>
 <h3 id="-module-1-asking-and-answering-questions-via-clinical-data-mining">
   🧭 Module 1: Asking and Answering Questions via Clinical Data Mining
@@ -956,6 +1080,10 @@ Provides ethical boundaries and practices for applying all previous modules resp
 <ul>
   
     <li style="margin-bottom: 0.5rem;">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/toc_course2/">ToC of Course 2</a>
+    </li>
+  
+    <li style="margin-bottom: 0.5rem;">
       <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/">Clinical Text Feature Extraction Using Dictionary-Based Filtering</a>
     </li>
   
@@ -1025,9 +1153,9 @@ Provides ethical boundaries and practices for applying all previous modules resp
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#course-2-clinical-data---7-modules">Course 2: Clinical Data  &ndash; 7 Modules</a>
+    <li>
       <ul>
-        <li>
+        <li><a href="#-course-2-clinical-data---7-modules">📘 Course 2: Clinical Data  &ndash; 7 Modules</a>
           <ul>
             <li><a href="#-module-1-asking-and-answering-questions-via-clinical-data-mining">🧭 Module 1: Asking and Answering Questions via Clinical Data Mining</a></li>
             <li><a href="#-module-2-data-available-from-healthcare-systems">🏥 Module 2: Data Available from Healthcare Systems</a></li>

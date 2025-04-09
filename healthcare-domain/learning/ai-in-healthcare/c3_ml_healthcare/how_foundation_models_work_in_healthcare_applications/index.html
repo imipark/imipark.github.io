@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  How Foundation Models Work (in Healthcare Applications)
+  #
+
+
+  1. What are foundation models and why are large language models (LLMs) a key example?
+  #
+
+Foundation models are large-scale machine learning models trained on vast and diverse datasets, enabling them to perform well across multiple tasks. Large Language Models (LLMs) like GPT are a major class of these, powering tools like ChatGPT and being early, widely successful examples.
+
+
+  2. What architecture do foundation models, especially LLMs, rely on?
+  #
+
+They rely heavily on the Transformer architecture, introduced in the paper “Attention Is All You Need”. This architecture uses self-attention mechanisms to allow models to learn relationships across sequences of data, making them highly effective for tasks involving language and other sequential data.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/how_foundation_models_work_in_healthcare_applications/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="How Foundation Models Work">
+  <meta property="og:description" content="How Foundation Models Work (in Healthcare Applications) # 1. What are foundation models and why are large language models (LLMs) a key example? # Foundation models are large-scale machine learning models trained on vast and diverse datasets, enabling them to perform well across multiple tasks. Large Language Models (LLMs) like GPT are a major class of these, powering tools like ChatGPT and being early, widely successful examples.
+2. What architecture do foundation models, especially LLMs, rely on? # They rely heavily on the Transformer architecture, introduced in the paper “Attention Is All You Need”. This architecture uses self-attention mechanisms to allow models to learn relationships across sequences of data, making them highly effective for tasks involving language and other sequential data.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare-domain">
+<title>How Foundation Models Work | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/how_foundation_models_work_in_healthcare_applications/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.25c09edb18ebe11bbf848209be1bca91a8a7eea89b1871a289a62abad1d950ae.js" integrity="sha256-JcCe2xjr4Ru/hIIJvhvKkain7qibGHGiiaYqutHZUK4=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle" checked />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle" checked />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c1_healthcare/" class="">C1 Introduction to Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>C5 Capstone Projects</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-34244c046af3dd0acc0bbb74c663a8d3" class="toggle"  />
+    <label for="section-34244c046af3dd0acc0bbb74c663a8d3" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-84a2fcdd2f4a95b774882e612724819f" class="toggle"  />
+    <label for="section-84a2fcdd2f4a95b774882e612724819f" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day1 Foundational Llm Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day1 Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day2 Embeddings Vector Db</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/" class="">Day3 Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/" class="">Day4 Domain Specific Llms</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day5_mlops/" class="">Day5 Mlops</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f57a08bac84df3f46191c3cbf417807e" class="toggle"  />
+    <label for="section-f57a08bac84df3f46191c3cbf417807e" class="flex justify-between">
+      <a href="/ai-workflows/mlops/" class="">MLOps</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/clinical_nlp_genai/" class="">Clinical Nlp Gen Ai</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>How Foundation Models Work</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-foundation-models-work-in-healthcare-applications">How Foundation Models Work (in Healthcare Applications)</a>
+      <ul>
+        <li><a href="#1-what-are-foundation-models-and-why-are-large-language-models-llms-a-key-example">1. What are foundation models and why are large language models (LLMs) a key example?</a></li>
+        <li><a href="#2-what-architecture-do-foundation-models-especially-llms-rely-on">2. What architecture do foundation models, especially LLMs, rely on?</a></li>
+        <li><a href="#3-how-does-the-attention-mechanism-work-in-transformers">3. How does the attention mechanism work in transformers?</a></li>
+        <li><a href="#4-how-are-transformers-structured-in-large-language-models">4. How are transformers structured in large language models?</a></li>
+        <li><a href="#5-can-tokenization-be-applied-to-other-data-types">5. Can tokenization be applied to other data types?</a></li>
+        <li><a href="#6-what-are-transformer-encoders-and-how-are-they-used-in-models-like-bert">6. What are transformer encoders and how are they used in models like BERT?</a></li>
+        <li><a href="#7-what-about-transformer-decoders-and-models-like-gpt">7. What about transformer decoders and models like GPT?</a></li>
+        <li><a href="#8-how-do-models-like-gpt-3-perform-impressive-tasks-with-little-supervision">8. How do models like GPT-3 perform impressive tasks with little supervision?</a></li>
+        <li><a href="#9-how-does-gpt-handle-complex-tasks-like-medical-qa-or-clinical-reasoning">9. How does GPT handle complex tasks like medical Q&amp;A or clinical reasoning?</a></li>
+        <li><a href="#10-what-are-the-limitations-of-llms-trained-like-gpt-3">10. What are the limitations of LLMs trained like GPT-3?</a></li>
+        <li><a href="#11-how-does-chatgpt-improve-upon-this-with-human-feedback">11. How does ChatGPT improve upon this with human feedback?</a></li>
+        <li><a href="#12-what-is-a-prompt-and-why-does-it-matter">12. What is a “prompt” and why does it matter?</a></li>
+        <li><a href="#13-what-are-some-common-prompt-engineering-styles">13. What are some common prompt engineering styles?</a></li>
+        <li><a href="#14-why-is-chain-of-thought-prompting-effective-and-what-are-its-limits">14. Why is chain-of-thought prompting effective, and what are its limits?</a></li>
+        <li><a href="#15-do-foundation-models-apply-beyond-language">15. Do foundation models apply beyond language?</a></li>
+        <li><a href="#16-how-does-a-multimodal-model-like-dalle-2-work">16. How does a multimodal model like DALL·E 2 work?</a></li>
+        <li><a href="#17-what-are-diffusion-models-and-how-do-they-help">17. What are diffusion models and how do they help?</a></li>
+        <li><a href="#18-whats-the-future-outlook-for-foundation-models-in-healthcare">18. What&rsquo;s the future outlook for foundation models in healthcare?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="how-foundation-models-work-in-healthcare-applications">
+  How Foundation Models Work (in Healthcare Applications)
+  <a class="anchor" href="#how-foundation-models-work-in-healthcare-applications">#</a>
+</h1>
+<h2 id="1-what-are-foundation-models-and-why-are-large-language-models-llms-a-key-example">
+  1. What are foundation models and why are large language models (LLMs) a key example?
+  <a class="anchor" href="#1-what-are-foundation-models-and-why-are-large-language-models-llms-a-key-example">#</a>
+</h2>
+<p>Foundation models are large-scale machine learning models trained on vast and diverse datasets, enabling them to perform well across multiple tasks. Large Language Models (LLMs) like GPT are a major class of these, powering tools like ChatGPT and being early, widely successful examples.</p>
+<hr>
+<h2 id="2-what-architecture-do-foundation-models-especially-llms-rely-on">
+  2. What architecture do foundation models, especially LLMs, rely on?
+  <a class="anchor" href="#2-what-architecture-do-foundation-models-especially-llms-rely-on">#</a>
+</h2>
+<p>They rely heavily on the <strong>Transformer architecture</strong>, introduced in the paper <em>“Attention Is All You Need”</em>. This architecture uses <strong>self-attention</strong> mechanisms to allow models to learn relationships across sequences of data, making them highly effective for tasks involving language and other sequential data.</p>
+<hr>
+<h2 id="3-how-does-the-attention-mechanism-work-in-transformers">
+  3. How does the attention mechanism work in transformers?
+  <a class="anchor" href="#3-how-does-the-attention-mechanism-work-in-transformers">#</a>
+</h2>
+<p>The <strong>attention mechanism</strong> enables the model to focus on different parts of the input when making predictions. <strong>Self-attention</strong> lets each element of the input sequence attend to all others, allowing the model to integrate contextual information holistically.</p>
+<hr>
+<h2 id="4-how-are-transformers-structured-in-large-language-models">
+  4. How are transformers structured in large language models?
+  <a class="anchor" href="#4-how-are-transformers-structured-in-large-language-models">#</a>
+</h2>
+<p>Transformers in LLMs are <strong>deep neural networks</strong> built from stacks of layers combining attention with traditional neural layers. They process input as sequences—ideal for language data—and use <strong>tokenization</strong> to convert text into manageable units (words, subwords, etc.).</p>
+<hr>
+<h2 id="5-can-tokenization-be-applied-to-other-data-types">
+  5. Can tokenization be applied to other data types?
+  <a class="anchor" href="#5-can-tokenization-be-applied-to-other-data-types">#</a>
+</h2>
+<p>Yes. Tokenization can be generalized to image patches, audio frames, or structured data. This generalization enables <strong>foundation models</strong> to learn from and operate across multiple modalities.</p>
+<hr>
+<h2 id="6-what-are-transformer-encoders-and-how-are-they-used-in-models-like-bert">
+  6. What are transformer encoders and how are they used in models like BERT?
+  <a class="anchor" href="#6-what-are-transformer-encoders-and-how-are-they-used-in-models-like-bert">#</a>
+</h2>
+<p>A <strong>transformer encoder</strong> transforms input sequences into dense vector representations. BERT, for example, is pretrained using <strong>self-supervised learning</strong> by masking words and predicting them, allowing it to learn language representations without labeled data.</p>
+<hr>
+<h2 id="7-what-about-transformer-decoders-and-models-like-gpt">
+  7. What about transformer decoders and models like GPT?
+  <a class="anchor" href="#7-what-about-transformer-decoders-and-models-like-gpt">#</a>
+</h2>
+<p><strong>Transformer decoders</strong>, unlike encoders, generate sequences from input vectors or initial prompts. GPT (Generative Pre-trained Transformer) models are based on decoder-only architectures and are trained to <strong>predict the next token</strong> in a sequence—a task aligned with language generation.</p>
+<hr>
+<h2 id="8-how-do-models-like-gpt-3-perform-impressive-tasks-with-little-supervision">
+  8. How do models like GPT-3 perform impressive tasks with little supervision?
+  <a class="anchor" href="#8-how-do-models-like-gpt-3-perform-impressive-tasks-with-little-supervision">#</a>
+</h2>
+<p>Thanks to <strong>transfer learning</strong>, GPT models demonstrate <strong>zero-shot</strong> and <strong>few-shot</strong> learning, performing tasks they weren&rsquo;t explicitly trained for by using prompts and examples within the input.</p>
+<hr>
+<h2 id="9-how-does-gpt-handle-complex-tasks-like-medical-qa-or-clinical-reasoning">
+  9. How does GPT handle complex tasks like medical Q&amp;A or clinical reasoning?
+  <a class="anchor" href="#9-how-does-gpt-handle-complex-tasks-like-medical-qa-or-clinical-reasoning">#</a>
+</h2>
+<p>LLMs can respond to medical questions, explain reasoning for clinical answers, and even <strong>alter case scenarios</strong> to change correct answers. This shows their potential for medical education and diagnostic simulation.</p>
+<hr>
+<h2 id="10-what-are-the-limitations-of-llms-trained-like-gpt-3">
+  10. What are the limitations of LLMs trained like GPT-3?
+  <a class="anchor" href="#10-what-are-the-limitations-of-llms-trained-like-gpt-3">#</a>
+</h2>
+<p>Since they’re trained on general web and literature data, LLMs may generate <strong>plausible but incorrect</strong> outputs, due to <strong>misalignment</strong> with human values or domain knowledge. Their training objective (next-word prediction) does not inherently align with truth or utility.</p>
+<hr>
+<h2 id="11-how-does-chatgpt-improve-upon-this-with-human-feedback">
+  11. How does ChatGPT improve upon this with human feedback?
+  <a class="anchor" href="#11-how-does-chatgpt-improve-upon-this-with-human-feedback">#</a>
+</h2>
+<p>ChatGPT uses <strong>Reinforcement Learning from Human Feedback (RLHF)</strong>:</p>
+<ul>
+<li><strong>Step 1:</strong> Supervised Fine-Tuning (SFT) with human-written responses.</li>
+<li><strong>Step 2:</strong> Reward Model trained from human-ranked outputs.</li>
+<li><strong>Step 3:</strong> Reinforcement learning (e.g., PPO) optimizes the model to favor preferred responses.</li>
+</ul>
+<hr>
+<h2 id="12-what-is-a-prompt-and-why-does-it-matter">
+  12. What is a “prompt” and why does it matter?
+  <a class="anchor" href="#12-what-is-a-prompt-and-why-does-it-matter">#</a>
+</h2>
+<p>A <strong>prompt</strong> is the input that guides the model&rsquo;s output. Its structure and content influence results dramatically, making <strong>prompt engineering</strong> a critical skill for getting reliable, targeted responses from foundation models.</p>
+<hr>
+<h2 id="13-what-are-some-common-prompt-engineering-styles">
+  13. What are some common prompt engineering styles?
+  <a class="anchor" href="#13-what-are-some-common-prompt-engineering-styles">#</a>
+</h2>
+<ul>
+<li><strong>Instruction prompt:</strong> Direct task requests (e.g., “How to manage diabetes?”)</li>
+<li><strong>Role-based prompt:</strong> Assigning the model a persona (e.g., “You are a nurse…”)</li>
+<li><strong>Few-shot prompt:</strong> Providing examples before the actual question</li>
+<li><strong>Chain-of-thought (CoT):</strong> Encouraging the model to reason step-by-step</li>
+<li><strong>Zero-shot CoT:</strong> Adding phrases like “Let’s think step-by-step” to guide reasoning</li>
+<li><strong>Self-consistency prompting:</strong> Generating multiple answers and choosing the majority</li>
+<li><strong>Generative Knowledge prompting:</strong> First generating facts, then reasoning over them</li>
+</ul>
+<hr>
+<h2 id="14-why-is-chain-of-thought-prompting-effective-and-what-are-its-limits">
+  14. Why is chain-of-thought prompting effective, and what are its limits?
+  <a class="anchor" href="#14-why-is-chain-of-thought-prompting-effective-and-what-are-its-limits">#</a>
+</h2>
+<p>CoT prompting helps elicit <strong>reasoned answers</strong>, particularly in clinical contexts. However, it’s most effective in <strong>larger models (100B+ parameters)</strong> and less so in smaller ones.</p>
+<hr>
+<h2 id="15-do-foundation-models-apply-beyond-language">
+  15. Do foundation models apply beyond language?
+  <a class="anchor" href="#15-do-foundation-models-apply-beyond-language">#</a>
+</h2>
+<p>Yes. The transformer architecture extends to:</p>
+<ul>
+<li><strong>Images</strong>: via patch tokenization (e.g., Vision Transformers)</li>
+<li><strong>Audio/Speech</strong>: like OpenAI’s Whisper for transcription</li>
+<li><strong>Multimodal data</strong>: like DALL·E 2 for text-to-image generation</li>
+</ul>
+<hr>
+<h2 id="16-how-does-a-multimodal-model-like-dalle-2-work">
+  16. How does a multimodal model like DALL·E 2 work?
+  <a class="anchor" href="#16-how-does-a-multimodal-model-like-dalle-2-work">#</a>
+</h2>
+<p>DALL·E 2:</p>
+<ol>
+<li>Encodes a <strong>text prompt</strong> into a vector.</li>
+<li>Maps it to <strong>visual feature space</strong>.</li>
+<li>Uses a <strong>diffusion model</strong> decoder to generate images from that representation.</li>
+</ol>
+<hr>
+<h2 id="17-what-are-diffusion-models-and-how-do-they-help">
+  17. What are diffusion models and how do they help?
+  <a class="anchor" href="#17-what-are-diffusion-models-and-how-do-they-help">#</a>
+</h2>
+<p><strong>Diffusion models</strong> learn to denoise images progressively, allowing them to <strong>generate high-quality, realistic outputs</strong>. They’re widely used in modern generative vision models like DALL·E 2.</p>
+<hr>
+<h2 id="18-whats-the-future-outlook-for-foundation-models-in-healthcare">
+  18. What&rsquo;s the future outlook for foundation models in healthcare?
+  <a class="anchor" href="#18-whats-the-future-outlook-for-foundation-models-in-healthcare">#</a>
+</h2>
+<p>Foundation models, particularly <strong>LLMs and multimodal transformers</strong>, are rapidly evolving. With <strong>human feedback</strong>, <strong>prompt engineering</strong>, and <strong>domain-specific fine-tuning</strong>, they offer immense potential for clinical decision support, medical education, and personalized care.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-foundation-models-work-in-healthcare-applications">How Foundation Models Work (in Healthcare Applications)</a>
+      <ul>
+        <li><a href="#1-what-are-foundation-models-and-why-are-large-language-models-llms-a-key-example">1. What are foundation models and why are large language models (LLMs) a key example?</a></li>
+        <li><a href="#2-what-architecture-do-foundation-models-especially-llms-rely-on">2. What architecture do foundation models, especially LLMs, rely on?</a></li>
+        <li><a href="#3-how-does-the-attention-mechanism-work-in-transformers">3. How does the attention mechanism work in transformers?</a></li>
+        <li><a href="#4-how-are-transformers-structured-in-large-language-models">4. How are transformers structured in large language models?</a></li>
+        <li><a href="#5-can-tokenization-be-applied-to-other-data-types">5. Can tokenization be applied to other data types?</a></li>
+        <li><a href="#6-what-are-transformer-encoders-and-how-are-they-used-in-models-like-bert">6. What are transformer encoders and how are they used in models like BERT?</a></li>
+        <li><a href="#7-what-about-transformer-decoders-and-models-like-gpt">7. What about transformer decoders and models like GPT?</a></li>
+        <li><a href="#8-how-do-models-like-gpt-3-perform-impressive-tasks-with-little-supervision">8. How do models like GPT-3 perform impressive tasks with little supervision?</a></li>
+        <li><a href="#9-how-does-gpt-handle-complex-tasks-like-medical-qa-or-clinical-reasoning">9. How does GPT handle complex tasks like medical Q&amp;A or clinical reasoning?</a></li>
+        <li><a href="#10-what-are-the-limitations-of-llms-trained-like-gpt-3">10. What are the limitations of LLMs trained like GPT-3?</a></li>
+        <li><a href="#11-how-does-chatgpt-improve-upon-this-with-human-feedback">11. How does ChatGPT improve upon this with human feedback?</a></li>
+        <li><a href="#12-what-is-a-prompt-and-why-does-it-matter">12. What is a “prompt” and why does it matter?</a></li>
+        <li><a href="#13-what-are-some-common-prompt-engineering-styles">13. What are some common prompt engineering styles?</a></li>
+        <li><a href="#14-why-is-chain-of-thought-prompting-effective-and-what-are-its-limits">14. Why is chain-of-thought prompting effective, and what are its limits?</a></li>
+        <li><a href="#15-do-foundation-models-apply-beyond-language">15. Do foundation models apply beyond language?</a></li>
+        <li><a href="#16-how-does-a-multimodal-model-like-dalle-2-work">16. How does a multimodal model like DALL·E 2 work?</a></li>
+        <li><a href="#17-what-are-diffusion-models-and-how-do-they-help">17. What are diffusion models and how do they help?</a></li>
+        <li><a href="#18-whats-the-future-outlook-for-foundation-models-in-healthcare">18. What&rsquo;s the future outlook for foundation models in healthcare?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
