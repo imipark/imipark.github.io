@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Module 6: Best Practices, Terms, and Launching Your ML Journey
+  #
+
+
+  1 Clinical Utility and Output Action Pairing
+  #
+
+
+
+  Q1: What is clinical utility and why is it important in ML?
+  #
+
+Clinical utility refers to the real-world usefulness of a model’s predictions:
+
+A model must enable action that improves outcomes.
+Predictions that can&rsquo;t lead to interventions or decisions have limited utility.
+This bridges the gap between technical performance and clinical relevance.
+
+➡️  How can we ensure predictions are actually actionable?">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m6/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="[Summary]  Module 6: Best Practices, Terms, and Launching Your ML Journey">
+  <meta property="og:description" content="Module 6: Best Practices, Terms, and Launching Your ML Journey # 1 Clinical Utility and Output Action Pairing # Q1: What is clinical utility and why is it important in ML? # Clinical utility refers to the real-world usefulness of a model’s predictions:
+A model must enable action that improves outcomes. Predictions that can’t lead to interventions or decisions have limited utility. This bridges the gap between technical performance and clinical relevance. ➡️ How can we ensure predictions are actually actionable?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare-domain">
+<title>[Summary]  Module 6: Best Practices, Terms, and Launching Your ML Journey | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m6/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.c3ea2d3885c20ae4ef0248434b0ed9f61b343c78d294c1a84464427ba77c49c4.js" integrity="sha256-w&#43;otOIXCCuTvAkhDSw7Z9hs0PHjSlMGoRGRCe6d8ScQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle" checked />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle" checked />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c1_healthcare/" class="">C1 Introduction to Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>C5 Capstone Projects</span>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-34244c046af3dd0acc0bbb74c663a8d3" class="toggle"  />
+    <label for="section-34244c046af3dd0acc0bbb74c663a8d3" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-84a2fcdd2f4a95b774882e612724819f" class="toggle"  />
+    <label for="section-84a2fcdd2f4a95b774882e612724819f" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day1 Foundational Llm Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day1 Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day2 Embeddings Vector Db</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/" class="">Day3 Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/" class="">Day4 Domain Specific Llms</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day5_mlops/" class="">Day5 Mlops</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f57a08bac84df3f46191c3cbf417807e" class="toggle"  />
+    <label for="section-f57a08bac84df3f46191c3cbf417807e" class="flex justify-between">
+      <a href="/ai-workflows/mlops/" class="">MLOps</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/clinical_nlp_genai/" class="">Clinical Nlp Gen Ai</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>[Summary]  Module 6: Best Practices, Terms, and Launching Your ML Journey</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module-6-best-practices-terms-and-launching-your-ml-journey"><strong>Module 6: Best Practices, Terms, and Launching Your ML Journey</strong></a></li>
+        <li><a href="#1-clinical-utility-and-output-action-pairing">1 Clinical Utility and Output Action Pairing</a>
+          <ul>
+            <li><a href="#q1-what-is-clinical-utility-and-why-is-it-important-in-ml">Q1: What is clinical utility and why is it important in ML?</a></li>
+            <li><a href="#q2-what-is-output-action-pairing-oap-and-how-does-it-help">Q2: What is Output-Action Pairing (OAP) and how does it help?</a></li>
+            <li><a href="#q3-what-are-practical-examples-of-output-action-pairing">Q3: What are practical examples of Output-Action Pairing?</a></li>
+            <li><a href="#q4-how-does-oap-influence-model-development-choices">Q4: How does OAP influence model development choices?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-taking-action---utilizing-the-oap-framework">2 Taking Action - Utilizing the OAP Framework</a>
+          <ul>
+            <li><a href="#q1-how-can-the-oap-framework-be-applied-systematically">Q1: How can the OAP framework be applied systematically?</a></li>
+            <li><a href="#q2-what-questions-can-guide-effective-output-action-pairing">Q2: What questions can guide effective Output-Action Pairing?</a></li>
+            <li><a href="#q3-what-happens-when-models-are-built-without-oap-thinking">Q3: What happens when models are built without OAP thinking?</a></li>
+            <li><a href="#q4-how-does-oap-promote-stakeholder-alignment">Q4: How does OAP promote stakeholder alignment?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-building-multidisciplinary-teams-for-clinical-machine-learning">3 Building Multidisciplinary Teams for Clinical Machine Learning</a>
+          <ul>
+            <li><a href="#q1-why-are-multidisciplinary-teams-essential-in-clinical-ml-projects">Q1: Why are multidisciplinary teams essential in clinical ML projects?</a></li>
+            <li><a href="#q2-who-are-the-key-stakeholders-in-a-clinical-ml-team">Q2: Who are the key stakeholders in a clinical ML team?</a></li>
+            <li><a href="#q3-what-practices-foster-effective-collaboration">Q3: What practices foster effective collaboration?</a></li>
+            <li><a href="#q4-what-are-common-barriers-and-how-can-they-be-addressed">Q4: What are common barriers and how can they be addressed?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-governance-ethics-and-best-practices">4 Governance, Ethics, and Best Practices</a>
+          <ul>
+            <li><a href="#q1-why-is-governance-important-in-clinical-machine-learning">Q1: Why is governance important in clinical machine learning?</a></li>
+            <li><a href="#q2-what-ethical-principles-guide-responsible-ml-in-medicine">Q2: What ethical principles guide responsible ML in medicine?</a></li>
+            <li><a href="#q3-what-governance-practices-help-enforce-ethical-use-of-ml">Q3: What governance practices help enforce ethical use of ML?</a></li>
+            <li><a href="#q4-what-are-some-operational-best-practices-in-clinical-ml">Q4: What are some operational best practices in clinical ML?</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-on-being-human-in-the-era-of-clinical-machine-learning">5 On Being Human in the Era of Clinical Machine Learning</a>
+          <ul>
+            <li><a href="#q1-what-role-do-humans-continue-to-play-in-clinical-ml-systems">Q1: What role do humans continue to play in clinical ML systems?</a></li>
+            <li><a href="#q2-what-are-risks-of-excessive-automation-in-clinical-ml">Q2: What are risks of excessive automation in clinical ML?</a></li>
+            <li><a href="#q3-how-do-we-build-ml-systems-that-augment-rather-than-replace-clinicians">Q3: How do we build ML systems that augment rather than replace clinicians?</a></li>
+            <li><a href="#q4-what-values-should-ml-practitioners-center-in-their-design">Q4: What values should ML practitioners center in their design?</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-death-by-gps-and-other-lessons-of-automation-bias">6 Death by GPS and Other Lessons of Automation Bias</a>
+          <ul>
+            <li><a href="#q1-what-is-automation-bias-and-why-is-it-dangerous-in-healthcare">Q1: What is automation bias and why is it dangerous in healthcare?</a></li>
+            <li><a href="#q2-what-lessons-do-we-learn-from-non-healthcare-automation-failures">Q2: What lessons do we learn from non-healthcare automation failures?</a></li>
+            <li><a href="#q3-how-can-ml-systems-reduce-risk-of-automation-bias">Q3: How can ML systems reduce risk of automation bias?</a></li>
+            <li><a href="#q4-how-should-organizations-manage-automation-risks">Q4: How should organizations manage automation risks?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="module-6-best-practices-terms-and-launching-your-ml-journey">
+  <strong>Module 6: Best Practices, Terms, and Launching Your ML Journey</strong>
+  <a class="anchor" href="#module-6-best-practices-terms-and-launching-your-ml-journey">#</a>
+</h2>
+<h2 id="1-clinical-utility-and-output-action-pairing">
+  1 Clinical Utility and Output Action Pairing
+  <a class="anchor" href="#1-clinical-utility-and-output-action-pairing">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-is-clinical-utility-and-why-is-it-important-in-ml">
+  Q1: What is clinical utility and why is it important in ML?
+  <a class="anchor" href="#q1-what-is-clinical-utility-and-why-is-it-important-in-ml">#</a>
+</h3>
+<p>Clinical utility refers to the <strong>real-world usefulness</strong> of a model’s predictions:</p>
+<ul>
+<li>A model must <strong>enable action</strong> that improves outcomes.</li>
+<li>Predictions that can&rsquo;t lead to interventions or decisions have limited utility.</li>
+<li>This bridges the gap between technical performance and clinical relevance.</li>
+</ul>
+<p>➡️  How can we ensure predictions are actually actionable?</p>
+<hr>
+<h3 id="q2-what-is-output-action-pairing-oap-and-how-does-it-help">
+  Q2: What is Output-Action Pairing (OAP) and how does it help?
+  <a class="anchor" href="#q2-what-is-output-action-pairing-oap-and-how-does-it-help">#</a>
+</h3>
+<p>OAP connects model outputs to a <strong>specific, predefined action</strong>:</p>
+<ul>
+<li>Defines what should happen when a model gives a certain prediction.</li>
+<li>Ensures the output aligns with clinical workflows and capabilities.</li>
+<li>Encourages careful thought about <strong>how predictions will be used</strong>.</li>
+</ul>
+<p>➡️  What are some examples of OAP in clinical practice?</p>
+<hr>
+<h3 id="q3-what-are-practical-examples-of-output-action-pairing">
+  Q3: What are practical examples of Output-Action Pairing?
+  <a class="anchor" href="#q3-what-are-practical-examples-of-output-action-pairing">#</a>
+</h3>
+<ul>
+<li>Sepsis risk prediction → Early IV antibiotic administration.</li>
+<li>Fall risk → Increase room monitoring and physical therapy.</li>
+<li>Readmission risk → Social work referral or discharge planning.</li>
+</ul>
+<p>Clear linkage between <strong>prediction and intervention</strong> enhances adoption and trust.</p>
+<p>➡️  How does OAP guide model design and deployment?</p>
+<hr>
+<h3 id="q4-how-does-oap-influence-model-development-choices">
+  Q4: How does OAP influence model development choices?
+  <a class="anchor" href="#q4-how-does-oap-influence-model-development-choices">#</a>
+</h3>
+<ul>
+<li>Guides <strong>feature selection</strong> based on actionability.</li>
+<li>Helps prioritize <strong>precision or recall</strong> depending on the intervention.</li>
+<li>Encourages stakeholder involvement early to define <strong>clinical utility goals</strong>.</li>
+</ul>
+<h2 id="2-taking-action---utilizing-the-oap-framework">
+  2 Taking Action - Utilizing the OAP Framework
+  <a class="anchor" href="#2-taking-action---utilizing-the-oap-framework">#</a>
+</h2>
+<hr>
+<h3 id="q1-how-can-the-oap-framework-be-applied-systematically">
+  Q1: How can the OAP framework be applied systematically?
+  <a class="anchor" href="#q1-how-can-the-oap-framework-be-applied-systematically">#</a>
+</h3>
+<p>The OAP (Output-Action Pairing) framework provides a structured approach:</p>
+<ul>
+<li>Start with the <strong>desired clinical action</strong> or intervention.</li>
+<li>Work backward to determine the <strong>prediction</strong> needed to support it.</li>
+<li>Design the model with this action-prediction link as the anchor.</li>
+</ul>
+<p>➡️  What questions help clarify a good OAP strategy?</p>
+<hr>
+<h3 id="q2-what-questions-can-guide-effective-output-action-pairing">
+  Q2: What questions can guide effective Output-Action Pairing?
+  <a class="anchor" href="#q2-what-questions-can-guide-effective-output-action-pairing">#</a>
+</h3>
+<ul>
+<li>What <strong>clinical decision</strong> is this prediction meant to support?</li>
+<li>Who will take action based on the output?</li>
+<li>What are the <strong>consequences</strong> of false positives or negatives?</li>
+<li>Is there an existing workflow where this model fits?</li>
+</ul>
+<p>These guide the framing, design, and evaluation of the ML tool.</p>
+<p>➡️  Can the OAP framework prevent wasted effort or misaligned tools?</p>
+<hr>
+<h3 id="q3-what-happens-when-models-are-built-without-oap-thinking">
+  Q3: What happens when models are built without OAP thinking?
+  <a class="anchor" href="#q3-what-happens-when-models-are-built-without-oap-thinking">#</a>
+</h3>
+<ul>
+<li>Outputs may be <strong>ambiguous or non-actionable</strong>.</li>
+<li>Teams may build models no one knows how to use.</li>
+<li>Integration into practice becomes difficult or ineffective.</li>
+</ul>
+<p>OAP increases the likelihood of <strong>real-world impact</strong>.</p>
+<p>➡️  How does OAP support multidisciplinary collaboration?</p>
+<hr>
+<h3 id="q4-how-does-oap-promote-stakeholder-alignment">
+  Q4: How does OAP promote stakeholder alignment?
+  <a class="anchor" href="#q4-how-does-oap-promote-stakeholder-alignment">#</a>
+</h3>
+<ul>
+<li>Encourages communication between <strong>clinicians, engineers, and operational teams</strong>.</li>
+<li>Helps align goals, expectations, and implementation details.</li>
+<li>Everyone shares a clear understanding of what the model is for and how it will be used.</li>
+</ul>
+<h2 id="3-building-multidisciplinary-teams-for-clinical-machine-learning">
+  3 Building Multidisciplinary Teams for Clinical Machine Learning
+  <a class="anchor" href="#3-building-multidisciplinary-teams-for-clinical-machine-learning">#</a>
+</h2>
+<hr>
+<h3 id="q1-why-are-multidisciplinary-teams-essential-in-clinical-ml-projects">
+  Q1: Why are multidisciplinary teams essential in clinical ML projects?
+  <a class="anchor" href="#q1-why-are-multidisciplinary-teams-essential-in-clinical-ml-projects">#</a>
+</h3>
+<p>Healthcare ML requires collaboration across domains:</p>
+<ul>
+<li>Combines <strong>technical expertise</strong> with <strong>clinical knowledge</strong>.</li>
+<li>Ensures models are grounded in <strong>real-world workflows</strong>.</li>
+<li>Increases likelihood of successful design, deployment, and adoption.</li>
+</ul>
+<p>➡️  What roles are typically involved in such teams?</p>
+<hr>
+<h3 id="q2-who-are-the-key-stakeholders-in-a-clinical-ml-team">
+  Q2: Who are the key stakeholders in a clinical ML team?
+  <a class="anchor" href="#q2-who-are-the-key-stakeholders-in-a-clinical-ml-team">#</a>
+</h3>
+<ul>
+<li><strong>Clinicians</strong>: define problems, validate utility, assess safety.</li>
+<li><strong>Data scientists/engineers</strong>: model design, feature extraction, validation.</li>
+<li><strong>IT and informatics staff</strong>: EHR integration, data access.</li>
+<li><strong>Administrators and ethics leaders</strong>: compliance, governance, resourcing.</li>
+</ul>
+<p>Diverse perspectives help <strong>balance performance with feasibility and ethics</strong>.</p>
+<p>➡️  How do team dynamics influence project success?</p>
+<hr>
+<h3 id="q3-what-practices-foster-effective-collaboration">
+  Q3: What practices foster effective collaboration?
+  <a class="anchor" href="#q3-what-practices-foster-effective-collaboration">#</a>
+</h3>
+<ul>
+<li>Shared <strong>language and goals</strong>: use tools like OAP to define objectives.</li>
+<li><strong>Iterative feedback loops</strong> with clinicians.</li>
+<li>Respect for <strong>domain boundaries</strong> and active listening.</li>
+</ul>
+<p>Successful teams recognize that <strong>technical and clinical inputs are equally critical</strong>.</p>
+<p>➡️  What challenges can arise in interdisciplinary settings?</p>
+<hr>
+<h3 id="q4-what-are-common-barriers-and-how-can-they-be-addressed">
+  Q4: What are common barriers and how can they be addressed?
+  <a class="anchor" href="#q4-what-are-common-barriers-and-how-can-they-be-addressed">#</a>
+</h3>
+<ul>
+<li>Misaligned incentives or timelines.</li>
+<li>Communication breakdowns or unclear roles.</li>
+<li>Resistance to change or model integration.</li>
+</ul>
+<p>Solution: Foster <strong>trust, transparency</strong>, and frequent engagement across disciplines.</p>
+<h2 id="4-governance-ethics-and-best-practices">
+  4 Governance, Ethics, and Best Practices
+  <a class="anchor" href="#4-governance-ethics-and-best-practices">#</a>
+</h2>
+<hr>
+<h3 id="q1-why-is-governance-important-in-clinical-machine-learning">
+  Q1: Why is governance important in clinical machine learning?
+  <a class="anchor" href="#q1-why-is-governance-important-in-clinical-machine-learning">#</a>
+</h3>
+<p>Governance ensures ML tools are:</p>
+<ul>
+<li><strong>Safe, fair, and transparent</strong>.</li>
+<li>Aligned with <strong>legal and institutional standards</strong>.</li>
+<li>Routinely monitored and updated.</li>
+</ul>
+<p>It defines <strong>who is accountable</strong> for model design, deployment, and oversight.</p>
+<p>➡️  What are key components of ethical ML in healthcare?</p>
+<hr>
+<h3 id="q2-what-ethical-principles-guide-responsible-ml-in-medicine">
+  Q2: What ethical principles guide responsible ML in medicine?
+  <a class="anchor" href="#q2-what-ethical-principles-guide-responsible-ml-in-medicine">#</a>
+</h3>
+<ul>
+<li><strong>Fairness</strong>: equitable performance across patient groups.</li>
+<li><strong>Transparency</strong>: clear communication of model limitations and risks.</li>
+<li><strong>Accountability</strong>: defined roles for decision-making and error handling.</li>
+<li><strong>Beneficence</strong>: focus on patient well-being and do-no-harm principles.</li>
+</ul>
+<p>➡️  How do we institutionalize these principles?</p>
+<hr>
+<h3 id="q3-what-governance-practices-help-enforce-ethical-use-of-ml">
+  Q3: What governance practices help enforce ethical use of ML?
+  <a class="anchor" href="#q3-what-governance-practices-help-enforce-ethical-use-of-ml">#</a>
+</h3>
+<ul>
+<li>Establish <strong>ML oversight committees</strong> with clinical and technical members.</li>
+<li>Create <strong>model review boards</strong> for performance and fairness evaluations.</li>
+<li>Define <strong>escalation plans</strong> for failures or unexpected behavior.</li>
+</ul>
+<p>Governance should be <strong>proactive, not reactive</strong>.</p>
+<p>➡️  What practical best practices support these efforts?</p>
+<hr>
+<h3 id="q4-what-are-some-operational-best-practices-in-clinical-ml">
+  Q4: What are some operational best practices in clinical ML?
+  <a class="anchor" href="#q4-what-are-some-operational-best-practices-in-clinical-ml">#</a>
+</h3>
+<ul>
+<li>Regular audits and performance monitoring.</li>
+<li>Document model <strong>versioning</strong>, <strong>data lineage</strong>, and <strong>deployment status</strong>.</li>
+<li>Ensure <strong>interdisciplinary sign-off</strong> before going live.</li>
+<li>Build models with <strong>real-world constraints and fail-safes</strong> in mind.</li>
+</ul>
+<h2 id="5-on-being-human-in-the-era-of-clinical-machine-learning">
+  5 On Being Human in the Era of Clinical Machine Learning
+  <a class="anchor" href="#5-on-being-human-in-the-era-of-clinical-machine-learning">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-role-do-humans-continue-to-play-in-clinical-ml-systems">
+  Q1: What role do humans continue to play in clinical ML systems?
+  <a class="anchor" href="#q1-what-role-do-humans-continue-to-play-in-clinical-ml-systems">#</a>
+</h3>
+<p>Even with advanced ML, <strong>humans remain central</strong>:</p>
+<ul>
+<li>Clinicians interpret outputs in nuanced, value-laden contexts.</li>
+<li>Patients bring individual preferences and lived experiences.</li>
+<li>Human oversight is essential for ethical and compassionate care.</li>
+</ul>
+<p>➡️  Why might fully automated decisions be problematic in healthcare?</p>
+<hr>
+<h3 id="q2-what-are-risks-of-excessive-automation-in-clinical-ml">
+  Q2: What are risks of excessive automation in clinical ML?
+  <a class="anchor" href="#q2-what-are-risks-of-excessive-automation-in-clinical-ml">#</a>
+</h3>
+<ul>
+<li>Models may lack <strong>empathy</strong> or context-specific judgment.</li>
+<li>Overreliance can lead to <strong>de-skilling</strong> or clinician disengagement.</li>
+<li>Errors may go unchallenged if clinicians defer too heavily to automation.</li>
+</ul>
+<p>Human clinicians provide <strong>interpretive judgment</strong> and ensure care remains individualized.</p>
+<p>➡️  How can we design systems that support, not replace, human judgment?</p>
+<hr>
+<h3 id="q3-how-do-we-build-ml-systems-that-augment-rather-than-replace-clinicians">
+  Q3: How do we build ML systems that augment rather than replace clinicians?
+  <a class="anchor" href="#q3-how-do-we-build-ml-systems-that-augment-rather-than-replace-clinicians">#</a>
+</h3>
+<ul>
+<li>Keep clinicians <strong>“in the loop”</strong>—with tools to override or question model outputs.</li>
+<li>Design interfaces for <strong>transparency</strong> and <strong>explanation</strong>, not just prediction.</li>
+<li>Support human strengths: empathy, narrative understanding, ethical judgment.</li>
+</ul>
+<p>➡️  What values should guide human-machine collaboration in healthcare?</p>
+<hr>
+<h3 id="q4-what-values-should-ml-practitioners-center-in-their-design">
+  Q4: What values should ML practitioners center in their design?
+  <a class="anchor" href="#q4-what-values-should-ml-practitioners-center-in-their-design">#</a>
+</h3>
+<ul>
+<li><strong>Respect for human dignity</strong> and individual autonomy.</li>
+<li><strong>Empowerment</strong>, not displacement, of healthcare professionals.</li>
+<li>Continuous attention to how technology <strong>shapes behavior and trust</strong>.</li>
+</ul>
+<h2 id="6-death-by-gps-and-other-lessons-of-automation-bias">
+  6 Death by GPS and Other Lessons of Automation Bias
+  <a class="anchor" href="#6-death-by-gps-and-other-lessons-of-automation-bias">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-is-automation-bias-and-why-is-it-dangerous-in-healthcare">
+  Q1: What is automation bias and why is it dangerous in healthcare?
+  <a class="anchor" href="#q1-what-is-automation-bias-and-why-is-it-dangerous-in-healthcare">#</a>
+</h3>
+<p>Automation bias is the tendency to:</p>
+<ul>
+<li><strong>Overtrust machine-generated suggestions</strong>, even when flawed.</li>
+<li>Ignore or discount human judgment in favor of algorithmic outputs.</li>
+<li>Lead to <strong>harmful or fatal errors</strong>, especially in high-stakes domains.</li>
+</ul>
+<p>➡️  What are real-world examples of automation bias?</p>
+<hr>
+<h3 id="q2-what-lessons-do-we-learn-from-non-healthcare-automation-failures">
+  Q2: What lessons do we learn from non-healthcare automation failures?
+  <a class="anchor" href="#q2-what-lessons-do-we-learn-from-non-healthcare-automation-failures">#</a>
+</h3>
+<p>Example: <strong>“Death by GPS”</strong>—drivers blindly following GPS into unsafe areas.</p>
+<ul>
+<li>Similar dynamics occur in medicine when clinicians <strong>follow flawed model predictions</strong>.</li>
+<li>Automation can make errors seem more trustworthy due to <strong>perceived objectivity</strong>.</li>
+</ul>
+<p>➡️  How can we design systems to guard against this?</p>
+<hr>
+<h3 id="q3-how-can-ml-systems-reduce-risk-of-automation-bias">
+  Q3: How can ML systems reduce risk of automation bias?
+  <a class="anchor" href="#q3-how-can-ml-systems-reduce-risk-of-automation-bias">#</a>
+</h3>
+<ul>
+<li>Provide <strong>confidence scores</strong>, explanations, and alternative scenarios.</li>
+<li>Train users to <strong>critically evaluate</strong> model outputs.</li>
+<li>Design alerts and interfaces that encourage <strong>reflective judgment</strong>, not blind acceptance.</li>
+</ul>
+<p>➡️  What role do institutions and governance play?</p>
+<hr>
+<h3 id="q4-how-should-organizations-manage-automation-risks">
+  Q4: How should organizations manage automation risks?
+  <a class="anchor" href="#q4-how-should-organizations-manage-automation-risks">#</a>
+</h3>
+<ul>
+<li>Regular audits for <strong>model drift</strong> and edge-case failures.</li>
+<li>Create <strong>feedback loops</strong> so users can flag concerning outputs.</li>
+<li>Promote a culture where <strong>questioning automation is encouraged</strong>.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module-6-best-practices-terms-and-launching-your-ml-journey"><strong>Module 6: Best Practices, Terms, and Launching Your ML Journey</strong></a></li>
+        <li><a href="#1-clinical-utility-and-output-action-pairing">1 Clinical Utility and Output Action Pairing</a>
+          <ul>
+            <li><a href="#q1-what-is-clinical-utility-and-why-is-it-important-in-ml">Q1: What is clinical utility and why is it important in ML?</a></li>
+            <li><a href="#q2-what-is-output-action-pairing-oap-and-how-does-it-help">Q2: What is Output-Action Pairing (OAP) and how does it help?</a></li>
+            <li><a href="#q3-what-are-practical-examples-of-output-action-pairing">Q3: What are practical examples of Output-Action Pairing?</a></li>
+            <li><a href="#q4-how-does-oap-influence-model-development-choices">Q4: How does OAP influence model development choices?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-taking-action---utilizing-the-oap-framework">2 Taking Action - Utilizing the OAP Framework</a>
+          <ul>
+            <li><a href="#q1-how-can-the-oap-framework-be-applied-systematically">Q1: How can the OAP framework be applied systematically?</a></li>
+            <li><a href="#q2-what-questions-can-guide-effective-output-action-pairing">Q2: What questions can guide effective Output-Action Pairing?</a></li>
+            <li><a href="#q3-what-happens-when-models-are-built-without-oap-thinking">Q3: What happens when models are built without OAP thinking?</a></li>
+            <li><a href="#q4-how-does-oap-promote-stakeholder-alignment">Q4: How does OAP promote stakeholder alignment?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-building-multidisciplinary-teams-for-clinical-machine-learning">3 Building Multidisciplinary Teams for Clinical Machine Learning</a>
+          <ul>
+            <li><a href="#q1-why-are-multidisciplinary-teams-essential-in-clinical-ml-projects">Q1: Why are multidisciplinary teams essential in clinical ML projects?</a></li>
+            <li><a href="#q2-who-are-the-key-stakeholders-in-a-clinical-ml-team">Q2: Who are the key stakeholders in a clinical ML team?</a></li>
+            <li><a href="#q3-what-practices-foster-effective-collaboration">Q3: What practices foster effective collaboration?</a></li>
+            <li><a href="#q4-what-are-common-barriers-and-how-can-they-be-addressed">Q4: What are common barriers and how can they be addressed?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-governance-ethics-and-best-practices">4 Governance, Ethics, and Best Practices</a>
+          <ul>
+            <li><a href="#q1-why-is-governance-important-in-clinical-machine-learning">Q1: Why is governance important in clinical machine learning?</a></li>
+            <li><a href="#q2-what-ethical-principles-guide-responsible-ml-in-medicine">Q2: What ethical principles guide responsible ML in medicine?</a></li>
+            <li><a href="#q3-what-governance-practices-help-enforce-ethical-use-of-ml">Q3: What governance practices help enforce ethical use of ML?</a></li>
+            <li><a href="#q4-what-are-some-operational-best-practices-in-clinical-ml">Q4: What are some operational best practices in clinical ML?</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-on-being-human-in-the-era-of-clinical-machine-learning">5 On Being Human in the Era of Clinical Machine Learning</a>
+          <ul>
+            <li><a href="#q1-what-role-do-humans-continue-to-play-in-clinical-ml-systems">Q1: What role do humans continue to play in clinical ML systems?</a></li>
+            <li><a href="#q2-what-are-risks-of-excessive-automation-in-clinical-ml">Q2: What are risks of excessive automation in clinical ML?</a></li>
+            <li><a href="#q3-how-do-we-build-ml-systems-that-augment-rather-than-replace-clinicians">Q3: How do we build ML systems that augment rather than replace clinicians?</a></li>
+            <li><a href="#q4-what-values-should-ml-practitioners-center-in-their-design">Q4: What values should ML practitioners center in their design?</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-death-by-gps-and-other-lessons-of-automation-bias">6 Death by GPS and Other Lessons of Automation Bias</a>
+          <ul>
+            <li><a href="#q1-what-is-automation-bias-and-why-is-it-dangerous-in-healthcare">Q1: What is automation bias and why is it dangerous in healthcare?</a></li>
+            <li><a href="#q2-what-lessons-do-we-learn-from-non-healthcare-automation-failures">Q2: What lessons do we learn from non-healthcare automation failures?</a></li>
+            <li><a href="#q3-how-can-ml-systems-reduce-risk-of-automation-bias">Q3: How can ML systems reduce risk of automation bias?</a></li>
+            <li><a href="#q4-how-should-organizations-manage-automation-risks">Q4: How should organizations manage automation risks?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
