@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Healthcare Data on AI in Healthcare</title>
-    <link>https://imipark.github.io/healthcare-domain/data/</link>
+    <link>http://localhost:1313/healthcare-domain/data/</link>
     <description>Recent content in Healthcare Data on AI in Healthcare</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://imipark.github.io/healthcare-domain/data/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/healthcare-domain/data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Healthcare Data Layers</title>
-      <link>https://imipark.github.io/healthcare-domain/data/healthcare_layers/</link>
+      <link>http://localhost:1313/healthcare-domain/data/healthcare_layers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://imipark.github.io/healthcare-domain/data/healthcare_layers/</guid>
+      <guid>http://localhost:1313/healthcare-domain/data/healthcare_layers/</guid>
       <description>&lt;h1 id=&#34;healthcare-data-layers&#34;&gt;&#xA;  Healthcare Data Layers&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#healthcare-data-layers&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;1️⃣ Data Sources (Raw Data &amp;amp; Collection Level)&#xA;These are the foundational data sources used in healthcare analysis, originating from clinical trials, hospitals, insurance claims, and patient records.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Clinical Data (RCTs, EHR, OMOP, CDM)&lt;/strong&gt; – Structured, controlled, and often randomized data used for regulatory and research applications.&#xA;&lt;strong&gt;Real-World Data (RWD: EHR, Claims, Registries)&lt;/strong&gt; – Observational and confounded, requiring advanced causal inference methods to extract meaningful insights.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Healthcare Data Sources</title>
-      <link>https://imipark.github.io/healthcare-domain/data/healthcare_sources/</link>
+      <link>http://localhost:1313/healthcare-domain/data/healthcare_sources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://imipark.github.io/healthcare-domain/data/healthcare_sources/</guid>
+      <guid>http://localhost:1313/healthcare-domain/data/healthcare_sources/</guid>
       <description>&lt;h1 id=&#34;healthcare-data-sources&#34;&gt;&#xA;  Healthcare Data Sources&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#healthcare-data-sources&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h3 id=&#34;phenotype-knowledgebase-phekb&#34;&gt;&#xA;  &lt;a href=&#34;https://www.phekb.org/&#34;&gt;Phenotype KnowledgeBase (PheKB)&lt;/a&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#phenotype-knowledgebase-phekb&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;:&lt;br&gt;&#xA;A collaborative portal for sharing and validating electronic phenotype definitions used in observational health research.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags&lt;/strong&gt;: &lt;code&gt;phenotyping&lt;/code&gt;, &lt;code&gt;EHR&lt;/code&gt;, &lt;code&gt;cohort definitions&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Use Cases&lt;/strong&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Standardized phenotype definitions for conditions like diabetes, asthma, etc.&lt;/li&gt;&#xA;&lt;li&gt;Sharing phenotype algorithms across institutions&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;mimic-iv-medical-information-mart-for-intensive-care&#34;&gt;&#xA;  &lt;a href=&#34;https://physionet.org/content/mimiciv/&#34;&gt;MIMIC-IV (Medical Information Mart for Intensive Care)&lt;/a&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#mimic-iv-medical-information-mart-for-intensive-care&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;:&lt;br&gt;&#xA;A large, publicly available critical care database containing de-identified health data from ICU patients at the Beth Israel Deaconess Medical Center.&lt;/p&gt;</description>
     </item>
   </channel>
