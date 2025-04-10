@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/toc_course2/</loc>
+  </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/toc_course3/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c1_healthcare/</loc>
@@ -9,8 +11,6 @@
     <loc>https://imipark.github.io/healthcare-domain/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c1_healthcare/toc_course1/</loc>
-  </url><url>
-    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/toc_course2/</loc>
   </url><url>
     <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/toc_course4/</loc>
   </url><url>
