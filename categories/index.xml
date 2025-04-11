@@ -15,5 +15,26 @@
       <guid>https://imipark.github.io/categories/web/</guid>
       <description></description>
     </item>
+    <item>
+      <title>AI Education</title>
+      <link>https://imipark.github.io/categories/ai-education/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/categories/ai-education/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GenAI Instruction</title>
+      <link>https://imipark.github.io/categories/genai-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/categories/genai-instruction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Learning Methods</title>
+      <link>https://imipark.github.io/categories/learning-methods/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/categories/learning-methods/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
