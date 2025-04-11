@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  ChatGPT Prompt-Only vs OpenAI API &#43; Function Calling
+  #
+
+This document shows a side-by-side comparison between using ChatGPT manually (prompt-only) and using the OpenAI API with function calling.
+
+
+  🟦 ChatGPT (Prompt-Only / UI Version)
+  #
+
+This is what you do in the browser:
+User: What’s the weather in Paris?
+
+ChatGPT: The weather in Paris is likely mild and partly cloudy this time of year.
+
+No function is actually called
+The model guesses based on training data
+Not real-time, not accurate, not programmable
+
+
+
+  🟨 OpenAI API &#43; Function Calling Version (Working &#43; Realistic)
+  #
+
+import openai
+import json
+
+openai.api_key = &#34;your_api_key_here&#34;
+
+# 1. Define the available function
+functions = [
+    {
+        &#34;name&#34;: &#34;get_weather&#34;,
+        &#34;description&#34;: &#34;Get the current weather in a given city.&#34;,
+        &#34;parameters&#34;: {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;properties&#34;: {
+                &#34;city&#34;: {&#34;type&#34;: &#34;string&#34;, &#34;description&#34;: &#34;Name of the city&#34;}
+            },
+            &#34;required&#34;: [&#34;city&#34;]
+        }
+    }
+]
+
+# 2. Send user prompt &#43; function list to GPT
+response = openai.ChatCompletion.create(
+    model=&#34;gpt-4-0613&#34;,
+    messages=[{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;What’s the weather in Paris?&#34;}],
+    functions=functions,
+    function_call=&#34;auto&#34;  # Let GPT decide
+)
+
+# 3. GPT returns a function call (it won&#39;t run it)
+function_call = response[&#34;choices&#34;][0][&#34;message&#34;].get(&#34;function_call&#34;)
+
+if function_call:
+    # Parse the function name and arguments
+    fn_name = function_call[&#34;name&#34;]
+    args = json.loads(function_call[&#34;arguments&#34;])
+
+    # 4. Run the function yourself (e.g., call a real API or simulate)
+    def get_weather(city):
+        # In reality, you&#39;d call a weather API like OpenWeatherMap here
+        return f&#34;The current weather in {city} is 68°F and sunny.&#34;
+
+    result = get_weather(args[&#34;city&#34;])
+
+    # 5. Send result back to GPT for natural language output
+    followup = openai.ChatCompletion.create(
+        model=&#34;gpt-4-0613&#34;,
+        messages=[
+            {&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;What’s the weather in Paris?&#34;},
+            {&#34;role&#34;: &#34;function&#34;, &#34;name&#34;: fn_name, &#34;content&#34;: result}
+        ]
+    )
+
+    print(followup[&#34;choices&#34;][0][&#34;message&#34;][&#34;content&#34;])
+else:
+    print(&#34;GPT did not call a function.&#34;)
+
+
+  🔍 Summary Table
+  #
+
+
+  
+      
+          Step
+          Prompt-Only (UI)
+          API &#43; Function Calling
+      
+  
+  
+      
+          Input
+          User types text prompt
+          Dev sends user prompt &#43; function definitions
+      
+      
+          Function selection
+          None — model guesses
+          GPT chooses from provided functions
+      
+      
+          Execution
+          Not possible
+          Developer runs function (e.g., API call)
+      
+      
+          Output
+          Text only, not real-time
+          GPT formats real function output into natural reply
+      
+  
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/nlp-llm-genai/openai_api_function_calling_comparison/">
+  <meta property="og:site_name" content="AI in Healthcare">
+  <meta property="og:title" content="ChatGPT Prompt-Only vs OpenAI API &#43; Function Calling">
+  <meta property="og:description" content="ChatGPT Prompt-Only vs OpenAI API &#43; Function Calling # This document shows a side-by-side comparison between using ChatGPT manually (prompt-only) and using the OpenAI API with function calling.
+🟦 ChatGPT (Prompt-Only / UI Version) # This is what you do in the browser:
+User: What’s the weather in Paris? ChatGPT: The weather in Paris is likely mild and partly cloudy this time of year. No function is actually called The model guesses based on training data Not real-time, not accurate, not programmable 🟨 OpenAI API &#43; Function Calling Version (Working &#43; Realistic) # import openai import json openai.api_key = &#34;your_api_key_here&#34; # 1. Define the available function functions = [ { &#34;name&#34;: &#34;get_weather&#34;, &#34;description&#34;: &#34;Get the current weather in a given city.&#34;, &#34;parameters&#34;: { &#34;type&#34;: &#34;object&#34;, &#34;properties&#34;: { &#34;city&#34;: {&#34;type&#34;: &#34;string&#34;, &#34;description&#34;: &#34;Name of the city&#34;} }, &#34;required&#34;: [&#34;city&#34;] } } ] # 2. Send user prompt &#43; function list to GPT response = openai.ChatCompletion.create( model=&#34;gpt-4-0613&#34;, messages=[{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;What’s the weather in Paris?&#34;}], functions=functions, function_call=&#34;auto&#34; # Let GPT decide ) # 3. GPT returns a function call (it won&#39;t run it) function_call = response[&#34;choices&#34;][0][&#34;message&#34;].get(&#34;function_call&#34;) if function_call: # Parse the function name and arguments fn_name = function_call[&#34;name&#34;] args = json.loads(function_call[&#34;arguments&#34;]) # 4. Run the function yourself (e.g., call a real API or simulate) def get_weather(city): # In reality, you&#39;d call a weather API like OpenWeatherMap here return f&#34;The current weather in {city} is 68°F and sunny.&#34; result = get_weather(args[&#34;city&#34;]) # 5. Send result back to GPT for natural language output followup = openai.ChatCompletion.create( model=&#34;gpt-4-0613&#34;, messages=[ {&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;What’s the weather in Paris?&#34;}, {&#34;role&#34;: &#34;function&#34;, &#34;name&#34;: fn_name, &#34;content&#34;: result} ] ) print(followup[&#34;choices&#34;][0][&#34;message&#34;][&#34;content&#34;]) else: print(&#34;GPT did not call a function.&#34;) 🔍 Summary Table # Step Prompt-Only (UI) API &#43; Function Calling Input User types text prompt Dev sends user prompt &#43; function definitions Function selection None — model guesses GPT chooses from provided functions Execution Not possible Developer runs function (e.g., API call) Output Text only, not real-time GPT formats real function output into natural reply">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>ChatGPT Prompt-Only vs OpenAI API &#43; Function Calling | AI in Healthcare</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/nlp-llm-genai/openai_api_function_calling_comparison/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.da212909f2f165542a83dcec90155184b5089e86e19708992f28e698f256a998.js" integrity="sha256-2iEpCfLxZVQqg9zskBVRhLUInobhlwiZLyjmmPJWqZg=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI in Healthcare</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ec69014a5624ba0393a04a30874fb12" class="toggle"  />
+    <label for="section-1ec69014a5624ba0393a04a30874fb12" class="flex justify-between">
+      <a href="/healthcare-domain/learning/clinical-data-science/" class="">Clinical Data Science</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-432f1263c64ec7f8147f13ab5b1f0abf" class="toggle"  />
+    <label for="section-432f1263c64ec7f8147f13ab5b1f0abf" class="flex justify-between">
+      <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_layers/" class="">Healthcare Data Layers</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/healthcare_sources/" class="">Healthcare Data Sources</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/terminology/" class="">Healthcare Glossary</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/tools/" class="">Infromatics Tools</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-34244c046af3dd0acc0bbb74c663a8d3" class="toggle" checked />
+    <label for="section-34244c046af3dd0acc0bbb74c663a8d3" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-84a2fcdd2f4a95b774882e612724819f" class="toggle"  />
+    <label for="section-84a2fcdd2f4a95b774882e612724819f" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI – CoT Summary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
+    <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2421eaaa685219c6f46672d27e449bd9" class="toggle"  />
+    <label for="section-2421eaaa685219c6f46672d27e449bd9" class="flex justify-between">
+      <a href="/ai-workflows/structural-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d02c58ad32163fbbfe0ca920604379" class="toggle"  />
+    <label for="section-d6d02c58ad32163fbbfe0ca920604379" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/structural-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f57a08bac84df3f46191c3cbf417807e" class="toggle"  />
+    <label for="section-f57a08bac84df3f46191c3cbf417807e" class="flex justify-between">
+      <a href="/ai-workflows/mlops/" class="">MLOps</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/clinical_nlp_genai/" class="">Clinical Nlp Gen Ai</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9320ef7c915cdbbdf424ec3265b5d32b" class="toggle"  />
+    <label for="section-9320ef7c915cdbbdf424ec3265b5d32b" class="flex justify-between">
+      <a href="/projects/" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>ChatGPT Prompt-Only vs OpenAI API &#43; Function Calling</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#chatgpt-prompt-only-vs-openai-api--function-calling">ChatGPT Prompt-Only vs OpenAI API + Function Calling</a>
+      <ul>
+        <li><a href="#-chatgpt-prompt-only--ui-version">🟦 ChatGPT (Prompt-Only / UI Version)</a></li>
+        <li><a href="#-openai-api--function-calling-version-working--realistic">🟨 OpenAI API + Function Calling Version (Working + Realistic)</a></li>
+        <li><a href="#-summary-table">🔍 Summary Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="chatgpt-prompt-only-vs-openai-api--function-calling">
+  ChatGPT Prompt-Only vs OpenAI API + Function Calling
+  <a class="anchor" href="#chatgpt-prompt-only-vs-openai-api--function-calling">#</a>
+</h1>
+<p>This document shows a side-by-side comparison between using ChatGPT manually (prompt-only) and using the OpenAI API with function calling.</p>
+<hr>
+<h2 id="-chatgpt-prompt-only--ui-version">
+  🟦 ChatGPT (Prompt-Only / UI Version)
+  <a class="anchor" href="#-chatgpt-prompt-only--ui-version">#</a>
+</h2>
+<p>This is what you do in the browser:</p>
+<pre tabindex="0"><code>User: What’s the weather in Paris?
+
+ChatGPT: The weather in Paris is likely mild and partly cloudy this time of year.
+</code></pre><ul>
+<li><strong>No function is actually called</strong></li>
+<li>The model <strong>guesses</strong> based on training data</li>
+<li><strong>Not real-time, not accurate, not programmable</strong></li>
+</ul>
+<hr>
+<h2 id="-openai-api--function-calling-version-working--realistic">
+  🟨 OpenAI API + Function Calling Version (Working + Realistic)
+  <a class="anchor" href="#-openai-api--function-calling-version-working--realistic">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">openai</span>
+</span></span><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">json</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openai<span style="color:#04a5e5;font-weight:bold">.</span>api_key <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#40a02b">&#34;your_api_key_here&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># 1. Define the available function</span>
+</span></span><span style="display:flex;"><span>functions <span style="color:#04a5e5;font-weight:bold">=</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;name&#34;</span>: <span style="color:#40a02b">&#34;get_weather&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;description&#34;</span>: <span style="color:#40a02b">&#34;Get the current weather in a given city.&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;parameters&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#40a02b">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;object&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#40a02b">&#34;properties&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#40a02b">&#34;city&#34;</span>: {<span style="color:#40a02b">&#34;type&#34;</span>: <span style="color:#40a02b">&#34;string&#34;</span>, <span style="color:#40a02b">&#34;description&#34;</span>: <span style="color:#40a02b">&#34;Name of the city&#34;</span>}
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#40a02b">&#34;required&#34;</span>: [<span style="color:#40a02b">&#34;city&#34;</span>]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># 2. Send user prompt + function list to GPT</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#04a5e5;font-weight:bold">=</span> openai<span style="color:#04a5e5;font-weight:bold">.</span>ChatCompletion<span style="color:#04a5e5;font-weight:bold">.</span>create(
+</span></span><span style="display:flex;"><span>    model<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#40a02b">&#34;gpt-4-0613&#34;</span>,
+</span></span><span style="display:flex;"><span>    messages<span style="color:#04a5e5;font-weight:bold">=</span>[{<span style="color:#40a02b">&#34;role&#34;</span>: <span style="color:#40a02b">&#34;user&#34;</span>, <span style="color:#40a02b">&#34;content&#34;</span>: <span style="color:#40a02b">&#34;What’s the weather in Paris?&#34;</span>}],
+</span></span><span style="display:flex;"><span>    functions<span style="color:#04a5e5;font-weight:bold">=</span>functions,
+</span></span><span style="display:flex;"><span>    function_call<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#40a02b">&#34;auto&#34;</span>  <span style="color:#9ca0b0;font-style:italic"># Let GPT decide</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># 3. GPT returns a function call (it won&#39;t run it)</span>
+</span></span><span style="display:flex;"><span>function_call <span style="color:#04a5e5;font-weight:bold">=</span> response[<span style="color:#40a02b">&#34;choices&#34;</span>][<span style="color:#fe640b">0</span>][<span style="color:#40a02b">&#34;message&#34;</span>]<span style="color:#04a5e5;font-weight:bold">.</span>get(<span style="color:#40a02b">&#34;function_call&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">if</span> function_call:
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># Parse the function name and arguments</span>
+</span></span><span style="display:flex;"><span>    fn_name <span style="color:#04a5e5;font-weight:bold">=</span> function_call[<span style="color:#40a02b">&#34;name&#34;</span>]
+</span></span><span style="display:flex;"><span>    args <span style="color:#04a5e5;font-weight:bold">=</span> json<span style="color:#04a5e5;font-weight:bold">.</span>loads(function_call[<span style="color:#40a02b">&#34;arguments&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># 4. Run the function yourself (e.g., call a real API or simulate)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">def</span> <span style="color:#1e66f5">get_weather</span>(city):
+</span></span><span style="display:flex;"><span>        <span style="color:#9ca0b0;font-style:italic"># In reality, you&#39;d call a weather API like OpenWeatherMap here</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8839ef">return</span> <span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;The current weather in </span><span style="color:#40a02b">{</span>city<span style="color:#40a02b">}</span><span style="color:#40a02b"> is 68°F and sunny.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#04a5e5;font-weight:bold">=</span> get_weather(args[<span style="color:#40a02b">&#34;city&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># 5. Send result back to GPT for natural language output</span>
+</span></span><span style="display:flex;"><span>    followup <span style="color:#04a5e5;font-weight:bold">=</span> openai<span style="color:#04a5e5;font-weight:bold">.</span>ChatCompletion<span style="color:#04a5e5;font-weight:bold">.</span>create(
+</span></span><span style="display:flex;"><span>        model<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#40a02b">&#34;gpt-4-0613&#34;</span>,
+</span></span><span style="display:flex;"><span>        messages<span style="color:#04a5e5;font-weight:bold">=</span>[
+</span></span><span style="display:flex;"><span>            {<span style="color:#40a02b">&#34;role&#34;</span>: <span style="color:#40a02b">&#34;user&#34;</span>, <span style="color:#40a02b">&#34;content&#34;</span>: <span style="color:#40a02b">&#34;What’s the weather in Paris?&#34;</span>},
+</span></span><span style="display:flex;"><span>            {<span style="color:#40a02b">&#34;role&#34;</span>: <span style="color:#40a02b">&#34;function&#34;</span>, <span style="color:#40a02b">&#34;name&#34;</span>: fn_name, <span style="color:#40a02b">&#34;content&#34;</span>: result}
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#04a5e5">print</span>(followup[<span style="color:#40a02b">&#34;choices&#34;</span>][<span style="color:#fe640b">0</span>][<span style="color:#40a02b">&#34;message&#34;</span>][<span style="color:#40a02b">&#34;content&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#04a5e5">print</span>(<span style="color:#40a02b">&#34;GPT did not call a function.&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="-summary-table">
+  🔍 Summary Table
+  <a class="anchor" href="#-summary-table">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Step</th>
+          <th>Prompt-Only (UI)</th>
+          <th>API + Function Calling</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Input</td>
+          <td>User types text prompt</td>
+          <td>Dev sends user prompt + function definitions</td>
+      </tr>
+      <tr>
+          <td>Function selection</td>
+          <td>None — model guesses</td>
+          <td>GPT chooses from provided functions</td>
+      </tr>
+      <tr>
+          <td>Execution</td>
+          <td>Not possible</td>
+          <td>Developer runs function (e.g., API call)</td>
+      </tr>
+      <tr>
+          <td>Output</td>
+          <td>Text only, not real-time</td>
+          <td>GPT formats real function output into natural reply</td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#chatgpt-prompt-only-vs-openai-api--function-calling">ChatGPT Prompt-Only vs OpenAI API + Function Calling</a>
+      <ul>
+        <li><a href="#-chatgpt-prompt-only--ui-version">🟦 ChatGPT (Prompt-Only / UI Version)</a></li>
+        <li><a href="#-openai-api--function-calling-version-working--realistic">🟨 OpenAI API + Function Calling Version (Working + Realistic)</a></li>
+        <li><a href="#-summary-table">🔍 Summary Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

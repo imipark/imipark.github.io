@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  🧠 Transformer Attention: Full Conceptual Breakdown
+  Transformer Attention: Full Conceptual Breakdown
   #
 
 This document summarizes an in-depth discussion on attention mechanisms in Transformers, with a special focus on vocabulary embeddings, Q/K/V matrices, and multi-head attention.
@@ -43,7 +43,7 @@ Input embeddings X are projected into:">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/nlp-llm-genai/transformer_attention_concepts/">
   <meta property="og:site_name" content="AI in Healthcare">
   <meta property="og:title" content="Transformer Attention: Full Conceptual Breakdown">
-  <meta property="og:description" content="🧠 Transformer Attention: Full Conceptual Breakdown # This document summarizes an in-depth discussion on attention mechanisms in Transformers, with a special focus on vocabulary embeddings, Q/K/V matrices, and multi-head attention.
+  <meta property="og:description" content="Transformer Attention: Full Conceptual Breakdown # This document summarizes an in-depth discussion on attention mechanisms in Transformers, with a special focus on vocabulary embeddings, Q/K/V matrices, and multi-head attention.
 📌 1. Understanding the Self-Attention Image # The image shows a single-head self-attention computation. Each row is a token (element) at a position, with a feature vector (embedding). The attention weights (left column) are used to compute a weighted sum over these vectors. The final output vector is shown at the bottom — this is the attention output for one token. 🔍 2. Element vs. Position # Element: the actual word or token in the input sequence. Position: the index of the element in the sequence. Though tightly coupled (1:1), they are conceptually different. Transformers rely on positional encoding to retain order, since attention alone is orderless. 🤖 3. How Attention Scores Are Computed # Input embeddings X are projected into:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -54,7 +54,7 @@ Input embeddings X are projected into:">
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/nlp-llm-genai/transformer_attention_concepts/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.a4b4dca034a544a6d29589415de1c567c938ebb516b58132c84a481563a45b1a.js" integrity="sha256-pLTcoDSlRKbSlYlBXeHFZ8k467UWtYEyyEpIFWOkWxo=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.40ac3942193e61e9d2680733edd20c86db0c1b92c3799b842d2fa930a1aa83ef.js" integrity="sha256-QKw5Qhk&#43;YenSaAcz7dIMhtsMG5LDeZuELS&#43;pMKGqg&#43;8=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -427,7 +427,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-34244c046af3dd0acc0bbb74c663a8d3" class="toggle" checked />
     <label for="section-34244c046af3dd0acc0bbb74c663a8d3" class="flex justify-between">
-      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI</a>
+      <a href="/ai-workflows/nlp-llm-genai/" class="">NLP→LLMs→GenAI→Agents</a>
     </label>
   
 
@@ -457,7 +457,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day1 Foundational Llm Text Generation</a>
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation – CoT Summary</a>
   
 
         </li>
@@ -470,7 +470,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day1 Prompt Engineering</a>
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering – CoT Summary</a>
   
 
         </li>
@@ -483,7 +483,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day2 Embeddings Vector Db</a>
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
   
 
         </li>
@@ -496,7 +496,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/" class="">Day3 Generative Agents</a>
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents – CoT Summary</a>
   
 
         </li>
@@ -509,7 +509,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/" class="">Day4 Domain Specific Llms</a>
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs – CoT Summary</a>
   
 
         </li>
@@ -522,11 +522,32 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day5_mlops/" class="">Day5 Mlops</a>
+    <a href="/ai-workflows/nlp-llm-genai/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI – CoT Summary</a>
   
 
         </li>
       
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a994622a1338c85ecf70f69adcc39b34" class="toggle"  />
+    <label for="section-a994622a1338c85ecf70f69adcc39b34" class="flex justify-between">
+      <a href="/ai-workflows/nlp-llm-genai/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
     
   </ul>
 
@@ -845,7 +866,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-transformer-attention-full-conceptual-breakdown">🧠 Transformer Attention: Full Conceptual Breakdown</a>
+    <li><a href="#transformer-attention-full-conceptual-breakdown">Transformer Attention: Full Conceptual Breakdown</a>
       <ul>
         <li><a href="#-1-understanding-the-self-attention-image">📌 1. Understanding the Self-Attention Image</a></li>
         <li><a href="#-2-element-vs-position">🔍 2. Element vs. Position</a></li>
@@ -872,9 +893,9 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="-transformer-attention-full-conceptual-breakdown">
-  🧠 Transformer Attention: Full Conceptual Breakdown
-  <a class="anchor" href="#-transformer-attention-full-conceptual-breakdown">#</a>
+  <article class="markdown book-article"><h1 id="transformer-attention-full-conceptual-breakdown">
+  Transformer Attention: Full Conceptual Breakdown
+  <a class="anchor" href="#transformer-attention-full-conceptual-breakdown">#</a>
 </h1>
 <p>This document summarizes an in-depth discussion on attention mechanisms in Transformers, with a special focus on vocabulary embeddings, Q/K/V matrices, and multi-head attention.</p>
 <hr>
@@ -1161,7 +1182,7 @@ logits = output × W_vocab  → (L, vocab_size)
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-transformer-attention-full-conceptual-breakdown">🧠 Transformer Attention: Full Conceptual Breakdown</a>
+    <li><a href="#transformer-attention-full-conceptual-breakdown">Transformer Attention: Full Conceptual Breakdown</a>
       <ul>
         <li><a href="#-1-understanding-the-self-attention-image">📌 1. Understanding the Self-Attention Image</a></li>
         <li><a href="#-2-element-vs-position">🔍 2. Element vs. Position</a></li>
