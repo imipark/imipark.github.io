@@ -3,28 +3,50 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Content for the Structural Reasoning section.
+<meta name="description" content="
+  Categories of Machine Learning Applications in Healthcare
+  #
 
-Causality :  Causal Inference, Causal AI
-Graphs : Knowledge Graphs, GraphRAG
-">
+In the Stanford course and broader healthcare ML ecosystem, &ldquo;practice of care&rdquo; is just one of several conceptual categories used to frame ML applications. Each category reflects a different purpose and clinical context.
+
+
+  🧠 1. Diagnosis
+  #
+
+Question answered: What is wrong with the patient?
+Machine learning identifies diseases or conditions based on input data.
+Examples:
+
+Detecting pneumonia from a chest X-ray (image classification)
+Identifying arrhythmias from ECG waveforms
+Classifying skin lesions as malignant vs benign
+
+
+
+  📈 2. Prediction / Prognosis
+  #
+
+Question answered: What will happen to the patient?">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/structural-reasoning/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/clinical_ml_categories/">
   <meta property="og:site_name" content="AI in Healthcare">
-  <meta property="og:title" content="Structural Reasoning">
-  <meta property="og:description" content="Content for the Structural Reasoning section.
-Causality : Causal Inference, Causal AI Graphs : Knowledge Graphs, GraphRAG">
+  <meta property="og:title" content="Categories of Machine Learning Applications in Healthcare">
+  <meta property="og:description" content="Categories of Machine Learning Applications in Healthcare # In the Stanford course and broader healthcare ML ecosystem, “practice of care” is just one of several conceptual categories used to frame ML applications. Each category reflects a different purpose and clinical context.
+🧠 1. Diagnosis # Question answered: What is wrong with the patient?
+Machine learning identifies diseases or conditions based on input data.
+Examples:
+Detecting pneumonia from a chest X-ray (image classification) Identifying arrhythmias from ECG waveforms Classifying skin lesions as malignant vs benign 📈 2. Prediction / Prognosis # Question answered: What will happen to the patient?">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-<title>Structural Reasoning | AI in Healthcare</title>
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare-domain">
+<title>Categories of Machine Learning Applications in Healthcare | AI in Healthcare</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/structural-reasoning/">
+<link rel="canonical" href="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/clinical_ml_categories/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.5387ccc5b22c00ebc889daa444b62c28a0e1d049e241320d2d57e95fa5c9170e.js" integrity="sha256-U4fMxbIsAOvIidqkRLYsKKDh0EniQTINLVfpX6XJFw4=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/structural-reasoning/index.xml" title="AI in Healthcare" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -91,7 +113,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle" checked />
     <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
       <a href="/healthcare-domain/learning/" class="">Learning</a>
     </label>
@@ -107,7 +129,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle" checked />
     <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
       <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
     </label>
@@ -554,9 +576,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle" checked />
+    <input type="checkbox" id="section-c3b518d59c6ca41d32658ed3b7cde75b" class="toggle"  />
     <label for="section-c3b518d59c6ca41d32658ed3b7cde75b" class="flex justify-between">
-      <a href="/ai-workflows/structural-reasoning/" class="active">Structural Reasoning</a>
+      <a href="/ai-workflows/structural-reasoning/" class="">Structural Reasoning</a>
     </label>
   
 
@@ -838,7 +860,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Structural Reasoning</h3>
+  <h3>Categories of Machine Learning Applications in Healthcare</h3>
 
   <label for="toc-control">
     
@@ -852,7 +874,19 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#categories-of-machine-learning-applications-in-healthcare">Categories of Machine Learning Applications in Healthcare</a>
+      <ul>
+        <li><a href="#-1-diagnosis">🧠 1. Diagnosis</a></li>
+        <li><a href="#-2-prediction--prognosis">📈 2. Prediction / Prognosis</a></li>
+        <li><a href="#-3-practice-of-care">⚙️ 3. Practice of Care</a></li>
+        <li><a href="#-4-discovery">🧬 4. Discovery</a></li>
+        <li><a href="#-comparison-table">🧩 Comparison Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -863,11 +897,104 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><p>Content for the <strong>Structural Reasoning</strong> section.</p>
+  <article class="markdown book-article"><h1 id="categories-of-machine-learning-applications-in-healthcare">
+  Categories of Machine Learning Applications in Healthcare
+  <a class="anchor" href="#categories-of-machine-learning-applications-in-healthcare">#</a>
+</h1>
+<p>In the Stanford course and broader healthcare ML ecosystem, <strong>&ldquo;practice of care&rdquo;</strong> is just one of several conceptual categories used to frame ML applications. Each category reflects a different <strong>purpose</strong> and <strong>clinical context</strong>.</p>
+<hr>
+<h2 id="-1-diagnosis">
+  🧠 1. Diagnosis
+  <a class="anchor" href="#-1-diagnosis">#</a>
+</h2>
+<p><strong>Question answered:</strong> <em>What is wrong with the patient?</em></p>
+<p>Machine learning identifies diseases or conditions based on input data.</p>
+<p><strong>Examples:</strong></p>
 <ul>
-<li>Causality :  Causal Inference, Causal AI</li>
-<li>Graphs : Knowledge Graphs, GraphRAG</li>
+<li>Detecting pneumonia from a chest X-ray (image classification)</li>
+<li>Identifying arrhythmias from ECG waveforms</li>
+<li>Classifying skin lesions as malignant vs benign</li>
 </ul>
+<hr>
+<h2 id="-2-prediction--prognosis">
+  📈 2. Prediction / Prognosis
+  <a class="anchor" href="#-2-prediction--prognosis">#</a>
+</h2>
+<p><strong>Question answered:</strong> <em>What will happen to the patient?</em></p>
+<p>ML estimates future risk or outcomes to guide decision-making.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Predicting 30-day readmission for heart failure</li>
+<li>Estimating sepsis onset 6 hours ahead</li>
+<li>Predicting 6-month stroke risk</li>
+</ul>
+<hr>
+<h2 id="-3-practice-of-care">
+  ⚙️ 3. Practice of Care
+  <a class="anchor" href="#-3-practice-of-care">#</a>
+</h2>
+<p><strong>Question answered:</strong> <em>How should care be delivered?</em></p>
+<p>Focuses on <strong>workflow, timing, triage, and care operations</strong> — not just predictions.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Forecasting ICU nurse staffing needs</li>
+<li>Scheduling follow-ups based on predicted readmission risk</li>
+<li>Prioritizing emergency department queues</li>
+</ul>
+<hr>
+<h2 id="-4-discovery">
+  🧬 4. Discovery
+  <a class="anchor" href="#-4-discovery">#</a>
+</h2>
+<p><strong>Question answered:</strong> <em>What unknown patterns or mechanisms can we find?</em></p>
+<p>ML is used as a research tool to uncover new relationships.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Discovering novel genetic associations with disease</li>
+<li>Identifying new disease subtypes through clustering</li>
+<li>Finding gene-drug interaction patterns</li>
+</ul>
+<hr>
+<h2 id="-comparison-table">
+  🧩 Comparison Table
+  <a class="anchor" href="#-comparison-table">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Category</th>
+          <th>Question Answered</th>
+          <th>Data Types Used</th>
+          <th>Output Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Diagnosis</strong></td>
+          <td>What condition does this patient have?</td>
+          <td>Imaging, labs, clinical notes</td>
+          <td>Disease label</td>
+      </tr>
+      <tr>
+          <td><strong>Prediction</strong></td>
+          <td>What is likely to happen next?</td>
+          <td>Time-series EHR, vitals, labs</td>
+          <td>Risk score</td>
+      </tr>
+      <tr>
+          <td><strong>Practice of Care</strong></td>
+          <td>How should we act or plan care?</td>
+          <td>EHR, operational data, predictions</td>
+          <td>Workflow alert</td>
+      </tr>
+      <tr>
+          <td><strong>Discovery</strong></td>
+          <td>What unknown pattern exists?</td>
+          <td>Omics, clustering, NLP</td>
+          <td>Scientific insight</td>
+      </tr>
+  </tbody>
+</table>
 </article>
  
       
@@ -907,7 +1034,19 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#categories-of-machine-learning-applications-in-healthcare">Categories of Machine Learning Applications in Healthcare</a>
+      <ul>
+        <li><a href="#-1-diagnosis">🧠 1. Diagnosis</a></li>
+        <li><a href="#-2-prediction--prognosis">📈 2. Prediction / Prognosis</a></li>
+        <li><a href="#-3-practice-of-care">⚙️ 3. Practice of Care</a></li>
+        <li><a href="#-4-discovery">🧬 4. Discovery</a></li>
+        <li><a href="#-comparison-table">🧩 Comparison Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
