@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
+  Clinial AI
+  #
+
+
   
     
       Topics Table
@@ -12,116 +16,33 @@
   
     
       
+        Clinical Data Science
+      
+      
+    
+      
         Why Clinical NLP &amp; GenAI Are Growing in Healthcare
       
       
     
   
-
-
-
-
-
-  LLMOps Pipeline for Summarizing Clinical Notes (RAG-based)
-  #
-
-
-  Goal
-  #
-
-Build a simple yet realistic pipeline that summarizes patient clinical notes using a Retrieval-Augmented Generation (RAG) approach, with monitoring and prompt evaluation.
-
-
-  Tools
-  #
-
-
-GCP: Vertex AI, Cloud Storage, Vertex AI Search
-LangChain for RAG
-LangSmith or Trulens for eval
-Clinical data: MIMIC-III sample notes
-
-
-
-  1. Setup
-  #
-
-
- Set up a GCP project with billing
- Create a storage bucket for clinical notes
- Install LangChain, LangSmith SDKs
- Get access to Gemini API or use OpenAI GPT-4
-
-
-
-  2. Data Ingestion
-  #
-
-
- Upload sample clinical notes to GCS
- Preprocess notes (remove PHI, segment into documents)
- Index documents using Vertex AI Search or FAISS
-
-
-
-  3. RAG Pipeline
-  #
-
-
- Build a retriever (vector DB or AI Search)
- Create a summarization chain (Retriever → LLM → Summarizer)
- Run test queries (e.g., &ldquo;Summarize last 24h progress note&rdquo;)
-
-
-
-  4. Evaluation &amp; Logging
-  #
-
-
- Use LangSmith to trace RAG runs
- Evaluate summaries on:
-
-Grounding (does it match source text?)
-Hallucination (is any info invented?)
-Clinical usefulness (optional human-in-the-loop)
-
-
-
-
-
-  5. Automation (Optional)
-  #
-
-
- Create a pipeline (Cloud Functions &#43; Pub/Sub) for new notes
- Deploy as API via FastAPI or Vertex Endpoint
-
-
-
-  6. Bonus
-  #
-
-
- Add user feedback logging
- Fine-tune LLM on clinical corpus (optional)
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/clinical_ai/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare-domain/clinical_ai/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Clinical AI">
-  <meta property="og:description" content="Topics Table Why Clinical NLP &amp; GenAI Are Growing in Healthcare LLMOps Pipeline for Summarizing Clinical Notes (RAG-based) # Goal # Build a simple yet realistic pipeline that summarizes patient clinical notes using a Retrieval-Augmented Generation (RAG) approach, with monitoring and prompt evaluation.
-Tools # GCP: Vertex AI, Cloud Storage, Vertex AI Search LangChain for RAG LangSmith or Trulens for eval Clinical data: MIMIC-III sample notes 1. Setup # Set up a GCP project with billing Create a storage bucket for clinical notes Install LangChain, LangSmith SDKs Get access to Gemini API or use OpenAI GPT-4 2. Data Ingestion # Upload sample clinical notes to GCS Preprocess notes (remove PHI, segment into documents) Index documents using Vertex AI Search or FAISS 3. RAG Pipeline # Build a retriever (vector DB or AI Search) Create a summarization chain (Retriever → LLM → Summarizer) Run test queries (e.g., “Summarize last 24h progress note”) 4. Evaluation &amp; Logging # Use LangSmith to trace RAG runs Evaluate summaries on: Grounding (does it match source text?) Hallucination (is any info invented?) Clinical usefulness (optional human-in-the-loop) 5. Automation (Optional) # Create a pipeline (Cloud Functions &#43; Pub/Sub) for new notes Deploy as API via FastAPI or Vertex Endpoint 6. Bonus # Add user feedback logging Fine-tune LLM on clinical corpus (optional)">
+  <meta property="og:description" content="Clinial AI # Topics Table Clinical Data Science Why Clinical NLP &amp; GenAI Are Growing in Healthcare">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Clinical AI | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/healthcare-domain/clinical_ai/">
+<link rel="canonical" href="http://localhost:1313/healthcare-domain/clinical_ai/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.d93e74561b1aacfd03bc50dbe088241eee9b681e3022b51b91773bc3aab36fd7.js" integrity="sha256-2T50VhsarP0DvFDb4IgkHu6baB4wIrUbkXc7w6qzb9c=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/healthcare-domain/clinical_ai/index.xml" title="AI Reasoning" />
+  <script defer src="/en.search.min.bf5d5b5f5bd556459158ee54dc179e04ff3f1fd34ba2da165da4cfcc950553fa.js" integrity="sha256-v11bX1vVVkWRWO5U3BeeBP8/H9NLotoWXaTPzJUFU/o=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/healthcare-domain/clinical_ai/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -175,11 +96,32 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/" class="">AI Workflows</a>
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
   
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
     
       
         <li>
@@ -334,27 +276,6 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
-    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
-      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
-    </label>
-  
-
-          
-  <ul>
     
   </ul>
 
@@ -545,27 +466,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-6df31981b3c462a899317a9b33ef86b9" class="toggle"  />
-    <label for="section-6df31981b3c462a899317a9b33ef86b9" class="flex justify-between">
-      <a href="/ai-workflows/mlops/" class="">MLOps</a>
-    </label>
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
   
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
-  
-
-        </li>
-      
     
   </ul>
 
@@ -693,27 +598,6 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
-    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
-      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
-    </label>
-  
-
-          
-  <ul>
     
   </ul>
 
@@ -914,18 +798,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#llmops-pipeline-for-summarizing-clinical-notes-rag-based">LLMOps Pipeline for Summarizing Clinical Notes (RAG-based)</a>
-          <ul>
-            <li><a href="#goal">Goal</a></li>
-            <li><a href="#tools">Tools</a></li>
-            <li><a href="#1-setup">1. Setup</a></li>
-            <li><a href="#2-data-ingestion">2. Data Ingestion</a></li>
-            <li><a href="#3-rag-pipeline">3. RAG Pipeline</a></li>
-            <li><a href="#4-evaluation--logging">4. Evaluation &amp; Logging</a></li>
-            <li><a href="#5-automation-optional">5. Automation (Optional)</a></li>
-            <li><a href="#6-bonus">6. Bonus</a></li>
-          </ul>
-        </li>
+        <li><a href="#clinial-ai">Clinial AI</a></li>
       </ul>
     </li>
   </ul>
@@ -940,7 +813,11 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><table>
+  <article class="markdown book-article"><h2 id="clinial-ai">
+  Clinial AI
+  <a class="anchor" href="#clinial-ai">#</a>
+</h2>
+<table>
   <thead>
     <tr>
       <th>Topics Table</th>
@@ -949,7 +826,12 @@ https://github.com/alex-shpak/hugo-book
   <tbody>
     
       <tr>
-        <td><a href="/healthcare-domain/clinical_ai/clinical_nlp_genai/">Why Clinical NLP &amp; GenAI Are Growing in Healthcare</a></td>
+        <td><a href="/healthcare-domain/clinical_ai/clinical_ai_usecase/">Clinical Data Science</a></td>
+      </tr>
+      
+    
+      <tr>
+        <td><a href="/healthcare-domain/clinical_ai/why_clinical_ai/">Why Clinical NLP &amp; GenAI Are Growing in Healthcare</a></td>
       </tr>
       
     
@@ -957,91 +839,6 @@ https://github.com/alex-shpak/hugo-book
 </table>
 
 
-<hr>
-<h2 id="llmops-pipeline-for-summarizing-clinical-notes-rag-based">
-  LLMOps Pipeline for Summarizing Clinical Notes (RAG-based)
-  <a class="anchor" href="#llmops-pipeline-for-summarizing-clinical-notes-rag-based">#</a>
-</h2>
-<h3 id="goal">
-  Goal
-  <a class="anchor" href="#goal">#</a>
-</h3>
-<p>Build a simple yet realistic pipeline that summarizes patient clinical notes using a Retrieval-Augmented Generation (RAG) approach, with monitoring and prompt evaluation.</p>
-<hr>
-<h3 id="tools">
-  Tools
-  <a class="anchor" href="#tools">#</a>
-</h3>
-<ul>
-<li>GCP: Vertex AI, Cloud Storage, Vertex AI Search</li>
-<li>LangChain for RAG</li>
-<li>LangSmith or Trulens for eval</li>
-<li>Clinical data: MIMIC-III sample notes</li>
-</ul>
-<hr>
-<h3 id="1-setup">
-  1. Setup
-  <a class="anchor" href="#1-setup">#</a>
-</h3>
-<ul>
-<li><input disabled="" type="checkbox"> Set up a GCP project with billing</li>
-<li><input disabled="" type="checkbox"> Create a storage bucket for clinical notes</li>
-<li><input disabled="" type="checkbox"> Install LangChain, LangSmith SDKs</li>
-<li><input disabled="" type="checkbox"> Get access to Gemini API or use OpenAI GPT-4</li>
-</ul>
-<hr>
-<h3 id="2-data-ingestion">
-  2. Data Ingestion
-  <a class="anchor" href="#2-data-ingestion">#</a>
-</h3>
-<ul>
-<li><input disabled="" type="checkbox"> Upload sample clinical notes to GCS</li>
-<li><input disabled="" type="checkbox"> Preprocess notes (remove PHI, segment into documents)</li>
-<li><input disabled="" type="checkbox"> Index documents using Vertex AI Search or FAISS</li>
-</ul>
-<hr>
-<h3 id="3-rag-pipeline">
-  3. RAG Pipeline
-  <a class="anchor" href="#3-rag-pipeline">#</a>
-</h3>
-<ul>
-<li><input disabled="" type="checkbox"> Build a retriever (vector DB or AI Search)</li>
-<li><input disabled="" type="checkbox"> Create a summarization chain (Retriever → LLM → Summarizer)</li>
-<li><input disabled="" type="checkbox"> Run test queries (e.g., &ldquo;Summarize last 24h progress note&rdquo;)</li>
-</ul>
-<hr>
-<h3 id="4-evaluation--logging">
-  4. Evaluation &amp; Logging
-  <a class="anchor" href="#4-evaluation--logging">#</a>
-</h3>
-<ul>
-<li><input disabled="" type="checkbox"> Use LangSmith to trace RAG runs</li>
-<li><input disabled="" type="checkbox"> Evaluate summaries on:
-<ul>
-<li>Grounding (does it match source text?)</li>
-<li>Hallucination (is any info invented?)</li>
-<li>Clinical usefulness (optional human-in-the-loop)</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="5-automation-optional">
-  5. Automation (Optional)
-  <a class="anchor" href="#5-automation-optional">#</a>
-</h3>
-<ul>
-<li><input disabled="" type="checkbox"> Create a pipeline (Cloud Functions + Pub/Sub) for new notes</li>
-<li><input disabled="" type="checkbox"> Deploy as API via FastAPI or Vertex Endpoint</li>
-</ul>
-<hr>
-<h3 id="6-bonus">
-  6. Bonus
-  <a class="anchor" href="#6-bonus">#</a>
-</h3>
-<ul>
-<li><input disabled="" type="checkbox"> Add user feedback logging</li>
-<li><input disabled="" type="checkbox"> Fine-tune LLM on clinical corpus (optional)</li>
-</ul>
 </article>
  
       
@@ -1085,18 +882,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#llmops-pipeline-for-summarizing-clinical-notes-rag-based">LLMOps Pipeline for Summarizing Clinical Notes (RAG-based)</a>
-          <ul>
-            <li><a href="#goal">Goal</a></li>
-            <li><a href="#tools">Tools</a></li>
-            <li><a href="#1-setup">1. Setup</a></li>
-            <li><a href="#2-data-ingestion">2. Data Ingestion</a></li>
-            <li><a href="#3-rag-pipeline">3. RAG Pipeline</a></li>
-            <li><a href="#4-evaluation--logging">4. Evaluation &amp; Logging</a></li>
-            <li><a href="#5-automation-optional">5. Automation (Optional)</a></li>
-            <li><a href="#6-bonus">6. Bonus</a></li>
-          </ul>
-        </li>
+        <li><a href="#clinial-ai">Clinial AI</a></li>
       </ul>
     </li>
   </ul>

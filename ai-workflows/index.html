@@ -1,162 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  In-Demand Skillsets for Healthcare LLM/NLP/GenAI Data Scientists
-  #
-
-
-  Core Priority: Retrieval-Augmented Generation (RAG)
-  #
-
-RAG is one of the most in-demand skills in clinical GenAI due to:
-
-The need to ground LLMs in real patient data
-Compliance, privacy, and traceability
-Applications like:
-
-Clinical Question Answering
-Summarization of EHRs
-Evidence-based recommendations
-
-
-
-
-  Key Tools:
-  #
-
-
-Vector DBs: Vertex AI Search, Pinecone, FAISS
-LLMs: Gemini, GPT-4, PaLM, Med-PaLM
-Frameworks: LangChain, LlamaIndex, Vertex Extensions
-
-
-
-  Other High-Demand Skillsets
-  #
-
-
-  1. Clinical NLP &amp; Information Extraction
-  #
-
-
-Named Entity Recognition (NER)
-Negation detection
-Temporal event extraction
-Tools: scispaCy, MedSpaCy, cTAKES, ClinicalBERT
-
-
-  2. LLMOps &amp; GenAI Engineering
-  #
-
-
-Prompt tracking and versioning
-Chain-of-Thought reasoning pipelines
-RAG monitoring and evaluation
-Tools: LangChain, LangSmith, PromptLayer, Trulens
-
-
-  3. Knowledge Graphs &amp; Ontologies
-  #
-
-
-UMLS, SNOMED, HPO integration
-Graph-based document ranking
-Symbolic-neural hybrid reasoning
-Tools: Neo4j, BioPortal APIs, KG-BERT
-
-
-  4. Temporal Modeling &amp; Phenotyping
-  #
-
-
-Patient timeline extraction
-Longitudinal modeling
-Conversion to OMOP/FHIR representations
-Tools: PyOMOP, Synthea, FHIR parsers
-
-
-  5. Multimodal Clinical AI
-  #
-
-
-OCR and document understanding
-Fusion of tables, images, and text
-Radiology &#43; Report generation
-Tools: Document AI (GCP), Form Recognizer (Azure), BioGPT-Vision
-
-
-  6. Evaluation &amp; Explainability
-  #
-
-
-Hallucination detection
-Factual consistency checks
-Traceability in RAG chains
-Tools: Trulens, PromptLayer, Giskard, LangSmith
-
-
-
-  ✅ Top Priority Summary Table
+  AI Reasoning Stack
   #
 
 
   
       
-          Skill Area
-          Priority
+          Component
+          Role
       
   
   
       
-          RAG (Retrieval-Augmented Generation)
-          ★★★★★
+          Data Modeling
+          Foundation
       
       
-          LLMOps (Eval, Monitoring, Pipelines)
-          ★★★★☆
+          GenAI Systems
+          Application
       
       
-          Clinical NLP (NER, Temporal Reasoning)
-          ★★★★☆
+          Alignment &amp; Reasoning
+          Governance
       
       
-          Knowledge Graph Integration
-          ★★★★☆
+          Eval Methods
+          Validation
       
       
-          FHIR/OMOP Structured Modeling
-          ★★★☆☆
-      
-      
-          Explainability &amp; Evaluation
-          ★★★★★
-      
-      
-          Multimodal AI (Text &#43; Tables &#43; Images)
-          ★★★☆☆
+          MLOps
+          Production
       
   
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/">
   <meta property="og:site_name" content="AI Reasoning">
-  <meta property="og:title" content="AI Workflows">
-  <meta property="og:description" content="In-Demand Skillsets for Healthcare LLM/NLP/GenAI Data Scientists # Core Priority: Retrieval-Augmented Generation (RAG) # RAG is one of the most in-demand skills in clinical GenAI due to:
-The need to ground LLMs in real patient data Compliance, privacy, and traceability Applications like: Clinical Question Answering Summarization of EHRs Evidence-based recommendations Key Tools: # Vector DBs: Vertex AI Search, Pinecone, FAISS LLMs: Gemini, GPT-4, PaLM, Med-PaLM Frameworks: LangChain, LlamaIndex, Vertex Extensions Other High-Demand Skillsets # 1. Clinical NLP &amp; Information Extraction # Named Entity Recognition (NER) Negation detection Temporal event extraction Tools: scispaCy, MedSpaCy, cTAKES, ClinicalBERT 2. LLMOps &amp; GenAI Engineering # Prompt tracking and versioning Chain-of-Thought reasoning pipelines RAG monitoring and evaluation Tools: LangChain, LangSmith, PromptLayer, Trulens 3. Knowledge Graphs &amp; Ontologies # UMLS, SNOMED, HPO integration Graph-based document ranking Symbolic-neural hybrid reasoning Tools: Neo4j, BioPortal APIs, KG-BERT 4. Temporal Modeling &amp; Phenotyping # Patient timeline extraction Longitudinal modeling Conversion to OMOP/FHIR representations Tools: PyOMOP, Synthea, FHIR parsers 5. Multimodal Clinical AI # OCR and document understanding Fusion of tables, images, and text Radiology &#43; Report generation Tools: Document AI (GCP), Form Recognizer (Azure), BioGPT-Vision 6. Evaluation &amp; Explainability # Hallucination detection Factual consistency checks Traceability in RAG chains Tools: Trulens, PromptLayer, Giskard, LangSmith ✅ Top Priority Summary Table # Skill Area Priority RAG (Retrieval-Augmented Generation) ★★★★★ LLMOps (Eval, Monitoring, Pipelines) ★★★★☆ Clinical NLP (NER, Temporal Reasoning) ★★★★☆ Knowledge Graph Integration ★★★★☆ FHIR/OMOP Structured Modeling ★★★☆☆ Explainability &amp; Evaluation ★★★★★ Multimodal AI (Text &#43; Tables &#43; Images) ★★★☆☆">
+  <meta property="og:title" content="AI Reasoning Stack">
+  <meta property="og:description" content="AI Reasoning Stack # Component Role Data Modeling Foundation GenAI Systems Application Alignment &amp; Reasoning Governance Eval Methods Validation MLOps Production">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
-<title>AI Workflows | AI Reasoning</title>
+<title>AI Reasoning Stack | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.d93e74561b1aacfd03bc50dbe088241eee9b681e3022b51b91773bc3aab36fd7.js" integrity="sha256-2T50VhsarP0DvFDb4IgkHu6baB4wIrUbkXc7w6qzb9c=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/index.xml" title="AI Reasoning" />
+  <script defer src="/en.search.min.bf5d5b5f5bd556459158ee54dc179e04ff3f1fd34ba2da165da4cfcc950553fa.js" integrity="sha256-v11bX1vVVkWRWO5U3BeeBP8/H9NLotoWXaTPzJUFU/o=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/ai-workflows/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -210,11 +106,32 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/" class="active">AI Workflows</a>
+    <a href="/ai-workflows/" class="active">AI Reasoning Stack</a>
   
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
     
       
         <li>
@@ -369,27 +286,6 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
-    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
-      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
-    </label>
-  
-
-          
-  <ul>
     
   </ul>
 
@@ -580,27 +476,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-6df31981b3c462a899317a9b33ef86b9" class="toggle"  />
-    <label for="section-6df31981b3c462a899317a9b33ef86b9" class="flex justify-between">
-      <a href="/ai-workflows/mlops/" class="">MLOps</a>
-    </label>
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
   
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
-  
-
-        </li>
-      
     
   </ul>
 
@@ -728,27 +608,6 @@ https://github.com/alex-shpak/hugo-book
 
         </li>
       
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
-    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
-      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
-    </label>
-  
-
-          
-  <ul>
     
   </ul>
 
@@ -931,7 +790,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>AI Workflows</h3>
+  <h3>AI Reasoning Stack</h3>
 
   <label for="toc-control">
     
@@ -947,24 +806,9 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-demand-skillsets-for-healthcare-llmnlpgenai-data-scientists">In-Demand Skillsets for Healthcare LLM/NLP/GenAI Data Scientists</a>
+    <li>
       <ul>
-        <li><a href="#core-priority-retrieval-augmented-generation-rag">Core Priority: Retrieval-Augmented Generation (RAG)</a>
-          <ul>
-            <li><a href="#key-tools">Key Tools:</a></li>
-          </ul>
-        </li>
-        <li><a href="#other-high-demand-skillsets">Other High-Demand Skillsets</a>
-          <ul>
-            <li><a href="#1-clinical-nlp--information-extraction">1. <strong>Clinical NLP &amp; Information Extraction</strong></a></li>
-            <li><a href="#2-llmops--genai-engineering">2. <strong>LLMOps &amp; GenAI Engineering</strong></a></li>
-            <li><a href="#3-knowledge-graphs--ontologies">3. <strong>Knowledge Graphs &amp; Ontologies</strong></a></li>
-            <li><a href="#4-temporal-modeling--phenotyping">4. <strong>Temporal Modeling &amp; Phenotyping</strong></a></li>
-            <li><a href="#5-multimodal-clinical-ai">5. <strong>Multimodal Clinical AI</strong></a></li>
-            <li><a href="#6-evaluation--explainability">6. <strong>Evaluation &amp; Explainability</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#-top-priority-summary-table">✅ Top Priority Summary Table</a></li>
+        <li><a href="#ai-reasoning-stack">AI Reasoning Stack</a></li>
       </ul>
     </li>
   </ul>
@@ -979,140 +823,37 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="in-demand-skillsets-for-healthcare-llmnlpgenai-data-scientists">
-  In-Demand Skillsets for Healthcare LLM/NLP/GenAI Data Scientists
-  <a class="anchor" href="#in-demand-skillsets-for-healthcare-llmnlpgenai-data-scientists">#</a>
-</h1>
-<h2 id="core-priority-retrieval-augmented-generation-rag">
-  Core Priority: Retrieval-Augmented Generation (RAG)
-  <a class="anchor" href="#core-priority-retrieval-augmented-generation-rag">#</a>
-</h2>
-<p>RAG is one of the most in-demand skills in clinical GenAI due to:</p>
-<ul>
-<li>The need to <strong>ground LLMs in real patient data</strong></li>
-<li>Compliance, privacy, and traceability</li>
-<li>Applications like:
-<ul>
-<li>Clinical Question Answering</li>
-<li>Summarization of EHRs</li>
-<li>Evidence-based recommendations</li>
-</ul>
-</li>
-</ul>
-<h3 id="key-tools">
-  Key Tools:
-  <a class="anchor" href="#key-tools">#</a>
-</h3>
-<ul>
-<li><strong>Vector DBs</strong>: Vertex AI Search, Pinecone, FAISS</li>
-<li><strong>LLMs</strong>: Gemini, GPT-4, PaLM, Med-PaLM</li>
-<li><strong>Frameworks</strong>: LangChain, LlamaIndex, Vertex Extensions</li>
-</ul>
-<hr>
-<h2 id="other-high-demand-skillsets">
-  Other High-Demand Skillsets
-  <a class="anchor" href="#other-high-demand-skillsets">#</a>
-</h2>
-<h3 id="1-clinical-nlp--information-extraction">
-  1. <strong>Clinical NLP &amp; Information Extraction</strong>
-  <a class="anchor" href="#1-clinical-nlp--information-extraction">#</a>
-</h3>
-<ul>
-<li>Named Entity Recognition (NER)</li>
-<li>Negation detection</li>
-<li>Temporal event extraction</li>
-<li><strong>Tools</strong>: scispaCy, MedSpaCy, cTAKES, ClinicalBERT</li>
-</ul>
-<h3 id="2-llmops--genai-engineering">
-  2. <strong>LLMOps &amp; GenAI Engineering</strong>
-  <a class="anchor" href="#2-llmops--genai-engineering">#</a>
-</h3>
-<ul>
-<li>Prompt tracking and versioning</li>
-<li>Chain-of-Thought reasoning pipelines</li>
-<li>RAG monitoring and evaluation</li>
-<li><strong>Tools</strong>: LangChain, LangSmith, PromptLayer, Trulens</li>
-</ul>
-<h3 id="3-knowledge-graphs--ontologies">
-  3. <strong>Knowledge Graphs &amp; Ontologies</strong>
-  <a class="anchor" href="#3-knowledge-graphs--ontologies">#</a>
-</h3>
-<ul>
-<li>UMLS, SNOMED, HPO integration</li>
-<li>Graph-based document ranking</li>
-<li>Symbolic-neural hybrid reasoning</li>
-<li><strong>Tools</strong>: Neo4j, BioPortal APIs, KG-BERT</li>
-</ul>
-<h3 id="4-temporal-modeling--phenotyping">
-  4. <strong>Temporal Modeling &amp; Phenotyping</strong>
-  <a class="anchor" href="#4-temporal-modeling--phenotyping">#</a>
-</h3>
-<ul>
-<li>Patient timeline extraction</li>
-<li>Longitudinal modeling</li>
-<li>Conversion to OMOP/FHIR representations</li>
-<li><strong>Tools</strong>: PyOMOP, Synthea, FHIR parsers</li>
-</ul>
-<h3 id="5-multimodal-clinical-ai">
-  5. <strong>Multimodal Clinical AI</strong>
-  <a class="anchor" href="#5-multimodal-clinical-ai">#</a>
-</h3>
-<ul>
-<li>OCR and document understanding</li>
-<li>Fusion of tables, images, and text</li>
-<li>Radiology + Report generation</li>
-<li><strong>Tools</strong>: Document AI (GCP), Form Recognizer (Azure), BioGPT-Vision</li>
-</ul>
-<h3 id="6-evaluation--explainability">
-  6. <strong>Evaluation &amp; Explainability</strong>
-  <a class="anchor" href="#6-evaluation--explainability">#</a>
-</h3>
-<ul>
-<li>Hallucination detection</li>
-<li>Factual consistency checks</li>
-<li>Traceability in RAG chains</li>
-<li><strong>Tools</strong>: Trulens, PromptLayer, Giskard, LangSmith</li>
-</ul>
-<hr>
-<h2 id="-top-priority-summary-table">
-  ✅ Top Priority Summary Table
-  <a class="anchor" href="#-top-priority-summary-table">#</a>
+  <article class="markdown book-article"><h2 id="ai-reasoning-stack">
+  AI Reasoning Stack
+  <a class="anchor" href="#ai-reasoning-stack">#</a>
 </h2>
 <table>
   <thead>
       <tr>
-          <th>Skill Area</th>
-          <th>Priority</th>
+          <th>Component</th>
+          <th>Role</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>RAG (Retrieval-Augmented Generation)</td>
-          <td>★★★★★</td>
+          <td><a href="/ai-workflows/data-modeling/">Data Modeling</a></td>
+          <td>Foundation</td>
       </tr>
       <tr>
-          <td>LLMOps (Eval, Monitoring, Pipelines)</td>
-          <td>★★★★☆</td>
+          <td><a href="/ai-workflows/genai-systems/">GenAI Systems</a></td>
+          <td>Application</td>
       </tr>
       <tr>
-          <td>Clinical NLP (NER, Temporal Reasoning)</td>
-          <td>★★★★☆</td>
+          <td><a href="/ai-workflows/alignment-reasoning/">Alignment &amp; Reasoning</a></td>
+          <td>Governance</td>
       </tr>
       <tr>
-          <td>Knowledge Graph Integration</td>
-          <td>★★★★☆</td>
+          <td><a href="/ai-workflows/eval-methods/">Eval Methods</a></td>
+          <td>Validation</td>
       </tr>
       <tr>
-          <td>FHIR/OMOP Structured Modeling</td>
-          <td>★★★☆☆</td>
-      </tr>
-      <tr>
-          <td>Explainability &amp; Evaluation</td>
-          <td>★★★★★</td>
-      </tr>
-      <tr>
-          <td>Multimodal AI (Text + Tables + Images)</td>
-          <td>★★★☆☆</td>
+          <td><a href="/ai-workflows/mlops/">MLOps</a></td>
+          <td>Production</td>
       </tr>
   </tbody>
 </table>
@@ -1157,24 +898,9 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-demand-skillsets-for-healthcare-llmnlpgenai-data-scientists">In-Demand Skillsets for Healthcare LLM/NLP/GenAI Data Scientists</a>
+    <li>
       <ul>
-        <li><a href="#core-priority-retrieval-augmented-generation-rag">Core Priority: Retrieval-Augmented Generation (RAG)</a>
-          <ul>
-            <li><a href="#key-tools">Key Tools:</a></li>
-          </ul>
-        </li>
-        <li><a href="#other-high-demand-skillsets">Other High-Demand Skillsets</a>
-          <ul>
-            <li><a href="#1-clinical-nlp--information-extraction">1. <strong>Clinical NLP &amp; Information Extraction</strong></a></li>
-            <li><a href="#2-llmops--genai-engineering">2. <strong>LLMOps &amp; GenAI Engineering</strong></a></li>
-            <li><a href="#3-knowledge-graphs--ontologies">3. <strong>Knowledge Graphs &amp; Ontologies</strong></a></li>
-            <li><a href="#4-temporal-modeling--phenotyping">4. <strong>Temporal Modeling &amp; Phenotyping</strong></a></li>
-            <li><a href="#5-multimodal-clinical-ai">5. <strong>Multimodal Clinical AI</strong></a></li>
-            <li><a href="#6-evaluation--explainability">6. <strong>Evaluation &amp; Explainability</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#-top-priority-summary-table">✅ Top Priority Summary Table</a></li>
+        <li><a href="#ai-reasoning-stack">AI Reasoning Stack</a></li>
       </ul>
     </li>
   </ul>
