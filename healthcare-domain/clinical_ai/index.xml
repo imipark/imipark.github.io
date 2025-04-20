@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clinical AI on AI Reasoning</title>
+    <link>https://imipark.github.io/healthcare-domain/clinical_ai/</link>
+    <description>Recent content in Clinical AI on AI Reasoning</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://imipark.github.io/healthcare-domain/clinical_ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Clinical NLP &amp; GenAI Are Growing in Healthcare</title>
+      <link>https://imipark.github.io/healthcare-domain/clinical_ai/clinical_nlp_genai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/healthcare-domain/clinical_ai/clinical_nlp_genai/</guid>
+      <description>&lt;h2 id=&#34;-why-clinical-nlp--genai-are-growing-in-healthcare&#34;&gt;&#xA;  🚀 Why Clinical NLP &amp;amp; GenAI Are Growing in Healthcare&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-why-clinical-nlp--genai-are-growing-in-healthcare&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Clinical NLP &amp;amp; GenAI are &lt;strong&gt;growing rapidly in healthcare&lt;/strong&gt; because they unlock massive &lt;strong&gt;untapped value in unstructured data&lt;/strong&gt; — which has historically been hard to use, yet contains the &lt;strong&gt;richest clinical context&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-80-of-clinical-data-is-unstructured&#34;&gt;&#xA;  1. 80% of Clinical Data is Unstructured&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-80-of-clinical-data-is-unstructured&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;EHRs are full of &lt;strong&gt;free-text clinical notes&lt;/strong&gt;, discharge summaries, radiology reports, operative notes, etc.&lt;/li&gt;&#xA;&lt;li&gt;Traditional models work well with structured data (ICD, labs), but &lt;strong&gt;miss context&lt;/strong&gt; like:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;“Patient denies chest pain”&lt;/li&gt;&#xA;&lt;li&gt;“Family history of diabetes”&lt;/li&gt;&#xA;&lt;li&gt;“Patient expressed concern about medication side effects”&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;NLP allows us to extract &lt;strong&gt;clinical meaning&lt;/strong&gt; from this text and turn it into computable features.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

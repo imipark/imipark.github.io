@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  🤖🦿 Understanding PPO: From Language Generation to Robot Control — Code, Concepts, and Comparisons
+  #
+
+Proximal Policy Optimization (PPO) in both large language models (LLMs, e.g., GPT-style) and classical control environments (e.g., Walker2D), focusing on the structure of the PPO update and how actions are selected during inference.
+
+
+  1. 🧾 PPO step() Call — Argument-by-Argument Breakdown
+  #
+
+ppo_trainer.step(
+    queries=[input_ids[0]],       # Prompt (tokenized) — represents the current state
+    responses=[response_ids[0]],  # Generated tokens — represents the action taken
+    rewards=[reward]              # Scalar from reward model — score for that action
+)
+
+  Mapping to Classic RL (Walker2D)
+  #
+
+
+  
+      
+          PPO Argument
+          🤖 LLM (RLHF)
+          🦿 Walker2D (Classic RL)
+      
+  
+  
+      
+          queries = [input_ids[0]]
+          Prompt as input (discrete tokenized state)
+          Robot&rsquo;s continuous state (joint angles, velocities)
+      
+      
+          responses = [response_ids[0]]
+          Generated tokens (sequence of actions)
+          Applied joint torques (vector of real numbers)
+      
+      
+          rewards = [reward]
+          Reward model output (alignment score)
+          Environment reward (e.g., distance walked)
+      
+  
+
+
+
+  2. 🎯 Action Selection in PPO
+  #
+
+How does the agent choose its next action, given a state/prompt?">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/alignment-reasoning/rlhf/comparison_ppo/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="PPO in LLMs vs PPO in Walker2D">
+  <meta property="og:description" content="🤖🦿 Understanding PPO: From Language Generation to Robot Control — Code, Concepts, and Comparisons # Proximal Policy Optimization (PPO) in both large language models (LLMs, e.g., GPT-style) and classical control environments (e.g., Walker2D), focusing on the structure of the PPO update and how actions are selected during inference.
+1. 🧾 PPO step() Call — Argument-by-Argument Breakdown # ppo_trainer.step( queries=[input_ids[0]], # Prompt (tokenized) — represents the current state responses=[response_ids[0]], # Generated tokens — represents the action taken rewards=[reward] # Scalar from reward model — score for that action ) Mapping to Classic RL (Walker2D) # PPO Argument 🤖 LLM (RLHF) 🦿 Walker2D (Classic RL) queries = [input_ids[0]] Prompt as input (discrete tokenized state) Robot’s continuous state (joint angles, velocities) responses = [response_ids[0]] Generated tokens (sequence of actions) Applied joint torques (vector of real numbers) rewards = [reward] Reward model output (alignment score) Environment reward (e.g., distance walked) 2. 🎯 Action Selection in PPO # How does the agent choose its next action, given a state/prompt?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>PPO in LLMs vs PPO in Walker2D | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/alignment-reasoning/rlhf/comparison_ppo/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.d93e74561b1aacfd03bc50dbe088241eee9b681e3022b51b91773bc3aab36fd7.js" integrity="sha256-2T50VhsarP0DvFDb4IgkHu6baB4wIrUbkXc7w6qzb9c=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI – CoT Summary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle" checked />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a role="button" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle" checked />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6df31981b3c462a899317a9b33ef86b9" class="toggle"  />
+    <label for="section-6df31981b3c462a899317a9b33ef86b9" class="flex justify-between">
+      <a href="/ai-workflows/mlops/" class="">MLOps</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/clinical_ai/" class="">Clinical AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>PPO in LLMs vs PPO in Walker2D</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-understanding-ppo-from-language-generation-to-robot-control--code-concepts-and-comparisons">🤖🦿 Understanding PPO: From Language Generation to Robot Control — Code, Concepts, and Comparisons</a></li>
+        <li><a href="#1--ppo-step-call--argument-by-argument-breakdown">1. 🧾 PPO <code>step()</code> Call — Argument-by-Argument Breakdown</a>
+          <ul>
+            <li><a href="#mapping-to-classic-rl-walker2d">Mapping to Classic RL (Walker2D)</a></li>
+          </ul>
+        </li>
+        <li><a href="#2--action-selection-in-ppo">2. 🎯 Action Selection in PPO</a>
+          <ul>
+            <li><a href="#-llms-text-generation">🤖 LLMs (Text Generation)</a></li>
+            <li><a href="#-walker2d-physical-control">🦿 Walker2D (Physical Control)</a></li>
+            <li><a href="#-comparison-of-action-logic">🔁 Comparison of Action Logic</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ppo-mapping-in-llms-rlhf-vs-classical-rl">🔁 PPO Mapping in LLMs (RLHF) vs Classical RL</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="-understanding-ppo-from-language-generation-to-robot-control--code-concepts-and-comparisons">
+  🤖🦿 Understanding PPO: From Language Generation to Robot Control — Code, Concepts, and Comparisons
+  <a class="anchor" href="#-understanding-ppo-from-language-generation-to-robot-control--code-concepts-and-comparisons">#</a>
+</h2>
+<p><strong>Proximal Policy Optimization (PPO)</strong> in both large language models (LLMs, e.g., GPT-style) and classical control environments (e.g., Walker2D), focusing on the structure of the PPO update and how actions are selected during inference.</p>
+<hr>
+<h2 id="1--ppo-step-call--argument-by-argument-breakdown">
+  1. 🧾 PPO <code>step()</code> Call — Argument-by-Argument Breakdown
+  <a class="anchor" href="#1--ppo-step-call--argument-by-argument-breakdown">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ppo_trainer<span style="color:#04a5e5;font-weight:bold">.</span>step(
+</span></span><span style="display:flex;"><span>    queries<span style="color:#04a5e5;font-weight:bold">=</span>[input_ids[<span style="color:#fe640b">0</span>]],       <span style="color:#9ca0b0;font-style:italic"># Prompt (tokenized) — represents the current state</span>
+</span></span><span style="display:flex;"><span>    responses<span style="color:#04a5e5;font-weight:bold">=</span>[response_ids[<span style="color:#fe640b">0</span>]],  <span style="color:#9ca0b0;font-style:italic"># Generated tokens — represents the action taken</span>
+</span></span><span style="display:flex;"><span>    rewards<span style="color:#04a5e5;font-weight:bold">=</span>[reward]              <span style="color:#9ca0b0;font-style:italic"># Scalar from reward model — score for that action</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h3 id="mapping-to-classic-rl-walker2d">
+  Mapping to Classic RL (Walker2D)
+  <a class="anchor" href="#mapping-to-classic-rl-walker2d">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>PPO Argument</th>
+          <th>🤖 LLM (RLHF)</th>
+          <th>🦿 Walker2D (Classic RL)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>queries = [input_ids[0]]</code></td>
+          <td>Prompt as input (discrete tokenized state)</td>
+          <td>Robot&rsquo;s continuous state (joint angles, velocities)</td>
+      </tr>
+      <tr>
+          <td><code>responses = [response_ids[0]]</code></td>
+          <td>Generated tokens (sequence of actions)</td>
+          <td>Applied joint torques (vector of real numbers)</td>
+      </tr>
+      <tr>
+          <td><code>rewards = [reward]</code></td>
+          <td>Reward model output (alignment score)</td>
+          <td>Environment reward (e.g., distance walked)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2--action-selection-in-ppo">
+  2. 🎯 Action Selection in PPO
+  <a class="anchor" href="#2--action-selection-in-ppo">#</a>
+</h2>
+<p>How does the agent choose its next action, given a state/prompt?</p>
+<h3 id="-llms-text-generation">
+  🤖 LLMs (Text Generation)
+  <a class="anchor" href="#-llms-text-generation">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Given a prompt (state)</span>
+</span></span><span style="display:flex;"><span>input_ids <span style="color:#04a5e5;font-weight:bold">=</span> tokenizer(<span style="color:#40a02b">&#34;What causes rain?&#34;</span>, return_tensors<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#40a02b">&#34;pt&#34;</span>)<span style="color:#04a5e5;font-weight:bold">.</span>input_ids
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Model outputs token logits for next action</span>
+</span></span><span style="display:flex;"><span>outputs <span style="color:#04a5e5;font-weight:bold">=</span> model(input_ids<span style="color:#04a5e5;font-weight:bold">=</span>input_ids)
+</span></span><span style="display:flex;"><span>logits <span style="color:#04a5e5;font-weight:bold">=</span> outputs<span style="color:#04a5e5;font-weight:bold">.</span>logits[:, <span style="color:#04a5e5;font-weight:bold">-</span><span style="color:#fe640b">1</span>, :]
+</span></span><span style="display:flex;"><span>probs <span style="color:#04a5e5;font-weight:bold">=</span> torch<span style="color:#04a5e5;font-weight:bold">.</span>softmax(logits, dim<span style="color:#04a5e5;font-weight:bold">=-</span><span style="color:#fe640b">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Sample the next token (action) from distribution</span>
+</span></span><span style="display:flex;"><span>next_token <span style="color:#04a5e5;font-weight:bold">=</span> torch<span style="color:#04a5e5;font-weight:bold">.</span>multinomial(probs, num_samples<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Repeat to generate full response</span>
+</span></span></code></pre></div><h3 id="-walker2d-physical-control">
+  🦿 Walker2D (Physical Control)
+  <a class="anchor" href="#-walker2d-physical-control">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Get current robot state</span>
+</span></span><span style="display:flex;"><span>state <span style="color:#04a5e5;font-weight:bold">=</span> get_env_state()  <span style="color:#9ca0b0;font-style:italic"># vector like [θ1, θ2, v1, v2...]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Policy network outputs action distribution parameters</span>
+</span></span><span style="display:flex;"><span>mean, std <span style="color:#04a5e5;font-weight:bold">=</span> policy_net(state)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Sample a continuous action (e.g., torque values)</span>
+</span></span><span style="display:flex;"><span>action <span style="color:#04a5e5;font-weight:bold">=</span> torch<span style="color:#04a5e5;font-weight:bold">.</span>normal(mean, std)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Apply action to environment</span>
+</span></span><span style="display:flex;"><span>next_state, reward, done, info <span style="color:#04a5e5;font-weight:bold">=</span> env<span style="color:#04a5e5;font-weight:bold">.</span>step(action)
+</span></span></code></pre></div><h3 id="-comparison-of-action-logic">
+  🔁 Comparison of Action Logic
+  <a class="anchor" href="#-comparison-of-action-logic">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>🤖 LLM (RLHF)</th>
+          <th>🦿 Walker2D (Classic RL)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>State</td>
+          <td>Prompt text</td>
+          <td>Robot’s physical state</td>
+      </tr>
+      <tr>
+          <td>Action</td>
+          <td>Next token (discrete)</td>
+          <td>Joint torques (continuous)</td>
+      </tr>
+      <tr>
+          <td>Policy Output</td>
+          <td>Token logits (softmaxed)</td>
+          <td>Mean &amp; std dev of Gaussian per action dim</td>
+      </tr>
+      <tr>
+          <td>Sampling Method</td>
+          <td>Multinomial over vocab</td>
+          <td>Sample from Gaussian</td>
+      </tr>
+      <tr>
+          <td>Result</td>
+          <td>Extend response with chosen token</td>
+          <td>Step to new physical state</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-ppo-mapping-in-llms-rlhf-vs-classical-rl">
+  🔁 PPO Mapping in LLMs (RLHF) vs Classical RL
+  <a class="anchor" href="#-ppo-mapping-in-llms-rlhf-vs-classical-rl">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Category</th>
+          <th>PPO in LLMs (RLHF)</th>
+          <th>🦿 PPO in Walker2D (Classic RL)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Agent</strong></td>
+          <td>Language Model (e.g., GPT-2, o1)</td>
+          <td>Control Policy Network</td>
+      </tr>
+      <tr>
+          <td><strong>Environment</strong></td>
+          <td>Static or semi-static prompt context</td>
+          <td>Physics-based simulator (e.g., MuJoCo)</td>
+      </tr>
+      <tr>
+          <td><strong>State</strong></td>
+          <td>Prompt (or full token context so far)</td>
+          <td>Robot’s current physical state (joint angles, velocity, etc.)</td>
+      </tr>
+      <tr>
+          <td><strong>Action</strong></td>
+          <td>Next token in the sequence (discrete, vocabulary-sized)</td>
+          <td>Torque values for each joint (continuous, multi-dimensional)</td>
+      </tr>
+      <tr>
+          <td><strong>Trajectory</strong></td>
+          <td>Sequence of tokens (prompt + response)</td>
+          <td>Sequence of joint states and actions over time</td>
+      </tr>
+      <tr>
+          <td><strong>Reward Signal</strong></td>
+          <td>Given after full response (from reward model trained via human preferences)</td>
+          <td>Immediate reward at each time step (distance walked, balance maintained, etc.)</td>
+      </tr>
+      <tr>
+          <td><strong>Reward Nature</strong></td>
+          <td>Sparse, episodic, scalar (usually one reward per episode)</td>
+          <td>Dense, frequent, multi-dimensional (continuous feedback per step)</td>
+      </tr>
+      <tr>
+          <td><strong>Goal</strong></td>
+          <td>Generate text aligned with human values/preferences</td>
+          <td>Learn movement to walk forward efficiently without falling</td>
+      </tr>
+      <tr>
+          <td><strong>Policy Network</strong></td>
+          <td>Transformer LM (large, ~billions of params)</td>
+          <td>Feedforward or RNN-based controller (small, e.g., MLP)</td>
+      </tr>
+      <tr>
+          <td><strong>Reference Model</strong></td>
+          <td>Frozen copy of base LM (used for KL-penalty regularization)</td>
+          <td>Usually none (KL not common in Walker2D PPO)</td>
+      </tr>
+      <tr>
+          <td><strong>Training Stability</strong></td>
+          <td>Needs KL penalty to prevent mode collapse / nonsense generations</td>
+          <td>PPO alone is usually enough due to continuous feedback</td>
+      </tr>
+      <tr>
+          <td><strong>Evaluation</strong></td>
+          <td>Human evals, reward model scores (e.g., helpfulness, safety)</td>
+          <td>Distance walked, steps survived, control energy used</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>🗣️ “Say the right thing, the way a human likes”</td>
+          <td>🦿 “Move the right way, so you don’t fall”</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Actions are <strong>words</strong>, optimizing a sequence to <strong>match human preference</strong></td>
+          <td>Actions are <strong>forces</strong>, optimizing to <strong>physically walk and stay balanced</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Reference</strong></td>
+          <td><a href="https://rlhfbook.com/">https://rlhfbook.com/</a></td>
+          <td><a href="https://gymnasium.farama.org/">https://gymnasium.farama.org/</a></td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-understanding-ppo-from-language-generation-to-robot-control--code-concepts-and-comparisons">🤖🦿 Understanding PPO: From Language Generation to Robot Control — Code, Concepts, and Comparisons</a></li>
+        <li><a href="#1--ppo-step-call--argument-by-argument-breakdown">1. 🧾 PPO <code>step()</code> Call — Argument-by-Argument Breakdown</a>
+          <ul>
+            <li><a href="#mapping-to-classic-rl-walker2d">Mapping to Classic RL (Walker2D)</a></li>
+          </ul>
+        </li>
+        <li><a href="#2--action-selection-in-ppo">2. 🎯 Action Selection in PPO</a>
+          <ul>
+            <li><a href="#-llms-text-generation">🤖 LLMs (Text Generation)</a></li>
+            <li><a href="#-walker2d-physical-control">🦿 Walker2D (Physical Control)</a></li>
+            <li><a href="#-comparison-of-action-logic">🔁 Comparison of Action Logic</a></li>
+          </ul>
+        </li>
+        <li><a href="#-ppo-mapping-in-llms-rlhf-vs-classical-rl">🔁 PPO Mapping in LLMs (RLHF) vs Classical RL</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

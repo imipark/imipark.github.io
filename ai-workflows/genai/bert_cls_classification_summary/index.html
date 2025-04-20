@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Date: 2025-03-31
+
+  ❓ Question
+  #
+
+
+How can we use the [CLS] token (i.e., h_cls) from the last layer of BERT for classification tasks? Given that the BERT output has shape [batch_size, sequence_length, hidden_size], how is it valid to pass only [batch_size, hidden_size] to a nn.Linear(hidden_size, num_classes) without flattening the sequence? And why don&rsquo;t we flatten the whole sequence — wouldn&rsquo;t that destroy order?
+
+
+  ✅ Answer
+  #
+
+
+  🔹 BERT Output and the [CLS] Token
+  #
+
+BERT outputs a tensor of shape:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/genai/bert_cls_classification_summary/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Understanding How to Use BERT&#39;s CLS Token for Classification">
+  <meta property="og:description" content="Date: 2025-03-31
+❓ Question # How can we use the [CLS] token (i.e., h_cls) from the last layer of BERT for classification tasks? Given that the BERT output has shape [batch_size, sequence_length, hidden_size], how is it valid to pass only [batch_size, hidden_size] to a nn.Linear(hidden_size, num_classes) without flattening the sequence? And why don’t we flatten the whole sequence — wouldn’t that destroy order?
+✅ Answer # 🔹 BERT Output and the [CLS] Token # BERT outputs a tensor of shape:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Understanding How to Use BERT&#39;s CLS Token for Classification | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/genai/bert_cls_classification_summary/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.990cbddae30e26ad775214d588075d591ec9f26da6ba4b29e257895122ea72ba.js" integrity="sha256-mQy92uMOJq13UhTViAddWR7J8m2muksp4leJUSLqcro=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f1d049b3262e4fb514dce4940c93f451" class="toggle" checked />
+    <label for="section-f1d049b3262e4fb514dce4940c93f451" class="flex justify-between">
+      <a href="/ai-workflows/genai/" class="">GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d41e720a1f3ad5f0072c34cf8466ed10" class="toggle"  />
+    <label for="section-d41e720a1f3ad5f0072c34cf8466ed10" class="flex justify-between">
+      <a href="/ai-workflows/genai/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI – CoT Summary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-472b43ea57b0e079e09805cce9e10bb4" class="toggle"  />
+    <label for="section-472b43ea57b0e079e09805cce9e10bb4" class="flex justify-between">
+      <a href="/ai-workflows/genai/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-db66d3cb38fca9ab1a2b31b701927012" class="toggle"  />
+    <label for="section-db66d3cb38fca9ab1a2b31b701927012" class="flex justify-between">
+      <a role="button" class="">Graphs</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graphs/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graphs/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1e7bd819a3928aeb7a50152619490f2c" class="toggle"  />
+    <label for="section-1e7bd819a3928aeb7a50152619490f2c" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-650ae071fc48fdb3976606de2c99a82d" class="toggle"  />
+    <label for="section-650ae071fc48fdb3976606de2c99a82d" class="flex justify-between">
+      <a href="/ai-workflows/evals/" class="">Evals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f57a08bac84df3f46191c3cbf417807e" class="toggle"  />
+    <label for="section-f57a08bac84df3f46191c3cbf417807e" class="flex justify-between">
+      <a href="/ai-workflows/mlops/" class="">MLOps</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/clinical_ai/" class="">Clinical AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Understanding How to Use BERT&#39;s CLS Token for Classification</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-question">❓ Question</a></li>
+        <li><a href="#-answer">✅ Answer</a>
+          <ul>
+            <li><a href="#-bert-output-and-the-cls-token">🔹 BERT Output and the <code>[CLS]</code> Token</a></li>
+            <li><a href="#-why-not-flatten">🔹 Why Not Flatten?</a></li>
+            <li><a href="#-recommended-pooling-strategies">🔸 Recommended Pooling Strategies</a></li>
+            <li><a href="#-sources-and-justification">📚 Sources and Justification</a></li>
+            <li><a href="#-summary">🧪 Summary</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p><strong>Date:</strong> 2025-03-31</p>
+<h2 id="-question">
+  ❓ Question
+  <a class="anchor" href="#-question">#</a>
+</h2>
+<blockquote>
+<p>How can we use the <code>[CLS]</code> token (i.e., <code>h_cls</code>) from the last layer of BERT for classification tasks? Given that the BERT output has shape <code>[batch_size, sequence_length, hidden_size]</code>, how is it valid to pass only <code>[batch_size, hidden_size]</code> to a <code>nn.Linear(hidden_size, num_classes)</code> without flattening the sequence? And why don&rsquo;t we flatten the whole sequence — wouldn&rsquo;t that destroy order?</p></blockquote>
+<hr>
+<h2 id="-answer">
+  ✅ Answer
+  <a class="anchor" href="#-answer">#</a>
+</h2>
+<h3 id="-bert-output-and-the-cls-token">
+  🔹 BERT Output and the <code>[CLS]</code> Token
+  <a class="anchor" href="#-bert-output-and-the-cls-token">#</a>
+</h3>
+<p>BERT outputs a tensor of shape:</p>
+<pre tabindex="0"><code>[batch_size, sequence_length, hidden_size]
+</code></pre><p>But for <strong>classification tasks</strong>, we typically use only the <strong>[CLS] token</strong>, which is located at position <code>0</code> in the sequence:</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>h_cls <span style="color:#04a5e5;font-weight:bold">=</span> outputs<span style="color:#04a5e5;font-weight:bold">.</span>last_hidden_state[:, <span style="color:#fe640b">0</span>, :]  <span style="color:#9ca0b0;font-style:italic"># Shape: [batch_size, hidden_size]</span>
+</span></span></code></pre></div><p>This token is designed to act as a summary representation of the entire sequence, and this output shape matches exactly what a <code>nn.Linear(hidden_size, num_classes)</code> expects — <strong>no flattening needed</strong>.</p>
+<hr>
+<h3 id="-why-not-flatten">
+  🔹 Why Not Flatten?
+  <a class="anchor" href="#-why-not-flatten">#</a>
+</h3>
+<p>Flattening the whole sequence (e.g., <code>[batch_size, sequence_length * hidden_size]</code>) loses:</p>
+<ul>
+<li><strong>Token order</strong></li>
+<li><strong>Positional embeddings</strong></li>
+<li><strong>Sequence structure</strong></li>
+</ul>
+<p>In NLP, this breaks the semantic and syntactic structure of the input. Instead, use:</p>
+<h3 id="-recommended-pooling-strategies">
+  🔸 Recommended Pooling Strategies
+  <a class="anchor" href="#-recommended-pooling-strategies">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Strategy</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>[CLS]</code> Token</td>
+          <td>Use <code>outputs[:, 0, :]</code>; trained as a sequence summary</td>
+      </tr>
+      <tr>
+          <td>Mean Pooling</td>
+          <td><code>outputs.mean(dim=1)</code>; averages token embeddings</td>
+      </tr>
+      <tr>
+          <td>Max Pooling</td>
+          <td><code>outputs.max(dim=1).values</code>; takes strongest signal</td>
+      </tr>
+      <tr>
+          <td>Attention Pooling</td>
+          <td>Learns weights to summarize tokens adaptively</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-sources-and-justification">
+  📚 Sources and Justification
+  <a class="anchor" href="#-sources-and-justification">#</a>
+</h3>
+<ul>
+<li><strong>BERT Paper</strong>: Devlin et al. (2018) — [CLS] token for classification</li>
+<li><strong>Sentence-BERT</strong>: Reimers &amp; Gurevych (2019) — Mean pooling often better for embeddings</li>
+<li><strong>Hugging Face Transformers</strong>: Practical implementation patterns</li>
+<li><strong>NLP Community Practices</strong>: Kaggle, blogs, and tutorials</li>
+</ul>
+<hr>
+<h3 id="-summary">
+  🧪 Summary
+  <a class="anchor" href="#-summary">#</a>
+</h3>
+<ul>
+<li>Use <code>[CLS]</code> or pooling (not flattening) for sequence-level tasks.</li>
+<li>Flattening destroys sequence information and is rarely appropriate in NLP.</li>
+<li>The linear layer works on <code>[batch_size, hidden_size]</code> — no need to flatten across tokens.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-question">❓ Question</a></li>
+        <li><a href="#-answer">✅ Answer</a>
+          <ul>
+            <li><a href="#-bert-output-and-the-cls-token">🔹 BERT Output and the <code>[CLS]</code> Token</a></li>
+            <li><a href="#-why-not-flatten">🔹 Why Not Flatten?</a></li>
+            <li><a href="#-recommended-pooling-strategies">🔸 Recommended Pooling Strategies</a></li>
+            <li><a href="#-sources-and-justification">📚 Sources and Justification</a></li>
+            <li><a href="#-summary">🧪 Summary</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

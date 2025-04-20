@@ -2,212 +2,210 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/toc_course2/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/toc_course2/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/toc_course3/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/toc_course3/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/toc_course4/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/toc_course4/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_foundational_llm_text_generation/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/summary_m1/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/summary_m1/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day1_prompt_engineering/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/summary_m2/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/summary_m2/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day2_embeddings_vectordb/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m3/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m3/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/summary_m3/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/summary_m3/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/summary_m4/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/summary_m4/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day3_generative_agents/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m4/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m4/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c5_capstone/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c5_capstone/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day4_domainspecific_llms/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m5/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m5/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/day5_mlops/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m6/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m6/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m7/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/summary_m7/</loc>
+    <loc>https://imipark.github.io/ai-workflows/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/data/</loc>
+    <loc>https://imipark.github.io/ai-workflows/data-modeling/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/terminology/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/tools/</loc>
+    <loc>https://imipark.github.io/ai-workflows/eval-methods/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/</loc>
+    <loc>https://imipark.github.io/ai-workflows/mlops/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/structural-reasoning/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/mlops/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/data/</loc>
   </url><url>
-    <loc>http://localhost:1313/projects/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/clinical_ai/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://imipark.github.io/</loc>
     <lastmod>2025-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://imipark.github.io/posts/</loc>
     <lastmod>2025-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/genai/</loc>
+    <loc>https://imipark.github.io/tags/genai/</loc>
     <lastmod>2025-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ghibli-art/</loc>
+    <loc>https://imipark.github.io/tags/ghibli-art/</loc>
     <lastmod>2025-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/ghibli_style_snapshots/</loc>
+    <loc>https://imipark.github.io/posts/ghibli_style_snapshots/</loc>
     <lastmod>2025-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/openai-plus/</loc>
+    <loc>https://imipark.github.io/tags/openai-plus/</loc>
     <lastmod>2025-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://imipark.github.io/tags/</loc>
     <lastmod>2025-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ai-engineer/</loc>
+    <loc>https://imipark.github.io/tags/ai-engineer/</loc>
     <lastmod>2025-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://imipark.github.io/categories/</loc>
     <lastmod>2025-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/deploy/</loc>
+    <loc>https://imipark.github.io/tags/deploy/</loc>
     <lastmod>2025-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/openai-api/</loc>
+    <loc>https://imipark.github.io/tags/openai-api/</loc>
     <lastmod>2025-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/ai_engineer_path_toc/</loc>
+    <loc>https://imipark.github.io/posts/ai_engineer_path_toc/</loc>
     <lastmod>2025-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/web/</loc>
+    <loc>https://imipark.github.io/categories/web/</loc>
     <lastmod>2025-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/5_steps_learning_template/</loc>
+    <loc>https://imipark.github.io/posts/5_steps_learning_template/</loc>
     <lastmod>2025-03-25T13:19:10-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/github/</loc>
+    <loc>https://imipark.github.io/tags/github/</loc>
     <lastmod>2025-03-20T21:23:49-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://imipark.github.io/tags/hugo/</loc>
     <lastmod>2025-03-20T21:23:49-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hugo-setup/</loc>
+    <loc>https://imipark.github.io/posts/hugo-setup/</loc>
     <lastmod>2025-03-20T21:23:49-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hugo-source-backup/</loc>
+    <loc>https://imipark.github.io/posts/hugo-source-backup/</loc>
     <lastmod>2025-03-20T21:23:49-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/mlops/ai_cloud_comparision/</loc>
+    <loc>https://imipark.github.io/ai-workflows/mlops/ai_cloud_comparision/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/mlops/clinical_nlp_genai/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/5-day-genai-google/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/ai_agents/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/ai_agents/</loc>
+    <loc>https://imipark.github.io/categories/ai-education/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/ai-education/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/ehr_model_failure_case_study/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/ehr_model_failure_case_study/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/clinical_ml_categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/clinical_ml_categories/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/causality/causal-ai/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/structural-reasoning/causality/causal-ai/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/causality/causal-inference/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/structural-reasoning/causality/causal-inference/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/causal-inference-rwd/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/causal-inference-rwd/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/causality/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/structural-reasoning/causality/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/ai_agents/openai_api_function_calling_comparison/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/ai_agents/openai_api_function_calling_comparison/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/clinical-data-science/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/data_quality_labeling_weak_supervision_qa/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/diagnostic_metrics_and_curves/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/data_quality_labeling_weak_supervision_qa/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/diagnostic_metrics_and_curves/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/foundatoin_model/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/</loc>
+    <loc>https://imipark.github.io/categories/genai-instruction/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/foundatoin_model/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/graph-reasoning/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/genai-instruction/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/structural-reasoning/graphs/graphrag/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/hands-on-healthcare-data/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/structural-reasoning/graphs/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/data/healthcare_sources/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/hands-on-healthcare-data/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/healthcare_use_cases_for_non_textual_unstructured_data/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/data/healthcare_layers/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/healthcare_use_cases_for_text_data/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/data/healthcare_sources/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/how_foundation_models_work_in_healthcare_applications/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/healthcare_use_cases_for_non_textual_unstructured_data/</loc>
+    <loc>https://imipark.github.io/ipark/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/healthcare_use_cases_for_text_data/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/how_foundation_models_work_in_healthcare_applications/</loc>
+    <loc>https://imipark.github.io/categories/learning-methods/</loc>
   </url><url>
-    <loc>http://localhost:1313/ipark/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/structural-reasoning/graphs/knowledge-graphs/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/omop_vs_rlhf_comparison/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/learning-methods/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/oap_framework_healthcare/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/rlhf/comparison_ppo/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/omop_vs_rlhf_comparison/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/prompt_engineering/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/oap_framework_healthcare/</loc>
+    <loc>https://imipark.github.io/ai-workflows/alignment-reasoning/rlhf/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/prompt_engineering/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/structural-reasoning/rlhf/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/prompt_engineering/step_by_step_cot_qna_guide_generative_agents/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/prompt_engineering/step_by_step_cot_qna_guide_generative_agents/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/transformer_attention_concepts/</loc>
   </url><url>
-    <loc>http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/bert_cls_classification_summary/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/transformer_attention_concepts/</loc>
+    <loc>https://imipark.github.io/ai-workflows/genai-systems/self_attention_summary/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/bert_cls_classification_summary/</loc>
-  </url><url>
-    <loc>http://localhost:1313/ai-workflows/nlp-llm-genai/self_attention_summary/</loc>
+    <loc>https://imipark.github.io/healthcare-domain/clinical_ai/clinical_nlp_genai/</loc>
   </url>
 </urlset>

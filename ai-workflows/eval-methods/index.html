@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Eval Methods
+  #
+
+Eval_Methods/
+├── AI_Evals/                    # Alignment-focused evals (e.g., OpenAI evals)
+│   ├── OpenAI_Evals/
+│   ├── Benchmark_Suites/
+│   └── Eval_Metrics/
+├── Human-in-the-Loop/          # Evaluation strategies w/ annotators
+│   ├── Labeler-Guides/
+│   └── HITL-Pipelines.md
+├── Eval Frameworks/            # Tools: helm, trl.eval, chat-arena
+└── Monitoring_vs_Eval.md       # Clarify ops-vs-research boundary
+
+  AI_Evals/ — Evaluation Content Focused on Alignment
+  #
+
+
+
+Goal: Evaluate how well AI models behave according to human preferences and task goals.
+
+
+OpenAI_Evals/
+For evaluating models with OpenAI’s evals framework — includes preference rankings, math prompts, multi-turn responses, and tool use evals.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/eval-methods/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Eval Methods">
+  <meta property="og:description" content="Eval Methods # Eval_Methods/ ├── AI_Evals/ # Alignment-focused evals (e.g., OpenAI evals) │ ├── OpenAI_Evals/ │ ├── Benchmark_Suites/ │ └── Eval_Metrics/ ├── Human-in-the-Loop/ # Evaluation strategies w/ annotators │ ├── Labeler-Guides/ │ └── HITL-Pipelines.md ├── Eval Frameworks/ # Tools: helm, trl.eval, chat-arena └── Monitoring_vs_Eval.md # Clarify ops-vs-research boundary AI_Evals/ — Evaluation Content Focused on Alignment # Goal: Evaluate how well AI models behave according to human preferences and task goals.
+OpenAI_Evals/
+For evaluating models with OpenAI’s evals framework — includes preference rankings, math prompts, multi-turn responses, and tool use evals.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Eval Methods | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/eval-methods/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.d93e74561b1aacfd03bc50dbe088241eee9b681e3022b51b91773bc3aab36fd7.js" integrity="sha256-2T50VhsarP0DvFDb4IgkHu6baB4wIrUbkXc7w6qzb9c=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/eval-methods/index.xml" title="AI Reasoning" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Workflows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs – CoT Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI – CoT Summary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a role="button" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle" checked />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="active">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6df31981b3c462a899317a9b33ef86b9" class="toggle"  />
+    <label for="section-6df31981b3c462a899317a9b33ef86b9" class="flex justify-between">
+      <a href="/ai-workflows/mlops/" class="">MLOps</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/ai_cloud_comparision/" class="">Ai Cloud Comparision</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/" class="">Healthcare Domain</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-006e92286777b45b0a28d3a2365a3a67" class="toggle"  />
+    <label for="section-006e92286777b45b0a28d3a2365a3a67" class="flex justify-between">
+      <a href="/healthcare-domain/learning/" class="">Learning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85db45cdb58d083b8b67335f89ad3916" class="toggle"  />
+    <label for="section-85db45cdb58d083b8b67335f89ad3916" class="flex justify-between">
+      <a href="/healthcare-domain/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-317e9b0f08275c48e5b214edfaed8be3" class="toggle"  />
+    <label for="section-317e9b0f08275c48e5b214edfaed8be3" class="flex justify-between">
+      <a href="/healthcare-domain/learning/causal-inference-rwd/" class="">Causal Inference RWD</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-70fa49cb3f8f56f52a5e1b787c860d19" class="toggle"  />
+    <label for="section-70fa49cb3f8f56f52a5e1b787c860d19" class="flex justify-between">
+      <a href="/healthcare-domain/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/data/" class="">Healthcare Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare-domain/clinical_ai/" class="">Clinical AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Eval Methods</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#eval-methods">Eval Methods</a>
+          <ul>
+            <li><a href="#ai_--evaluation-content-focused-on-alignment"><strong>AI_Evals/</strong> — Evaluation Content Focused on Alignment</a></li>
+            <li><a href="#human-in-the-loop--crowdsourced-or-expert-human-judgments"><strong>Human-in-the-Loop/</strong> — Crowdsourced or Expert Human Judgments</a></li>
+            <li><a href="#eval-frameworks--tooling-to-run-evals-at-scale"><strong>Eval Frameworks/</strong> — Tooling to Run Evals at Scale</a></li>
+            <li><a href="#monitoring_--operational-vs-research-evaluation"><strong>Monitoring_vs_Eval</strong> — <em>Operational vs Research Evaluation</em></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="eval-methods">
+  Eval Methods
+  <a class="anchor" href="#eval-methods">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Eval_Methods/
+</span></span><span style="display:flex;"><span>├── AI_Evals/                    <span style="color:#9ca0b0;font-style:italic"># Alignment-focused evals (e.g., OpenAI evals)</span>
+</span></span><span style="display:flex;"><span>│   ├── OpenAI_Evals/
+</span></span><span style="display:flex;"><span>│   ├── Benchmark_Suites/
+</span></span><span style="display:flex;"><span>│   └── Eval_Metrics/
+</span></span><span style="display:flex;"><span>├── Human-in-the-Loop/          <span style="color:#9ca0b0;font-style:italic"># Evaluation strategies w/ annotators</span>
+</span></span><span style="display:flex;"><span>│   ├── Labeler-Guides/
+</span></span><span style="display:flex;"><span>│   └── HITL-Pipelines.md
+</span></span><span style="display:flex;"><span>├── Eval Frameworks/            <span style="color:#9ca0b0;font-style:italic"># Tools: helm, trl.eval, chat-arena</span>
+</span></span><span style="display:flex;"><span>└── Monitoring_vs_Eval.md       <span style="color:#9ca0b0;font-style:italic"># Clarify ops-vs-research boundary</span>
+</span></span></code></pre></div><h3 id="ai_--evaluation-content-focused-on-alignment">
+  <strong>AI_Evals/</strong> — Evaluation Content Focused on Alignment
+  <a class="anchor" href="#ai_--evaluation-content-focused-on-alignment">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Goal</strong>: Evaluate <em>how well</em> AI models behave according to human preferences and task goals.</p>
+</li>
+<li>
+<p><strong>OpenAI_Evals/</strong><br>
+For evaluating models with <a href="https://github.com/openai/evals">OpenAI’s <code>evals</code></a> framework — includes preference rankings, math prompts, multi-turn responses, and tool use evals.</p>
+</li>
+<li>
+<p><strong>enchmark_Suites/</strong><br>
+Curated sets of standard benchmark tasks like:</p>
+<ul>
+<li><strong>TruthfulQA</strong> (factual alignment)</li>
+<li><strong>MMLU</strong> (multitask understanding)</li>
+<li><strong>BIG-Bench</strong> (general reasoning)</li>
+<li><strong>MT-Bench / Arena-Hard</strong> (comparative LLM evals)</li>
+</ul>
+</li>
+<li>
+<p><strong>Eval_Metrics/</strong><br>
+Standard and emerging metrics to quantify:</p>
+<ul>
+<li>Helpfulness</li>
+<li>Harmlessness</li>
+<li>Coherence</li>
+<li>Factuality</li>
+<li>Preference alignment</li>
+</ul>
+</li>
+<li>
+<p><strong>Use when</strong>: you want to compare models quantitatively or analyze behavioral drift across training versions.</p>
+</li>
+</ul>
+<hr>
+<h3 id="human-in-the-loop--crowdsourced-or-expert-human-judgments">
+  <strong>Human-in-the-Loop/</strong> — Crowdsourced or Expert Human Judgments
+  <a class="anchor" href="#human-in-the-loop--crowdsourced-or-expert-human-judgments">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Goal</strong>: Structure <strong>manual evaluation workflows</strong> using human labelers or expert annotators.</p>
+</li>
+<li>
+<p><strong>Labeler-Guides/</strong><br>
+Guidelines and templates for human evaluators:</p>
+<ul>
+<li>Rating rubrics</li>
+<li>Examples of “good vs bad” outputs</li>
+<li>Ethical and fairness considerations</li>
+</ul>
+</li>
+<li>
+<p><strong>HITL-Pipelines.md</strong><br>
+How to organize:</p>
+<ul>
+<li>Prompt → model response → reviewer feedback</li>
+<li>Labeling pipelines in tools like Label Studio, Prodigy, Surge AI, etc.</li>
+</ul>
+</li>
+<li>
+<p><strong>Use when</strong>: evaluating open-ended generation, dialog quality, or subjective preferences.</p>
+</li>
+</ul>
+<hr>
+<h3 id="eval-frameworks--tooling-to-run-evals-at-scale">
+  <strong>Eval Frameworks/</strong> — Tooling to Run Evals at Scale
+  <a class="anchor" href="#eval-frameworks--tooling-to-run-evals-at-scale">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Goal</strong>: Explore libraries and frameworks that let you <strong>run, automate, and visualize</strong> evaluation workflows.</p>
+</li>
+<li>
+<p><strong>Examples:</strong></p>
+<ol>
+<li><strong>helm</strong> (Stanford’s Holistic Eval of Language Models)</li>
+<li><strong>trl.eval</strong> (from HuggingFace’s TRL package)</li>
+<li><strong>chat-arena</strong> (for pairwise comparison tournaments)</li>
+<li><strong>language-evals</strong> (emergent libraries focused on LLM evals)</li>
+</ol>
+</li>
+<li>
+<p><strong>Use when</strong>: you want to <strong>run evals as code</strong>, integrate with CI/CD, or do head-to-head model comparisons.</p>
+</li>
+</ul>
+<hr>
+<h3 id="monitoring_--operational-vs-research-evaluation">
+  <strong>Monitoring_vs_Eval</strong> — <em>Operational vs Research Evaluation</em>
+  <a class="anchor" href="#monitoring_--operational-vs-research-evaluation">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Goal</strong>: Clarify the difference between <strong>offline evaluation</strong> and <strong>live monitoring in production</strong>.</p>
+</li>
+<li>
+<p>Evaluation ≠ Monitoring:</p>
+<ul>
+<li>Evaluation = Pre-deployment, scenario-specific</li>
+<li>Monitoring = Post-deployment, continuous observability</li>
+</ul>
+</li>
+<li>
+<p>How feedback loops connect them</p>
+</li>
+<li>
+<p>Why <strong>alignment evals</strong> don’t end at launch</p>
+</li>
+</ul>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#eval-methods">Eval Methods</a>
+          <ul>
+            <li><a href="#ai_--evaluation-content-focused-on-alignment"><strong>AI_Evals/</strong> — Evaluation Content Focused on Alignment</a></li>
+            <li><a href="#human-in-the-loop--crowdsourced-or-expert-human-judgments"><strong>Human-in-the-Loop/</strong> — Crowdsourced or Expert Human Judgments</a></li>
+            <li><a href="#eval-frameworks--tooling-to-run-evals-at-scale"><strong>Eval Frameworks/</strong> — Tooling to Run Evals at Scale</a></li>
+            <li><a href="#monitoring_--operational-vs-research-evaluation"><strong>Monitoring_vs_Eval</strong> — <em>Operational vs Research Evaluation</em></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
