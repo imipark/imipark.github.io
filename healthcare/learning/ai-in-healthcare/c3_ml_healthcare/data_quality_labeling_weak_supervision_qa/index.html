@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Data Quality, Labeling, and Weak Supervision in Clinical ML
+  #
+
+
+
+  Q1: What does &ldquo;Garbage In, Garbage Out&rdquo; mean in machine learning?
+  #
+
+
+It means that no model, no matter how advanced, can compensate for poor-quality data. If your input data is noisy, biased, irrelevant, or mislabeled, your model will reflect those flaws.
+✅ The choice of data and problem matters more than the algorithm itself.
+
+
+  Q2: Can large, rich datasets still be garbage?
+  #
+
+
+Yes — if the data is fundamentally flawed or based on faulty assumptions (like phrenology), more volume just means more noise.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare/learning/ai-in-healthcare/c3_ml_healthcare/data_quality_labeling_weak_supervision_qa/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Data Quality, Labeling, and Weak Supervision in Clinical ML">
+  <meta property="og:description" content="Data Quality, Labeling, and Weak Supervision in Clinical ML # Q1: What does “Garbage In, Garbage Out” mean in machine learning? # It means that no model, no matter how advanced, can compensate for poor-quality data. If your input data is noisy, biased, irrelevant, or mislabeled, your model will reflect those flaws.
+✅ The choice of data and problem matters more than the algorithm itself.
+Q2: Can large, rich datasets still be garbage? # Yes — if the data is fundamentally flawed or based on faulty assumptions (like phrenology), more volume just means more noise.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Data Quality, Labeling, and Weak Supervision in Clinical ML | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/healthcare/learning/ai-in-healthcare/c3_ml_healthcare/data_quality_labeling_weak_supervision_qa/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b993935627c1d0fd5d9131feb60da0f04e0c324bfedb9df4cead55347a0d0f4d.js" integrity="sha256-uZOTVifB0P1dkTH&#43;tg2g8E4MMkv&#43;2530zq1VNHoND00=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a role="button" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare Applications</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c1f7ffe0bb691d188de46f6257e07d26" class="toggle" checked />
+    <label for="section-c1f7ffe0bb691d188de46f6257e07d26" class="flex justify-between">
+      <a href="/healthcare/learning/" class="">Healthcare Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cc185eea9eb6e04823ee8398729926ea" class="toggle" checked />
+    <label for="section-cc185eea9eb6e04823ee8398729926ea" class="flex justify-between">
+      <a href="/healthcare/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-36f549e30b6f32e65deb03454b776211" class="toggle"  />
+    <label for="section-36f549e30b6f32e65deb03454b776211" class="flex justify-between">
+      <a href="/healthcare/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Healthcare Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">Clinical AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Data Quality, Labeling, and Weak Supervision in Clinical ML</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#data-quality-labeling-and-weak-supervision-in-clinical-ml">Data Quality, Labeling, and Weak Supervision in Clinical ML</a>
+      <ul>
+        <li><a href="#q1-what-does-garbage-in-garbage-out-mean-in-machine-learning">Q1: What does &ldquo;Garbage In, Garbage Out&rdquo; mean in machine learning?</a></li>
+        <li><a href="#q2-can-large-rich-datasets-still-be-garbage">Q2: Can large, rich datasets still be garbage?</a></li>
+        <li><a href="#q3-what-makes-clinical-data-especially-tricky-to-label-accurately">Q3: What makes clinical data especially tricky to label accurately?</a></li>
+        <li><a href="#q4-how-do-we-deal-with-label-noise-in-practice">Q4: How do we deal with label noise in practice?</a></li>
+        <li><a href="#q5-is-it-ever-okay-to-use-noisy-labels">Q5: Is it ever okay to use noisy labels?</a></li>
+        <li><a href="#q6-what-is-weak-supervision">Q6: What is weak supervision?</a></li>
+        <li><a href="#q7-if-training-data-is-noisy-what-about-the-test-set">Q7: If training data is noisy, what about the test set?</a></li>
+        <li><a href="#-final-takeaways">🔑 Final Takeaways</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="data-quality-labeling-and-weak-supervision-in-clinical-ml">
+  Data Quality, Labeling, and Weak Supervision in Clinical ML
+  <a class="anchor" href="#data-quality-labeling-and-weak-supervision-in-clinical-ml">#</a>
+</h1>
+<hr>
+<h2 id="q1-what-does-garbage-in-garbage-out-mean-in-machine-learning">
+  Q1: What does &ldquo;Garbage In, Garbage Out&rdquo; mean in machine learning?
+  <a class="anchor" href="#q1-what-does-garbage-in-garbage-out-mean-in-machine-learning">#</a>
+</h2>
+<blockquote>
+<p>It means that <strong>no model, no matter how advanced, can compensate for poor-quality data</strong>. If your input data is noisy, biased, irrelevant, or mislabeled, your model will reflect those flaws.</p></blockquote>
+<p>✅ The <strong>choice of data and problem</strong> matters more than the algorithm itself.</p>
+<hr>
+<h2 id="q2-can-large-rich-datasets-still-be-garbage">
+  Q2: Can large, rich datasets still be garbage?
+  <a class="anchor" href="#q2-can-large-rich-datasets-still-be-garbage">#</a>
+</h2>
+<blockquote>
+<p>Yes — if the data is fundamentally flawed or based on faulty assumptions (like phrenology), more volume just means <strong>more noise</strong>.</p></blockquote>
+<p>📌 <strong>Data quality ≠ data quantity.</strong></p>
+<hr>
+<h2 id="q3-what-makes-clinical-data-especially-tricky-to-label-accurately">
+  Q3: What makes clinical data especially tricky to label accurately?
+  <a class="anchor" href="#q3-what-makes-clinical-data-especially-tricky-to-label-accurately">#</a>
+</h2>
+<ul>
+<li>Lack of standardized label definitions</li>
+<li>Evolving medical criteria (e.g. changing diabetes thresholds)</li>
+<li>Some labels (e.g., <strong>mortality</strong>) are easier to pin down</li>
+<li>Others (e.g., <strong>pneumonia</strong>, <strong>hypertension</strong>) require complex confirmation (labs, imaging, notes)</li>
+</ul>
+<p>🧠 <strong>Medical label creation is hard, expensive, and often subjective.</strong></p>
+<hr>
+<h2 id="q4-how-do-we-deal-with-label-noise-in-practice">
+  Q4: How do we deal with label noise in practice?
+  <a class="anchor" href="#q4-how-do-we-deal-with-label-noise-in-practice">#</a>
+</h2>
+<blockquote>
+<p>Label noise is <strong>inevitable</strong>, but manageable.</p></blockquote>
+<p><strong>Strategies:</strong></p>
+<ul>
+<li>Have <strong>domain experts</strong> label a subset for benchmarking</li>
+<li>Use <strong>multiple reviewers</strong> to estimate disagreement rate</li>
+<li><strong>Triangulate</strong> labels (e.g., combine ICD codes + meds + clinician notes)</li>
+</ul>
+<p>📉 This reduces label noise but often <strong>shrinks dataset size</strong>.</p>
+<hr>
+<h2 id="q5-is-it-ever-okay-to-use-noisy-labels">
+  Q5: Is it ever okay to use noisy labels?
+  <a class="anchor" href="#q5-is-it-ever-okay-to-use-noisy-labels">#</a>
+</h2>
+<blockquote>
+<p>Surprisingly, yes — <strong>if you have enough data</strong>.</p></blockquote>
+<p>📈 A Stanford study found:</p>
+<ul>
+<li>90% label accuracy ≈ baseline (with 50% more data)</li>
+<li>85% label accuracy ≈ baseline (with 100% more data)</li>
+</ul>
+<p>✅ <strong>Rule of thumb:</strong></p>
+<ul>
+<li><strong>10% noise → 1.5× more data</strong></li>
+<li><strong>15% noise → 2× more data</strong></li>
+</ul>
+<hr>
+<h2 id="q6-what-is-weak-supervision">
+  Q6: What is weak supervision?
+  <a class="anchor" href="#q6-what-is-weak-supervision">#</a>
+</h2>
+<blockquote>
+<p><strong>Weak supervision</strong> refers to learning from labels that are:</p></blockquote>
+<ul>
+<li>Noisy</li>
+<li>Incomplete</li>
+<li>Imperfectly defined</li>
+</ul>
+<p>This is <strong>common in healthcare</strong> due to:</p>
+<ul>
+<li>The cost of expert labeling</li>
+<li>The complexity of clinical truth</li>
+</ul>
+<p>👨‍⚕️ That’s why <strong>domain experts + scalable label strategies</strong> are a key bottleneck in clinical ML.</p>
+<hr>
+<h2 id="q7-if-training-data-is-noisy-what-about-the-test-set">
+  Q7: If training data is noisy, what about the test set?
+  <a class="anchor" href="#q7-if-training-data-is-noisy-what-about-the-test-set">#</a>
+</h2>
+<blockquote>
+<p><strong>The test set must be as clean as possible.</strong><br>
+Why?</p></blockquote>
+<ul>
+<li>If test labels are noisy, your evaluation metrics will be <strong>inaccurate</strong></li>
+<li>It may <strong>underestimate model performance</strong>, leading to incorrect conclusions</li>
+</ul>
+<p>📌 <strong>Training set: can handle some noise.</strong><br>
+📌 <strong>Test set: must approximate gold-standard ground truth.</strong></p>
+<hr>
+<h2 id="-final-takeaways">
+  🔑 Final Takeaways
+  <a class="anchor" href="#-final-takeaways">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Principle</th>
+          <th>Why It Matters</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Garbage In, Garbage Out</td>
+          <td>Bad input = bad model, no matter the algorithm</td>
+      </tr>
+      <tr>
+          <td>Labels ≠ Truth</td>
+          <td>Always validate how close your labels are to clinical reality</td>
+      </tr>
+      <tr>
+          <td>More Data ≠ Better Data</td>
+          <td>Large, outdated, or noisy datasets can harm performance</td>
+      </tr>
+      <tr>
+          <td>Weak Supervision Works (With Scale)</td>
+          <td>Noisy labels can be offset by higher volume</td>
+      </tr>
+      <tr>
+          <td>Test Set Must Be Clean</td>
+          <td>Final evaluation must reflect ground truth</td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#data-quality-labeling-and-weak-supervision-in-clinical-ml">Data Quality, Labeling, and Weak Supervision in Clinical ML</a>
+      <ul>
+        <li><a href="#q1-what-does-garbage-in-garbage-out-mean-in-machine-learning">Q1: What does &ldquo;Garbage In, Garbage Out&rdquo; mean in machine learning?</a></li>
+        <li><a href="#q2-can-large-rich-datasets-still-be-garbage">Q2: Can large, rich datasets still be garbage?</a></li>
+        <li><a href="#q3-what-makes-clinical-data-especially-tricky-to-label-accurately">Q3: What makes clinical data especially tricky to label accurately?</a></li>
+        <li><a href="#q4-how-do-we-deal-with-label-noise-in-practice">Q4: How do we deal with label noise in practice?</a></li>
+        <li><a href="#q5-is-it-ever-okay-to-use-noisy-labels">Q5: Is it ever okay to use noisy labels?</a></li>
+        <li><a href="#q6-what-is-weak-supervision">Q6: What is weak supervision?</a></li>
+        <li><a href="#q7-if-training-data-is-noisy-what-about-the-test-set">Q7: If training data is noisy, what about the test set?</a></li>
+        <li><a href="#-final-takeaways">🔑 Final Takeaways</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

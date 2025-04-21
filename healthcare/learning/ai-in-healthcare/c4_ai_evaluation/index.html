@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  📘 Course 4: Evaluations of AI Applications in Healthcare
+  #
+
+
+  
+    
+      Topics Table
+    
+  
+  
+    
+      
+        [ToC] Course 4
+      
+      
+    
+  
+
+
+
+
+  🤖 Module 1: AI in Healthcare
+  #
+
+1. What’s the Problem?
+Understanding the growing role of AI in healthcare and what meaningful problems it can solve.
+2. Why Does It Matter?
+AI is being rapidly adopted, yet many applications focus on accuracy without considering clinical utility or impact.
+3. What’s the Core Idea?
+AI spans biomedical research, translational science, and medical practice. It excels at data synthesis and task automation, but needs alignment with care goals.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare/learning/ai-in-healthcare/c4_ai_evaluation/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="C4 AI Evaluations">
+  <meta property="og:description" content="📘 Course 4: Evaluations of AI Applications in Healthcare # Topics Table [ToC] Course 4 🤖 Module 1: AI in Healthcare # 1. What’s the Problem?
+Understanding the growing role of AI in healthcare and what meaningful problems it can solve.
+2. Why Does It Matter?
+AI is being rapidly adopted, yet many applications focus on accuracy without considering clinical utility or impact.
+3. What’s the Core Idea?
+AI spans biomedical research, translational science, and medical practice. It excels at data synthesis and task automation, but needs alignment with care goals.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>C4 AI Evaluations | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/healthcare/learning/ai-in-healthcare/c4_ai_evaluation/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b993935627c1d0fd5d9131feb60da0f04e0c324bfedb9df4cead55347a0d0f4d.js" integrity="sha256-uZOTVifB0P1dkTH&#43;tg2g8E4MMkv&#43;2530zq1VNHoND00=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/healthcare/learning/ai-in-healthcare/c4_ai_evaluation/index.xml" title="AI Reasoning" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a role="button" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare Applications</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c1f7ffe0bb691d188de46f6257e07d26" class="toggle" checked />
+    <label for="section-c1f7ffe0bb691d188de46f6257e07d26" class="flex justify-between">
+      <a href="/healthcare/learning/" class="">Healthcare Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cc185eea9eb6e04823ee8398729926ea" class="toggle" checked />
+    <label for="section-cc185eea9eb6e04823ee8398729926ea" class="flex justify-between">
+      <a href="/healthcare/learning/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/ai-in-healthcare/c4_ai_evaluation/" class="active">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-36f549e30b6f32e65deb03454b776211" class="toggle"  />
+    <label for="section-36f549e30b6f32e65deb03454b776211" class="flex justify-between">
+      <a href="/healthcare/learning/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/learning/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Healthcare Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">Clinical AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>C4 AI Evaluations</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-course-4-evaluations-of-ai-applications-in-healthcare">📘 Course 4: Evaluations of AI Applications in Healthcare</a>
+          <ul>
+            <li><a href="#-module-1-ai-in-healthcare">🤖 Module 1: AI in Healthcare</a></li>
+            <li><a href="#-module-2-evaluations-of-ai-in-healthcare">🧪 Module 2: Evaluations of AI in Healthcare</a></li>
+            <li><a href="#-module-3-ai-deployment">🚀 Module 3: AI Deployment</a></li>
+            <li><a href="#-module-4-downstream-evaluations-bias-and-fairness">⚖️ Module 4: Downstream Evaluations: Bias and Fairness</a></li>
+            <li><a href="#-module-5-regulatory-environment-for-ai-in-healthcare">📜 Module 5: Regulatory Environment for AI in Healthcare</a></li>
+            <li><a href="#-module-6-best-ethical-practices-in-ai-for-healthcare">🧭 Module 6: Best Ethical Practices in AI for Healthcare</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="-course-4-evaluations-of-ai-applications-in-healthcare">
+  📘 Course 4: Evaluations of AI Applications in Healthcare
+  <a class="anchor" href="#-course-4-evaluations-of-ai-applications-in-healthcare">#</a>
+</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Topics Table</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr>
+        <td><a href="/healthcare/learning/ai-in-healthcare/c4_ai_evaluation/toc_course4/">[ToC] Course 4</a></td>
+      </tr>
+      
+    
+  </tbody>
+</table>
+
+
+<h3 id="-module-1-ai-in-healthcare">
+  🤖 Module 1: AI in Healthcare
+  <a class="anchor" href="#-module-1-ai-in-healthcare">#</a>
+</h3>
+<p><strong>1. What’s the Problem?</strong><br>
+Understanding the growing role of AI in healthcare and what meaningful problems it can solve.</p>
+<p><strong>2. Why Does It Matter?</strong><br>
+AI is being rapidly adopted, yet many applications focus on accuracy without considering clinical utility or impact.</p>
+<p><strong>3. What’s the Core Idea?</strong><br>
+AI spans biomedical research, translational science, and medical practice. It excels at data synthesis and task automation, but needs alignment with care goals.</p>
+<p><strong>4. How Does It Work?</strong><br>
+AI systems analyze large-scale structured and unstructured data to assist in diagnostics, treatment recommendations, and patient monitoring. Evaluating AI must go beyond accuracy to include actionability.</p>
+<p><strong>5. What’s Next?</strong><br>
+Learn how to evaluate AI solutions based on clinical utility, outcome-action pairing, and feasibility of implementation.</p>
+<hr>
+<h3 id="-module-2-evaluations-of-ai-in-healthcare">
+  🧪 Module 2: Evaluations of AI in Healthcare
+  <a class="anchor" href="#-module-2-evaluations-of-ai-in-healthcare">#</a>
+</h3>
+<p><strong>1. What’s the Problem?</strong><br>
+Most AI models are evaluated only by accuracy, without considering whether they actually improve clinical care.</p>
+<p><strong>2. Why Does It Matter?</strong><br>
+Because real-world deployment requires understanding how an AI model leads to meaningful actions and patient benefit.</p>
+<p><strong>3. What’s the Core Idea?</strong><br>
+Use the Outcome-Action Pairing (OAP) framework: pair predictions with feasible actions that impact care. Evaluate utility, feasibility, and clinical impact.</p>
+<p><strong>4. How Does It Work?</strong><br>
+Start with the clinical problem, define output and required action, assess lead time, type of action (medical, operational), and stakeholder involvement.</p>
+<p><strong>5. What’s Next?</strong><br>
+Examine the four phases of deploying AI in clinical environments, from design to monitoring.</p>
+<hr>
+<h3 id="-module-3-ai-deployment">
+  🚀 Module 3: AI Deployment
+  <a class="anchor" href="#-module-3-ai-deployment">#</a>
+</h3>
+<p><strong>1. What’s the Problem?</strong><br>
+Even well-performing AI models often fail to reach or impact clinical care due to poor integration and lack of support.</p>
+<p><strong>2. Why Does It Matter?</strong><br>
+Healthcare settings require safety, validation, stakeholder buy-in, and long-term monitoring for AI success.</p>
+<p><strong>3. What’s the Core Idea?</strong><br>
+Deployment includes four stages: design and development, evaluation and validation, diffusion and scaling, and continuous monitoring.</p>
+<p><strong>4. How Does It Work?</strong><br>
+Evaluate utility and economic value, run &lsquo;silent mode&rsquo; trials, ensure human-machine interaction, and plan for infrastructure and updates.</p>
+<p><strong>5. What’s Next?</strong><br>
+Understand how fairness, transparency, and bias affect AI performance across diverse populations.</p>
+<hr>
+<h3 id="-module-4-downstream-evaluations-bias-and-fairness">
+  ⚖️ Module 4: Downstream Evaluations: Bias and Fairness
+  <a class="anchor" href="#-module-4-downstream-evaluations-bias-and-fairness">#</a>
+</h3>
+<p><strong>1. What’s the Problem?</strong><br>
+AI models may perpetuate bias or perform poorly on underrepresented populations.</p>
+<p><strong>2. Why Does It Matter?</strong><br>
+Bias in AI can lead to inequities in care and further marginalize already vulnerable groups.</p>
+<p><strong>3. What’s the Core Idea?</strong><br>
+Bias can occur at any stage—from data collection to deployment. Fairness requires proactive evaluation using tools like MINIMAR.</p>
+<p><strong>4. How Does It Work?</strong><br>
+Identify and mitigate types of bias (e.g., representation, measurement, aggregation). Use fairness definitions like anti-classification and calibration.</p>
+<p><strong>5. What’s Next?</strong><br>
+Explore how AI regulation addresses these concerns through risk frameworks and transparency standards.</p>
+<hr>
+<h3 id="-module-5-regulatory-environment-for-ai-in-healthcare">
+  📜 Module 5: Regulatory Environment for AI in Healthcare
+  <a class="anchor" href="#-module-5-regulatory-environment-for-ai-in-healthcare">#</a>
+</h3>
+<p><strong>1. What’s the Problem?</strong><br>
+AI products often lack regulatory approval due to unclear pathways and concerns over safety and accountability.</p>
+<p><strong>2. Why Does It Matter?</strong><br>
+Regulation ensures AI tools are safe, effective, and beneficial in real-world healthcare settings.</p>
+<p><strong>3. What’s the Core Idea?</strong><br>
+The FDA and IMDRF provide frameworks based on risk classification and clinical evaluation (valid association, analytical &amp; clinical validation).</p>
+<p><strong>4. How Does It Work?</strong><br>
+Follow the SaMD lifecycle: define intended use, evaluate risk, seek approval via 510(k), De Novo, or PMA, and ensure continuous monitoring.</p>
+<p><strong>5. What’s Next?</strong><br>
+Apply ethical practices in problem formulation, data choice, stakeholder transparency, and conflict of interest management.</p>
+<hr>
+<h3 id="-module-6-best-ethical-practices-in-ai-for-healthcare">
+  🧭 Module 6: Best Ethical Practices in AI for Healthcare
+  <a class="anchor" href="#-module-6-best-ethical-practices-in-ai-for-healthcare">#</a>
+</h3>
+<p><strong>1. What’s the Problem?</strong><br>
+Conflicts of interest and unclear problem framing can undermine trust and effectiveness in AI systems.</p>
+<p><strong>2. Why Does It Matter?</strong><br>
+Ethical lapses can lead to harm, inequity, or misuse of AI tools in sensitive healthcare decisions.</p>
+<p><strong>3. What’s the Core Idea?</strong><br>
+Ethical AI requires clear goals, clinician input, transparent data use, and conflict-of-interest management.</p>
+<p><strong>4. How Does It Work?</strong><br>
+Ask ethical questions early, assess biases in data and design, disclose secondary interests, and implement oversight.</p>
+<p><strong>5. What’s Next?</strong><br>
+Adopt frameworks like MINIMAR, audit for fairness, and ensure that systems are explainable, justifiable, and trustworthy.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-course-4-evaluations-of-ai-applications-in-healthcare">📘 Course 4: Evaluations of AI Applications in Healthcare</a>
+          <ul>
+            <li><a href="#-module-1-ai-in-healthcare">🤖 Module 1: AI in Healthcare</a></li>
+            <li><a href="#-module-2-evaluations-of-ai-in-healthcare">🧪 Module 2: Evaluations of AI in Healthcare</a></li>
+            <li><a href="#-module-3-ai-deployment">🚀 Module 3: AI Deployment</a></li>
+            <li><a href="#-module-4-downstream-evaluations-bias-and-fairness">⚖️ Module 4: Downstream Evaluations: Bias and Fairness</a></li>
+            <li><a href="#-module-5-regulatory-environment-for-ai-in-healthcare">📜 Module 5: Regulatory Environment for AI in Healthcare</a></li>
+            <li><a href="#-module-6-best-ethical-practices-in-ai-for-healthcare">🧭 Module 6: Best Ethical Practices in AI for Healthcare</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

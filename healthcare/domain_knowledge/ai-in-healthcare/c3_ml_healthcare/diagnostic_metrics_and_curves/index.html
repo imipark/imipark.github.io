@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Diagnostic Metrics, Anchoring Perspectives, and Curve Interpretations
+  #
+
+This guide summarizes the core diagnostic metrics based on anchoring logic (condition vs. prediction), and how these metrics relate to ROC and PR curves — especially under balanced vs. imbalanced class distributions.
+
+
+  🔹 Test-Centric Metrics (Anchored on Actual Condition)
+  #
+
+
+Evaluates test performance, independent of disease prevalence.
+Anchor: Ground truth label (actual condition).
+
+
+  Positive-Focused (Sensitivity)
+  #
+
+
+Fix actual Positive label.
+Incorrect prediction: False Negative (FN).
+Pair: (TP, FN)
+Sensitivity = TP / (TP &#43; FN)
+
+
+  Negative-Focused (Specificity)
+  #
+
+
+Fix actual Negative label.
+Incorrect prediction: False Positive (FP).
+Pair: (TN, FP)
+Specificity = TN / (TN &#43; FP)
+
+
+
+  🔸 Outcome-Centric Metrics (Anchored on Prediction)
+  #
+
+
+Evaluates usefulness of test result, dependent on both test performance and prevalence.
+Anchor: Test result (prediction output).
+
+
+  Positive-Focused (PPV / Precision)
+  #
+
+
+Fix Positive prediction.
+Incorrect prediction: False Positive (FP).
+Pair: (TP, FP)
+Positive Predictive Value (PPV) = TP / (TP &#43; FP)
+
+
+  Negative-Focused (NPV)
+  #
+
+
+Fix Negative prediction.
+Incorrect prediction: False Negative (FN).
+Pair: (TN, FN)
+Negative Predictive Value (NPV) = TN / (TN &#43; FN)
+
+
+
+  📊 Extension to ROC and PR Curves
+  #
+
+
+  🎯 ROC Curve (Receiver Operating Characteristic)
+  #
+
+
+  What it does:
+  #
+
+
+Plots True Positive Rate (TPR) vs. False Positive Rate (FPR) across thresholds.
+
+TPR = Sensitivity = TP / (TP &#43; FN)
+FPR = 1 − Specificity = FP / (FP &#43; TN)
+
+
+These metrics are calculated by conditioning on the actual class labels, not predictions.
+
+
+  Anchoring View:
+  #
+
+
+✅ Test-Centric / Condition-Anchored
+Starts from actual condition and evaluates how well the test distinguishes between classes.
+Independent of class imbalance in its calculation.
+
+
+  Use Case:
+  #
+
+
+Suitable when both positive and negative classes are equally important.
+Can be misleading in highly imbalanced datasets (e.g., rare disease).
+
+
+
+  📈 Precision-Recall (PR) Curve
+  #
+
+
+  What it does:
+  #
+
+
+Plots Precision (PPV) vs. Recall (Sensitivity) across thresholds.
+
+Precision = TP / (TP &#43; FP)
+Recall = TP / (TP &#43; FN)
+
+
+
+
+  Anchoring View:
+  #
+
+
+✅ Outcome-Centric / Prediction-Anchored
+Focuses on the model’s positive predictions and how often they are correct.
+Particularly useful for evaluating performance on the positive class in imbalanced datasets.
+
+
+  Use Case:
+  #
+
+
+Ideal for problems with class imbalance, where the positive class is rare but important (e.g., cancer detection, fraud, anomaly detection).
+Answers: “When the model says positive, can I trust it?”
+
+
+
+  🧠 Summary of Metric Anchors and Curve Use
+  #
+
+
+  
+      
+          Curve Type
+          Metrics Used
+          Anchored On
+          Evaluation Focus
+          Best For
+      
+  
+  
+      
+          ROC
+          TPR (Sensitivity), FPR
+          Actual condition
+          Discrimination ability
+          Balanced class settings
+      
+      
+          PR
+          Precision (PPV), Recall
+          Prediction output
+          Precision of predictions
+          Imbalanced settings
+      
+  
+
+
+
+  💡 Takeaway:
+  #
+
+
+ROC Curve is a test-centric (condition-anchored) tool: great for balanced data, focuses on test performance across thresholds.
+PR Curve is an outcome-centric (prediction-anchored) tool: best for imbalanced data, reflects how reliable positive predictions are.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/diagnostic_metrics_and_curves/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Diagnostic Metrics, Anchoring Perspectives, and Curve Interpretations">
+  <meta property="og:description" content="Diagnostic Metrics, Anchoring Perspectives, and Curve Interpretations # This guide summarizes the core diagnostic metrics based on anchoring logic (condition vs. prediction), and how these metrics relate to ROC and PR curves — especially under balanced vs. imbalanced class distributions.
+🔹 Test-Centric Metrics (Anchored on Actual Condition) # Evaluates test performance, independent of disease prevalence. Anchor: Ground truth label (actual condition). Positive-Focused (Sensitivity) # Fix actual Positive label. Incorrect prediction: False Negative (FN). Pair: (TP, FN) Sensitivity = TP / (TP &#43; FN) Negative-Focused (Specificity) # Fix actual Negative label. Incorrect prediction: False Positive (FP). Pair: (TN, FP) Specificity = TN / (TN &#43; FP) 🔸 Outcome-Centric Metrics (Anchored on Prediction) # Evaluates usefulness of test result, dependent on both test performance and prevalence. Anchor: Test result (prediction output). Positive-Focused (PPV / Precision) # Fix Positive prediction. Incorrect prediction: False Positive (FP). Pair: (TP, FP) Positive Predictive Value (PPV) = TP / (TP &#43; FP) Negative-Focused (NPV) # Fix Negative prediction. Incorrect prediction: False Negative (FN). Pair: (TN, FN) Negative Predictive Value (NPV) = TN / (TN &#43; FN) 📊 Extension to ROC and PR Curves # 🎯 ROC Curve (Receiver Operating Characteristic) # What it does: # Plots True Positive Rate (TPR) vs. False Positive Rate (FPR) across thresholds. TPR = Sensitivity = TP / (TP &#43; FN) FPR = 1 − Specificity = FP / (FP &#43; TN) These metrics are calculated by conditioning on the actual class labels, not predictions. Anchoring View: # ✅ Test-Centric / Condition-Anchored Starts from actual condition and evaluates how well the test distinguishes between classes. Independent of class imbalance in its calculation. Use Case: # Suitable when both positive and negative classes are equally important. Can be misleading in highly imbalanced datasets (e.g., rare disease). 📈 Precision-Recall (PR) Curve # What it does: # Plots Precision (PPV) vs. Recall (Sensitivity) across thresholds. Precision = TP / (TP &#43; FP) Recall = TP / (TP &#43; FN) Anchoring View: # ✅ Outcome-Centric / Prediction-Anchored Focuses on the model’s positive predictions and how often they are correct. Particularly useful for evaluating performance on the positive class in imbalanced datasets. Use Case: # Ideal for problems with class imbalance, where the positive class is rare but important (e.g., cancer detection, fraud, anomaly detection). Answers: “When the model says positive, can I trust it?” 🧠 Summary of Metric Anchors and Curve Use # Curve Type Metrics Used Anchored On Evaluation Focus Best For ROC TPR (Sensitivity), FPR Actual condition Discrimination ability Balanced class settings PR Precision (PPV), Recall Prediction output Precision of predictions Imbalanced settings 💡 Takeaway: # ROC Curve is a test-centric (condition-anchored) tool: great for balanced data, focuses on test performance across thresholds. PR Curve is an outcome-centric (prediction-anchored) tool: best for imbalanced data, reflects how reliable positive predictions are.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Diagnostic Metrics, Anchoring Perspectives, and Curve Interpretations | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/diagnostic_metrics_and_curves/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b993935627c1d0fd5d9131feb60da0f04e0c324bfedb9df4cead55347a0d0f4d.js" integrity="sha256-uZOTVifB0P1dkTH&#43;tg2g8E4MMkv&#43;2530zq1VNHoND00=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a role="button" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-49f8a15fba102060fbec99923a9f7e7f" class="toggle" checked />
+    <label for="section-49f8a15fba102060fbec99923a9f7e7f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fe994b0524505ef83c5591fe607d72e" class="toggle" checked />
+    <label for="section-8fe994b0524505ef83c5591fe607d72e" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-786aee9ce5c7a34804dfdaaae1c79408" class="toggle"  />
+    <label for="section-786aee9ce5c7a34804dfdaaae1c79408" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Diagnostic Metrics, Anchoring Perspectives, and Curve Interpretations</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#diagnostic-metrics-anchoring-perspectives-and-curve-interpretations">Diagnostic Metrics, Anchoring Perspectives, and Curve Interpretations</a>
+      <ul>
+        <li><a href="#-test-centric-metrics-anchored-on-actual-condition">🔹 Test-Centric Metrics (Anchored on Actual Condition)</a>
+          <ul>
+            <li><a href="#positive-focused-sensitivity">Positive-Focused (Sensitivity)</a></li>
+            <li><a href="#negative-focused-specificity">Negative-Focused (Specificity)</a></li>
+          </ul>
+        </li>
+        <li><a href="#-outcome-centric-metrics-anchored-on-prediction">🔸 Outcome-Centric Metrics (Anchored on Prediction)</a>
+          <ul>
+            <li><a href="#positive-focused-ppv--precision">Positive-Focused (PPV / Precision)</a></li>
+            <li><a href="#negative-focused-npv">Negative-Focused (NPV)</a></li>
+          </ul>
+        </li>
+        <li><a href="#-extension-to-roc-and-pr-curves">📊 Extension to ROC and PR Curves</a>
+          <ul>
+            <li><a href="#-roc-curve-receiver-operating-characteristic">🎯 ROC Curve (Receiver Operating Characteristic)</a></li>
+            <li><a href="#-precision-recall-pr-curve">📈 Precision-Recall (PR) Curve</a></li>
+          </ul>
+        </li>
+        <li><a href="#-summary-of-metric-anchors-and-curve-use">🧠 Summary of Metric Anchors and Curve Use</a></li>
+        <li><a href="#-takeaway">💡 Takeaway:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="diagnostic-metrics-anchoring-perspectives-and-curve-interpretations">
+  Diagnostic Metrics, Anchoring Perspectives, and Curve Interpretations
+  <a class="anchor" href="#diagnostic-metrics-anchoring-perspectives-and-curve-interpretations">#</a>
+</h1>
+<p>This guide summarizes the core diagnostic metrics based on anchoring logic (condition vs. prediction), and how these metrics relate to ROC and PR curves — especially under balanced vs. imbalanced class distributions.</p>
+<hr>
+<h2 id="-test-centric-metrics-anchored-on-actual-condition">
+  🔹 Test-Centric Metrics (Anchored on Actual Condition)
+  <a class="anchor" href="#-test-centric-metrics-anchored-on-actual-condition">#</a>
+</h2>
+<ul>
+<li>Evaluates <strong>test performance</strong>, <strong>independent</strong> of disease prevalence.</li>
+<li>Anchor: <strong>Ground truth label</strong> (actual condition).</li>
+</ul>
+<h3 id="positive-focused-sensitivity">
+  Positive-Focused (Sensitivity)
+  <a class="anchor" href="#positive-focused-sensitivity">#</a>
+</h3>
+<ul>
+<li>Fix actual <strong>Positive</strong> label.</li>
+<li>Incorrect prediction: <strong>False Negative (FN)</strong>.</li>
+<li>Pair: (TP, FN)</li>
+<li><strong>Sensitivity</strong> = TP / (TP + FN)</li>
+</ul>
+<h3 id="negative-focused-specificity">
+  Negative-Focused (Specificity)
+  <a class="anchor" href="#negative-focused-specificity">#</a>
+</h3>
+<ul>
+<li>Fix actual <strong>Negative</strong> label.</li>
+<li>Incorrect prediction: <strong>False Positive (FP)</strong>.</li>
+<li>Pair: (TN, FP)</li>
+<li><strong>Specificity</strong> = TN / (TN + FP)</li>
+</ul>
+<hr>
+<h2 id="-outcome-centric-metrics-anchored-on-prediction">
+  🔸 Outcome-Centric Metrics (Anchored on Prediction)
+  <a class="anchor" href="#-outcome-centric-metrics-anchored-on-prediction">#</a>
+</h2>
+<ul>
+<li>Evaluates <strong>usefulness of test result</strong>, dependent on <strong>both test performance and prevalence</strong>.</li>
+<li>Anchor: <strong>Test result</strong> (prediction output).</li>
+</ul>
+<h3 id="positive-focused-ppv--precision">
+  Positive-Focused (PPV / Precision)
+  <a class="anchor" href="#positive-focused-ppv--precision">#</a>
+</h3>
+<ul>
+<li>Fix <strong>Positive</strong> prediction.</li>
+<li>Incorrect prediction: <strong>False Positive (FP)</strong>.</li>
+<li>Pair: (TP, FP)</li>
+<li><strong>Positive Predictive Value (PPV)</strong> = TP / (TP + FP)</li>
+</ul>
+<h3 id="negative-focused-npv">
+  Negative-Focused (NPV)
+  <a class="anchor" href="#negative-focused-npv">#</a>
+</h3>
+<ul>
+<li>Fix <strong>Negative</strong> prediction.</li>
+<li>Incorrect prediction: <strong>False Negative (FN)</strong>.</li>
+<li>Pair: (TN, FN)</li>
+<li><strong>Negative Predictive Value (NPV)</strong> = TN / (TN + FN)</li>
+</ul>
+<hr>
+<h2 id="-extension-to-roc-and-pr-curves">
+  📊 Extension to ROC and PR Curves
+  <a class="anchor" href="#-extension-to-roc-and-pr-curves">#</a>
+</h2>
+<h3 id="-roc-curve-receiver-operating-characteristic">
+  🎯 ROC Curve (Receiver Operating Characteristic)
+  <a class="anchor" href="#-roc-curve-receiver-operating-characteristic">#</a>
+</h3>
+<h4 id="what-it-does">
+  What it does:
+  <a class="anchor" href="#what-it-does">#</a>
+</h4>
+<ul>
+<li>Plots <strong>True Positive Rate (TPR)</strong> vs. <strong>False Positive Rate (FPR)</strong> across thresholds.
+<ul>
+<li><strong>TPR = Sensitivity = TP / (TP + FN)</strong></li>
+<li><strong>FPR = 1 − Specificity = FP / (FP + TN)</strong></li>
+</ul>
+</li>
+<li>These metrics are calculated by conditioning on the <strong>actual class labels</strong>, not predictions.</li>
+</ul>
+<h4 id="anchoring-view">
+  Anchoring View:
+  <a class="anchor" href="#anchoring-view">#</a>
+</h4>
+<ul>
+<li>✅ <strong>Test-Centric / Condition-Anchored</strong></li>
+<li>Starts from actual condition and evaluates how well the test distinguishes between classes.</li>
+<li>Independent of class imbalance in its calculation.</li>
+</ul>
+<h4 id="use-case">
+  Use Case:
+  <a class="anchor" href="#use-case">#</a>
+</h4>
+<ul>
+<li>Suitable when both positive and negative classes are equally important.</li>
+<li>Can be misleading in <strong>highly imbalanced</strong> datasets (e.g., rare disease).</li>
+</ul>
+<hr>
+<h3 id="-precision-recall-pr-curve">
+  📈 Precision-Recall (PR) Curve
+  <a class="anchor" href="#-precision-recall-pr-curve">#</a>
+</h3>
+<h4 id="what-it-does-1">
+  What it does:
+  <a class="anchor" href="#what-it-does-1">#</a>
+</h4>
+<ul>
+<li>Plots <strong>Precision (PPV)</strong> vs. <strong>Recall (Sensitivity)</strong> across thresholds.
+<ul>
+<li><strong>Precision = TP / (TP + FP)</strong></li>
+<li><strong>Recall = TP / (TP + FN)</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="anchoring-view-1">
+  Anchoring View:
+  <a class="anchor" href="#anchoring-view-1">#</a>
+</h4>
+<ul>
+<li>✅ <strong>Outcome-Centric / Prediction-Anchored</strong></li>
+<li>Focuses on the model’s <strong>positive predictions</strong> and how often they are correct.</li>
+<li>Particularly useful for evaluating performance on the <strong>positive class</strong> in imbalanced datasets.</li>
+</ul>
+<h4 id="use-case-1">
+  Use Case:
+  <a class="anchor" href="#use-case-1">#</a>
+</h4>
+<ul>
+<li>Ideal for problems with <strong>class imbalance</strong>, where the positive class is rare but important (e.g., cancer detection, fraud, anomaly detection).</li>
+<li>Answers: “When the model says positive, can I trust it?”</li>
+</ul>
+<hr>
+<h2 id="-summary-of-metric-anchors-and-curve-use">
+  🧠 Summary of Metric Anchors and Curve Use
+  <a class="anchor" href="#-summary-of-metric-anchors-and-curve-use">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Curve Type</th>
+          <th>Metrics Used</th>
+          <th>Anchored On</th>
+          <th>Evaluation Focus</th>
+          <th>Best For</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>ROC</strong></td>
+          <td>TPR (Sensitivity), FPR</td>
+          <td>Actual condition</td>
+          <td>Discrimination ability</td>
+          <td>Balanced class settings</td>
+      </tr>
+      <tr>
+          <td><strong>PR</strong></td>
+          <td>Precision (PPV), Recall</td>
+          <td>Prediction output</td>
+          <td>Precision of predictions</td>
+          <td>Imbalanced settings</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-takeaway">
+  💡 Takeaway:
+  <a class="anchor" href="#-takeaway">#</a>
+</h2>
+<ul>
+<li><strong>ROC Curve</strong> is a <strong>test-centric (condition-anchored)</strong> tool: great for balanced data, focuses on test performance across thresholds.</li>
+<li><strong>PR Curve</strong> is an <strong>outcome-centric (prediction-anchored)</strong> tool: best for imbalanced data, reflects how reliable positive predictions are.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#diagnostic-metrics-anchoring-perspectives-and-curve-interpretations">Diagnostic Metrics, Anchoring Perspectives, and Curve Interpretations</a>
+      <ul>
+        <li><a href="#-test-centric-metrics-anchored-on-actual-condition">🔹 Test-Centric Metrics (Anchored on Actual Condition)</a>
+          <ul>
+            <li><a href="#positive-focused-sensitivity">Positive-Focused (Sensitivity)</a></li>
+            <li><a href="#negative-focused-specificity">Negative-Focused (Specificity)</a></li>
+          </ul>
+        </li>
+        <li><a href="#-outcome-centric-metrics-anchored-on-prediction">🔸 Outcome-Centric Metrics (Anchored on Prediction)</a>
+          <ul>
+            <li><a href="#positive-focused-ppv--precision">Positive-Focused (PPV / Precision)</a></li>
+            <li><a href="#negative-focused-npv">Negative-Focused (NPV)</a></li>
+          </ul>
+        </li>
+        <li><a href="#-extension-to-roc-and-pr-curves">📊 Extension to ROC and PR Curves</a>
+          <ul>
+            <li><a href="#-roc-curve-receiver-operating-characteristic">🎯 ROC Curve (Receiver Operating Characteristic)</a></li>
+            <li><a href="#-precision-recall-pr-curve">📈 Precision-Recall (PR) Curve</a></li>
+          </ul>
+        </li>
+        <li><a href="#-summary-of-metric-anchors-and-curve-use">🧠 Summary of Metric Anchors and Curve Use</a></li>
+        <li><a href="#-takeaway">💡 Takeaway:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Rule-Based Electronic Phenotyping Example: Type 2 Diabetes
+  #
+
+This notebook walks through the process of defining an electronic phenotype using a rule-based approach, with a focus on Type 2 Diabetes. The pipeline includes concept mapping, multi-patient evaluation, and phenotype logic visualization.
+
+
+  🔹 Step 1: Simulated Vocabulary Lookup (UMLS / OMOP)
+  #
+
+We define the clinical concept (Type 2 Diabetes) using relevant ICD-10 and RxNorm codes.
+# Simulated UMLS/OMOP vocab mapping
+UMLS_LOOKUP = {
+    &#34;type2_diabetes&#34;: {
+        &#34;icd10&#34;: {&#34;E11.9&#34;, &#34;E11.65&#34;, &#34;E11.00&#34;},
+        &#34;rxnorm&#34;: {&#34;metformin&#34;, &#34;insulin&#34;},
+    }
+}
+
+
+  🔹 Step 2: Multi-Patient Phenotyping Logic
+  #
+
+Each patient is checked for:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Rule-Based Electronic Phenotyping Example: Type 2 Diabetes">
+  <meta property="og:description" content="Rule-Based Electronic Phenotyping Example: Type 2 Diabetes # This notebook walks through the process of defining an electronic phenotype using a rule-based approach, with a focus on Type 2 Diabetes. The pipeline includes concept mapping, multi-patient evaluation, and phenotype logic visualization.
+🔹 Step 1: Simulated Vocabulary Lookup (UMLS / OMOP) # We define the clinical concept (Type 2 Diabetes) using relevant ICD-10 and RxNorm codes.
+# Simulated UMLS/OMOP vocab mapping UMLS_LOOKUP = { &#34;type2_diabetes&#34;: { &#34;icd10&#34;: {&#34;E11.9&#34;, &#34;E11.65&#34;, &#34;E11.00&#34;}, &#34;rxnorm&#34;: {&#34;metformin&#34;, &#34;insulin&#34;}, } } 🔹 Step 2: Multi-Patient Phenotyping Logic # Each patient is checked for:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Rule-Based Electronic Phenotyping Example: Type 2 Diabetes | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b993935627c1d0fd5d9131feb60da0f04e0c324bfedb9df4cead55347a0d0f4d.js" integrity="sha256-uZOTVifB0P1dkTH&#43;tg2g8E4MMkv&#43;2530zq1VNHoND00=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a role="button" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-49f8a15fba102060fbec99923a9f7e7f" class="toggle" checked />
+    <label for="section-49f8a15fba102060fbec99923a9f7e7f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fe994b0524505ef83c5591fe607d72e" class="toggle" checked />
+    <label for="section-8fe994b0524505ef83c5591fe607d72e" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-786aee9ce5c7a34804dfdaaae1c79408" class="toggle"  />
+    <label for="section-786aee9ce5c7a34804dfdaaae1c79408" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Rule-Based Electronic Phenotyping Example: Type 2 Diabetes</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rule-based-electronic-phenotyping-example-type-2-diabetes">Rule-Based Electronic Phenotyping Example: Type 2 Diabetes</a>
+      <ul>
+        <li><a href="#-step-1-simulated-vocabulary-lookup-umls--omop">🔹 Step 1: Simulated Vocabulary Lookup (UMLS / OMOP)</a></li>
+        <li><a href="#-step-2-multi-patient-phenotyping-logic">🔹 Step 2: Multi-Patient Phenotyping Logic</a></li>
+        <li><a href="#-step-3-phenotype-logic-flowchart">🔹 Step 3: Phenotype Logic Flowchart</a></li>
+        <li><a href="#-summary">✅ Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="rule-based-electronic-phenotyping-example-type-2-diabetes">
+  Rule-Based Electronic Phenotyping Example: Type 2 Diabetes
+  <a class="anchor" href="#rule-based-electronic-phenotyping-example-type-2-diabetes">#</a>
+</h1>
+<p>This notebook walks through the process of defining an <strong>electronic phenotype</strong> using a <strong>rule-based</strong> approach, with a focus on <strong>Type 2 Diabetes</strong>. The pipeline includes concept mapping, multi-patient evaluation, and phenotype logic visualization.</p>
+<hr>
+<h2 id="-step-1-simulated-vocabulary-lookup-umls--omop">
+  🔹 Step 1: Simulated Vocabulary Lookup (UMLS / OMOP)
+  <a class="anchor" href="#-step-1-simulated-vocabulary-lookup-umls--omop">#</a>
+</h2>
+<p>We define the clinical concept (Type 2 Diabetes) using relevant ICD-10 and RxNorm codes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Simulated UMLS/OMOP vocab mapping</span>
+</span></span><span style="display:flex;"><span>UMLS_LOOKUP <span style="color:#04a5e5;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#40a02b">&#34;type2_diabetes&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;icd10&#34;</span>: {<span style="color:#40a02b">&#34;E11.9&#34;</span>, <span style="color:#40a02b">&#34;E11.65&#34;</span>, <span style="color:#40a02b">&#34;E11.00&#34;</span>},
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;rxnorm&#34;</span>: {<span style="color:#40a02b">&#34;metformin&#34;</span>, <span style="color:#40a02b">&#34;insulin&#34;</span>},
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="-step-2-multi-patient-phenotyping-logic">
+  🔹 Step 2: Multi-Patient Phenotyping Logic
+  <a class="anchor" href="#-step-2-multi-patient-phenotyping-logic">#</a>
+</h2>
+<p>Each patient is checked for:</p>
+<ul>
+<li>Presence of ≥2 relevant ICD-10 codes</li>
+<li>Any matching diabetes-related medication (RxNorm)</li>
+<li>Start date of phenotype based on first matching code</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">typing</span> <span style="color:#179299">import</span> List, Dict, Set
+</span></span><span style="display:flex;"><span><span style="color:#179299">from</span> <span style="color:#fe640b">datetime</span> <span style="color:#179299">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">def</span> <span style="color:#1e66f5">has_required_codes</span>(patient, valid_codes: Set[<span style="color:#04a5e5">str</span>], source_field: <span style="color:#04a5e5">str</span>, min_count<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>) <span style="color:#04a5e5;font-weight:bold">-&gt;</span> <span style="color:#04a5e5">bool</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">return</span> <span style="color:#04a5e5">len</span>([code <span style="color:#8839ef">for</span> code <span style="color:#04a5e5;font-weight:bold">in</span> patient[source_field] <span style="color:#8839ef">if</span> code <span style="color:#04a5e5;font-weight:bold">in</span> valid_codes]) <span style="color:#04a5e5;font-weight:bold">&gt;=</span> min_count
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">def</span> <span style="color:#1e66f5">find_start_date</span>(patient, valid_codes: Set[<span style="color:#04a5e5">str</span>], code_dates: Dict[<span style="color:#04a5e5">str</span>, List[<span style="color:#04a5e5">str</span>]]) <span style="color:#04a5e5;font-weight:bold">-&gt;</span> <span style="color:#04a5e5">str</span>:
+</span></span><span style="display:flex;"><span>    dates <span style="color:#04a5e5;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">for</span> code <span style="color:#04a5e5;font-weight:bold">in</span> valid_codes:
+</span></span><span style="display:flex;"><span>        <span style="color:#8839ef">if</span> code <span style="color:#04a5e5;font-weight:bold">in</span> code_dates:
+</span></span><span style="display:flex;"><span>            dates<span style="color:#04a5e5;font-weight:bold">.</span>extend(code_dates[code])
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">return</span> <span style="color:#04a5e5">min</span>(dates) <span style="color:#8839ef">if</span> dates <span style="color:#8839ef">else</span> <span style="color:#fe640b">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">def</span> <span style="color:#1e66f5">apply_phenotype_definition</span>(patient, concept_map) <span style="color:#04a5e5;font-weight:bold">-&gt;</span> Dict:
+</span></span><span style="display:flex;"><span>    icd_match <span style="color:#04a5e5;font-weight:bold">=</span> has_required_codes(patient, concept_map[<span style="color:#40a02b">&#34;icd10&#34;</span>], <span style="color:#40a02b">&#34;icd10_codes&#34;</span>, min_count<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">2</span>)
+</span></span><span style="display:flex;"><span>    med_match <span style="color:#04a5e5;font-weight:bold">=</span> has_required_codes(patient, concept_map[<span style="color:#40a02b">&#34;rxnorm&#34;</span>], <span style="color:#40a02b">&#34;medications&#34;</span>)
+</span></span><span style="display:flex;"><span>    start_date <span style="color:#04a5e5;font-weight:bold">=</span> find_start_date(patient, concept_map[<span style="color:#40a02b">&#34;icd10&#34;</span>] <span style="color:#04a5e5;font-weight:bold">|</span> concept_map[<span style="color:#40a02b">&#34;rxnorm&#34;</span>], patient[<span style="color:#40a02b">&#34;code_dates&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;phenotype_positive&#34;</span>: icd_match <span style="color:#04a5e5;font-weight:bold">and</span> med_match,
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;has_diabetes_codes&#34;</span>: icd_match,
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;has_diabetes_med&#34;</span>: med_match,
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;start_date&#34;</span>: start_date
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Sample patient data (multiple patients)</span>
+</span></span><span style="display:flex;"><span>patients <span style="color:#04a5e5;font-weight:bold">=</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;id&#34;</span>: <span style="color:#40a02b">&#34;P001&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;icd10_codes&#34;</span>: [<span style="color:#40a02b">&#34;E11.9&#34;</span>, <span style="color:#40a02b">&#34;E11.9&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;medications&#34;</span>: [<span style="color:#40a02b">&#34;metformin&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;code_dates&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#40a02b">&#34;E11.9&#34;</span>: [<span style="color:#40a02b">&#34;2023-01-01&#34;</span>, <span style="color:#40a02b">&#34;2023-03-01&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#40a02b">&#34;metformin&#34;</span>: [<span style="color:#40a02b">&#34;2023-01-05&#34;</span>]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;id&#34;</span>: <span style="color:#40a02b">&#34;P002&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;icd10_codes&#34;</span>: [<span style="color:#40a02b">&#34;I10&#34;</span>],  <span style="color:#9ca0b0;font-style:italic"># Hypertension only</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;medications&#34;</span>: [<span style="color:#40a02b">&#34;lisinopril&#34;</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#40a02b">&#34;code_dates&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#40a02b">&#34;I10&#34;</span>: [<span style="color:#40a02b">&#34;2023-04-01&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#40a02b">&#34;lisinopril&#34;</span>: [<span style="color:#40a02b">&#34;2023-04-05&#34;</span>]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Apply phenotype to all</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#04a5e5;font-weight:bold">=</span> {}
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> patient <span style="color:#04a5e5;font-weight:bold">in</span> patients:
+</span></span><span style="display:flex;"><span>    result <span style="color:#04a5e5;font-weight:bold">=</span> apply_phenotype_definition(patient, UMLS_LOOKUP[<span style="color:#40a02b">&#34;type2_diabetes&#34;</span>])
+</span></span><span style="display:flex;"><span>    results[patient[<span style="color:#40a02b">&#34;id&#34;</span>]] <span style="color:#04a5e5;font-weight:bold">=</span> result
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Show results</span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> pid, res <span style="color:#04a5e5;font-weight:bold">in</span> results<span style="color:#04a5e5;font-weight:bold">.</span>items():
+</span></span><span style="display:flex;"><span>    <span style="color:#04a5e5">print</span>(<span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;</span><span style="color:#40a02b">{</span>pid<span style="color:#40a02b">}</span><span style="color:#40a02b">: </span><span style="color:#40a02b">{</span>res<span style="color:#40a02b">}</span><span style="color:#40a02b">&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="-step-3-phenotype-logic-flowchart">
+  🔹 Step 3: Phenotype Logic Flowchart
+  <a class="anchor" href="#-step-3-phenotype-logic-flowchart">#</a>
+</h2>
+<p>Below is a visual flowchart that shows the phenotype logic step-by-step.</p>
+<figure><img src="/images/c2-m5-flowchart.png" width="400px"><figcaption>
+      <h4>Alt text</h4>
+    </figcaption>
+</figure>
+
+<hr>
+<h2 id="-summary">
+  ✅ Summary
+  <a class="anchor" href="#-summary">#</a>
+</h2>
+<p>This markdown covers:</p>
+<ul>
+<li>Rule-based phenotyping using ICD and RxNorm codes</li>
+<li>Handling multiple patients</li>
+<li>Simulated code-date structure</li>
+<li>Logical combination of conditions (AND logic)</li>
+<li>A visual diagram of the rule logic</li>
+</ul>
+<p>This framework can be expanded to:</p>
+<ul>
+<li>Include real UMLS/OMOP lookups via API</li>
+<li>Support more complex logic (time gaps, lab thresholds)</li>
+<li>Incorporate chart-reviewed gold standards</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rule-based-electronic-phenotyping-example-type-2-diabetes">Rule-Based Electronic Phenotyping Example: Type 2 Diabetes</a>
+      <ul>
+        <li><a href="#-step-1-simulated-vocabulary-lookup-umls--omop">🔹 Step 1: Simulated Vocabulary Lookup (UMLS / OMOP)</a></li>
+        <li><a href="#-step-2-multi-patient-phenotyping-logic">🔹 Step 2: Multi-Patient Phenotyping Logic</a></li>
+        <li><a href="#-step-3-phenotype-logic-flowchart">🔹 Step 3: Phenotype Logic Flowchart</a></li>
+        <li><a href="#-summary">✅ Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
