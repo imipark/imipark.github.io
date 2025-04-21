@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Day 2 – Embeddings &amp; Vector Databases – CoT Summary
+  Day 2 – Embeddings &amp; Vector Databases
   #
 
-
-
-  Introduction
-  #
 
 
   1. Why Embeddings?
@@ -18,21 +14,27 @@
 
 We begin with the core problem of representing diverse data types. Images, text, audio, and structured data all need to be compared, retrieved, and clustered. Embeddings map these into a shared vector space where similarity can be computed numerically.
 
-→ how can we measure and preserve semantic meaning across different data types?">
+→ how can we measure and preserve semantic meaning across different data types?
+
+  2. Mapping Data to Vector Space
+  #
+
+Embeddings reduce dimensionality while preserving meaning. For example, just like latitude and longitude embed Earth’s surface into 2D coordinates, BERT embeds text into 768D space. Distances represent semantic similarity.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/">
   <meta property="og:site_name" content="AI Reasoning">
-  <meta property="og:title" content="Day 2 – Embeddings & Vector Databases – CoT Summary">
-  <meta property="og:description" content="Day 2 – Embeddings &amp; Vector Databases – CoT Summary # Introduction # 1. Why Embeddings? # We begin with the core problem of representing diverse data types. Images, text, audio, and structured data all need to be compared, retrieved, and clustered. Embeddings map these into a shared vector space where similarity can be computed numerically.
-→ how can we measure and preserve semantic meaning across different data types?">
+  <meta property="og:title" content="Day 2 – Embeddings & Vector Databases">
+  <meta property="og:description" content="Day 2 – Embeddings &amp; Vector Databases # 1. Why Embeddings? # We begin with the core problem of representing diverse data types. Images, text, audio, and structured data all need to be compared, retrieved, and clustered. Embeddings map these into a shared vector space where similarity can be computed numerically.
+→ how can we measure and preserve semantic meaning across different data types?
+2. Mapping Data to Vector Space # Embeddings reduce dimensionality while preserving meaning. For example, just like latitude and longitude embed Earth’s surface into 2D coordinates, BERT embeds text into 768D space. Distances represent semantic similarity.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="ai-workflows">
-<title>Day 2 – Embeddings &amp; Vector Databases – CoT Summary | AI Reasoning</title>
+<title>Day 2 – Embeddings &amp; Vector Databases | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.b993935627c1d0fd5d9131feb60da0f04e0c324bfedb9df4cead55347a0d0f4d.js" integrity="sha256-uZOTVifB0P1dkTH&#43;tg2g8E4MMkv&#43;2530zq1VNHoND00=" crossorigin="anonymous"></script>
@@ -155,7 +157,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
   
 
         </li>
@@ -168,7 +170,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
   
 
         </li>
@@ -181,7 +183,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="active">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="active">Day 2 – Embeddings &amp; Vector Databases</a>
   
 
         </li>
@@ -194,7 +196,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
   
 
         </li>
@@ -207,7 +209,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
   
 
         </li>
@@ -220,7 +222,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
   
 
         </li>
@@ -773,7 +775,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Day 2 – Embeddings &amp; Vector Databases – CoT Summary</h3>
+  <h3>Day 2 – Embeddings &amp; Vector Databases</h3>
 
   <label for="toc-control">
     
@@ -789,86 +791,30 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#day-2--embeddings--vector-databases--cot-summary">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
+    <li>
       <ul>
-        <li><a href="#introduction">Introduction</a>
+        <li><a href="#day-2--embeddings--vector-databases">Day 2 – Embeddings &amp; Vector Databases</a>
           <ul>
             <li><a href="#1-why-embeddings">1. Why Embeddings?</a></li>
-          </ul>
-        </li>
-        <li><a href="#embedding-design-and-intuition">Embedding Design and Intuition</a>
-          <ul>
             <li><a href="#2-mapping-data-to-vector-space">2. Mapping Data to Vector Space</a></li>
             <li><a href="#3-key-applications">3. Key Applications</a></li>
-          </ul>
-        </li>
-        <li><a href="#evaluating-embeddings">Evaluating Embeddings</a>
-          <ul>
             <li><a href="#4-quality-metrics">4. Quality Metrics</a></li>
-          </ul>
-        </li>
-        <li><a href="#embeddings-in-retrieval">Embeddings in Retrieval</a>
-          <ul>
             <li><a href="#5-rag-and-semantic-search">5. RAG and Semantic Search</a></li>
             <li><a href="#6-operational-considerations">6. Operational Considerations</a></li>
-          </ul>
-        </li>
-        <li><a href="#types-of-embeddings">Types of Embeddings</a>
-          <ul>
             <li><a href="#7-text-embedding-lifecycle">7. Text Embedding Lifecycle</a></li>
             <li><a href="#8-word-embeddings-glove-word2vec-swivel">8. Word Embeddings: GloVe, Word2Vec, SWIVEL</a></li>
-          </ul>
-        </li>
-        <li><a href="#document-embeddings">Document Embeddings</a>
-          <ul>
             <li><a href="#9-shallow-and-deep-models">9. Shallow and Deep Models</a></li>
             <li><a href="#10-bert-and-beyond">10. BERT and Beyond</a></li>
-          </ul>
-        </li>
-        <li><a href="#multimodal-embeddings">Multimodal Embeddings</a>
-          <ul>
             <li><a href="#11-images-and-multimodal-representations">11. Images and Multimodal Representations</a></li>
-          </ul>
-        </li>
-        <li><a href="#structured-and-graph-embeddings">Structured and Graph Embeddings</a>
-          <ul>
             <li><a href="#12-embeddings-for-structured-data">12. Embeddings for Structured Data</a></li>
             <li><a href="#13-user-item--graph-embeddings">13. User-Item &amp; Graph Embeddings</a></li>
-          </ul>
-        </li>
-        <li><a href="#embedding-training">Embedding Training</a>
-          <ul>
             <li><a href="#14-dual-encoder--contrastive-loss">14. Dual Encoder &amp; Contrastive Loss</a></li>
-          </ul>
-        </li>
-        <li><a href="#vector-search-fundamentals">Vector Search Fundamentals</a>
-          <ul>
             <li><a href="#15-vector-vs-keyword-search">15. Vector vs. Keyword Search</a></li>
-          </ul>
-        </li>
-        <li><a href="#scalable-ann-search">Scalable ANN Search</a>
-          <ul>
             <li><a href="#16-efficient-nearest-neighbor-techniques">16. Efficient Nearest Neighbor Techniques</a></li>
-          </ul>
-        </li>
-        <li><a href="#vector-databases--ann-infrastructure">Vector Databases &amp; ANN Infrastructure</a>
-          <ul>
             <li><a href="#17-what-are-vector-databases">17. What Are Vector Databases?</a></li>
             <li><a href="#18-operational-considerations">18. Operational Considerations</a></li>
-          </ul>
-        </li>
-        <li><a href="#embedding-applications">Embedding Applications</a>
-          <ul>
             <li><a href="#19-core-use-cases">19. Core Use Cases</a></li>
-          </ul>
-        </li>
-        <li><a href="#rag-and-grounded-generation">RAG and Grounded Generation</a>
-          <ul>
             <li><a href="#20-retrieval-augmented-generation-rag">20. Retrieval-Augmented Generation (RAG)</a></li>
-          </ul>
-        </li>
-        <li><a href="#final-thoughts">Final Thoughts</a>
-          <ul>
             <li><a href="#21-key-takeaways">21. Key Takeaways</a></li>
           </ul>
         </li>
@@ -886,33 +832,25 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="day-2--embeddings--vector-databases--cot-summary">
-  Day 2 – Embeddings &amp; Vector Databases – CoT Summary
-  <a class="anchor" href="#day-2--embeddings--vector-databases--cot-summary">#</a>
-</h1>
-<hr>
-<h2 id="introduction">
-  Introduction
-  <a class="anchor" href="#introduction">#</a>
+  <article class="markdown book-article"><h2 id="day-2--embeddings--vector-databases">
+  Day 2 – Embeddings &amp; Vector Databases
+  <a class="anchor" href="#day-2--embeddings--vector-databases">#</a>
 </h2>
+<hr>
 <h3 id="1-why-embeddings">
   1. Why Embeddings?
   <a class="anchor" href="#1-why-embeddings">#</a>
 </h3>
 <p>We begin with the <em>core problem of representing diverse data types</em>. Images, text, audio, and structured data all need to be compared, retrieved, and clustered. Embeddings map these into a shared vector space where similarity can be computed numerically.</p>
 <blockquote>
-<p>→ <strong>how can we measure and preserve semantic meaning across different data types?</strong></p></blockquote>
-<h2 id="embedding-design-and-intuition">
-  Embedding Design and Intuition
-  <a class="anchor" href="#embedding-design-and-intuition">#</a>
-</h2>
+<p>→ how can we measure and preserve semantic meaning across different data types?</p></blockquote>
 <h3 id="2-mapping-data-to-vector-space">
   2. Mapping Data to Vector Space
   <a class="anchor" href="#2-mapping-data-to-vector-space">#</a>
 </h3>
 <p>Embeddings reduce dimensionality while preserving meaning. For example, just like latitude and longitude embed Earth’s surface into 2D coordinates, BERT embeds text into 768D space. Distances represent semantic similarity.</p>
 <blockquote>
-<p>→ <strong>how do different embedding models impact representation fidelity and downstream performance?</strong></p></blockquote>
+<p>→ how do different embedding models impact representation fidelity and downstream performance?</p></blockquote>
 <h3 id="3-key-applications">
   3. Key Applications
   <a class="anchor" href="#3-key-applications">#</a>
@@ -925,11 +863,7 @@ https://github.com/alex-shpak/hugo-book
 <li>Multimodal integration (e.g., text + image)</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do we design joint embeddings for multi-modal tasks?</strong></p></blockquote>
-<h2 id="evaluating-embeddings">
-  Evaluating Embeddings
-  <a class="anchor" href="#evaluating-embeddings">#</a>
-</h2>
+<p>→ how do we design joint embeddings for multi-modal tasks?</p></blockquote>
 <h3 id="4-quality-metrics">
   4. Quality Metrics
   <a class="anchor" href="#4-quality-metrics">#</a>
@@ -941,11 +875,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>nDCG</strong>: Are the most relevant ranked highest?</li>
 </ul>
 <blockquote>
-<p>→ <strong>how can evaluation help us improve and select embedding models for specific applications?</strong></p></blockquote>
-<h2 id="embeddings-in-retrieval">
-  Embeddings in Retrieval
-  <a class="anchor" href="#embeddings-in-retrieval">#</a>
-</h2>
+<p>→ how can evaluation help us improve and select embedding models for specific applications?</p></blockquote>
 <h3 id="5-rag-and-semantic-search">
   5. RAG and Semantic Search
   <a class="anchor" href="#5-rag-and-semantic-search">#</a>
@@ -958,7 +888,7 @@ https://github.com/alex-shpak/hugo-book
 <li>Feeding results into an LLM for synthesis</li>
 </ul>
 <blockquote>
-<p>→ <strong>how does the embedding model choice impact the quality of LLM-augmented answers?</strong></p></blockquote>
+<p>→ how does the embedding model choice impact the quality of LLM-augmented answers?</p></blockquote>
 <h3 id="6-operational-considerations">
   6. Operational Considerations
   <a class="anchor" href="#6-operational-considerations">#</a>
@@ -970,11 +900,7 @@ https://github.com/alex-shpak/hugo-book
 <li>Provide upgrade paths (e.g., Vertex AI APIs)</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do we future-proof embedding systems in production?</strong></p></blockquote>
-<h2 id="types-of-embeddings">
-  Types of Embeddings
-  <a class="anchor" href="#types-of-embeddings">#</a>
-</h2>
+<p>→ how do we future-proof embedding systems in production?</p></blockquote>
 <h3 id="7-text-embedding-lifecycle">
   7. Text Embedding Lifecycle
   <a class="anchor" href="#7-text-embedding-lifecycle">#</a>
@@ -985,7 +911,7 @@ https://github.com/alex-shpak/hugo-book
 <li>Traditional one-hot lacks semantics, embeddings retain contextual meaning</li>
 </ul>
 <blockquote>
-<p>→ <strong>how does token context influence the quality of embeddings?</strong></p></blockquote>
+<p>→ how does token context influence the quality of embeddings?</p></blockquote>
 <h3 id="8-word-embeddings-glove-word2vec-swivel">
   8. Word Embeddings: GloVe, Word2Vec, SWIVEL
   <a class="anchor" href="#8-word-embeddings-glove-word2vec-swivel">#</a>
@@ -997,11 +923,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>SWIVEL</strong>: Fast training, handles rare terms, parallelizable</li>
 </ul>
 <blockquote>
-<p>→ <strong>are static embeddings enough, or do we need context-aware representations?</strong></p></blockquote>
-<h2 id="document-embeddings">
-  Document Embeddings
-  <a class="anchor" href="#document-embeddings">#</a>
-</h2>
+<p>→ are static embeddings enough, or do we need context-aware representations?</p></blockquote>
 <h3 id="9-shallow-and-deep-models">
   9. Shallow and Deep Models
   <a class="anchor" href="#9-shallow-and-deep-models">#</a>
@@ -1012,7 +934,7 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>Doc2Vec</strong>: Introduces a learned paragraph vector</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do we encode long-range relationships and context in documents?</strong></p></blockquote>
+<p>→ how do we encode long-range relationships and context in documents?</p></blockquote>
 <h3 id="10-bert-and-beyond">
   10. BERT and Beyond
   <a class="anchor" href="#10-bert-and-beyond">#</a>
@@ -1025,11 +947,7 @@ https://github.com/alex-shpak/hugo-book
 It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings.</li>
 </ul>
 <blockquote>
-<p>→ <strong>what’s the trade-off between compute cost and performance in deep embeddings?</strong></p></blockquote>
-<h2 id="multimodal-embeddings">
-  Multimodal Embeddings
-  <a class="anchor" href="#multimodal-embeddings">#</a>
-</h2>
+<p>→ what’s the trade-off between compute cost and performance in deep embeddings?</p></blockquote>
 <h3 id="11-images-and-multimodal-representations">
   11. Images and Multimodal Representations
   <a class="anchor" href="#11-images-and-multimodal-representations">#</a>
@@ -1040,11 +958,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Enables querying images via text without OCR</li>
 </ul>
 <blockquote>
-<p>Closing this section: <strong>what are the infrastructure needs to support scalable multimodal embedding workflows?</strong></p></blockquote>
-<h2 id="structured-and-graph-embeddings">
-  Structured and Graph Embeddings
-  <a class="anchor" href="#structured-and-graph-embeddings">#</a>
-</h2>
+<p>Closing this section: **what are the infrastructure needs to support scalable multimodal embedding workflows?</p></blockquote>
 <h3 id="12-embeddings-for-structured-data">
   12. Embeddings for Structured Data
   <a class="anchor" href="#12-embeddings-for-structured-data">#</a>
@@ -1055,7 +969,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Especially useful when labeled data is scarce</li>
 </ul>
 <blockquote>
-<p>→ <strong>how can we compress structured data while retaining signal?</strong></p></blockquote>
+<p>→ how can we compress structured data while retaining signal?</p></blockquote>
 <h3 id="13-user-item--graph-embeddings">
   13. User-Item &amp; Graph Embeddings
   <a class="anchor" href="#13-user-item--graph-embeddings">#</a>
@@ -1066,11 +980,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Useful for classification, clustering, and link prediction</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do we preserve both entity and relational meaning in embeddings?</strong></p></blockquote>
-<h2 id="embedding-training">
-  Embedding Training
-  <a class="anchor" href="#embedding-training">#</a>
-</h2>
+<p>→ how do we preserve both entity and relational meaning in embeddings?</p></blockquote>
 <h3 id="14-dual-encoder--contrastive-loss">
   14. Dual Encoder &amp; Contrastive Loss
   <a class="anchor" href="#14-dual-encoder--contrastive-loss">#</a>
@@ -1081,11 +991,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Often initialized from large foundation models (e.g., BERT, Gemini)</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do we balance generalization vs. task-specific fine-tuning?</strong></p></blockquote>
-<h2 id="vector-search-fundamentals">
-  Vector Search Fundamentals
-  <a class="anchor" href="#vector-search-fundamentals">#</a>
-</h2>
+<p>→ how do we balance generalization vs. task-specific fine-tuning?</p></blockquote>
 <h3 id="15-vector-vs-keyword-search">
   15. Vector vs. Keyword Search
   <a class="anchor" href="#15-vector-vs-keyword-search">#</a>
@@ -1096,11 +1002,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Similarity measured via cosine similarity, dot product, or Euclidean distance</li>
 </ul>
 <blockquote>
-<p>→ <strong>what metric and database architecture optimize for your use case?</strong></p></blockquote>
-<h2 id="scalable-ann-search">
-  Scalable ANN Search
-  <a class="anchor" href="#scalable-ann-search">#</a>
-</h2>
+<p>→ what metric and database architecture optimize for your use case?</p></blockquote>
 <h3 id="16-efficient-nearest-neighbor-techniques">
   16. Efficient Nearest Neighbor Techniques
   <a class="anchor" href="#16-efficient-nearest-neighbor-techniques">#</a>
@@ -1112,11 +1014,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>HNSW and ScaNN handle large-scale, high-dimensional spaces efficiently</li>
 </ul>
 <blockquote>
-<p>→ <strong>how can we trade off speed vs. accuracy using ANN techniques?</strong></p></blockquote>
-<h2 id="vector-databases--ann-infrastructure">
-  Vector Databases &amp; ANN Infrastructure
-  <a class="anchor" href="#vector-databases--ann-infrastructure">#</a>
-</h2>
+<p>→ how can we trade off speed vs. accuracy using ANN techniques?</p></blockquote>
 <h3 id="17-what-are-vector-databases">
   17. What Are Vector Databases?
   <a class="anchor" href="#17-what-are-vector-databases">#</a>
@@ -1127,7 +1025,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Support hybrid search (semantic + keyword) with pre- and post-filtering</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do we ensure low-latency, high-recall vector search at scale?</strong></p></blockquote>
+<p>→ how do we ensure low-latency, high-recall vector search at scale?</p></blockquote>
 <h3 id="18-operational-considerations">
   18. Operational Considerations
   <a class="anchor" href="#18-operational-considerations">#</a>
@@ -1138,11 +1036,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Choose vector DBs based on workload (e.g., AlloyDB for OLTP, BigQuery for OLAP)</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do we manage model/version drift and storage efficiency?</strong></p></blockquote>
-<h2 id="embedding-applications">
-  Embedding Applications
-  <a class="anchor" href="#embedding-applications">#</a>
-</h2>
+<p>→ how do we manage model/version drift and storage efficiency?</p></blockquote>
 <h3 id="19-core-use-cases">
   19. Core Use Cases
   <a class="anchor" href="#19-core-use-cases">#</a>
@@ -1157,11 +1051,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Retrieval Augmented Generation (RAG)</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do embeddings improve relevance and trust in LLM outputs?</strong></p></blockquote>
-<h2 id="rag-and-grounded-generation">
-  RAG and Grounded Generation
-  <a class="anchor" href="#rag-and-grounded-generation">#</a>
-</h2>
+<p>→ how do embeddings improve relevance and trust in LLM outputs?</p></blockquote>
 <h3 id="20-retrieval-augmented-generation-rag">
   20. Retrieval-Augmented Generation (RAG)
   <a class="anchor" href="#20-retrieval-augmented-generation-rag">#</a>
@@ -1172,11 +1062,7 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
 <li>Return sources for transparency and human/LLM coherence check</li>
 </ul>
 <blockquote>
-<p>→ <strong>how do we design RAG workflows for auditability and safety?</strong></p></blockquote>
-<h2 id="final-thoughts">
-  Final Thoughts
-  <a class="anchor" href="#final-thoughts">#</a>
-</h2>
+<p>→ how do we design RAG workflows for auditability and safety?</p></blockquote>
 <h3 id="21-key-takeaways">
   21. Key Takeaways
   <a class="anchor" href="#21-key-takeaways">#</a>
@@ -1230,86 +1116,30 @@ It powers models like Sentence-BERT, SimCSE, E5, and now Gemini-based embeddings
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#day-2--embeddings--vector-databases--cot-summary">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
+    <li>
       <ul>
-        <li><a href="#introduction">Introduction</a>
+        <li><a href="#day-2--embeddings--vector-databases">Day 2 – Embeddings &amp; Vector Databases</a>
           <ul>
             <li><a href="#1-why-embeddings">1. Why Embeddings?</a></li>
-          </ul>
-        </li>
-        <li><a href="#embedding-design-and-intuition">Embedding Design and Intuition</a>
-          <ul>
             <li><a href="#2-mapping-data-to-vector-space">2. Mapping Data to Vector Space</a></li>
             <li><a href="#3-key-applications">3. Key Applications</a></li>
-          </ul>
-        </li>
-        <li><a href="#evaluating-embeddings">Evaluating Embeddings</a>
-          <ul>
             <li><a href="#4-quality-metrics">4. Quality Metrics</a></li>
-          </ul>
-        </li>
-        <li><a href="#embeddings-in-retrieval">Embeddings in Retrieval</a>
-          <ul>
             <li><a href="#5-rag-and-semantic-search">5. RAG and Semantic Search</a></li>
             <li><a href="#6-operational-considerations">6. Operational Considerations</a></li>
-          </ul>
-        </li>
-        <li><a href="#types-of-embeddings">Types of Embeddings</a>
-          <ul>
             <li><a href="#7-text-embedding-lifecycle">7. Text Embedding Lifecycle</a></li>
             <li><a href="#8-word-embeddings-glove-word2vec-swivel">8. Word Embeddings: GloVe, Word2Vec, SWIVEL</a></li>
-          </ul>
-        </li>
-        <li><a href="#document-embeddings">Document Embeddings</a>
-          <ul>
             <li><a href="#9-shallow-and-deep-models">9. Shallow and Deep Models</a></li>
             <li><a href="#10-bert-and-beyond">10. BERT and Beyond</a></li>
-          </ul>
-        </li>
-        <li><a href="#multimodal-embeddings">Multimodal Embeddings</a>
-          <ul>
             <li><a href="#11-images-and-multimodal-representations">11. Images and Multimodal Representations</a></li>
-          </ul>
-        </li>
-        <li><a href="#structured-and-graph-embeddings">Structured and Graph Embeddings</a>
-          <ul>
             <li><a href="#12-embeddings-for-structured-data">12. Embeddings for Structured Data</a></li>
             <li><a href="#13-user-item--graph-embeddings">13. User-Item &amp; Graph Embeddings</a></li>
-          </ul>
-        </li>
-        <li><a href="#embedding-training">Embedding Training</a>
-          <ul>
             <li><a href="#14-dual-encoder--contrastive-loss">14. Dual Encoder &amp; Contrastive Loss</a></li>
-          </ul>
-        </li>
-        <li><a href="#vector-search-fundamentals">Vector Search Fundamentals</a>
-          <ul>
             <li><a href="#15-vector-vs-keyword-search">15. Vector vs. Keyword Search</a></li>
-          </ul>
-        </li>
-        <li><a href="#scalable-ann-search">Scalable ANN Search</a>
-          <ul>
             <li><a href="#16-efficient-nearest-neighbor-techniques">16. Efficient Nearest Neighbor Techniques</a></li>
-          </ul>
-        </li>
-        <li><a href="#vector-databases--ann-infrastructure">Vector Databases &amp; ANN Infrastructure</a>
-          <ul>
             <li><a href="#17-what-are-vector-databases">17. What Are Vector Databases?</a></li>
             <li><a href="#18-operational-considerations">18. Operational Considerations</a></li>
-          </ul>
-        </li>
-        <li><a href="#embedding-applications">Embedding Applications</a>
-          <ul>
             <li><a href="#19-core-use-cases">19. Core Use Cases</a></li>
-          </ul>
-        </li>
-        <li><a href="#rag-and-grounded-generation">RAG and Grounded Generation</a>
-          <ul>
             <li><a href="#20-retrieval-augmented-generation-rag">20. Retrieval-Augmented Generation (RAG)</a></li>
-          </ul>
-        </li>
-        <li><a href="#final-thoughts">Final Thoughts</a>
-          <ul>
             <li><a href="#21-key-takeaways">21. Key Takeaways</a></li>
           </ul>
         </li>

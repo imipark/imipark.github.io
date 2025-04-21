@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on AI Reasoning</title>
-    <link>https://imipark.github.io/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on AI Reasoning</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://imipark.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Web</title>
-      <link>https://imipark.github.io/categories/web/</link>
+      <link>http://localhost:1313/categories/web/</link>
       <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://imipark.github.io/categories/web/</guid>
+      <guid>http://localhost:1313/categories/web/</guid>
       <description></description>
     </item>
     <item>
       <title>AI Education</title>
-      <link>https://imipark.github.io/categories/ai-education/</link>
+      <link>http://localhost:1313/categories/ai-education/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://imipark.github.io/categories/ai-education/</guid>
+      <guid>http://localhost:1313/categories/ai-education/</guid>
       <description></description>
     </item>
     <item>
       <title>GenAI Instruction</title>
-      <link>https://imipark.github.io/categories/genai-instruction/</link>
+      <link>http://localhost:1313/categories/genai-instruction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://imipark.github.io/categories/genai-instruction/</guid>
+      <guid>http://localhost:1313/categories/genai-instruction/</guid>
       <description></description>
     </item>
     <item>
       <title>Learning Methods</title>
-      <link>https://imipark.github.io/categories/learning-methods/</link>
+      <link>http://localhost:1313/categories/learning-methods/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://imipark.github.io/categories/learning-methods/</guid>
+      <guid>http://localhost:1313/categories/learning-methods/</guid>
       <description></description>
     </item>
   </channel>

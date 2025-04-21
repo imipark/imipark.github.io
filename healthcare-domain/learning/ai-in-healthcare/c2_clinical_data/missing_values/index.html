@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -111,7 +111,7 @@ Rationale: The missingness depends on the unobserved value and may carry predict
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Missing Data Scenarios in Healthcare Modeling">
   <meta property="og:description" content="Missing Data Scenarios in Healthcare Modeling # 1. Should Be Measured But Wasn’t # Description: The value is expected but is missing due to random or procedural issues (e.g., lab error, missed test). Technical Term: MCAR: Missing Completely At Random MAR: Missing At Random Example: A routine blood test wasn’t recorded because the sample was lost. Strategy: Impute (mean, median, or model-based). Add a missingness indicator variable (e.g., var_missing = 1). Rationale: The missingness is unrelated to the value itself, so estimation is relatively safe. 2. Mostly Zero Due to Rare Occurrence # Description: Not truly missing — the value is zero or absent for most patients because the condition/event is rare. Technical Term: Not Missing (No abbreviation needed) Example: HIV diagnosis column is 0 for most patients. Strategy: Do not impute — the 0s are meaningful and reflect true absence. Rationale: These are real values, and zeros carry clinical meaning. 3. Deliberately Not Recorded # Description: Clinician or system chooses not to record a value based on context (e.g., patient clearly stable or too ill). Technical Term: MNAR: Missing Not At Random Example: Sodium level not tested because the patient was clearly stable. Strategy: Avoid imputation if possible — it may introduce bias. Use models that handle missingness natively (e.g., decision trees, XGBoost, LightGBM). Consider adding a missingness indicator. Rationale: The missingness depends on the unobserved value and may carry predictive signal. Summary Table # Case Description Abbreviation Impute? Extra Notes 1 Should be measured but wasn’t MCAR / MAR ✅ Yes Add indicator if signal is likely 2 Mostly zero (rare condition) Not Missing 🚫 No Keep as is — zeros are informative 3 Deliberately not recorded MNAR ⚠️ Caution Use native handling &#43; possible indicator">
@@ -121,7 +121,7 @@ Rationale: The missingness depends on the unobserved value and may carry predict
 <title>Missing Data Scenarios in Healthcare Modeling | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/">
+<link rel="canonical" href="http://localhost:1313/healthcare-domain/learning/ai-in-healthcare/c2_clinical_data/missing_values/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.b993935627c1d0fd5d9131feb60da0f04e0c324bfedb9df4cead55347a0d0f4d.js" integrity="sha256-uZOTVifB0P1dkTH&#43;tg2g8E4MMkv&#43;2530zq1VNHoND00=" crossorigin="anonymous"></script>
@@ -244,7 +244,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
   
 
         </li>
@@ -257,7 +257,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
   
 
         </li>
@@ -270,7 +270,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
   
 
         </li>
@@ -283,7 +283,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
   
 
         </li>
@@ -296,7 +296,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
   
 
         </li>
@@ -309,7 +309,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI – CoT Summary</a>
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
   
 
         </li>
