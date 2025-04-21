@@ -41,7 +41,7 @@ The Transformer is the core architecture enabling LLMs. Unlike RNNs that process
 <link rel="canonical" href="http://localhost:1313/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b993935627c1d0fd5d9131feb60da0f04e0c324bfedb9df4cead55347a0d0f4d.js" integrity="sha256-uZOTVifB0P1dkTH&#43;tg2g8E4MMkv&#43;2530zq1VNHoND00=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5555c3c1248900b9045c45e0fc122745216c976971c3ba7e1ef383c2dc7d9271.js" integrity="sha256-VVXDwSSJALkEXEXg/BInRSFsl2lxw7p&#43;HvODwtx9knE=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -808,7 +808,6 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#6-feedforward-layers">6. Feedforward Layers</a></li>
             <li><a href="#7-encoder-decoder-architecture">7. Encoder-Decoder Architecture</a></li>
             <li><a href="#8-mixture-of-experts-moe">8. Mixture of Experts (MoE)</a></li>
-            <li><a href="#9-building-reasoning-into-llms">9. Building Reasoning into LLMs</a></li>
             <li><a href="#10-training-the-transformer">10. Training the Transformer</a></li>
             <li><a href="#11-model-specific-training-strategies">11. Model-Specific Training Strategies</a></li>
             <li><a href="#-closing-the-loop">✅ Closing the Loop</a></li>
@@ -947,7 +946,9 @@ https://github.com/alex-shpak/hugo-book
 <p>MoE architectures use <strong>specialized sub-models</strong> (experts) activated selectively via a gating mechanism. This allows LLMs to scale massively while using only a portion of the model per input—enabling high performance with lower cost.</p>
 <blockquote>
 <p>→ But performance isn’t just about architecture—<strong>reasoning capabilities</strong> are equally vital.</p></blockquote>
-<h3 id="9-building-reasoning-into-llms">
+
+<div style="background-color: #EEF2F6; padding: 1em; border-radius: 6px; margin: 1em 0;">
+  <h3 id="9-building-reasoning-into-llms">
   9. Building Reasoning into LLMs
   <a class="anchor" href="#9-building-reasoning-into-llms">#</a>
 </h3>
@@ -958,6 +959,9 @@ https://github.com/alex-shpak/hugo-book
 <li><strong>Least-to-Most</strong>: Build up from simpler subproblems.</li>
 <li><strong>Fine-tuning on reasoning datasets</strong> and <strong>RLHF</strong> further optimize for correctness and coherence.</li>
 </ul>
+</div>
+
+
 <blockquote>
 <p>→ To train these reasoning patterns, we need carefully prepared data and efficient training pipelines.</p></blockquote>
 <h3 id="10-training-the-transformer">
@@ -1482,7 +1486,6 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#6-feedforward-layers">6. Feedforward Layers</a></li>
             <li><a href="#7-encoder-decoder-architecture">7. Encoder-Decoder Architecture</a></li>
             <li><a href="#8-mixture-of-experts-moe">8. Mixture of Experts (MoE)</a></li>
-            <li><a href="#9-building-reasoning-into-llms">9. Building Reasoning into LLMs</a></li>
             <li><a href="#10-training-the-transformer">10. Training the Transformer</a></li>
             <li><a href="#11-model-specific-training-strategies">11. Model-Specific Training Strategies</a></li>
             <li><a href="#-closing-the-loop">✅ Closing the Loop</a></li>
