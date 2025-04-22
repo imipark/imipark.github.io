@@ -1,86 +1,126 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Causal Inference (CI) = Statistical Science for Understanding Cause-Effect
+  Causality
   #
 
 
-  Core Goal:
-  #
-
-To estimate the causal effect of one variable on another from data (e.g., does a treatment cause better outcomes?).
-
-  Key Characteristics:
-  #
 
 
   
       
           Criteria
-          Description
+          📈 Causal Inference
+          🤖 Causal AI
       
   
   
       
-          Scope
-          Primarily focuses on estimating causal effects from observational or experimental data
+          🎯 Core Goal
+          Estimate treatment or policy effects from data
+          Enable AI to reason, simulate, and plan with causality
       
       
-          Typical Methods
-          Propensity scores, matching, inverse probability weighting, instrumental variables, difference-in-differences, DAGs
+          🌍 Scope
+          Focused on statistical estimation from real-world data
+          Broad, includes CI &#43; causal reasoning in intelligent agents
       
       
-          Data
-          Tabular, typically structured (e.g., clinical trials, EHRs, economic datasets)
+          🛠️ Methods
+          Matching, IVs, DiD, DAGs, do-calculus
+          SCMs, causal discovery, RL, counterfactuals, representation learning
       
       
-          Toolkits
-          DoWhy, EconML, CausalML, R, Stata, Stan
+          🗂️ Data
+          EHRs, trials, economic panels — structured/tabular
+          Images, text, sensor logs, simulations — multimodal
       
       
-          Theoretical Backbone
-          Judea Pearl’s framework (do-calculus, SCMs), Rubin&rsquo;s Potential Outcomes
+          🧰 Tools
+          DoWhy, EconML, Stata, Stan, CausalML
+          Pyro, CausalBench, Causal Transformers, RL libraries
       
       
-          🎯 Common Use Cases
-          Healthcare policy evaluation, drug effect estimation, A/B testing, economic policy modeling
+          🧠 Theory
+          Pearl’s SCMs, Rubin’s Potential Outcomes
+          Extends CI with planning, control theory, generative modeling
       
       
-          Audience
-          Statisticians, epidemiologists, health economists, applied researchers
+          🧪 Use Cases
+          Drug effects, A/B testing, public health impact
+          Clinical AI agents, counterfactual explainers, planning under uncertainty
+      
+      
+          🚀 Trends
+          Automated causal discovery, scalable estimation
+          Causal LLMs, structure-aware agents, causal generalization in foundation models
+      
+      
+          👥 Audience
+          Statisticians, epidemiologists, applied economists
+          ML/AI engineers, decision scientists, generative modeling researchers
+      
+      
+          🧭 Philosophy
+          &ldquo;Understand causes to intervene wisely&rdquo;
+          &ldquo;Use causality to empower robust, generalizable, explainable intelligence&rdquo;
+      
+      
+          📚 References
+          Elements of Causal Inference: Foundations and Learning Algorithms  Jonas Peters, Dominik Janzing, and Bernhard Schölkopf (2017)
+          Causal AI  Robert Osazuwa Ness (2025)
       
   
 
 
-
-  Causal AI = Intelligent Systems that Reason About and Use Causality
+  🏥 Healthcare-Focused Examples
   #
 
 
-  Core Goal:
-  #
-
-To build AI systems that can reason, plan, and generalize using causal understanding — beyond pure prediction.">
+  
+      
+          Scenario
+          Causal Inference Approach
+          Causal AI Application
+      
+  
+  
+      
+          Does a drug reduce mortality?
+          Use propensity score matching on EHRs to estimate treatment effect
+          Simulate outcomes, explain counterfactuals, and adapt AI decision policy
+      
+      
+          Which patients benefit from a treatment?
+          Estimate HTEs using stratification or causal forests
+          Personalized planning agent using causal graphs and reinforcement learning
+      
+      
+          What if surgery is delayed?
+          Model counterfactuals using SCM or time-series IVs
+          Temporal causal simulation to guide optimal intervention timing
+      
+  
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/alignment-reasoning/causality/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/alignment-reasoning/causality/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Causality">
-  <meta property="og:description" content="Causal Inference (CI) = Statistical Science for Understanding Cause-Effect # Core Goal: # To estimate the causal effect of one variable on another from data (e.g., does a treatment cause better outcomes?).
-Key Characteristics: # Criteria Description Scope Primarily focuses on estimating causal effects from observational or experimental data Typical Methods Propensity scores, matching, inverse probability weighting, instrumental variables, difference-in-differences, DAGs Data Tabular, typically structured (e.g., clinical trials, EHRs, economic datasets) Toolkits DoWhy, EconML, CausalML, R, Stata, Stan Theoretical Backbone Judea Pearl’s framework (do-calculus, SCMs), Rubin’s Potential Outcomes 🎯 Common Use Cases Healthcare policy evaluation, drug effect estimation, A/B testing, economic policy modeling Audience Statisticians, epidemiologists, health economists, applied researchers Causal AI = Intelligent Systems that Reason About and Use Causality # Core Goal: # To build AI systems that can reason, plan, and generalize using causal understanding — beyond pure prediction.">
+  <meta property="og:description" content="Causality # Criteria 📈 Causal Inference 🤖 Causal AI 🎯 Core Goal Estimate treatment or policy effects from data Enable AI to reason, simulate, and plan with causality 🌍 Scope Focused on statistical estimation from real-world data Broad, includes CI &#43; causal reasoning in intelligent agents 🛠️ Methods Matching, IVs, DiD, DAGs, do-calculus SCMs, causal discovery, RL, counterfactuals, representation learning 🗂️ Data EHRs, trials, economic panels — structured/tabular Images, text, sensor logs, simulations — multimodal 🧰 Tools DoWhy, EconML, Stata, Stan, CausalML Pyro, CausalBench, Causal Transformers, RL libraries 🧠 Theory Pearl’s SCMs, Rubin’s Potential Outcomes Extends CI with planning, control theory, generative modeling 🧪 Use Cases Drug effects, A/B testing, public health impact Clinical AI agents, counterfactual explainers, planning under uncertainty 🚀 Trends Automated causal discovery, scalable estimation Causal LLMs, structure-aware agents, causal generalization in foundation models 👥 Audience Statisticians, epidemiologists, applied economists ML/AI engineers, decision scientists, generative modeling researchers 🧭 Philosophy “Understand causes to intervene wisely” “Use causality to empower robust, generalizable, explainable intelligence” 📚 References Elements of Causal Inference: Foundations and Learning Algorithms Jonas Peters, Dominik Janzing, and Bernhard Schölkopf (2017) Causal AI Robert Osazuwa Ness (2025) 🏥 Healthcare-Focused Examples # Scenario Causal Inference Approach Causal AI Application Does a drug reduce mortality? Use propensity score matching on EHRs to estimate treatment effect Simulate outcomes, explain counterfactuals, and adapt AI decision policy Which patients benefit from a treatment? Estimate HTEs using stratification or causal forests Personalized planning agent using causal graphs and reinforcement learning What if surgery is delayed? Model counterfactuals using SCM or time-series IVs Temporal causal simulation to guide optimal intervention timing">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Causality | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/ai-workflows/alignment-reasoning/causality/">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/alignment-reasoning/causality/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5555c3c1248900b9045c45e0fc122745216c976971c3ba7e1ef383c2dc7d9271.js" integrity="sha256-VVXDwSSJALkEXEXg/BInRSFsl2lxw7p&#43;HvODwtx9knE=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/ai-workflows/alignment-reasoning/causality/index.xml" title="AI Reasoning" />
+  <script defer src="/en.search.min.1c7ac4f3db1d7caf555fce364e32457ec9fe80fbf06b3d38fa8979acde311376.js" integrity="sha256-HHrE89sdfK9VX842TjJFfsn&#43;gPvwaz04&#43;ol5rN4xE3Y=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/alignment-reasoning/causality/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -402,7 +442,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
     <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
-      <a role="button" class="">Graph Reasoning</a>
+      <a href="/ai-workflows/alignment-reasoning/graph-reasoning/" class="">Graph Reasoning</a>
     </label>
   
 
@@ -836,18 +876,8 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#causal-inference-ci--statistical-science-for-understanding-cause-effect">Causal Inference (CI) = Statistical Science for Understanding Cause-Effect</a>
-          <ul>
-            <li><a href="#core-goal">Core Goal:</a></li>
-            <li><a href="#key-characteristics">Key Characteristics:</a></li>
-          </ul>
-        </li>
-        <li><a href="#causal-ai--intelligent-systems-that-reason-about-and-use-causality">Causal AI = Intelligent Systems that Reason About and Use Causality</a>
-          <ul>
-            <li><a href="#core-goal-1">Core Goal:</a></li>
-            <li><a href="#key-characteristics-1">Key Characteristics:</a></li>
-          </ul>
-        </li>
+        <li><a href="#causality">Causality</a></li>
+        <li><a href="#-healthcare-focused-examples">🏥 Healthcare-Focused Examples</a></li>
       </ul>
     </li>
   </ul>
@@ -862,111 +892,108 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h2 id="causal-inference-ci--statistical-science-for-understanding-cause-effect">
-  Causal Inference (CI) = Statistical Science for Understanding Cause-Effect
-  <a class="anchor" href="#causal-inference-ci--statistical-science-for-understanding-cause-effect">#</a>
+  <article class="markdown book-article"><h2 id="causality">
+  Causality
+  <a class="anchor" href="#causality">#</a>
 </h2>
-<h3 id="core-goal">
-  Core Goal:
-  <a class="anchor" href="#core-goal">#</a>
-</h3>
-<p>To <strong>estimate the causal effect</strong> of one variable on another from data (e.g., does a treatment cause better outcomes?).</p>
-<h3 id="key-characteristics">
-  Key Characteristics:
-  <a class="anchor" href="#key-characteristics">#</a>
-</h3>
-<table>
-  <thead>
-      <tr>
-          <th>Criteria</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Scope</strong></td>
-          <td>Primarily focuses on estimating causal effects from <strong>observational or experimental data</strong></td>
-      </tr>
-      <tr>
-          <td><strong>Typical Methods</strong></td>
-          <td>Propensity scores, matching, inverse probability weighting, instrumental variables, difference-in-differences, DAGs</td>
-      </tr>
-      <tr>
-          <td><strong>Data</strong></td>
-          <td>Tabular, typically structured (e.g., clinical trials, EHRs, economic datasets)</td>
-      </tr>
-      <tr>
-          <td><strong>Toolkits</strong></td>
-          <td><code>DoWhy</code>, <code>EconML</code>, <code>CausalML</code>, <code>R</code>, <code>Stata</code>, <code>Stan</code></td>
-      </tr>
-      <tr>
-          <td><strong>Theoretical Backbone</strong></td>
-          <td>Judea Pearl’s framework (do-calculus, SCMs), Rubin&rsquo;s Potential Outcomes</td>
-      </tr>
-      <tr>
-          <td>🎯 <strong>Common Use Cases</strong></td>
-          <td>Healthcare policy evaluation, drug effect estimation, A/B testing, economic policy modeling</td>
-      </tr>
-      <tr>
-          <td><strong>Audience</strong></td>
-          <td>Statisticians, epidemiologists, health economists, applied researchers</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h2 id="causal-ai--intelligent-systems-that-reason-about-and-use-causality">
-  Causal AI = Intelligent Systems that Reason About and Use Causality
-  <a class="anchor" href="#causal-ai--intelligent-systems-that-reason-about-and-use-causality">#</a>
-</h2>
-<h3 id="core-goal-1">
-  Core Goal:
-  <a class="anchor" href="#core-goal-1">#</a>
-</h3>
-<p>To <strong>build AI systems that can reason, plan, and generalize</strong> using causal understanding — beyond pure prediction.</p>
-<h3 id="key-characteristics-1">
-  Key Characteristics:
-  <a class="anchor" href="#key-characteristics-1">#</a>
-</h3>
-<table>
-  <thead>
-      <tr>
-          <th>Criteria</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Scope</strong></td>
-          <td>Broader — includes CI <strong>and</strong> building causal reasoning into AI agents, decision systems, simulations</td>
-      </tr>
-      <tr>
-          <td><strong>Typical Methods</strong></td>
-          <td>Causal discovery, SCMs, counterfactual reasoning, causal reinforcement learning, causal representation learning</td>
-      </tr>
-      <tr>
-          <td><strong>Data</strong></td>
-          <td>Includes structured, unstructured, time-series, multi-modal, even simulators</td>
-      </tr>
-      <tr>
-          <td><strong>AI Tools</strong></td>
-          <td>Combines causal inference + ML + planning: <code>Pyro</code>, <code>DoWhy</code>, <code>NeurIPS CausalBench</code>, Causal Transformers</td>
-      </tr>
-      <tr>
-          <td><strong>Emerging Work</strong></td>
-          <td>Counterfactual explanation for LLMs, causal structure in generative models, agent-based causal decision making</td>
-      </tr>
-      <tr>
-          <td><strong>Common Use Cases</strong></td>
-          <td>Building agents that can plan, explain decisions, simulate alternate futures (e.g., clinical decision AI, industrial control)</td>
-      </tr>
-      <tr>
-          <td><strong>Audience</strong></td>
-          <td>ML researchers, AI engineers, decision scientists, healthcare AI innovators</td>
-      </tr>
-  </tbody>
-</table>
 <hr>
 <p><img src="/images/applied_causal_mindmap.png" alt="MindMap" /></p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Criteria</strong></th>
+          <th>📈 <strong>Causal Inference</strong></th>
+          <th>🤖 <strong>Causal AI</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>🎯 <strong>Core Goal</strong></td>
+          <td>Estimate treatment or policy effects from data</td>
+          <td>Enable AI to reason, simulate, and plan with causality</td>
+      </tr>
+      <tr>
+          <td>🌍 <strong>Scope</strong></td>
+          <td>Focused on statistical estimation from real-world data</td>
+          <td>Broad, includes CI + causal reasoning in intelligent agents</td>
+      </tr>
+      <tr>
+          <td>🛠️ <strong>Methods</strong></td>
+          <td>Matching, IVs, DiD, DAGs, do-calculus</td>
+          <td>SCMs, causal discovery, RL, counterfactuals, representation learning</td>
+      </tr>
+      <tr>
+          <td>🗂️ <strong>Data</strong></td>
+          <td>EHRs, trials, economic panels — structured/tabular</td>
+          <td>Images, text, sensor logs, simulations — multimodal</td>
+      </tr>
+      <tr>
+          <td>🧰 <strong>Tools</strong></td>
+          <td><code>DoWhy</code>, <code>EconML</code>, <code>Stata</code>, <code>Stan</code>, <code>CausalML</code></td>
+          <td><code>Pyro</code>, <code>CausalBench</code>, Causal Transformers, RL libraries</td>
+      </tr>
+      <tr>
+          <td>🧠 <strong>Theory</strong></td>
+          <td>Pearl’s SCMs, Rubin’s Potential Outcomes</td>
+          <td>Extends CI with planning, control theory, generative modeling</td>
+      </tr>
+      <tr>
+          <td>🧪 <strong>Use Cases</strong></td>
+          <td>Drug effects, A/B testing, public health impact</td>
+          <td>Clinical AI agents, counterfactual explainers, planning under uncertainty</td>
+      </tr>
+      <tr>
+          <td>🚀 <strong>Trends</strong></td>
+          <td>Automated causal discovery, scalable estimation</td>
+          <td>Causal LLMs, structure-aware agents, causal generalization in foundation models</td>
+      </tr>
+      <tr>
+          <td>👥 <strong>Audience</strong></td>
+          <td>Statisticians, epidemiologists, applied economists</td>
+          <td>ML/AI engineers, decision scientists, generative modeling researchers</td>
+      </tr>
+      <tr>
+          <td>🧭 <strong>Philosophy</strong></td>
+          <td>&ldquo;Understand causes to intervene wisely&rdquo;</td>
+          <td>&ldquo;Use causality to empower robust, generalizable, explainable intelligence&rdquo;</td>
+      </tr>
+      <tr>
+          <td>📚 <strong>References</strong></td>
+          <td><em>Elements of Causal Inference: Foundations and Learning Algorithms</em>  Jonas Peters, Dominik Janzing, and Bernhard Schölkopf (2017)</td>
+          <td><em>Causal AI</em>  Robert Osazuwa Ness (2025)</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="-healthcare-focused-examples">
+  🏥 Healthcare-Focused Examples
+  <a class="anchor" href="#-healthcare-focused-examples">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Scenario</strong></th>
+          <th><strong>Causal Inference Approach</strong></th>
+          <th><strong>Causal AI Application</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Does a drug reduce mortality?</td>
+          <td>Use propensity score matching on EHRs to estimate treatment effect</td>
+          <td>Simulate outcomes, explain counterfactuals, and adapt AI decision policy</td>
+      </tr>
+      <tr>
+          <td>Which patients benefit from a treatment?</td>
+          <td>Estimate HTEs using stratification or causal forests</td>
+          <td>Personalized planning agent using causal graphs and reinforcement learning</td>
+      </tr>
+      <tr>
+          <td>What if surgery is delayed?</td>
+          <td>Model counterfactuals using SCM or time-series IVs</td>
+          <td>Temporal causal simulation to guide optimal intervention timing</td>
+      </tr>
+  </tbody>
+</table>
 </article>
  
       
@@ -1010,18 +1037,8 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#causal-inference-ci--statistical-science-for-understanding-cause-effect">Causal Inference (CI) = Statistical Science for Understanding Cause-Effect</a>
-          <ul>
-            <li><a href="#core-goal">Core Goal:</a></li>
-            <li><a href="#key-characteristics">Key Characteristics:</a></li>
-          </ul>
-        </li>
-        <li><a href="#causal-ai--intelligent-systems-that-reason-about-and-use-causality">Causal AI = Intelligent Systems that Reason About and Use Causality</a>
-          <ul>
-            <li><a href="#core-goal-1">Core Goal:</a></li>
-            <li><a href="#key-characteristics-1">Key Characteristics:</a></li>
-          </ul>
-        </li>
+        <li><a href="#causality">Causality</a></li>
+        <li><a href="#-healthcare-focused-examples">🏥 Healthcare-Focused Examples</a></li>
       </ul>
     </li>
   </ul>
