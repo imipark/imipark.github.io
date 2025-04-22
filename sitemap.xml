@@ -198,8 +198,6 @@
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/diabetes_phenotype_pipeline/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-workflows/genai-systems/prompt_engineering/step_by_step_cot_qna_guide_generative_agents/</loc>
-  </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/precision_vs_recall_in_healthcare/</loc>
   </url><url>
     <loc>http://localhost:1313/ai-workflows/genai-systems/transformer_attention_concepts/</loc>
