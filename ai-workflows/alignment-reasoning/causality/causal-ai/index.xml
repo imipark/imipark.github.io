@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Causal AI on AI Reasoning</title>
-    <link>https://imipark.github.io/ai-workflows/alignment-reasoning/causality/causal-ai/</link>
+    <link>http://localhost:1313/ai-workflows/alignment-reasoning/causality/causal-ai/</link>
     <description>Recent content in Causal AI on AI Reasoning</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://imipark.github.io/ai-workflows/alignment-reasoning/causality/causal-ai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/ai-workflows/alignment-reasoning/causality/causal-ai/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -22,7 +22,7 @@ We start with the need for controlling LLM behavior. Although everyone can write
 LLMs are token prediction machines. They predict the next likely token based on previous tokens and training data. Prompt engineering means designing inputs that lead the model toward the desired outputs using this prediction mechanism.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Day 1 – Prompt Engineering">
   <meta property="og:description" content="Day 1 – Prompt Engineering # 1. Why Prompt Engineering Matters # We start with the need for controlling LLM behavior. Although everyone can write prompts, crafting high-quality prompts is complex. The model, structure, tone, and context all affect the outcome. Prompt engineering is an iterative process requiring optimization and experimentation.
@@ -34,10 +34,10 @@ LLMs are token prediction machines. They predict the next likely token based on 
 <title>Day 1 – Prompt Engineering | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.1c7ac4f3db1d7caf555fce364e32457ec9fe80fbf06b3d38fa8979acde311376.js" integrity="sha256-HHrE89sdfK9VX842TjJFfsn&#43;gPvwaz04&#43;ol5rN4xE3Y=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0c314cf17b85a2ed2a01de9aa16aecbea2511093b36f6ad23a36eb656c9f003d.js" integrity="sha256-DDFM8XuFou0qAd6aoWrsvqJREJOzb2rSOjbrZWyfAD0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -825,29 +825,16 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#28-work-with-schemas">28. Work With Schemas</a></li>
             <li><a href="#29-best-practices-for-chain-of-thought-cot">29. Best Practices for Chain-of-Thought (CoT)</a></li>
             <li><a href="#30-document-prompt-experiments">30. Document Prompt Experiments</a></li>
-          </ul>
-        </li>
-        <li><a href="#summary"><strong>Summary</strong></a></li>
-        <li><a href="#final-best-practices-and-wrap-up">Final Best Practices and Wrap-Up</a>
-          <ul>
             <li><a href="#24-design-with-simplicity-1">24. Design with Simplicity</a></li>
             <li><a href="#25-be-specific-about-output-1">25. Be Specific About Output</a></li>
             <li><a href="#26-prefer-instructions-over-constraints">26. Prefer Instructions Over Constraints</a></li>
-          </ul>
-        </li>
-        <li><a href="#variables-versions-and-formats">Variables, Versions, and Formats</a>
-          <ul>
             <li><a href="#27-use-variables-in-prompts">27. Use Variables in Prompts</a></li>
             <li><a href="#28-experiment-with-input-and-output-formats">28. Experiment with Input and Output Formats</a></li>
-          </ul>
-        </li>
-        <li><a href="#prompt-engineering-discipline">Prompt Engineering Discipline</a>
-          <ul>
             <li><a href="#29-use-schemas-for-input-and-output">29. Use Schemas for Input and Output</a></li>
             <li><a href="#30-document-prompt-versions">30. Document Prompt Versions</a></li>
+            <li><a href="#summary">Summary</a></li>
           </ul>
         </li>
-        <li><a href="#summary-1"><strong>Summary</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -900,8 +887,8 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#5-top-k-vs-top-p">#</a>
 </h3>
 <ul>
-<li><strong>Top-K</strong> selects from the K most likely tokens.</li>
-<li><strong>Top-P</strong> includes tokens whose cumulative probability is under P.</li>
+<li>Top-K selects from the K most likely tokens.</li>
+<li>Top-P includes tokens whose cumulative probability is under P.</li>
 </ul>
 <p>Together with temperature, they control diversity. Improper values can lead to repetition loops or incoherence.</p>
 <blockquote>
@@ -930,8 +917,8 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#8-one-shot-and-few-shot-prompting">#</a>
 </h3>
 <ul>
-<li><strong>One-shot</strong>: One example is provided before the prompt.</li>
-<li><strong>Few-shot</strong>: Multiple examples guide the model’s pattern recognition.
+<li>One-shot: One example is provided before the prompt.</li>
+<li>Few-shot: Multiple examples guide the model’s pattern recognition.
 Ideal for steering structure and increasing precision.</li>
 </ul>
 <blockquote>
@@ -998,7 +985,7 @@ Ideal for steering structure and increasing precision.</li>
 </h3>
 <p>Prompts are hard to write. APE uses LLMs to generate and refine their own prompts. You ask the model to create N variations of a task prompt, then rank and select the best one based on performance metrics (e.g., BLEU, ROUGE).</p>
 <blockquote>
-<p>Final insight: **what happens when LLMs become their own prompt engineers—and how can we guide that process safely?</p></blockquote>
+<p>Final insight: what happens when LLMs become their own prompt engineers—and how can we guide that process safely?</p></blockquote>
 <h3 id="18-prompts-for-writing-code">
   18. Prompts for Writing Code
   <a class="anchor" href="#18-prompts-for-writing-code">#</a>
@@ -1040,7 +1027,7 @@ Ideal for steering structure and increasing precision.</li>
 </h3>
 <p>Incorporating examples (one-shot or few-shot) within prompts is the most reliable way to guide output. Acts as a template and sets style/tone expectations.</p>
 <blockquote>
-<p>Final reflection: <strong>prompt engineering is more than writing—it&rsquo;s designing a user interface for the LLM.</strong></p></blockquote>
+<p>Final reflection: prompt engineering is more than writing—it&rsquo;s designing a user interface for the LLM.</p></blockquote>
 <h3 id="24-design-with-simplicity">
   24. Design with Simplicity
   <a class="anchor" href="#24-design-with-simplicity">#</a>
@@ -1093,26 +1080,7 @@ Ideal for steering structure and increasing precision.</li>
 </h3>
 <p>Track prompt versions, models, sampling settings, and outputs using a table or Google Sheet. Log RAG details and system changes to trace variation.</p>
 <blockquote>
-<p>Final principle: <strong>prompting is experimental—track what you try, and improve iteratively.</strong></p></blockquote>
-<h2 id="summary">
-  <strong>Summary</strong>
-  <a class="anchor" href="#summary">#</a>
-</h2>
-<p>Day 1 covered the full spectrum of prompt engineering:</p>
-<ul>
-<li>Prompt types: zero/few-shot, role, system, contextual</li>
-<li>Reasoning: CoT, ToT, ReAct, Self-consistency, Step-back</li>
-<li>Automation: APE</li>
-<li>Code prompting: generate, translate, debug</li>
-<li>Multimodal and schema-guided prompting</li>
-<li>Best practices: output format, variables, simplicity, documentation</li>
-</ul>
-<blockquote>
-<p>Core Insight: <strong>Prompting is a design discipline—blending clarity, creativity, logic, and iteration to unlock the full power of LLMs.</strong></p></blockquote>
-<h2 id="final-best-practices-and-wrap-up">
-  Final Best Practices and Wrap-Up
-  <a class="anchor" href="#final-best-practices-and-wrap-up">#</a>
-</h2>
+<p>Final principle: prompting is experimental—track what you try, and improve iteratively.</p></blockquote>
 <h3 id="24-design-with-simplicity-1">
   24. Design with Simplicity
   <a class="anchor" href="#24-design-with-simplicity-1">#</a>
@@ -1134,10 +1102,6 @@ Ideal for steering structure and increasing precision.</li>
 <p>Positive instructions are more intuitive than a list of “don’ts.” Use constraints when safety or exact formatting is critical.</p>
 <blockquote>
 <p>→ how do we encourage creativity while staying on target?</p></blockquote>
-<h2 id="variables-versions-and-formats">
-  Variables, Versions, and Formats
-  <a class="anchor" href="#variables-versions-and-formats">#</a>
-</h2>
 <h3 id="27-use-variables-in-prompts">
   27. Use Variables in Prompts
   <a class="anchor" href="#27-use-variables-in-prompts">#</a>
@@ -1152,10 +1116,6 @@ Ideal for steering structure and increasing precision.</li>
 <p>Try different styles—question, statement, instruction—and output formats like JSON. JSON helps structure data and reduce hallucinations.</p>
 <blockquote>
 <p>→ how do we balance human readability with system parsing needs?</p></blockquote>
-<h2 id="prompt-engineering-discipline">
-  Prompt Engineering Discipline
-  <a class="anchor" href="#prompt-engineering-discipline">#</a>
-</h2>
 <h3 id="29-use-schemas-for-input-and-output">
   29. Use Schemas for Input and Output
   <a class="anchor" href="#29-use-schemas-for-input-and-output">#</a>
@@ -1169,18 +1129,18 @@ Ideal for steering structure and increasing precision.</li>
 </h3>
 <p>Track all attempts, model versions, and outcomes in structured logs. Helps with reproducibility, debugging, and future upgrades.</p>
 <blockquote>
-<p>Final insight: <strong>prompt engineering is iterative design—every prompt is a versioned artifact.</strong></p></blockquote>
-<h2 id="summary-1">
-  <strong>Summary</strong>
-  <a class="anchor" href="#summary-1">#</a>
-</h2>
-<p>This module explored the full scope of prompt engineering:</p>
+<p>Final insight: prompt engineering is iterative design—every prompt is a versioned artifact.</p></blockquote>
+<h3 id="summary">
+  Summary
+  <a class="anchor" href="#summary">#</a>
+</h3>
 <ul>
-<li>Prompt types (zero-shot to step-back)</li>
-<li>Reasoning methods (CoT, ToT, Self-consistency, ReAct)</li>
-<li>Automated methods (APE)</li>
-<li>Code, multimodal, and structured prompting</li>
-<li>Evaluation, formatting, variables, and documentation</li>
+<li>Prompt types: zero/few-shot, role, system, contextual</li>
+<li>Reasoning: CoT, ToT, ReAct, Self-consistency, Step-back</li>
+<li>Automation: APE</li>
+<li>Code prompting: generate, translate, debug</li>
+<li>Multimodal and schema-guided prompting</li>
+<li>Best practices: Evaluation, formatting, variables, and documentation</li>
 </ul>
 <blockquote>
 <p>The journey from text to structured reasoning begins with a well-crafted prompt.</p></blockquote>
@@ -1259,29 +1219,16 @@ Ideal for steering structure and increasing precision.</li>
             <li><a href="#28-work-with-schemas">28. Work With Schemas</a></li>
             <li><a href="#29-best-practices-for-chain-of-thought-cot">29. Best Practices for Chain-of-Thought (CoT)</a></li>
             <li><a href="#30-document-prompt-experiments">30. Document Prompt Experiments</a></li>
-          </ul>
-        </li>
-        <li><a href="#summary"><strong>Summary</strong></a></li>
-        <li><a href="#final-best-practices-and-wrap-up">Final Best Practices and Wrap-Up</a>
-          <ul>
             <li><a href="#24-design-with-simplicity-1">24. Design with Simplicity</a></li>
             <li><a href="#25-be-specific-about-output-1">25. Be Specific About Output</a></li>
             <li><a href="#26-prefer-instructions-over-constraints">26. Prefer Instructions Over Constraints</a></li>
-          </ul>
-        </li>
-        <li><a href="#variables-versions-and-formats">Variables, Versions, and Formats</a>
-          <ul>
             <li><a href="#27-use-variables-in-prompts">27. Use Variables in Prompts</a></li>
             <li><a href="#28-experiment-with-input-and-output-formats">28. Experiment with Input and Output Formats</a></li>
-          </ul>
-        </li>
-        <li><a href="#prompt-engineering-discipline">Prompt Engineering Discipline</a>
-          <ul>
             <li><a href="#29-use-schemas-for-input-and-output">29. Use Schemas for Input and Output</a></li>
             <li><a href="#30-document-prompt-versions">30. Document Prompt Versions</a></li>
+            <li><a href="#summary">Summary</a></li>
           </ul>
         </li>
-        <li><a href="#summary-1"><strong>Summary</strong></a></li>
       </ul>
     </li>
   </ul>
