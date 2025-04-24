@@ -1,36 +1,75 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-Based on &ldquo;Hands-On Healthcare Data: Taming the Complexity of Real-World Data&rdquo;
+  Hands-On Healthcare Data: Taming the Complexity of Real-World Data
+  #
 
-Ch1
-Ch2
-Ch3
-Ch4
-Ch5
-Ch6. Machine Learning &amp; Graph-Based Analytics in Healthcare
-Ch7
+
+
+Book: https://www.oreilly.com/library/view/hands-on-healthcare-data/9781098112912/
+Code: https://gitlab.com/hands-on-healthcare-data
+
+
+  
+      
+          Chapter
+          Summary
+      
+  
+  
+      
+          1. Introduction to Healthcare Data  Overview of data types (EHR, claims, registries, trials) and enterprise challenges.
+          
+      
+      
+          2. Technical Introduction  Covers Docker, database systems, and data architecture.
+          
+      
+      
+          3. Standardized Vocabularies in Healthcare  Discusses vocabularies like SNOMED, ICD, UMLS and their usage.
+          
+      
+      
+          4. Deep Dive: Electronic Health Records Data  Explores MIMIC, Synthea, and normalization issues in EHRs.
+          Summary
+      
+      
+          5. Deep Dive: Claims Data  Analysis of claims datasets like SynPUF and integration strategies.
+          
+      
+      
+          6. Machine Learning and Analytics  Feature engineering, graph-based ML, embeddings, SQL vs. graph ops.
+          Summary
+      
+      
+          7. Trends in Healthcare Analytics  Federated learning, NLP in healthcare, and harmonization trends.
+          
+      
+      
+          8. Harmonization, and Final Thoughts  RWD diversity, business-technical gap, graph limitations.
+          
+      
+  
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare/domain_knowledge/hands-on-healthcare-data/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/hands-on-healthcare-data/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Hands-On Healthcare Data">
-  <meta property="og:description" content="Based on “Hands-On Healthcare Data: Taming the Complexity of Real-World Data”
-Ch1 Ch2 Ch3 Ch4 Ch5 Ch6. Machine Learning &amp; Graph-Based Analytics in Healthcare Ch7">
+  <meta property="og:description" content="Hands-On Healthcare Data: Taming the Complexity of Real-World Data # Book: https://www.oreilly.com/library/view/hands-on-healthcare-data/9781098112912/ Code: https://gitlab.com/hands-on-healthcare-data Chapter Summary 1. Introduction to Healthcare Data Overview of data types (EHR, claims, registries, trials) and enterprise challenges. 2. Technical Introduction Covers Docker, database systems, and data architecture. 3. Standardized Vocabularies in Healthcare Discusses vocabularies like SNOMED, ICD, UMLS and their usage. 4. Deep Dive: Electronic Health Records Data Explores MIMIC, Synthea, and normalization issues in EHRs. Summary 5. Deep Dive: Claims Data Analysis of claims datasets like SynPUF and integration strategies. 6. Machine Learning and Analytics Feature engineering, graph-based ML, embeddings, SQL vs. graph ops. Summary 7. Trends in Healthcare Analytics Federated learning, NLP in healthcare, and harmonization trends. 8. Harmonization, and Final Thoughts RWD diversity, business-technical gap, graph limitations.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Hands-On Healthcare Data | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/healthcare/domain_knowledge/hands-on-healthcare-data/">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/hands-on-healthcare-data/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.248b874760fa46ed33a7f2e919ec8a7af57c4e46b84658d711cbb8beca39f128.js" integrity="sha256-JIuHR2D6Ru0zp/LpGeyKevV8Tka4RljXEcu4vso58Sg=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/healthcare/domain_knowledge/hands-on-healthcare-data/index.xml" title="AI Reasoning" />
+  <script defer src="/en.search.min.3187c5bcdefc198db17efa7f491a08867ebeb81343af1cc3d8aec94cd4e3c17b.js" integrity="sha256-MYfFvN78GY2xfvp/SRoIhn6&#43;uBNDrxzD2K7JTNTjwXs=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/healthcare/domain_knowledge/hands-on-healthcare-data/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -629,32 +668,6 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -803,7 +816,15 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#hands-on-healthcare-data-taming-the-complexity-of-real-world-data">Hands-On Healthcare Data: Taming the Complexity of Real-World Data</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -814,17 +835,57 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><blockquote>
-<p>Based on <em>&ldquo;Hands-On Healthcare Data: Taming the Complexity of Real-World Data&rdquo;</em></p></blockquote>
+  <article class="markdown book-article"><h2 id="hands-on-healthcare-data-taming-the-complexity-of-real-world-data">
+  Hands-On Healthcare Data: Taming the Complexity of Real-World Data
+  <a class="anchor" href="#hands-on-healthcare-data-taming-the-complexity-of-real-world-data">#</a>
+</h2>
+<hr>
 <ul>
-<li>Ch1</li>
-<li>Ch2</li>
-<li>Ch3</li>
-<li>Ch4</li>
-<li>Ch5</li>
-<li>Ch6. Machine Learning &amp; Graph-Based Analytics in Healthcare</li>
-<li>Ch7</li>
+<li><strong>Book</strong>: <a href="https://www.oreilly.com/library/view/hands-on-healthcare-data/9781098112912/">https://www.oreilly.com/library/view/hands-on-healthcare-data/9781098112912/</a></li>
+<li><strong>Code</strong>: <a href="https://gitlab.com/hands-on-healthcare-data">https://gitlab.com/hands-on-healthcare-data</a></li>
 </ul>
+<table>
+  <thead>
+      <tr>
+          <th>Chapter</th>
+          <th>Summary</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>1. Introduction to Healthcare Data</strong> <br> Overview of data types (EHR, claims, registries, trials) and enterprise challenges.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>2. Technical Introduction</strong> <br> Covers Docker, database systems, and data architecture.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>3. Standardized Vocabularies in Healthcare</strong> <br> Discusses vocabularies like SNOMED, ICD, UMLS and their usage.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>4. Deep Dive: Electronic Health Records Data</strong> <br> Explores MIMIC, Synthea, and normalization issues in EHRs.</td>
+          <td><a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch4_ehr/">Summary</a></td>
+      </tr>
+      <tr>
+          <td><strong>5. Deep Dive: Claims Data</strong> <br> Analysis of claims datasets like SynPUF and integration strategies.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>6. Machine Learning and Analytics</strong> <br> Feature engineering, graph-based ML, embeddings, SQL vs. graph ops.</td>
+          <td><a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch6_graph_ml/">Summary</a></td>
+      </tr>
+      <tr>
+          <td><strong>7. Trends in Healthcare Analytics</strong> <br> Federated learning, NLP in healthcare, and harmonization trends.</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><strong>8. Harmonization, and Final Thoughts</strong> <br> RWD diversity, business-technical gap, graph limitations.</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
 </article>
  
       
@@ -864,7 +925,15 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#hands-on-healthcare-data-taming-the-complexity-of-real-world-data">Hands-On Healthcare Data: Taming the Complexity of Real-World Data</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

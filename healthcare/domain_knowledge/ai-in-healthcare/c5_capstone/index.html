@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -127,7 +127,7 @@ Both must align their evaluation strategy with real-world clinical use (triage v
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="C5 Capstone Projects">
   <meta property="og:description" content="📘 Course 5: Capston Projects – COVID-19 AI # 📷 Project 1: CXR-Based COVID-19 Detector # Phase 1: Data Collection # Objective: Build a deep learning model to predict COVID-19 status using chest x-ray (CXR) images. Input: 3000x3000 px uncompressed DICOM images from 30,000 exams (10% COVID-positive). Concern: Class imbalance (90:10) and high-resolution image processing needs. Phase 2: Model Training (Part 1) # Used ResNet-50 on resized 224x224 images. Data split randomly (not by patient). Augmentation: 50% zoom-in on random region. Issue: Training loss did not improve → possible underfitting or flawed preprocessing. Phase 3: Model Training (Part 2) # Improvements made: Patient-level data split to prevent leakage. Image size increased to 512x512 px; model adjusted accordingly. Simplified augmentation: horizontal flip &#43; light zoom. COVID-positive oversampling added. New issue: Overfitting (training loss much lower than validation loss). Metric discrepancy: High accuracy but relatively low AUROC on validation set. Phase 4: Model Evaluation # Applied dropout (p=0.5) and random rotation augmentation. Two early-stopped models: Model A: Best validation AUROC. Model B: Best validation loss. Deployment consideration: Choose model based on worklist prioritization use case. 📈 Project 2: EHR-Based Intubation Predictor # Phase 1: Data Collection # Objective: Predict likelihood of intubation from electronic health records (EHR). Input: COVID dataset with 3,000 EHRs (300 positive) &#43; additional 40,000-exam COVID-like dataset. Issue: Misassumption—only 3,000 usable EHRs in COVID dataset. Challenge: Sparse features, strange lab value distributions (e.g., D-DIMER), many missing values. Phase 2: Model Training (Part 1) # Attempted logistic regression but faced data issues (sparsity, outliers, NaNs). Required strategies to deal with missingness and outliers before modeling. Phase 3: Model Training (Part 2) # New strategy: Train on 40,000 “COVID-like” exams; test on COVID dataset (3,000 exams). Split: 70% train, 30% validation (COVID-like dataset). 10-fold cross-validation used for hyperparameter tuning. Models trained: Logistic regression &#43; Random Forests. Phase 4: Model Evaluation # Performance improved using COVID-like training data. Now selecting operating threshold using precision-recall curve. Deployment consideration: Choose threshold optimized for triage decision-making. 🔗 Cross-Project Learnings # Both projects improved significantly from Phase 2 to 4 through better data practices: Patient-level splits Cross-validation Oversampling Threshold tuning Key divergence: Project 1 is image-based, focuses on COVID diagnosis. Project 2 is EHR-based, focuses on intervention prediction (intubation). Both must align their evaluation strategy with real-world clinical use (triage vs. prioritization).">
@@ -136,11 +136,11 @@ Both must align their evaluation strategy with real-world clinical use (triage v
 <title>C5 Capstone Projects | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.248b874760fa46ed33a7f2e919ec8a7af57c4e46b84658d711cbb8beca39f128.js" integrity="sha256-JIuHR2D6Ru0zp/LpGeyKevV8Tka4RljXEcu4vso58Sg=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/index.xml" title="AI Reasoning" />
+  <script defer src="/en.search.min.3187c5bcdefc198db17efa7f491a08867ebeb81343af1cc3d8aec94cd4e3c17b.js" integrity="sha256-MYfFvN78GY2xfvp/SRoIhn6&#43;uBNDrxzD2K7JTNTjwXs=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -738,32 +738,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
-  
-
-        </li>
-      
     
   </ul>
 

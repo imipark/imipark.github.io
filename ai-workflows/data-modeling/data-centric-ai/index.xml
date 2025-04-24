@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data-Centric AI (DCAI) on AI Reasoning</title>
-    <link>http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/</link>
+    <link>https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/</link>
     <description>Recent content in Data-Centric AI (DCAI) on AI Reasoning</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data-Centric AI vs Model-Centric AI</title>
-      <link>http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/</link>
+      <link>https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/</guid>
+      <guid>https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/</guid>
       <description>&lt;h2 id=&#34;data-centric-ai-vs-model-centric-ai&#34;&gt;&#xA;  Data-Centric AI vs Model-Centric AI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#data-centric-ai-vs-model-centric-ai&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;MIT Lecture : &lt;a href=&#34;https://dcai.csail.mit.edu/&#34;&gt;https://dcai.csail.mit.edu/&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;GitHub for Labs: &lt;a href=&#34;https://github.com/dcai-course/dcai-lab&#34;&gt;https://github.com/dcai-course/dcai-lab&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;q1-what-is-the-traditional-model-centric-approach-to-machine-learning&#34;&gt;&#xA;  Q1: What is the traditional model-centric approach to machine learning?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#q1-what-is-the-traditional-model-centric-approach-to-machine-learning&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;A1&lt;/strong&gt;: Traditionally, machine learning has focused on &lt;em&gt;model-centric AI&lt;/em&gt;, where the dataset is fixed and the goal is to tune the model:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Learn different model architectures&lt;/li&gt;&#xA;&lt;li&gt;Modify hyperparameters and training losses&lt;/li&gt;&#xA;&lt;li&gt;Focus on improving model performance given clean data&lt;/li&gt;&#xA;&lt;li&gt;This is how ML is often taught in courses (e.g., MIT 6.036)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;q2-what-challenges-arise-in-real-world-ml-settings&#34;&gt;&#xA;  Q2: What challenges arise in real-world ML settings?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#q2-what-challenges-arise-in-real-world-ml-settings&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;A2&lt;/strong&gt;: Real-world data is:&lt;/p&gt;</description>
     </item>
   </channel>

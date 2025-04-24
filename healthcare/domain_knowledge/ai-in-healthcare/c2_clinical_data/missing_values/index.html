@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -111,7 +111,7 @@ Rationale: The missingness depends on the unobserved value and may carry predict
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/missing_values/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/missing_values/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Missing Data Scenarios in Healthcare Modeling">
   <meta property="og:description" content="Missing Data Scenarios in Healthcare Modeling # 1. Should Be Measured But Wasn’t # Description: The value is expected but is missing due to random or procedural issues (e.g., lab error, missed test). Technical Term: MCAR: Missing Completely At Random MAR: Missing At Random Example: A routine blood test wasn’t recorded because the sample was lost. Strategy: Impute (mean, median, or model-based). Add a missingness indicator variable (e.g., var_missing = 1). Rationale: The missingness is unrelated to the value itself, so estimation is relatively safe. 2. Mostly Zero Due to Rare Occurrence # Description: Not truly missing — the value is zero or absent for most patients because the condition/event is rare. Technical Term: Not Missing (No abbreviation needed) Example: HIV diagnosis column is 0 for most patients. Strategy: Do not impute — the 0s are meaningful and reflect true absence. Rationale: These are real values, and zeros carry clinical meaning. 3. Deliberately Not Recorded # Description: Clinician or system chooses not to record a value based on context (e.g., patient clearly stable or too ill). Technical Term: MNAR: Missing Not At Random Example: Sodium level not tested because the patient was clearly stable. Strategy: Avoid imputation if possible — it may introduce bias. Use models that handle missingness natively (e.g., decision trees, XGBoost, LightGBM). Consider adding a missingness indicator. Rationale: The missingness depends on the unobserved value and may carry predictive signal. Summary Table # Case Description Abbreviation Impute? Extra Notes 1 Should be measured but wasn’t MCAR / MAR ✅ Yes Add indicator if signal is likely 2 Mostly zero (rare condition) Not Missing 🚫 No Keep as is — zeros are informative 3 Deliberately not recorded MNAR ⚠️ Caution Use native handling &#43; possible indicator">
@@ -121,10 +121,10 @@ Rationale: The missingness depends on the unobserved value and may carry predict
 <title>Missing Data Scenarios in Healthcare Modeling | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/missing_values/">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/missing_values/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.248b874760fa46ed33a7f2e919ec8a7af57c4e46b84658d711cbb8beca39f128.js" integrity="sha256-JIuHR2D6Ru0zp/LpGeyKevV8Tka4RljXEcu4vso58Sg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.3187c5bcdefc198db17efa7f491a08867ebeb81343af1cc3d8aec94cd4e3c17b.js" integrity="sha256-MYfFvN78GY2xfvp/SRoIhn6&#43;uBNDrxzD2K7JTNTjwXs=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -722,32 +722,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch4_ehr/" class="">Ch4 EHR</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/ch6_graph_ml/" class="">Ch6 ML and Graph Analytics</a>
-  
-
-        </li>
-      
     
   </ul>
 
