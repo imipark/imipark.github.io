@@ -8,6 +8,8 @@
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/toc_course4/</loc>
   </url><url>
+    <loc>http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/</loc>
+  </url><url>
     <loc>http://localhost:1313/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/</loc>
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/summary_m1/</loc>
@@ -124,8 +126,6 @@
   </url><url>
     <loc>http://localhost:1313/ai-workflows/genai-systems/ai_agents/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/ai-education/</loc>
-  </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/</loc>
   </url><url>
     <loc>http://localhost:1313/ai-workflows/mlops/ai_cloud_comparision/</loc>
@@ -154,13 +154,13 @@
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/data_quality_labeling_weak_supervision_qa/</loc>
   </url><url>
+    <loc>http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/</loc>
+  </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/diagnostic_metrics_and_curves/</loc>
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/ethics_in_ai_healthcare_qna/</loc>
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/foundatoin_model/</loc>
-  </url><url>
-    <loc>http://localhost:1313/categories/genai-instruction/</loc>
   </url><url>
     <loc>http://localhost:1313/ai-workflows/alignment-reasoning/graph-reasoning/</loc>
   </url><url>
@@ -181,8 +181,6 @@
     <loc>http://localhost:1313/ipark/</loc>
   </url><url>
     <loc>http://localhost:1313/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/</loc>
-  </url><url>
-    <loc>http://localhost:1313/categories/learning-methods/</loc>
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/missing_values/</loc>
   </url><url>

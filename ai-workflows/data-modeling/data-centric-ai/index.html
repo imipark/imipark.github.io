@@ -4,25 +4,81 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  AI Agents
+  Data-Centric AI
   #
+
+Topics from the MIT Data-Centric AI course
+
+  
+      
+          Topic / Lecture Note
+          Q&amp;A Summary
+      
+  
+  
+      
+          Data-Centric AI vs. Model-Centric AI
+          Summary
+      
+      
+          Label Errors and Confident Learning
+          To be added
+      
+      
+          Advanced Confident Learning, LLM and GenAI applications
+          To be added
+      
+      
+          Class Imbalance, Outliers, and Distribution Shift
+          To be added
+      
+      
+          Dataset Creation and Curation
+          To be added
+      
+      
+          Data-centric Evaluation of ML Models
+          To be added
+      
+      
+          Data Curation for LLMs
+          To be added
+      
+      
+          Growing or Compressing Datasets
+          To be added
+      
+      
+          Interpretability in Data-Centric ML
+          To be added
+      
+      
+          Encoding Human Priors: Data Augmentation and Prompt Engineering
+          To be added
+      
+      
+          Data Privacy and Security
+          To be added
+      
+  
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/genai-systems/ai_agents/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/">
   <meta property="og:site_name" content="AI Reasoning">
-  <meta property="og:title" content="AI Agents">
-  <meta property="og:description" content="AI Agents #">
+  <meta property="og:title" content="Data-Centric AI (DCAI)">
+  <meta property="og:description" content="Data-Centric AI # Topics from the MIT Data-Centric AI course
+Topic / Lecture Note Q&amp;A Summary Data-Centric AI vs. Model-Centric AI Summary Label Errors and Confident Learning To be added Advanced Confident Learning, LLM and GenAI applications To be added Class Imbalance, Outliers, and Distribution Shift To be added Dataset Creation and Curation To be added Data-centric Evaluation of ML Models To be added Data Curation for LLMs To be added Growing or Compressing Datasets To be added Interpretability in Data-Centric ML To be added Encoding Human Priors: Data Augmentation and Prompt Engineering To be added Data Privacy and Security To be added">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
-<title>AI Agents | AI Reasoning</title>
+<title>Data-Centric AI (DCAI) | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/ai-workflows/genai-systems/ai_agents/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.248b874760fa46ed33a7f2e919ec8a7af57c4e46b84658d711cbb8beca39f128.js" integrity="sha256-JIuHR2D6Ru0zp/LpGeyKevV8Tka4RljXEcu4vso58Sg=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/ai-workflows/genai-systems/ai_agents/index.xml" title="AI Reasoning" />
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -89,7 +145,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle" checked />
     <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
       <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
     </label>
@@ -105,9 +161,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-211a3339275321c1881a08804c2b28d9" class="toggle"  />
+    <input type="checkbox" id="section-211a3339275321c1881a08804c2b28d9" class="toggle" checked />
     <label for="section-211a3339275321c1881a08804c2b28d9" class="flex justify-between">
-      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="active">Data-Centric AI (DCAI)</a>
     </label>
   
 
@@ -131,7 +187,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle" checked />
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
     <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
       <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
     </label>
@@ -246,9 +302,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle" checked />
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
     <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
-      <a href="/ai-workflows/genai-systems/ai_agents/" class="active">AI Agents</a>
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
     </label>
   
 
@@ -781,7 +837,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>AI Agents</h3>
+  <h3>Data-Centric AI (DCAI)</h3>
 
   <label for="toc-control">
     
@@ -799,7 +855,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#ai-agents">AI Agents</a></li>
+        <li><a href="#data-centric-ai">Data-Centric AI</a></li>
       </ul>
     </li>
   </ul>
@@ -814,10 +870,65 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h2 id="ai-agents">
-  AI Agents
-  <a class="anchor" href="#ai-agents">#</a>
+  <article class="markdown book-article"><h2 id="data-centric-ai">
+  Data-Centric AI
+  <a class="anchor" href="#data-centric-ai">#</a>
 </h2>
+<p>Topics from the <a href="https://dcai.csail.mit.edu/">MIT Data-Centric AI course</a></p>
+<table>
+  <thead>
+      <tr>
+          <th>Topic / Lecture Note</th>
+          <th>Q&amp;A Summary</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/data-centric-model-centric/">Data-Centric AI vs. Model-Centric AI</a></td>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/">Summary</a></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/label-errors-confident-learning/">Label Errors and Confident Learning</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/advanced-confident-learning/">Advanced Confident Learning, LLM and GenAI applications</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/class-imbalance-outliers-shift/">Class Imbalance, Outliers, and Distribution Shift</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/dataset-creation-curation/">Dataset Creation and Curation</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/data-centric-evaluation/">Data-centric Evaluation of ML Models</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/data-curation-llms/">Data Curation for LLMs</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/growing-compressing-datasets/">Growing or Compressing Datasets</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/interpretability-data-centric-ml/">Interpretability in Data-Centric ML</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/data-augmentation-prompt-engineering/">Encoding Human Priors: Data Augmentation and Prompt Engineering</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+      <tr>
+          <td><a href="https://dcai.csail.mit.edu/lectures/data-privacy-security/">Data Privacy and Security</a></td>
+          <td><em>To be added</em></td>
+      </tr>
+  </tbody>
+</table>
 </article>
  
       
@@ -861,7 +972,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#ai-agents">AI Agents</a></li>
+        <li><a href="#data-centric-ai">Data-Centric AI</a></li>
       </ul>
     </li>
   </ul>
