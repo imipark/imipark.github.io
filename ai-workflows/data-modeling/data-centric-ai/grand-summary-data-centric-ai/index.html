@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  [Overview] Data-Centric AI
+  #
+
+
+
+  Q1: What is the overall motivation behind Data-Centric AI?
+  #
+
+
+Traditional AI focused on improving models given fixed data.
+Data-Centric AI focuses on improving the data itself (quality, coverage, relevance, fairness) because data is the dominant factor in ML system success.
+
+
+  Q2: How does dataset curation fit into Data-Centric AI?
+  #
+
+
+Dataset creation and curation is the foundation.
+It asks: Are we collecting the right examples? Is the labeling accurate and representative?
+Techniques: thoughtful sampling, careful label aggregation (e.g., majority vote, Dawid-Skene, CROWDLAB).
+
+
+  Q3: Once data is collected, what problems commonly arise?
+  #
+
+
+Label errors: wrong or inconsistent labels hurt model reliability.
+Class imbalance: rare classes get ignored.
+Outliers: strange data points can mislead models.
+Distribution shift: training and deployment data differ over time.
+
+
+  Q4: How do we handle such data issues?
+  #
+
+
+Confident Learning identifies and prunes likely label errors systematically.
+Active learning selectively labels the most informative examples.
+Core-set selection compresses large datasets without losing essential information.
+Outlier detection techniques (e.g., Isolation Forests, Autoencoders) remove harmful anomalies.
+
+
+  Q5: How is model evaluation impacted by a data-centric view?
+  #
+
+
+Not just global accuracy: evaluation must check underperforming slices (e.g., specific demographics).
+Must detect model bias, brittle subpopulations, and errors that standard metrics would miss.
+Influence functions (like Data Shapley) help prioritize which datapoints matter most to fix.
+
+
+  Q6: How does interpretability tie into Data-Centric AI?
+  #
+
+
+If features themselves are messy or unintuitive, the model can&rsquo;t be interpretable.
+Interpretable feature engineering (with users in the loop) enhances both trust and model robustness.
+Example tools: Ballet, Pyreal, Mind-the-Gap feature frameworks.
+
+
+  Q7: Why is privacy and security essential in the Data-Centric mindset?
+  #
+
+
+ML models often memorize sensitive training data unintentionally.
+Threats include:
+
+Membership inference attacks (detect if a datapoint was in training)
+Data extraction attacks (leak sensitive records)
+
+
+Solutions involve differential privacy (DP), model output smoothing, and rigorous threat modeling.
+
+
+  Q8: How does LLM-specific curation amplify Data-Centric principles?
+  #
+
+
+Data curation for LLMs is even more critical because LLMs memorize and generalize at a massive scale.
+Techniques include:
+
+Fine-tuning with synthetic but high-quality generated datasets.
+Uncertainty quantification to filter low-confidence generations.
+Applying both human and LLM evaluators to assess outputs robustly.
+
+
+
+
+  Q9: What is the grand cycle of a data-centric AI system?
+  #
+
+
+Curate and clean the initial dataset.
+Train simple models to uncover data issues.
+Fix data issues (label noise, bias, outliers).
+Improve feature quality for interpretability and usability.
+Evaluate deeply, especially for subpopulations.
+Secure the model and data against privacy attacks.
+Iterate: new data, new shifts, new repairs — endlessly evolving.
+
+
+  Q10: Final Takeaway
+  #
+
+
+Data is the first-class citizen in AI systems.
+Success in Data-Centric AI requires mastering curation, quality control, evaluation, privacy protection, and interpretability — before throwing bigger models at the problem.
+
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/grand-summary-data-centric-ai/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="AI Reasoning">
+  <meta property="og:description" content="[Overview] Data-Centric AI # Q1: What is the overall motivation behind Data-Centric AI? # Traditional AI focused on improving models given fixed data. Data-Centric AI focuses on improving the data itself (quality, coverage, relevance, fairness) because data is the dominant factor in ML system success. Q2: How does dataset curation fit into Data-Centric AI? # Dataset creation and curation is the foundation. It asks: Are we collecting the right examples? Is the labeling accurate and representative? Techniques: thoughtful sampling, careful label aggregation (e.g., majority vote, Dawid-Skene, CROWDLAB). Q3: Once data is collected, what problems commonly arise? # Label errors: wrong or inconsistent labels hurt model reliability. Class imbalance: rare classes get ignored. Outliers: strange data points can mislead models. Distribution shift: training and deployment data differ over time. Q4: How do we handle such data issues? # Confident Learning identifies and prunes likely label errors systematically. Active learning selectively labels the most informative examples. Core-set selection compresses large datasets without losing essential information. Outlier detection techniques (e.g., Isolation Forests, Autoencoders) remove harmful anomalies. Q5: How is model evaluation impacted by a data-centric view? # Not just global accuracy: evaluation must check underperforming slices (e.g., specific demographics). Must detect model bias, brittle subpopulations, and errors that standard metrics would miss. Influence functions (like Data Shapley) help prioritize which datapoints matter most to fix. Q6: How does interpretability tie into Data-Centric AI? # If features themselves are messy or unintuitive, the model can’t be interpretable. Interpretable feature engineering (with users in the loop) enhances both trust and model robustness. Example tools: Ballet, Pyreal, Mind-the-Gap feature frameworks. Q7: Why is privacy and security essential in the Data-Centric mindset? # ML models often memorize sensitive training data unintentionally. Threats include: Membership inference attacks (detect if a datapoint was in training) Data extraction attacks (leak sensitive records) Solutions involve differential privacy (DP), model output smoothing, and rigorous threat modeling. Q8: How does LLM-specific curation amplify Data-Centric principles? # Data curation for LLMs is even more critical because LLMs memorize and generalize at a massive scale. Techniques include: Fine-tuning with synthetic but high-quality generated datasets. Uncertainty quantification to filter low-confidence generations. Applying both human and LLM evaluators to assess outputs robustly. Q9: What is the grand cycle of a data-centric AI system? # Curate and clean the initial dataset. Train simple models to uncover data issues. Fix data issues (label noise, bias, outliers). Improve feature quality for interpretability and usability. Evaluate deeply, especially for subpopulations. Secure the model and data against privacy attacks. Iterate: new data, new shifts, new repairs — endlessly evolving. Q10: Final Takeaway # Data is the first-class citizen in AI systems. Success in Data-Centric AI requires mastering curation, quality control, evaluation, privacy protection, and interpretability — before throwing bigger models at the problem.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Grand Summary Data Centric Ai | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/grand-summary-data-centric-ai/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.fa12c2e521fe1cd1083071ccb72559c93edcf42ce671f394a2bf314f2b2609a1.js" integrity="sha256-&#43;hLC5SH&#43;HNEIMHHMtyVZyT7c9CzmcfOUor8xTysmCaE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle" checked />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-211a3339275321c1881a08804c2b28d9" class="toggle" checked />
+    <label for="section-211a3339275321c1881a08804c2b28d9" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/data-modeling/data-centric-ai/grand-summary-data-centric-ai/" class="active">Grand Summary Data Centric Ai</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-49f8a15fba102060fbec99923a9f7e7f" class="toggle"  />
+    <label for="section-49f8a15fba102060fbec99923a9f7e7f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fe994b0524505ef83c5591fe607d72e" class="toggle"  />
+    <label for="section-8fe994b0524505ef83c5591fe607d72e" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-786aee9ce5c7a34804dfdaaae1c79408" class="toggle"  />
+    <label for="section-786aee9ce5c7a34804dfdaaae1c79408" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Grand Summary Data Centric Ai</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview-data-centric-ai">[Overview] Data-Centric AI</a>
+          <ul>
+            <li><a href="#q1-what-is-the-overall-motivation-behind-data-centric-ai">Q1: What is the overall motivation behind Data-Centric AI?</a></li>
+            <li><a href="#q2-how-does-dataset-curation-fit-into-data-centric-ai">Q2: How does dataset curation fit into Data-Centric AI?</a></li>
+            <li><a href="#q3-once-data-is-collected-what-problems-commonly-arise">Q3: Once data is collected, what problems commonly arise?</a></li>
+            <li><a href="#q4-how-do-we-handle-such-data-issues">Q4: How do we handle such data issues?</a></li>
+            <li><a href="#q5-how-is-model-evaluation-impacted-by-a-data-centric-view">Q5: How is model evaluation impacted by a data-centric view?</a></li>
+            <li><a href="#q6-how-does-interpretability-tie-into-data-centric-ai">Q6: How does interpretability tie into Data-Centric AI?</a></li>
+            <li><a href="#q7-why-is-privacy-and-security-essential-in-the-data-centric-mindset">Q7: Why is privacy and security essential in the Data-Centric mindset?</a></li>
+            <li><a href="#q8-how-does-llm-specific-curation-amplify-data-centric-principles">Q8: How does LLM-specific curation amplify Data-Centric principles?</a></li>
+            <li><a href="#q9-what-is-the-grand-cycle-of-a-data-centric-ai-system">Q9: What is the grand cycle of a data-centric AI system?</a></li>
+            <li><a href="#q10-final-takeaway">Q10: Final Takeaway</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="overview-data-centric-ai">
+  [Overview] Data-Centric AI
+  <a class="anchor" href="#overview-data-centric-ai">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-is-the-overall-motivation-behind-data-centric-ai">
+  Q1: What is the overall motivation behind Data-Centric AI?
+  <a class="anchor" href="#q1-what-is-the-overall-motivation-behind-data-centric-ai">#</a>
+</h3>
+<ul>
+<li>Traditional AI focused on <strong>improving models</strong> given fixed data.</li>
+<li>Data-Centric AI focuses on <strong>improving the data itself</strong> (quality, coverage, relevance, fairness) because data is the dominant factor in ML system success.</li>
+</ul>
+<h3 id="q2-how-does-dataset-curation-fit-into-data-centric-ai">
+  Q2: How does dataset curation fit into Data-Centric AI?
+  <a class="anchor" href="#q2-how-does-dataset-curation-fit-into-data-centric-ai">#</a>
+</h3>
+<ul>
+<li><strong>Dataset creation and curation</strong> is the foundation.</li>
+<li>It asks: Are we collecting the <em>right</em> examples? Is the labeling accurate and representative?</li>
+<li>Techniques: thoughtful sampling, careful label aggregation (e.g., majority vote, Dawid-Skene, CROWDLAB).</li>
+</ul>
+<h3 id="q3-once-data-is-collected-what-problems-commonly-arise">
+  Q3: Once data is collected, what problems commonly arise?
+  <a class="anchor" href="#q3-once-data-is-collected-what-problems-commonly-arise">#</a>
+</h3>
+<ul>
+<li><strong>Label errors</strong>: wrong or inconsistent labels hurt model reliability.</li>
+<li><strong>Class imbalance</strong>: rare classes get ignored.</li>
+<li><strong>Outliers</strong>: strange data points can mislead models.</li>
+<li><strong>Distribution shift</strong>: training and deployment data differ over time.</li>
+</ul>
+<h3 id="q4-how-do-we-handle-such-data-issues">
+  Q4: How do we handle such data issues?
+  <a class="anchor" href="#q4-how-do-we-handle-such-data-issues">#</a>
+</h3>
+<ul>
+<li><strong>Confident Learning</strong> identifies and prunes likely label errors systematically.</li>
+<li><strong>Active learning</strong> selectively labels the most informative examples.</li>
+<li><strong>Core-set selection</strong> compresses large datasets without losing essential information.</li>
+<li><strong>Outlier detection</strong> techniques (e.g., Isolation Forests, Autoencoders) remove harmful anomalies.</li>
+</ul>
+<h3 id="q5-how-is-model-evaluation-impacted-by-a-data-centric-view">
+  Q5: How is model evaluation impacted by a data-centric view?
+  <a class="anchor" href="#q5-how-is-model-evaluation-impacted-by-a-data-centric-view">#</a>
+</h3>
+<ul>
+<li>Not just global accuracy: evaluation must check <strong>underperforming slices</strong> (e.g., specific demographics).</li>
+<li>Must detect <strong>model bias, brittle subpopulations</strong>, and errors that standard metrics would miss.</li>
+<li><strong>Influence functions</strong> (like Data Shapley) help prioritize which datapoints matter most to fix.</li>
+</ul>
+<h3 id="q6-how-does-interpretability-tie-into-data-centric-ai">
+  Q6: How does interpretability tie into Data-Centric AI?
+  <a class="anchor" href="#q6-how-does-interpretability-tie-into-data-centric-ai">#</a>
+</h3>
+<ul>
+<li>If features themselves are messy or unintuitive, the model can&rsquo;t be interpretable.</li>
+<li><strong>Interpretable feature engineering</strong> (with users in the loop) enhances both trust and model robustness.</li>
+<li>Example tools: Ballet, Pyreal, Mind-the-Gap feature frameworks.</li>
+</ul>
+<h3 id="q7-why-is-privacy-and-security-essential-in-the-data-centric-mindset">
+  Q7: Why is privacy and security essential in the Data-Centric mindset?
+  <a class="anchor" href="#q7-why-is-privacy-and-security-essential-in-the-data-centric-mindset">#</a>
+</h3>
+<ul>
+<li>ML models often memorize sensitive training data unintentionally.</li>
+<li>Threats include:
+<ul>
+<li><strong>Membership inference attacks</strong> (detect if a datapoint was in training)</li>
+<li><strong>Data extraction attacks</strong> (leak sensitive records)</li>
+</ul>
+</li>
+<li>Solutions involve <strong>differential privacy</strong> (DP), <strong>model output smoothing</strong>, and <strong>rigorous threat modeling</strong>.</li>
+</ul>
+<h3 id="q8-how-does-llm-specific-curation-amplify-data-centric-principles">
+  Q8: How does LLM-specific curation amplify Data-Centric principles?
+  <a class="anchor" href="#q8-how-does-llm-specific-curation-amplify-data-centric-principles">#</a>
+</h3>
+<ul>
+<li><strong>Data curation for LLMs</strong> is even more critical because LLMs memorize and generalize at a massive scale.</li>
+<li>Techniques include:
+<ul>
+<li>Fine-tuning with synthetic but <strong>high-quality</strong> generated datasets.</li>
+<li><strong>Uncertainty quantification</strong> to filter low-confidence generations.</li>
+<li>Applying both <strong>human</strong> and <strong>LLM evaluators</strong> to assess outputs robustly.</li>
+</ul>
+</li>
+</ul>
+<h3 id="q9-what-is-the-grand-cycle-of-a-data-centric-ai-system">
+  Q9: What is the grand cycle of a data-centric AI system?
+  <a class="anchor" href="#q9-what-is-the-grand-cycle-of-a-data-centric-ai-system">#</a>
+</h3>
+<ol>
+<li><strong>Curate and clean</strong> the initial dataset.</li>
+<li><strong>Train simple models</strong> to uncover data issues.</li>
+<li><strong>Fix data issues</strong> (label noise, bias, outliers).</li>
+<li><strong>Improve feature quality</strong> for interpretability and usability.</li>
+<li><strong>Evaluate deeply</strong>, especially for subpopulations.</li>
+<li><strong>Secure the model and data</strong> against privacy attacks.</li>
+<li><strong>Iterate</strong>: new data, new shifts, new repairs — endlessly evolving.</li>
+</ol>
+<h3 id="q10-final-takeaway">
+  Q10: Final Takeaway
+  <a class="anchor" href="#q10-final-takeaway">#</a>
+</h3>
+<ul>
+<li><strong>Data is the first-class citizen</strong> in AI systems.</li>
+<li>Success in Data-Centric AI requires mastering <strong>curation</strong>, <strong>quality control</strong>, <strong>evaluation</strong>, <strong>privacy protection</strong>, and <strong>interpretability</strong> — <strong>before</strong> throwing bigger models at the problem.</li>
+</ul>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview-data-centric-ai">[Overview] Data-Centric AI</a>
+          <ul>
+            <li><a href="#q1-what-is-the-overall-motivation-behind-data-centric-ai">Q1: What is the overall motivation behind Data-Centric AI?</a></li>
+            <li><a href="#q2-how-does-dataset-curation-fit-into-data-centric-ai">Q2: How does dataset curation fit into Data-Centric AI?</a></li>
+            <li><a href="#q3-once-data-is-collected-what-problems-commonly-arise">Q3: Once data is collected, what problems commonly arise?</a></li>
+            <li><a href="#q4-how-do-we-handle-such-data-issues">Q4: How do we handle such data issues?</a></li>
+            <li><a href="#q5-how-is-model-evaluation-impacted-by-a-data-centric-view">Q5: How is model evaluation impacted by a data-centric view?</a></li>
+            <li><a href="#q6-how-does-interpretability-tie-into-data-centric-ai">Q6: How does interpretability tie into Data-Centric AI?</a></li>
+            <li><a href="#q7-why-is-privacy-and-security-essential-in-the-data-centric-mindset">Q7: Why is privacy and security essential in the Data-Centric mindset?</a></li>
+            <li><a href="#q8-how-does-llm-specific-curation-amplify-data-centric-principles">Q8: How does LLM-specific curation amplify Data-Centric principles?</a></li>
+            <li><a href="#q9-what-is-the-grand-cycle-of-a-data-centric-ai-system">Q9: What is the grand cycle of a data-centric AI system?</a></li>
+            <li><a href="#q10-final-takeaway">Q10: Final Takeaway</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
