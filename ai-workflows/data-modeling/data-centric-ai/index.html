@@ -11,6 +11,47 @@
 Reference: MIT Data-Centric AI course
 
 
+  
+      
+          Topic Q&amp;A Summary
+      
+  
+  
+      
+          1. Data-Centric AI vs. Model-Centric AI
+      
+      
+          2. Label Errors and Confident Learning
+      
+      
+          3. Advanced Confident Learning, LLM and GenAI applications
+      
+      
+          4. Class Imbalance, Outliers, and Distribution Shift
+      
+      
+          5. Dataset Creation and Curation
+      
+      
+          6. Data-centric Evaluation of ML Models
+      
+      
+          7. Data Curation for LLMs
+      
+      
+          8. Growing or Compressing Datasets
+      
+      
+          9. Interpretability in Data-Centric ML
+      
+      
+          10. Encoding Human Priors: Data Augmentation and Prompt Engineering
+      
+      
+          11. Data Privacy and Security
+      
+  
+
 
   Q1: How does Data-Centric AI differ from Model-Centric AI?
   #
@@ -123,44 +164,51 @@ In Data-Centric AI, data is the model.
 Every improvement — in accuracy, fairness, robustness, trust, and security — roots back to the data.
 
 
+
+  Data-Centric Evaluation
+  #
+
+
+Instead of only asking how accurate, we ask why and where does the model fail — and whether the data itself causes it.
+
+
   
       
-          Topic Q&amp;A Summary
+          Aspect
+          Model-Centric Evaluation
+          Data-Centric Evaluation
       
   
   
       
-          1. Data-Centric AI vs. Model-Centric AI
+          Focus
+          Overall model score
+          Specific weaknesses tied to data
       
       
-          2. Label Errors and Confident Learning
+          Metrics
+          Accuracy, ROC, etc.
+          Slice-specific accuracy, Error analysis
       
       
-          3. Advanced Confident Learning, LLM and GenAI applications
+          Blind spots
+          Hide rare data failures
+          Detect hidden failures in data
       
       
-          4. Class Imbalance, Outliers, and Distribution Shift
+          Error tracing
+          Hard
+          Directly trace errors to dirty/outlier/bias data
       
       
-          5. Dataset Creation and Curation
+          Example
+          &ldquo;95% accurate model!&rdquo;
+          &ldquo;Fails badly on young users with rare diseases&rdquo;
       
       
-          6. Data-centric Evaluation of ML Models
-      
-      
-          7. Data Curation for LLMs
-      
-      
-          8. Growing or Compressing Datasets
-      
-      
-          9. Interpretability in Data-Centric ML
-      
-      
-          10. Encoding Human Priors: Data Augmentation and Prompt Engineering
-      
-      
-          11. Data Privacy and Security
+          Mindset
+          Improve model tuning
+          Fix the dataset (quality, balance, coverage)
       
   
 ">
@@ -169,7 +217,7 @@ Every improvement — in accuracy, fairness, robustness, trust, and security —
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Data-Centric AI (DCAI)">
-  <meta property="og:description" content="Data-Centric AI # Reference: MIT Data-Centric AI course Q1: How does Data-Centric AI differ from Model-Centric AI? # Model-Centric AI improves models assuming fixed data. Data-Centric AI improves data quality, coverage, and structure, recognizing data as the bottleneck for model success. Q2: Why are Label Errors and Confident Learning crucial? # Label errors silently degrade model performance. Confident Learning identifies mislabeled data points using model predictions and corrects them systematically. Q3: What advances exist in Confident Learning and LLM/GenAI applications? # Advanced Confident Learning enhances robustness to noisy outputs. It’s applied to improve foundation models like LLMs by cleaning training and synthetic data. Q4: How are Class Imbalance, Outliers, and Distribution Shift handled? # Class imbalance is managed via over/under-sampling, SMOTE, and weighting. Outliers are detected using isolation techniques or autoencoders. Distribution shifts are diagnosed and corrected with careful monitoring and adaptation. Q5: What is essential about Dataset Creation and Curation? # Good datasets start with thoughtful design, balanced sampling, and robust label validation. Crowdsourcing must be augmented with consensus models like Dawid-Skene or CROWDLAB. Q6: How does Data-Centric Evaluation of ML Models change standard practices? # Not just global metrics: need slice-based evaluation, error analysis, and influence functions. Subpopulations and rare cases must be properly assessed. Q7: How is Data Curation for LLMs unique? # LLMs memorize training data deeply. Curating high-quality fine-tuning datasets, synthetic data filtering, and evaluation by uncertainty quantification is critical. Q8: What role does Growing or Compressing Datasets play? # Active learning grows datasets smartly by labeling only informative samples. Core-set selection compresses datasets while preserving model performance, making training efficient. Q9: How does Interpretability relate to Data-Centric AI? # Models are only as interpretable as their features. Human-in-the-loop feature engineering ensures features are understandable, relevant, and actionable. Q10: How do we Encode Human Priors into Models? # Via Data Augmentation: enriching datasets to encode invariances (e.g., rotation, Mixup). Via Prompt Engineering: guiding LLMs at inference time with careful input manipulation. Q11: How do we secure Data Privacy and Security? # ML models risk leaking sensitive information. Defenses include membership inference mitigation, differential privacy, model regularization, and careful threat modeling. Q12: How does the full picture of Data-Centric AI flow? # Frame the problem with a Data-Centric mindset. Curate a well-constructed, balanced, and interpretable dataset. Detect and fix label errors, outliers, and bias early. Train models, but always re-evaluate data quality after errors. Focus evaluations on slices and high-loss examples. Grow datasets when needed (active learning) or compress intelligently (core-sets). Secure models against privacy attacks. Continuously refine, because data evolves in deployment. Q13: Final Takeaway # In Data-Centric AI, data is the model. Every improvement — in accuracy, fairness, robustness, trust, and security — roots back to the data. Topic Q&amp;A Summary 1. Data-Centric AI vs. Model-Centric AI 2. Label Errors and Confident Learning 3. Advanced Confident Learning, LLM and GenAI applications 4. Class Imbalance, Outliers, and Distribution Shift 5. Dataset Creation and Curation 6. Data-centric Evaluation of ML Models 7. Data Curation for LLMs 8. Growing or Compressing Datasets 9. Interpretability in Data-Centric ML 10. Encoding Human Priors: Data Augmentation and Prompt Engineering 11. Data Privacy and Security">
+  <meta property="og:description" content="Data-Centric AI # Reference: MIT Data-Centric AI course Topic Q&amp;A Summary 1. Data-Centric AI vs. Model-Centric AI 2. Label Errors and Confident Learning 3. Advanced Confident Learning, LLM and GenAI applications 4. Class Imbalance, Outliers, and Distribution Shift 5. Dataset Creation and Curation 6. Data-centric Evaluation of ML Models 7. Data Curation for LLMs 8. Growing or Compressing Datasets 9. Interpretability in Data-Centric ML 10. Encoding Human Priors: Data Augmentation and Prompt Engineering 11. Data Privacy and Security Q1: How does Data-Centric AI differ from Model-Centric AI? # Model-Centric AI improves models assuming fixed data. Data-Centric AI improves data quality, coverage, and structure, recognizing data as the bottleneck for model success. Q2: Why are Label Errors and Confident Learning crucial? # Label errors silently degrade model performance. Confident Learning identifies mislabeled data points using model predictions and corrects them systematically. Q3: What advances exist in Confident Learning and LLM/GenAI applications? # Advanced Confident Learning enhances robustness to noisy outputs. It’s applied to improve foundation models like LLMs by cleaning training and synthetic data. Q4: How are Class Imbalance, Outliers, and Distribution Shift handled? # Class imbalance is managed via over/under-sampling, SMOTE, and weighting. Outliers are detected using isolation techniques or autoencoders. Distribution shifts are diagnosed and corrected with careful monitoring and adaptation. Q5: What is essential about Dataset Creation and Curation? # Good datasets start with thoughtful design, balanced sampling, and robust label validation. Crowdsourcing must be augmented with consensus models like Dawid-Skene or CROWDLAB. Q6: How does Data-Centric Evaluation of ML Models change standard practices? # Not just global metrics: need slice-based evaluation, error analysis, and influence functions. Subpopulations and rare cases must be properly assessed. Q7: How is Data Curation for LLMs unique? # LLMs memorize training data deeply. Curating high-quality fine-tuning datasets, synthetic data filtering, and evaluation by uncertainty quantification is critical. Q8: What role does Growing or Compressing Datasets play? # Active learning grows datasets smartly by labeling only informative samples. Core-set selection compresses datasets while preserving model performance, making training efficient. Q9: How does Interpretability relate to Data-Centric AI? # Models are only as interpretable as their features. Human-in-the-loop feature engineering ensures features are understandable, relevant, and actionable. Q10: How do we Encode Human Priors into Models? # Via Data Augmentation: enriching datasets to encode invariances (e.g., rotation, Mixup). Via Prompt Engineering: guiding LLMs at inference time with careful input manipulation. Q11: How do we secure Data Privacy and Security? # ML models risk leaking sensitive information. Defenses include membership inference mitigation, differential privacy, model regularization, and careful threat modeling. Q12: How does the full picture of Data-Centric AI flow? # Frame the problem with a Data-Centric mindset. Curate a well-constructed, balanced, and interpretable dataset. Detect and fix label errors, outliers, and bias early. Train models, but always re-evaluate data quality after errors. Focus evaluations on slices and high-loss examples. Grow datasets when needed (active learning) or compress intelligently (core-sets). Secure models against privacy attacks. Continuously refine, because data evolves in deployment. Q13: Final Takeaway # In Data-Centric AI, data is the model. Every improvement — in accuracy, fairness, robustness, trust, and security — roots back to the data. Data-Centric Evaluation # Instead of only asking how accurate, we ask why and where does the model fail — and whether the data itself causes it. Aspect Model-Centric Evaluation Data-Centric Evaluation Focus Overall model score Specific weaknesses tied to data Metrics Accuracy, ROC, etc. Slice-specific accuracy, Error analysis Blind spots Hide rare data failures Detect hidden failures in data Error tracing Hard Directly trace errors to dirty/outlier/bias data Example “95% accurate model!” “Fails badly on young users with rare diseases” Mindset Improve model tuning Fix the dataset (quality, balance, coverage)">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Data-Centric AI (DCAI) | AI Reasoning</title>
@@ -178,7 +226,7 @@ Every improvement — in accuracy, fairness, robustness, trust, and security —
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.92499884267e718d0413b4108e9bd4d8f5926bee35933114462a2aceb649cf9f.js" integrity="sha256-kkmYhCZ&#43;cY0EE7QQjpvU2PWSa&#43;41kzEURioqzrZJz58=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.25b11228394de1fba390fc849b5d3bb3c6c459f06baf74d8591943d647930d5a.js" integrity="sha256-JbESKDlN4fujkPyEm107s8bEWfBrr3TYWRlD1keTDVo=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
@@ -945,6 +993,7 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#q11-how-do-we-secure-data-privacy-and-security">Q11: How do we secure Data Privacy and Security?</a></li>
             <li><a href="#q12-how-does-the-full-picture-of-data-centric-ai-flow">Q12: How does the full picture of Data-Centric AI flow?</a></li>
             <li><a href="#q13-final-takeaway">Q13: Final Takeaway</a></li>
+            <li><a href="#data-centric-evaluation">Data-Centric Evaluation</a></li>
           </ul>
         </li>
       </ul>
@@ -968,7 +1017,48 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>Reference: <a href="https://dcai.csail.mit.edu/">MIT Data-Centric AI course</a></li>
 </ul>
-<hr>
+<table>
+  <thead>
+      <tr>
+          <th>Topic Q&amp;A Summary</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/">1. Data-Centric AI vs. Model-Centric AI</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/label-errors/">2. Label Errors and Confident Learning</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/advanced-confident-learning.md/">3. Advanced Confident Learning, LLM and GenAI applications</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/class-imbalance-outliers-distribution-shift/">4. Class Imbalance, Outliers, and Distribution Shift</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/dataset-creation-curation/">5. Dataset Creation and Curation</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-centric-evaluation/">6. Data-centric Evaluation of ML Models</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-curation-llms/">7. Data Curation for LLMs</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/growing-or-compressing-datasets/">8. Growing or Compressing Datasets</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/interpretability-data-centric-ml/">9. Interpretability in Data-Centric ML</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/encoding-human-priors/">10. Encoding Human Priors: Data Augmentation and Prompt Engineering</a></td>
+      </tr>
+      <tr>
+          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-privacy-security/">11. Data Privacy and Security</a></td>
+      </tr>
+  </tbody>
+</table>
 <h3 id="q1-how-does-data-centric-ai-differ-from-model-centric-ai">
   Q1: How does Data-Centric AI differ from Model-Centric AI?
   <a class="anchor" href="#q1-how-does-data-centric-ai-differ-from-model-centric-ai">#</a>
@@ -1080,45 +1170,52 @@ https://github.com/alex-shpak/hugo-book
 <li>In Data-Centric AI, <strong>data is the model</strong>.</li>
 <li>Every improvement — in accuracy, fairness, robustness, trust, and security — roots back to the data.</li>
 </ul>
+<hr>
+<h3 id="data-centric-evaluation">
+  Data-Centric Evaluation
+  <a class="anchor" href="#data-centric-evaluation">#</a>
+</h3>
+<ul>
+<li>Instead of only asking <strong>how accurate</strong>, we ask <strong>why and where does the model fail</strong> — and whether the data itself causes it.</li>
+</ul>
 <table>
   <thead>
       <tr>
-          <th>Topic Q&amp;A Summary</th>
+          <th style="text-align: left">Aspect</th>
+          <th style="text-align: left">Model-Centric Evaluation</th>
+          <th style="text-align: left"><strong>Data-Centric Evaluation</strong></th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/">1. Data-Centric AI vs. Model-Centric AI</a></td>
+          <td style="text-align: left">Focus</td>
+          <td style="text-align: left">Overall model score</td>
+          <td style="text-align: left">Specific weaknesses tied to data</td>
       </tr>
       <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/label-errors/">2. Label Errors and Confident Learning</a></td>
+          <td style="text-align: left">Metrics</td>
+          <td style="text-align: left">Accuracy, ROC, etc.</td>
+          <td style="text-align: left">Slice-specific accuracy, Error analysis</td>
       </tr>
       <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/advanced-confident-learning.md/">3. Advanced Confident Learning, LLM and GenAI applications</a></td>
+          <td style="text-align: left">Blind spots</td>
+          <td style="text-align: left">Hide rare data failures</td>
+          <td style="text-align: left">Detect hidden failures in data</td>
       </tr>
       <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/class-imbalance-outliers-distribution-shift/">4. Class Imbalance, Outliers, and Distribution Shift</a></td>
+          <td style="text-align: left">Error tracing</td>
+          <td style="text-align: left">Hard</td>
+          <td style="text-align: left">Directly trace errors to dirty/outlier/bias data</td>
       </tr>
       <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/dataset-creation-curation/">5. Dataset Creation and Curation</a></td>
+          <td style="text-align: left">Example</td>
+          <td style="text-align: left">&ldquo;95% accurate model!&rdquo;</td>
+          <td style="text-align: left">&ldquo;Fails badly on young users with rare diseases&rdquo;</td>
       </tr>
       <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-centric-evaluation/">6. Data-centric Evaluation of ML Models</a></td>
-      </tr>
-      <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-curation-llms/">7. Data Curation for LLMs</a></td>
-      </tr>
-      <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/growing-or-compressing-datasets/">8. Growing or Compressing Datasets</a></td>
-      </tr>
-      <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/interpretability-data-centric-ml/">9. Interpretability in Data-Centric ML</a></td>
-      </tr>
-      <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/encoding-human-priors/">10. Encoding Human Priors: Data Augmentation and Prompt Engineering</a></td>
-      </tr>
-      <tr>
-          <td><a href="/ai-workflows/data-modeling/data-centric-ai/data-privacy-security/">11. Data Privacy and Security</a></td>
+          <td style="text-align: left">Mindset</td>
+          <td style="text-align: left">Improve model tuning</td>
+          <td style="text-align: left">Fix the dataset (quality, balance, coverage)</td>
       </tr>
   </tbody>
 </table>
@@ -1180,6 +1277,7 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#q11-how-do-we-secure-data-privacy-and-security">Q11: How do we secure Data Privacy and Security?</a></li>
             <li><a href="#q12-how-does-the-full-picture-of-data-centric-ai-flow">Q12: How does the full picture of Data-Centric AI flow?</a></li>
             <li><a href="#q13-final-takeaway">Q13: Final Takeaway</a></li>
+            <li><a href="#data-centric-evaluation">Data-Centric Evaluation</a></li>
           </ul>
         </li>
       </ul>
