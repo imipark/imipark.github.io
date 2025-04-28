@@ -8,6 +8,49 @@
   #
 
 
+Instead of only asking how accurate, we ask why and where does the model fail — and whether the data itself causes it.
+
+
+  
+      
+          Aspect
+          Model-Centric Evaluation
+          Data-Centric Evaluation
+      
+  
+  
+      
+          Focus
+          Overall model score
+          Specific weaknesses tied to data
+      
+      
+          Metrics
+          Accuracy, ROC, etc.
+          Slice-specific accuracy, Error analysis
+      
+      
+          Blind spots
+          Hide rare data failures
+          Detect hidden failures in data
+      
+      
+          Error tracing
+          Hard
+          Directly trace errors to dirty/outlier/bias data
+      
+      
+          Example
+          &ldquo;95% accurate model!&rdquo;
+          &ldquo;Fails badly on young users with rare diseases&rdquo;
+      
+      
+          Mindset
+          Improve model tuning
+          Fix the dataset (quality, balance, coverage)
+      
+  
+
 
   Q1: What is the typical ML workflow before deployment?
   #
@@ -153,7 +196,7 @@ Confident Learning and Cleanlab Project
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/data-centric-evaluation/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Data-Centric Evaluation of ML Models">
-  <meta property="og:description" content="Data-Centric Evaluation of ML Models # Q1: What is the typical ML workflow before deployment? # Collect data and define the ML task. Explore and preprocess the data. Train a straightforward model. Investigate shortcomings in the model and dataset. Improve dataset and model iteratively. Deploy the model and monitor for new issues. Q2: Why is model evaluation critical? # Evaluation affects practical outcomes in real-world applications. Poor evaluation choices can lead to misleading or harmful models. Q3: What are examples of evaluation metrics for classification? # Accuracy, balanced accuracy, precision, recall, log loss, AUROC, calibration error. Q4: What are some pitfalls in model evaluation? # Data leakage by using non-held-out data. Misspecified metrics hiding failures in subpopulations. Validation data not representing deployment settings. Label errors. Q5: How is text generation model evaluation different? # Human evaluations (👍👎 or Likert scales). LLM evaluations with multiple criteria. Automated metrics like ROUGE, BLEU, and Perplexity. Q6: What is a data slice? # A subset of the dataset sharing a common characteristic, e.g., different sensor types, demographics. Q7: Why is it insufficient to delete sensitive features to address slice fairness? # Slice membership information may be correlated with other features. Q8: How can we improve model performance for underperforming slices? # Use a more flexible model. Over-sample the minority subgroup. Collect more data from the subgroup. Engineer new features that better capture subgroup specifics. Q9: How to discover underperforming subpopulations? # Sort validation examples by loss. Cluster high-loss examples to find commonalities. Q10: What are typical causes of wrong predictions? # Incorrect labels. Examples that do not belong to any class. Outlier examples. Model type limitations. Conflicting or noisy dataset labels. Q11: What actions can address wrong predictions? # Correct labels. Remove fundamentally unpredictable examples. Augment or normalize outlier examples. Fit better model architectures or do feature engineering. Enrich the dataset to distinguish overlapping classes. Q12: What is the concept of leave-one-out influence? # Measure the impact of omitting a datapoint on the model’s validation performance. Q13: What is Data Shapley? # A method that averages the influence of a datapoint over all subsets containing it, providing a fairer measure of its importance. Q14: How can we approximate influence? # Monte Carlo sampling methods. Closed-form approximations for simple models like linear regression and k-NN. Q15: Why review influential samples? # Correcting highly influential mislabeled examples can lead to significant accuracy improvements. References # Cook’s Distance (Linear Regression Influence) Similarity Search Scaling for Big Data (Johnson et al., 2019) Trustworthy Data Influence Estimation Confident Learning and Cleanlab Project">
+  <meta property="og:description" content="Data-Centric Evaluation of ML Models # Instead of only asking how accurate, we ask why and where does the model fail — and whether the data itself causes it. Aspect Model-Centric Evaluation Data-Centric Evaluation Focus Overall model score Specific weaknesses tied to data Metrics Accuracy, ROC, etc. Slice-specific accuracy, Error analysis Blind spots Hide rare data failures Detect hidden failures in data Error tracing Hard Directly trace errors to dirty/outlier/bias data Example “95% accurate model!” “Fails badly on young users with rare diseases” Mindset Improve model tuning Fix the dataset (quality, balance, coverage) Q1: What is the typical ML workflow before deployment? # Collect data and define the ML task. Explore and preprocess the data. Train a straightforward model. Investigate shortcomings in the model and dataset. Improve dataset and model iteratively. Deploy the model and monitor for new issues. Q2: Why is model evaluation critical? # Evaluation affects practical outcomes in real-world applications. Poor evaluation choices can lead to misleading or harmful models. Q3: What are examples of evaluation metrics for classification? # Accuracy, balanced accuracy, precision, recall, log loss, AUROC, calibration error. Q4: What are some pitfalls in model evaluation? # Data leakage by using non-held-out data. Misspecified metrics hiding failures in subpopulations. Validation data not representing deployment settings. Label errors. Q5: How is text generation model evaluation different? # Human evaluations (👍👎 or Likert scales). LLM evaluations with multiple criteria. Automated metrics like ROUGE, BLEU, and Perplexity. Q6: What is a data slice? # A subset of the dataset sharing a common characteristic, e.g., different sensor types, demographics. Q7: Why is it insufficient to delete sensitive features to address slice fairness? # Slice membership information may be correlated with other features. Q8: How can we improve model performance for underperforming slices? # Use a more flexible model. Over-sample the minority subgroup. Collect more data from the subgroup. Engineer new features that better capture subgroup specifics. Q9: How to discover underperforming subpopulations? # Sort validation examples by loss. Cluster high-loss examples to find commonalities. Q10: What are typical causes of wrong predictions? # Incorrect labels. Examples that do not belong to any class. Outlier examples. Model type limitations. Conflicting or noisy dataset labels. Q11: What actions can address wrong predictions? # Correct labels. Remove fundamentally unpredictable examples. Augment or normalize outlier examples. Fit better model architectures or do feature engineering. Enrich the dataset to distinguish overlapping classes. Q12: What is the concept of leave-one-out influence? # Measure the impact of omitting a datapoint on the model’s validation performance. Q13: What is Data Shapley? # A method that averages the influence of a datapoint over all subsets containing it, providing a fairer measure of its importance. Q14: How can we approximate influence? # Monte Carlo sampling methods. Closed-form approximations for simple models like linear regression and k-NN. Q15: Why review influential samples? # Correcting highly influential mislabeled examples can lead to significant accuracy improvements. References # Cook’s Distance (Linear Regression Influence) Similarity Search Scaling for Big Data (Johnson et al., 2019) Trustworthy Data Influence Estimation Confident Learning and Cleanlab Project">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="ai-workflows">
@@ -163,7 +206,7 @@ Confident Learning and Cleanlab Project
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/data-centric-evaluation/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.25b11228394de1fba390fc849b5d3bb3c6c459f06baf74d8591943d647930d5a.js" integrity="sha256-JbESKDlN4fujkPyEm107s8bEWfBrr3TYWRlD1keTDVo=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6f7c630b7fc07cd619cb7ef946ee477e66478fdd5a421e81b8cc961f063db988.js" integrity="sha256-b3xjC3/AfNYZy375Ru5HfmZHj91aQh6BuMyWHwY9uYg=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -952,7 +995,50 @@ https://github.com/alex-shpak/hugo-book
   Data-Centric Evaluation of ML Models
   <a class="anchor" href="#data-centric-evaluation-of-ml-models">#</a>
 </h2>
-<hr>
+<ul>
+<li>Instead of only asking <strong>how accurate</strong>, we ask <strong>why and where does the model fail</strong> — and whether the data itself causes it.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Aspect</th>
+          <th style="text-align: left">Model-Centric Evaluation</th>
+          <th style="text-align: left"><strong>Data-Centric Evaluation</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Focus</td>
+          <td style="text-align: left">Overall model score</td>
+          <td style="text-align: left">Specific weaknesses tied to data</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Metrics</td>
+          <td style="text-align: left">Accuracy, ROC, etc.</td>
+          <td style="text-align: left">Slice-specific accuracy, Error analysis</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Blind spots</td>
+          <td style="text-align: left">Hide rare data failures</td>
+          <td style="text-align: left">Detect hidden failures in data</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Error tracing</td>
+          <td style="text-align: left">Hard</td>
+          <td style="text-align: left">Directly trace errors to dirty/outlier/bias data</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Example</td>
+          <td style="text-align: left">&ldquo;95% accurate model!&rdquo;</td>
+          <td style="text-align: left">&ldquo;Fails badly on young users with rare diseases&rdquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Mindset</td>
+          <td style="text-align: left">Improve model tuning</td>
+          <td style="text-align: left">Fix the dataset (quality, balance, coverage)</td>
+      </tr>
+  </tbody>
+</table>
 <h3 id="q1-what-is-the-typical-ml-workflow-before-deployment">
   Q1: What is the typical ML workflow before deployment?
   <a class="anchor" href="#q1-what-is-the-typical-ml-workflow-before-deployment">#</a>
