@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Class Imbalance, Outliers, and Distribution Shift
+  #
+
+
+
+  Q1: What are the main problems discussed in this lecture?
+  #
+
+
+Class imbalance
+Outliers
+Distribution shift
+
+
+  Q2: What is class imbalance and why is it a problem?
+  #
+
+
+Definition: Some classes occur much less frequently than others.
+Examples: COVID detection, fraud detection, manufacturing defects, self-driving cars.
+Impact: Naive models can have misleadingly high accuracy while failing on rare classes.
+
+
+  Q3: How do we address class imbalance?
+  #
+
+
+Sampling Techniques:
+
+Sample weights (less stable for mini-batch training)
+Over-sampling (replicating minority class examples)
+Under-sampling (dropping majority class examples)
+SMOTE (synthetic minority over-sampling)
+Balanced mini-batch training (better distribution in each batch)
+
+
+Choose appropriate evaluation metrics: precision, recall, F-beta score.
+
+
+  Q4: What are outliers and why are they problematic?
+  #
+
+
+Definition: Datapoints that differ significantly from the norm.
+Causes: Measurement error, bad data collection, adversarial inputs, rare events.
+Impact: Outliers can harm training and inference stability.
+
+
+  Q5: How do we detect outliers?
+  #
+
+
+Simple methods: Tukey&rsquo;s fences, Z-score analysis.
+More advanced:
+
+Isolation forest (tree-based)
+KNN distance (neighbor proximity)
+Autoencoders (reconstruction loss)
+
+
+Evaluation: ROC curve and AUROC score.
+
+
+  Q6: What is distribution shift?
+  #
+
+
+Definition: Training and test distributions differ.
+Almost all real-world ML deployments experience it.
+
+
+  Q7: What are the types of distribution shift?
+  #
+
+
+  
+      
+          Type
+          Meaning
+          Example
+      
+  
+  
+      
+          Covariate shift
+          (p(x)) changes, (p(y
+          x)) stays the same
+      
+      
+          Concept shift
+          (p(y
+          x)) changes, (p(x)) stays the same
+      
+      
+          Prior probability shift
+          (p(y)) changes, (p(x
+          y)) stays the same
+      
+  
+
+
+  Q8: How do we detect and handle distribution shift?
+  #
+
+
+Detection: Monitor metrics and statistical properties of data.
+Handling:
+
+Retrain with better data.
+Use sample reweighting if unlabeled test data is available.
+Concept shift remains hardest to fix without labeled test data.
+
+
+
+
+  Q9: Final Takeaways
+  #
+
+
+Handling class imbalance, outliers, and distribution shift is critical for building robust, real-world ML systems.
+Evaluation metric choice, proper data preprocessing, and continuous monitoring are key strategies.
+
+
+
+  References
+  #
+
+
+imbalanced-learn package
+SMOTE Paper
+PyOD library for outlier detection
+Dataset Shift Book
+Outlier detection in scikit-learn
+Lab assignment for Outliers
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/class-imbalance-outliers-distribution-shift/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Class Imbalance, Outliers, and Distribution Shift">
+  <meta property="og:description" content="Class Imbalance, Outliers, and Distribution Shift # Q1: What are the main problems discussed in this lecture? # Class imbalance Outliers Distribution shift Q2: What is class imbalance and why is it a problem? # Definition: Some classes occur much less frequently than others. Examples: COVID detection, fraud detection, manufacturing defects, self-driving cars. Impact: Naive models can have misleadingly high accuracy while failing on rare classes. Q3: How do we address class imbalance? # Sampling Techniques: Sample weights (less stable for mini-batch training) Over-sampling (replicating minority class examples) Under-sampling (dropping majority class examples) SMOTE (synthetic minority over-sampling) Balanced mini-batch training (better distribution in each batch) Choose appropriate evaluation metrics: precision, recall, F-beta score. Q4: What are outliers and why are they problematic? # Definition: Datapoints that differ significantly from the norm. Causes: Measurement error, bad data collection, adversarial inputs, rare events. Impact: Outliers can harm training and inference stability. Q5: How do we detect outliers? # Simple methods: Tukey’s fences, Z-score analysis. More advanced: Isolation forest (tree-based) KNN distance (neighbor proximity) Autoencoders (reconstruction loss) Evaluation: ROC curve and AUROC score. Q6: What is distribution shift? # Definition: Training and test distributions differ. Almost all real-world ML deployments experience it. Q7: What are the types of distribution shift? # Type Meaning Example Covariate shift (p(x)) changes, (p(y x)) stays the same Concept shift (p(y x)) changes, (p(x)) stays the same Prior probability shift (p(y)) changes, (p(x y)) stays the same Q8: How do we detect and handle distribution shift? # Detection: Monitor metrics and statistical properties of data. Handling: Retrain with better data. Use sample reweighting if unlabeled test data is available. Concept shift remains hardest to fix without labeled test data. Q9: Final Takeaways # Handling class imbalance, outliers, and distribution shift is critical for building robust, real-world ML systems. Evaluation metric choice, proper data preprocessing, and continuous monitoring are key strategies. References # imbalanced-learn package SMOTE Paper PyOD library for outlier detection Dataset Shift Book Outlier detection in scikit-learn Lab assignment for Outliers">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Class Imbalance, Outliers, and Distribution Shift | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/class-imbalance-outliers-distribution-shift/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b1a8fd0504983e3c7921b9578634c01d127fd419193054dce4230ce1d2f935aa.js" integrity="sha256-saj9BQSYPjx5IblXhjTAHRJ/1BkZMFTc5CMM4dL5Nao=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle" checked />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-211a3339275321c1881a08804c2b28d9" class="toggle" checked />
+    <label for="section-211a3339275321c1881a08804c2b28d9" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-49f8a15fba102060fbec99923a9f7e7f" class="toggle"  />
+    <label for="section-49f8a15fba102060fbec99923a9f7e7f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fe994b0524505ef83c5591fe607d72e" class="toggle"  />
+    <label for="section-8fe994b0524505ef83c5591fe607d72e" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-786aee9ce5c7a34804dfdaaae1c79408" class="toggle"  />
+    <label for="section-786aee9ce5c7a34804dfdaaae1c79408" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Class Imbalance, Outliers, and Distribution Shift</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#class-imbalance-outliers-and-distribution-shift">Class Imbalance, Outliers, and Distribution Shift</a>
+          <ul>
+            <li><a href="#q1-what-are-the-main-problems-discussed-in-this-lecture">Q1: What are the main problems discussed in this lecture?</a></li>
+            <li><a href="#q2-what-is-class-imbalance-and-why-is-it-a-problem">Q2: What is class imbalance and why is it a problem?</a></li>
+            <li><a href="#q3-how-do-we-address-class-imbalance">Q3: How do we address class imbalance?</a></li>
+            <li><a href="#q4-what-are-outliers-and-why-are-they-problematic">Q4: What are outliers and why are they problematic?</a></li>
+            <li><a href="#q5-how-do-we-detect-outliers">Q5: How do we detect outliers?</a></li>
+            <li><a href="#q6-what-is-distribution-shift">Q6: What is distribution shift?</a></li>
+            <li><a href="#q7-what-are-the-types-of-distribution-shift">Q7: What are the types of distribution shift?</a></li>
+            <li><a href="#q8-how-do-we-detect-and-handle-distribution-shift">Q8: How do we detect and handle distribution shift?</a></li>
+            <li><a href="#q9-final-takeaways">Q9: Final Takeaways</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="class-imbalance-outliers-and-distribution-shift">
+  Class Imbalance, Outliers, and Distribution Shift
+  <a class="anchor" href="#class-imbalance-outliers-and-distribution-shift">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-are-the-main-problems-discussed-in-this-lecture">
+  Q1: What are the main problems discussed in this lecture?
+  <a class="anchor" href="#q1-what-are-the-main-problems-discussed-in-this-lecture">#</a>
+</h3>
+<ul>
+<li><strong>Class imbalance</strong></li>
+<li><strong>Outliers</strong></li>
+<li><strong>Distribution shift</strong></li>
+</ul>
+<h3 id="q2-what-is-class-imbalance-and-why-is-it-a-problem">
+  Q2: What is class imbalance and why is it a problem?
+  <a class="anchor" href="#q2-what-is-class-imbalance-and-why-is-it-a-problem">#</a>
+</h3>
+<ul>
+<li><strong>Definition</strong>: Some classes occur much less frequently than others.</li>
+<li><strong>Examples</strong>: COVID detection, fraud detection, manufacturing defects, self-driving cars.</li>
+<li><strong>Impact</strong>: Naive models can have misleadingly high accuracy while failing on rare classes.</li>
+</ul>
+<h3 id="q3-how-do-we-address-class-imbalance">
+  Q3: How do we address class imbalance?
+  <a class="anchor" href="#q3-how-do-we-address-class-imbalance">#</a>
+</h3>
+<ul>
+<li><strong>Sampling Techniques</strong>:
+<ul>
+<li><strong>Sample weights</strong> (less stable for mini-batch training)</li>
+<li><strong>Over-sampling</strong> (replicating minority class examples)</li>
+<li><strong>Under-sampling</strong> (dropping majority class examples)</li>
+<li><strong>SMOTE</strong> (synthetic minority over-sampling)</li>
+<li><strong>Balanced mini-batch training</strong> (better distribution in each batch)</li>
+</ul>
+</li>
+<li><strong>Choose appropriate evaluation metrics</strong>: precision, recall, F-beta score.</li>
+</ul>
+<h3 id="q4-what-are-outliers-and-why-are-they-problematic">
+  Q4: What are outliers and why are they problematic?
+  <a class="anchor" href="#q4-what-are-outliers-and-why-are-they-problematic">#</a>
+</h3>
+<ul>
+<li><strong>Definition</strong>: Datapoints that differ significantly from the norm.</li>
+<li><strong>Causes</strong>: Measurement error, bad data collection, adversarial inputs, rare events.</li>
+<li><strong>Impact</strong>: Outliers can harm training and inference stability.</li>
+</ul>
+<h3 id="q5-how-do-we-detect-outliers">
+  Q5: How do we detect outliers?
+  <a class="anchor" href="#q5-how-do-we-detect-outliers">#</a>
+</h3>
+<ul>
+<li><strong>Simple methods</strong>: Tukey&rsquo;s fences, Z-score analysis.</li>
+<li><strong>More advanced</strong>:
+<ul>
+<li><strong>Isolation forest</strong> (tree-based)</li>
+<li><strong>KNN distance</strong> (neighbor proximity)</li>
+<li><strong>Autoencoders</strong> (reconstruction loss)</li>
+</ul>
+</li>
+<li><strong>Evaluation</strong>: ROC curve and AUROC score.</li>
+</ul>
+<h3 id="q6-what-is-distribution-shift">
+  Q6: What is distribution shift?
+  <a class="anchor" href="#q6-what-is-distribution-shift">#</a>
+</h3>
+<ul>
+<li><strong>Definition</strong>: Training and test distributions differ.</li>
+<li><strong>Almost all real-world ML deployments experience it.</strong></li>
+</ul>
+<h3 id="q7-what-are-the-types-of-distribution-shift">
+  Q7: What are the types of distribution shift?
+  <a class="anchor" href="#q7-what-are-the-types-of-distribution-shift">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Meaning</th>
+          <th style="text-align: left">Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Covariate shift</td>
+          <td style="text-align: left">(p(x)) changes, (p(y</td>
+          <td style="text-align: left">x)) stays the same</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Concept shift</td>
+          <td style="text-align: left">(p(y</td>
+          <td style="text-align: left">x)) changes, (p(x)) stays the same</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Prior probability shift</td>
+          <td style="text-align: left">(p(y)) changes, (p(x</td>
+          <td style="text-align: left">y)) stays the same</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="q8-how-do-we-detect-and-handle-distribution-shift">
+  Q8: How do we detect and handle distribution shift?
+  <a class="anchor" href="#q8-how-do-we-detect-and-handle-distribution-shift">#</a>
+</h3>
+<ul>
+<li><strong>Detection</strong>: Monitor metrics and statistical properties of data.</li>
+<li><strong>Handling</strong>:
+<ul>
+<li>Retrain with better data.</li>
+<li>Use sample reweighting if unlabeled test data is available.</li>
+<li>Concept shift remains hardest to fix without labeled test data.</li>
+</ul>
+</li>
+</ul>
+<h3 id="q9-final-takeaways">
+  Q9: Final Takeaways
+  <a class="anchor" href="#q9-final-takeaways">#</a>
+</h3>
+<ul>
+<li>Handling <strong>class imbalance, outliers, and distribution shift</strong> is critical for building robust, real-world ML systems.</li>
+<li><strong>Evaluation metric choice</strong>, <strong>proper data preprocessing</strong>, and <strong>continuous monitoring</strong> are key strategies.</li>
+</ul>
+<hr>
+<h3 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li><a href="https://imbalanced-learn.org">imbalanced-learn package</a></li>
+<li><a href="https://arxiv.org/abs/1106.1813">SMOTE Paper</a></li>
+<li><a href="https://pyod.readthedocs.io/">PyOD library for outlier detection</a></li>
+<li><a href="https://direct.mit.edu/books/book/3841/Dataset-Shift-in-Machine-Learning">Dataset Shift Book</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/outlier_detection.html">Outlier detection in scikit-learn</a></li>
+<li><a href="https://github.com/dcai-course/dcai-lab/blob/master/outliers/Lab%20-%20Outliers.ipynb">Lab assignment for Outliers</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#class-imbalance-outliers-and-distribution-shift">Class Imbalance, Outliers, and Distribution Shift</a>
+          <ul>
+            <li><a href="#q1-what-are-the-main-problems-discussed-in-this-lecture">Q1: What are the main problems discussed in this lecture?</a></li>
+            <li><a href="#q2-what-is-class-imbalance-and-why-is-it-a-problem">Q2: What is class imbalance and why is it a problem?</a></li>
+            <li><a href="#q3-how-do-we-address-class-imbalance">Q3: How do we address class imbalance?</a></li>
+            <li><a href="#q4-what-are-outliers-and-why-are-they-problematic">Q4: What are outliers and why are they problematic?</a></li>
+            <li><a href="#q5-how-do-we-detect-outliers">Q5: How do we detect outliers?</a></li>
+            <li><a href="#q6-what-is-distribution-shift">Q6: What is distribution shift?</a></li>
+            <li><a href="#q7-what-are-the-types-of-distribution-shift">Q7: What are the types of distribution shift?</a></li>
+            <li><a href="#q8-how-do-we-detect-and-handle-distribution-shift">Q8: How do we detect and handle distribution shift?</a></li>
+            <li><a href="#q9-final-takeaways">Q9: Final Takeaways</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

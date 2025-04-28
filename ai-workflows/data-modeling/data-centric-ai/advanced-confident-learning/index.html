@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Advanced Confident Learning and Applications for GenAI
+  #
+
+
+
+  Q1: What is the main focus of this lecture?
+  #
+
+
+Advanced Confident Learning (CL): Theory, methods, and applications, especially for Generative AI (images, text).
+
+
+  Q2: How does Confident Learning (CL) work at its core?
+  #
+
+
+Inputs: Noisy labels and predicted probabilities.
+Core idea: Find self-confidence thresholds per class to detect label errors.
+Estimate if an example is an error, correct label, or outlier.
+
+
+  Q3: What is the quick intuition behind CL?
+  #
+
+
+Off-diagonal entries in the predicted-vs-true label matrix reveal label errors.
+
+
+  Q4: What makes CL robust to noise?
+  #
+
+
+Prune principle: Remove low-confidence errors before training.
+Count principle: Use counts rather than raw outputs.
+Rank principle: Rank by model confidence, not rely on probabilities.
+
+
+  Q5: How is CL better than just loss adjustment techniques?
+  #
+
+
+CL avoids error propagation common in reweighting methods.
+Robust to stochastic/noisy outputs from real-world models.
+
+
+  Q6: What is the theoretical guarantee of CL?
+  #
+
+
+As long as correct labels dominate wrong ones in a class, CL can exactly find errors — even if model probabilities are imperfect (up to ~33% wrong).
+
+
+  Q7: Why does label noise in test sets matter?
+  #
+
+
+3.4% of labels in popular ML test sets are wrong.
+Small label error rates (~6%) can change model rankings drastically.
+Benchmark results can be misleading without corrected test sets.
+
+
+  Q8: How to fix label errors in test sets?
+  #
+
+
+Use majority consensus among reviewers to correct labels.
+Prune uncertain/multi-label examples.
+
+
+  Q9: How is CL applied to Generative AI models?
+  #
+
+
+Before training: Clean training data to avoid issues in model generation.
+After generation: Run CL on generated data (e.g., images/text) to remove/fix errors.
+
+
+  Q10: Example use cases for CL in Generative AI?
+  #
+
+
+  
+      
+          Scenario
+          Application
+      
+  
+  
+      
+          Image generation (e.g., DALL-E)
+          Improve datasets pre/post generation
+      
+      
+          LLM outputs (e.g., GPT-4)
+          Post-process outputs for better quality
+      
+      
+          RAG (Retrieval-Augmented Generation)
+          Clean retrieved answers
+      
+      
+          Trustworthy Language Models (TLM)
+          Attach confidence scores to outputs
+      
+  
+
+
+  Q11: Final Takeaways
+  #
+
+
+CL is model-agnostic.
+Improves reliability of both traditional ML models and Generative AI.
+One line of code to apply using cleanlab.
+
+
+
+  References
+  #
+
+
+Confident Learning: GitHub Repository
+Label Errors Website
+Trustworthy Language Models (TLM) Tutorial
+Related Papers: (GPT-3), (Northcutt et al., Pervasive Label Errors, 2021)
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/advanced-confident-learning/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Advanced Confident Learning and Applications for GenAI">
+  <meta property="og:description" content="Advanced Confident Learning and Applications for GenAI # Q1: What is the main focus of this lecture? # Advanced Confident Learning (CL): Theory, methods, and applications, especially for Generative AI (images, text). Q2: How does Confident Learning (CL) work at its core? # Inputs: Noisy labels and predicted probabilities. Core idea: Find self-confidence thresholds per class to detect label errors. Estimate if an example is an error, correct label, or outlier. Q3: What is the quick intuition behind CL? # Off-diagonal entries in the predicted-vs-true label matrix reveal label errors. Q4: What makes CL robust to noise? # Prune principle: Remove low-confidence errors before training. Count principle: Use counts rather than raw outputs. Rank principle: Rank by model confidence, not rely on probabilities. Q5: How is CL better than just loss adjustment techniques? # CL avoids error propagation common in reweighting methods. Robust to stochastic/noisy outputs from real-world models. Q6: What is the theoretical guarantee of CL? # As long as correct labels dominate wrong ones in a class, CL can exactly find errors — even if model probabilities are imperfect (up to ~33% wrong). Q7: Why does label noise in test sets matter? # 3.4% of labels in popular ML test sets are wrong. Small label error rates (~6%) can change model rankings drastically. Benchmark results can be misleading without corrected test sets. Q8: How to fix label errors in test sets? # Use majority consensus among reviewers to correct labels. Prune uncertain/multi-label examples. Q9: How is CL applied to Generative AI models? # Before training: Clean training data to avoid issues in model generation. After generation: Run CL on generated data (e.g., images/text) to remove/fix errors. Q10: Example use cases for CL in Generative AI? # Scenario Application Image generation (e.g., DALL-E) Improve datasets pre/post generation LLM outputs (e.g., GPT-4) Post-process outputs for better quality RAG (Retrieval-Augmented Generation) Clean retrieved answers Trustworthy Language Models (TLM) Attach confidence scores to outputs Q11: Final Takeaways # CL is model-agnostic. Improves reliability of both traditional ML models and Generative AI. One line of code to apply using cleanlab. References # Confident Learning: GitHub Repository Label Errors Website Trustworthy Language Models (TLM) Tutorial Related Papers: (GPT-3), (Northcutt et al., Pervasive Label Errors, 2021)">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Advanced Confident Learning and Applications for GenAI | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/advanced-confident-learning/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b1a8fd0504983e3c7921b9578634c01d127fd419193054dce4230ce1d2f935aa.js" integrity="sha256-saj9BQSYPjx5IblXhjTAHRJ/1BkZMFTc5CMM4dL5Nao=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle" checked />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-211a3339275321c1881a08804c2b28d9" class="toggle" checked />
+    <label for="section-211a3339275321c1881a08804c2b28d9" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle"  />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-49f8a15fba102060fbec99923a9f7e7f" class="toggle"  />
+    <label for="section-49f8a15fba102060fbec99923a9f7e7f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fe994b0524505ef83c5591fe607d72e" class="toggle"  />
+    <label for="section-8fe994b0524505ef83c5591fe607d72e" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-786aee9ce5c7a34804dfdaaae1c79408" class="toggle"  />
+    <label for="section-786aee9ce5c7a34804dfdaaae1c79408" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Advanced Confident Learning and Applications for GenAI</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#advanced-confident-learning-and-applications-for-genai">Advanced Confident Learning and Applications for GenAI</a>
+          <ul>
+            <li><a href="#q1-what-is-the-main-focus-of-this-lecture">Q1: What is the main focus of this lecture?</a></li>
+            <li><a href="#q2-how-does-confident-learning-cl-work-at-its-core">Q2: How does Confident Learning (CL) work at its core?</a></li>
+            <li><a href="#q3-what-is-the-quick-intuition-behind-cl">Q3: What is the quick intuition behind CL?</a></li>
+            <li><a href="#q4-what-makes-cl-robust-to-noise">Q4: What makes CL robust to noise?</a></li>
+            <li><a href="#q5-how-is-cl-better-than-just-loss-adjustment-techniques">Q5: How is CL better than just loss adjustment techniques?</a></li>
+            <li><a href="#q6-what-is-the-theoretical-guarantee-of-cl">Q6: What is the theoretical guarantee of CL?</a></li>
+            <li><a href="#q7-why-does-label-noise-in-test-sets-matter">Q7: Why does label noise in test sets matter?</a></li>
+            <li><a href="#q8-how-to-fix-label-errors-in-test-sets">Q8: How to fix label errors in test sets?</a></li>
+            <li><a href="#q9-how-is-cl-applied-to-generative-ai-models">Q9: How is CL applied to Generative AI models?</a></li>
+            <li><a href="#q10-example-use-cases-for-cl-in-generative-ai">Q10: Example use cases for CL in Generative AI?</a></li>
+            <li><a href="#q11-final-takeaways">Q11: Final Takeaways</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="advanced-confident-learning-and-applications-for-genai">
+  Advanced Confident Learning and Applications for GenAI
+  <a class="anchor" href="#advanced-confident-learning-and-applications-for-genai">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-is-the-main-focus-of-this-lecture">
+  Q1: What is the main focus of this lecture?
+  <a class="anchor" href="#q1-what-is-the-main-focus-of-this-lecture">#</a>
+</h3>
+<ul>
+<li><strong>Advanced Confident Learning (CL)</strong>: Theory, methods, and applications, especially for <strong>Generative AI</strong> (images, text).</li>
+</ul>
+<h3 id="q2-how-does-confident-learning-cl-work-at-its-core">
+  Q2: How does Confident Learning (CL) work at its core?
+  <a class="anchor" href="#q2-how-does-confident-learning-cl-work-at-its-core">#</a>
+</h3>
+<ul>
+<li>Inputs: <strong>Noisy labels</strong> and <strong>predicted probabilities</strong>.</li>
+<li>Core idea: Find <strong>self-confidence thresholds</strong> per class to detect label errors.</li>
+<li>Estimate if an example is an error, correct label, or outlier.</li>
+</ul>
+<h3 id="q3-what-is-the-quick-intuition-behind-cl">
+  Q3: What is the quick intuition behind CL?
+  <a class="anchor" href="#q3-what-is-the-quick-intuition-behind-cl">#</a>
+</h3>
+<ul>
+<li>Off-diagonal entries in the predicted-vs-true label matrix reveal <strong>label errors</strong>.</li>
+</ul>
+<h3 id="q4-what-makes-cl-robust-to-noise">
+  Q4: What makes CL robust to noise?
+  <a class="anchor" href="#q4-what-makes-cl-robust-to-noise">#</a>
+</h3>
+<ul>
+<li><strong>Prune principle</strong>: Remove low-confidence errors before training.</li>
+<li><strong>Count principle</strong>: Use counts rather than raw outputs.</li>
+<li><strong>Rank principle</strong>: Rank by model confidence, not rely on probabilities.</li>
+</ul>
+<h3 id="q5-how-is-cl-better-than-just-loss-adjustment-techniques">
+  Q5: How is CL better than just loss adjustment techniques?
+  <a class="anchor" href="#q5-how-is-cl-better-than-just-loss-adjustment-techniques">#</a>
+</h3>
+<ul>
+<li>CL <strong>avoids error propagation</strong> common in reweighting methods.</li>
+<li><strong>Robust</strong> to stochastic/noisy outputs from real-world models.</li>
+</ul>
+<h3 id="q6-what-is-the-theoretical-guarantee-of-cl">
+  Q6: What is the theoretical guarantee of CL?
+  <a class="anchor" href="#q6-what-is-the-theoretical-guarantee-of-cl">#</a>
+</h3>
+<ul>
+<li>As long as correct labels dominate wrong ones in a class, CL can exactly find errors — even if model probabilities are imperfect (up to ~33% wrong).</li>
+</ul>
+<h3 id="q7-why-does-label-noise-in-test-sets-matter">
+  Q7: Why does label noise in test sets matter?
+  <a class="anchor" href="#q7-why-does-label-noise-in-test-sets-matter">#</a>
+</h3>
+<ul>
+<li><strong>3.4% of labels</strong> in popular ML test sets are wrong.</li>
+<li>Small label error rates (~6%) can <strong>change model rankings</strong> drastically.</li>
+<li>Benchmark results can be misleading without corrected test sets.</li>
+</ul>
+<h3 id="q8-how-to-fix-label-errors-in-test-sets">
+  Q8: How to fix label errors in test sets?
+  <a class="anchor" href="#q8-how-to-fix-label-errors-in-test-sets">#</a>
+</h3>
+<ul>
+<li>Use <strong>majority consensus</strong> among reviewers to correct labels.</li>
+<li>Prune uncertain/multi-label examples.</li>
+</ul>
+<h3 id="q9-how-is-cl-applied-to-generative-ai-models">
+  Q9: How is CL applied to Generative AI models?
+  <a class="anchor" href="#q9-how-is-cl-applied-to-generative-ai-models">#</a>
+</h3>
+<ul>
+<li><strong>Before training</strong>: Clean training data to avoid issues in model generation.</li>
+<li><strong>After generation</strong>: Run CL on generated data (e.g., images/text) to remove/fix errors.</li>
+</ul>
+<h3 id="q10-example-use-cases-for-cl-in-generative-ai">
+  Q10: Example use cases for CL in Generative AI?
+  <a class="anchor" href="#q10-example-use-cases-for-cl-in-generative-ai">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Scenario</th>
+          <th style="text-align: left">Application</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Image generation (e.g., DALL-E)</td>
+          <td style="text-align: left">Improve datasets pre/post generation</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">LLM outputs (e.g., GPT-4)</td>
+          <td style="text-align: left">Post-process outputs for better quality</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">RAG (Retrieval-Augmented Generation)</td>
+          <td style="text-align: left">Clean retrieved answers</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Trustworthy Language Models (TLM)</td>
+          <td style="text-align: left">Attach confidence scores to outputs</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="q11-final-takeaways">
+  Q11: Final Takeaways
+  <a class="anchor" href="#q11-final-takeaways">#</a>
+</h3>
+<ul>
+<li>CL is <strong>model-agnostic</strong>.</li>
+<li><strong>Improves reliability</strong> of both traditional ML models and Generative AI.</li>
+<li><strong>One line of code</strong> to apply using <a href="https://github.com/cleanlab/cleanlab">cleanlab</a>.</li>
+</ul>
+<hr>
+<h3 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li><a href="https://github.com/cleanlab/cleanlab">Confident Learning: GitHub Repository</a></li>
+<li><a href="https://labelerrors.com/">Label Errors Website</a></li>
+<li><a href="https://help.cleanlab.ai/tutorials/tlm/">Trustworthy Language Models (TLM) Tutorial</a></li>
+<li><a href="https://arxiv.org/abs/2005.14165">Related Papers:</a> (GPT-3), (Northcutt et al., Pervasive Label Errors, 2021)</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#advanced-confident-learning-and-applications-for-genai">Advanced Confident Learning and Applications for GenAI</a>
+          <ul>
+            <li><a href="#q1-what-is-the-main-focus-of-this-lecture">Q1: What is the main focus of this lecture?</a></li>
+            <li><a href="#q2-how-does-confident-learning-cl-work-at-its-core">Q2: How does Confident Learning (CL) work at its core?</a></li>
+            <li><a href="#q3-what-is-the-quick-intuition-behind-cl">Q3: What is the quick intuition behind CL?</a></li>
+            <li><a href="#q4-what-makes-cl-robust-to-noise">Q4: What makes CL robust to noise?</a></li>
+            <li><a href="#q5-how-is-cl-better-than-just-loss-adjustment-techniques">Q5: How is CL better than just loss adjustment techniques?</a></li>
+            <li><a href="#q6-what-is-the-theoretical-guarantee-of-cl">Q6: What is the theoretical guarantee of CL?</a></li>
+            <li><a href="#q7-why-does-label-noise-in-test-sets-matter">Q7: Why does label noise in test sets matter?</a></li>
+            <li><a href="#q8-how-to-fix-label-errors-in-test-sets">Q8: How to fix label errors in test sets?</a></li>
+            <li><a href="#q9-how-is-cl-applied-to-generative-ai-models">Q9: How is CL applied to Generative AI models?</a></li>
+            <li><a href="#q10-example-use-cases-for-cl-in-generative-ai">Q10: Example use cases for CL in Generative AI?</a></li>
+            <li><a href="#q11-final-takeaways">Q11: Final Takeaways</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
