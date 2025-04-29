@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -141,7 +141,7 @@ Lab assignment for Outliers
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/class-imbalance-outliers-distribution-shift/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/class-imbalance-outliers-distribution-shift/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Class Imbalance, Outliers, and Distribution Shift">
   <meta property="og:description" content="Class Imbalance, Outliers, and Distribution Shift # Q1: What are the main problems discussed in this lecture? # Class imbalance Outliers Distribution shift Q2: What is class imbalance and why is it a problem? # Definition: Some classes occur much less frequently than others. Examples: COVID detection, fraud detection, manufacturing defects, self-driving cars. Impact: Naive models can have misleadingly high accuracy while failing on rare classes. Q3: How do we address class imbalance? # Sampling Techniques: Sample weights (less stable for mini-batch training) Over-sampling (replicating minority class examples) Under-sampling (dropping majority class examples) SMOTE (synthetic minority over-sampling) Balanced mini-batch training (better distribution in each batch) Choose appropriate evaluation metrics: precision, recall, F-beta score. Q4: What are outliers and why are they problematic? # Definition: Datapoints that differ significantly from the norm. Causes: Measurement error, bad data collection, adversarial inputs, rare events. Impact: Outliers can harm training and inference stability. Q5: How do we detect outliers? # Simple methods: Tukey’s fences, Z-score analysis. More advanced: Isolation forest (tree-based) KNN distance (neighbor proximity) Autoencoders (reconstruction loss) Evaluation: ROC curve and AUROC score. Q6: What is distribution shift? # Definition: Training and test distributions differ. Almost all real-world ML deployments experience it. Q7: What are the types of distribution shift? # Type Meaning Example Covariate shift (p(x)) changes, (p(y x)) stays the same Concept shift (p(y x)) changes, (p(x)) stays the same Prior probability shift (p(y)) changes, (p(x y)) stays the same Q8: How do we detect and handle distribution shift? # Detection: Monitor metrics and statistical properties of data. Handling: Retrain with better data. Use sample reweighting if unlabeled test data is available. Concept shift remains hardest to fix without labeled test data. Q9: Final Takeaways # Handling class imbalance, outliers, and distribution shift is critical for building robust, real-world ML systems. Evaluation metric choice, proper data preprocessing, and continuous monitoring are key strategies. References # imbalanced-learn package SMOTE Paper PyOD library for outlier detection Dataset Shift Book Outlier detection in scikit-learn Lab assignment for Outliers">
@@ -151,10 +151,10 @@ Lab assignment for Outliers
 <title>Class Imbalance, Outliers, and Distribution Shift | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/class-imbalance-outliers-distribution-shift/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/class-imbalance-outliers-distribution-shift/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.6f7c630b7fc07cd619cb7ef946ee477e66478fdd5a421e81b8cc961f063db988.js" integrity="sha256-b3xjC3/AfNYZy375Ru5HfmZHj91aQh6BuMyWHwY9uYg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.02abca881c6f892a27849aeb3842341fe82769f63af14de1f84406fb2fb3f76c.js" integrity="sha256-AqvKiBxviSonhJrrOEI0H&#43;gnafY68U3h&#43;EQG&#43;y&#43;z92w=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

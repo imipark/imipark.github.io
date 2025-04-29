@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -154,7 +154,7 @@ Lab assignment: Prompt Engineering
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/encoding-human-priors/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/encoding-human-priors/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Encoding Human Priors">
   <meta property="og:description" content="Encoding Human Priors – Data Augmentation and Prompt Engineering # Q1: What is the main focus of this lecture? # How to encode human priors into machine learning through: Training data augmentation Prompt engineering at test time (especially for LLMs). Q2: Why do ML models need human priors? # ML models often fail in simple ways. They lack common sense (e.g., failing to recognize a rotated dog image). Human priors capture invariances and domain knowledge that models don’t inherently learn. Q3: What is data augmentation and why is it important? # Data augmentation creates new training examples by applying transformations (e.g., rotation, flipping). Helps address: Overfitting (memorization) Underfitting (lack of data) Class imbalance or biased datasets. Saves time and cost, especially when labeled data is expensive (e.g., in healthcare). Q4: What are examples of data augmentation techniques? # Simple methods: Rotation, flipping. Advanced methods: Mixup: Blending images and labels (e.g., 60% cat &#43; 40% dog). Synthetic generation: Using DALL-E, Stable Diffusion to generate new data. Simulation-to-real transfer: e.g., Google’s RetinaGAN for robotics. Text augmentation: Back-translation (English → French → English) to generate paraphrases. Q5: What is prompt engineering? # Prompt engineering manipulates inputs to LLMs at test time. Example: Instead of “Write a letter of recommendation,” prompt with “Write a letter for a student who got into MIT” to get higher-quality output. Leverages the language interface humans naturally use. Q6: Why does prompt engineering work especially well for LLMs? # LLMs are trained on massive language datasets. Humans can easily adapt prompts to guide the model without retraining it. Providing context and examples (“few-shot prompting”) improves results. Q7: How are GPT-3 and ChatGPT different in handling prompts? # GPT-3: Predicts next token, assumes user might be creating forms/questions. ChatGPT: Trained for dialogue and commands, better at instruction-following. Q8: What are best practices in prompt engineering? # Add examples (“few-shot”) to define task behavior. Build context templates for reusability. Iteratively tweak prompts to observe effects on output. Q9: How does data augmentation vs. prompt engineering differ? # Aspect Data Augmentation Prompt Engineering When applied Before training At test time What is changed Training dataset Input prompt Goal Teach model invariances Guide model behavior dynamically Typical models Any ML models Mainly LLMs (e.g., GPT family) Q10: Final Takeaway # Encoding human priors via data (training-time or test-time) dramatically improves model robustness. Data is the bridge to insert human knowledge into ML systems effectively. References # Lecture Slides PDF Mixup Paper (Zhang et al., 2017) Mobius Transformations (Zhou et al., 2020) RetinaGAN (Ho et al., 2020) GPT-3 Paper DALL-E Stable Diffusion Lab assignment: Prompt Engineering">
@@ -164,10 +164,10 @@ Lab assignment: Prompt Engineering
 <title>Encoding Human Priors | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/encoding-human-priors/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/encoding-human-priors/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.6f7c630b7fc07cd619cb7ef946ee477e66478fdd5a421e81b8cc961f063db988.js" integrity="sha256-b3xjC3/AfNYZy375Ru5HfmZHj91aQh6BuMyWHwY9uYg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.02abca881c6f892a27849aeb3842341fe82769f63af14de1f84406fb2fb3f76c.js" integrity="sha256-AqvKiBxviSonhJrrOEI0H&#43;gnafY68U3h&#43;EQG&#43;y&#43;z92w=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

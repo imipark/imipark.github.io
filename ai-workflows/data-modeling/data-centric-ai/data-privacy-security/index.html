@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -145,7 +145,7 @@ Membership Inference Lab Notebook
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/data-privacy-security/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/data-privacy-security/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Data Privacy and Security in ML">
   <meta property="og:description" content="Data Privacy and Security in ML # Q1: Why is data privacy and security important in ML models? # ML models often leak information about their training data. Public models can reveal sensitive data either directly or through inference attacks. Q2: What types of attacks can compromise ML models? # Membership inference attacks: Determine if a datapoint was part of the training set. Data extraction attacks: Extract parts of the training data from the model. Other attacks include adversarial examples, data poisoning, model inversion, model extraction, and prompt injection. Q3: What are security goals and threat models? # A security goal defines what must or must not happen. A threat model defines the adversary’s capabilities and limitations. Both are necessary to properly reason about a system’s security. Q4: How does threat modeling apply to ML APIs? # Example: Google Vision API must prevent model extraction even when adversaries can query with arbitrary images. Q5: What is a membership inference attack? # An attack that identifies whether a specific data point was in the model’s training set. Q6: How does shadow training help in membership inference? # Shadow models simulate the target model’s behavior on known datasets. An attack model is trained to classify whether a data point was part of the training set based on model outputs. Q7: What are simple metric-based membership inference attacks? # Prediction correctness: whether model predicts correctly. Prediction loss: whether the model loss is low. Prediction confidence: model’s maximum output probability. Prediction entropy: uncertainty of model’s output distribution. Q8: What is a data extraction attack? # Directly extracting memorized sequences or examples from a model, especially from large LLMs. Q9: How is perplexity used in data extraction? # Lower perplexity on sequences indicates that they were likely memorized during training. Q10: What are empirical defenses against privacy attacks? # Limiting outputs (top-k predictions, quantization). Adding noise to predictions. Changing training methods (e.g., regularization). Q11: Why is empirical defense evaluation hard? # Following Kerckhoffs’s principle, defenses must work even when attackers know the defense. Security is a cat-and-mouse game between defenders and attackers. Q12: What is differential privacy (DP)? # A formal, mathematical definition of privacy that limits how much an algorithm’s output depends on any single input. Algorithms like DP-SGD make models less dependent on individual datapoints. Q13: What challenges exist with using differential privacy? # It introduces parameters (ε, δ) that are difficult to set. Strong privacy may come at the cost of degraded model performance. Q14: What resources were recommended? # Surveys on membership inference attacks and privacy attacks. Awesome ML privacy attacks collection. Q15: What was the lab assignment? # Implement a membership inference attack against a black-box model. # OpenAI Codex paper Prompt Injection Membership Inference Survey Privacy Attacks in ML Survey Awesome ML Privacy Attacks Repository Differential Privacy (Dwork et al., 2006) DP-SGD (Abadi et al., 2016) Membership Inference Lab Notebook">
@@ -155,10 +155,10 @@ Membership Inference Lab Notebook
 <title>Data Privacy and Security in ML | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/data-privacy-security/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/data-privacy-security/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.6f7c630b7fc07cd619cb7ef946ee477e66478fdd5a421e81b8cc961f063db988.js" integrity="sha256-b3xjC3/AfNYZy375Ru5HfmZHj91aQh6BuMyWHwY9uYg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.02abca881c6f892a27849aeb3842341fe82769f63af14de1f84406fb2fb3f76c.js" integrity="sha256-AqvKiBxviSonhJrrOEI0H&#43;gnafY68U3h&#43;EQG&#43;y&#43;z92w=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

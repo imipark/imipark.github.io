@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -152,7 +152,7 @@ GraphRAG is essentially a modern hybrid system, combining symbolic structure wit
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/alignment-reasoning/graph-reasoning/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/alignment-reasoning/graph-reasoning/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Graph Reasoning">
   <meta property="og:description" content="Graph Reasoning: Knowledge Graph (KG) vs. GraphRAG # Knowledge Graph (Structure) ➕ LLM (Reasoning) ➡️ GraphRAG (Hybrid QA System) 🔄 Relationship Between KG and GraphRAG # A Knowledge Graph can serve as the data backbone for GraphRAG. KG provides the structured facts, GraphRAG adds flexible retrieval and LLM reasoning. GraphRAG extracts subgraphs, embeds them, and uses LLMs to generate natural language answers. LLMs can also help enrich the KG, creating a feedback loop. GraphRAG is essentially a modern hybrid system, combining symbolic structure with neural flexibility. Side-by-Side Comparison # Feature KG GraphRAG 🧩 Core Idea Graph-based representation of entities and relationships Retrieval-Augmented Generation with a graph-structured retrieval backend 🏗️ Structure Nodes (entities/concepts) &#43; edges (relations) Combines a graph &#43; retriever &#43; LLM (generator) 🔍 Primary Use Case Semantic search, reasoning, data integration, and explainable AI Answering complex queries with structured reasoning &#43; natural language generation 🧠 Reasoning Type Symbolic / rule-based / graph traversal Hybrid: retrieval &#43; neural reasoning over graph paths 🧮 Tech Stack RDF, OWL, Neo4j, Blazegraph, SPARQL LangChain, LlamaIndex, HuggingFace Transformers, Neo4j/NetworkX for graph, vector DBs 🧪 Inference Deterministic (SPARQL, rules, logic) or probabilistic (PGMs) LLM-based generation informed by graph-aware retrieval 🔗 Integration with LLMs Optional; LLMs can query or summarize KG Essential; LLMs decode retrieved graph info into answers 📘 Example in Healthcare “What drugs interact with Warfarin?” → Uses drug-drug interaction KG “What treatments are best for elderly diabetic patients with hypertension?” → Uses patient-condition-treatment graph to guide LLM 📈 Scalability Can grow large but needs curation and consistency Scalable via modular retrievers; dynamic context injection 📣 Explainability High: paths are interpretable Medium: explainable only if LLM is instructed to reason with trace 📚 Data Format Triples: (subject, predicate, object) Graph-augmented documents, vector embeddings, node-context pairs 🎯 Strengths Precision, transparency, semantic integrity Flexibility, context-aware QA, natural language synthesis 🧱 Weaknesses Hard to build/maintain at scale, brittle for unstructured text Less structured, can hallucinate, graph reasoning quality depends on retriever design 🩺 Healthcare Use Cases # Use Case KG GraphRAG 1. Drug Interaction Checks KG connects drugs via known interaction relationships from structured databases (e.g., RxNorm, DrugBank).
@@ -170,11 +170,11 @@ GraphRAG is essentially a modern hybrid system, combining symbolic structure wit
 <title>Graph Reasoning | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/alignment-reasoning/graph-reasoning/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/alignment-reasoning/graph-reasoning/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.6f7c630b7fc07cd619cb7ef946ee477e66478fdd5a421e81b8cc961f063db988.js" integrity="sha256-b3xjC3/AfNYZy375Ru5HfmZHj91aQh6BuMyWHwY9uYg=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/alignment-reasoning/graph-reasoning/index.xml" title="AI Reasoning" />
+  <script defer src="/en.search.min.02abca881c6f892a27849aeb3842341fe82769f63af14de1f84406fb2fb3f76c.js" integrity="sha256-AqvKiBxviSonhJrrOEI0H&#43;gnafY68U3h&#43;EQG&#43;y&#43;z92w=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/ai-workflows/alignment-reasoning/graph-reasoning/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -155,7 +155,7 @@ Dataset curation lab notebook
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/dataset-creation-curation/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/dataset-creation-curation/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Dataset Creation and Curation">
   <meta property="og:description" content="Dataset Creation and Curation # Q1: What are the main themes of dataset creation and curation? # Framing the ML task correctly. Addressing data sourcing concerns like selection bias. Handling label sourcing and quality control. Q2: Why is careful sourcing of data important? # ML models exploit spurious correlations. If training data does not match real-world deployment conditions, models can fail badly. Q3: What is selection bias and what are its common causes? # Selection bias: Systematic mismatch between training data and deployment data. Causes: Time/location bias, demographic bias, response bias, availability bias, long tail bias. Q4: How can we deal with selection bias during data collection? # Hold out validation sets that mimic deployment conditions, such as latest data, new locations, or oversampled rare events. Q5: How can we estimate how much data we need? # Use a method to measure learning curves by sub-sampling data and fitting a simple log-log model to predict performance scaling. Q6: What is the formula used to predict model error with more data? # ( \log(	ext{error}) = -a \cdot \log(n) &#43; b ) Q7: What are concerns when labeling data with crowdsourced workers? # Variability in annotator accuracy. Possibility of annotator collusion. Q8: How can we maintain label quality during crowdsourcing? # Insert “quality control” examples with known ground-truth to monitor annotator performance. Q9: What methods are used to curate labels from multiple annotators? # Majority Vote and Inter-Annotator Agreement. Dawid-Skene model. CROWDLAB. Q10: How does Majority Vote work? # Assigns the label chosen by the majority of annotators. Confidence is based on inter-annotator agreement. Q11: What are downsides of Majority Vote? # Ties are ambiguous. Bad annotators have equal influence as good ones. Q12: What is the Dawid-Skene model? # Models each annotator with a confusion matrix. Uses Bayesian inference (often approximated with EM) to estimate consensus labels and annotator quality. Q13: What are limitations of Dawid-Skene? # Requires strong assumptions. Performs poorly if examples are labeled by few annotators. Q14: What is CROWDLAB? # Combines classifier predictions and annotator labels for better consensus. Weights depend on model confidence and inter-annotator agreement. Q15: How does CROWDLAB work? # For examples labeled by few annotators, rely more on the classifier. For examples labeled by many annotators, rely more on label agreement. Q16: How are weights estimated in CROWDLAB? # Based on annotator agreement rates and classifier accuracy normalized against a majority-class baseline. Q17: What is the hands-on lab assignment for this lecture? # Analyze a multi-annotator dataset and implement methods for estimating consensus labels and annotator quality. References # Human-in-the-Loop ML textbook Recognition in terra incognita (Beery et al., 2018) Constructive prediction of generalization error (Rosenfeld et al., 2020) CROWDLAB paper (Goh et al., 2022) Catalogue of Bias (Selection Bias) Dataset curation lab notebook">
@@ -165,10 +165,10 @@ Dataset curation lab notebook
 <title>Dataset Creation and Curation | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/dataset-creation-curation/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/dataset-creation-curation/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.6f7c630b7fc07cd619cb7ef946ee477e66478fdd5a421e81b8cc961f063db988.js" integrity="sha256-b3xjC3/AfNYZy375Ru5HfmZHj91aQh6BuMyWHwY9uYg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.02abca881c6f892a27849aeb3842341fe82769f63af14de1f84406fb2fb3f76c.js" integrity="sha256-AqvKiBxviSonhJrrOEI0H&#43;gnafY68U3h&#43;EQG&#43;y&#43;z92w=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book

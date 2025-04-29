@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -194,7 +194,7 @@ Core-set selection enables training efficiency for already large datasets.
 Key Distillation">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/growing-or-compressing-datasets/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/growing-or-compressing-datasets/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="Growing or Compressing Datasets">
   <meta property="og:description" content="Growing or Compressing Datasets # Q1: What is the main focus of this lecture? # Techniques to carefully select examples for labeling to reduce the burden in ML systems. Growing datasets via active learning and compressing datasets via core-set selection. Q2: What is active learning? # A method to intelligently select the most informative examples to label next, maximizing model improvement with fewer labeled samples. Q3: How does pool-based active learning work? # Start with a pool of unlabeled examples. At each round, score examples using an acquisition function (e.g., entropy of predicted probabilities). Select and label top examples. Retrain the model with newly labeled data. Q4: What is a common acquisition function used in active learning? # Entropy of the predicted class probabilities, encouraging labeling of uncertain examples. Q5: How does active learning compare to passive learning? # Active learning exponentially improves data efficiency compared to random/passive sampling. Q6: What practical challenges does active learning face? # High computational costs with large models and datasets. Q7: How can active learning be made more practical? # Batch active learning with diversity selection. Efficient candidate selection using methods like SEALS to reduce search space. Q8: What is SEALS? # Similarity Search for Efficient Active Learning and Search of Rare Concepts. Uses nearest neighbor search in embedding space to limit active learning candidate pool. Q9: What is core-set selection? # Choosing a small representative subset of a large labeled dataset that preserves model performance. Q10: Why is core-set selection important? # When we have massive datasets, it reduces computational, time, and energy costs without sacrificing accuracy. Q11: What methods help with core-set selection? # Greedy k-centers approach. Selection via Proxy: using smaller proxy models to guide subset selection. Q12: How does Selection via Proxy work? # Train a lightweight model (proxy) on the full data. Use it to select a subset for training a larger model, speeding up training significantly. Q13: What are key takeaways about dataset growth and compression? # Active learning enables data-efficient labeling for growing datasets. Core-set selection enables training efficiency for already large datasets. Active Learning vs. Confident Learning # Category Active Learning Confident Learning Main Goal Select the most informative examples to label next Find mislabeled examples in existing labeled data When Used During dataset growth (annotation phase) After labels exist (cleaning phase) Data State Partially labeled data pool Fully labeled (but noisy) dataset Model Uncertainty Usage Samples highest-uncertainty examples for human labeling Detects label inconsistency via confidence estimation Human Role Label new examples Review and correct suspicious labels Output New labels added to dataset List of potential label errors to fix Typical Workflow Train model → Select uncertain points → Human annotates → Expand dataset Train model → Identify inconsistent labels → Human verifies/corrects → Clean dataset Common Technique Uncertainty sampling Confidence-based error detection Libraries/Tools modAL, ALiPy cleanlab Philosophy Proactively grow data wisely Reactively audit and clean existing data Typical Question “What should I label next?” “Which labels are probably wrong?” End Goal Smarter, faster data acquisition Higher quality existing labels Example Scenario Medical image AI needing efficient expert labeling Noisy crowd-sourced labeled text needing cleaning Key Distillation">
@@ -204,10 +204,10 @@ Key Distillation">
 <title>Growing or Compressing Datasets | AI Reasoning</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/growing-or-compressing-datasets/">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/growing-or-compressing-datasets/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.6f7c630b7fc07cd619cb7ef946ee477e66478fdd5a421e81b8cc961f063db988.js" integrity="sha256-b3xjC3/AfNYZy375Ru5HfmZHj91aQh6BuMyWHwY9uYg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.02abca881c6f892a27849aeb3842341fe82769f63af14de1f84406fb2fb3f76c.js" integrity="sha256-AqvKiBxviSonhJrrOEI0H&#43;gnafY68U3h&#43;EQG&#43;y&#43;z92w=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
