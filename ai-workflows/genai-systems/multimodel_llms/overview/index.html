@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Inputs and Data Preparation for Multimodal LLMs
+  #
+
+Multimodal LLMs are language models that can process and reason over multiple data types, especially:
+
+Text
+Images
+(Optionally: audio, video, or other modalities)
+
+They are designed to understand both visual and linguistic context, enabling tasks like visual question answering, image captioning, grounding, and perception-based reasoning.
+
+
+  🖼️ &#43; 💬 Input Format
+  #
+
+Inputs typically include:
+
+Image(s): RGB images, optionally annotated (e.g., bounding boxes, circles)
+Text Prompt: Task instruction or question (e.g., &ldquo;Which object is closer?&rdquo;)
+Answer Choices (optional): For classification-style tasks like BLINK
+
+inputs = {
+  &#34;images&#34;: [...],   # preprocessed (resized, normalized) tensors or raw image paths
+  &#34;text&#34;: &#34;Which point is closer to the camera? (A) A (B) B&#34;
+}
+Some APIs accept JSON-style mixed prompts with interleaved text and image tokens.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/genai-systems/multimodel_llms/overview/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="AI Reasoning">
+  <meta property="og:description" content="Inputs and Data Preparation for Multimodal LLMs # Multimodal LLMs are language models that can process and reason over multiple data types, especially:
+Text Images (Optionally: audio, video, or other modalities) They are designed to understand both visual and linguistic context, enabling tasks like visual question answering, image captioning, grounding, and perception-based reasoning.
+🖼️ &#43; 💬 Input Format # Inputs typically include:
+Image(s): RGB images, optionally annotated (e.g., bounding boxes, circles) Text Prompt: Task instruction or question (e.g., “Which object is closer?”) Answer Choices (optional): For classification-style tasks like BLINK inputs = { &#34;images&#34;: [...], # preprocessed (resized, normalized) tensors or raw image paths &#34;text&#34;: &#34;Which point is closer to the camera? (A) A (B) B&#34; } Some APIs accept JSON-style mixed prompts with interleaved text and image tokens.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Overview | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/genai-systems/multimodel_llms/overview/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.0d106fb57e40869cea2934dad7f4ae3979b9d4d20efb9311ca64bee47d99a8fb.js" integrity="sha256-DRBvtX5AhpzqKTTa1/SuOXm51NIO&#43;5MRymS&#43;5H2ZqPs=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-211a3339275321c1881a08804c2b28d9" class="toggle"  />
+    <label for="section-211a3339275321c1881a08804c2b28d9" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle" checked />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/overview/" class="active">Overview</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/components_fusions/" class="">Core Components and Fusion Strategies in Multimodal LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/data_prep/" class="">Inputs and Data Preparation for Multimodal LLMs</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-49f8a15fba102060fbec99923a9f7e7f" class="toggle"  />
+    <label for="section-49f8a15fba102060fbec99923a9f7e7f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fe994b0524505ef83c5591fe607d72e" class="toggle"  />
+    <label for="section-8fe994b0524505ef83c5591fe607d72e" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-786aee9ce5c7a34804dfdaaae1c79408" class="toggle"  />
+    <label for="section-786aee9ce5c7a34804dfdaaae1c79408" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Overview</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#inputs-and-data-preparation-for-multimodal-llms">Inputs and Data Preparation for Multimodal LLMs</a>
+          <ul>
+            <li><a href="#---input-format">🖼️ + 💬 Input Format</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="inputs-and-data-preparation-for-multimodal-llms">
+  Inputs and Data Preparation for Multimodal LLMs
+  <a class="anchor" href="#inputs-and-data-preparation-for-multimodal-llms">#</a>
+</h2>
+<p>Multimodal LLMs are language models that can process and reason over <strong>multiple data types</strong>, especially:</p>
+<ul>
+<li><strong>Text</strong></li>
+<li><strong>Images</strong></li>
+<li><em>(Optionally: audio, video, or other modalities)</em></li>
+</ul>
+<p>They are designed to understand <strong>both visual and linguistic context</strong>, enabling tasks like visual question answering, image captioning, grounding, and perception-based reasoning.</p>
+<hr>
+<h3 id="---input-format">
+  🖼️ + 💬 Input Format
+  <a class="anchor" href="#---input-format">#</a>
+</h3>
+<p>Inputs typically include:</p>
+<ul>
+<li><strong>Image(s)</strong>: RGB images, optionally annotated (e.g., bounding boxes, circles)</li>
+<li><strong>Text Prompt</strong>: Task instruction or question (e.g., &ldquo;Which object is closer?&rdquo;)</li>
+<li><strong>Answer Choices</strong> (optional): For classification-style tasks like BLINK</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>inputs <span style="color:#04a5e5;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#40a02b">&#34;images&#34;</span>: [<span style="color:#04a5e5;font-weight:bold">...</span>],   <span style="color:#9ca0b0;font-style:italic"># preprocessed (resized, normalized) tensors or raw image paths</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#40a02b">&#34;text&#34;</span>: <span style="color:#40a02b">&#34;Which point is closer to the camera? (A) A (B) B&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Some APIs accept JSON-style mixed prompts with interleaved text and image tokens.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#inputs-and-data-preparation-for-multimodal-llms">Inputs and Data Preparation for Multimodal LLMs</a>
+          <ul>
+            <li><a href="#---input-format">🖼️ + 💬 Input Format</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

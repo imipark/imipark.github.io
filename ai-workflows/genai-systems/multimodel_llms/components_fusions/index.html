@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Core Components of a Multimodal LLM
+  #
+
+
+
+Visual Encoder
+Converts input images into feature embeddings. Common choices include CLIP, ViT, and EVA.
+
+
+Modality Adapter (Aligner)
+Projects or transforms visual features to be compatible with the language model’s embedding space (e.g., via MLP or cross-attention).
+
+
+Language Model (LLM)
+A large pretrained language model (e.g., LLaMA, GPT) that consumes both text and aligned visual inputs to generate or classify responses.
+
+
+
+
+  Fusion Strategies in Multimodal LLMs
+  #
+
+
+  1. Projection &#43; Token Injection
+  #
+
+Models: BLIP-2, LLaVA
+How it works:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/genai-systems/multimodel_llms/components_fusions/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Core Components and Fusion Strategies in Multimodal LLMs">
+  <meta property="og:description" content="Core Components of a Multimodal LLM # Visual Encoder
+Converts input images into feature embeddings. Common choices include CLIP, ViT, and EVA.
+Modality Adapter (Aligner)
+Projects or transforms visual features to be compatible with the language model’s embedding space (e.g., via MLP or cross-attention).
+Language Model (LLM)
+A large pretrained language model (e.g., LLaMA, GPT) that consumes both text and aligned visual inputs to generate or classify responses.
+Fusion Strategies in Multimodal LLMs # 1. Projection &#43; Token Injection # Models: BLIP-2, LLaVA
+How it works:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Core Components and Fusion Strategies in Multimodal LLMs | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/genai-systems/multimodel_llms/components_fusions/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.0d106fb57e40869cea2934dad7f4ae3979b9d4d20efb9311ca64bee47d99a8fb.js" integrity="sha256-DRBvtX5AhpzqKTTa1/SuOXm51NIO&#43;5MRymS&#43;5H2ZqPs=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-11214ac3b076f362925d6c6673de12d0" class="toggle"  />
+    <label for="section-11214ac3b076f362925d6c6673de12d0" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-211a3339275321c1881a08804c2b28d9" class="toggle"  />
+    <label for="section-211a3339275321c1881a08804c2b28d9" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0a5a201c09b19922ece313b6aa71ce8f" class="toggle" checked />
+    <label for="section-0a5a201c09b19922ece313b6aa71ce8f" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4857c1847bb17cfb0035cc71a5366c1" class="toggle"  />
+    <label for="section-f4857c1847bb17cfb0035cc71a5366c1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google/" class="">5-Day GenAI with Google</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b4a719ff8289f19d4cb311dacee3340e" class="toggle"  />
+    <label for="section-b4a719ff8289f19d4cb311dacee3340e" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/ai_agents/" class="">AI Agents</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/prompt_engineering/" class="">Prompt Engineering</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03684c6e891307ee8c9dcf20c1d978f6" class="toggle"  />
+    <label for="section-03684c6e891307ee8c9dcf20c1d978f6" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/" class="">Alignment &amp; Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb5592811c186c31064caec5ee15a92d" class="toggle"  />
+    <label for="section-bb5592811c186c31064caec5ee15a92d" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c28f1d660c5ac029fadc3dc50d9e908" class="toggle"  />
+    <label for="section-9c28f1d660c5ac029fadc3dc50d9e908" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-636a4e7efc4b2fba162f5cf2cc25004b" class="toggle"  />
+    <label for="section-636a4e7efc4b2fba162f5cf2cc25004b" class="flex justify-between">
+      <a href="/ai-workflows/alignment-reasoning/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="toggle"  />
+    <label for="section-ba9c4cdb2ff4e72821aba3b5dbda6ebf" class="flex justify-between">
+      <a href="/ai-workflows/eval-methods/" class="">Eval Methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/mlops/" class="">MLOps</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-49f8a15fba102060fbec99923a9f7e7f" class="toggle"  />
+    <label for="section-49f8a15fba102060fbec99923a9f7e7f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8fe994b0524505ef83c5591fe607d72e" class="toggle"  />
+    <label for="section-8fe994b0524505ef83c5591fe607d72e" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-786aee9ce5c7a34804dfdaaae1c79408" class="toggle"  />
+    <label for="section-786aee9ce5c7a34804dfdaaae1c79408" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Core Components and Fusion Strategies in Multimodal LLMs</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#core-components-of-a-multimodal-llm">Core Components of a Multimodal LLM</a></li>
+        <li><a href="#fusion-strategies-in-multimodal-llms">Fusion Strategies in Multimodal LLMs</a>
+          <ul>
+            <li><a href="#1-projection--token-injection">1. Projection + Token Injection</a></li>
+            <li><a href="#2-cross-attention-adapters">2. Cross-Attention Adapters</a></li>
+            <li><a href="#3-joint-pretraining-early-fusion">3. Joint Pretraining (Early Fusion)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="core-components-of-a-multimodal-llm">
+  Core Components of a Multimodal LLM
+  <a class="anchor" href="#core-components-of-a-multimodal-llm">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>Visual Encoder</strong><br>
+Converts input images into feature embeddings. Common choices include CLIP, ViT, and EVA.</p>
+</li>
+<li>
+<p><strong>Modality Adapter (Aligner)</strong><br>
+Projects or transforms visual features to be compatible with the language model’s embedding space (e.g., via MLP or cross-attention).</p>
+</li>
+<li>
+<p><strong>Language Model (LLM)</strong><br>
+A large pretrained language model (e.g., LLaMA, GPT) that consumes both text and aligned visual inputs to generate or classify responses.</p>
+</li>
+</ol>
+<hr>
+<h2 id="fusion-strategies-in-multimodal-llms">
+  Fusion Strategies in Multimodal LLMs
+  <a class="anchor" href="#fusion-strategies-in-multimodal-llms">#</a>
+</h2>
+<h3 id="1-projection--token-injection">
+  1. Projection + Token Injection
+  <a class="anchor" href="#1-projection--token-injection">#</a>
+</h3>
+<p><strong>Models</strong>: BLIP-2, LLaVA<br>
+<strong>How it works</strong>:</p>
+<ul>
+<li>Visual features are extracted using a frozen image encoder (e.g., ViT or CLIP).</li>
+<li>These features are projected via an MLP to match the LLM&rsquo;s token embedding size.</li>
+<li>The projected visual tokens are <strong>prepended or interleaved</strong> with text tokens.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Hugging Face-style pseudocode</span>
+</span></span><span style="display:flex;"><span>image_embeds <span style="color:#04a5e5;font-weight:bold">=</span> vision_encoder(image)         <span style="color:#9ca0b0;font-style:italic"># Shape: (batch, num_patches, hidden_dim)</span>
+</span></span><span style="display:flex;"><span>projected_embeds <span style="color:#04a5e5;font-weight:bold">=</span> visual_proj(image_embeds) <span style="color:#9ca0b0;font-style:italic"># Match LLM hidden size</span>
+</span></span><span style="display:flex;"><span>input_embeds <span style="color:#04a5e5;font-weight:bold">=</span> torch<span style="color:#04a5e5;font-weight:bold">.</span>cat([projected_embeds, text_token_embeds], dim<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>)
+</span></span><span style="display:flex;"><span>output <span style="color:#04a5e5;font-weight:bold">=</span> llm(inputs_embeds<span style="color:#04a5e5;font-weight:bold">=</span>input_embeds)
+</span></span></code></pre></div><hr>
+<h3 id="2-cross-attention-adapters">
+  2. Cross-Attention Adapters
+  <a class="anchor" href="#2-cross-attention-adapters">#</a>
+</h3>
+<p><strong>Models</strong>: Flamingo, MiniGPT-4<br>
+<strong>How it works</strong>:</p>
+<ul>
+<li>Visual tokens are kept separate from text tokens.</li>
+<li>The LLM has <strong>cross-attention layers</strong> where text tokens attend to visual context.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Pseudocode with cross-attn</span>
+</span></span><span style="display:flex;"><span>text_embeds <span style="color:#04a5e5;font-weight:bold">=</span> llm<span style="color:#04a5e5;font-weight:bold">.</span>text_embeddings(text_input)
+</span></span><span style="display:flex;"><span>visual_context <span style="color:#04a5e5;font-weight:bold">=</span> vision_encoder(image)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> block <span style="color:#04a5e5;font-weight:bold">in</span> llm<span style="color:#04a5e5;font-weight:bold">.</span>transformer_blocks:
+</span></span><span style="display:flex;"><span>    text_embeds <span style="color:#04a5e5;font-weight:bold">=</span> block<span style="color:#04a5e5;font-weight:bold">.</span>self_attn(text_embeds)
+</span></span><span style="display:flex;"><span>    text_embeds <span style="color:#04a5e5;font-weight:bold">=</span> block<span style="color:#04a5e5;font-weight:bold">.</span>cross_attn(text_embeds, context<span style="color:#04a5e5;font-weight:bold">=</span>visual_context)
+</span></span></code></pre></div><hr>
+<h3 id="3-joint-pretraining-early-fusion">
+  3. Joint Pretraining (Early Fusion)
+  <a class="anchor" href="#3-joint-pretraining-early-fusion">#</a>
+</h3>
+<p><strong>Models</strong>: Unified-IO, GIT, PaLI<br>
+<strong>How it works</strong>:</p>
+<ul>
+<li>Images are tokenized (as patches or regions).</li>
+<li>Both image and text tokens are passed together into a unified transformer.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># Pseudocode for joint vision-text transformer</span>
+</span></span><span style="display:flex;"><span>image_tokens <span style="color:#04a5e5;font-weight:bold">=</span> patch_embed(image)            <span style="color:#9ca0b0;font-style:italic"># ViT-style patch tokens</span>
+</span></span><span style="display:flex;"><span>text_tokens <span style="color:#04a5e5;font-weight:bold">=</span> tokenizer(text)
+</span></span><span style="display:flex;"><span>all_tokens <span style="color:#04a5e5;font-weight:bold">=</span> torch<span style="color:#04a5e5;font-weight:bold">.</span>cat([image_tokens, text_tokens], dim<span style="color:#04a5e5;font-weight:bold">=</span><span style="color:#fe640b">1</span>)
+</span></span><span style="display:flex;"><span>output <span style="color:#04a5e5;font-weight:bold">=</span> joint_transformer(all_tokens)
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#core-components-of-a-multimodal-llm">Core Components of a Multimodal LLM</a></li>
+        <li><a href="#fusion-strategies-in-multimodal-llms">Fusion Strategies in Multimodal LLMs</a>
+          <ul>
+            <li><a href="#1-projection--token-injection">1. Projection + Token Injection</a></li>
+            <li><a href="#2-cross-attention-adapters">2. Cross-Attention Adapters</a></li>
+            <li><a href="#3-joint-pretraining-early-fusion">3. Joint Pretraining (Early Fusion)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

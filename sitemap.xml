@@ -172,6 +172,8 @@
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/clinical_text_mining_pipeline/</loc>
   </url><url>
+    <loc>http://localhost:1313/ai-workflows/genai-systems/multimodel_llms/components_fusions/</loc>
+  </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/data_quality_labeling_weak_supervision_qa/</loc>
   </url><url>
     <loc>http://localhost:1313/ai-workflows/data-modeling/data-centric-ai/</loc>
@@ -200,9 +202,13 @@
   </url><url>
     <loc>http://localhost:1313/ipark/</loc>
   </url><url>
+    <loc>http://localhost:1313/ai-workflows/genai-systems/multimodel_llms/data_prep/</loc>
+  </url><url>
     <loc>http://localhost:1313/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/</loc>
   </url><url>
     <loc>http://localhost:1313/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/missing_values/</loc>
+  </url><url>
+    <loc>http://localhost:1313/ai-workflows/genai-systems/multimodel_llms/</loc>
   </url><url>
     <loc>http://localhost:1313/ai-workflows/alignment-reasoning/graph-reasoning/knowledge-graphs/gds_vs_cypher/</loc>
   </url><url>
