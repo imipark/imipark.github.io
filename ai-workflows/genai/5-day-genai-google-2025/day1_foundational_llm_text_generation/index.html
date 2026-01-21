@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Day 1 - Foundational LLMs & Text Generation
+
+
+
+
+  Foundations of LLMs
+  #
+
+
+  1. Why LLMs Matter
+  #
+
+Traditional NLP systems were narrow, but Large Language Models (LLMs) offer general-purpose capabilities like translation, Q&amp;A, and summarization—all without explicit task-specific programming.
+
+→ How do LLMs work under the hood?
+
+
+  2. What Powers LLMs: The Transformer
+  #
+
+The Transformer is the core architecture enabling LLMs. Unlike RNNs that process data sequentially, Transformers handle inputs in parallel using self-attention, allowing them to model long-range dependencies more efficiently and scale training.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/genai/5-day-genai-google-2025/day1_foundational_llm_text_generation/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Day 1 - Foundational LLMs & Text Generation">
+  <meta property="og:description" content="Day 1 - Foundational LLMs &amp; Text Generation Foundations of LLMs # 1. Why LLMs Matter # Traditional NLP systems were narrow, but Large Language Models (LLMs) offer general-purpose capabilities like translation, Q&amp;A, and summarization—all without explicit task-specific programming.
+→ How do LLMs work under the hood?
+2. What Powers LLMs: The Transformer # The Transformer is the core architecture enabling LLMs. Unlike RNNs that process data sequentially, Transformers handle inputs in parallel using self-attention, allowing them to model long-range dependencies more efficiently and scale training.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Day 1 - Foundational LLMs &amp; Text Generation | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/genai/5-day-genai-google-2025/day1_foundational_llm_text_generation/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4ddc672eeb84245fa7864c180b2b6afa0c779ad1eedcf805d6cdf4d6d9e1195c.js" integrity="sha256-TdxnLuuEJF&#43;nhkwYCytq&#43;gx3mtHu3PgF1s301tnhGVw=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7f3f4cf59430750c2ad109248c8c879b" class="toggle"  />
+    <label for="section-7f3f4cf59430750c2ad109248c8c879b" class="flex justify-between">
+      <a href="/ai-workflows/data/" class="">Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fc566bddf8394fb4d0c5cff688d2febc" class="toggle"  />
+    <label for="section-fc566bddf8394fb4d0c5cff688d2febc" class="flex justify-between">
+      <a href="/ai-workflows/data/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff08f084db31c8732ef81d1fe1c4130" class="toggle" checked />
+    <label for="section-cff08f084db31c8732ef81d1fe1c4130" class="flex justify-between">
+      <a href="/ai-workflows/genai/" class="">GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b806a012c3062adb6281022ca8468f" class="toggle" checked />
+    <label for="section-63b806a012c3062adb6281022ca8468f" class="flex justify-between">
+      <a href="/ai-workflows/genai/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="active">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">Eval</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Day 1 - Foundational LLMs &amp; Text Generation</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#foundations-of-llms"><strong>Foundations of LLMs</strong></a>
+          <ul>
+            <li><a href="#1-why-llms-matter">1. Why LLMs Matter</a></li>
+            <li><a href="#2-what-powers-llms-the-transformer">2. What Powers LLMs: The Transformer</a></li>
+            <li><a href="#3-input-preparation--embedding">3. Input Preparation &amp; Embedding</a></li>
+            <li><a href="#4-self-attention-and-multi-head-attention">4. Self-Attention and Multi-Head Attention</a></li>
+            <li><a href="#5-layer-normalization-and-residual-connections">5. Layer Normalization and Residual Connections</a></li>
+            <li><a href="#6-feedforward-layers">6. Feedforward Layers</a></li>
+            <li><a href="#7-encoder-decoder-architecture">7. Encoder-Decoder Architecture</a></li>
+            <li><a href="#8-mixture-of-experts-moe">8. Mixture of Experts (MoE)</a></li>
+            <li><a href="#10-training-the-transformer">10. Training the Transformer</a></li>
+            <li><a href="#11-model-specific-training-strategies">11. Model-Specific Training Strategies</a></li>
+            <li><a href="#12-the-evolution-begins-from-attention-to-transformers">12. The Evolution Begins: From Attention to Transformers</a></li>
+            <li><a href="#13-gpt-1-unsupervised-pre-training-breakthrough">13. GPT-1: Unsupervised Pre-training Breakthrough</a></li>
+            <li><a href="#14-bert-deep-understanding-through-masking">14. BERT: Deep Understanding through Masking</a></li>
+            <li><a href="#15-gpt-2-scaling-up-leads-to-zero-shot-learning">15. GPT-2: Scaling Up Leads to Zero-Shot Learning</a></li>
+            <li><a href="#16-gpt-3-to-gpt-4-generalist-reasoners-with-instruction-tuning">16. GPT-3 to GPT-4: Generalist Reasoners with Instruction-Tuning</a></li>
+            <li><a href="#17-lamda-dialogue-focused-language-modeling">17. LaMDA: Dialogue-Focused Language Modeling</a></li>
+            <li><a href="#18-gopher-bigger-is-smarter-sometimes">18. Gopher: Bigger is Smarter (Sometimes)</a></li>
+            <li><a href="#19-glam-efficient-scaling-with-mixture-of-experts">19. GLaM: Efficient Scaling with Mixture-of-Experts</a></li>
+            <li><a href="#20-chinchilla-the-scaling-laws-revolution">20. Chinchilla: The Scaling Laws Revolution</a></li>
+            <li><a href="#21-palm-and-palm-2-distributed-and-smarter">21. PaLM and PaLM 2: Distributed and Smarter</a></li>
+            <li><a href="#22-gemini-family-multimodal-efficient-and-scalable">22. Gemini Family: Multimodal, Efficient, and Scalable</a></li>
+            <li><a href="#23-gemma-open-sourced-and-lightweight">23. Gemma: Open-Sourced and Lightweight</a></li>
+            <li><a href="#24-llama-series-metas-open-challenger">24. LLaMA Series: Meta’s Open Challenger</a></li>
+            <li><a href="#25-mixtral-sparse-experts-and-open-access">25. Mixtral: Sparse Experts and Open Access</a></li>
+            <li><a href="#26-openai-o1-internal-chain-of-thought">26. OpenAI O1: Internal Chain-of-Thought</a></li>
+            <li><a href="#27-deepseek-rl-without-labels">27. DeepSeek: RL Without Labels</a></li>
+            <li><a href="#28-the-open-frontier">28. The Open Frontier</a></li>
+            <li><a href="#29-comparing-the-giants">29. Comparing the Giants</a></li>
+          </ul>
+        </li>
+        <li><a href="#fine-tuning-and-using-llms"><strong>Fine-Tuning and Using LLMs</strong></a>
+          <ul>
+            <li><a href="#30-from-pretraining-to-specialization-why-fine-tune">30. From Pretraining to Specialization: Why Fine-Tune?</a></li>
+            <li><a href="#31-supervised-fine-tuning-sft-the-first-specialization-step">31. Supervised Fine-Tuning (SFT): The First Specialization Step</a></li>
+            <li><a href="#32-reinforcement-learning-from-human-feedback-rlhf">32. Reinforcement Learning from Human Feedback (RLHF)</a></li>
+            <li><a href="#33-parameter-efficient-fine-tuning-peft-adapting-without-full-retraining">33. Parameter Efficient Fine-Tuning (PEFT): Adapting Without Full Retraining</a></li>
+            <li><a href="#34-fine-tuning-in-practice-code-example">34. Fine-Tuning in Practice (Code Example)</a></li>
+            <li><a href="#35-using-llms-effectively-prompt-engineering">35. Using LLMs Effectively: Prompt Engineering</a></li>
+            <li><a href="#36-sampling-techniques-controlling-output-style">36. Sampling Techniques: Controlling Output Style</a></li>
+            <li><a href="#37-task-based-evaluation-beyond-accuracy">37. Task-Based Evaluation: Beyond Accuracy</a></li>
+            <li><a href="#38-evaluation-methods">38. Evaluation Methods</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+          </ul>
+        </li>
+        <li><a href="#accelerating-inference-in-llms"><strong>Accelerating Inference in LLMs</strong></a>
+          <ul>
+            <li><a href="#39-scaling-vs-efficiency-why-speed-matters-now">39. Scaling vs Efficiency: Why Speed Matters Now</a></li>
+            <li><a href="#40-the-big-tradeoffs">40. The Big Tradeoffs</a></li>
+            <li><a href="#41-output-approximating-methods">41. Output-Approximating Methods</a></li>
+            <li><a href="#42-output-preserving-methods">42. Output-Preserving Methods</a></li>
+            <li><a href="#43-batching-and-parallelization">43. Batching and Parallelization</a></li>
+            <li><a href="#summary">Summary</a></li>
+          </ul>
+        </li>
+        <li><a href="#applications-and-outlook"><strong>Applications and Outlook</strong></a>
+          <ul>
+            <li><a href="#44-llms-in-action-real-world-applications">44. LLMs in Action: Real-World Applications</a></li>
+            <li><a href="#43-core-text-based-applications">43. Core Text-Based Applications</a></li>
+            <li><a href="#44-multimodal-applications">44. Multimodal Applications</a></li>
+          </ul>
+        </li>
+        <li><a href="#summary-1"><strong>Summary</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Day 1 - Foundational LLMs & Text Generation
+</strong>
+</p>
+<hr>
+<h2 id="foundations-of-llms">
+  <strong>Foundations of LLMs</strong>
+  <a class="anchor" href="#foundations-of-llms">#</a>
+</h2>
+<h3 id="1-why-llms-matter">
+  1. Why LLMs Matter
+  <a class="anchor" href="#1-why-llms-matter">#</a>
+</h3>
+<p>Traditional NLP systems were narrow, but Large Language Models (LLMs) offer general-purpose capabilities like translation, Q&amp;A, and summarization—all without explicit task-specific programming.</p>
+<blockquote>
+<p>→ How do LLMs work under the hood?</p>
+</blockquote>
+<h3 id="2-what-powers-llms-the-transformer">
+  2. What Powers LLMs: The Transformer
+  <a class="anchor" href="#2-what-powers-llms-the-transformer">#</a>
+</h3>
+<p>The Transformer is the core architecture enabling LLMs. Unlike RNNs that process data sequentially, Transformers handle inputs in parallel using <strong>self-attention</strong>, allowing them to model long-range dependencies more efficiently and scale training.</p>
+<blockquote>
+<p>→ But to understand how Transformers process input, we need to examine how input data is prepared.</p>
+</blockquote>
+<h3 id="3-input-preparation--embedding">
+  3. Input Preparation &amp; Embedding
+  <a class="anchor" href="#3-input-preparation--embedding">#</a>
+</h3>
+<p>Before data enters the transformer, it’s tokenized, embedded into high-dimensional vectors, and enhanced with <strong>positional encodings</strong> to preserve word order. These embeddings become the input that feeds into attention mechanisms.</p>
+<blockquote>
+<p>→ So, once we have these embeddings—<strong>how does the model understand relationships within the input?</strong></p>
+</blockquote>
+<h3 id="4-self-attention-and-multi-head-attention">
+  4. Self-Attention and Multi-Head Attention
+  <a class="anchor" href="#4-self-attention-and-multi-head-attention">#</a>
+</h3>
+<p>The <strong>self-attention</strong> mechanism calculates how each word relates to every other word. Multi-head attention expands on this by letting the model attend to different relationships in parallel (e.g., syntax, co-reference). This enables rich, contextual understanding.</p>
+<blockquote>
+<p>→ To manage this complexity across layers, the architecture needs stabilization techniques.</p>
+</blockquote>
+<h3 id="5-layer-normalization-and-residual-connections">
+  5. Layer Normalization and Residual Connections
+  <a class="anchor" href="#5-layer-normalization-and-residual-connections">#</a>
+</h3>
+<p>To avoid training instability and gradient issues, Transformers use <strong>residual connections</strong> and <strong>layer normalization</strong>, ensuring smooth learning across deep layers.</p>
+<blockquote>
+<p>→ After stabilizing, each layer further transforms the data with an extra module…</p>
+</blockquote>
+<h3 id="6-feedforward-layers">
+  6. Feedforward Layers
+  <a class="anchor" href="#6-feedforward-layers">#</a>
+</h3>
+<p>Each token&rsquo;s representation is independently refined using <strong>position-wise feedforward networks</strong> that add depth and non-linearity—enhancing the model’s ability to capture abstract patterns.</p>
+<blockquote>
+<p>→ With these components, we now have building blocks for the full Transformer structure.</p>
+</blockquote>
+<h3 id="7-encoder-decoder-architecture">
+  7. Encoder-Decoder Architecture
+  <a class="anchor" href="#7-encoder-decoder-architecture">#</a>
+</h3>
+<p>In the original Transformer, the <strong>encoder</strong> turns input text into a contextual representation, and the <strong>decoder</strong> autoregressively generates output using that context. However, modern LLMs like GPT simplify this by using <strong>decoder-only</strong> models for direct generation.</p>
+<blockquote>
+<p>→ As LLMs scale, new architectures emerge to improve efficiency and specialization.</p>
+</blockquote>
+<h3 id="8-mixture-of-experts-moe">
+  8. Mixture of Experts (MoE)
+  <a class="anchor" href="#8-mixture-of-experts-moe">#</a>
+</h3>
+<p>MoE architectures use <strong>specialized sub-models</strong> (experts) activated selectively via a gating mechanism. This allows LLMs to scale massively while using only a portion of the model per input—enabling high performance with lower cost.</p>
+<blockquote>
+<p>→ But performance isn’t just about architecture—<strong>reasoning capabilities</strong> are equally vital.</p>
+</blockquote>
+
+<div style="background-color: #EEF2F6; padding: 1em; border-radius: 6px; margin: 1em 0;">
+  <h3 id="9-building-reasoning-into-llms">
+  9. Building Reasoning into LLMs
+  <a class="anchor" href="#9-building-reasoning-into-llms">#</a>
+</h3>
+<p>Reasoning is enabled via multiple strategies:</p>
+<ul>
+<li><strong>Chain-of-Thought prompting</strong>: Guide the model to generate intermediate steps.</li>
+<li><strong>Tree-of-Thoughts</strong>: Explore reasoning paths via branching.</li>
+<li><strong>Least-to-Most</strong>: Build up from simpler subproblems.</li>
+<li><strong>Fine-tuning on reasoning datasets</strong> and <strong>RLHF</strong> further optimize for correctness and coherence.</li>
+</ul>
+</div>
+
+
+<blockquote>
+<p>→ To train these reasoning patterns, we need carefully prepared data and efficient training pipelines.</p>
+</blockquote>
+<h3 id="10-training-the-transformer">
+  10. Training the Transformer
+  <a class="anchor" href="#10-training-the-transformer">#</a>
+</h3>
+<p>Training involves:</p>
+<ul>
+<li><strong>Data preparation</strong>: Clean, tokenize, and build vocabulary.</li>
+<li><strong>Loss calculation</strong>: Compare outputs to targets using cross-entropy.</li>
+<li><strong>Backpropagation</strong>: Update weights with optimizers (e.g., Adam).</li>
+</ul>
+<blockquote>
+<p>→ Depending on the architecture, training objectives differ.</p>
+</blockquote>
+<h3 id="11-model-specific-training-strategies">
+  11. Model-Specific Training Strategies
+  <a class="anchor" href="#11-model-specific-training-strategies">#</a>
+</h3>
+<ul>
+<li><strong>Decoder-only (e.g., GPT)</strong>: Predict next token from prior sequence.</li>
+<li><strong>Encoder-only (e.g., BERT)</strong>: Mask tokens and reconstruct.</li>
+<li><strong>Encoder-decoder (e.g., T5)</strong>: Learn input-to-output mapping for tasks like translation or summarization.</li>
+</ul>
+<p>Training quality is influenced by <strong>context length</strong>—longer context allows better modeling of dependencies, but at higher compute cost.</p>
+<h3 id="12-the-evolution-begins-from-attention-to-transformers">
+  12. The Evolution Begins: From Attention to Transformers
+  <a class="anchor" href="#12-the-evolution-begins-from-attention-to-transformers">#</a>
+</h3>
+<p>It started with the 2017 &ldquo;Attention Is All You Need&rdquo; paper—laying the groundwork for all Transformer-based models. This sparked a sequence of breakthroughs in model architecture and training methods.</p>
+<h3 id="13-gpt-1-unsupervised-pre-training-breakthrough">
+  13. GPT-1: Unsupervised Pre-training Breakthrough
+  <a class="anchor" href="#13-gpt-1-unsupervised-pre-training-breakthrough">#</a>
+</h3>
+<p>GPT-1 was a decoder-only model trained on BooksCorpus with a pioneering strategy: pre-train on unlabeled data, fine-tune on supervised tasks. This showed that <strong>unsupervised learning scales better</strong> than purely supervised models and inspired the unified transformer approach.</p>
+<h3 id="14-bert-deep-understanding-through-masking">
+  14. BERT: Deep Understanding through Masking
+  <a class="anchor" href="#14-bert-deep-understanding-through-masking">#</a>
+</h3>
+<p>BERT introduced the encoder-only model that trains on <strong>masked tokens and sentence relationships</strong>. Unlike GPT, it’s not a generator but an understander, excelling in classification, NLU, and inference tasks.</p>
+<h3 id="15-gpt-2-scaling-up-leads-to-zero-shot-learning">
+  15. GPT-2: Scaling Up Leads to Zero-Shot Learning
+  <a class="anchor" href="#15-gpt-2-scaling-up-leads-to-zero-shot-learning">#</a>
+</h3>
+<p>By expanding to 1.5B parameters and using a diverse dataset (WebText), GPT-2 revealed that <strong>larger models can generalize better</strong>, even to unseen tasks—zero-shot prompting emerged as a surprising capability.</p>
+<h3 id="16-gpt-3-to-gpt-4-generalist-reasoners-with-instruction-tuning">
+  16. GPT-3 to GPT-4: Generalist Reasoners with Instruction-Tuning
+  <a class="anchor" href="#16-gpt-3-to-gpt-4-generalist-reasoners-with-instruction-tuning">#</a>
+</h3>
+<p>GPT-3 scaled to 175B parameters and needed <strong>no fine-tuning</strong> for many tasks. Later versions (GPT-3.5, GPT-4) added coding, longer context windows, multimodal inputs, and improved <strong>instruction following</strong> via InstructGPT and RLHF.</p>
+<h3 id="17-lamda-dialogue-focused-language-modeling">
+  17. LaMDA: Dialogue-Focused Language Modeling
+  <a class="anchor" href="#17-lamda-dialogue-focused-language-modeling">#</a>
+</h3>
+<p>Google’s LaMDA was purpose-built for <strong>open-ended conversations</strong>, emphasizing turn-based flow and topic diversity—unlike GPT, which handled more general tasks.</p>
+<h3 id="18-gopher-bigger-is-smarter-sometimes">
+  18. Gopher: Bigger is Smarter (Sometimes)
+  <a class="anchor" href="#18-gopher-bigger-is-smarter-sometimes">#</a>
+</h3>
+<p>DeepMind’s Gopher used high-quality MassiveText data. It scaled to 280B parameters and showed that size improves <strong>knowledge-intensive tasks</strong>, but not always reasoning—hinting at the importance of data quality and task balance.</p>
+<h3 id="19-glam-efficient-scaling-with-mixture-of-experts">
+  19. GLaM: Efficient Scaling with Mixture-of-Experts
+  <a class="anchor" href="#19-glam-efficient-scaling-with-mixture-of-experts">#</a>
+</h3>
+<p>GLaM pioneered <strong>sparse activation</strong>, using only parts of a trillion-parameter network per input. It demonstrated that <strong>MoE architectures can outperform dense ones</strong> using far less compute.</p>
+<h3 id="20-chinchilla-the-scaling-laws-revolution">
+  20. Chinchilla: The Scaling Laws Revolution
+  <a class="anchor" href="#20-chinchilla-the-scaling-laws-revolution">#</a>
+</h3>
+<p>Chinchilla showed that previous scaling laws (Kaplan et al.) were suboptimal. DeepMind proved that <strong>data-to-parameter ratio matters</strong>—a smaller model trained on more data can outperform much larger ones.</p>
+<h3 id="21-palm-and-palm-2-distributed-and-smarter">
+  21. PaLM and PaLM 2: Distributed and Smarter
+  <a class="anchor" href="#21-palm-and-palm-2-distributed-and-smarter">#</a>
+</h3>
+<p>PaLM (540B) used Google&rsquo;s TPU Pathways for efficient large-scale training. PaLM 2 reduced parameters but improved performance via architectural tweaks, showcasing that <strong>smarter design beats brute force</strong>.</p>
+<h3 id="22-gemini-family-multimodal-efficient-and-scalable">
+  22. Gemini Family: Multimodal, Efficient, and Scalable
+  <a class="anchor" href="#22-gemini-family-multimodal-efficient-and-scalable">#</a>
+</h3>
+<p>Gemini models support text, images, audio, and video inputs. Key innovations include:</p>
+<ul>
+<li>Mixture-of-experts backbone</li>
+<li>Context windows up to 10M tokens (Gemini 1.5 Pro)</li>
+<li>Versions for cloud (Pro), mobile (Nano), and ultra-scale inference (Ultra)</li>
+<li>Gemini 2.0 Flash enables fast, explainable reasoning for science/math tasks.</li>
+</ul>
+<h3 id="23-gemma-open-sourced-and-lightweight">
+  23. Gemma: Open-Sourced and Lightweight
+  <a class="anchor" href="#23-gemma-open-sourced-and-lightweight">#</a>
+</h3>
+<p>Built on Gemini tech, <strong>Gemma models</strong> are optimized for accessibility. The 2B and 27B variants balance performance and efficiency, with Gemma 3 offering 128K token windows and 140-language support.</p>
+<h3 id="24-llama-series-metas-open-challenger">
+  24. LLaMA Series: Meta’s Open Challenger
+  <a class="anchor" href="#24-llama-series-metas-open-challenger">#</a>
+</h3>
+<p>Meta’s LLaMA models evolved with increased <strong>context length and safety</strong>. LLaMA 2 introduced chat-optimized variants; LLaMA 3.2 added multilingual and visual capabilities with quantization for on-device use.</p>
+<h3 id="25-mixtral-sparse-experts-and-open-access">
+  25. Mixtral: Sparse Experts and Open Access
+  <a class="anchor" href="#25-mixtral-sparse-experts-and-open-access">#</a>
+</h3>
+<p>Mistral AI’s Mixtral 8x7B uses <strong>sparse MoE</strong> with only 13B active params per token, excelling in code and long-context tasks. Instruction-tuned variants rival closed-source models.</p>
+<h3 id="26-openai-o1-internal-chain-of-thought">
+  26. OpenAI O1: Internal Chain-of-Thought
+  <a class="anchor" href="#26-openai-o1-internal-chain-of-thought">#</a>
+</h3>
+<p>OpenAI’s “o1” models use deliberate internal CoT reasoning to excel in programming, science, and Olympiad-level tasks, aiming for <strong>thoughtful, high-accuracy outputs</strong>.</p>
+<h3 id="27-deepseek-rl-without-labels">
+  27. DeepSeek: RL Without Labels
+  <a class="anchor" href="#27-deepseek-rl-without-labels">#</a>
+</h3>
+<p>DeepSeek-R1 uses <strong>pure reinforcement learning</strong> without labeled data. Their GRPO method enables self-supervised reasoning with rejection sampling and multi-stage fine-tuning, matching “o1” performance.</p>
+<h3 id="28-the-open-frontier">
+  28. The Open Frontier
+  <a class="anchor" href="#28-the-open-frontier">#</a>
+</h3>
+<p>Multiple open models are pushing the boundaries:</p>
+<ul>
+<li><strong>Qwen 1.5 (Alibaba)</strong>: up to 72B params, strong multilingual support.</li>
+<li><strong>Yi (01.AI)</strong>: 3.1T token dataset, 200k context length, vision support.</li>
+<li><strong>Grok 3 (xAI)</strong>: 1M context tokens, trained with RL for strategic reasoning.</li>
+</ul>
+<h3 id="29-comparing-the-giants">
+  29. Comparing the Giants
+  <a class="anchor" href="#29-comparing-the-giants">#</a>
+</h3>
+<p>Transformer models have scaled in size, context, and capability. From 117M to 1T+ parameters, from 512-token limits to 10M-token contexts. Key insights:</p>
+<ul>
+<li>Bigger is not always better—<strong>efficiency, data quality, and training methods matter more</strong>.</li>
+<li><strong>Reasoning and instruction-following</strong> are now central.</li>
+<li>Multimodality and retrieval-augmented generation are shaping next-gen LLMs.</li>
+</ul>
+<h2 id="fine-tuning-and-using-llms">
+  <strong>Fine-Tuning and Using LLMs</strong>
+  <a class="anchor" href="#fine-tuning-and-using-llms">#</a>
+</h2>
+<h3 id="30-from-pretraining-to-specialization-why-fine-tune">
+  30. From Pretraining to Specialization: Why Fine-Tune?
+  <a class="anchor" href="#30-from-pretraining-to-specialization-why-fine-tune">#</a>
+</h3>
+<p>LLMs are pretrained on broad data to learn general language patterns. But for real-world use, we often need them to follow specific instructions, engage in safe dialogues, or behave reliably. This is where <strong>fine-tuning</strong> comes in.</p>
+<h3 id="31-supervised-fine-tuning-sft-the-first-specialization-step">
+  31. Supervised Fine-Tuning (SFT): The First Specialization Step
+  <a class="anchor" href="#31-supervised-fine-tuning-sft-the-first-specialization-step">#</a>
+</h3>
+<p>SFT improves LLM behavior using high-quality labeled datasets. Typical goals:</p>
+<ul>
+<li>Better instruction-following</li>
+<li>Multi-turn dialogue (chat)</li>
+<li>Safer, less toxic outputs</li>
+</ul>
+<p>Example formats: Q&amp;A, summarization, translations—each with clear input-output training pairs.</p>
+<h3 id="32-reinforcement-learning-from-human-feedback-rlhf">
+  32. Reinforcement Learning from Human Feedback (RLHF)
+  <a class="anchor" href="#32-reinforcement-learning-from-human-feedback-rlhf">#</a>
+</h3>
+<p>SFT gives positive examples. But what about discouraging bad outputs? RLHF introduces a <strong>reward model</strong> trained on human preferences, which then helps guide the LLM via reinforcement learning to:</p>
+<ul>
+<li>Prefer helpful, safe, and fair responses</li>
+<li>Avoid toxic or misleading completions</li>
+</ul>
+<p>Advanced variants include RLAIF (AI feedback) and DPO (direct preference optimization) to reduce reliance on human labels.</p>
+<h3 id="33-parameter-efficient-fine-tuning-peft-adapting-without-full-retraining">
+  33. Parameter Efficient Fine-Tuning (PEFT): Adapting Without Full Retraining
+  <a class="anchor" href="#33-parameter-efficient-fine-tuning-peft-adapting-without-full-retraining">#</a>
+</h3>
+<p>Full fine-tuning is costly. PEFT methods train <strong>small, targeted modules</strong> instead:</p>
+<ul>
+<li><strong>Adapters</strong>: Mini-modules injected into LLM layers, trained separately</li>
+<li><strong>LoRA</strong>: Low-rank matrices update original weights efficiently</li>
+<li><strong>QLoRA</strong>: Quantized LoRA for even lower memory</li>
+<li><strong>Soft Prompting</strong>: Trainable vectors (not full prompts) condition the frozen model</li>
+</ul>
+<p>PEFT enables plug-and-play modules across tasks, saving memory and time.</p>
+<h3 id="34-fine-tuning-in-practice-code-example">
+  34. Fine-Tuning in Practice (Code Example)
+  <a class="anchor" href="#34-fine-tuning-in-practice-code-example">#</a>
+</h3>
+<p>Google Cloud&rsquo;s Vertex AI supports SFT using Gemini models with JSONL datasets and APIs. A few lines of code initialize the model, start fine-tuning, and use the new endpoint—all on cloud infrastructure.</p>
+<h3 id="35-using-llms-effectively-prompt-engineering">
+  35. Using LLMs Effectively: Prompt Engineering
+  <a class="anchor" href="#35-using-llms-effectively-prompt-engineering">#</a>
+</h3>
+<p>LLMs respond differently based on <strong>how you ask</strong>:</p>
+<ul>
+<li><strong>Zero-shot</strong>: Just the instruction</li>
+<li><strong>Few-shot</strong>: Add 2–5 examples</li>
+<li><strong>Chain-of-thought</strong>: Show step-by-step reasoning</li>
+</ul>
+<p>Effective prompting is key to controlling tone, factuality, or creativity.</p>
+<h3 id="36-sampling-techniques-controlling-output-style">
+  36. Sampling Techniques: Controlling Output Style
+  <a class="anchor" href="#36-sampling-techniques-controlling-output-style">#</a>
+</h3>
+<p>After generating probabilities, sampling chooses the next token:</p>
+<ul>
+<li><strong>Greedy</strong>: Always highest prob (safe but repetitive)</li>
+<li><strong>Random/Temperature</strong>: More creativity</li>
+<li><strong>Top-K / Top-P</strong>: Add diversity while maintaining focus</li>
+<li><strong>Best-of-N</strong>: Generate multiple candidates, choose best</li>
+</ul>
+<p>Choose based on your goal: safety, creativity, or logic.</p>
+<h3 id="37-task-based-evaluation-beyond-accuracy">
+  37. Task-Based Evaluation: Beyond Accuracy
+  <a class="anchor" href="#37-task-based-evaluation-beyond-accuracy">#</a>
+</h3>
+<p>As LLMs become foundational platforms, reliable evaluation is critical:</p>
+<ul>
+<li><strong>Custom datasets</strong>: Reflect real production use</li>
+<li><strong>System-level context</strong>: Include RAG and workflows, not just model</li>
+<li><strong>Multi-dimensional “good”</strong>: Not just matching ground truth but business outcomes</li>
+</ul>
+<h3 id="38-evaluation-methods">
+  38. Evaluation Methods
+  <a class="anchor" href="#38-evaluation-methods">#</a>
+</h3>
+<ol>
+<li><strong>Traditional metrics</strong>: Fast but rigid</li>
+<li><strong>Human evaluation</strong>: Gold standard, but costly</li>
+<li><strong>LLM-powered autoraters</strong>: Scalable evaluations with rubrics, rationales, and subtasks</li>
+</ol>
+<p>Meta-evaluation calibrates autoraters to human preferences—essential for trust.</p>
+<h3 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h3>
+<p>This section links training, fine-tuning, and usage of LLMs in a production-ready loop:</p>
+<ul>
+<li><strong>Train generally → fine-tune specifically</strong></li>
+<li><strong>Prompt smartly → sample selectively</strong></li>
+<li><strong>Evaluate robustly</strong></li>
+</ul>
+<p>Together, these techniques ensure LLMs are accurate, safe, helpful, and aligned with real-world needs.</p>
+<h2 id="accelerating-inference-in-llms">
+  <strong>Accelerating Inference in LLMs</strong>
+  <a class="anchor" href="#accelerating-inference-in-llms">#</a>
+</h2>
+<h3 id="39-scaling-vs-efficiency-why-speed-matters-now">
+  39. Scaling vs Efficiency: Why Speed Matters Now
+  <a class="anchor" href="#39-scaling-vs-efficiency-why-speed-matters-now">#</a>
+</h3>
+<p>LLMs have grown 1000x in parameter count. While quality has improved, <strong>cost and latency</strong> of inference have also skyrocketed. Developers now face an essential tradeoff: balancing performance with resource efficiency for real-world deployments.</p>
+<h3 id="40-the-big-tradeoffs">
+  40. The Big Tradeoffs
+  <a class="anchor" href="#40-the-big-tradeoffs">#</a>
+</h3>
+<h4 id="a-quality-vs-latencycost">
+  a. Quality vs Latency/Cost
+  <a class="anchor" href="#a-quality-vs-latencycost">#</a>
+</h4>
+<ul>
+<li>Sacrifice a bit of quality for big speed gains (e.g., smaller models, quantization).</li>
+<li>Works well for simpler tasks where top-tier quality isn&rsquo;t needed.</li>
+</ul>
+<h4 id="b-latency-vs-cost-throughput">
+  b. Latency vs Cost (Throughput)
+  <a class="anchor" href="#b-latency-vs-cost-throughput">#</a>
+</h4>
+<ul>
+<li>Trade speed for bulk efficiency (or vice versa).</li>
+<li>Useful in scenarios like chatbots (low latency) vs offline processing (high throughput).</li>
+</ul>
+<h3 id="41-output-approximating-methods">
+  41. Output-Approximating Methods
+  <a class="anchor" href="#41-output-approximating-methods">#</a>
+</h3>
+<p>These techniques may slightly affect output quality, but yield major gains in performance.</p>
+<h4 id="-quantization">
+  🔹 Quantization
+  <a class="anchor" href="#-quantization">#</a>
+</h4>
+<ul>
+<li>Reduce weight/activation precision (e.g., 32-bit → 8-bit).</li>
+<li>Saves memory and accelerates math operations.</li>
+<li>Some quality loss, but often negligible with tuning.</li>
+</ul>
+<h4 id="-distillation">
+  🔹 Distillation
+  <a class="anchor" href="#-distillation">#</a>
+</h4>
+<ul>
+<li>Use a smaller student model trained to mimic a larger teacher model.</li>
+<li>Techniques:
+<ul>
+<li><strong>Data distillation</strong>: Generate synthetic data with teacher.</li>
+<li><strong>Knowledge distillation</strong>: Match student output distributions.</li>
+<li><strong>On-policy distillation</strong>: Reinforcement learning feedback per token.</li>
+</ul>
+</li>
+</ul>
+<h3 id="42-output-preserving-methods">
+  42. Output-Preserving Methods
+  <a class="anchor" href="#42-output-preserving-methods">#</a>
+</h3>
+<p>These do <strong>not degrade quality</strong> and should be prioritized.</p>
+<h4 id="-flash-attention">
+  🔹 Flash Attention
+  <a class="anchor" href="#-flash-attention">#</a>
+</h4>
+<ul>
+<li>Optimizes memory movement during attention.</li>
+<li>2–4x latency improvement with exact same output.</li>
+</ul>
+<h4 id="-prefix-caching">
+  🔹 Prefix Caching
+  <a class="anchor" href="#-prefix-caching">#</a>
+</h4>
+<ul>
+<li>Cache attention computations (KV Cache) for unchanged inputs.</li>
+<li>Ideal for chat histories or uploaded documents across multiple queries.</li>
+</ul>
+<h4 id="-speculative-decoding">
+  🔹 Speculative Decoding
+  <a class="anchor" href="#-speculative-decoding">#</a>
+</h4>
+<ul>
+<li>A small &ldquo;drafter&rdquo; model predicts tokens ahead.</li>
+<li>Main model verifies in parallel.</li>
+<li>Huge speed-up with no quality loss, if drafter is well aligned.</li>
+</ul>
+<h3 id="43-batching-and-parallelization">
+  43. Batching and Parallelization
+  <a class="anchor" href="#43-batching-and-parallelization">#</a>
+</h3>
+<p>Beyond ML-specific tricks, use general system-level methods:</p>
+<ul>
+<li><strong>Batching</strong>: Handle multiple decode requests at once.</li>
+<li><strong>Parallelization</strong>: Distribute heavy compute ops across TPUs/GPUs.</li>
+</ul>
+<p>Decode is memory-bound and can benefit from parallel batching as long as memory limits aren’t exceeded.</p>
+<h3 id="summary">
+  Summary
+  <a class="anchor" href="#summary">#</a>
+</h3>
+<p>Inference optimization is about <strong>smarter engineering, not just faster chips</strong>. You can:</p>
+<ul>
+<li>Trade off quality when it’s safe.</li>
+<li>Preserve output via caching and algorithmic improvements.</li>
+<li>Use hybrid setups like speculative decoding + batching.</li>
+<li>Choose methods based on your task: low-latency chat, high-volume pipelines, or edge deployment.</li>
+</ul>
+<p>Speed and cost matter—especially at scale.</p>
+<h2 id="applications-and-outlook">
+  <strong>Applications and Outlook</strong>
+  <a class="anchor" href="#applications-and-outlook">#</a>
+</h2>
+<h3 id="44-llms-in-action-real-world-applications">
+  44. LLMs in Action: Real-World Applications
+  <a class="anchor" href="#44-llms-in-action-real-world-applications">#</a>
+</h3>
+<p>After mastering training, inference, and prompting, the final step is applying LLMs to real tasks. These models have transformed how we interact with information across modalities—text, code, images, audio, and video.</p>
+<h3 id="43-core-text-based-applications">
+  43. Core Text-Based Applications
+  <a class="anchor" href="#43-core-text-based-applications">#</a>
+</h3>
+<h4 id="-code-and-mathematics">
+  🔹 Code and Mathematics
+  <a class="anchor" href="#-code-and-mathematics">#</a>
+</h4>
+<p>LLMs support:</p>
+<ul>
+<li>Code generation, completion, debugging, refactoring</li>
+<li>Test case and documentation generation</li>
+<li>Language translation between programming languages</li>
+<li>Tools like AlphaCode 2, FunSearch, and AlphaGeometry push competitive coding and theorem solving to new heights.</li>
+</ul>
+<h4 id="-machine-translation">
+  🔹 Machine Translation
+  <a class="anchor" href="#-machine-translation">#</a>
+</h4>
+<p>LLMs understand idioms and context:</p>
+<ul>
+<li>Chat translations in apps</li>
+<li>Culturally-aware e-commerce descriptions</li>
+<li>Voice translations in travel apps</li>
+</ul>
+<h4 id="-text-summarization">
+  🔹 Text Summarization
+  <a class="anchor" href="#-text-summarization">#</a>
+</h4>
+<p>Use cases:</p>
+<ul>
+<li>Summarizing news with tone</li>
+<li>Creating abstracts for scientific research</li>
+<li>Thread summaries in chat apps</li>
+</ul>
+<h4 id="-question-answering">
+  🔹 Question-Answering
+  <a class="anchor" href="#-question-answering">#</a>
+</h4>
+<p>LLMs reason through queries with:</p>
+<ul>
+<li>Personalization (e.g. in customer support)</li>
+<li>Depth (e.g. in academic platforms)</li>
+<li>RAG-enhanced factuality and improved prompts</li>
+</ul>
+<h4 id="-chatbots">
+  🔹 Chatbots
+  <a class="anchor" href="#-chatbots">#</a>
+</h4>
+<p>Unlike rule-based bots, LLMs handle:</p>
+<ul>
+<li>Fashion + support on retail sites</li>
+<li>Sentiment-aware entertainment moderation</li>
+</ul>
+<h4 id="-content-generation">
+  🔹 Content Generation
+  <a class="anchor" href="#-content-generation">#</a>
+</h4>
+<ul>
+<li>Ads, marketing, blogs, scriptwriting</li>
+<li>Use creativity-vs-correctness sampling tuning</li>
+</ul>
+<h4 id="-natural-language-inference">
+  🔹 Natural Language Inference
+  <a class="anchor" href="#-natural-language-inference">#</a>
+</h4>
+<ul>
+<li>Legal analysis, diagnosis, sentiment detection</li>
+<li>LLMs bridge subtle context to derive conclusions</li>
+</ul>
+<h4 id="-text-classification">
+  🔹 Text Classification
+  <a class="anchor" href="#-text-classification">#</a>
+</h4>
+<ul>
+<li>Spam detection, news topic tagging</li>
+<li>Feedback triage, model scoring as &ldquo;autoraters&rdquo;</li>
+</ul>
+<h4 id="-text-analysis">
+  🔹 Text Analysis
+  <a class="anchor" href="#-text-analysis">#</a>
+</h4>
+<ul>
+<li>Market trends from social media</li>
+<li>Thematic and character analysis in literature</li>
+</ul>
+<h3 id="44-multimodal-applications">
+  44. Multimodal Applications
+  <a class="anchor" href="#44-multimodal-applications">#</a>
+</h3>
+<p>Beyond text, <strong>multimodal LLMs</strong> analyze and generate across data types:</p>
+<ul>
+<li><strong>Creative</strong>: Narrate stories from images or video</li>
+<li><strong>Educational</strong>: Personalized visual+audio content</li>
+<li><strong>Business</strong>: Chatbots using both image+text inputs</li>
+<li><strong>Medical</strong>: Scans + notes = richer diagnostics</li>
+<li><strong>Research</strong>: Drug discovery using cross-data fusion</li>
+</ul>
+<p>Multimodal systems build on unimodal strengths, scaling to more sensory and intelligent interactions.</p>
+<h2 id="summary-1">
+  <strong>Summary</strong>
+  <a class="anchor" href="#summary-1">#</a>
+</h2>
+<ul>
+<li><strong>Transformer</strong> is the backbone of modern LLMs.</li>
+<li><strong>Model performance</strong> depends on size <em>and</em> training data diversity.</li>
+<li><strong>Fine-tuning strategies</strong> like SFT, RLHF, and safety tuning personalize models for real-world needs.</li>
+<li><strong>Inference optimization</strong> is critical—use PEFT, Flash Attention, prefix caching, and speculative decoding.</li>
+<li><strong>Prompt engineering</strong> and <strong>sampling tuning</strong> matter for precision or creativity.</li>
+<li><strong>Applications</strong> are exploding—text, code, chat, multimodal interfaces.</li>
+</ul>
+<p>LLMs are not just tools—they&rsquo;re platforms. They’re reshaping how we search, chat, learn, create, and discover.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#foundations-of-llms"><strong>Foundations of LLMs</strong></a>
+          <ul>
+            <li><a href="#1-why-llms-matter">1. Why LLMs Matter</a></li>
+            <li><a href="#2-what-powers-llms-the-transformer">2. What Powers LLMs: The Transformer</a></li>
+            <li><a href="#3-input-preparation--embedding">3. Input Preparation &amp; Embedding</a></li>
+            <li><a href="#4-self-attention-and-multi-head-attention">4. Self-Attention and Multi-Head Attention</a></li>
+            <li><a href="#5-layer-normalization-and-residual-connections">5. Layer Normalization and Residual Connections</a></li>
+            <li><a href="#6-feedforward-layers">6. Feedforward Layers</a></li>
+            <li><a href="#7-encoder-decoder-architecture">7. Encoder-Decoder Architecture</a></li>
+            <li><a href="#8-mixture-of-experts-moe">8. Mixture of Experts (MoE)</a></li>
+            <li><a href="#10-training-the-transformer">10. Training the Transformer</a></li>
+            <li><a href="#11-model-specific-training-strategies">11. Model-Specific Training Strategies</a></li>
+            <li><a href="#12-the-evolution-begins-from-attention-to-transformers">12. The Evolution Begins: From Attention to Transformers</a></li>
+            <li><a href="#13-gpt-1-unsupervised-pre-training-breakthrough">13. GPT-1: Unsupervised Pre-training Breakthrough</a></li>
+            <li><a href="#14-bert-deep-understanding-through-masking">14. BERT: Deep Understanding through Masking</a></li>
+            <li><a href="#15-gpt-2-scaling-up-leads-to-zero-shot-learning">15. GPT-2: Scaling Up Leads to Zero-Shot Learning</a></li>
+            <li><a href="#16-gpt-3-to-gpt-4-generalist-reasoners-with-instruction-tuning">16. GPT-3 to GPT-4: Generalist Reasoners with Instruction-Tuning</a></li>
+            <li><a href="#17-lamda-dialogue-focused-language-modeling">17. LaMDA: Dialogue-Focused Language Modeling</a></li>
+            <li><a href="#18-gopher-bigger-is-smarter-sometimes">18. Gopher: Bigger is Smarter (Sometimes)</a></li>
+            <li><a href="#19-glam-efficient-scaling-with-mixture-of-experts">19. GLaM: Efficient Scaling with Mixture-of-Experts</a></li>
+            <li><a href="#20-chinchilla-the-scaling-laws-revolution">20. Chinchilla: The Scaling Laws Revolution</a></li>
+            <li><a href="#21-palm-and-palm-2-distributed-and-smarter">21. PaLM and PaLM 2: Distributed and Smarter</a></li>
+            <li><a href="#22-gemini-family-multimodal-efficient-and-scalable">22. Gemini Family: Multimodal, Efficient, and Scalable</a></li>
+            <li><a href="#23-gemma-open-sourced-and-lightweight">23. Gemma: Open-Sourced and Lightweight</a></li>
+            <li><a href="#24-llama-series-metas-open-challenger">24. LLaMA Series: Meta’s Open Challenger</a></li>
+            <li><a href="#25-mixtral-sparse-experts-and-open-access">25. Mixtral: Sparse Experts and Open Access</a></li>
+            <li><a href="#26-openai-o1-internal-chain-of-thought">26. OpenAI O1: Internal Chain-of-Thought</a></li>
+            <li><a href="#27-deepseek-rl-without-labels">27. DeepSeek: RL Without Labels</a></li>
+            <li><a href="#28-the-open-frontier">28. The Open Frontier</a></li>
+            <li><a href="#29-comparing-the-giants">29. Comparing the Giants</a></li>
+          </ul>
+        </li>
+        <li><a href="#fine-tuning-and-using-llms"><strong>Fine-Tuning and Using LLMs</strong></a>
+          <ul>
+            <li><a href="#30-from-pretraining-to-specialization-why-fine-tune">30. From Pretraining to Specialization: Why Fine-Tune?</a></li>
+            <li><a href="#31-supervised-fine-tuning-sft-the-first-specialization-step">31. Supervised Fine-Tuning (SFT): The First Specialization Step</a></li>
+            <li><a href="#32-reinforcement-learning-from-human-feedback-rlhf">32. Reinforcement Learning from Human Feedback (RLHF)</a></li>
+            <li><a href="#33-parameter-efficient-fine-tuning-peft-adapting-without-full-retraining">33. Parameter Efficient Fine-Tuning (PEFT): Adapting Without Full Retraining</a></li>
+            <li><a href="#34-fine-tuning-in-practice-code-example">34. Fine-Tuning in Practice (Code Example)</a></li>
+            <li><a href="#35-using-llms-effectively-prompt-engineering">35. Using LLMs Effectively: Prompt Engineering</a></li>
+            <li><a href="#36-sampling-techniques-controlling-output-style">36. Sampling Techniques: Controlling Output Style</a></li>
+            <li><a href="#37-task-based-evaluation-beyond-accuracy">37. Task-Based Evaluation: Beyond Accuracy</a></li>
+            <li><a href="#38-evaluation-methods">38. Evaluation Methods</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+          </ul>
+        </li>
+        <li><a href="#accelerating-inference-in-llms"><strong>Accelerating Inference in LLMs</strong></a>
+          <ul>
+            <li><a href="#39-scaling-vs-efficiency-why-speed-matters-now">39. Scaling vs Efficiency: Why Speed Matters Now</a></li>
+            <li><a href="#40-the-big-tradeoffs">40. The Big Tradeoffs</a></li>
+            <li><a href="#41-output-approximating-methods">41. Output-Approximating Methods</a></li>
+            <li><a href="#42-output-preserving-methods">42. Output-Preserving Methods</a></li>
+            <li><a href="#43-batching-and-parallelization">43. Batching and Parallelization</a></li>
+            <li><a href="#summary">Summary</a></li>
+          </ul>
+        </li>
+        <li><a href="#applications-and-outlook"><strong>Applications and Outlook</strong></a>
+          <ul>
+            <li><a href="#44-llms-in-action-real-world-applications">44. LLMs in Action: Real-World Applications</a></li>
+            <li><a href="#43-core-text-based-applications">43. Core Text-Based Applications</a></li>
+            <li><a href="#44-multimodal-applications">44. Multimodal Applications</a></li>
+          </ul>
+        </li>
+        <li><a href="#summary-1"><strong>Summary</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

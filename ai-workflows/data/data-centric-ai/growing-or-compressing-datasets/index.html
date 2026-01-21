@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Growing or Compressing Datasets 
+
+
+
+
+  Q1: What is the main focus of this lecture?
+  #
+
+
+Techniques to carefully select examples for labeling to reduce the burden in ML systems.
+Growing datasets via active learning and compressing datasets via core-set selection.
+
+
+  Q2: What is active learning?
+  #
+
+
+A method to intelligently select the most informative examples to label next, maximizing model improvement with fewer labeled samples.
+
+
+  Q3: How does pool-based active learning work?
+  #
+
+
+Start with a pool of unlabeled examples.
+At each round, score examples using an acquisition function (e.g., entropy of predicted probabilities).
+Select and label top examples.
+Retrain the model with newly labeled data.
+
+
+  Q4: What is a common acquisition function used in active learning?
+  #
+
+
+Entropy of the predicted class probabilities, encouraging labeling of uncertain examples.
+
+
+  Q5: How does active learning compare to passive learning?
+  #
+
+
+Active learning exponentially improves data efficiency compared to random/passive sampling.
+
+
+  Q6: What practical challenges does active learning face?
+  #
+
+
+High computational costs with large models and datasets.
+
+
+  Q7: How can active learning be made more practical?
+  #
+
+
+Batch active learning with diversity selection.
+Efficient candidate selection using methods like SEALS to reduce search space.
+
+
+  Q8: What is SEALS?
+  #
+
+
+Similarity Search for Efficient Active Learning and Search of Rare Concepts.
+Uses nearest neighbor search in embedding space to limit active learning candidate pool.
+
+
+  Q9: What is core-set selection?
+  #
+
+
+Choosing a small representative subset of a large labeled dataset that preserves model performance.
+
+
+  Q10: Why is core-set selection important?
+  #
+
+
+When we have massive datasets, it reduces computational, time, and energy costs without sacrificing accuracy.
+
+
+  Q11: What methods help with core-set selection?
+  #
+
+
+Greedy k-centers approach.
+Selection via Proxy: using smaller proxy models to guide subset selection.
+
+
+  Q12: How does Selection via Proxy work?
+  #
+
+
+Train a lightweight model (proxy) on the full data.
+Use it to select a subset for training a larger model, speeding up training significantly.
+
+
+  Q13: What are key takeaways about dataset growth and compression?
+  #
+
+
+Active learning enables data-efficient labeling for growing datasets.
+Core-set selection enables training efficiency for already large datasets.
+
+
+
+  Active Learning vs. Confident Learning
+  #
+
+
+  
+      
+          Category
+          Active Learning
+          Confident Learning
+      
+  
+  
+      
+          Main Goal
+          Select the most informative examples to label next
+          Find mislabeled examples in existing labeled data
+      
+      
+          When Used
+          During dataset growth (annotation phase)
+          After labels exist (cleaning phase)
+      
+      
+          Data State
+          Partially labeled data pool
+          Fully labeled (but noisy) dataset
+      
+      
+          Model Uncertainty Usage
+          Samples highest-uncertainty examples for human labeling
+          Detects label inconsistency via confidence estimation
+      
+      
+          Human Role
+          Label new examples
+          Review and correct suspicious labels
+      
+      
+          Output
+          New labels added to dataset
+          List of potential label errors to fix
+      
+      
+          Typical Workflow
+          Train model → Select uncertain points → Human annotates → Expand dataset
+          Train model → Identify inconsistent labels → Human verifies/corrects → Clean dataset
+      
+      
+          Common Technique
+          Uncertainty sampling
+          Confidence-based error detection
+      
+      
+          Libraries/Tools
+          modAL, ALiPy
+          cleanlab
+      
+      
+          Philosophy
+          Proactively grow data wisely
+          Reactively audit and clean existing data
+      
+      
+          Typical Question
+          &ldquo;What should I label next?&rdquo;
+          &ldquo;Which labels are probably wrong?&rdquo;
+      
+      
+          End Goal
+          Smarter, faster data acquisition
+          Higher quality existing labels
+      
+      
+          Example Scenario
+          Medical image AI needing efficient expert labeling
+          Noisy crowd-sourced labeled text needing cleaning
+      
+  
+
+
+
+Key Distillation">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data/data-centric-ai/growing-or-compressing-datasets/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Growing or Compressing Datasets">
+  <meta property="og:description" content="Growing or Compressing Datasets Q1: What is the main focus of this lecture? # Techniques to carefully select examples for labeling to reduce the burden in ML systems. Growing datasets via active learning and compressing datasets via core-set selection. Q2: What is active learning? # A method to intelligently select the most informative examples to label next, maximizing model improvement with fewer labeled samples. Q3: How does pool-based active learning work? # Start with a pool of unlabeled examples. At each round, score examples using an acquisition function (e.g., entropy of predicted probabilities). Select and label top examples. Retrain the model with newly labeled data. Q4: What is a common acquisition function used in active learning? # Entropy of the predicted class probabilities, encouraging labeling of uncertain examples. Q5: How does active learning compare to passive learning? # Active learning exponentially improves data efficiency compared to random/passive sampling. Q6: What practical challenges does active learning face? # High computational costs with large models and datasets. Q7: How can active learning be made more practical? # Batch active learning with diversity selection. Efficient candidate selection using methods like SEALS to reduce search space. Q8: What is SEALS? # Similarity Search for Efficient Active Learning and Search of Rare Concepts. Uses nearest neighbor search in embedding space to limit active learning candidate pool. Q9: What is core-set selection? # Choosing a small representative subset of a large labeled dataset that preserves model performance. Q10: Why is core-set selection important? # When we have massive datasets, it reduces computational, time, and energy costs without sacrificing accuracy. Q11: What methods help with core-set selection? # Greedy k-centers approach. Selection via Proxy: using smaller proxy models to guide subset selection. Q12: How does Selection via Proxy work? # Train a lightweight model (proxy) on the full data. Use it to select a subset for training a larger model, speeding up training significantly. Q13: What are key takeaways about dataset growth and compression? # Active learning enables data-efficient labeling for growing datasets. Core-set selection enables training efficiency for already large datasets. Active Learning vs. Confident Learning # Category Active Learning Confident Learning Main Goal Select the most informative examples to label next Find mislabeled examples in existing labeled data When Used During dataset growth (annotation phase) After labels exist (cleaning phase) Data State Partially labeled data pool Fully labeled (but noisy) dataset Model Uncertainty Usage Samples highest-uncertainty examples for human labeling Detects label inconsistency via confidence estimation Human Role Label new examples Review and correct suspicious labels Output New labels added to dataset List of potential label errors to fix Typical Workflow Train model → Select uncertain points → Human annotates → Expand dataset Train model → Identify inconsistent labels → Human verifies/corrects → Clean dataset Common Technique Uncertainty sampling Confidence-based error detection Libraries/Tools modAL, ALiPy cleanlab Philosophy Proactively grow data wisely Reactively audit and clean existing data Typical Question “What should I label next?” “Which labels are probably wrong?” End Goal Smarter, faster data acquisition Higher quality existing labels Example Scenario Medical image AI needing efficient expert labeling Noisy crowd-sourced labeled text needing cleaning Key Distillation">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Growing or Compressing Datasets | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/data/data-centric-ai/growing-or-compressing-datasets/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4ddc672eeb84245fa7864c180b2b6afa0c779ad1eedcf805d6cdf4d6d9e1195c.js" integrity="sha256-TdxnLuuEJF&#43;nhkwYCytq&#43;gx3mtHu3PgF1s301tnhGVw=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7f3f4cf59430750c2ad109248c8c879b" class="toggle" checked />
+    <label for="section-7f3f4cf59430750c2ad109248c8c879b" class="flex justify-between">
+      <a href="/ai-workflows/data/" class="">Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fc566bddf8394fb4d0c5cff688d2febc" class="toggle" checked />
+    <label for="section-fc566bddf8394fb4d0c5cff688d2febc" class="flex justify-between">
+      <a href="/ai-workflows/data/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff08f084db31c8732ef81d1fe1c4130" class="toggle"  />
+    <label for="section-cff08f084db31c8732ef81d1fe1c4130" class="flex justify-between">
+      <a href="/ai-workflows/genai/" class="">GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b806a012c3062adb6281022ca8468f" class="toggle"  />
+    <label for="section-63b806a012c3062adb6281022ca8468f" class="flex justify-between">
+      <a href="/ai-workflows/genai/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">Eval</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Growing or Compressing Datasets</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-what-is-the-main-focus-of-this-lecture">Q1: What is the main focus of this lecture?</a></li>
+            <li><a href="#q2-what-is-active-learning">Q2: What is active learning?</a></li>
+            <li><a href="#q3-how-does-pool-based-active-learning-work">Q3: How does pool-based active learning work?</a></li>
+            <li><a href="#q4-what-is-a-common-acquisition-function-used-in-active-learning">Q4: What is a common acquisition function used in active learning?</a></li>
+            <li><a href="#q5-how-does-active-learning-compare-to-passive-learning">Q5: How does active learning compare to passive learning?</a></li>
+            <li><a href="#q6-what-practical-challenges-does-active-learning-face">Q6: What practical challenges does active learning face?</a></li>
+            <li><a href="#q7-how-can-active-learning-be-made-more-practical">Q7: How can active learning be made more practical?</a></li>
+            <li><a href="#q8-what-is-seals">Q8: What is SEALS?</a></li>
+            <li><a href="#q9-what-is-core-set-selection">Q9: What is core-set selection?</a></li>
+            <li><a href="#q10-why-is-core-set-selection-important">Q10: Why is core-set selection important?</a></li>
+            <li><a href="#q11-what-methods-help-with-core-set-selection">Q11: What methods help with core-set selection?</a></li>
+            <li><a href="#q12-how-does-selection-via-proxy-work">Q12: How does Selection via Proxy work?</a></li>
+            <li><a href="#q13-what-are-key-takeaways-about-dataset-growth-and-compression">Q13: What are key takeaways about dataset growth and compression?</a></li>
+            <li><a href="#active-learning-vs-confident-learning">Active Learning vs. Confident Learning</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Growing or Compressing Datasets 
+</strong>
+</p>
+<hr>
+<h3 id="q1-what-is-the-main-focus-of-this-lecture">
+  Q1: What is the main focus of this lecture?
+  <a class="anchor" href="#q1-what-is-the-main-focus-of-this-lecture">#</a>
+</h3>
+<ul>
+<li>Techniques to carefully select examples for labeling to reduce the burden in ML systems.</li>
+<li>Growing datasets via active learning and compressing datasets via core-set selection.</li>
+</ul>
+<h3 id="q2-what-is-active-learning">
+  Q2: What is active learning?
+  <a class="anchor" href="#q2-what-is-active-learning">#</a>
+</h3>
+<ul>
+<li>A method to intelligently select the most informative examples to label next, maximizing model improvement with fewer labeled samples.</li>
+</ul>
+<h3 id="q3-how-does-pool-based-active-learning-work">
+  Q3: How does pool-based active learning work?
+  <a class="anchor" href="#q3-how-does-pool-based-active-learning-work">#</a>
+</h3>
+<ul>
+<li>Start with a pool of unlabeled examples.</li>
+<li>At each round, score examples using an acquisition function (e.g., entropy of predicted probabilities).</li>
+<li>Select and label top examples.</li>
+<li>Retrain the model with newly labeled data.</li>
+</ul>
+<h3 id="q4-what-is-a-common-acquisition-function-used-in-active-learning">
+  Q4: What is a common acquisition function used in active learning?
+  <a class="anchor" href="#q4-what-is-a-common-acquisition-function-used-in-active-learning">#</a>
+</h3>
+<ul>
+<li>Entropy of the predicted class probabilities, encouraging labeling of uncertain examples.</li>
+</ul>
+<h3 id="q5-how-does-active-learning-compare-to-passive-learning">
+  Q5: How does active learning compare to passive learning?
+  <a class="anchor" href="#q5-how-does-active-learning-compare-to-passive-learning">#</a>
+</h3>
+<ul>
+<li>Active learning exponentially improves data efficiency compared to random/passive sampling.</li>
+</ul>
+<h3 id="q6-what-practical-challenges-does-active-learning-face">
+  Q6: What practical challenges does active learning face?
+  <a class="anchor" href="#q6-what-practical-challenges-does-active-learning-face">#</a>
+</h3>
+<ul>
+<li>High computational costs with large models and datasets.</li>
+</ul>
+<h3 id="q7-how-can-active-learning-be-made-more-practical">
+  Q7: How can active learning be made more practical?
+  <a class="anchor" href="#q7-how-can-active-learning-be-made-more-practical">#</a>
+</h3>
+<ul>
+<li>Batch active learning with diversity selection.</li>
+<li>Efficient candidate selection using methods like SEALS to reduce search space.</li>
+</ul>
+<h3 id="q8-what-is-seals">
+  Q8: What is SEALS?
+  <a class="anchor" href="#q8-what-is-seals">#</a>
+</h3>
+<ul>
+<li>Similarity Search for Efficient Active Learning and Search of Rare Concepts.</li>
+<li>Uses nearest neighbor search in embedding space to limit active learning candidate pool.</li>
+</ul>
+<h3 id="q9-what-is-core-set-selection">
+  Q9: What is core-set selection?
+  <a class="anchor" href="#q9-what-is-core-set-selection">#</a>
+</h3>
+<ul>
+<li>Choosing a small representative subset of a large labeled dataset that preserves model performance.</li>
+</ul>
+<h3 id="q10-why-is-core-set-selection-important">
+  Q10: Why is core-set selection important?
+  <a class="anchor" href="#q10-why-is-core-set-selection-important">#</a>
+</h3>
+<ul>
+<li>When we have massive datasets, it reduces computational, time, and energy costs without sacrificing accuracy.</li>
+</ul>
+<h3 id="q11-what-methods-help-with-core-set-selection">
+  Q11: What methods help with core-set selection?
+  <a class="anchor" href="#q11-what-methods-help-with-core-set-selection">#</a>
+</h3>
+<ul>
+<li>Greedy k-centers approach.</li>
+<li>Selection via Proxy: using smaller proxy models to guide subset selection.</li>
+</ul>
+<h3 id="q12-how-does-selection-via-proxy-work">
+  Q12: How does Selection via Proxy work?
+  <a class="anchor" href="#q12-how-does-selection-via-proxy-work">#</a>
+</h3>
+<ul>
+<li>Train a lightweight model (proxy) on the full data.</li>
+<li>Use it to select a subset for training a larger model, speeding up training significantly.</li>
+</ul>
+<h3 id="q13-what-are-key-takeaways-about-dataset-growth-and-compression">
+  Q13: What are key takeaways about dataset growth and compression?
+  <a class="anchor" href="#q13-what-are-key-takeaways-about-dataset-growth-and-compression">#</a>
+</h3>
+<ul>
+<li>Active learning enables data-efficient labeling for growing datasets.</li>
+<li>Core-set selection enables training efficiency for already large datasets.</li>
+</ul>
+<hr>
+<h3 id="active-learning-vs-confident-learning">
+  Active Learning vs. Confident Learning
+  <a class="anchor" href="#active-learning-vs-confident-learning">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Category</th>
+          <th style="text-align: left">Active Learning</th>
+          <th style="text-align: left">Confident Learning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Main Goal</strong></td>
+          <td style="text-align: left">Select the most informative examples to label next</td>
+          <td style="text-align: left">Find mislabeled examples in existing labeled data</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>When Used</strong></td>
+          <td style="text-align: left">During dataset growth (annotation phase)</td>
+          <td style="text-align: left">After labels exist (cleaning phase)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Data State</strong></td>
+          <td style="text-align: left">Partially labeled data pool</td>
+          <td style="text-align: left">Fully labeled (but noisy) dataset</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Model Uncertainty Usage</strong></td>
+          <td style="text-align: left">Samples highest-uncertainty examples for human labeling</td>
+          <td style="text-align: left">Detects label inconsistency via confidence estimation</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Human Role</strong></td>
+          <td style="text-align: left">Label new examples</td>
+          <td style="text-align: left">Review and correct suspicious labels</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Output</strong></td>
+          <td style="text-align: left">New labels added to dataset</td>
+          <td style="text-align: left">List of potential label errors to fix</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Typical Workflow</strong></td>
+          <td style="text-align: left">Train model → Select uncertain points → Human annotates → Expand dataset</td>
+          <td style="text-align: left">Train model → Identify inconsistent labels → Human verifies/corrects → Clean dataset</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Common Technique</strong></td>
+          <td style="text-align: left">Uncertainty sampling</td>
+          <td style="text-align: left">Confidence-based error detection</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Libraries/Tools</strong></td>
+          <td style="text-align: left"><a href="https://modal-python.readthedocs.io/en/latest/">modAL</a>, <a href="https://alipy.readthedocs.io/en/latest/">ALiPy</a></td>
+          <td style="text-align: left"><a href="https://github.com/cleanlab/cleanlab">cleanlab</a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Philosophy</strong></td>
+          <td style="text-align: left">Proactively grow data wisely</td>
+          <td style="text-align: left">Reactively audit and clean existing data</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Typical Question</strong></td>
+          <td style="text-align: left"><em>&ldquo;What should I label next?&rdquo;</em></td>
+          <td style="text-align: left"><em>&ldquo;Which labels are probably wrong?&rdquo;</em></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>End Goal</strong></td>
+          <td style="text-align: left">Smarter, faster data acquisition</td>
+          <td style="text-align: left">Higher quality existing labels</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Example Scenario</strong></td>
+          <td style="text-align: left">Medical image AI needing efficient expert labeling</td>
+          <td style="text-align: left">Noisy crowd-sourced labeled text needing cleaning</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>
+<p>Key Distillation</p>
+<ul>
+<li><strong>Active Learning</strong>: <em>&ldquo;Help me label better data.&rdquo;</em></li>
+<li><strong>Confident Learning</strong>: <em>&ldquo;Help me fix wrong data.&rdquo;</em></li>
+</ul>
+</li>
+<li>
+<p>Visual Process Summary</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>(Active Learning)
+</span></span><span style="display:flex;"><span>Small Labeled Set → Train Model → Find Most Uncertain → Human Labels → Grow Dataset
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(Confident Learning)
+</span></span><span style="display:flex;"><span>Labeled (Noisy) Set → Train Model → Find Inconsistent Labels → Human Corrects → Clean Dataset
+</span></span></code></pre></div><h3 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li><a href="https://openreview.net/forum?id=H1aIuk-RW">Active Learning for CNNs: A Core-Set Approach (Sener &amp; Savarese, 2018)</a></li>
+<li><a href="https://ojs.aaai.org/index.php/AAAI/article/view/20591">SEALS paper (Coleman et al., 2022)</a></li>
+<li><a href="https://www.cs.princeton.edu/courses/archive/spr04/cos598B/bib/CharikarEstim.pdf">Similarity Estimation Techniques (Charikar, 2002)</a></li>
+<li><a href="https://arxiv.org/abs/1702.08734">Billion-scale similarity search (Johnson et al., 2019)</a></li>
+<li><a href="https://aclanthology.org/N19-1423.pdf">BERT paper (Devlin et al., 2019)</a></li>
+<li><a href="https://proceedings.mlr.press/v119/chen20j/chen20j.pdf">SimCLR paper (Chen et al., 2020)</a></li>
+<li><a href="https://arxiv.org/abs/2104.14294">DINO paper (Caron et al., 2021)</a></li>
+<li><a href="https://openreview.net/forum?id=HJg2b0VYDr">Selection via Proxy (Coleman et al., 2020)</a></li>
+<li><a href="https://github.com/dcai-course/dcai-lab/blob/master/growing_datasets/Lab%20-%20Growing%20Datasets.ipynb">Lab assignment on growing datasets</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-what-is-the-main-focus-of-this-lecture">Q1: What is the main focus of this lecture?</a></li>
+            <li><a href="#q2-what-is-active-learning">Q2: What is active learning?</a></li>
+            <li><a href="#q3-how-does-pool-based-active-learning-work">Q3: How does pool-based active learning work?</a></li>
+            <li><a href="#q4-what-is-a-common-acquisition-function-used-in-active-learning">Q4: What is a common acquisition function used in active learning?</a></li>
+            <li><a href="#q5-how-does-active-learning-compare-to-passive-learning">Q5: How does active learning compare to passive learning?</a></li>
+            <li><a href="#q6-what-practical-challenges-does-active-learning-face">Q6: What practical challenges does active learning face?</a></li>
+            <li><a href="#q7-how-can-active-learning-be-made-more-practical">Q7: How can active learning be made more practical?</a></li>
+            <li><a href="#q8-what-is-seals">Q8: What is SEALS?</a></li>
+            <li><a href="#q9-what-is-core-set-selection">Q9: What is core-set selection?</a></li>
+            <li><a href="#q10-why-is-core-set-selection-important">Q10: Why is core-set selection important?</a></li>
+            <li><a href="#q11-what-methods-help-with-core-set-selection">Q11: What methods help with core-set selection?</a></li>
+            <li><a href="#q12-how-does-selection-via-proxy-work">Q12: How does Selection via Proxy work?</a></li>
+            <li><a href="#q13-what-are-key-takeaways-about-dataset-growth-and-compression">Q13: What are key takeaways about dataset growth and compression?</a></li>
+            <li><a href="#active-learning-vs-confident-learning">Active Learning vs. Confident Learning</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

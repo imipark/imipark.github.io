@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Data Privacy and Security in ML 
+
+
+
+
+  Q1: Why is data privacy and security important in ML models?
+  #
+
+
+ML models often leak information about their training data.
+Public models can reveal sensitive data either directly or through inference attacks.
+
+
+  Q2: What types of attacks can compromise ML models?
+  #
+
+
+Membership inference attacks: Determine if a datapoint was part of the training set.
+Data extraction attacks: Extract parts of the training data from the model.
+Other attacks include adversarial examples, data poisoning, model inversion, model extraction, and prompt injection.
+
+
+  Q3: What are security goals and threat models?
+  #
+
+
+A security goal defines what must or must not happen.
+A threat model defines the adversary’s capabilities and limitations.
+Both are necessary to properly reason about a system’s security.
+
+
+  Q4: How does threat modeling apply to ML APIs?
+  #
+
+
+Example: Google Vision API must prevent model extraction even when adversaries can query with arbitrary images.
+
+
+  Q5: What is a membership inference attack?
+  #
+
+
+An attack that identifies whether a specific data point was in the model’s training set.
+
+
+  Q6: How does shadow training help in membership inference?
+  #
+
+
+Shadow models simulate the target model’s behavior on known datasets.
+An attack model is trained to classify whether a data point was part of the training set based on model outputs.
+
+
+  Q7: What are simple metric-based membership inference attacks?
+  #
+
+
+Prediction correctness: whether model predicts correctly.
+Prediction loss: whether the model loss is low.
+Prediction confidence: model’s maximum output probability.
+Prediction entropy: uncertainty of model’s output distribution.
+
+
+  Q8: What is a data extraction attack?
+  #
+
+
+Directly extracting memorized sequences or examples from a model, especially from large LLMs.
+
+
+  Q9: How is perplexity used in data extraction?
+  #
+
+
+Lower perplexity on sequences indicates that they were likely memorized during training.
+
+
+  Q10: What are empirical defenses against privacy attacks?
+  #
+
+
+Limiting outputs (top-k predictions, quantization).
+Adding noise to predictions.
+Changing training methods (e.g., regularization).
+
+
+  Q11: Why is empirical defense evaluation hard?
+  #
+
+
+Following Kerckhoffs’s principle, defenses must work even when attackers know the defense.
+Security is a cat-and-mouse game between defenders and attackers.
+
+
+  Q12: What is differential privacy (DP)?
+  #
+
+
+A formal, mathematical definition of privacy that limits how much an algorithm’s output depends on any single input.
+Algorithms like DP-SGD make models less dependent on individual datapoints.
+
+
+  Q13: What challenges exist with using differential privacy?
+  #
+
+
+It introduces parameters (ε, δ) that are difficult to set.
+Strong privacy may come at the cost of degraded model performance.
+
+
+  Q14: What resources were recommended?
+  #
+
+
+Surveys on membership inference attacks and privacy attacks.
+Awesome ML privacy attacks collection.
+
+
+  Q15: What was the lab assignment?
+  #
+
+
+Implement a membership inference attack against a black-box model.
+
+
+
+  
+  #
+
+
+OpenAI Codex paper
+Prompt Injection
+Membership Inference Survey
+Privacy Attacks in ML Survey
+Awesome ML Privacy Attacks Repository
+Differential Privacy (Dwork et al., 2006)
+DP-SGD (Abadi et al., 2016)
+Membership Inference Lab Notebook
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data/data-centric-ai/data-privacy-security/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Data Privacy and Security in ML">
+  <meta property="og:description" content="Data Privacy and Security in ML Q1: Why is data privacy and security important in ML models? # ML models often leak information about their training data. Public models can reveal sensitive data either directly or through inference attacks. Q2: What types of attacks can compromise ML models? # Membership inference attacks: Determine if a datapoint was part of the training set. Data extraction attacks: Extract parts of the training data from the model. Other attacks include adversarial examples, data poisoning, model inversion, model extraction, and prompt injection. Q3: What are security goals and threat models? # A security goal defines what must or must not happen. A threat model defines the adversary’s capabilities and limitations. Both are necessary to properly reason about a system’s security. Q4: How does threat modeling apply to ML APIs? # Example: Google Vision API must prevent model extraction even when adversaries can query with arbitrary images. Q5: What is a membership inference attack? # An attack that identifies whether a specific data point was in the model’s training set. Q6: How does shadow training help in membership inference? # Shadow models simulate the target model’s behavior on known datasets. An attack model is trained to classify whether a data point was part of the training set based on model outputs. Q7: What are simple metric-based membership inference attacks? # Prediction correctness: whether model predicts correctly. Prediction loss: whether the model loss is low. Prediction confidence: model’s maximum output probability. Prediction entropy: uncertainty of model’s output distribution. Q8: What is a data extraction attack? # Directly extracting memorized sequences or examples from a model, especially from large LLMs. Q9: How is perplexity used in data extraction? # Lower perplexity on sequences indicates that they were likely memorized during training. Q10: What are empirical defenses against privacy attacks? # Limiting outputs (top-k predictions, quantization). Adding noise to predictions. Changing training methods (e.g., regularization). Q11: Why is empirical defense evaluation hard? # Following Kerckhoffs’s principle, defenses must work even when attackers know the defense. Security is a cat-and-mouse game between defenders and attackers. Q12: What is differential privacy (DP)? # A formal, mathematical definition of privacy that limits how much an algorithm’s output depends on any single input. Algorithms like DP-SGD make models less dependent on individual datapoints. Q13: What challenges exist with using differential privacy? # It introduces parameters (ε, δ) that are difficult to set. Strong privacy may come at the cost of degraded model performance. Q14: What resources were recommended? # Surveys on membership inference attacks and privacy attacks. Awesome ML privacy attacks collection. Q15: What was the lab assignment? # Implement a membership inference attack against a black-box model. # OpenAI Codex paper Prompt Injection Membership Inference Survey Privacy Attacks in ML Survey Awesome ML Privacy Attacks Repository Differential Privacy (Dwork et al., 2006) DP-SGD (Abadi et al., 2016) Membership Inference Lab Notebook">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Data Privacy and Security in ML | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/data/data-centric-ai/data-privacy-security/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4ddc672eeb84245fa7864c180b2b6afa0c779ad1eedcf805d6cdf4d6d9e1195c.js" integrity="sha256-TdxnLuuEJF&#43;nhkwYCytq&#43;gx3mtHu3PgF1s301tnhGVw=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7f3f4cf59430750c2ad109248c8c879b" class="toggle" checked />
+    <label for="section-7f3f4cf59430750c2ad109248c8c879b" class="flex justify-between">
+      <a href="/ai-workflows/data/" class="">Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fc566bddf8394fb4d0c5cff688d2febc" class="toggle" checked />
+    <label for="section-fc566bddf8394fb4d0c5cff688d2febc" class="flex justify-between">
+      <a href="/ai-workflows/data/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff08f084db31c8732ef81d1fe1c4130" class="toggle"  />
+    <label for="section-cff08f084db31c8732ef81d1fe1c4130" class="flex justify-between">
+      <a href="/ai-workflows/genai/" class="">GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b806a012c3062adb6281022ca8468f" class="toggle"  />
+    <label for="section-63b806a012c3062adb6281022ca8468f" class="flex justify-between">
+      <a href="/ai-workflows/genai/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">Eval</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Data Privacy and Security in ML</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-why-is-data-privacy-and-security-important-in-ml-models">Q1: Why is data privacy and security important in ML models?</a></li>
+            <li><a href="#q2-what-types-of-attacks-can-compromise-ml-models">Q2: What types of attacks can compromise ML models?</a></li>
+            <li><a href="#q3-what-are-security-goals-and-threat-models">Q3: What are security goals and threat models?</a></li>
+            <li><a href="#q4-how-does-threat-modeling-apply-to-ml-apis">Q4: How does threat modeling apply to ML APIs?</a></li>
+            <li><a href="#q5-what-is-a-membership-inference-attack">Q5: What is a membership inference attack?</a></li>
+            <li><a href="#q6-how-does-shadow-training-help-in-membership-inference">Q6: How does shadow training help in membership inference?</a></li>
+            <li><a href="#q7-what-are-simple-metric-based-membership-inference-attacks">Q7: What are simple metric-based membership inference attacks?</a></li>
+            <li><a href="#q8-what-is-a-data-extraction-attack">Q8: What is a data extraction attack?</a></li>
+            <li><a href="#q9-how-is-perplexity-used-in-data-extraction">Q9: How is perplexity used in data extraction?</a></li>
+            <li><a href="#q10-what-are-empirical-defenses-against-privacy-attacks">Q10: What are empirical defenses against privacy attacks?</a></li>
+            <li><a href="#q11-why-is-empirical-defense-evaluation-hard">Q11: Why is empirical defense evaluation hard?</a></li>
+            <li><a href="#q12-what-is-differential-privacy-dp">Q12: What is differential privacy (DP)?</a></li>
+            <li><a href="#q13-what-challenges-exist-with-using-differential-privacy">Q13: What challenges exist with using differential privacy?</a></li>
+            <li><a href="#q14-what-resources-were-recommended">Q14: What resources were recommended?</a></li>
+            <li><a href="#q15-what-was-the-lab-assignment">Q15: What was the lab assignment?</a></li>
+            <li><a href="#heading"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Data Privacy and Security in ML 
+</strong>
+</p>
+<hr>
+<h3 id="q1-why-is-data-privacy-and-security-important-in-ml-models">
+  Q1: Why is data privacy and security important in ML models?
+  <a class="anchor" href="#q1-why-is-data-privacy-and-security-important-in-ml-models">#</a>
+</h3>
+<ul>
+<li>ML models often leak information about their training data.</li>
+<li>Public models can reveal sensitive data either directly or through inference attacks.</li>
+</ul>
+<h3 id="q2-what-types-of-attacks-can-compromise-ml-models">
+  Q2: What types of attacks can compromise ML models?
+  <a class="anchor" href="#q2-what-types-of-attacks-can-compromise-ml-models">#</a>
+</h3>
+<ul>
+<li>Membership inference attacks: Determine if a datapoint was part of the training set.</li>
+<li>Data extraction attacks: Extract parts of the training data from the model.</li>
+<li>Other attacks include adversarial examples, data poisoning, model inversion, model extraction, and prompt injection.</li>
+</ul>
+<h3 id="q3-what-are-security-goals-and-threat-models">
+  Q3: What are security goals and threat models?
+  <a class="anchor" href="#q3-what-are-security-goals-and-threat-models">#</a>
+</h3>
+<ul>
+<li>A security goal defines what must or must not happen.</li>
+<li>A threat model defines the adversary’s capabilities and limitations.</li>
+<li>Both are necessary to properly reason about a system’s security.</li>
+</ul>
+<h3 id="q4-how-does-threat-modeling-apply-to-ml-apis">
+  Q4: How does threat modeling apply to ML APIs?
+  <a class="anchor" href="#q4-how-does-threat-modeling-apply-to-ml-apis">#</a>
+</h3>
+<ul>
+<li>Example: Google Vision API must prevent model extraction even when adversaries can query with arbitrary images.</li>
+</ul>
+<h3 id="q5-what-is-a-membership-inference-attack">
+  Q5: What is a membership inference attack?
+  <a class="anchor" href="#q5-what-is-a-membership-inference-attack">#</a>
+</h3>
+<ul>
+<li>An attack that identifies whether a specific data point was in the model’s training set.</li>
+</ul>
+<h3 id="q6-how-does-shadow-training-help-in-membership-inference">
+  Q6: How does shadow training help in membership inference?
+  <a class="anchor" href="#q6-how-does-shadow-training-help-in-membership-inference">#</a>
+</h3>
+<ul>
+<li>Shadow models simulate the target model’s behavior on known datasets.</li>
+<li>An attack model is trained to classify whether a data point was part of the training set based on model outputs.</li>
+</ul>
+<h3 id="q7-what-are-simple-metric-based-membership-inference-attacks">
+  Q7: What are simple metric-based membership inference attacks?
+  <a class="anchor" href="#q7-what-are-simple-metric-based-membership-inference-attacks">#</a>
+</h3>
+<ul>
+<li>Prediction correctness: whether model predicts correctly.</li>
+<li>Prediction loss: whether the model loss is low.</li>
+<li>Prediction confidence: model’s maximum output probability.</li>
+<li>Prediction entropy: uncertainty of model’s output distribution.</li>
+</ul>
+<h3 id="q8-what-is-a-data-extraction-attack">
+  Q8: What is a data extraction attack?
+  <a class="anchor" href="#q8-what-is-a-data-extraction-attack">#</a>
+</h3>
+<ul>
+<li>Directly extracting memorized sequences or examples from a model, especially from large LLMs.</li>
+</ul>
+<h3 id="q9-how-is-perplexity-used-in-data-extraction">
+  Q9: How is perplexity used in data extraction?
+  <a class="anchor" href="#q9-how-is-perplexity-used-in-data-extraction">#</a>
+</h3>
+<ul>
+<li>Lower perplexity on sequences indicates that they were likely memorized during training.</li>
+</ul>
+<h3 id="q10-what-are-empirical-defenses-against-privacy-attacks">
+  Q10: What are empirical defenses against privacy attacks?
+  <a class="anchor" href="#q10-what-are-empirical-defenses-against-privacy-attacks">#</a>
+</h3>
+<ul>
+<li>Limiting outputs (top-k predictions, quantization).</li>
+<li>Adding noise to predictions.</li>
+<li>Changing training methods (e.g., regularization).</li>
+</ul>
+<h3 id="q11-why-is-empirical-defense-evaluation-hard">
+  Q11: Why is empirical defense evaluation hard?
+  <a class="anchor" href="#q11-why-is-empirical-defense-evaluation-hard">#</a>
+</h3>
+<ul>
+<li>Following Kerckhoffs’s principle, defenses must work even when attackers know the defense.</li>
+<li>Security is a cat-and-mouse game between defenders and attackers.</li>
+</ul>
+<h3 id="q12-what-is-differential-privacy-dp">
+  Q12: What is differential privacy (DP)?
+  <a class="anchor" href="#q12-what-is-differential-privacy-dp">#</a>
+</h3>
+<ul>
+<li>A formal, mathematical definition of privacy that limits how much an algorithm’s output depends on any single input.</li>
+<li>Algorithms like DP-SGD make models less dependent on individual datapoints.</li>
+</ul>
+<h3 id="q13-what-challenges-exist-with-using-differential-privacy">
+  Q13: What challenges exist with using differential privacy?
+  <a class="anchor" href="#q13-what-challenges-exist-with-using-differential-privacy">#</a>
+</h3>
+<ul>
+<li>It introduces parameters (ε, δ) that are difficult to set.</li>
+<li>Strong privacy may come at the cost of degraded model performance.</li>
+</ul>
+<h3 id="q14-what-resources-were-recommended">
+  Q14: What resources were recommended?
+  <a class="anchor" href="#q14-what-resources-were-recommended">#</a>
+</h3>
+<ul>
+<li>Surveys on membership inference attacks and privacy attacks.</li>
+<li>Awesome ML privacy attacks collection.</li>
+</ul>
+<h3 id="q15-what-was-the-lab-assignment">
+  Q15: What was the lab assignment?
+  <a class="anchor" href="#q15-what-was-the-lab-assignment">#</a>
+</h3>
+<ul>
+<li>Implement a membership inference attack against a black-box model.</li>
+</ul>
+<hr>
+<h3 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h3>
+<ul>
+<li><a href="https://arxiv.org/abs/2107.03374">OpenAI Codex paper</a></li>
+<li><a href="https://simonwillison.net/2022/Sep/12/prompt-injection/">Prompt Injection</a></li>
+<li><a href="https://arxiv.org/abs/2103.07853">Membership Inference Survey</a></li>
+<li><a href="https://arxiv.org/abs/2007.07646">Privacy Attacks in ML Survey</a></li>
+<li><a href="https://github.com/stratosphereips/awesome-ml-privacy-attacks">Awesome ML Privacy Attacks Repository</a></li>
+<li><a href="https://iacr.org/archive/tcc2006/38760266/38760266.pdf">Differential Privacy (Dwork et al., 2006)</a></li>
+<li><a href="https://arxiv.org/abs/1607.00133">DP-SGD (Abadi et al., 2016)</a></li>
+<li><a href="https://github.com/dcai-course/dcai-lab/blob/master/membership_inference/Lab%20-%20Membership%20Inference.ipynb">Membership Inference Lab Notebook</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-why-is-data-privacy-and-security-important-in-ml-models">Q1: Why is data privacy and security important in ML models?</a></li>
+            <li><a href="#q2-what-types-of-attacks-can-compromise-ml-models">Q2: What types of attacks can compromise ML models?</a></li>
+            <li><a href="#q3-what-are-security-goals-and-threat-models">Q3: What are security goals and threat models?</a></li>
+            <li><a href="#q4-how-does-threat-modeling-apply-to-ml-apis">Q4: How does threat modeling apply to ML APIs?</a></li>
+            <li><a href="#q5-what-is-a-membership-inference-attack">Q5: What is a membership inference attack?</a></li>
+            <li><a href="#q6-how-does-shadow-training-help-in-membership-inference">Q6: How does shadow training help in membership inference?</a></li>
+            <li><a href="#q7-what-are-simple-metric-based-membership-inference-attacks">Q7: What are simple metric-based membership inference attacks?</a></li>
+            <li><a href="#q8-what-is-a-data-extraction-attack">Q8: What is a data extraction attack?</a></li>
+            <li><a href="#q9-how-is-perplexity-used-in-data-extraction">Q9: How is perplexity used in data extraction?</a></li>
+            <li><a href="#q10-what-are-empirical-defenses-against-privacy-attacks">Q10: What are empirical defenses against privacy attacks?</a></li>
+            <li><a href="#q11-why-is-empirical-defense-evaluation-hard">Q11: Why is empirical defense evaluation hard?</a></li>
+            <li><a href="#q12-what-is-differential-privacy-dp">Q12: What is differential privacy (DP)?</a></li>
+            <li><a href="#q13-what-challenges-exist-with-using-differential-privacy">Q13: What challenges exist with using differential privacy?</a></li>
+            <li><a href="#q14-what-resources-were-recommended">Q14: What resources were recommended?</a></li>
+            <li><a href="#q15-what-was-the-lab-assignment">Q15: What was the lab assignment?</a></li>
+            <li><a href="#heading"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

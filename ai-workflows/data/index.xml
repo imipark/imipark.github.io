@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data on AI Reasoning</title>
+    <link>https://imipark.github.io/ai-workflows/data/</link>
+    <description>Recent content in Data on AI Reasoning</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://imipark.github.io/ai-workflows/data/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Transformer Attention: Full Conceptual Breakdown
+
+
+This document summarizes an in-depth discussion on attention mechanisms in Transformers, with a special focus on vocabulary embeddings, Q/K/V matrices, and multi-head attention.
+
+
+  📌 1. Understanding the Self-Attention Image
+  #
+
+
+The image shows a single-head self-attention computation.
+Each row is a token (element) at a position, with a feature vector (embedding).
+The attention weights (left column) are used to compute a weighted sum over these vectors.
+The final output vector is shown at the bottom — this is the attention output for one token.
+
+
+
+  🔍 2. Element vs. Position
+  #
+
+
+Element: the actual word or token in the input sequence.
+Position: the index of the element in the sequence.
+Though tightly coupled (1:1), they are conceptually different.
+Transformers rely on positional encoding to retain order, since attention alone is orderless.
+
+
+
+  🤖 3. How Attention Scores Are Computed
+  #
+
+
+
+Input embeddings X are projected into:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/genai/transformer_attention_concepts/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Transformer Attention: Full Conceptual Breakdown">
+  <meta property="og:description" content="Transformer Attention: Full Conceptual Breakdown This document summarizes an in-depth discussion on attention mechanisms in Transformers, with a special focus on vocabulary embeddings, Q/K/V matrices, and multi-head attention.
+📌 1. Understanding the Self-Attention Image # The image shows a single-head self-attention computation. Each row is a token (element) at a position, with a feature vector (embedding). The attention weights (left column) are used to compute a weighted sum over these vectors. The final output vector is shown at the bottom — this is the attention output for one token. 🔍 2. Element vs. Position # Element: the actual word or token in the input sequence. Position: the index of the element in the sequence. Though tightly coupled (1:1), they are conceptually different. Transformers rely on positional encoding to retain order, since attention alone is orderless. 🤖 3. How Attention Scores Are Computed # Input embeddings X are projected into:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Transformer Attention: Full Conceptual Breakdown | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/genai/transformer_attention_concepts/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4ddc672eeb84245fa7864c180b2b6afa0c779ad1eedcf805d6cdf4d6d9e1195c.js" integrity="sha256-TdxnLuuEJF&#43;nhkwYCytq&#43;gx3mtHu3PgF1s301tnhGVw=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7f3f4cf59430750c2ad109248c8c879b" class="toggle"  />
+    <label for="section-7f3f4cf59430750c2ad109248c8c879b" class="flex justify-between">
+      <a href="/ai-workflows/data/" class="">Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fc566bddf8394fb4d0c5cff688d2febc" class="toggle"  />
+    <label for="section-fc566bddf8394fb4d0c5cff688d2febc" class="flex justify-between">
+      <a href="/ai-workflows/data/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff08f084db31c8732ef81d1fe1c4130" class="toggle" checked />
+    <label for="section-cff08f084db31c8732ef81d1fe1c4130" class="flex justify-between">
+      <a href="/ai-workflows/genai/" class="">GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b806a012c3062adb6281022ca8468f" class="toggle"  />
+    <label for="section-63b806a012c3062adb6281022ca8468f" class="flex justify-between">
+      <a href="/ai-workflows/genai/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">Eval</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Transformer Attention: Full Conceptual Breakdown</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-1-understanding-the-self-attention-image">📌 1. Understanding the Self-Attention Image</a></li>
+        <li><a href="#-2-element-vs-position">🔍 2. Element vs. Position</a></li>
+        <li><a href="#-3-how-attention-scores-are-computed">🤖 3. How Attention Scores Are Computed</a></li>
+        <li><a href="#-4-what-is-x-in-the-diagram">🧠 4. What Is X in the Diagram?</a></li>
+        <li><a href="#-5-what-is-multi-head-attention">🔄 5. What Is Multi-Head Attention?</a></li>
+        <li><a href="#-6-vocab-embedding-matrix-vs-qkv">🔡 6. Vocab Embedding Matrix vs. Q/K/V</a></li>
+        <li><a href="#-7-lifetime-of-w_q-w_k-w_v">♻️ 7. Lifetime of W_Q, W_K, W_V</a></li>
+        <li><a href="#-8-is-vocabulary-matrix-also-trainable">📥 8. Is Vocabulary Matrix Also Trainable?</a></li>
+        <li><a href="#-9-use-cases-after-training">📦 9. Use Cases After Training</a></li>
+        <li><a href="#-10-dimensions-of-x-q-k-v-and-attention">📐 10. Dimensions of X, Q, K, V, and Attention</a></li>
+        <li><a href="#-11-why-isnt-the-final-output-a-distribution-over-vocabulary">❓ 11. Why Isn’t the Final Output a Distribution Over Vocabulary?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Transformer Attention: Full Conceptual Breakdown
+</strong>
+</p>
+<p>This document summarizes an in-depth discussion on attention mechanisms in Transformers, with a special focus on vocabulary embeddings, Q/K/V matrices, and multi-head attention.</p>
+<hr>
+<h2 id="-1-understanding-the-self-attention-image">
+  📌 1. Understanding the Self-Attention Image
+  <a class="anchor" href="#-1-understanding-the-self-attention-image">#</a>
+</h2>
+<ul>
+<li>The image shows a <strong>single-head self-attention</strong> computation.</li>
+<li>Each <strong>row</strong> is a token (element) at a <strong>position</strong>, with a feature vector (embedding).</li>
+<li>The <strong>attention weights</strong> (left column) are used to compute a <strong>weighted sum</strong> over these vectors.</li>
+<li>The final output vector is shown at the bottom — this is the attention output for one token.</li>
+</ul>
+<hr>
+<h2 id="-2-element-vs-position">
+  🔍 2. Element vs. Position
+  <a class="anchor" href="#-2-element-vs-position">#</a>
+</h2>
+<ul>
+<li><strong>Element</strong>: the actual word or token in the input sequence.</li>
+<li><strong>Position</strong>: the index of the element in the sequence.</li>
+<li>Though tightly coupled (1:1), they are conceptually different.</li>
+<li>Transformers rely on <strong>positional encoding</strong> to retain order, since attention alone is orderless.</li>
+</ul>
+<hr>
+<h2 id="-3-how-attention-scores-are-computed">
+  🤖 3. How Attention Scores Are Computed
+  <a class="anchor" href="#-3-how-attention-scores-are-computed">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>Input embeddings X</strong> are projected into:</p>
+<ul>
+<li>Queries (Q)</li>
+<li>Keys (K)</li>
+<li>Values (V)</li>
+</ul>
+</li>
+<li>
+<p>Attention score between token i and j:</p>
+<pre tabindex="0"><code>score = dot(Q[i], K[j]) / sqrt(d_k)
+</code></pre></li>
+<li>
+<p>Apply <strong>softmax</strong> to get weights.</p>
+</li>
+<li>
+<p>Multiply each Value by its weight and sum → gives the final output vector.</p>
+</li>
+</ol>
+<hr>
+<h2 id="-4-what-is-x-in-the-diagram">
+  🧠 4. What Is X in the Diagram?
+  <a class="anchor" href="#-4-what-is-x-in-the-diagram">#</a>
+</h2>
+<ul>
+<li>The large matrix on the right of the image is the input embedding matrix <code>X</code>.</li>
+<li>Shape: <code>sequence_length × embedding_dim</code></li>
+<li>It is built by looking up each token’s vector from the <strong>vocabulary embedding matrix</strong>.</li>
+</ul>
+<hr>
+<h2 id="-5-what-is-multi-head-attention">
+  🔄 5. What Is Multi-Head Attention?
+  <a class="anchor" href="#-5-what-is-multi-head-attention">#</a>
+</h2>
+<ul>
+<li>Single-head attention is shown in the image.</li>
+<li>Multi-head attention:
+<ul>
+<li>Splits <code>X</code> into smaller chunks (<code>d_model / n_heads</code>)</li>
+<li>Computes self-attention in parallel on each chunk (head)</li>
+<li>Concatenates results from all heads</li>
+<li>Applies a final linear projection</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-6-vocab-embedding-matrix-vs-qkv">
+  🔡 6. Vocab Embedding Matrix vs. Q/K/V
+  <a class="anchor" href="#-6-vocab-embedding-matrix-vs-qkv">#</a>
+</h2>
+<ul>
+<li>Vocabulary embedding matrix:
+<ul>
+<li>Initialized randomly</li>
+<li>Trained to map each token to a vector</li>
+</ul>
+</li>
+<li>Q, K, V:
+<ul>
+<li>Computed from <code>X</code> using learned matrices <code>W_Q</code>, <code>W_K</code>, <code>W_V</code></li>
+<li>Not stored in the vocabulary matrix</li>
+<li>Are trainable and persistent</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-7-lifetime-of-w_q-w_k-w_v">
+  ♻️ 7. Lifetime of W_Q, W_K, W_V
+  <a class="anchor" href="#-7-lifetime-of-w_q-w_k-w_v">#</a>
+</h2>
+<ul>
+<li>These matrices are:
+<ul>
+<li><strong>Initialized once</strong></li>
+<li><strong>Trained over time</strong></li>
+<li><strong>Reused across batches</strong></li>
+</ul>
+</li>
+<li>They are <strong>not reset</strong> per input or per batch.</li>
+<li>Gradients update them through backpropagation.</li>
+</ul>
+<hr>
+<h2 id="-8-is-vocabulary-matrix-also-trainable">
+  📥 8. Is Vocabulary Matrix Also Trainable?
+  <a class="anchor" href="#-8-is-vocabulary-matrix-also-trainable">#</a>
+</h2>
+<p>✅ Yes.</p>
+<ul>
+<li>It is randomly initialized and trained alongside the rest of the model.</li>
+<li>Each token lookup retrieves a vector from this matrix.</li>
+<li>This matrix evolves to encode <strong>semantic relationships</strong> between words.</li>
+</ul>
+<hr>
+<h2 id="-9-use-cases-after-training">
+  📦 9. Use Cases After Training
+  <a class="anchor" href="#-9-use-cases-after-training">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Goal</th>
+          <th>Uses Vocab Matrix</th>
+          <th>Uses W_Q/K/V</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Inference on new sentence</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>Static embedding for a token</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td>Contextual embedding in sentence</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-10-dimensions-of-x-q-k-v-and-attention">
+  📐 10. Dimensions of X, Q, K, V, and Attention
+  <a class="anchor" href="#-10-dimensions-of-x-q-k-v-and-attention">#</a>
+</h2>
+<p>Let:</p>
+<ul>
+<li><code>L</code> = sequence length</li>
+<li><code>d_model</code> = embedding dimension (e.g. 512)</li>
+<li><code>n_heads</code> = number of attention heads</li>
+<li><code>d_k = d_model / n_heads</code></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Shape</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Input X</td>
+          <td>(L, d_model)</td>
+      </tr>
+      <tr>
+          <td>W_Q, W_K, W_V</td>
+          <td>(d_model, d_model)</td>
+      </tr>
+      <tr>
+          <td>Q, K, V (stacked)</td>
+          <td>(n_heads, L, d_k)</td>
+      </tr>
+      <tr>
+          <td>Attention output (head)</td>
+          <td>(L, d_k)</td>
+      </tr>
+      <tr>
+          <td>Concatenated heads</td>
+          <td>(L, d_model)</td>
+      </tr>
+      <tr>
+          <td>Final output</td>
+          <td>(L, d_model)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-11-why-isnt-the-final-output-a-distribution-over-vocabulary">
+  ❓ 11. Why Isn’t the Final Output a Distribution Over Vocabulary?
+  <a class="anchor" href="#-11-why-isnt-the-final-output-a-distribution-over-vocabulary">#</a>
+</h2>
+<p>This is a great question that highlights a common confusion.</p>
+<ul>
+<li>
+<p>The output of <strong>multi-head attention</strong> (and the full Transformer stack) is:</p>
+<pre tabindex="0"><code>(L, d_model)
+</code></pre></li>
+<li>
+<p>But the <strong>vocabulary distribution</strong> comes <strong>after</strong> applying a final linear layer:</p>
+<pre tabindex="0"><code>W_vocab ∈ ℝ^(d_model × vocab_size)
+logits = output × W_vocab  → (L, vocab_size)
+</code></pre></li>
+<li>
+<p>Then softmax gives:</p>
+<pre tabindex="0"><code>probability distribution over vocabulary for each token position
+</code></pre></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Stage</th>
+          <th>Output Shape</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Multi-head Attention</td>
+          <td>(L, d_model)</td>
+      </tr>
+      <tr>
+          <td>Final Linear Projection</td>
+          <td>(L, vocab_size)</td>
+      </tr>
+      <tr>
+          <td>Softmax</td>
+          <td>(L, vocab_size)</td>
+      </tr>
+  </tbody>
+</table>
+<p>So the discrepancy is resolved when we remember that <strong>attention is only a component</strong> — the final vocabulary distribution is computed later in the model pipeline.</p>
+<hr>
+<p><em>Prepared as a study summary by ChatGPT based on a thread of detailed conceptual questions.</em></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-1-understanding-the-self-attention-image">📌 1. Understanding the Self-Attention Image</a></li>
+        <li><a href="#-2-element-vs-position">🔍 2. Element vs. Position</a></li>
+        <li><a href="#-3-how-attention-scores-are-computed">🤖 3. How Attention Scores Are Computed</a></li>
+        <li><a href="#-4-what-is-x-in-the-diagram">🧠 4. What Is X in the Diagram?</a></li>
+        <li><a href="#-5-what-is-multi-head-attention">🔄 5. What Is Multi-Head Attention?</a></li>
+        <li><a href="#-6-vocab-embedding-matrix-vs-qkv">🔡 6. Vocab Embedding Matrix vs. Q/K/V</a></li>
+        <li><a href="#-7-lifetime-of-w_q-w_k-w_v">♻️ 7. Lifetime of W_Q, W_K, W_V</a></li>
+        <li><a href="#-8-is-vocabulary-matrix-also-trainable">📥 8. Is Vocabulary Matrix Also Trainable?</a></li>
+        <li><a href="#-9-use-cases-after-training">📦 9. Use Cases After Training</a></li>
+        <li><a href="#-10-dimensions-of-x-q-k-v-and-attention">📐 10. Dimensions of X, Q, K, V, and Attention</a></li>
+        <li><a href="#-11-why-isnt-the-final-output-a-distribution-over-vocabulary">❓ 11. Why Isn’t the Final Output a Distribution Over Vocabulary?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
