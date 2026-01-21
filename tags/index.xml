@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on AI Reasoning</title>
+    <link>https://imipark.github.io/tags/</link>
+    <description>Recent content in Tags on AI Reasoning</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://imipark.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Art School</title>
+      <link>https://imipark.github.io/tags/art-school/</link>
+      <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/art-school/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ChatGPT</title>
+      <link>https://imipark.github.io/tags/chatgpt/</link>
+      <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/chatgpt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>InkWork</title>
+      <link>https://imipark.github.io/tags/inkwork/</link>
+      <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/inkwork/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GenAI</title>
+      <link>https://imipark.github.io/tags/genai/</link>
+      <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/genai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ghibli Art</title>
+      <link>https://imipark.github.io/tags/ghibli-art/</link>
+      <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/ghibli-art/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenAI-Plus</title>
+      <link>https://imipark.github.io/tags/openai-plus/</link>
+      <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/openai-plus/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI Engineer</title>
+      <link>https://imipark.github.io/tags/ai-engineer/</link>
+      <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/ai-engineer/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deploy</title>
+      <link>https://imipark.github.io/tags/deploy/</link>
+      <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/deploy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenAI API</title>
+      <link>https://imipark.github.io/tags/openai-api/</link>
+      <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/tags/openai-api/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Github</title>
+      <link>https://imipark.github.io/tags/github/</link>
+      <pubDate>Thu, 20 Mar 2025 21:23:49 -0700</pubDate>
+      <guid>https://imipark.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://imipark.github.io/tags/hugo/</link>
+      <pubDate>Thu, 20 Mar 2025 21:23:49 -0700</pubDate>
+      <guid>https://imipark.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

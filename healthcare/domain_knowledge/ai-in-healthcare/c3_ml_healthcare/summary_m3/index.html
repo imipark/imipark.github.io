@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Module 3: Concepts and Principles of ML in Healthcare
+  #
+
+
+  1 Introduction to Deep Learning and Neural Networks
+  #
+
+
+
+  Q1: Why are neural networks considered a turning point in machine learning?
+  #
+
+Neural networks mark a major departure from traditional ML models because they enable much deeper interactions between features and parameters. Unlike models like logistic regression or decision trees, neural networks—especially deep ones—organize parameters in layers, allowing complex feature transformations.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/summary_m3/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="[Summary] Module 3: Concepts and Principles of ML in Healthcare">
+  <meta property="og:description" content="Module 3: Concepts and Principles of ML in Healthcare # 1 Introduction to Deep Learning and Neural Networks # Q1: Why are neural networks considered a turning point in machine learning? # Neural networks mark a major departure from traditional ML models because they enable much deeper interactions between features and parameters. Unlike models like logistic regression or decision trees, neural networks—especially deep ones—organize parameters in layers, allowing complex feature transformations.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>[Summary] Module 3: Concepts and Principles of ML in Healthcare | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/summary_m3/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle" checked />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>[Summary] Module 3: Concepts and Principles of ML in Healthcare</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module-3-concepts-and-principles-of-ml-in-healthcare"><strong>Module 3: Concepts and Principles of ML in Healthcare</strong></a></li>
+        <li><a href="#1-introduction-to-deep-learning-and-neural-networks">1 Introduction to Deep Learning and Neural Networks</a>
+          <ul>
+            <li><a href="#q1-why-are-neural-networks-considered-a-turning-point-in-machine-learning">Q1: Why are neural networks considered a turning point in machine learning?</a></li>
+            <li><a href="#q2-what-makes-deep-learning-different-from-traditional-models">Q2: What makes deep learning different from traditional models?</a></li>
+            <li><a href="#q3-how-do-layers-in-a-neural-network-contribute-to-model-complexity">Q3: How do layers in a neural network contribute to model complexity?</a></li>
+            <li><a href="#q4-what-are-some-biological-inspirations-behind-neural-networks">Q4: What are some biological inspirations behind neural networks?</a></li>
+            <li><a href="#q5-why-are-neural-networks-especially-promising-for-healthcare-applications">Q5: Why are neural networks especially promising for healthcare applications?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-deep-learning-and-neural-networks">2 Deep Learning and Neural Networks</a>
+          <ul>
+            <li><a href="#q1-what-does-the-typical-training-loop-of-a-neural-network-look-like">Q1: What does the typical training loop of a neural network look like?</a></li>
+            <li><a href="#q2-how-do-we-validate-whether-the-model-is-generalizing-well">Q2: How do we validate whether the model is generalizing well?</a></li>
+            <li><a href="#q3-why-are-deep-learning-models-prone-to-overfitting">Q3: Why are deep learning models prone to overfitting?</a></li>
+            <li><a href="#q4-what-happens-within-each-layer-of-a-neural-network-during-computation">Q4: What happens within each layer of a neural network during computation?</a></li>
+            <li><a href="#q5-what-is-backpropagation-and-how-does-it-optimize-the-model">Q5: What is backpropagation and how does it optimize the model?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-cross-entropy-loss">3 Cross Entropy Loss</a>
+          <ul>
+            <li><a href="#q1-what-is-the-purpose-of-a-loss-function-in-machine-learning">Q1: What is the purpose of a loss function in machine learning?</a></li>
+            <li><a href="#q2-what-is-cross-entropy-loss-and-why-is-it-used-in-classification">Q2: What is cross-entropy loss and why is it used in classification?</a></li>
+            <li><a href="#q3-how-is-cross-entropy-loss-computed-mathematically">Q3: How is cross-entropy loss computed mathematically?</a></li>
+            <li><a href="#q4-how-does-the-softmax-function-turn-logits-into-probabilities">Q4: How does the softmax function turn logits into probabilities?</a></li>
+            <li><a href="#q5-how-does-cross-entropy-guide-parameter-updates-in-training">Q5: How does cross-entropy guide parameter updates in training?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-gradient-descent">4 Gradient Descent</a>
+          <ul>
+            <li><a href="#q1-why-is-optimization-necessary-in-training-neural-networks">Q1: Why is optimization necessary in training neural networks?</a></li>
+            <li><a href="#q2-what-is-gradient-descent-and-how-does-it-work">Q2: What is gradient descent and how does it work?</a></li>
+            <li><a href="#q3-what-role-does-the-learning-rate-play-in-gradient-descent">Q3: What role does the learning rate play in gradient descent?</a></li>
+            <li><a href="#q4-what-are-the-common-variants-of-gradient-descent">Q4: What are the common variants of gradient descent?</a></li>
+            <li><a href="#q5-what-are-some-adaptive-optimization-methods-beyond-basic-gradient-descent">Q5: What are some adaptive optimization methods beyond basic gradient descent?</a></li>
+          </ul>
+        </li>
+        <li><a href="#9-commonly-used-and-advanced-neural-network-architectures">9 Commonly Used and Advanced Neural Network Architectures</a>
+          <ul>
+            <li><a href="#q1-why-explore-multiple-neural-network-architectures-in-healthcare">Q1: Why explore multiple neural network architectures in healthcare?</a></li>
+            <li><a href="#q2-what-are-resnet-and-densenet-and-what-problems-do-they-solve">Q2: What are ResNet and DenseNet, and what problems do they solve?</a></li>
+            <li><a href="#q3-what-is-u-net-and-why-is-it-useful-in-healthcare">Q3: What is U-Net and why is it useful in healthcare?</a></li>
+            <li><a href="#q4-what-are-autoencoders-and-what-role-do-they-play">Q4: What are Autoencoders and what role do they play?</a></li>
+            <li><a href="#q5-what-are-gans-and-how-are-they-applied-in-clinical-ml">Q5: What are GANs and how are they applied in clinical ML?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="module-3-concepts-and-principles-of-ml-in-healthcare">
+  <strong>Module 3: Concepts and Principles of ML in Healthcare</strong>
+  <a class="anchor" href="#module-3-concepts-and-principles-of-ml-in-healthcare">#</a>
+</h2>
+<h2 id="1-introduction-to-deep-learning-and-neural-networks">
+  1 Introduction to Deep Learning and Neural Networks
+  <a class="anchor" href="#1-introduction-to-deep-learning-and-neural-networks">#</a>
+</h2>
+<hr>
+<h3 id="q1-why-are-neural-networks-considered-a-turning-point-in-machine-learning">
+  Q1: Why are neural networks considered a turning point in machine learning?
+  <a class="anchor" href="#q1-why-are-neural-networks-considered-a-turning-point-in-machine-learning">#</a>
+</h3>
+<p>Neural networks mark a major departure from traditional ML models because they enable much <strong>deeper interactions</strong> between features and parameters. Unlike models like logistic regression or decision trees, neural networks—especially deep ones—organize parameters in <strong>layers</strong>, allowing complex feature transformations.</p>
+<ul>
+<li>Traditional ML: Parameters interact directly with input features.</li>
+<li>Neural networks: Parameters are arranged in layers; outputs of one layer become inputs to the next.</li>
+<li>Result: Increased <strong>expressive power</strong> and ability to model complex patterns.</li>
+</ul>
+<p>➡️  To understand what truly sets deep learning apart, we need to explore the unique features of deep neural networks themselves.</p>
+<h3 id="q2-what-makes-deep-learning-different-from-traditional-models">
+  Q2: What makes deep learning different from traditional models?
+  <a class="anchor" href="#q2-what-makes-deep-learning-different-from-traditional-models">#</a>
+</h3>
+<p>Deep learning models, also called <strong>deep neural networks</strong>, often involve <strong>millions or even billions of parameters</strong> across multiple layers. This structure allows:</p>
+<ul>
+<li><strong>Hierarchical representation</strong> of data (low-level to high-level features).</li>
+<li>Repeated multiplication and addition of feature weights across layers.</li>
+<li>The final output is shaped by a sequence of transformations rather than a direct mapping.</li>
+</ul>
+<p>➡️  These layered transformations contribute to the overall power of deep models—so how exactly do these layers work to increase complexity?</p>
+<h3 id="q3-how-do-layers-in-a-neural-network-contribute-to-model-complexity">
+  Q3: How do layers in a neural network contribute to model complexity?
+  <a class="anchor" href="#q3-how-do-layers-in-a-neural-network-contribute-to-model-complexity">#</a>
+</h3>
+<p>Each layer in a neural network captures increasingly abstract representations of the data:</p>
+<ul>
+<li><strong>Early layers</strong> might detect edges or basic patterns in an image.</li>
+<li><strong>Middle layers</strong> combine these into shapes or motifs.</li>
+<li><strong>Deeper layers</strong> can represent complex concepts like organs or specific pathologies in medical images.</li>
+</ul>
+<p>This layering increases the <strong>non-linearity</strong> and <strong>representational power</strong> of the model.</p>
+<p>➡️  To better grasp the idea behind these computational units, it helps to look at their biological inspiration.</p>
+<h3 id="q4-what-are-some-biological-inspirations-behind-neural-networks">
+  Q4: What are some biological inspirations behind neural networks?
+  <a class="anchor" href="#q4-what-are-some-biological-inspirations-behind-neural-networks">#</a>
+</h3>
+<p>The structure of neural networks was inspired by the <strong>human brain</strong>:</p>
+<ul>
+<li>Each <strong>neuron</strong> in a network is a mathematical function mimicking a brain cell.</li>
+<li>Neurons process inputs and produce outputs that can be fed into other neurons.</li>
+<li>This setup enables <strong>distributed computation</strong>, similar to how the brain processes information.</li>
+</ul>
+<p>➡️  With such a powerful computational design, what makes neural networks particularly valuable in healthcare?</p>
+<h3 id="q5-why-are-neural-networks-especially-promising-for-healthcare-applications">
+  Q5: Why are neural networks especially promising for healthcare applications?
+  <a class="anchor" href="#q5-why-are-neural-networks-especially-promising-for-healthcare-applications">#</a>
+</h3>
+<p>Healthcare data is <strong>complex and high-dimensional</strong>—from imaging to text (EHRs), genomics, and time-series data. Deep learning shines in this space because:</p>
+<ul>
+<li>It doesn&rsquo;t need hand-engineered features.</li>
+<li>It can learn representations directly from raw data.</li>
+<li>It&rsquo;s particularly powerful in <strong>image analysis</strong>, <strong>speech recognition</strong>, and <strong>clinical text processing</strong>.</li>
+</ul>
+<h2 id="2-deep-learning-and-neural-networks">
+  2 Deep Learning and Neural Networks
+  <a class="anchor" href="#2-deep-learning-and-neural-networks">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-does-the-typical-training-loop-of-a-neural-network-look-like">
+  Q1: What does the typical training loop of a neural network look like?
+  <a class="anchor" href="#q1-what-does-the-typical-training-loop-of-a-neural-network-look-like">#</a>
+</h3>
+<p>The training loop consists of iterative steps to improve model performance:</p>
+<ul>
+<li><strong>Step 1:</strong> Pass each training sample through the model to generate predictions.</li>
+<li><strong>Step 2:</strong> Compute a <strong>loss value</strong> to quantify prediction error.</li>
+<li><strong>Step 3:</strong> Update model parameters using <strong>optimization</strong> to reduce the loss.</li>
+<li>This process is repeated over multiple <strong>epochs</strong>, with each full pass through the training data called an epoch.</li>
+</ul>
+<p>➡️  Once training is underway, how do we ensure the model isn&rsquo;t just memorizing the data?</p>
+<h3 id="q2-how-do-we-validate-whether-the-model-is-generalizing-well">
+  Q2: How do we validate whether the model is generalizing well?
+  <a class="anchor" href="#q2-how-do-we-validate-whether-the-model-is-generalizing-well">#</a>
+</h3>
+<p>Model evaluation is typically done on a <strong>validation dataset</strong>, which the model hasn&rsquo;t seen during training.</p>
+<ul>
+<li>After each epoch (or a few), we evaluate the model’s performance on this set.</li>
+<li>This helps detect <strong>overfitting</strong>, where a model performs well on training data but poorly on unseen data.</li>
+<li><strong>Generalization</strong> is key in healthcare to ensure predictions work on real-world, diverse patient populations.</li>
+</ul>
+<p>➡️  Speaking of overfitting, one factor that contributes to this is the sheer number of parameters in neural networks.</p>
+<h3 id="q3-why-are-deep-learning-models-prone-to-overfitting">
+  Q3: Why are deep learning models prone to overfitting?
+  <a class="anchor" href="#q3-why-are-deep-learning-models-prone-to-overfitting">#</a>
+</h3>
+<p>Deep neural networks often contain <strong>millions of parameters</strong>, which gives them immense capacity to:</p>
+<ul>
+<li><strong>Memorize training data</strong> rather than learning general patterns.</li>
+<li>Fit even random noise if not properly regularized.</li>
+<li>This is why <strong>data quantity and quality</strong>, as well as regularization strategies, are critical.</li>
+</ul>
+<p>➡️  But what&rsquo;s the actual structure of these models, and how do they transform data layer by layer?</p>
+<h3 id="q4-what-happens-within-each-layer-of-a-neural-network-during-computation">
+  Q4: What happens within each layer of a neural network during computation?
+  <a class="anchor" href="#q4-what-happens-within-each-layer-of-a-neural-network-during-computation">#</a>
+</h3>
+<p>Each layer performs a <strong>mathematical transformation</strong>:</p>
+<ul>
+<li>Takes input (either original features or previous layer output),</li>
+<li>Applies <strong>weighted summation</strong> and <strong>non-linear activation functions</strong>,</li>
+<li>Passes output to the next layer.</li>
+</ul>
+<p>This sequence of operations allows the model to build up <strong>increasingly abstract representations</strong> of the data.</p>
+<p>➡️  To build a solid foundation in understanding training, we need to connect this to how data and loss flow through the model.</p>
+<h3 id="q5-what-is-backpropagation-and-how-does-it-optimize-the-model">
+  Q5: What is backpropagation and how does it optimize the model?
+  <a class="anchor" href="#q5-what-is-backpropagation-and-how-does-it-optimize-the-model">#</a>
+</h3>
+<p>Backpropagation is a <strong>core algorithm</strong> for training neural networks:</p>
+<ul>
+<li>It calculates how the loss changes with respect to each model parameter.</li>
+<li>These gradients are then used to <strong>update the parameters</strong> using an optimizer like <strong>Stochastic Gradient Descent (SGD)</strong>.</li>
+<li>This iterative process enables the model to <strong>gradually learn better predictions</strong>.</li>
+</ul>
+<h2 id="3-cross-entropy-loss">
+  3 Cross Entropy Loss
+  <a class="anchor" href="#3-cross-entropy-loss">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-is-the-purpose-of-a-loss-function-in-machine-learning">
+  Q1: What is the purpose of a loss function in machine learning?
+  <a class="anchor" href="#q1-what-is-the-purpose-of-a-loss-function-in-machine-learning">#</a>
+</h3>
+<p>A loss function quantifies how far off a model&rsquo;s predictions are from the actual labels. It&rsquo;s a <strong>numerical signal</strong> used to update model parameters during training:</p>
+<ul>
+<li>Lower loss = better prediction performance.</li>
+<li>The loss guides the optimization process.</li>
+<li>Without it, the model has no sense of how to improve.</li>
+</ul>
+<p>➡️  For classification tasks, what specific loss function is widely used and why?</p>
+<h3 id="q2-what-is-cross-entropy-loss-and-why-is-it-used-in-classification">
+  Q2: What is cross-entropy loss and why is it used in classification?
+  <a class="anchor" href="#q2-what-is-cross-entropy-loss-and-why-is-it-used-in-classification">#</a>
+</h3>
+<p>Cross-entropy loss measures the dissimilarity between the <strong>predicted probability distribution</strong> and the <strong>true distribution</strong> (the one-hot encoded label).</p>
+<ul>
+<li>Especially useful in multi-class classification.</li>
+<li>It penalizes wrong, confident predictions more heavily than uncertain ones.</li>
+<li>Helps push the model to make <strong>confident and correct predictions</strong>.</li>
+</ul>
+<p>➡️  What does this loss look like mathematically and how is it interpreted?</p>
+<h3 id="q3-how-is-cross-entropy-loss-computed-mathematically">
+  Q3: How is cross-entropy loss computed mathematically?
+  <a class="anchor" href="#q3-how-is-cross-entropy-loss-computed-mathematically">#</a>
+</h3>
+<p>For a single class, the loss is defined as:</p>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \[
+L = -\log(p)
+\]
+</span>
+
+<p>Where <code>p</code> is the predicted probability for the true class. In general:</p>
+<span>
+  \[
+L = -\sum y_i \log(p_i)
+\]
+</span>
+
+<p>Where:</p>
+<ul>
+<li>( y_i ) is 1 for the correct class, 0 otherwise.</li>
+<li>( p_i ) is the predicted probability for class ( i ).</li>
+</ul>
+<p>➡️  Since the model outputs raw scores, how are these converted into probabilities?</p>
+<h3 id="q4-how-does-the-softmax-function-turn-logits-into-probabilities">
+  Q4: How does the softmax function turn logits into probabilities?
+  <a class="anchor" href="#q4-how-does-the-softmax-function-turn-logits-into-probabilities">#</a>
+</h3>
+<p>The softmax function transforms the model’s output scores (logits) into a probability distribution across classes:</p>
+<span>
+  \[
+\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_j e^{z_j}}
+\]
+</span>
+
+<ul>
+<li>Ensures the outputs are positive and sum to 1.</li>
+<li>Prepares predictions for comparison with actual labels using cross-entropy.</li>
+</ul>
+<p>➡️  How does cross-entropy loss impact model training?</p>
+<h3 id="q5-how-does-cross-entropy-guide-parameter-updates-in-training">
+  Q5: How does cross-entropy guide parameter updates in training?
+  <a class="anchor" href="#q5-how-does-cross-entropy-guide-parameter-updates-in-training">#</a>
+</h3>
+<ul>
+<li>During backpropagation, gradients of the cross-entropy loss with respect to parameters are computed.</li>
+<li>These gradients are used to update weights so predictions align better with true labels.</li>
+<li>As training progresses, cross-entropy loss typically <strong>decreases</strong>, signaling improved classification.</li>
+</ul>
+<h2 id="4-gradient-descent">
+  4 Gradient Descent
+  <a class="anchor" href="#4-gradient-descent">#</a>
+</h2>
+<hr>
+<h3 id="q1-why-is-optimization-necessary-in-training-neural-networks">
+  Q1: Why is optimization necessary in training neural networks?
+  <a class="anchor" href="#q1-why-is-optimization-necessary-in-training-neural-networks">#</a>
+</h3>
+<p>Optimization is the process that adjusts model parameters to minimize prediction error:</p>
+<ul>
+<li>Neural networks are trained by minimizing a <strong>loss function</strong>.</li>
+<li>The model learns by iteratively updating parameters to reduce this loss.</li>
+<li>Effective optimization is crucial for learning accurate patterns from data.</li>
+</ul>
+<p>➡️  What specific algorithm is most commonly used to perform this optimization?</p>
+<h3 id="q2-what-is-gradient-descent-and-how-does-it-work">
+  Q2: What is gradient descent and how does it work?
+  <a class="anchor" href="#q2-what-is-gradient-descent-and-how-does-it-work">#</a>
+</h3>
+<p>Gradient descent is an algorithm used to minimize a function by moving in the direction of the <strong>steepest descent</strong>:</p>
+<ul>
+<li>It calculates the gradient (slope) of the loss function with respect to each parameter.</li>
+<li>Parameters are updated by subtracting a portion (the learning rate) of the gradient.</li>
+<li>This process continues until the model reaches a <strong>local minimum</strong>.</li>
+</ul>
+<p>➡️  How do we determine how big of a step to take in each update?</p>
+<h3 id="q3-what-role-does-the-learning-rate-play-in-gradient-descent">
+  Q3: What role does the learning rate play in gradient descent?
+  <a class="anchor" href="#q3-what-role-does-the-learning-rate-play-in-gradient-descent">#</a>
+</h3>
+<p>The <strong>learning rate</strong> controls how much the model updates its parameters in response to the calculated gradient:</p>
+<ul>
+<li>Too <strong>high</strong>: can overshoot and destabilize training.</li>
+<li>Too <strong>low</strong>: training can be very slow or get stuck in a poor local minimum.</li>
+<li>It&rsquo;s often treated as a <strong>hyperparameter</strong> that must be tuned carefully.</li>
+</ul>
+<p>➡️  Are there variations of gradient descent that address real-world training challenges?</p>
+<h3 id="q4-what-are-the-common-variants-of-gradient-descent">
+  Q4: What are the common variants of gradient descent?
+  <a class="anchor" href="#q4-what-are-the-common-variants-of-gradient-descent">#</a>
+</h3>
+<p>There are three main types:</p>
+<ul>
+<li><strong>Batch Gradient Descent</strong>: Uses the entire training set for each update—slow but stable.</li>
+<li><strong>Stochastic Gradient Descent (SGD)</strong>: Updates using a single data point—faster but noisier.</li>
+<li><strong>Mini-batch Gradient Descent</strong>: A compromise that uses a small batch of data—efficient and commonly used in practice.</li>
+</ul>
+<p>➡️  Beyond variants, can the algorithm adapt during training for better performance?</p>
+<h3 id="q5-what-are-some-adaptive-optimization-methods-beyond-basic-gradient-descent">
+  Q5: What are some adaptive optimization methods beyond basic gradient descent?
+  <a class="anchor" href="#q5-what-are-some-adaptive-optimization-methods-beyond-basic-gradient-descent">#</a>
+</h3>
+<p>Advanced optimizers improve training by adjusting learning rates automatically:</p>
+<ul>
+<li><strong>Momentum</strong>: Adds a fraction of the previous update to the current one to smooth progress.</li>
+<li><strong>RMSProp</strong>: Scales updates by a moving average of recent gradients.</li>
+<li><strong>Adam</strong>: Combines momentum and RMSProp for adaptive, robust performance—popular in practice.</li>
+</ul>
+<h2 id="9-commonly-used-and-advanced-neural-network-architectures">
+  9 Commonly Used and Advanced Neural Network Architectures
+  <a class="anchor" href="#9-commonly-used-and-advanced-neural-network-architectures">#</a>
+</h2>
+<hr>
+<h3 id="q1-why-explore-multiple-neural-network-architectures-in-healthcare">
+  Q1: Why explore multiple neural network architectures in healthcare?
+  <a class="anchor" href="#q1-why-explore-multiple-neural-network-architectures-in-healthcare">#</a>
+</h3>
+<p>Different architectures are designed to solve specific problems:</p>
+<ul>
+<li>Standard models may not perform well on complex or domain-specific tasks.</li>
+<li>Specialized architectures improve performance, interpretability, and training speed.</li>
+</ul>
+<p>Understanding these models is key to designing solutions for clinical settings.</p>
+<p>➡️  What are some commonly used image-based architectures?</p>
+<h3 id="q2-what-are-resnet-and-densenet-and-what-problems-do-they-solve">
+  Q2: What are ResNet and DenseNet, and what problems do they solve?
+  <a class="anchor" href="#q2-what-are-resnet-and-densenet-and-what-problems-do-they-solve">#</a>
+</h3>
+<ul>
+<li><strong>ResNet</strong>: Introduces <strong>residual connections</strong> to skip layers and prevent vanishing gradients.</li>
+<li><strong>DenseNet</strong>: Connects each layer to every other layer to encourage <strong>feature reuse</strong>.</li>
+</ul>
+<p>Both architectures improve training of <strong>very deep networks</strong>, commonly used in radiology and pathology.</p>
+<p>➡️  Are there architectures tailored for medical image segmentation?</p>
+<h3 id="q3-what-is-u-net-and-why-is-it-useful-in-healthcare">
+  Q3: What is U-Net and why is it useful in healthcare?
+  <a class="anchor" href="#q3-what-is-u-net-and-why-is-it-useful-in-healthcare">#</a>
+</h3>
+<p>U-Net is designed for <strong>semantic segmentation</strong>, particularly in biomedical imaging:</p>
+<ul>
+<li>Encoder-decoder structure with <strong>skip connections</strong>.</li>
+<li>Captures both local and global context.</li>
+<li>Used for tasks like <strong>tumor segmentation</strong>, <strong>organ delineation</strong>, and <strong>cell counting</strong>.</li>
+</ul>
+<p>➡️  Beyond visual data, how do we model structured or complex input spaces?</p>
+<h3 id="q4-what-are-autoencoders-and-what-role-do-they-play">
+  Q4: What are Autoencoders and what role do they play?
+  <a class="anchor" href="#q4-what-are-autoencoders-and-what-role-do-they-play">#</a>
+</h3>
+<p>Autoencoders are unsupervised neural networks that learn to <strong>reconstruct their input</strong>:</p>
+<ul>
+<li>Useful for <strong>dimensionality reduction</strong>, <strong>denoising</strong>, and <strong>anomaly detection</strong>.</li>
+<li>In healthcare: Identify rare diseases or compress high-dimensional patient data.</li>
+<li>Latent representations can be used as features in other models.</li>
+</ul>
+<p>➡️  What about generating new data or simulating clinical scenarios?</p>
+<h3 id="q5-what-are-gans-and-how-are-they-applied-in-clinical-ml">
+  Q5: What are GANs and how are they applied in clinical ML?
+  <a class="anchor" href="#q5-what-are-gans-and-how-are-they-applied-in-clinical-ml">#</a>
+</h3>
+<p><strong>Generative Adversarial Networks (GANs)</strong> consist of a generator and discriminator:</p>
+<ul>
+<li>Used to generate synthetic but realistic data (e.g., images, waveforms).</li>
+<li>Helps with <strong>data augmentation</strong>, especially in rare disease settings.</li>
+<li>Also used in <strong>privacy-preserving machine learning</strong> and <strong>image translation</strong> (e.g., CT to MRI).</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module-3-concepts-and-principles-of-ml-in-healthcare"><strong>Module 3: Concepts and Principles of ML in Healthcare</strong></a></li>
+        <li><a href="#1-introduction-to-deep-learning-and-neural-networks">1 Introduction to Deep Learning and Neural Networks</a>
+          <ul>
+            <li><a href="#q1-why-are-neural-networks-considered-a-turning-point-in-machine-learning">Q1: Why are neural networks considered a turning point in machine learning?</a></li>
+            <li><a href="#q2-what-makes-deep-learning-different-from-traditional-models">Q2: What makes deep learning different from traditional models?</a></li>
+            <li><a href="#q3-how-do-layers-in-a-neural-network-contribute-to-model-complexity">Q3: How do layers in a neural network contribute to model complexity?</a></li>
+            <li><a href="#q4-what-are-some-biological-inspirations-behind-neural-networks">Q4: What are some biological inspirations behind neural networks?</a></li>
+            <li><a href="#q5-why-are-neural-networks-especially-promising-for-healthcare-applications">Q5: Why are neural networks especially promising for healthcare applications?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-deep-learning-and-neural-networks">2 Deep Learning and Neural Networks</a>
+          <ul>
+            <li><a href="#q1-what-does-the-typical-training-loop-of-a-neural-network-look-like">Q1: What does the typical training loop of a neural network look like?</a></li>
+            <li><a href="#q2-how-do-we-validate-whether-the-model-is-generalizing-well">Q2: How do we validate whether the model is generalizing well?</a></li>
+            <li><a href="#q3-why-are-deep-learning-models-prone-to-overfitting">Q3: Why are deep learning models prone to overfitting?</a></li>
+            <li><a href="#q4-what-happens-within-each-layer-of-a-neural-network-during-computation">Q4: What happens within each layer of a neural network during computation?</a></li>
+            <li><a href="#q5-what-is-backpropagation-and-how-does-it-optimize-the-model">Q5: What is backpropagation and how does it optimize the model?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-cross-entropy-loss">3 Cross Entropy Loss</a>
+          <ul>
+            <li><a href="#q1-what-is-the-purpose-of-a-loss-function-in-machine-learning">Q1: What is the purpose of a loss function in machine learning?</a></li>
+            <li><a href="#q2-what-is-cross-entropy-loss-and-why-is-it-used-in-classification">Q2: What is cross-entropy loss and why is it used in classification?</a></li>
+            <li><a href="#q3-how-is-cross-entropy-loss-computed-mathematically">Q3: How is cross-entropy loss computed mathematically?</a></li>
+            <li><a href="#q4-how-does-the-softmax-function-turn-logits-into-probabilities">Q4: How does the softmax function turn logits into probabilities?</a></li>
+            <li><a href="#q5-how-does-cross-entropy-guide-parameter-updates-in-training">Q5: How does cross-entropy guide parameter updates in training?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-gradient-descent">4 Gradient Descent</a>
+          <ul>
+            <li><a href="#q1-why-is-optimization-necessary-in-training-neural-networks">Q1: Why is optimization necessary in training neural networks?</a></li>
+            <li><a href="#q2-what-is-gradient-descent-and-how-does-it-work">Q2: What is gradient descent and how does it work?</a></li>
+            <li><a href="#q3-what-role-does-the-learning-rate-play-in-gradient-descent">Q3: What role does the learning rate play in gradient descent?</a></li>
+            <li><a href="#q4-what-are-the-common-variants-of-gradient-descent">Q4: What are the common variants of gradient descent?</a></li>
+            <li><a href="#q5-what-are-some-adaptive-optimization-methods-beyond-basic-gradient-descent">Q5: What are some adaptive optimization methods beyond basic gradient descent?</a></li>
+          </ul>
+        </li>
+        <li><a href="#9-commonly-used-and-advanced-neural-network-architectures">9 Commonly Used and Advanced Neural Network Architectures</a>
+          <ul>
+            <li><a href="#q1-why-explore-multiple-neural-network-architectures-in-healthcare">Q1: Why explore multiple neural network architectures in healthcare?</a></li>
+            <li><a href="#q2-what-are-resnet-and-densenet-and-what-problems-do-they-solve">Q2: What are ResNet and DenseNet, and what problems do they solve?</a></li>
+            <li><a href="#q3-what-is-u-net-and-why-is-it-useful-in-healthcare">Q3: What is U-Net and why is it useful in healthcare?</a></li>
+            <li><a href="#q4-what-are-autoencoders-and-what-role-do-they-play">Q4: What are Autoencoders and what role do they play?</a></li>
+            <li><a href="#q5-what-are-gans-and-how-are-they-applied-in-clinical-ml">Q5: What are GANs and how are they applied in clinical ML?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

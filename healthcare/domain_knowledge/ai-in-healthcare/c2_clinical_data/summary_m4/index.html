@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Module4 : Creating Analysis Ready Dataset from Patient Timelines
+  #
+
+
+  1 Turning clinical data into something you can analyze
+  #
+
+
+
+  Q: What is the main objective of this module?
+  #
+
+A: To explain how to convert raw clinical data into a patient-feature matrix suitable for analysis and answering research questions.
+
+  Q: What is a patient-feature matrix?
+  #
+
+A: A structured table where each row represents a patient and each column represents a clinical feature or measurement.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/summary_m4/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="[Summary] Module4 : Creating Analysis Ready Dataset from Patient Timelines">
+  <meta property="og:description" content="Module4 : Creating Analysis Ready Dataset from Patient Timelines # 1 Turning clinical data into something you can analyze # Q: What is the main objective of this module? # A: To explain how to convert raw clinical data into a patient-feature matrix suitable for analysis and answering research questions.
+Q: What is a patient-feature matrix? # A: A structured table where each row represents a patient and each column represents a clinical feature or measurement.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>[Summary] Module4 : Creating Analysis Ready Dataset from Patient Timelines | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/summary_m4/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle" checked />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>[Summary] Module4 : Creating Analysis Ready Dataset from Patient Timelines</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module4--creating-analysis-ready-dataset-from-patient-timelines"><strong>Module4 : Creating Analysis Ready Dataset from Patient Timelines</strong></a></li>
+        <li><a href="#1-turning-clinical-data-into-something-you-can-analyze">1 Turning clinical data into something you can analyze</a>
+          <ul>
+            <li><a href="#q-what-is-the-main-objective-of-this-module">Q: What is the main objective of this module?</a></li>
+            <li><a href="#q-what-is-a-patient-feature-matrix">Q: What is a patient-feature matrix?</a></li>
+            <li><a href="#q-what-topics-will-this-module-cover">Q: What topics will this module cover?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-defining-the-unit-of-analysis">2 Defining the unit of analysis</a>
+          <ul>
+            <li><a href="#q-what-is-the-typical-unit-of-analysis-in-clinical-data-studies">Q: What is the typical unit of analysis in clinical data studies?</a></li>
+            <li><a href="#q-are-there-other-valid-units-of-analysis">Q: Are there other valid units of analysis?</a></li>
+            <li><a href="#q-can-you-give-an-example-of-an-alternative-unit">Q: Can you give an example of an alternative unit?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-using-features-and-the-presence-of-features">3 Using features and the presence of features</a>
+          <ul>
+            <li><a href="#q-should-we-use-all-possible-features-extracted-from-clinical-data">Q: Should we use all possible features extracted from clinical data?</a></li>
+            <li><a href="#q-what-are-some-reasons-to-remove-features">Q: What are some reasons to remove features?</a></li>
+            <li><a href="#q-how-can-presence-or-absence-of-data-itself-become-a-feature">Q: How can presence or absence of data itself become a feature?</a></li>
+            <li><a href="#q-what-role-does-metadata-play-in-feature-design">Q: What role does metadata play in feature design?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-how-to-create-features-from-structured-sources">4 How to create features from structured sources</a>
+          <ul>
+            <li><a href="#q-what-are-structured-vs-unstructured-healthcare-data">Q: What are structured vs. unstructured healthcare data?</a></li>
+            <li><a href="#q-why-are-structured-sources-important">Q: Why are structured sources important?</a></li>
+            <li><a href="#q-what-are-the-main-steps-in-using-structured-data">Q: What are the main steps in using structured data?</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-standardizing-features">5 Standardizing features</a>
+          <ul>
+            <li><a href="#q-what-does-it-mean-to-standardize-features">Q: What does it mean to standardize features?</a></li>
+            <li><a href="#q-why-is-standardization-important">Q: Why is standardization important?</a></li>
+            <li><a href="#q-what-are-common-standardization-techniques">Q: What are common standardization techniques?</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-dealing-with-too-many-features">6 Dealing with too many features</a>
+          <ul>
+            <li><a href="#q-why-might-you-avoid-using-all-available-features-in-clinical-data">Q: Why might you avoid using all available features in clinical data?</a></li>
+            <li><a href="#q-what-are-reasons-to-reduce-the-number-of-features">Q: What are reasons to reduce the number of features?</a></li>
+            <li><a href="#q-how-can-this-affect-patient-privacy">Q: How can this affect patient privacy?</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-the-origins-of-missing-values">7 The origins of missing values</a>
+          <ul>
+            <li><a href="#q-why-do-missing-values-occur-in-clinical-datasets">Q: Why do missing values occur in clinical datasets?</a></li>
+            <li><a href="#q-how-is-missingness-different-in-routine-care-vs-prospective-studies">Q: How is missingness different in routine care vs. prospective studies?</a></li>
+            <li><a href="#q-what-are-three-possible-reasons-a-value-is-missing">Q: What are three possible reasons a value is missing?</a></li>
+          </ul>
+        </li>
+        <li><a href="#8-dealing-with-missing-values">8 Dealing with missing values</a>
+          <ul>
+            <li><a href="#q-what-is-imputation-in-clinical-data-analysis">Q: What is imputation in clinical data analysis?</a></li>
+            <li><a href="#q-what-is-column-mean-imputation">Q: What is column-mean imputation?</a></li>
+            <li><a href="#q-why-might-column-mean-imputation-be-unsuitable-in-medicine">Q: Why might column-mean imputation be unsuitable in medicine?</a></li>
+            <li><a href="#q-what-is-a-better-alternative-in-clinical-contexts">Q: What is a better alternative in clinical contexts?</a></li>
+          </ul>
+        </li>
+        <li><a href="#9-summary-recommendations-for-missing-values">9 Summary recommendations for missing values</a>
+          <ul>
+            <li><a href="#q-should-you-always-impute-missing-values-in-clinical-datasets">Q: Should you always impute missing values in clinical datasets?</a></li>
+            <li><a href="#q-when-is-imputation-appropriate">Q: When is imputation appropriate?</a></li>
+            <li><a href="#q-when-should-you-drop-a-variable">Q: When should you drop a variable?</a></li>
+            <li><a href="#q-what-about-cases-in-between">Q: What about cases in between?</a></li>
+          </ul>
+        </li>
+        <li><a href="#10-constructing-new-features">10 Constructing new features</a>
+          <ul>
+            <li><a href="#q-what-is-feature-engineering-in-clinical-data-mining">Q: What is feature engineering in clinical data mining?</a></li>
+            <li><a href="#q-why-is-feature-engineering-valuable">Q: Why is feature engineering valuable?</a></li>
+            <li><a href="#q-what-are-some-simple-examples-of-constructed-features">Q: What are some simple examples of constructed features?</a></li>
+          </ul>
+        </li>
+        <li><a href="#11-examples-of-engineered-features">11 Examples of engineered features</a>
+          <ul>
+            <li><a href="#q-what-are-clinical-scoring-systems-in-feature-engineering">Q: What are clinical scoring systems in feature engineering?</a></li>
+            <li><a href="#q-what-is-an-example-of-a-simple-scoring-system">Q: What is an example of a simple scoring system?</a></li>
+            <li><a href="#q-what-are-examples-of-comorbidity-scoring-systems">Q: What are examples of comorbidity scoring systems?</a></li>
+            <li><a href="#q-can-non-clinical-features-also-be-engineered">Q: Can non-clinical features also be engineered?</a></li>
+          </ul>
+        </li>
+        <li><a href="#12-when-to-consider-engineered-features">12 When to consider engineered features</a>
+          <ul>
+            <li><a href="#q-when-should-you-engineer-new-features-in-clinical-datasets">Q: When should you engineer new features in clinical datasets?</a></li>
+            <li><a href="#q-what-strategies-can-guide-feature-creation">Q: What strategies can guide feature creation?</a></li>
+            <li><a href="#q-what-trade-offs-should-be-considered">Q: What trade-offs should be considered?</a></li>
+            <li><a href="#q-can-models-ever-learn-features-automatically">Q: Can models ever learn features automatically?</a></li>
+          </ul>
+        </li>
+        <li><a href="#13-main-points-about-creating-analysis-ready-datasets">13 Main points about creating analysis ready datasets</a>
+          <ul>
+            <li><a href="#q-what-is-an-analysis-ready-dataset-in-clinical-research">Q: What is an analysis-ready dataset in clinical research?</a></li>
+            <li><a href="#q-what-tools-are-commonly-used-to-construct-it">Q: What tools are commonly used to construct it?</a></li>
+            <li><a href="#q-how-can-the-number-of-features-be-reduced">Q: How can the number of features be reduced?</a></li>
+            <li><a href="#q-how-are-missing-values-handled">Q: How are missing values handled?</a></li>
+            <li><a href="#q-what-boosts-success-in-dataset-creation">Q: What boosts success in dataset creation?</a></li>
+          </ul>
+        </li>
+        <li><a href="#14-structured-knowledge-graphs">14 Structured knowledge graphs</a>
+          <ul>
+            <li><a href="#q-what-are-the-two-key-topics-in-this-part-of-the-module">Q: What are the two key topics in this part of the module?</a></li>
+            <li><a href="#q-what-is-a-knowledge-graph-in-healthcare">Q: What is a knowledge graph in healthcare?</a></li>
+            <li><a href="#q-why-are-knowledge-graphs-useful">Q: Why are knowledge graphs useful?</a></li>
+            <li><a href="#q-what-are-examples-of-implicit-prior-knowledge-use">Q: What are examples of implicit prior knowledge use?</a></li>
+          </ul>
+        </li>
+        <li><a href="#15-so-what-exactly-is-in-a-knowledge-graph">15 So what exactly is in a knowledge graph</a>
+          <ul>
+            <li><a href="#q-what-are-the-core-components-of-a-biomedical-knowledge-graph">Q: What are the core components of a biomedical knowledge graph?</a></li>
+            <li><a href="#q-what-is-the-most-important-type-of-relationship-in-medical-knowledge-graphs">Q: What is the most important type of relationship in medical knowledge graphs?</a></li>
+            <li><a href="#q-what-benefit-does-this-hierarchical-structure-provide">Q: What benefit does this hierarchical structure provide?</a></li>
+          </ul>
+        </li>
+        <li><a href="#16-what-are-important-knowledge-graphs">16 What are important knowledge graphs</a>
+          <ul>
+            <li><a href="#q-where-can-you-find-biomedical-knowledge-graphs">Q: Where can you find biomedical knowledge graphs?</a></li>
+            <li><a href="#q-what-are-some-widely-used-biomedical-ontologies">Q: What are some widely used biomedical ontologies?</a></li>
+            <li><a href="#q-why-are-icd-9-and-icd-10-both-relevant-today">Q: Why are ICD-9 and ICD-10 both relevant today?</a></li>
+          </ul>
+        </li>
+        <li><a href="#17-how-to-choose-which-knowledge-graph-to-use">17 How to choose which knowledge graph to use</a>
+          <ul>
+            <li><a href="#q-what-should-you-consider-when-selecting-a-knowledge-graph">Q: What should you consider when selecting a knowledge graph?</a></li>
+            <li><a href="#q-what-practical-method-can-help-assess-utility">Q: What practical method can help assess utility?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="module4--creating-analysis-ready-dataset-from-patient-timelines">
+  <strong>Module4 : Creating Analysis Ready Dataset from Patient Timelines</strong>
+  <a class="anchor" href="#module4--creating-analysis-ready-dataset-from-patient-timelines">#</a>
+</h2>
+<h2 id="1-turning-clinical-data-into-something-you-can-analyze">
+  1 Turning clinical data into something you can analyze
+  <a class="anchor" href="#1-turning-clinical-data-into-something-you-can-analyze">#</a>
+</h2>
+<hr>
+<h3 id="q-what-is-the-main-objective-of-this-module">
+  Q: What is the main objective of this module?
+  <a class="anchor" href="#q-what-is-the-main-objective-of-this-module">#</a>
+</h3>
+<p>A: To explain how to convert raw clinical data into a patient-feature matrix suitable for analysis and answering research questions.</p>
+<h3 id="q-what-is-a-patient-feature-matrix">
+  Q: What is a patient-feature matrix?
+  <a class="anchor" href="#q-what-is-a-patient-feature-matrix">#</a>
+</h3>
+<p>A: A structured table where each row represents a patient and each column represents a clinical feature or measurement.</p>
+<h3 id="q-what-topics-will-this-module-cover">
+  Q: What topics will this module cover?
+  <a class="anchor" href="#q-what-topics-will-this-module-cover">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Choosing and extracting features</li>
+<li>Managing too many or missing features</li>
+<li>Understanding how data transformations affect analysis outcomes</li>
+</ul>
+<p>➡️  How do we define the unit of analysis in clinical datasets?</p>
+<h2 id="2-defining-the-unit-of-analysis">
+  2 Defining the unit of analysis
+  <a class="anchor" href="#2-defining-the-unit-of-analysis">#</a>
+</h2>
+<hr>
+<h3 id="q-what-is-the-typical-unit-of-analysis-in-clinical-data-studies">
+  Q: What is the typical unit of analysis in clinical data studies?
+  <a class="anchor" href="#q-what-is-the-typical-unit-of-analysis-in-clinical-data-studies">#</a>
+</h3>
+<p>A: The patient — with each row in the data table representing one patient and each column a feature about them.</p>
+<h3 id="q-are-there-other-valid-units-of-analysis">
+  Q: Are there other valid units of analysis?
+  <a class="anchor" href="#q-are-there-other-valid-units-of-analysis">#</a>
+</h3>
+<p>A: Yes. Depending on the question, units can be drug-disease pairs, visits, procedures, or other clinical events.</p>
+<h3 id="q-can-you-give-an-example-of-an-alternative-unit">
+  Q: Can you give an example of an alternative unit?
+  <a class="anchor" href="#q-can-you-give-an-example-of-an-alternative-unit">#</a>
+</h3>
+<p>A: For studying off-label drug use, the unit might be a drug-disease pair, with features describing co-mentions, sequencing, and usage frequency.</p>
+<p>➡️  How do we use features and track their presence in patient data?</p>
+<h2 id="3-using-features-and-the-presence-of-features">
+  3 Using features and the presence of features
+  <a class="anchor" href="#3-using-features-and-the-presence-of-features">#</a>
+</h2>
+<hr>
+<h3 id="q-should-we-use-all-possible-features-extracted-from-clinical-data">
+  Q: Should we use all possible features extracted from clinical data?
+  <a class="anchor" href="#q-should-we-use-all-possible-features-extracted-from-clinical-data">#</a>
+</h3>
+<p>A: Generally yes — start with a full feature set, unless constrained by computational limits or privacy considerations.</p>
+<h3 id="q-what-are-some-reasons-to-remove-features">
+  Q: What are some reasons to remove features?
+  <a class="anchor" href="#q-what-are-some-reasons-to-remove-features">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Resource limitations</li>
+<li>Low predictive value</li>
+<li>Sensitivity concerns (e.g., HIV status)</li>
+</ul>
+<h3 id="q-how-can-presence-or-absence-of-data-itself-become-a-feature">
+  Q: How can presence or absence of data itself become a feature?
+  <a class="anchor" href="#q-how-can-presence-or-absence-of-data-itself-become-a-feature">#</a>
+</h3>
+<p>A: Metadata such as the act of ordering a test (regardless of result) can indicate clinical concern and may be predictive on its own.</p>
+<h3 id="q-what-role-does-metadata-play-in-feature-design">
+  Q: What role does metadata play in feature design?
+  <a class="anchor" href="#q-what-role-does-metadata-play-in-feature-design">#</a>
+</h3>
+<p>A: It can be highly informative, capturing clinical behavior that indirectly reflects patient status.</p>
+<p>➡️  How do we create features from structured clinical sources?</p>
+<h2 id="4-how-to-create-features-from-structured-sources">
+  4 How to create features from structured sources
+  <a class="anchor" href="#4-how-to-create-features-from-structured-sources">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-structured-vs-unstructured-healthcare-data">
+  Q: What are structured vs. unstructured healthcare data?
+  <a class="anchor" href="#q-what-are-structured-vs-unstructured-healthcare-data">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li><strong>Structured</strong>: Organized in tables with rows/columns (e.g., lab results, diagnosis codes)</li>
+<li><strong>Unstructured</strong>: Free text, images, or signals</li>
+</ul>
+<h3 id="q-why-are-structured-sources-important">
+  Q: Why are structured sources important?
+  <a class="anchor" href="#q-why-are-structured-sources-important">#</a>
+</h3>
+<p>A: They are the most readily available and easiest to transform into features for analysis.</p>
+<h3 id="q-what-are-the-main-steps-in-using-structured-data">
+  Q: What are the main steps in using structured data?
+  <a class="anchor" href="#q-what-are-the-main-steps-in-using-structured-data">#</a>
+</h3>
+<p>A:</p>
+<ol>
+<li>Accessing the database</li>
+<li>Querying with SQL</li>
+<li>Joining tables using patient IDs</li>
+<li>Standardizing and reshaping features</li>
+<li>Handling missing or excessive features</li>
+<li>Optionally constructing new ones</li>
+</ol>
+<p>➡️  Why is standardizing features important and how is it done?</p>
+<h2 id="5-standardizing-features">
+  5 Standardizing features
+  <a class="anchor" href="#5-standardizing-features">#</a>
+</h2>
+<hr>
+<h3 id="q-what-does-it-mean-to-standardize-features">
+  Q: What does it mean to standardize features?
+  <a class="anchor" href="#q-what-does-it-mean-to-standardize-features">#</a>
+</h3>
+<p>A: Transforming feature values into a common numerical scale, often called normalization.</p>
+<h3 id="q-why-is-standardization-important">
+  Q: Why is standardization important?
+  <a class="anchor" href="#q-why-is-standardization-important">#</a>
+</h3>
+<p>A: It prevents features with large ranges from dominating distance-based or scale-sensitive algorithms in downstream analysis.</p>
+<h3 id="q-what-are-common-standardization-techniques">
+  Q: What are common standardization techniques?
+  <a class="anchor" href="#q-what-are-common-standardization-techniques">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li><strong>Min-max scaling</strong>: Rescales values to a range (e.g., 0 to 1)</li>
+<li><strong>Z-score normalization</strong>: Transforms values to have mean 0 and standard deviation 1</li>
+</ul>
+<p>➡️  How do we deal with having too many features?</p>
+<h2 id="6-dealing-with-too-many-features">
+  6 Dealing with too many features
+  <a class="anchor" href="#6-dealing-with-too-many-features">#</a>
+</h2>
+<hr>
+<h3 id="q-why-might-you-avoid-using-all-available-features-in-clinical-data">
+  Q: Why might you avoid using all available features in clinical data?
+  <a class="anchor" href="#q-why-might-you-avoid-using-all-available-features-in-clinical-data">#</a>
+</h3>
+<p>A: While comprehensive data is ideal, practical concerns can necessitate reducing features.</p>
+<h3 id="q-what-are-reasons-to-reduce-the-number-of-features">
+  Q: What are reasons to reduce the number of features?
+  <a class="anchor" href="#q-what-are-reasons-to-reduce-the-number-of-features">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li><strong>Irrelevance</strong>: Some features offer no useful signal (e.g., record access frequency)</li>
+<li><strong>Missingness</strong>: Some are missing in most patients</li>
+<li><strong>Sparsity</strong>: Too many features missing in a given patient</li>
+<li><strong>Redundancy</strong>: Highly correlated features interfere with some analyses</li>
+<li><strong>Computational cost</strong>: More features = slower analysis</li>
+<li><strong>Privacy</strong>: More features increase re-identification risk</li>
+</ul>
+<h3 id="q-how-can-this-affect-patient-privacy">
+  Q: How can this affect patient privacy?
+  <a class="anchor" href="#q-how-can-this-affect-patient-privacy">#</a>
+</h3>
+<p>A: A rich set of features can unintentionally reveal a patient’s identity.</p>
+<p>➡️  Where do missing values in clinical data originate?</p>
+<h2 id="7-the-origins-of-missing-values">
+  7 The origins of missing values
+  <a class="anchor" href="#7-the-origins-of-missing-values">#</a>
+</h2>
+<hr>
+<h3 id="q-why-do-missing-values-occur-in-clinical-datasets">
+  Q: Why do missing values occur in clinical datasets?
+  <a class="anchor" href="#q-why-do-missing-values-occur-in-clinical-datasets">#</a>
+</h3>
+<p>A: Missing values often result from converting complex patient timelines into a simplified matrix format where not all features are applicable or expected.</p>
+<h3 id="q-how-is-missingness-different-in-routine-care-vs-prospective-studies">
+  Q: How is missingness different in routine care vs. prospective studies?
+  <a class="anchor" href="#q-how-is-missingness-different-in-routine-care-vs-prospective-studies">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>In <strong>prospective studies</strong>, missing data usually implies an error or oversight.</li>
+<li>In <strong>routine care</strong>, absence might mean the data was never meant to be recorded.</li>
+</ul>
+<h3 id="q-what-are-three-possible-reasons-a-value-is-missing">
+  Q: What are three possible reasons a value is missing?
+  <a class="anchor" href="#q-what-are-three-possible-reasons-a-value-is-missing">#</a>
+</h3>
+<p>A:</p>
+<ol>
+<li>It <strong>should have existed</strong>, but wasn’t recorded.</li>
+<li>It&rsquo;s <strong>absent due to matrix transformation</strong> — not clinically expected.</li>
+<li>Its absence <strong>has meaning</strong> — like no diagnosis implies a negative finding.</li>
+</ol>
+<p>➡️  How do we handle missing values in practice?</p>
+<h2 id="8-dealing-with-missing-values">
+  8 Dealing with missing values
+  <a class="anchor" href="#8-dealing-with-missing-values">#</a>
+</h2>
+<hr>
+<h3 id="q-what-is-imputation-in-clinical-data-analysis">
+  Q: What is imputation in clinical data analysis?
+  <a class="anchor" href="#q-what-is-imputation-in-clinical-data-analysis">#</a>
+</h3>
+<p>A: Imputation is a technique used to fill in missing data using predictions based on other available information.</p>
+<h3 id="q-what-is-column-mean-imputation">
+  Q: What is column-mean imputation?
+  <a class="anchor" href="#q-what-is-column-mean-imputation">#</a>
+</h3>
+<p>A: A simple method where missing values are replaced with the average of non-missing values in the same column.</p>
+<h3 id="q-why-might-column-mean-imputation-be-unsuitable-in-medicine">
+  Q: Why might column-mean imputation be unsuitable in medicine?
+  <a class="anchor" href="#q-why-might-column-mean-imputation-be-unsuitable-in-medicine">#</a>
+</h3>
+<p>A: Because one patient&rsquo;s lab value isn&rsquo;t necessarily informative for another — clinical data often lack this kind of inter-patient correlation.</p>
+<h3 id="q-what-is-a-better-alternative-in-clinical-contexts">
+  Q: What is a better alternative in clinical contexts?
+  <a class="anchor" href="#q-what-is-a-better-alternative-in-clinical-contexts">#</a>
+</h3>
+<p>A: Use <strong>within-patient imputation</strong>: infer a missing value from other known values of that same patient using correlated features.</p>
+<p>➡️  What are the recommended practices for handling missing values?</p>
+<h2 id="9-summary-recommendations-for-missing-values">
+  9 Summary recommendations for missing values
+  <a class="anchor" href="#9-summary-recommendations-for-missing-values">#</a>
+</h2>
+<hr>
+<h3 id="q-should-you-always-impute-missing-values-in-clinical-datasets">
+  Q: Should you always impute missing values in clinical datasets?
+  <a class="anchor" href="#q-should-you-always-impute-missing-values-in-clinical-datasets">#</a>
+</h3>
+<p>A: Not necessarily — it depends on the extent and distribution of missingness. Expert guidance is recommended.</p>
+<h3 id="q-when-is-imputation-appropriate">
+  Q: When is imputation appropriate?
+  <a class="anchor" href="#q-when-is-imputation-appropriate">#</a>
+</h3>
+<p>A: If most values are present and only a few are missing, imputation is usually a good choice.</p>
+<h3 id="q-when-should-you-drop-a-variable">
+  Q: When should you drop a variable?
+  <a class="anchor" href="#q-when-should-you-drop-a-variable">#</a>
+</h3>
+<p>A: If most patients are missing that variable, it&rsquo;s better to exclude it rather than impute unreliable values.</p>
+<h3 id="q-what-about-cases-in-between">
+  Q: What about cases in between?
+  <a class="anchor" href="#q-what-about-cases-in-between">#</a>
+</h3>
+<p>A: There is no universal rule. Some propose using indicator variables to flag imputed values, but this is debated.</p>
+<p>➡️  How are new features constructed from existing data?</p>
+<h2 id="10-constructing-new-features">
+  10 Constructing new features
+  <a class="anchor" href="#10-constructing-new-features">#</a>
+</h2>
+<hr>
+<h3 id="q-what-is-feature-engineering-in-clinical-data-mining">
+  Q: What is feature engineering in clinical data mining?
+  <a class="anchor" href="#q-what-is-feature-engineering-in-clinical-data-mining">#</a>
+</h3>
+<p>A: The process of creating new features from existing ones, often by transformation or combination (e.g., computing BMI from height and weight).</p>
+<h3 id="q-why-is-feature-engineering-valuable">
+  Q: Why is feature engineering valuable?
+  <a class="anchor" href="#q-why-is-feature-engineering-valuable">#</a>
+</h3>
+<p>A: Well-designed features can significantly improve the performance of models — even more than using advanced algorithms with raw data.</p>
+<h3 id="q-what-are-some-simple-examples-of-constructed-features">
+  Q: What are some simple examples of constructed features?
+  <a class="anchor" href="#q-what-are-some-simple-examples-of-constructed-features">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Binary indicators (e.g., converting a count to 1 if &gt; 0)</li>
+<li>Aggregations or ratios</li>
+<li>Clinical scores derived from combinations of measurements</li>
+</ul>
+<p>➡️  What are some practical examples of feature engineering in healthcare?</p>
+<h2 id="11-examples-of-engineered-features">
+  11 Examples of engineered features
+  <a class="anchor" href="#11-examples-of-engineered-features">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-clinical-scoring-systems-in-feature-engineering">
+  Q: What are clinical scoring systems in feature engineering?
+  <a class="anchor" href="#q-what-are-clinical-scoring-systems-in-feature-engineering">#</a>
+</h3>
+<p>A: Formulas that combine multiple clinical values to estimate disease severity or health status — commonly used in risk adjustment.</p>
+<h3 id="q-what-is-an-example-of-a-simple-scoring-system">
+  Q: What is an example of a simple scoring system?
+  <a class="anchor" href="#q-what-is-an-example-of-a-simple-scoring-system">#</a>
+</h3>
+<p>A: <strong>Body Mass Index (BMI)</strong> — calculated from height and weight to assess obesity.</p>
+<h3 id="q-what-are-examples-of-comorbidity-scoring-systems">
+  Q: What are examples of comorbidity scoring systems?
+  <a class="anchor" href="#q-what-are-examples-of-comorbidity-scoring-systems">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li><strong>Charlson Comorbidity Index</strong></li>
+<li><strong>Elixhauser Comorbidity Index</strong></li>
+</ul>
+<h3 id="q-can-non-clinical-features-also-be-engineered">
+  Q: Can non-clinical features also be engineered?
+  <a class="anchor" href="#q-can-non-clinical-features-also-be-engineered">#</a>
+</h3>
+<p>A: Yes — proxy features like zip code (socioeconomic status) and record frequency (healthcare utilization) can be derived.</p>
+<p>➡️  When should you consider engineering new features?</p>
+<h2 id="12-when-to-consider-engineered-features">
+  12 When to consider engineered features
+  <a class="anchor" href="#12-when-to-consider-engineered-features">#</a>
+</h2>
+<hr>
+<h3 id="q-when-should-you-engineer-new-features-in-clinical-datasets">
+  Q: When should you engineer new features in clinical datasets?
+  <a class="anchor" href="#q-when-should-you-engineer-new-features-in-clinical-datasets">#</a>
+</h3>
+<p>A: When important concepts are not directly captured in the raw data — consider proxies or derived variables to fill the gap.</p>
+<h3 id="q-what-strategies-can-guide-feature-creation">
+  Q: What strategies can guide feature creation?
+  <a class="anchor" href="#q-what-strategies-can-guide-feature-creation">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Use <strong>clinical intuition</strong></li>
+<li>Include <strong>counts</strong>, <strong>changes over time</strong>, or <strong>ratios</strong></li>
+<li>Repurpose <strong>validated scoring systems</strong></li>
+</ul>
+<h3 id="q-what-trade-offs-should-be-considered">
+  Q: What trade-offs should be considered?
+  <a class="anchor" href="#q-what-trade-offs-should-be-considered">#</a>
+</h3>
+<p>A: Balance the benefit of a new feature against the effort required to create and validate it.</p>
+<h3 id="q-can-models-ever-learn-features-automatically">
+  Q: Can models ever learn features automatically?
+  <a class="anchor" href="#q-can-models-ever-learn-features-automatically">#</a>
+</h3>
+<p>A: Yes — deep learning methods can learn features directly from raw data, reducing the need for manual feature engineering.</p>
+<p>➡️  What are the main takeaways about creating analysis-ready datasets?</p>
+<h2 id="13-main-points-about-creating-analysis-ready-datasets">
+  13 Main points about creating analysis ready datasets
+  <a class="anchor" href="#13-main-points-about-creating-analysis-ready-datasets">#</a>
+</h2>
+<hr>
+<h3 id="q-what-is-an-analysis-ready-dataset-in-clinical-research">
+  Q: What is an analysis-ready dataset in clinical research?
+  <a class="anchor" href="#q-what-is-an-analysis-ready-dataset-in-clinical-research">#</a>
+</h3>
+<p>A: A clean, structured patient-feature matrix derived from raw clinical data and suitable for analysis.</p>
+<h3 id="q-what-tools-are-commonly-used-to-construct-it">
+  Q: What tools are commonly used to construct it?
+  <a class="anchor" href="#q-what-tools-are-commonly-used-to-construct-it">#</a>
+</h3>
+<p>A: Standard programming tools and database queries (e.g., S### QL + Python).</p>
+<h3 id="q-how-can-the-number-of-features-be-reduced">
+  Q: How can the number of features be reduced?
+  <a class="anchor" href="#q-how-can-the-number-of-features-be-reduced">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Domain knowledge to combine or drop variables</li>
+<li>Mathematical methods like <strong>Principal Component Analysis (PCA)</strong></li>
+</ul>
+<h3 id="q-how-are-missing-values-handled">
+  Q: How are missing values handled?
+  <a class="anchor" href="#q-how-are-missing-values-handled">#</a>
+</h3>
+<p>A: Either removed or imputed, using varying levels of complexity depending on the case.</p>
+<h3 id="q-what-boosts-success-in-dataset-creation">
+  Q: What boosts success in dataset creation?
+  <a class="anchor" href="#q-what-boosts-success-in-dataset-creation">#</a>
+</h3>
+<p>A: Learning the <strong>clinical context</strong> of the question — deeper medical understanding improves data transformations and feature design.</p>
+<p>➡️  What are structured knowledge graphs, and how do they relate to datasets?</p>
+<h2 id="14-structured-knowledge-graphs">
+  14 Structured knowledge graphs
+  <a class="anchor" href="#14-structured-knowledge-graphs">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-the-two-key-topics-in-this-part-of-the-module">
+  Q: What are the two key topics in this part of the module?
+  <a class="anchor" href="#q-what-are-the-two-key-topics-in-this-part-of-the-module">#</a>
+</h3>
+<p>A:</p>
+<ol>
+<li>Constructing a patient feature matrix</li>
+<li>Using curated biomedical knowledge (via knowledge graphs)</li>
+</ol>
+<h3 id="q-what-is-a-knowledge-graph-in-healthcare">
+  Q: What is a knowledge graph in healthcare?
+  <a class="anchor" href="#q-what-is-a-knowledge-graph-in-healthcare">#</a>
+</h3>
+<p>A: A structured digital representation of biomedical entities (e.g., diseases, drugs, lab tests) and their relationships — also known as an ontology.</p>
+<h3 id="q-why-are-knowledge-graphs-useful">
+  Q: Why are knowledge graphs useful?
+  <a class="anchor" href="#q-why-are-knowledge-graphs-useful">#</a>
+</h3>
+<p>A: They encode expert knowledge in a machine-readable way, enabling smarter feature construction, search, and data linkage.</p>
+<h3 id="q-what-are-examples-of-implicit-prior-knowledge-use">
+  Q: What are examples of implicit prior knowledge use?
+  <a class="anchor" href="#q-what-are-examples-of-implicit-prior-knowledge-use">#</a>
+</h3>
+<p>A: Using test order counts related to glucose as a proxy for diabetes — derived from domain knowledge.</p>
+<p>➡️  What exactly is contained in a biomedical knowledge graph?</p>
+<h2 id="15-so-what-exactly-is-in-a-knowledge-graph">
+  15 So what exactly is in a knowledge graph
+  <a class="anchor" href="#15-so-what-exactly-is-in-a-knowledge-graph">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-the-core-components-of-a-biomedical-knowledge-graph">
+  Q: What are the core components of a biomedical knowledge graph?
+  <a class="anchor" href="#q-what-are-the-core-components-of-a-biomedical-knowledge-graph">#</a>
+</h3>
+<p>A:</p>
+<ol>
+<li><strong>Entities</strong>: e.g., symptoms, diseases, drugs, body parts</li>
+<li><strong>Synonyms</strong>: mappings of equivalent terms (e.g., &ldquo;heart attack&rdquo; = &ldquo;acute myocardial infarction&rdquo;)</li>
+<li><strong>Relationships</strong>: logical links between entities (e.g., &ldquo;is a kind of&rdquo;)</li>
+</ol>
+<h3 id="q-what-is-the-most-important-type-of-relationship-in-medical-knowledge-graphs">
+  Q: What is the most important type of relationship in medical knowledge graphs?
+  <a class="anchor" href="#q-what-is-the-most-important-type-of-relationship-in-medical-knowledge-graphs">#</a>
+</h3>
+<p>A: The &ldquo;is a kind of&rdquo; relationship — it defines hierarchies (e.g., Lipitor is a kind of lipid-lowering drug).</p>
+<h3 id="q-what-benefit-does-this-hierarchical-structure-provide">
+  Q: What benefit does this hierarchical structure provide?
+  <a class="anchor" href="#q-what-benefit-does-this-hierarchical-structure-provide">#</a>
+</h3>
+<p>A: Entities inherit properties from broader categories, enabling powerful reasoning and search (e.g., querying all &ldquo;lipid-lowering drugs&rdquo;).</p>
+<p>➡️  What are the most important knowledge graphs in biomedicine?</p>
+<h2 id="16-what-are-important-knowledge-graphs">
+  16 What are important knowledge graphs
+  <a class="anchor" href="#16-what-are-important-knowledge-graphs">#</a>
+</h2>
+<hr>
+<h3 id="q-where-can-you-find-biomedical-knowledge-graphs">
+  Q: Where can you find biomedical knowledge graphs?
+  <a class="anchor" href="#q-where-can-you-find-biomedical-knowledge-graphs">#</a>
+</h3>
+<p>A: One central repository is <strong>BioPortal</strong> from the National Center for Biomedical Ontology at Stanford.</p>
+<h3 id="q-what-are-some-widely-used-biomedical-ontologies">
+  Q: What are some widely used biomedical ontologies?
+  <a class="anchor" href="#q-what-are-some-widely-used-biomedical-ontologies">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li><strong>ICD (International Classification of Diseases)</strong>: Maintained by WHO; used globally for diagnosis coding (ICD-9, ICD-10).</li>
+<li><strong>CPT (Current Procedural Terminology)</strong>: Created by the AMA to categorize procedures and services, mainly for billing.</li>
+</ul>
+<h3 id="q-why-are-icd-9-and-icd-10-both-relevant-today">
+  Q: Why are ICD-9 and ICD-10 both relevant today?
+  <a class="anchor" href="#q-why-are-icd-9-and-icd-10-both-relevant-today">#</a>
+</h3>
+<p>A: Many clinical datasets still use ICD-9 codes even though ICD-10 is current, especially in older patient records.</p>
+<p>➡️  How do we choose which knowledge graph to use in practice?</p>
+<h2 id="17-how-to-choose-which-knowledge-graph-to-use">
+  17 How to choose which knowledge graph to use
+  <a class="anchor" href="#17-how-to-choose-which-knowledge-graph-to-use">#</a>
+</h2>
+<hr>
+<h3 id="q-what-should-you-consider-when-selecting-a-knowledge-graph">
+  Q: What should you consider when selecting a knowledge graph?
+  <a class="anchor" href="#q-what-should-you-consider-when-selecting-a-knowledge-graph">#</a>
+</h3>
+<p>A:</p>
+<ol>
+<li><strong>Entity types</strong> and how they are classified</li>
+<li><strong>Relationship meanings</strong> between entities</li>
+<li><strong>Terminology</strong>: presence of synonyms and spelling variants</li>
+<li><strong>Interoperability</strong>: how well the graph maps to other knowledge graphs</li>
+</ol>
+<h3 id="q-what-practical-method-can-help-assess-utility">
+  Q: What practical method can help assess utility?
+  <a class="anchor" href="#q-what-practical-method-can-help-assess-utility">#</a>
+</h3>
+<p>A: Count how many terms from the knowledge graph appear in EMR text or data — this indicates how relevant and compatible it is with your dataset.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module4--creating-analysis-ready-dataset-from-patient-timelines"><strong>Module4 : Creating Analysis Ready Dataset from Patient Timelines</strong></a></li>
+        <li><a href="#1-turning-clinical-data-into-something-you-can-analyze">1 Turning clinical data into something you can analyze</a>
+          <ul>
+            <li><a href="#q-what-is-the-main-objective-of-this-module">Q: What is the main objective of this module?</a></li>
+            <li><a href="#q-what-is-a-patient-feature-matrix">Q: What is a patient-feature matrix?</a></li>
+            <li><a href="#q-what-topics-will-this-module-cover">Q: What topics will this module cover?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-defining-the-unit-of-analysis">2 Defining the unit of analysis</a>
+          <ul>
+            <li><a href="#q-what-is-the-typical-unit-of-analysis-in-clinical-data-studies">Q: What is the typical unit of analysis in clinical data studies?</a></li>
+            <li><a href="#q-are-there-other-valid-units-of-analysis">Q: Are there other valid units of analysis?</a></li>
+            <li><a href="#q-can-you-give-an-example-of-an-alternative-unit">Q: Can you give an example of an alternative unit?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-using-features-and-the-presence-of-features">3 Using features and the presence of features</a>
+          <ul>
+            <li><a href="#q-should-we-use-all-possible-features-extracted-from-clinical-data">Q: Should we use all possible features extracted from clinical data?</a></li>
+            <li><a href="#q-what-are-some-reasons-to-remove-features">Q: What are some reasons to remove features?</a></li>
+            <li><a href="#q-how-can-presence-or-absence-of-data-itself-become-a-feature">Q: How can presence or absence of data itself become a feature?</a></li>
+            <li><a href="#q-what-role-does-metadata-play-in-feature-design">Q: What role does metadata play in feature design?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-how-to-create-features-from-structured-sources">4 How to create features from structured sources</a>
+          <ul>
+            <li><a href="#q-what-are-structured-vs-unstructured-healthcare-data">Q: What are structured vs. unstructured healthcare data?</a></li>
+            <li><a href="#q-why-are-structured-sources-important">Q: Why are structured sources important?</a></li>
+            <li><a href="#q-what-are-the-main-steps-in-using-structured-data">Q: What are the main steps in using structured data?</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-standardizing-features">5 Standardizing features</a>
+          <ul>
+            <li><a href="#q-what-does-it-mean-to-standardize-features">Q: What does it mean to standardize features?</a></li>
+            <li><a href="#q-why-is-standardization-important">Q: Why is standardization important?</a></li>
+            <li><a href="#q-what-are-common-standardization-techniques">Q: What are common standardization techniques?</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-dealing-with-too-many-features">6 Dealing with too many features</a>
+          <ul>
+            <li><a href="#q-why-might-you-avoid-using-all-available-features-in-clinical-data">Q: Why might you avoid using all available features in clinical data?</a></li>
+            <li><a href="#q-what-are-reasons-to-reduce-the-number-of-features">Q: What are reasons to reduce the number of features?</a></li>
+            <li><a href="#q-how-can-this-affect-patient-privacy">Q: How can this affect patient privacy?</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-the-origins-of-missing-values">7 The origins of missing values</a>
+          <ul>
+            <li><a href="#q-why-do-missing-values-occur-in-clinical-datasets">Q: Why do missing values occur in clinical datasets?</a></li>
+            <li><a href="#q-how-is-missingness-different-in-routine-care-vs-prospective-studies">Q: How is missingness different in routine care vs. prospective studies?</a></li>
+            <li><a href="#q-what-are-three-possible-reasons-a-value-is-missing">Q: What are three possible reasons a value is missing?</a></li>
+          </ul>
+        </li>
+        <li><a href="#8-dealing-with-missing-values">8 Dealing with missing values</a>
+          <ul>
+            <li><a href="#q-what-is-imputation-in-clinical-data-analysis">Q: What is imputation in clinical data analysis?</a></li>
+            <li><a href="#q-what-is-column-mean-imputation">Q: What is column-mean imputation?</a></li>
+            <li><a href="#q-why-might-column-mean-imputation-be-unsuitable-in-medicine">Q: Why might column-mean imputation be unsuitable in medicine?</a></li>
+            <li><a href="#q-what-is-a-better-alternative-in-clinical-contexts">Q: What is a better alternative in clinical contexts?</a></li>
+          </ul>
+        </li>
+        <li><a href="#9-summary-recommendations-for-missing-values">9 Summary recommendations for missing values</a>
+          <ul>
+            <li><a href="#q-should-you-always-impute-missing-values-in-clinical-datasets">Q: Should you always impute missing values in clinical datasets?</a></li>
+            <li><a href="#q-when-is-imputation-appropriate">Q: When is imputation appropriate?</a></li>
+            <li><a href="#q-when-should-you-drop-a-variable">Q: When should you drop a variable?</a></li>
+            <li><a href="#q-what-about-cases-in-between">Q: What about cases in between?</a></li>
+          </ul>
+        </li>
+        <li><a href="#10-constructing-new-features">10 Constructing new features</a>
+          <ul>
+            <li><a href="#q-what-is-feature-engineering-in-clinical-data-mining">Q: What is feature engineering in clinical data mining?</a></li>
+            <li><a href="#q-why-is-feature-engineering-valuable">Q: Why is feature engineering valuable?</a></li>
+            <li><a href="#q-what-are-some-simple-examples-of-constructed-features">Q: What are some simple examples of constructed features?</a></li>
+          </ul>
+        </li>
+        <li><a href="#11-examples-of-engineered-features">11 Examples of engineered features</a>
+          <ul>
+            <li><a href="#q-what-are-clinical-scoring-systems-in-feature-engineering">Q: What are clinical scoring systems in feature engineering?</a></li>
+            <li><a href="#q-what-is-an-example-of-a-simple-scoring-system">Q: What is an example of a simple scoring system?</a></li>
+            <li><a href="#q-what-are-examples-of-comorbidity-scoring-systems">Q: What are examples of comorbidity scoring systems?</a></li>
+            <li><a href="#q-can-non-clinical-features-also-be-engineered">Q: Can non-clinical features also be engineered?</a></li>
+          </ul>
+        </li>
+        <li><a href="#12-when-to-consider-engineered-features">12 When to consider engineered features</a>
+          <ul>
+            <li><a href="#q-when-should-you-engineer-new-features-in-clinical-datasets">Q: When should you engineer new features in clinical datasets?</a></li>
+            <li><a href="#q-what-strategies-can-guide-feature-creation">Q: What strategies can guide feature creation?</a></li>
+            <li><a href="#q-what-trade-offs-should-be-considered">Q: What trade-offs should be considered?</a></li>
+            <li><a href="#q-can-models-ever-learn-features-automatically">Q: Can models ever learn features automatically?</a></li>
+          </ul>
+        </li>
+        <li><a href="#13-main-points-about-creating-analysis-ready-datasets">13 Main points about creating analysis ready datasets</a>
+          <ul>
+            <li><a href="#q-what-is-an-analysis-ready-dataset-in-clinical-research">Q: What is an analysis-ready dataset in clinical research?</a></li>
+            <li><a href="#q-what-tools-are-commonly-used-to-construct-it">Q: What tools are commonly used to construct it?</a></li>
+            <li><a href="#q-how-can-the-number-of-features-be-reduced">Q: How can the number of features be reduced?</a></li>
+            <li><a href="#q-how-are-missing-values-handled">Q: How are missing values handled?</a></li>
+            <li><a href="#q-what-boosts-success-in-dataset-creation">Q: What boosts success in dataset creation?</a></li>
+          </ul>
+        </li>
+        <li><a href="#14-structured-knowledge-graphs">14 Structured knowledge graphs</a>
+          <ul>
+            <li><a href="#q-what-are-the-two-key-topics-in-this-part-of-the-module">Q: What are the two key topics in this part of the module?</a></li>
+            <li><a href="#q-what-is-a-knowledge-graph-in-healthcare">Q: What is a knowledge graph in healthcare?</a></li>
+            <li><a href="#q-why-are-knowledge-graphs-useful">Q: Why are knowledge graphs useful?</a></li>
+            <li><a href="#q-what-are-examples-of-implicit-prior-knowledge-use">Q: What are examples of implicit prior knowledge use?</a></li>
+          </ul>
+        </li>
+        <li><a href="#15-so-what-exactly-is-in-a-knowledge-graph">15 So what exactly is in a knowledge graph</a>
+          <ul>
+            <li><a href="#q-what-are-the-core-components-of-a-biomedical-knowledge-graph">Q: What are the core components of a biomedical knowledge graph?</a></li>
+            <li><a href="#q-what-is-the-most-important-type-of-relationship-in-medical-knowledge-graphs">Q: What is the most important type of relationship in medical knowledge graphs?</a></li>
+            <li><a href="#q-what-benefit-does-this-hierarchical-structure-provide">Q: What benefit does this hierarchical structure provide?</a></li>
+          </ul>
+        </li>
+        <li><a href="#16-what-are-important-knowledge-graphs">16 What are important knowledge graphs</a>
+          <ul>
+            <li><a href="#q-where-can-you-find-biomedical-knowledge-graphs">Q: Where can you find biomedical knowledge graphs?</a></li>
+            <li><a href="#q-what-are-some-widely-used-biomedical-ontologies">Q: What are some widely used biomedical ontologies?</a></li>
+            <li><a href="#q-why-are-icd-9-and-icd-10-both-relevant-today">Q: Why are ICD-9 and ICD-10 both relevant today?</a></li>
+          </ul>
+        </li>
+        <li><a href="#17-how-to-choose-which-knowledge-graph-to-use">17 How to choose which knowledge graph to use</a>
+          <ul>
+            <li><a href="#q-what-should-you-consider-when-selecting-a-knowledge-graph">Q: What should you consider when selecting a knowledge graph?</a></li>
+            <li><a href="#q-what-practical-method-can-help-assess-utility">Q: What practical method can help assess utility?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

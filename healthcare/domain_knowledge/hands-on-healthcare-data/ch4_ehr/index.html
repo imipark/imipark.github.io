@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Ch4 Deep Dive – Electronic Health Records (EHR) 
+
+
+
+
+  Q1: What is the central focus of Chapter 4?
+  #
+
+Chapter 4 focuses on working with electronic health record (EHR) data using the MIMIC-III dataset, and explores medication harmonization using SQL, Neo4j (property graph), and TypeDB (typed hypergraph).
+
+
+  Q2: What makes working with EHR data complex?
+  #
+
+
+EHRs are highly structured but vary between implementations.
+Data is often redundant, inconsistent, or missing.
+Clinical context and domain knowledge are crucial for correct interpretation.
+
+
+
+  Q3: Why was medication harmonization chosen as the use case?
+  #
+
+Because medications are objective and widely used in EHRs, but the same drug can appear under multiple names or codes (e.g. NDCs). Harmonization is necessary to:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/hands-on-healthcare-data/ch4_ehr/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Ch4 EHR">
+  <meta property="og:description" content="Ch4 Deep Dive – Electronic Health Records (EHR) Q1: What is the central focus of Chapter 4? # Chapter 4 focuses on working with electronic health record (EHR) data using the MIMIC-III dataset, and explores medication harmonization using SQL, Neo4j (property graph), and TypeDB (typed hypergraph).
+Q2: What makes working with EHR data complex? # EHRs are highly structured but vary between implementations. Data is often redundant, inconsistent, or missing. Clinical context and domain knowledge are crucial for correct interpretation. Q3: Why was medication harmonization chosen as the use case? # Because medications are objective and widely used in EHRs, but the same drug can appear under multiple names or codes (e.g. NDCs). Harmonization is necessary to:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Ch4 EHR | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/hands-on-healthcare-data/ch4_ehr/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle" checked />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Ch4 EHR</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-what-is-the-central-focus-of-chapter-4">Q1: What is the central focus of Chapter 4?</a></li>
+            <li><a href="#q2-what-makes-working-with-ehr-data-complex">Q2: What makes working with EHR data complex?</a></li>
+            <li><a href="#q3-why-was-medication-harmonization-chosen-as-the-use-case">Q3: Why was <strong>medication harmonization</strong> chosen as the use case?</a></li>
+            <li><a href="#q4-how-is-this-implemented-using-sql-sqlite">Q4: How is this implemented using <strong>SQL (SQLite)</strong>?</a></li>
+            <li><a href="#q5-what-are-the-challenges-of-the-sql-approach">Q5: What are the challenges of the SQL approach?</a></li>
+            <li><a href="#q6-how-does-neo4j-property-graph-improve-the-workflow">Q6: How does <strong>Neo4j</strong> (property graph) improve the workflow?</a></li>
+            <li><a href="#q7-how-are-concepts-created-in-neo4j">Q7: How are concepts created in Neo4j?</a></li>
+            <li><a href="#q8-how-does-typedb-enhance-this-model-further">Q8: How does <strong>TypeDB</strong> enhance this model further?</a></li>
+            <li><a href="#q9-what-are-the-two-approaches-to-harmonization-in-typedb">Q9: What are the two approaches to harmonization in TypeDB?</a></li>
+            <li><a href="#q10-what-are-the-tradeoffs-between-approaches">Q10: What are the tradeoffs between approaches?</a></li>
+            <li><a href="#q11-what-are-the-broader-lessons">Q11: What are the broader lessons?</a></li>
+          </ul>
+        </li>
+        <li><a href="#-curriculum-task-based-summary-chapter-4">🧠 Curriculum Task-Based Summary (Chapter 4)</a>
+          <ul>
+            <li><a href="#-1-understanding-ehr-data-models">🔹 1. Understanding EHR Data Models</a></li>
+            <li><a href="#-2-setup-and-load-ehr-data-mimic-iii">🔹 2. Setup and Load EHR Data (MIMIC-III)</a></li>
+            <li><a href="#-3-medication-harmonization-use-case">🔹 3. Medication Harmonization Use Case</a></li>
+            <li><a href="#-4-query-and-harmonize-in-three-paradigms">🔹 4. Query and Harmonize in Three Paradigms</a></li>
+            <li><a href="#-5-linkage-and-reasoning">🔹 5. Linkage and Reasoning</a></li>
+            <li><a href="#-6-evaluate-tradeoffs-and-performance">🔹 6. Evaluate Tradeoffs and Performance</a></li>
+          </ul>
+        </li>
+        <li><a href="#-end-of-chapter-outcome">✅ End of Chapter Outcome</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Ch4 Deep Dive – Electronic Health Records (EHR) 
+</strong>
+</p>
+<hr>
+<h3 id="q1-what-is-the-central-focus-of-chapter-4">
+  Q1: What is the central focus of Chapter 4?
+  <a class="anchor" href="#q1-what-is-the-central-focus-of-chapter-4">#</a>
+</h3>
+<p>Chapter 4 focuses on working with electronic health record (EHR) data using the <strong>MIMIC-III</strong> dataset, and explores <strong>medication harmonization</strong> using SQL, Neo4j (property graph), and TypeDB (typed hypergraph).</p>
+<hr>
+<h3 id="q2-what-makes-working-with-ehr-data-complex">
+  Q2: What makes working with EHR data complex?
+  <a class="anchor" href="#q2-what-makes-working-with-ehr-data-complex">#</a>
+</h3>
+<ul>
+<li>EHRs are <strong>highly structured</strong> but vary between implementations.</li>
+<li>Data is often <strong>redundant, inconsistent, or missing</strong>.</li>
+<li>Clinical context and domain knowledge are crucial for correct interpretation.</li>
+</ul>
+<hr>
+<h3 id="q3-why-was-medication-harmonization-chosen-as-the-use-case">
+  Q3: Why was <strong>medication harmonization</strong> chosen as the use case?
+  <a class="anchor" href="#q3-why-was-medication-harmonization-chosen-as-the-use-case">#</a>
+</h3>
+<p>Because medications are objective and widely used in EHRs, but the <strong>same drug</strong> can appear under multiple names or codes (e.g. NDCs). Harmonization is necessary to:</p>
+<ul>
+<li>Normalize names or codes.</li>
+<li>Filter out forms like &ldquo;heparin flush&rdquo; vs &ldquo;therapeutic heparin&rdquo;.</li>
+</ul>
+<hr>
+<h3 id="q4-how-is-this-implemented-using-sql-sqlite">
+  Q4: How is this implemented using <strong>SQL (SQLite)</strong>?
+  <a class="anchor" href="#q4-how-is-this-implemented-using-sql-sqlite">#</a>
+</h3>
+<ul>
+<li>CSVs are loaded into SQLite tables.</li>
+<li>Free-text string search is done across drug name columns (e.g., <code>drug_name_generic</code> LIKE &ldquo;%heparin%&rdquo;).</li>
+<li>NDC-based harmonization is done by:
+<ul>
+<li>Extracting distinct NDCs.</li>
+<li>Filtering to include only valid/therapeutic ones.</li>
+<li>Rewriting queries using explicit <code>WHERE ndc IN (...)</code> clauses.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="q5-what-are-the-challenges-of-the-sql-approach">
+  Q5: What are the challenges of the SQL approach?
+  <a class="anchor" href="#q5-what-are-the-challenges-of-the-sql-approach">#</a>
+</h3>
+<ul>
+<li>Hard to maintain mappings (e.g., repeated NDC lists).</li>
+<li>Poor separation of concerns (clinical logic leaks into queries).</li>
+<li>Not reusable across projects or datasets.</li>
+</ul>
+<hr>
+<h3 id="q6-how-does-neo4j-property-graph-improve-the-workflow">
+  Q6: How does <strong>Neo4j</strong> (property graph) improve the workflow?
+  <a class="anchor" href="#q6-how-does-neo4j-property-graph-improve-the-workflow">#</a>
+</h3>
+<ul>
+<li>Drug instances are modeled as <strong>nodes</strong>, and a new <strong>&ldquo;heparin (non-flush)&rdquo; concept</strong> is created.</li>
+<li><strong>Relationships</strong> connect drug nodes to patients and prescriptions.</li>
+<li>Reusability improves because mappings are <strong>stored inside the graph</strong>.</li>
+<li>Queries become more <strong>semantic</strong>, e.g., follow a concept node rather than duplicating NDCs in every query.</li>
+</ul>
+<hr>
+<h3 id="q7-how-are-concepts-created-in-neo4j">
+  Q7: How are concepts created in Neo4j?
+  <a class="anchor" href="#q7-how-are-concepts-created-in-neo4j">#</a>
+</h3>
+<ul>
+<li>A node like <code>Drug:Knowledge { drug: &quot;Heparin (non-flush)&quot;, ... }</code> is created.</li>
+<li>Drug nodes are linked to it via <code>[:for_drug {derived: true}]</code> relationships.</li>
+<li>This enables querying &ldquo;all patients on this drug concept.&rdquo;</li>
+</ul>
+<hr>
+<h3 id="q8-how-does-typedb-enhance-this-model-further">
+  Q8: How does <strong>TypeDB</strong> enhance this model further?
+  <a class="anchor" href="#q8-how-does-typedb-enhance-this-model-further">#</a>
+</h3>
+<ul>
+<li>TypeDB uses <strong>strong typing</strong> and <strong>roles</strong> to model relations:
+<ul>
+<li><code>patient plays prescription:patient</code></li>
+<li><code>druginstance plays prescription:prescribed_drug</code></li>
+</ul>
+</li>
+<li>Separate <code>druginstance</code> entity and <code>prescription</code> relation.</li>
+<li>Can add inference rules to dynamically associate drugs with higher-level concepts.</li>
+</ul>
+<hr>
+<h3 id="q9-what-are-the-two-approaches-to-harmonization-in-typedb">
+  Q9: What are the two approaches to harmonization in TypeDB?
+  <a class="anchor" href="#q9-what-are-the-two-approaches-to-harmonization-in-typedb">#</a>
+</h3>
+<ol>
+<li><strong>Persisted</strong>:
+<ul>
+<li>Insert actual hierarchy facts: <code>(parent: heparin, child: drug) isa hierarchy</code>.</li>
+</ul>
+</li>
+<li><strong>Rule-based</strong>:
+<ul>
+<li>Use rules like:
+<pre tabindex="0"><code class="language-typeql" data-lang="typeql">rule heparin-rule:
+when { $d has ndc &#34;xxxx&#34;; $c has purl &#34;...&#34;; } then { (parent: $c, child: $d) isa hierarchy; }
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="q10-what-are-the-tradeoffs-between-approaches">
+  Q10: What are the tradeoffs between approaches?
+  <a class="anchor" href="#q10-what-are-the-tradeoffs-between-approaches">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Model</th>
+          <th>Pros</th>
+          <th>Cons</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SQL</td>
+          <td>Ubiquitous, accessible</td>
+          <td>Poor semantics, duplication of logic</td>
+      </tr>
+      <tr>
+          <td>Neo4j</td>
+          <td>Intuitive graph model, reusable concepts</td>
+          <td>Fragile schemas, performance concerns</td>
+      </tr>
+      <tr>
+          <td>TypeDB</td>
+          <td>Semantic precision, rule engine</td>
+          <td>Newer ecosystem, complexity, fewer tools</td>
+      </tr>
+      <tr>
+          <td>RDF Graph</td>
+          <td>Web standard, portable</td>
+          <td>Very steep learning curve</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="q11-what-are-the-broader-lessons">
+  Q11: What are the broader lessons?
+  <a class="anchor" href="#q11-what-are-the-broader-lessons">#</a>
+</h3>
+<ul>
+<li><strong>Separate clinical knowledge from code.</strong></li>
+<li>Choose modeling strategies based on:
+<ul>
+<li>Project duration</li>
+<li>Tooling maturity</li>
+<li>Frequency of schema changes</li>
+<li>Collaboration needs</li>
+</ul>
+</li>
+<li><strong>Use graphs or TypeDB to encode reusable logic</strong> and keep queries clean.</li>
+</ul>
+<hr>
+<h2 id="-curriculum-task-based-summary-chapter-4">
+  🧠 Curriculum Task-Based Summary (Chapter 4)
+  <a class="anchor" href="#-curriculum-task-based-summary-chapter-4">#</a>
+</h2>
+<h3 id="-1-understanding-ehr-data-models">
+  🔹 1. Understanding EHR Data Models
+  <a class="anchor" href="#-1-understanding-ehr-data-models">#</a>
+</h3>
+<ul>
+<li>Compare OMOP, FHIR, i2b2, PCORnet, ADaM, SDTM.</li>
+<li>Explore role of <strong>implementation guides</strong> and <strong>FHIR profiles</strong>.</li>
+</ul>
+<h3 id="-2-setup-and-load-ehr-data-mimic-iii">
+  🔹 2. Setup and Load EHR Data (MIMIC-III)
+  <a class="anchor" href="#-2-setup-and-load-ehr-data-mimic-iii">#</a>
+</h3>
+<ul>
+<li>Use SQLite to ingest <code>.csv</code> files (Example 4-1).</li>
+<li>Use Neo4j or TypeDB containers (Docker).</li>
+<li>Load and explore data with basic queries.</li>
+</ul>
+<h3 id="-3-medication-harmonization-use-case">
+  🔹 3. Medication Harmonization Use Case
+  <a class="anchor" href="#-3-medication-harmonization-use-case">#</a>
+</h3>
+<ul>
+<li>Focus on <strong>heparin</strong>, and identify pitfalls with NDC codes.</li>
+<li>Extract and deduplicate NDCs from <code>prescriptions</code>.</li>
+<li>Build queries that target therapeutic use only.</li>
+</ul>
+<h3 id="-4-query-and-harmonize-in-three-paradigms">
+  🔹 4. Query and Harmonize in Three Paradigms
+  <a class="anchor" href="#-4-query-and-harmonize-in-three-paradigms">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Task</th>
+          <th>SQL</th>
+          <th>Neo4j</th>
+          <th>TypeDB</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Load data</td>
+          <td>pandas + sqlite3</td>
+          <td>pandas + NeoInterface</td>
+          <td>pandas + TypeDB client</td>
+      </tr>
+      <tr>
+          <td>Query for &ldquo;heparin&rdquo;</td>
+          <td><code>LIKE</code> on drug names</td>
+          <td><code>toLower(drug_name) CONTAINS</code></td>
+          <td><code>drug has name contains</code></td>
+      </tr>
+      <tr>
+          <td>Harmonization</td>
+          <td>Filter with <code>ndc IN (...)</code></td>
+          <td>Create concept node + edges</td>
+          <td>Insert facts or define rules</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="-5-linkage-and-reasoning">
+  🔹 5. Linkage and Reasoning
+  <a class="anchor" href="#-5-linkage-and-reasoning">#</a>
+</h3>
+<ul>
+<li>Create custom drug concepts.</li>
+<li>Track prescriptions per patient.</li>
+<li>Link concepts using:
+<ul>
+<li>SQL joins</li>
+<li>Neo4j <code>(:Patient)-[:has_prescription]-&gt;(:Drug)</code></li>
+<li>TypeDB <code>roles</code> + <code>rules</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="-6-evaluate-tradeoffs-and-performance">
+  🔹 6. Evaluate Tradeoffs and Performance
+  <a class="anchor" href="#-6-evaluate-tradeoffs-and-performance">#</a>
+</h3>
+<ul>
+<li>Review table of pros/cons (Table 4-2).</li>
+<li>Balance:
+<ul>
+<li>Query simplicity vs data model reusability.</li>
+<li>Rule-driven inference vs static mapping.</li>
+<li>Ecosystem maturity.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-end-of-chapter-outcome">
+  ✅ End of Chapter Outcome
+  <a class="anchor" href="#-end-of-chapter-outcome">#</a>
+</h2>
+<p>You should now be able to:</p>
+<ul>
+<li>Choose the right data model (SQL, graph, hypergraph) for your RWD task.</li>
+<li>Implement and harmonize medication concepts.</li>
+<li>Balance engineering choices with clinical accuracy and long-term maintainability.</li>
+<li>Begin thinking about integrating <strong>terminologies (UMLS, SNOMED CT)</strong> into your models.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-what-is-the-central-focus-of-chapter-4">Q1: What is the central focus of Chapter 4?</a></li>
+            <li><a href="#q2-what-makes-working-with-ehr-data-complex">Q2: What makes working with EHR data complex?</a></li>
+            <li><a href="#q3-why-was-medication-harmonization-chosen-as-the-use-case">Q3: Why was <strong>medication harmonization</strong> chosen as the use case?</a></li>
+            <li><a href="#q4-how-is-this-implemented-using-sql-sqlite">Q4: How is this implemented using <strong>SQL (SQLite)</strong>?</a></li>
+            <li><a href="#q5-what-are-the-challenges-of-the-sql-approach">Q5: What are the challenges of the SQL approach?</a></li>
+            <li><a href="#q6-how-does-neo4j-property-graph-improve-the-workflow">Q6: How does <strong>Neo4j</strong> (property graph) improve the workflow?</a></li>
+            <li><a href="#q7-how-are-concepts-created-in-neo4j">Q7: How are concepts created in Neo4j?</a></li>
+            <li><a href="#q8-how-does-typedb-enhance-this-model-further">Q8: How does <strong>TypeDB</strong> enhance this model further?</a></li>
+            <li><a href="#q9-what-are-the-two-approaches-to-harmonization-in-typedb">Q9: What are the two approaches to harmonization in TypeDB?</a></li>
+            <li><a href="#q10-what-are-the-tradeoffs-between-approaches">Q10: What are the tradeoffs between approaches?</a></li>
+            <li><a href="#q11-what-are-the-broader-lessons">Q11: What are the broader lessons?</a></li>
+          </ul>
+        </li>
+        <li><a href="#-curriculum-task-based-summary-chapter-4">🧠 Curriculum Task-Based Summary (Chapter 4)</a>
+          <ul>
+            <li><a href="#-1-understanding-ehr-data-models">🔹 1. Understanding EHR Data Models</a></li>
+            <li><a href="#-2-setup-and-load-ehr-data-mimic-iii">🔹 2. Setup and Load EHR Data (MIMIC-III)</a></li>
+            <li><a href="#-3-medication-harmonization-use-case">🔹 3. Medication Harmonization Use Case</a></li>
+            <li><a href="#-4-query-and-harmonize-in-three-paradigms">🔹 4. Query and Harmonize in Three Paradigms</a></li>
+            <li><a href="#-5-linkage-and-reasoning">🔹 5. Linkage and Reasoning</a></li>
+            <li><a href="#-6-evaluate-tradeoffs-and-performance">🔹 6. Evaluate Tradeoffs and Performance</a></li>
+          </ul>
+        </li>
+        <li><a href="#-end-of-chapter-outcome">✅ End of Chapter Outcome</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

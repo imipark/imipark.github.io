@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Day 4 – Domain-Specific LLMs
+
+
+
+
+  1. The Rise of Specialized LLMs
+  #
+
+We start with the evolution of LLMs from general-purpose to domain-specific tools. This shift was driven by challenges in fields like cybersecurity and medicine, where technical language and sensitive use cases demand more than general knowledge.
+
+→ why do general-purpose LLMs struggle in specialized domains?
+
+
+  2. The Challenges in Cybersecurity
+  #
+
+Cybersecurity experts face three main issues: rapidly evolving threats, repetitive manual work (toil), and a shortage of skilled talent. These bottlenecks make it hard to keep up with modern security needs.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Day 4 – Domain-Specific LLMs">
+  <meta property="og:description" content="Day 4 – Domain-Specific LLMs 1. The Rise of Specialized LLMs # We start with the evolution of LLMs from general-purpose to domain-specific tools. This shift was driven by challenges in fields like cybersecurity and medicine, where technical language and sensitive use cases demand more than general knowledge.
+→ why do general-purpose LLMs struggle in specialized domains?
+2. The Challenges in Cybersecurity # Cybersecurity experts face three main issues: rapidly evolving threats, repetitive manual work (toil), and a shortage of skilled talent. These bottlenecks make it hard to keep up with modern security needs.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Day 4 – Domain-Specific LLMs | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle" checked />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle" checked />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="active">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Day 4 – Domain-Specific LLMs</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-the-rise-of-specialized-llms">1. The Rise of Specialized LLMs</a></li>
+            <li><a href="#2-the-challenges-in-cybersecurity">2. The Challenges in Cybersecurity</a></li>
+            <li><a href="#3-the-role-of-genai-in-security">3. The Role of GenAI in Security</a></li>
+            <li><a href="#4-multi-layered-system-design">4. Multi-layered System Design</a></li>
+            <li><a href="#5-domain-specific-model-training">5. Domain-Specific Model Training</a></li>
+            <li><a href="#6-flexible-planning-and-execution">6. Flexible Planning and Execution</a></li>
+            <li><a href="#7-performance-and-evaluation">7. Performance and Evaluation</a></li>
+            <li><a href="#8-medical-qa-as-a-grand-challenge">8. Medical Q&amp;A as a Grand Challenge</a></li>
+            <li><a href="#9-opportunities-for-genai-in-medicine">9. Opportunities for GenAI in Medicine</a></li>
+            <li><a href="#10-human-centric-and-conversational-ai">10. Human-Centric and Conversational AI</a></li>
+            <li><a href="#11-evaluation-frameworks-for-medical-llms">11. Evaluation Frameworks for Medical LLMs</a></li>
+            <li><a href="#12-from-benchmark-to-bedside">12. From Benchmark to Bedside</a></li>
+            <li><a href="#13-task-specific-vs-domain-general-models">13. Task-Specific vs. Domain-General Models</a></li>
+            <li><a href="#14-toward-multimodal-healthcare-ai">14. Toward Multimodal Healthcare AI</a></li>
+            <li><a href="#15-training-innovations-in-med-palm-2">15. Training Innovations in Med-PaLM 2</a></li>
+            <li><a href="#16-key-takeaways">16. Key Takeaways</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Day 4 – Domain-Specific LLMs
+</strong>
+</p>
+<hr>
+<h3 id="1-the-rise-of-specialized-llms">
+  1. The Rise of Specialized LLMs
+  <a class="anchor" href="#1-the-rise-of-specialized-llms">#</a>
+</h3>
+<p>We start with the <em>evolution of LLMs</em> from general-purpose to domain-specific tools. This shift was driven by challenges in fields like cybersecurity and medicine, where technical language and sensitive use cases demand more than general knowledge.</p>
+<blockquote>
+<p>→ why do general-purpose LLMs struggle in specialized domains?</p>
+</blockquote>
+<h3 id="2-the-challenges-in-cybersecurity">
+  2. The Challenges in Cybersecurity
+  <a class="anchor" href="#2-the-challenges-in-cybersecurity">#</a>
+</h3>
+<p>Cybersecurity experts face three main issues: rapidly evolving threats, repetitive manual work (toil), and a shortage of skilled talent. These bottlenecks make it hard to keep up with modern security needs.</p>
+<blockquote>
+<p>→ how can AI reduce toil, bridge talent gaps, and counter fast-evolving threats?</p>
+</blockquote>
+<h3 id="3-the-role-of-genai-in-security">
+  3. The Role of GenAI in Security
+  <a class="anchor" href="#3-the-role-of-genai-in-security">#</a>
+</h3>
+<p>GenAI can assist various security personas—from analysts to CISOs—by translating queries, reverse-engineering code, planning remediation, and summarizing threats. This enables both automation and augmentation of expertise.</p>
+<blockquote>
+<p>→ what kind of architecture supports this AI augmentation effectively?</p>
+</blockquote>
+<h3 id="4-multi-layered-system-design">
+  4. Multi-layered System Design
+  <a class="anchor" href="#4-multi-layered-system-design">#</a>
+</h3>
+<p>SecLM combines tools (top layer), a reasoning API (middle layer), and secure data sources (bottom layer). This allows for contextual responses using live data and tailored planning.</p>
+<blockquote>
+<p>→ how do we ensure accuracy and freshness without retraining LLMs constantly?</p>
+</blockquote>
+<h3 id="5-domain-specific-model-training">
+  5. Domain-Specific Model Training
+  <a class="anchor" href="#5-domain-specific-model-training">#</a>
+</h3>
+<p>SecLM trains on open-source and licensed security content, fine-tuned for tasks like alert summarization and command analysis. It uses parameter-efficient tuning and RAG for freshness.</p>
+<blockquote>
+<p>→ how does the system generalize to unseen tasks or environments?</p>
+</blockquote>
+<h3 id="6-flexible-planning-and-execution">
+  6. Flexible Planning and Execution
+  <a class="anchor" href="#6-flexible-planning-and-execution">#</a>
+</h3>
+<p>SecLM decomposes broad questions (e.g., about an APT group) into steps like retrieving intel, translating to SIEM queries, and synthesizing responses—showcasing multi-agent, tool-augmented reasoning.</p>
+<blockquote>
+<p>→ how does this compare with general-purpose LLMs?</p>
+</blockquote>
+<h3 id="7-performance-and-evaluation">
+  7. Performance and Evaluation
+  <a class="anchor" href="#7-performance-and-evaluation">#</a>
+</h3>
+<p>Through expert evaluations and automated metrics, SecLM outperforms general models on security-specific tasks, demonstrating the need for full-stack, domain-focused platforms.</p>
+<blockquote>
+<p>→ can this platform be generalized to other domains like health tech?</p>
+</blockquote>
+<h3 id="8-medical-qa-as-a-grand-challenge">
+  8. Medical Q&amp;A as a Grand Challenge
+  <a class="anchor" href="#8-medical-qa-as-a-grand-challenge">#</a>
+</h3>
+<p>Medical question-answering (QA) demands deep reasoning, evolving knowledge, and accurate synthesis. LLMs like Med-PaLM show potential by answering USMLE-style questions and sourcing info from varied medical content.</p>
+<blockquote>
+<p>→ how can we ensure these answers are trustworthy and context-aware?</p>
+</blockquote>
+<h3 id="9-opportunities-for-genai-in-medicine">
+  9. Opportunities for GenAI in Medicine
+  <a class="anchor" href="#9-opportunities-for-genai-in-medicine">#</a>
+</h3>
+<p>Use cases range from contextual Q&amp;A on patient history to triaging clinician messages and real-time patient-clinician dialogue support. GenAI systems can enhance decision-making, patient engagement, and clinician efficiency.</p>
+<blockquote>
+<p>→ what safeguards ensure these capabilities are safe, equitable, and accurate?</p>
+</blockquote>
+<h3 id="10-human-centric-and-conversational-ai">
+  10. Human-Centric and Conversational AI
+  <a class="anchor" href="#10-human-centric-and-conversational-ai">#</a>
+</h3>
+<p>Med-PaLM aims to support flexible interaction—combining structured clinical expertise with empathetic, human-centric dialogue. It was built to scale reasoning and bring compassion into AI-assisted medicine.</p>
+<blockquote>
+<p>→ how do we evaluate such models beyond technical accuracy?</p>
+</blockquote>
+<h3 id="11-evaluation-frameworks-for-medical-llms">
+  11. Evaluation Frameworks for Medical LLMs
+  <a class="anchor" href="#11-evaluation-frameworks-for-medical-llms">#</a>
+</h3>
+<p>Med-PaLM uses USMLE-style exams and qualitative rubrics to assess reasoning, factuality, and harm potential. Human experts assess each dimension, comparing outputs to clinicians&rsquo; answers in blinded evaluations.</p>
+<blockquote>
+<p>→ how does Med-PaLM compare to human experts in real scenarios?</p>
+</blockquote>
+<h3 id="12-from-benchmark-to-bedside">
+  12. From Benchmark to Bedside
+  <a class="anchor" href="#12-from-benchmark-to-bedside">#</a>
+</h3>
+<p>Rigorous validation is required for real-world use—starting with retrospective studies, then prospective ones, all before interventional deployment. Past learnings (e.g., from diabetic retinopathy screening) stress this need.</p>
+<blockquote>
+<p>→ how can we responsibly scale these tools into clinical settings?</p>
+</blockquote>
+<h3 id="13-task-specific-vs-domain-general-models">
+  13. Task-Specific vs. Domain-General Models
+  <a class="anchor" href="#13-task-specific-vs-domain-general-models">#</a>
+</h3>
+<p>While Med-PaLM 2 shows expert-level performance on QA tasks, its capabilities must be validated across each medical subdomain. Mental health assessments, for example, require specialized evaluation and adaptation.</p>
+<blockquote>
+<p>→ can a high-performing model generalize across all medical use cases without fine-tuning?</p>
+</blockquote>
+<h3 id="14-toward-multimodal-healthcare-ai">
+  14. Toward Multimodal Healthcare AI
+  <a class="anchor" href="#14-toward-multimodal-healthcare-ai">#</a>
+</h3>
+<p>Medicine is inherently multimodal—spanning text, images, genomics, EHRs, and sensors. MedLM is expanding into multimodal models, which are in early research stages but promise broader clinical utility.</p>
+<blockquote>
+<p>→ how can AI integrate and reason across multiple data modalities safely and meaningfully?</p>
+</blockquote>
+<h3 id="15-training-innovations-in-med-palm-2">
+  15. Training Innovations in Med-PaLM 2
+  <a class="anchor" href="#15-training-innovations-in-med-palm-2">#</a>
+</h3>
+<p>Med-PaLM 2 leverages instruction tuning on diverse QA datasets and advanced prompting strategies like chain-of-thought, self-consistency, and ensemble refinement. These enhance stepwise reasoning and output reliability.</p>
+<blockquote>
+<p>→ which techniques most boost reasoning performance in sensitive domains like healthcare?</p>
+</blockquote>
+<h3 id="16-key-takeaways">
+  16. Key Takeaways
+  <a class="anchor" href="#16-key-takeaways">#</a>
+</h3>
+<p>LLMs show tremendous promise in solving domain-specific problems. In cybersecurity, SecLM combines tools, reasoning, and authoritative data to empower practitioners. In healthcare, MedLM and Med-PaLM show how vertical fine-tuning, evaluation, and collaboration with clinicians drive real-world impact.</p>
+<blockquote>
+<p>The overarching insight: <strong>LLMs require domain-specific architecture, data, tuning, and evaluation to move from general intelligence to real-world application.</strong></p>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-the-rise-of-specialized-llms">1. The Rise of Specialized LLMs</a></li>
+            <li><a href="#2-the-challenges-in-cybersecurity">2. The Challenges in Cybersecurity</a></li>
+            <li><a href="#3-the-role-of-genai-in-security">3. The Role of GenAI in Security</a></li>
+            <li><a href="#4-multi-layered-system-design">4. Multi-layered System Design</a></li>
+            <li><a href="#5-domain-specific-model-training">5. Domain-Specific Model Training</a></li>
+            <li><a href="#6-flexible-planning-and-execution">6. Flexible Planning and Execution</a></li>
+            <li><a href="#7-performance-and-evaluation">7. Performance and Evaluation</a></li>
+            <li><a href="#8-medical-qa-as-a-grand-challenge">8. Medical Q&amp;A as a Grand Challenge</a></li>
+            <li><a href="#9-opportunities-for-genai-in-medicine">9. Opportunities for GenAI in Medicine</a></li>
+            <li><a href="#10-human-centric-and-conversational-ai">10. Human-Centric and Conversational AI</a></li>
+            <li><a href="#11-evaluation-frameworks-for-medical-llms">11. Evaluation Frameworks for Medical LLMs</a></li>
+            <li><a href="#12-from-benchmark-to-bedside">12. From Benchmark to Bedside</a></li>
+            <li><a href="#13-task-specific-vs-domain-general-models">13. Task-Specific vs. Domain-General Models</a></li>
+            <li><a href="#14-toward-multimodal-healthcare-ai">14. Toward Multimodal Healthcare AI</a></li>
+            <li><a href="#15-training-innovations-in-med-palm-2">15. Training Innovations in Med-PaLM 2</a></li>
+            <li><a href="#16-key-takeaways">16. Key Takeaways</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

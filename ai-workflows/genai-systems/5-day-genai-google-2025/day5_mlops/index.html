@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Day 5 – MLOps for Generative AI
+
+
+
+
+  1. Introduction
+  #
+
+The rise of foundation models and generative AI (gen AI) has brought a paradigm shift in how we build and deploy AI systems. From selecting architectures to managing prompts and grounding outputs in real data, traditional MLOps needs adaptation.
+
+So how do we evolve MLOps for this new generative world?
+
+
+  2. What Are DevOps and MLOps?
+  #
+
+
+DevOps: Automation &#43; collaboration for software delivery (CI/CD, testing, reliability)
+MLOps: Adds ML-specific needs:
+
+Data validation
+Model evaluation
+Monitoring
+Experiment tracking
+
+
+
+
+These core principles set the stage, but gen AI has unique needs.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Day 5 – MLOps for Generative AI">
+  <meta property="og:description" content="Day 5 – MLOps for Generative AI 1. Introduction # The rise of foundation models and generative AI (gen AI) has brought a paradigm shift in how we build and deploy AI systems. From selecting architectures to managing prompts and grounding outputs in real data, traditional MLOps needs adaptation.
+So how do we evolve MLOps for this new generative world?
+2. What Are DevOps and MLOps? # DevOps: Automation &#43; collaboration for software delivery (CI/CD, testing, reliability) MLOps: Adds ML-specific needs: Data validation Model evaluation Monitoring Experiment tracking These core principles set the stage, but gen AI has unique needs.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Day 5 – MLOps for Generative AI | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle" checked />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle" checked />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="active">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Day 5 – MLOps for Generative AI</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-introduction">1. Introduction</a></li>
+            <li><a href="#2-what-are-devops-and-mlops">2. What Are DevOps and MLOps?</a></li>
+            <li><a href="#3-lifecycle-of-a-gen-ai-system">3. Lifecycle of a Gen AI System</a></li>
+            <li><a href="#4-continuous-improvement-in-gen-ai">4. Continuous Improvement in Gen AI</a></li>
+            <li><a href="#5-discover-phase-choosing-the-right-fm">5. Discover Phase: Choosing the Right FM</a></li>
+            <li><a href="#6-model-discovery-criteria">6. Model Discovery Criteria</a></li>
+            <li><a href="#7-develop--experiment">7. Develop &amp; Experiment</a></li>
+            <li><a href="#8-foundation-model-paradigm">8. Foundation Model Paradigm</a></li>
+            <li><a href="#9-prompted-model-component">9. Prompted Model Component</a></li>
+            <li><a href="#10-prompt--code--data">10. Prompt = Code + Data</a></li>
+            <li><a href="#11-chains--augmentation">11. Chains &amp; Augmentation</a></li>
+            <li><a href="#12-chain-mlops-needs">12. Chain MLOps Needs</a></li>
+            <li><a href="#13-tuning--training">13. Tuning &amp; Training</a></li>
+            <li><a href="#14-continuous-tuning">14. Continuous Tuning</a></li>
+            <li><a href="#15-data-in-gen-ai">15. Data in Gen AI</a></li>
+            <li><a href="#16-synthetic-data-use-cases">16. Synthetic Data Use Cases</a></li>
+            <li><a href="#17-evaluation-in-gen-ai">17. Evaluation in Gen AI</a></li>
+            <li><a href="#18-evaluation-best-practices">18. Evaluation Best Practices</a></li>
+            <li><a href="#19-deployment-in-gen-ai-systems">19. Deployment in Gen AI Systems</a></li>
+            <li><a href="#20-version-control">20. Version Control</a></li>
+            <li><a href="#21-continuous-integration-ci">21. Continuous Integration (CI)</a></li>
+            <li><a href="#22-continuous-delivery-cd">22. Continuous Delivery (CD)</a></li>
+            <li><a href="#23-foundation-model-deployment">23. Foundation Model Deployment</a></li>
+            <li><a href="#24-infrastructure-validation">24. Infrastructure Validation</a></li>
+            <li><a href="#25-compression--optimization">25. Compression &amp; Optimization</a></li>
+            <li><a href="#26-deployment-checklist">26. Deployment Checklist</a></li>
+            <li><a href="#27-logging--monitoring">27. Logging &amp; Monitoring</a></li>
+            <li><a href="#28-drift--skew-detection">28. Drift &amp; Skew Detection</a></li>
+            <li><a href="#29-continuous-evaluation">29. Continuous Evaluation</a></li>
+            <li><a href="#30-governance">30. Governance</a></li>
+            <li><a href="#31-role-of-an-ai-platform">31. Role of an AI Platform</a></li>
+            <li><a href="#32-model-discovery-vertex-model-garden">32. Model Discovery: Vertex Model Garden</a></li>
+            <li><a href="#33-prototyping-vertex-ai-studio">33. Prototyping: Vertex AI Studio</a></li>
+            <li><a href="#34-training-full-llm-training-on-vertex-ai">34. Training: Full LLM Training on Vertex AI</a></li>
+            <li><a href="#35-tuning-five-key-methods">35. Tuning: Five Key Methods</a></li>
+            <li><a href="#36-orchestration-vertex-pipelines">36. Orchestration: Vertex Pipelines</a></li>
+            <li><a href="#37-chain--augmentation-grounding--function-calling">37. Chain &amp; Augmentation: Grounding + Function Calling</a></li>
+            <li><a href="#38-vector-search">38. Vector Search</a></li>
+            <li><a href="#39-evaluate-vertex-ai-experiments--tensorboard">39. Evaluate: Vertex AI Experiments &amp; TensorBoard</a></li>
+            <li><a href="#40-evaluation-techniques">40. Evaluation Techniques</a></li>
+            <li><a href="#41-predict-vertex-endpoints">41. Predict: Vertex Endpoints</a></li>
+            <li><a href="#42-safety-bias-and-moderation">42. Safety, Bias, and Moderation</a></li>
+            <li><a href="#43-governance-tools">43. Governance Tools</a></li>
+            <li><a href="#44-conclusion">44. Conclusion</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Day 5 – MLOps for Generative AI
+</strong>
+</p>
+<hr>
+<h3 id="1-introduction">
+  1. Introduction
+  <a class="anchor" href="#1-introduction">#</a>
+</h3>
+<p>The rise of <strong>foundation models</strong> and <strong>generative AI (gen AI)</strong> has brought a paradigm shift in how we build and deploy AI systems. From selecting architectures to managing prompts and grounding outputs in real data, traditional MLOps needs adaptation.</p>
+<blockquote>
+<p>So how do we evolve MLOps for this new generative world?</p>
+</blockquote>
+<h3 id="2-what-are-devops-and-mlops">
+  2. What Are DevOps and MLOps?
+  <a class="anchor" href="#2-what-are-devops-and-mlops">#</a>
+</h3>
+<ul>
+<li><strong>DevOps</strong>: Automation + collaboration for software delivery (CI/CD, testing, reliability)</li>
+<li><strong>MLOps</strong>: Adds ML-specific needs:
+<ul>
+<li>Data validation</li>
+<li>Model evaluation</li>
+<li>Monitoring</li>
+<li>Experiment tracking</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>These core principles set the stage, but gen AI has unique needs.</p>
+</blockquote>
+<h3 id="3-lifecycle-of-a-gen-ai-system">
+  3. Lifecycle of a Gen AI System
+  <a class="anchor" href="#3-lifecycle-of-a-gen-ai-system">#</a>
+</h3>
+<p>The gen AI lifecycle introduces five major moments:</p>
+<ol>
+<li><strong>Discover</strong> – Find suitable foundation models from a rapidly growing model zoo.</li>
+<li><strong>Develop &amp; Experiment</strong> – Iterate on prompts, use few-shot examples, and chains.</li>
+<li><strong>Train/Tune</strong> – Use parameter-efficient fine-tuning.</li>
+<li><strong>Deploy</strong> – Includes chains, prompt templates, databases, retrieval systems.</li>
+<li><strong>Monitor &amp; Govern</strong> – Ensure safety, fairness, drift detection, and lineage.</li>
+</ol>
+<blockquote>
+<p>Each stage requires new tooling and processes compared to traditional ML.</p>
+</blockquote>
+<h3 id="4-continuous-improvement-in-gen-ai">
+  4. Continuous Improvement in Gen AI
+  <a class="anchor" href="#4-continuous-improvement-in-gen-ai">#</a>
+</h3>
+<ul>
+<li>Gen AI focuses on <strong>adapting pre-trained models</strong> via:
+<ul>
+<li>Prompt tweaks</li>
+<li>Model swaps</li>
+<li>Multi-model chaining</li>
+</ul>
+</li>
+<li>Still uses fine-tuning and human feedback loops when needed.</li>
+</ul>
+<blockquote>
+<p>But not all orgs handle base model training—many just adapt existing FMs.</p>
+</blockquote>
+<h3 id="5-discover-phase-choosing-the-right-fm">
+  5. Discover Phase: Choosing the Right FM
+  <a class="anchor" href="#5-discover-phase-choosing-the-right-fm">#</a>
+</h3>
+<p>Why it’s hard:</p>
+<ul>
+<li>Explosion of open-source and proprietary FMs</li>
+<li>Variation in architecture, performance, licensing</li>
+</ul>
+<p>Model selection is now a critical MLOps task.</p>
+<h3 id="6-model-discovery-criteria">
+  6. Model Discovery Criteria
+  <a class="anchor" href="#6-model-discovery-criteria">#</a>
+</h3>
+<p>Choosing a foundation model now involves nuanced trade-offs:</p>
+<ul>
+<li><strong>Quality:</strong> Benchmarks, output inspection</li>
+<li><strong>Latency &amp; Throughput:</strong> Real-time chat ≠ batch summarization</li>
+<li><strong>Maintenance:</strong> Hosted vs self-managed models</li>
+<li><strong>Cost:</strong> Compute, serving, data storage</li>
+<li><strong>Compliance:</strong> Licensing, regulation</li>
+</ul>
+<blockquote>
+<p>Vertex Model Garden supports structured exploration of these options.</p>
+</blockquote>
+<h3 id="7-develop--experiment">
+  7. Develop &amp; Experiment
+  <a class="anchor" href="#7-develop--experiment">#</a>
+</h3>
+<p>Building gen AI systems is iterative: prompt tweaks → model swap → eval → repeat.</p>
+<blockquote>
+<p>This loop mirrors traditional ML but centers around prompts, not raw data.</p>
+</blockquote>
+<h3 id="8-foundation-model-paradigm">
+  8. Foundation Model Paradigm
+  <a class="anchor" href="#8-foundation-model-paradigm">#</a>
+</h3>
+<ul>
+<li>Unlike predictive models, foundation models are <strong>multi-purpose</strong>.</li>
+<li>They show <strong>emergent behavior</strong> based on prompt structure.</li>
+<li>Prompts define task type (translation, generation, reasoning).</li>
+</ul>
+<blockquote>
+<p>Small changes in wording can completely shift model output.</p>
+</blockquote>
+<h3 id="9-prompted-model-component">
+  9. Prompted Model Component
+  <a class="anchor" href="#9-prompted-model-component">#</a>
+</h3>
+<p>The key unit of experimentation in gen AI is:
+<strong>Prompt + Model → Prompted Model Component</strong></p>
+<blockquote>
+<p>This redefines MLOps: you now track prompt templates as first-class artifacts.</p>
+</blockquote>
+<h3 id="10-prompt--code--data">
+  10. Prompt = Code + Data
+  <a class="anchor" href="#10-prompt--code--data">#</a>
+</h3>
+<p>Prompts often include:</p>
+<ul>
+<li>Code-like structures (templates, control flow, guardrails)</li>
+<li>Data-like elements (examples, contexts, user input)</li>
+</ul>
+<p>MLOps must version prompts, track results, and match to model versions.</p>
+<h3 id="11-chains--augmentation">
+  11. Chains &amp; Augmentation
+  <a class="anchor" href="#11-chains--augmentation">#</a>
+</h3>
+<p>When prompts alone aren’t enough:</p>
+<ul>
+<li><strong>Chains</strong>: Link multiple prompted models + APIs</li>
+<li><strong>RAG</strong>: Retrieve relevant info before generation</li>
+<li><strong>Agents</strong>: LLMs choose tools dynamically (ReAct)</li>
+</ul>
+<blockquote>
+<p>MLOps must manage chains end-to-end, not just components.</p>
+</blockquote>
+<h3 id="12-chain-mlops-needs">
+  12. Chain MLOps Needs
+  <a class="anchor" href="#12-chain-mlops-needs">#</a>
+</h3>
+<ul>
+<li><strong>Evaluation:</strong> Run full chains to measure behavior</li>
+<li><strong>Versioning:</strong> Chains need config + history</li>
+<li><strong>Monitoring:</strong> Track outputs + intermediate steps</li>
+<li><strong>Introspection:</strong> Debug chain inputs/outputs</li>
+</ul>
+<blockquote>
+<p>Vertex AI + LangChain integration supports these needs.</p>
+</blockquote>
+<h3 id="13-tuning--training">
+  13. Tuning &amp; Training
+  <a class="anchor" href="#13-tuning--training">#</a>
+</h3>
+<p>Some tasks require fine-tuning:</p>
+<ul>
+<li><strong>SFT</strong>: Teach model to produce specific outputs</li>
+<li><strong>RLHF</strong>: Use human feedback to improve alignment</li>
+</ul>
+<blockquote>
+<p>Tune as needed—especially if prompt engineering hits limits.</p>
+</blockquote>
+<h3 id="14-continuous-tuning">
+  14. Continuous Tuning
+  <a class="anchor" href="#14-continuous-tuning">#</a>
+</h3>
+<p>Static tasks = low frequency. Dynamic tasks (chatbots) = frequent RLHF.</p>
+<ul>
+<li>Balance GPU/TPU cost with improvement needs</li>
+<li>Consider quantization to lower costs</li>
+</ul>
+<blockquote>
+<p>Vertex AI provides tuning infra + registry + pipelines + governance.</p>
+</blockquote>
+<h3 id="15-data-in-gen-ai">
+  15. Data in Gen AI
+  <a class="anchor" href="#15-data-in-gen-ai">#</a>
+</h3>
+<p>Unlike predictive ML, gen AI uses:</p>
+<ul>
+<li><strong>Prompts &amp; examples</strong></li>
+<li><strong>Grounding sources (APIs, vectors)</strong></li>
+<li><strong>Human preference data</strong></li>
+<li><strong>Task-specific tuning sets</strong></li>
+<li><strong>Synthetic + curated data</strong></li>
+</ul>
+<blockquote>
+<p>Each has different MLOps needs: validation, versioning, lineage.</p>
+</blockquote>
+<h3 id="16-synthetic-data-use-cases">
+  16. Synthetic Data Use Cases
+  <a class="anchor" href="#16-synthetic-data-use-cases">#</a>
+</h3>
+<ul>
+<li><strong>Generation:</strong> Fill in training gaps</li>
+<li><strong>Correction:</strong> Flag label errors</li>
+<li><strong>Augmentation:</strong> Introduce diversity</li>
+</ul>
+<blockquote>
+<p>Use large FMs to generate training or eval data when needed.</p>
+</blockquote>
+<h3 id="17-evaluation-in-gen-ai">
+  17. Evaluation in Gen AI
+  <a class="anchor" href="#17-evaluation-in-gen-ai">#</a>
+</h3>
+<p>Evaluation is hard:</p>
+<ul>
+<li>Complex, open-ended outputs</li>
+<li>Metrics (BLEU, ROUGE) often miss the mark</li>
+<li>Auto-evals (e.g. AutoSxS) use FMs as judges</li>
+</ul>
+<blockquote>
+<p>Align automated metrics with human judgment early on.</p>
+</blockquote>
+<h3 id="18-evaluation-best-practices">
+  18. Evaluation Best Practices
+  <a class="anchor" href="#18-evaluation-best-practices">#</a>
+</h3>
+<ul>
+<li>Stabilize metrics, approaches, datasets early</li>
+<li>Include adversarial prompts in test set</li>
+<li>Use synthetic ground truth if needed</li>
+</ul>
+<blockquote>
+<p>Evaluation = cornerstone of experimentation in gen AI MLOps</p>
+</blockquote>
+<h3 id="19-deployment-in-gen-ai-systems">
+  19. Deployment in Gen AI Systems
+  <a class="anchor" href="#19-deployment-in-gen-ai-systems">#</a>
+</h3>
+<p>Gen AI apps involve multiple components:</p>
+<ul>
+<li>LLMs</li>
+<li>Chains</li>
+<li>Prompts</li>
+<li>Adapters</li>
+<li>External APIs</li>
+</ul>
+<blockquote>
+<p>Two main deployment types:</p>
+</blockquote>
+<ol>
+<li>Full Gen AI Systems (custom apps)</li>
+<li>Foundation Model Deployments (standalone models)</li>
+</ol>
+<h3 id="20-version-control">
+  20. Version Control
+  <a class="anchor" href="#20-version-control">#</a>
+</h3>
+<p>Key assets to version:</p>
+<ul>
+<li>Prompt templates</li>
+<li>Chain definitions</li>
+<li>Datasets (e.g. RAG sources)</li>
+<li>Adapter models</li>
+</ul>
+<blockquote>
+<p>Git, BigQuery, AlloyDB, and Vertex Feature Store help manage assets.</p>
+</blockquote>
+<h3 id="21-continuous-integration-ci">
+  21. Continuous Integration (CI)
+  <a class="anchor" href="#21-continuous-integration-ci">#</a>
+</h3>
+<p>CI ensures reliability through:</p>
+<ul>
+<li>Unit + integration tests</li>
+<li>Automated pipelines</li>
+</ul>
+<p>Challenges:</p>
+<ul>
+<li>Test generation is hard due to open-ended outputs</li>
+<li>Reproducibility is limited due to LLM randomness</li>
+</ul>
+<blockquote>
+<p>Solutions draw from earlier evaluation methods.</p>
+</blockquote>
+<h3 id="22-continuous-delivery-cd">
+  22. Continuous Delivery (CD)
+  <a class="anchor" href="#22-continuous-delivery-cd">#</a>
+</h3>
+<p>CD moves tested systems into staging/production.</p>
+<p>Two flavors:</p>
+<ul>
+<li><strong>Batch delivery</strong>: Schedule-driven, test pipeline throughput</li>
+<li><strong>Online delivery</strong>: API-based, test latency, infra, scalability</li>
+</ul>
+<blockquote>
+<p>Chains are the new &ldquo;deployment unit&rdquo;—not just models.</p>
+</blockquote>
+<h3 id="23-foundation-model-deployment">
+  23. Foundation Model Deployment
+  <a class="anchor" href="#23-foundation-model-deployment">#</a>
+</h3>
+<p>Heavy resource demands → need:</p>
+<ul>
+<li>GPU/TPU allocation</li>
+<li>Scalable data stores</li>
+<li>Optimization (distillation, quantization, pruning)</li>
+</ul>
+<h3 id="24-infrastructure-validation">
+  24. Infrastructure Validation
+  <a class="anchor" href="#24-infrastructure-validation">#</a>
+</h3>
+<p>Check:</p>
+<ul>
+<li>Hardware compatibility</li>
+<li>Serving configuration</li>
+<li>GPU/TPU availability</li>
+</ul>
+<p>Tools: TFX infra validation, manual provisioning checks</p>
+<h3 id="25-compression--optimization">
+  25. Compression &amp; Optimization
+  <a class="anchor" href="#25-compression--optimization">#</a>
+</h3>
+<p>Strategies:</p>
+<ul>
+<li><strong>Quantization</strong>: 32-bit → 8-bit</li>
+<li><strong>Pruning</strong>: Remove unneeded weights</li>
+<li><strong>Distillation</strong>: Train small model from a larger &ldquo;teacher&rdquo;</li>
+</ul>
+<blockquote>
+<p>Step-by-step distillation can reduce size and improve performance.</p>
+</blockquote>
+<h3 id="26-deployment-checklist">
+  26. Deployment Checklist
+  <a class="anchor" href="#26-deployment-checklist">#</a>
+</h3>
+<p>Steps to productionize:</p>
+<ul>
+<li>Version control</li>
+<li>Optimize model</li>
+<li>Containerize</li>
+<li>Define hardware and endpoints</li>
+<li>Allocate resources</li>
+<li>Secure access</li>
+<li>Monitor, log, and alert</li>
+<li>Real-time infra: Cloud Functions + Cloud Run</li>
+</ul>
+<h3 id="27-logging--monitoring">
+  27. Logging &amp; Monitoring
+  <a class="anchor" href="#27-logging--monitoring">#</a>
+</h3>
+<p>Track both:</p>
+<ul>
+<li>App-level inputs/outputs</li>
+<li>Component-level details (chain steps, prompts, models)</li>
+</ul>
+<blockquote>
+<p>Needed for tracing bugs, debugging drift, and transparency.</p>
+</blockquote>
+<h3 id="28-drift--skew-detection">
+  28. Drift &amp; Skew Detection
+  <a class="anchor" href="#28-drift--skew-detection">#</a>
+</h3>
+<p>Compare:</p>
+<ul>
+<li>Evaluation-time data vs. Production input</li>
+<li>Topics, vocab, token count, embeddings</li>
+</ul>
+<p>Techniques:</p>
+<ul>
+<li>MMD, least squares density, learned kernels</li>
+</ul>
+<blockquote>
+<p>Signals shift in user behavior or data domains.</p>
+</blockquote>
+<h3 id="29-continuous-evaluation">
+  29. Continuous Evaluation
+  <a class="anchor" href="#29-continuous-evaluation">#</a>
+</h3>
+<ul>
+<li>Capture live outputs</li>
+<li>Evaluate vs. ground truth or human feedback</li>
+<li>Track metric degradation</li>
+<li>Alert on failures or decay</li>
+</ul>
+<blockquote>
+<p>Production = where real testing happens.</p>
+</blockquote>
+<h3 id="30-governance">
+  30. Governance
+  <a class="anchor" href="#30-governance">#</a>
+</h3>
+<p>Governs:</p>
+<ul>
+<li>Chains + components</li>
+<li>Prompts</li>
+<li>Data</li>
+<li>Models</li>
+<li>Evaluation metrics and lineage</li>
+</ul>
+<blockquote>
+<p>Full lifecycle governance = essential for compliance and maintainability.</p>
+</blockquote>
+<h3 id="31-role-of-an-ai-platform">
+  31. Role of an AI Platform
+  <a class="anchor" href="#31-role-of-an-ai-platform">#</a>
+</h3>
+<p>Vertex AI acts as an <strong>end-to-end platform</strong> for developing and operationalizing Gen AI. It supports:</p>
+<ul>
+<li>Data prep</li>
+<li>Training/tuning</li>
+<li>Deployment</li>
+<li>Evaluation</li>
+<li>CI/CD</li>
+<li>Monitoring</li>
+<li>Governance</li>
+</ul>
+<blockquote>
+<p>It enables reuse, scalability, and full-stack observability for Gen AI teams.</p>
+</blockquote>
+<h3 id="32-model-discovery-vertex-model-garden">
+  32. Model Discovery: Vertex Model Garden
+  <a class="anchor" href="#32-model-discovery-vertex-model-garden">#</a>
+</h3>
+<p>Model Garden includes:</p>
+<ul>
+<li>150+ models: Google, OSS, third-party (e.g., Gemini, Claude, Llama 3, T5, Imagen)</li>
+<li>Modalities: Language, Vision, Multimodal, Speech, Video</li>
+<li>Tasks: Generation, classification, moderation, detection, etc.</li>
+</ul>
+<blockquote>
+<p>Each model has a card with use cases and tuning options.</p>
+</blockquote>
+<h3 id="33-prototyping-vertex-ai-studio">
+  33. Prototyping: Vertex AI Studio
+  <a class="anchor" href="#33-prototyping-vertex-ai-studio">#</a>
+</h3>
+<p>Vertex AI Studio offers:</p>
+<ul>
+<li>Playground for trying models (Gemini, Codey, Imagen)</li>
+<li>UI + SDKs (Python, NodeJS, Java)</li>
+<li>Prompt testing + management</li>
+<li>One-click deploy</li>
+<li>Built-in notebooks (Colab Enterprise, Workbench)</li>
+</ul>
+<blockquote>
+<p>Low barrier for users from business analysts to ML engineers.</p>
+</blockquote>
+<h3 id="34-training-full-llm-training-on-vertex-ai">
+  34. Training: Full LLM Training on Vertex AI
+  <a class="anchor" href="#34-training-full-llm-training-on-vertex-ai">#</a>
+</h3>
+<ul>
+<li>TPU and GPU infrastructure for fast, large-scale training</li>
+<li>Vertex AI supports training from scratch and adapting open-weight models</li>
+</ul>
+<h3 id="35-tuning-five-key-methods">
+  35. Tuning: Five Key Methods
+  <a class="anchor" href="#35-tuning-five-key-methods">#</a>
+</h3>
+<ol>
+<li><strong>Prompt engineering</strong> – no retraining</li>
+<li><strong>SFT (Supervised Fine-Tuning)</strong> – train on labeled examples</li>
+<li><strong>RLHF</strong> – learn from human preferences</li>
+<li><strong>Distillation</strong> – compress knowledge from large to small models</li>
+<li><strong>Step-by-step distillation</strong> – Google-optimized, fewer data needs</li>
+</ol>
+<blockquote>
+<p>Each method balances cost, performance, and latency.</p>
+</blockquote>
+<h3 id="36-orchestration-vertex-pipelines">
+  36. Orchestration: Vertex Pipelines
+  <a class="anchor" href="#36-orchestration-vertex-pipelines">#</a>
+</h3>
+<ul>
+<li>Define pipelines with Kubeflow SDK</li>
+<li>Automate tuning, evaluation, and deployment</li>
+<li>Managed pipelines for Vertex foundation models</li>
+</ul>
+<blockquote>
+<p>Enables production-readiness and repeatability.</p>
+</blockquote>
+<h3 id="37-chain--augmentation-grounding--function-calling">
+  37. Chain &amp; Augmentation: Grounding + Function Calling
+  <a class="anchor" href="#37-chain--augmentation-grounding--function-calling">#</a>
+</h3>
+<p>Vertex AI supports:</p>
+<ul>
+<li><strong>RAG systems</strong> – real-time document retrieval</li>
+<li><strong>Agent-based chains</strong> – dynamic tool use via ReAct</li>
+<li><strong>Function calling</strong> – LLM picks which API to use, returns JSON</li>
+<li><strong>Grounding</strong> – verifies/model output via search or private corpora</li>
+<li><strong>Agent Builder</strong> – build search/chat agents grounded on any source</li>
+</ul>
+<blockquote>
+<p>Simplifies chaining, reasoning, and integrating internal data.</p>
+</blockquote>
+<h3 id="38-vector-search">
+  38. Vector Search
+  <a class="anchor" href="#38-vector-search">#</a>
+</h3>
+<p>Vertex AI Vector Search enables:</p>
+<ul>
+<li>High-scale, low-latency ANN search</li>
+<li>Billions of embeddings using ScaNN</li>
+<li>Use with text, images, hybrid metadata search</li>
+<li>Works with custom embeddings (e.g., textembedding-gecko)</li>
+</ul>
+<blockquote>
+<p>Choose this when you need control over chunking, retrieval, or models.</p>
+</blockquote>
+<h3 id="39-evaluate-vertex-ai-experiments--tensorboard">
+  39. Evaluate: Vertex AI Experiments &amp; TensorBoard
+  <a class="anchor" href="#39-evaluate-vertex-ai-experiments--tensorboard">#</a>
+</h3>
+<p>Experimentation is essential for iterating and improving Gen AI models. Tools include:</p>
+<ul>
+<li><strong>Vertex AI Experiments</strong>: Track model runs, hyperparams, training environments</li>
+<li><strong>Vertex AI TensorBoard</strong>: Visualize loss, accuracy, embeddings, model graphs</li>
+</ul>
+<blockquote>
+<p>Supports reproducibility, debugging, and collaboration.</p>
+</blockquote>
+<h3 id="40-evaluation-techniques">
+  40. Evaluation Techniques
+  <a class="anchor" href="#40-evaluation-techniques">#</a>
+</h3>
+<ul>
+<li><strong>Ground truth metrics</strong>: Automatic Metrics using reference datasets</li>
+<li><strong>LLM-based eval</strong>: Auto Side-by-Side (Auto SxS) with model judges</li>
+<li><strong>Rapid Evaluation API</strong>: Fast SDK-based eval for prototyping</li>
+</ul>
+<blockquote>
+<p>Evaluation is deeply integrated into the development lifecycle.</p>
+</blockquote>
+<h3 id="41-predict-vertex-endpoints">
+  41. Predict: Vertex Endpoints
+  <a class="anchor" href="#41-predict-vertex-endpoints">#</a>
+</h3>
+<ul>
+<li>Deploy models to Vertex Endpoints for online prediction</li>
+<li>Features:
+<ul>
+<li>Autoscaling</li>
+<li>Access control</li>
+<li>Monitoring</li>
+</ul>
+</li>
+<li>Works with open-source and Google models</li>
+</ul>
+<h3 id="42-safety-bias-and-moderation">
+  42. Safety, Bias, and Moderation
+  <a class="anchor" href="#42-safety-bias-and-moderation">#</a>
+</h3>
+<p>Built-in responsible AI features:</p>
+<ul>
+<li><strong>Citation checkers</strong>: Track and quote data sources</li>
+<li><strong>Safety scores</strong>: Detect harmful content and flag sensitive topics</li>
+<li><strong>Watermarking</strong>: Identify AI-generated content (via SynthID)</li>
+<li><strong>Bias detection</strong>: Ensure fairness and appropriateness</li>
+<li><strong>Moderation</strong>: Filter unsafe responses</li>
+</ul>
+<blockquote>
+<p>These ensure ethical and trustworthy AI deployments.</p>
+</blockquote>
+<h3 id="43-governance-tools">
+  43. Governance Tools
+  <a class="anchor" href="#43-governance-tools">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Vertex Feature Store</strong>:</p>
+<ul>
+<li>Track embedding + feature lineage</li>
+<li>Drift monitoring</li>
+<li>Feature reuse + formulas</li>
+</ul>
+</li>
+<li>
+<p><strong>Model Registry</strong>:</p>
+<ul>
+<li>Lifecycle tracking (versioning, evaluation, deployment)</li>
+<li>One-click deployment</li>
+<li>Access to evaluation, monitoring, and aliasing</li>
+</ul>
+</li>
+<li>
+<p><strong>Dataplex</strong>:</p>
+<ul>
+<li>Cross-product lineage (e.g., Vertex + BigQuery)</li>
+<li>Golden datasets/models</li>
+<li>Access governance + IAM integration</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>These unify observability, reproducibility, and compliance across Gen AI assets.</p>
+</blockquote>
+<h3 id="44-conclusion">
+  44. Conclusion
+  <a class="anchor" href="#44-conclusion">#</a>
+</h3>
+<p>MLOps principles—reliability, scalability, repeatability—<strong>fully extend into Gen AI</strong>.</p>
+<ul>
+<li>Gen AI adds prompt chaining, grounding, function calling, etc.</li>
+<li>Vertex AI unifies the full lifecycle across models, pipelines, and governance</li>
+<li>It supports both predictive and Gen AI use cases</li>
+</ul>
+<blockquote>
+<p>MLOps isn’t replaced—it’s expanded for the age of foundation models.</p>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-introduction">1. Introduction</a></li>
+            <li><a href="#2-what-are-devops-and-mlops">2. What Are DevOps and MLOps?</a></li>
+            <li><a href="#3-lifecycle-of-a-gen-ai-system">3. Lifecycle of a Gen AI System</a></li>
+            <li><a href="#4-continuous-improvement-in-gen-ai">4. Continuous Improvement in Gen AI</a></li>
+            <li><a href="#5-discover-phase-choosing-the-right-fm">5. Discover Phase: Choosing the Right FM</a></li>
+            <li><a href="#6-model-discovery-criteria">6. Model Discovery Criteria</a></li>
+            <li><a href="#7-develop--experiment">7. Develop &amp; Experiment</a></li>
+            <li><a href="#8-foundation-model-paradigm">8. Foundation Model Paradigm</a></li>
+            <li><a href="#9-prompted-model-component">9. Prompted Model Component</a></li>
+            <li><a href="#10-prompt--code--data">10. Prompt = Code + Data</a></li>
+            <li><a href="#11-chains--augmentation">11. Chains &amp; Augmentation</a></li>
+            <li><a href="#12-chain-mlops-needs">12. Chain MLOps Needs</a></li>
+            <li><a href="#13-tuning--training">13. Tuning &amp; Training</a></li>
+            <li><a href="#14-continuous-tuning">14. Continuous Tuning</a></li>
+            <li><a href="#15-data-in-gen-ai">15. Data in Gen AI</a></li>
+            <li><a href="#16-synthetic-data-use-cases">16. Synthetic Data Use Cases</a></li>
+            <li><a href="#17-evaluation-in-gen-ai">17. Evaluation in Gen AI</a></li>
+            <li><a href="#18-evaluation-best-practices">18. Evaluation Best Practices</a></li>
+            <li><a href="#19-deployment-in-gen-ai-systems">19. Deployment in Gen AI Systems</a></li>
+            <li><a href="#20-version-control">20. Version Control</a></li>
+            <li><a href="#21-continuous-integration-ci">21. Continuous Integration (CI)</a></li>
+            <li><a href="#22-continuous-delivery-cd">22. Continuous Delivery (CD)</a></li>
+            <li><a href="#23-foundation-model-deployment">23. Foundation Model Deployment</a></li>
+            <li><a href="#24-infrastructure-validation">24. Infrastructure Validation</a></li>
+            <li><a href="#25-compression--optimization">25. Compression &amp; Optimization</a></li>
+            <li><a href="#26-deployment-checklist">26. Deployment Checklist</a></li>
+            <li><a href="#27-logging--monitoring">27. Logging &amp; Monitoring</a></li>
+            <li><a href="#28-drift--skew-detection">28. Drift &amp; Skew Detection</a></li>
+            <li><a href="#29-continuous-evaluation">29. Continuous Evaluation</a></li>
+            <li><a href="#30-governance">30. Governance</a></li>
+            <li><a href="#31-role-of-an-ai-platform">31. Role of an AI Platform</a></li>
+            <li><a href="#32-model-discovery-vertex-model-garden">32. Model Discovery: Vertex Model Garden</a></li>
+            <li><a href="#33-prototyping-vertex-ai-studio">33. Prototyping: Vertex AI Studio</a></li>
+            <li><a href="#34-training-full-llm-training-on-vertex-ai">34. Training: Full LLM Training on Vertex AI</a></li>
+            <li><a href="#35-tuning-five-key-methods">35. Tuning: Five Key Methods</a></li>
+            <li><a href="#36-orchestration-vertex-pipelines">36. Orchestration: Vertex Pipelines</a></li>
+            <li><a href="#37-chain--augmentation-grounding--function-calling">37. Chain &amp; Augmentation: Grounding + Function Calling</a></li>
+            <li><a href="#38-vector-search">38. Vector Search</a></li>
+            <li><a href="#39-evaluate-vertex-ai-experiments--tensorboard">39. Evaluate: Vertex AI Experiments &amp; TensorBoard</a></li>
+            <li><a href="#40-evaluation-techniques">40. Evaluation Techniques</a></li>
+            <li><a href="#41-predict-vertex-endpoints">41. Predict: Vertex Endpoints</a></li>
+            <li><a href="#42-safety-bias-and-moderation">42. Safety, Bias, and Moderation</a></li>
+            <li><a href="#43-governance-tools">43. Governance Tools</a></li>
+            <li><a href="#44-conclusion">44. Conclusion</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

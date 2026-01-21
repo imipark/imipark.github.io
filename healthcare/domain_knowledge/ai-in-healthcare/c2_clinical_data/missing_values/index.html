@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Missing Data Scenarios in Healthcare Modeling
+  #
+
+
+  1. Should Be Measured But Wasn’t
+  #
+
+
+Description: The value is expected but is missing due to random or procedural issues (e.g., lab error, missed test).
+Technical Term:
+
+MCAR: Missing Completely At Random
+MAR: Missing At Random
+
+
+Example: A routine blood test wasn&rsquo;t recorded because the sample was lost.
+Strategy:
+
+Impute (mean, median, or model-based).
+Add a missingness indicator variable (e.g., var_missing = 1).
+
+
+Rationale: The missingness is unrelated to the value itself, so estimation is relatively safe.
+
+
+
+  2. Mostly Zero Due to Rare Occurrence
+  #
+
+
+Description: Not truly missing — the value is zero or absent for most patients because the condition/event is rare.
+Technical Term:
+
+Not Missing (No abbreviation needed)
+
+
+Example: HIV diagnosis column is 0 for most patients.
+Strategy:
+
+Do not impute — the 0s are meaningful and reflect true absence.
+
+
+Rationale: These are real values, and zeros carry clinical meaning.
+
+
+
+  3. Deliberately Not Recorded
+  #
+
+
+Description: Clinician or system chooses not to record a value based on context (e.g., patient clearly stable or too ill).
+Technical Term:
+
+MNAR: Missing Not At Random
+
+
+Example: Sodium level not tested because the patient was clearly stable.
+Strategy:
+
+Avoid imputation if possible — it may introduce bias.
+Use models that handle missingness natively (e.g., decision trees, XGBoost, LightGBM).
+Consider adding a missingness indicator.
+
+
+Rationale: The missingness depends on the unobserved value and may carry predictive signal.
+
+
+
+  Summary Table
+  #
+
+
+  
+      
+          Case
+          Description
+          Abbreviation
+          Impute?
+          Extra Notes
+      
+  
+  
+      
+          1
+          Should be measured but wasn’t
+          MCAR / MAR
+          ✅ Yes
+          Add indicator if signal is likely
+      
+      
+          2
+          Mostly zero (rare condition)
+          Not Missing
+          🚫 No
+          Keep as is — zeros are informative
+      
+      
+          3
+          Deliberately not recorded
+          MNAR
+          ⚠️ Caution
+          Use native handling &#43; possible indicator
+      
+  
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/missing_values/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Missing Data Scenarios in Healthcare Modeling">
+  <meta property="og:description" content="Missing Data Scenarios in Healthcare Modeling # 1. Should Be Measured But Wasn’t # Description: The value is expected but is missing due to random or procedural issues (e.g., lab error, missed test). Technical Term: MCAR: Missing Completely At Random MAR: Missing At Random Example: A routine blood test wasn’t recorded because the sample was lost. Strategy: Impute (mean, median, or model-based). Add a missingness indicator variable (e.g., var_missing = 1). Rationale: The missingness is unrelated to the value itself, so estimation is relatively safe. 2. Mostly Zero Due to Rare Occurrence # Description: Not truly missing — the value is zero or absent for most patients because the condition/event is rare. Technical Term: Not Missing (No abbreviation needed) Example: HIV diagnosis column is 0 for most patients. Strategy: Do not impute — the 0s are meaningful and reflect true absence. Rationale: These are real values, and zeros carry clinical meaning. 3. Deliberately Not Recorded # Description: Clinician or system chooses not to record a value based on context (e.g., patient clearly stable or too ill). Technical Term: MNAR: Missing Not At Random Example: Sodium level not tested because the patient was clearly stable. Strategy: Avoid imputation if possible — it may introduce bias. Use models that handle missingness natively (e.g., decision trees, XGBoost, LightGBM). Consider adding a missingness indicator. Rationale: The missingness depends on the unobserved value and may carry predictive signal. Summary Table # Case Description Abbreviation Impute? Extra Notes 1 Should be measured but wasn’t MCAR / MAR ✅ Yes Add indicator if signal is likely 2 Mostly zero (rare condition) Not Missing 🚫 No Keep as is — zeros are informative 3 Deliberately not recorded MNAR ⚠️ Caution Use native handling &#43; possible indicator">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Missing Data Scenarios in Healthcare Modeling | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/missing_values/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle" checked />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Missing Data Scenarios in Healthcare Modeling</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#missing-data-scenarios-in-healthcare-modeling">Missing Data Scenarios in Healthcare Modeling</a>
+      <ul>
+        <li><a href="#1-should-be-measured-but-wasnt">1. Should Be Measured But Wasn’t</a></li>
+        <li><a href="#2-mostly-zero-due-to-rare-occurrence">2. Mostly Zero Due to Rare Occurrence</a></li>
+        <li><a href="#3-deliberately-not-recorded">3. Deliberately Not Recorded</a></li>
+        <li><a href="#summary-table">Summary Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="missing-data-scenarios-in-healthcare-modeling">
+  Missing Data Scenarios in Healthcare Modeling
+  <a class="anchor" href="#missing-data-scenarios-in-healthcare-modeling">#</a>
+</h1>
+<h2 id="1-should-be-measured-but-wasnt">
+  1. Should Be Measured But Wasn’t
+  <a class="anchor" href="#1-should-be-measured-but-wasnt">#</a>
+</h2>
+<ul>
+<li><strong>Description</strong>: The value is expected but is missing due to random or procedural issues (e.g., lab error, missed test).</li>
+<li><strong>Technical Term</strong>:
+<ul>
+<li><strong>MCAR</strong>: Missing Completely At Random</li>
+<li><strong>MAR</strong>: Missing At Random</li>
+</ul>
+</li>
+<li><strong>Example</strong>: A routine blood test wasn&rsquo;t recorded because the sample was lost.</li>
+<li><strong>Strategy</strong>:
+<ul>
+<li>Impute (mean, median, or model-based).</li>
+<li>Add a missingness indicator variable (e.g., <code>var_missing = 1</code>).</li>
+</ul>
+</li>
+<li><strong>Rationale</strong>: The missingness is unrelated to the value itself, so estimation is relatively safe.</li>
+</ul>
+<hr>
+<h2 id="2-mostly-zero-due-to-rare-occurrence">
+  2. Mostly Zero Due to Rare Occurrence
+  <a class="anchor" href="#2-mostly-zero-due-to-rare-occurrence">#</a>
+</h2>
+<ul>
+<li><strong>Description</strong>: Not truly missing — the value is <strong>zero or absent</strong> for most patients because the condition/event is rare.</li>
+<li><strong>Technical Term</strong>:
+<ul>
+<li>Not Missing (No abbreviation needed)</li>
+</ul>
+</li>
+<li><strong>Example</strong>: HIV diagnosis column is <code>0</code> for most patients.</li>
+<li><strong>Strategy</strong>:
+<ul>
+<li><strong>Do not impute</strong> — the 0s are meaningful and reflect true absence.</li>
+</ul>
+</li>
+<li><strong>Rationale</strong>: These are real values, and zeros carry clinical meaning.</li>
+</ul>
+<hr>
+<h2 id="3-deliberately-not-recorded">
+  3. Deliberately Not Recorded
+  <a class="anchor" href="#3-deliberately-not-recorded">#</a>
+</h2>
+<ul>
+<li><strong>Description</strong>: Clinician or system <strong>chooses not to record</strong> a value based on context (e.g., patient clearly stable or too ill).</li>
+<li><strong>Technical Term</strong>:
+<ul>
+<li><strong>MNAR</strong>: Missing Not At Random</li>
+</ul>
+</li>
+<li><strong>Example</strong>: Sodium level not tested because the patient was clearly stable.</li>
+<li><strong>Strategy</strong>:
+<ul>
+<li>Avoid imputation if possible — it may introduce bias.</li>
+<li>Use models that handle missingness natively (e.g., decision trees, XGBoost, LightGBM).</li>
+<li>Consider adding a missingness indicator.</li>
+</ul>
+</li>
+<li><strong>Rationale</strong>: The missingness <em>depends on the unobserved value</em> and may carry predictive signal.</li>
+</ul>
+<hr>
+<h2 id="summary-table">
+  Summary Table
+  <a class="anchor" href="#summary-table">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Case</th>
+          <th>Description</th>
+          <th>Abbreviation</th>
+          <th>Impute?</th>
+          <th>Extra Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Should be measured but wasn’t</td>
+          <td>MCAR / MAR</td>
+          <td>✅ Yes</td>
+          <td>Add indicator if signal is likely</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Mostly zero (rare condition)</td>
+          <td>Not Missing</td>
+          <td>🚫 No</td>
+          <td>Keep as is — zeros are informative</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Deliberately not recorded</td>
+          <td>MNAR</td>
+          <td>⚠️ Caution</td>
+          <td>Use native handling + possible indicator</td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#missing-data-scenarios-in-healthcare-modeling">Missing Data Scenarios in Healthcare Modeling</a>
+      <ul>
+        <li><a href="#1-should-be-measured-but-wasnt">1. Should Be Measured But Wasn’t</a></li>
+        <li><a href="#2-mostly-zero-due-to-rare-occurrence">2. Mostly Zero Due to Rare Occurrence</a></li>
+        <li><a href="#3-deliberately-not-recorded">3. Deliberately Not Recorded</a></li>
+        <li><a href="#summary-table">Summary Table</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

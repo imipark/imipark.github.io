@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI Applications on AI Reasoning</title>
+    <link>https://imipark.github.io/healthcare/clinical_ai/</link>
+    <description>Recent content in AI Applications on AI Reasoning</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://imipark.github.io/healthcare/clinical_ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Clinical Data Science</title>
+      <link>https://imipark.github.io/healthcare/clinical_ai/clinical_ai_usecase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/healthcare/clinical_ai/clinical_ai_usecase/</guid>
+      <description>&lt;p align=&#34;center&#34;&gt;&#xA;&lt;img src=&#34;https://imipark.github.io/images/AIR_logo.png&#34; alt=&#34;AI Reasoning Logo&#34; width=&#34;200&#34;/&gt;&#xA;&lt;strong style=&#34;font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;&#34;&gt;&#xA;Clinical Data Science&#xA;&lt;/strong&gt;&#xA;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;core-priority-retrieval-augmented-generation-rag&#34;&gt;&#xA;  Core Priority: Retrieval-Augmented Generation (RAG)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#core-priority-retrieval-augmented-generation-rag&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;RAG is one of the most in-demand skills in clinical GenAI due to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The need to &lt;strong&gt;ground LLMs in real patient data&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Compliance, privacy, and traceability&lt;/li&gt;&#xA;&lt;li&gt;Applications like:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Clinical Question Answering&lt;/li&gt;&#xA;&lt;li&gt;Summarization of EHRs&lt;/li&gt;&#xA;&lt;li&gt;Evidence-based recommendations&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;key-tools&#34;&gt;&#xA;  Key Tools:&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#key-tools&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Vector DBs&lt;/strong&gt;: Vertex AI Search, Pinecone, FAISS&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;LLMs&lt;/strong&gt;: Gemini, GPT-4, PaLM, Med-PaLM&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Frameworks&lt;/strong&gt;: LangChain, LlamaIndex, Vertex Extensions&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;other-high-demand-skillsets&#34;&gt;&#xA;  Other High-Demand Skillsets&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#other-high-demand-skillsets&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Clinical NLP &amp;amp; Information Extraction&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why Clinical NLP &amp; GenAI Are Growing in Healthcare</title>
+      <link>https://imipark.github.io/healthcare/clinical_ai/why_clinical_ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/healthcare/clinical_ai/why_clinical_ai/</guid>
+      <description>&lt;p align=&#34;center&#34;&gt;&#xA;&lt;img src=&#34;https://imipark.github.io/images/AIR_logo.png&#34; alt=&#34;AI Reasoning Logo&#34; width=&#34;200&#34;/&gt;&#xA;&lt;strong style=&#34;font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;&#34;&gt;&#xA;Why Clinical NLP &amp; GenAI Are Growing in Healthcare&#xA;&lt;/strong&gt;&#xA;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Clinical NLP &amp;amp; GenAI are &lt;strong&gt;growing rapidly in healthcare&lt;/strong&gt; because they unlock massive &lt;strong&gt;untapped value in unstructured data&lt;/strong&gt; — which has historically been hard to use, yet contains the &lt;strong&gt;richest clinical context&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-80-of-clinical-data-is-unstructured&#34;&gt;&#xA;  1. 80% of Clinical Data is Unstructured&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-80-of-clinical-data-is-unstructured&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;EHRs are full of &lt;strong&gt;free-text clinical notes&lt;/strong&gt;, discharge summaries, radiology reports, operative notes, etc.&lt;/li&gt;&#xA;&lt;li&gt;Traditional models work well with structured data (ICD, labs), but &lt;strong&gt;miss context&lt;/strong&gt; like:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;“Patient denies chest pain”&lt;/li&gt;&#xA;&lt;li&gt;“Family history of diabetes”&lt;/li&gt;&#xA;&lt;li&gt;“Patient expressed concern about medication side effects”&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;NLP allows us to extract &lt;strong&gt;clinical meaning&lt;/strong&gt; from this text and turn it into computable features.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Healthcare Use Cases for Non-textual Unstructured Data
+  #
+
+
+  1. Are foundation models limited to text?
+  #
+
+No. Although many early applications focus on text, foundation models are inherently multimodal. They can process and learn from images, audio, video, and other forms of unstructured data without modifying the core model.
+
+
+  2. What kind of unstructured data exists in healthcare beyond text?
+  #
+
+
+Medical images: X-rays, CT, MRI
+Audio data: Patient speech, clinical voice notes
+Video data: Endoscopy, movement assessments
+Digital pathology and genomic data: High-resolution slides and sequence strings
+
+
+
+  3. How do image-text foundation models work in healthcare?
+  #
+
+They learn from paired image and text data (e.g., medical images and associated reports) to understand content holistically. This allows for better diagnostic performance and contextual understanding than single-modality models.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/healthcare_use_cases_for_non_textual_unstructured_data/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Healthcare Use Cases for Non-textual Unstructured Data">
+  <meta property="og:description" content="Healthcare Use Cases for Non-textual Unstructured Data # 1. Are foundation models limited to text? # No. Although many early applications focus on text, foundation models are inherently multimodal. They can process and learn from images, audio, video, and other forms of unstructured data without modifying the core model.
+2. What kind of unstructured data exists in healthcare beyond text? # Medical images: X-rays, CT, MRI Audio data: Patient speech, clinical voice notes Video data: Endoscopy, movement assessments Digital pathology and genomic data: High-resolution slides and sequence strings 3. How do image-text foundation models work in healthcare? # They learn from paired image and text data (e.g., medical images and associated reports) to understand content holistically. This allows for better diagnostic performance and contextual understanding than single-modality models.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Healthcare Use Cases for Non-textual Unstructured Data | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/healthcare_use_cases_for_non_textual_unstructured_data/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle" checked />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Healthcare Use Cases for Non-textual Unstructured Data</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#healthcare-use-cases-for-non-textual-unstructured-data">Healthcare Use Cases for Non-textual Unstructured Data</a>
+      <ul>
+        <li><a href="#1-are-foundation-models-limited-to-text">1. Are foundation models limited to text?</a></li>
+        <li><a href="#2-what-kind-of-unstructured-data-exists-in-healthcare-beyond-text">2. What kind of unstructured data exists in healthcare beyond text?</a></li>
+        <li><a href="#3-how-do-image-text-foundation-models-work-in-healthcare">3. How do image-text foundation models work in healthcare?</a></li>
+        <li><a href="#4-what-is-the-potential-impact-of-image-text-models-on-radiology">4. What is the potential impact of image-text models on radiology?</a></li>
+        <li><a href="#5-why-is-the-current-model-development-approach-inefficient">5. Why is the current model development approach inefficient?</a></li>
+        <li><a href="#6-what-advantages-do-foundation-models-bring-to-medical-imaging">6. What advantages do foundation models bring to medical imaging?</a></li>
+        <li><a href="#7-how-are-foundation-models-used-in-image-based-diagnosis">7. How are foundation models used in image-based diagnosis?</a></li>
+        <li><a href="#8-can-foundation-models-incorporate-genomic-or-pathology-data">8. Can foundation models incorporate genomic or pathology data?</a></li>
+        <li><a href="#9-what-is-the-value-of-multimodal-foundation-models">9. What is the value of multimodal foundation models?</a></li>
+        <li><a href="#10-how-do-foundation-models-help-in-image-model-development">10. How do foundation models help in image model development?</a></li>
+        <li><a href="#11-can-voice-text-data-be-used-in-healthcare-applications">11. Can voice-text data be used in healthcare applications?</a></li>
+        <li><a href="#12-what-are-some-patient-facing-applications-of-voice-text-models">12. What are some patient-facing applications of voice-text models?</a></li>
+        <li><a href="#13-what-cognitive-shift-do-foundation-models-support">13. What cognitive shift do foundation models support?</a></li>
+        <li><a href="#14-do-foundation-models-replace-human-decision-making">14. Do foundation models replace human decision-making?</a></li>
+        <li><a href="#15-whats-the-catch-with-all-this-power">15. What’s the catch with all this power?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="healthcare-use-cases-for-non-textual-unstructured-data">
+  Healthcare Use Cases for Non-textual Unstructured Data
+  <a class="anchor" href="#healthcare-use-cases-for-non-textual-unstructured-data">#</a>
+</h1>
+<h2 id="1-are-foundation-models-limited-to-text">
+  1. Are foundation models limited to text?
+  <a class="anchor" href="#1-are-foundation-models-limited-to-text">#</a>
+</h2>
+<p>No. Although many early applications focus on text, foundation models are inherently multimodal. They can process and learn from images, audio, video, and other forms of unstructured data without modifying the core model.</p>
+<hr>
+<h2 id="2-what-kind-of-unstructured-data-exists-in-healthcare-beyond-text">
+  2. What kind of unstructured data exists in healthcare beyond text?
+  <a class="anchor" href="#2-what-kind-of-unstructured-data-exists-in-healthcare-beyond-text">#</a>
+</h2>
+<ul>
+<li><strong>Medical images</strong>: X-rays, CT, MRI</li>
+<li><strong>Audio data</strong>: Patient speech, clinical voice notes</li>
+<li><strong>Video data</strong>: Endoscopy, movement assessments</li>
+<li><strong>Digital pathology</strong> and <strong>genomic data</strong>: High-resolution slides and sequence strings</li>
+</ul>
+<hr>
+<h2 id="3-how-do-image-text-foundation-models-work-in-healthcare">
+  3. How do image-text foundation models work in healthcare?
+  <a class="anchor" href="#3-how-do-image-text-foundation-models-work-in-healthcare">#</a>
+</h2>
+<p>They learn from <strong>paired image and text data</strong> (e.g., medical images and associated reports) to understand content holistically. This allows for better diagnostic performance and contextual understanding than single-modality models.</p>
+<hr>
+<h2 id="4-what-is-the-potential-impact-of-image-text-models-on-radiology">
+  4. What is the potential impact of image-text models on radiology?
+  <a class="anchor" href="#4-what-is-the-potential-impact-of-image-text-models-on-radiology">#</a>
+</h2>
+<ul>
+<li>Radiology is AI-friendly due to digital formats and standards.</li>
+<li>Current AI tools support quantification, detection, classification, etc.</li>
+<li>Foundation models go beyond—integrating prior exams, clinical context, and treatment recommendations.</li>
+</ul>
+<hr>
+<h2 id="5-why-is-the-current-model-development-approach-inefficient">
+  5. Why is the current model development approach inefficient?
+  <a class="anchor" href="#5-why-is-the-current-model-development-approach-inefficient">#</a>
+</h2>
+<p>Today’s approach builds narrow, task-specific models requiring large labeled datasets. Foundation models reduce this burden via <strong>few-shot learning</strong>, general knowledge transfer, and multimodal reasoning.</p>
+<hr>
+<h2 id="6-what-advantages-do-foundation-models-bring-to-medical-imaging">
+  6. What advantages do foundation models bring to medical imaging?
+  <a class="anchor" href="#6-what-advantages-do-foundation-models-bring-to-medical-imaging">#</a>
+</h2>
+<ul>
+<li>Combine image + text for deeper insight</li>
+<li>Reduce false positives/negatives via context</li>
+<li>Extract insights beyond human interpretation</li>
+<li>Generate full radiology reports or treatment suggestions</li>
+<li>Accelerate model development with less labeled data</li>
+</ul>
+<hr>
+<h2 id="7-how-are-foundation-models-used-in-image-based-diagnosis">
+  7. How are foundation models used in image-based diagnosis?
+  <a class="anchor" href="#7-how-are-foundation-models-used-in-image-based-diagnosis">#</a>
+</h2>
+<p>They can:</p>
+<ul>
+<li>Understand body composition via imaging biomarkers</li>
+<li>Detect osteoporosis, aortic calcium, visceral fat, etc.</li>
+<li>Predict adverse events from routine imaging</li>
+</ul>
+<hr>
+<h2 id="8-can-foundation-models-incorporate-genomic-or-pathology-data">
+  8. Can foundation models incorporate genomic or pathology data?
+  <a class="anchor" href="#8-can-foundation-models-incorporate-genomic-or-pathology-data">#</a>
+</h2>
+<p>Yes. They can process <strong>complex biomedical data</strong>:</p>
+<ul>
+<li>Digital pathology slides</li>
+<li>Genomic sequences in FASTA format</li>
+<li>Gene expression and mutation patterns</li>
+</ul>
+<p>This enables discovery of <strong>clinically meaningful patterns</strong> across modalities.</p>
+<hr>
+<h2 id="9-what-is-the-value-of-multimodal-foundation-models">
+  9. What is the value of multimodal foundation models?
+  <a class="anchor" href="#9-what-is-the-value-of-multimodal-foundation-models">#</a>
+</h2>
+<ul>
+<li>Integrate text, imaging, genomics, clinical history</li>
+<li>Offer <strong>personalized care</strong> and richer diagnostics</li>
+<li>Support communication with patients in any language or literacy level</li>
+</ul>
+<hr>
+<h2 id="10-how-do-foundation-models-help-in-image-model-development">
+  10. How do foundation models help in image model development?
+  <a class="anchor" href="#10-how-do-foundation-models-help-in-image-model-development">#</a>
+</h2>
+<p>They support:</p>
+<ul>
+<li><strong>Preprocessing</strong></li>
+<li><strong>Data augmentation</strong></li>
+<li><strong>Synthetic data generation</strong></li>
+</ul>
+<p>This accelerates model iteration and reduces time to deployment.</p>
+<hr>
+<h2 id="11-can-voice-text-data-be-used-in-healthcare-applications">
+  11. Can voice-text data be used in healthcare applications?
+  <a class="anchor" href="#11-can-voice-text-data-be-used-in-healthcare-applications">#</a>
+</h2>
+<p>Yes. Foundation models can:</p>
+<ul>
+<li>Transcribe speech</li>
+<li>Analyze speech patterns for diagnosis (e.g., Parkinson’s)</li>
+<li>Enable voice prosthetics for patients who’ve lost speech</li>
+<li>Support virtual medical assistants and mental health chatbots</li>
+</ul>
+<hr>
+<h2 id="12-what-are-some-patient-facing-applications-of-voice-text-models">
+  12. What are some patient-facing applications of voice-text models?
+  <a class="anchor" href="#12-what-are-some-patient-facing-applications-of-voice-text-models">#</a>
+</h2>
+<ul>
+<li>Mental health bots using speech/text input</li>
+<li>Virtual assistants for disabled individuals</li>
+<li>Real-time transcription and communication aids</li>
+</ul>
+<hr>
+<h2 id="13-what-cognitive-shift-do-foundation-models-support">
+  13. What cognitive shift do foundation models support?
+  <a class="anchor" href="#13-what-cognitive-shift-do-foundation-models-support">#</a>
+</h2>
+<p>They help users move from:</p>
+<ul>
+<li><strong>Comprehension-based reasoning</strong> → using known knowledge</li>
+<li><strong>Fluid reasoning</strong> → solving unfamiliar problems with abstracted understanding</li>
+</ul>
+<p>Foundation models act as co-pilots, enhancing human decision-making.</p>
+<hr>
+<h2 id="14-do-foundation-models-replace-human-decision-making">
+  14. Do foundation models replace human decision-making?
+  <a class="anchor" href="#14-do-foundation-models-replace-human-decision-making">#</a>
+</h2>
+<p>No. They <strong>augment</strong>, not replace. Final decisions still rest with trained professionals who interpret the model’s output with judgment and context.</p>
+<hr>
+<h2 id="15-whats-the-catch-with-all-this-power">
+  15. What’s the catch with all this power?
+  <a class="anchor" href="#15-whats-the-catch-with-all-this-power">#</a>
+</h2>
+<p>Even with their vast capabilities, foundation models are subject to the <strong>no free lunch theorem</strong>. They have trade-offs, biases, and limitations—topics discussed in follow-up modules.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#healthcare-use-cases-for-non-textual-unstructured-data">Healthcare Use Cases for Non-textual Unstructured Data</a>
+      <ul>
+        <li><a href="#1-are-foundation-models-limited-to-text">1. Are foundation models limited to text?</a></li>
+        <li><a href="#2-what-kind-of-unstructured-data-exists-in-healthcare-beyond-text">2. What kind of unstructured data exists in healthcare beyond text?</a></li>
+        <li><a href="#3-how-do-image-text-foundation-models-work-in-healthcare">3. How do image-text foundation models work in healthcare?</a></li>
+        <li><a href="#4-what-is-the-potential-impact-of-image-text-models-on-radiology">4. What is the potential impact of image-text models on radiology?</a></li>
+        <li><a href="#5-why-is-the-current-model-development-approach-inefficient">5. Why is the current model development approach inefficient?</a></li>
+        <li><a href="#6-what-advantages-do-foundation-models-bring-to-medical-imaging">6. What advantages do foundation models bring to medical imaging?</a></li>
+        <li><a href="#7-how-are-foundation-models-used-in-image-based-diagnosis">7. How are foundation models used in image-based diagnosis?</a></li>
+        <li><a href="#8-can-foundation-models-incorporate-genomic-or-pathology-data">8. Can foundation models incorporate genomic or pathology data?</a></li>
+        <li><a href="#9-what-is-the-value-of-multimodal-foundation-models">9. What is the value of multimodal foundation models?</a></li>
+        <li><a href="#10-how-do-foundation-models-help-in-image-model-development">10. How do foundation models help in image model development?</a></li>
+        <li><a href="#11-can-voice-text-data-be-used-in-healthcare-applications">11. Can voice-text data be used in healthcare applications?</a></li>
+        <li><a href="#12-what-are-some-patient-facing-applications-of-voice-text-models">12. What are some patient-facing applications of voice-text models?</a></li>
+        <li><a href="#13-what-cognitive-shift-do-foundation-models-support">13. What cognitive shift do foundation models support?</a></li>
+        <li><a href="#14-do-foundation-models-replace-human-decision-making">14. Do foundation models replace human decision-making?</a></li>
+        <li><a href="#15-whats-the-catch-with-all-this-power">15. What’s the catch with all this power?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

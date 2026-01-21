@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  🧬 Clinical Text Feature Extraction Using Dictionary-Based Filtering
+  #
+
+This guide demonstrates a simplified approach for processing clinical text without removing PHI directly. Instead, it extracts only medical terms from a predefined dictionary (simulated knowledge graph), which passively excludes PHI and enables downstream analyses.
+
+
+  ✅ Objective
+  #
+
+
+Extract present, positive mentions of clinical concepts (e.g., diseases, symptoms, drugs).
+Avoid mentions that are negated or refer to historical/family context.
+Demonstrate the principle: &ldquo;Keep only medical terms&rdquo; as an alternative to direct PHI removal.
+
+
+
+  🧾 Input Example
+  #
+
+Patient complains of chest pain. No signs of pneumonia. History of diabetes mellitus.
+Prescribed metformin. Mother had breast cancer.
+
+
+  🧠 Procedure Overview
+  #
+
+
+Define a medical term dictionary (simulating a knowledge graph).
+Split the clinical note into sentences.
+Ignore sentences with negation or irrelevant context.
+Match and extract terms from the dictionary.
+Output structured features for downstream use.
+
+
+
+  🧪 Code Implementation (Python)
+  #
+
+import re
+
+# 1. Simulated clinical note
+clinical_note = &#39;&#39;&#39;
+Patient complains of chest pain. No signs of pneumonia. History of diabetes mellitus.
+Prescribed metformin. Mother had breast cancer.
+&#39;&#39;&#39;
+
+# 2. Simulated knowledge graph (medical term dictionary)
+medical_terms = {
+    &#34;chest pain&#34;: &#34;symptom&#34;,
+    &#34;pneumonia&#34;: &#34;disease&#34;,
+    &#34;diabetes mellitus&#34;: &#34;disease&#34;,
+    &#34;metformin&#34;: &#34;drug&#34;,
+    &#34;breast cancer&#34;: &#34;disease&#34;
+}
+
+# 3. Split into sentences
+sentences = re.split(r&#39;\.\s*&#39;, clinical_note.strip())
+features = []
+
+# 4. Process each sentence
+for sentence in sentences:
+    sentence_lower = sentence.lower()
+    
+    # 5. Skip negated or historical context
+    if &#34;no &#34; in sentence_lower or &#34;history of&#34; in sentence_lower or &#34;mother had&#34; in sentence_lower:
+        continue
+    
+    # 6. Match medical terms
+    for term in medical_terms:
+        if term in sentence_lower:
+            features.append({
+                &#34;term&#34;: term,
+                &#34;type&#34;: medical_terms[term],
+                &#34;sentence&#34;: sentence.strip()
+            })
+
+# 7. Output extracted features
+for feature in features:
+    print(f&#34;Found {feature[&#39;type&#39;]} → &#39;{feature[&#39;term&#39;]}&#39; in: \&#34;{feature[&#39;sentence&#39;]}\&#34;&#34;)
+
+
+  📤 Sample Output
+  #
+
+Found symptom → &#39;chest pain&#39; in: &#34;Patient complains of chest pain&#34;
+Found drug → &#39;metformin&#39; in: &#34;Prescribed metformin&#34;
+
+
+  📌 Summary
+  #
+
+This method:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Clinical Text Feature Extraction Using Dictionary-Based Filtering">
+  <meta property="og:description" content="🧬 Clinical Text Feature Extraction Using Dictionary-Based Filtering # This guide demonstrates a simplified approach for processing clinical text without removing PHI directly. Instead, it extracts only medical terms from a predefined dictionary (simulated knowledge graph), which passively excludes PHI and enables downstream analyses.
+✅ Objective # Extract present, positive mentions of clinical concepts (e.g., diseases, symptoms, drugs). Avoid mentions that are negated or refer to historical/family context. Demonstrate the principle: “Keep only medical terms” as an alternative to direct PHI removal. 🧾 Input Example # Patient complains of chest pain. No signs of pneumonia. History of diabetes mellitus. Prescribed metformin. Mother had breast cancer. 🧠 Procedure Overview # Define a medical term dictionary (simulating a knowledge graph). Split the clinical note into sentences. Ignore sentences with negation or irrelevant context. Match and extract terms from the dictionary. Output structured features for downstream use. 🧪 Code Implementation (Python) # import re # 1. Simulated clinical note clinical_note = &#39;&#39;&#39; Patient complains of chest pain. No signs of pneumonia. History of diabetes mellitus. Prescribed metformin. Mother had breast cancer. &#39;&#39;&#39; # 2. Simulated knowledge graph (medical term dictionary) medical_terms = { &#34;chest pain&#34;: &#34;symptom&#34;, &#34;pneumonia&#34;: &#34;disease&#34;, &#34;diabetes mellitus&#34;: &#34;disease&#34;, &#34;metformin&#34;: &#34;drug&#34;, &#34;breast cancer&#34;: &#34;disease&#34; } # 3. Split into sentences sentences = re.split(r&#39;\.\s*&#39;, clinical_note.strip()) features = [] # 4. Process each sentence for sentence in sentences: sentence_lower = sentence.lower() # 5. Skip negated or historical context if &#34;no &#34; in sentence_lower or &#34;history of&#34; in sentence_lower or &#34;mother had&#34; in sentence_lower: continue # 6. Match medical terms for term in medical_terms: if term in sentence_lower: features.append({ &#34;term&#34;: term, &#34;type&#34;: medical_terms[term], &#34;sentence&#34;: sentence.strip() }) # 7. Output extracted features for feature in features: print(f&#34;Found {feature[&#39;type&#39;]} → &#39;{feature[&#39;term&#39;]}&#39; in: \&#34;{feature[&#39;sentence&#39;]}\&#34;&#34;) 📤 Sample Output # Found symptom → &#39;chest pain&#39; in: &#34;Patient complains of chest pain&#34; Found drug → &#39;metformin&#39; in: &#34;Prescribed metformin&#34; 📌 Summary # This method:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Clinical Text Feature Extraction Using Dictionary-Based Filtering | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/nlp_clinical_text/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle" checked />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Clinical Text Feature Extraction Using Dictionary-Based Filtering</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-clinical-text-feature-extraction-using-dictionary-based-filtering">🧬 Clinical Text Feature Extraction Using Dictionary-Based Filtering</a>
+      <ul>
+        <li><a href="#-objective">✅ Objective</a></li>
+        <li><a href="#-input-example">🧾 Input Example</a></li>
+        <li><a href="#-procedure-overview">🧠 Procedure Overview</a></li>
+        <li><a href="#-code-implementation-python">🧪 Code Implementation (Python)</a></li>
+        <li><a href="#-sample-output">📤 Sample Output</a></li>
+        <li><a href="#-summary">📌 Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-clinical-text-feature-extraction-using-dictionary-based-filtering">
+  🧬 Clinical Text Feature Extraction Using Dictionary-Based Filtering
+  <a class="anchor" href="#-clinical-text-feature-extraction-using-dictionary-based-filtering">#</a>
+</h1>
+<p>This guide demonstrates a simplified approach for processing clinical text <strong>without removing PHI directly</strong>. Instead, it <strong>extracts only medical terms</strong> from a predefined dictionary (simulated knowledge graph), which <strong>passively excludes PHI</strong> and enables downstream analyses.</p>
+<hr>
+<h2 id="-objective">
+  ✅ Objective
+  <a class="anchor" href="#-objective">#</a>
+</h2>
+<ul>
+<li>Extract <strong>present, positive mentions</strong> of clinical concepts (e.g., diseases, symptoms, drugs).</li>
+<li>Avoid mentions that are <strong>negated</strong> or refer to <strong>historical/family context</strong>.</li>
+<li>Demonstrate the principle: <strong>&ldquo;Keep only medical terms&rdquo;</strong> as an alternative to direct PHI removal.</li>
+</ul>
+<hr>
+<h2 id="-input-example">
+  🧾 Input Example
+  <a class="anchor" href="#-input-example">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Patient complains of chest pain. No signs of pneumonia. History of diabetes mellitus.
+</span></span><span style="display:flex;"><span>Prescribed metformin. Mother had breast cancer.
+</span></span></code></pre></div><hr>
+<h2 id="-procedure-overview">
+  🧠 Procedure Overview
+  <a class="anchor" href="#-procedure-overview">#</a>
+</h2>
+<ol>
+<li>Define a <strong>medical term dictionary</strong> (simulating a knowledge graph).</li>
+<li><strong>Split the clinical note</strong> into sentences.</li>
+<li><strong>Ignore sentences</strong> with negation or irrelevant context.</li>
+<li><strong>Match and extract terms</strong> from the dictionary.</li>
+<li>Output <strong>structured features</strong> for downstream use.</li>
+</ol>
+<hr>
+<h2 id="-code-implementation-python">
+  🧪 Code Implementation (Python)
+  <a class="anchor" href="#-code-implementation-python">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#179299">import</span> <span style="color:#fe640b">re</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># 1. Simulated clinical note</span>
+</span></span><span style="display:flex;"><span>clinical_note <span style="color:#04a5e5;font-weight:bold">=</span> <span style="color:#40a02b">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#40a02b">Patient complains of chest pain. No signs of pneumonia. History of diabetes mellitus.
+</span></span></span><span style="display:flex;"><span><span style="color:#40a02b">Prescribed metformin. Mother had breast cancer.
+</span></span></span><span style="display:flex;"><span><span style="color:#40a02b">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># 2. Simulated knowledge graph (medical term dictionary)</span>
+</span></span><span style="display:flex;"><span>medical_terms <span style="color:#04a5e5;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#40a02b">&#34;chest pain&#34;</span>: <span style="color:#40a02b">&#34;symptom&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#40a02b">&#34;pneumonia&#34;</span>: <span style="color:#40a02b">&#34;disease&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#40a02b">&#34;diabetes mellitus&#34;</span>: <span style="color:#40a02b">&#34;disease&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#40a02b">&#34;metformin&#34;</span>: <span style="color:#40a02b">&#34;drug&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#40a02b">&#34;breast cancer&#34;</span>: <span style="color:#40a02b">&#34;disease&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># 3. Split into sentences</span>
+</span></span><span style="display:flex;"><span>sentences <span style="color:#04a5e5;font-weight:bold">=</span> re<span style="color:#04a5e5;font-weight:bold">.</span>split(<span style="color:#d20f39">r</span><span style="color:#40a02b">&#39;\.\s*&#39;</span>, clinical_note<span style="color:#04a5e5;font-weight:bold">.</span>strip())
+</span></span><span style="display:flex;"><span>features <span style="color:#04a5e5;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># 4. Process each sentence</span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> sentence <span style="color:#04a5e5;font-weight:bold">in</span> sentences:
+</span></span><span style="display:flex;"><span>    sentence_lower <span style="color:#04a5e5;font-weight:bold">=</span> sentence<span style="color:#04a5e5;font-weight:bold">.</span>lower()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># 5. Skip negated or historical context</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">if</span> <span style="color:#40a02b">&#34;no &#34;</span> <span style="color:#04a5e5;font-weight:bold">in</span> sentence_lower <span style="color:#04a5e5;font-weight:bold">or</span> <span style="color:#40a02b">&#34;history of&#34;</span> <span style="color:#04a5e5;font-weight:bold">in</span> sentence_lower <span style="color:#04a5e5;font-weight:bold">or</span> <span style="color:#40a02b">&#34;mother had&#34;</span> <span style="color:#04a5e5;font-weight:bold">in</span> sentence_lower:
+</span></span><span style="display:flex;"><span>        <span style="color:#8839ef">continue</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#9ca0b0;font-style:italic"># 6. Match medical terms</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8839ef">for</span> term <span style="color:#04a5e5;font-weight:bold">in</span> medical_terms:
+</span></span><span style="display:flex;"><span>        <span style="color:#8839ef">if</span> term <span style="color:#04a5e5;font-weight:bold">in</span> sentence_lower:
+</span></span><span style="display:flex;"><span>            features<span style="color:#04a5e5;font-weight:bold">.</span>append({
+</span></span><span style="display:flex;"><span>                <span style="color:#40a02b">&#34;term&#34;</span>: term,
+</span></span><span style="display:flex;"><span>                <span style="color:#40a02b">&#34;type&#34;</span>: medical_terms[term],
+</span></span><span style="display:flex;"><span>                <span style="color:#40a02b">&#34;sentence&#34;</span>: sentence<span style="color:#04a5e5;font-weight:bold">.</span>strip()
+</span></span><span style="display:flex;"><span>            })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#9ca0b0;font-style:italic"># 7. Output extracted features</span>
+</span></span><span style="display:flex;"><span><span style="color:#8839ef">for</span> feature <span style="color:#04a5e5;font-weight:bold">in</span> features:
+</span></span><span style="display:flex;"><span>    <span style="color:#04a5e5">print</span>(<span style="color:#d20f39">f</span><span style="color:#40a02b">&#34;Found </span><span style="color:#40a02b">{</span>feature[<span style="color:#40a02b">&#39;type&#39;</span>]<span style="color:#40a02b">}</span><span style="color:#40a02b"> → &#39;</span><span style="color:#40a02b">{</span>feature[<span style="color:#40a02b">&#39;term&#39;</span>]<span style="color:#40a02b">}</span><span style="color:#40a02b">&#39; in: </span><span style="color:#1e66f5">\&#34;</span><span style="color:#40a02b">{</span>feature[<span style="color:#40a02b">&#39;sentence&#39;</span>]<span style="color:#40a02b">}</span><span style="color:#1e66f5">\&#34;</span><span style="color:#40a02b">&#34;</span>)
+</span></span></code></pre></div><hr>
+<h2 id="-sample-output">
+  📤 Sample Output
+  <a class="anchor" href="#-sample-output">#</a>
+</h2>
+<pre tabindex="0"><code>Found symptom → &#39;chest pain&#39; in: &#34;Patient complains of chest pain&#34;
+Found drug → &#39;metformin&#39; in: &#34;Prescribed metformin&#34;
+</code></pre><hr>
+<h2 id="-summary">
+  📌 Summary
+  <a class="anchor" href="#-summary">#</a>
+</h2>
+<p>This method:</p>
+<ul>
+<li><strong>Avoids direct PHI detection</strong></li>
+<li><strong>Extracts useful clinical concepts only</strong></li>
+<li>Can be adapted to <strong>larger vocabularies</strong> and <strong>real NLP tools</strong> (e.g., spaCy, scispaCy, NegEx)</li>
+</ul>
+<p>Perfect for research scenarios where <strong>structured clinical features</strong> are needed but <strong>full de-identification is too complex</strong>.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-clinical-text-feature-extraction-using-dictionary-based-filtering">🧬 Clinical Text Feature Extraction Using Dictionary-Based Filtering</a>
+      <ul>
+        <li><a href="#-objective">✅ Objective</a></li>
+        <li><a href="#-input-example">🧾 Input Example</a></li>
+        <li><a href="#-procedure-overview">🧠 Procedure Overview</a></li>
+        <li><a href="#-code-implementation-python">🧪 Code Implementation (Python)</a></li>
+        <li><a href="#-sample-output">📤 Sample Output</a></li>
+        <li><a href="#-summary">📌 Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

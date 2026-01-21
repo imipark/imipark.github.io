@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenAI-Plus on AI Reasoning</title>
+    <link>https://imipark.github.io/tags/openai-plus/</link>
+    <description>Recent content in OpenAI-Plus on AI Reasoning</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://imipark.github.io/tags/openai-plus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ghibli Art Style Snapshots (ChatGPT 2025)</title>
+      <link>https://imipark.github.io/posts/ghibli_style_snapshots/</link>
+      <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/posts/ghibli_style_snapshots/</guid>
+      <description>&lt;img src=&#34;https://imipark.github.io/images/ghibli-ipark0.png&#34; width=&#34;200&#34; /&gt;&#xA;&lt;img src=&#34;https://imipark.github.io/images/ghibli-ipark1.png&#34; width=&#34;200&#34; /&gt;&#xA;&lt;img src=&#34;https://imipark.github.io/images/ghibli-ipark2.png&#34; width=&#34;200&#34; /&gt;</description>
+    </item>
+  </channel>
+</rss>

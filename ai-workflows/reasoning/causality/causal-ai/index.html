@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Causal AI in ACM CCS-Style Categories
+
+
+
+
+  🎯 Definition
+  #
+
+Causal AI refers to computational systems that model, reason, and learn about cause-effect relationships. This enables systems to simulate interventions (What if&hellip;?), explain outcomes, and support decision-making in uncertain, complex environments.
+
+
+  📚 ACM CCS-Style Categories Where Causal AI Lives
+  #
+
+
+  1. Computing Methodologies → Artificial Intelligence → Knowledge Representation and Reasoning (KR&amp;R)
+  #
+
+
+Focus: Representing cause-effect relationships using logic, graphs, and symbolic formalisms.
+Examples:
+
+Structural Causal Models (SCMs)
+Counterfactual and abductive reasoning
+Causal rules, DAG-based inference
+
+
+
+
+  2. Computing Methodologies → Machine Learning
+  #
+
+
+Focus: Learning causal structures or estimating treatment effects from data.
+Examples:
+
+Causal discovery algorithms
+Uplift modeling
+Counterfactual prediction
+
+
+
+
+  3. Computing Methodologies → Probabilistic Modeling
+  #
+
+
+Focus: Encoding causal dependencies with uncertainty.
+Examples:
+
+Bayesian Networks
+Structural Equation Models (SEMs)
+Probabilistic programming for causal reasoning
+
+
+
+
+
+  🌀 Venn Diagram of Causal AI&rsquo;s Interdisciplinary Nature
+  #
+
+
+
+
+  🔁 Core Intersections
+  #
+
+
+  
+      
+          Overlap Zone
+          Meaning
+      
+  
+  
+      
+          KR&amp;R ∩ ML
+          Causal Representation Learning: Learning latent causal graphs that support symbolic reasoning.
+      
+      
+          KR&amp;R ∩ Probabilistic
+          Probabilistic KR: Encoding causal knowledge with uncertainty, e.g., SCMs with probabilistic inference.
+      
+      
+          ML ∩ Probabilistic
+          Causal Machine Learning: Estimating treatment effects, counterfactual prediction, causal forests.
+      
+      
+          KR&amp;R ∩ ML ∩ Probabilistic
+          🔁 Causal AI Core: Full integration — systems that can represent, learn, and reason under uncertainty.
+      
+  
+
+
+
+  🧩 Takeaway
+  #
+
+
+Causal AI is not confined to a single ACM category. It is a cross-cutting area spanning:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/reasoning/causality/causal-ai/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Causal AI">
+  <meta property="og:description" content="Causal AI in ACM CCS-Style Categories 🎯 Definition # Causal AI refers to computational systems that model, reason, and learn about cause-effect relationships. This enables systems to simulate interventions (What if…?), explain outcomes, and support decision-making in uncertain, complex environments.
+📚 ACM CCS-Style Categories Where Causal AI Lives # 1. Computing Methodologies → Artificial Intelligence → Knowledge Representation and Reasoning (KR&amp;R) # Focus: Representing cause-effect relationships using logic, graphs, and symbolic formalisms. Examples: Structural Causal Models (SCMs) Counterfactual and abductive reasoning Causal rules, DAG-based inference 2. Computing Methodologies → Machine Learning # Focus: Learning causal structures or estimating treatment effects from data. Examples: Causal discovery algorithms Uplift modeling Counterfactual prediction 3. Computing Methodologies → Probabilistic Modeling # Focus: Encoding causal dependencies with uncertainty. Examples: Bayesian Networks Structural Equation Models (SEMs) Probabilistic programming for causal reasoning 🌀 Venn Diagram of Causal AI’s Interdisciplinary Nature # 🔁 Core Intersections # Overlap Zone Meaning KR&amp;R ∩ ML Causal Representation Learning: Learning latent causal graphs that support symbolic reasoning. KR&amp;R ∩ Probabilistic Probabilistic KR: Encoding causal knowledge with uncertainty, e.g., SCMs with probabilistic inference. ML ∩ Probabilistic Causal Machine Learning: Estimating treatment effects, counterfactual prediction, causal forests. KR&amp;R ∩ ML ∩ Probabilistic 🔁 Causal AI Core: Full integration — systems that can represent, learn, and reason under uncertainty. 🧩 Takeaway # Causal AI is not confined to a single ACM category. It is a cross-cutting area spanning:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Causal AI | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/reasoning/causality/causal-ai/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/reasoning/causality/causal-ai/index.xml" title="AI Reasoning" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle" checked />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle" checked />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="active">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Causal AI</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#-definition">🎯 Definition</a></li>
+            <li><a href="#-acm-ccs-style-categories-where-causal-ai-lives">📚 ACM CCS-Style Categories Where Causal AI Lives</a></li>
+            <li><a href="#-venn-diagram-of-causal-ais-interdisciplinary-nature">🌀 Venn Diagram of Causal AI&rsquo;s Interdisciplinary Nature</a></li>
+            <li><a href="#-core-intersections">🔁 Core Intersections</a></li>
+            <li><a href="#-takeaway">🧩 Takeaway</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Causal AI in ACM CCS-Style Categories
+</strong>
+</p>
+<hr>
+<h3 id="-definition">
+  🎯 Definition
+  <a class="anchor" href="#-definition">#</a>
+</h3>
+<p>Causal AI refers to computational systems that <strong>model</strong>, <strong>reason</strong>, and <strong>learn</strong> about cause-effect relationships. This enables systems to simulate interventions (<em>What if&hellip;?</em>), explain outcomes, and support decision-making in uncertain, complex environments.</p>
+<hr>
+<h3 id="-acm-ccs-style-categories-where-causal-ai-lives">
+  📚 ACM CCS-Style Categories Where Causal AI Lives
+  <a class="anchor" href="#-acm-ccs-style-categories-where-causal-ai-lives">#</a>
+</h3>
+<h4 id="1-computing-methodologies--artificial-intelligence--knowledge-representation-and-reasoning-krr">
+  1. <strong>Computing Methodologies → Artificial Intelligence → Knowledge Representation and Reasoning (KR&amp;R)</strong>
+  <a class="anchor" href="#1-computing-methodologies--artificial-intelligence--knowledge-representation-and-reasoning-krr">#</a>
+</h4>
+<ul>
+<li><strong>Focus:</strong> Representing cause-effect relationships using logic, graphs, and symbolic formalisms.</li>
+<li><strong>Examples:</strong>
+<ul>
+<li>Structural Causal Models (SCMs)</li>
+<li>Counterfactual and abductive reasoning</li>
+<li>Causal rules, DAG-based inference</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-computing-methodologies--machine-learning">
+  2. <strong>Computing Methodologies → Machine Learning</strong>
+  <a class="anchor" href="#2-computing-methodologies--machine-learning">#</a>
+</h4>
+<ul>
+<li><strong>Focus:</strong> Learning causal structures or estimating treatment effects from data.</li>
+<li><strong>Examples:</strong>
+<ul>
+<li>Causal discovery algorithms</li>
+<li>Uplift modeling</li>
+<li>Counterfactual prediction</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-computing-methodologies--probabilistic-modeling">
+  3. <strong>Computing Methodologies → Probabilistic Modeling</strong>
+  <a class="anchor" href="#3-computing-methodologies--probabilistic-modeling">#</a>
+</h4>
+<ul>
+<li><strong>Focus:</strong> Encoding causal dependencies with uncertainty.</li>
+<li><strong>Examples:</strong>
+<ul>
+<li>Bayesian Networks</li>
+<li>Structural Equation Models (SEMs)</li>
+<li>Probabilistic programming for causal reasoning</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="-venn-diagram-of-causal-ais-interdisciplinary-nature">
+  🌀 Venn Diagram of Causal AI&rsquo;s Interdisciplinary Nature
+  <a class="anchor" href="#-venn-diagram-of-causal-ais-interdisciplinary-nature">#</a>
+</h3>
+<img src="/images/venn_causalAI.png" alt="Causal AI Venn Diagram" width="600"/>
+<hr>
+<h3 id="-core-intersections">
+  🔁 Core Intersections
+  <a class="anchor" href="#-core-intersections">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Overlap Zone</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>KR&amp;R ∩ ML</strong></td>
+          <td><strong>Causal Representation Learning</strong>: Learning latent causal graphs that support symbolic reasoning.</td>
+      </tr>
+      <tr>
+          <td><strong>KR&amp;R ∩ Probabilistic</strong></td>
+          <td><strong>Probabilistic KR</strong>: Encoding causal knowledge with uncertainty, e.g., SCMs with probabilistic inference.</td>
+      </tr>
+      <tr>
+          <td><strong>ML ∩ Probabilistic</strong></td>
+          <td><strong>Causal Machine Learning</strong>: Estimating treatment effects, counterfactual prediction, causal forests.</td>
+      </tr>
+      <tr>
+          <td><strong>KR&amp;R ∩ ML ∩ Probabilistic</strong></td>
+          <td>🔁 <strong>Causal AI Core</strong>: Full integration — systems that can <strong>represent</strong>, <strong>learn</strong>, and <strong>reason</strong> under uncertainty.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-takeaway">
+  🧩 Takeaway
+  <a class="anchor" href="#-takeaway">#</a>
+</h3>
+<blockquote>
+<p><strong>Causal AI is not confined to a single ACM category.</strong> It is a <strong>cross-cutting area</strong> spanning:</p>
+<ul>
+<li>the <em>representation power</em> of KR&amp;R,</li>
+<li>the <em>learning ability</em> of ML,</li>
+<li>and the <em>uncertainty modeling</em> of probabilistic systems.</li>
+</ul>
+</blockquote>
+<p>This makes it central to <strong>trustworthy</strong>, <strong>explainable</strong>, and <strong>decision-supportive AI</strong>, especially in high-stakes fields like healthcare, economics, and law.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#-definition">🎯 Definition</a></li>
+            <li><a href="#-acm-ccs-style-categories-where-causal-ai-lives">📚 ACM CCS-Style Categories Where Causal AI Lives</a></li>
+            <li><a href="#-venn-diagram-of-causal-ais-interdisciplinary-nature">🌀 Venn Diagram of Causal AI&rsquo;s Interdisciplinary Nature</a></li>
+            <li><a href="#-core-intersections">🔁 Core Intersections</a></li>
+            <li><a href="#-takeaway">🧩 Takeaway</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

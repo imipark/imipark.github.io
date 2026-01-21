@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Data-Centric AI vs Model-Centric AI 
+
+
+
+
+MIT Lecture : https://dcai.csail.mit.edu/
+GitHub for Labs: https://github.com/dcai-course/dcai-lab
+
+
+
+  Q1: What is the traditional model-centric approach to machine learning?
+  #
+
+Traditionally, machine learning has focused on model-centric AI, where the dataset is fixed and the goal is to tune the model:
+
+Learn different model architectures
+Modify hyperparameters and training losses
+Focus on improving model performance given clean data
+This is how ML is often taught in courses (e.g., MIT 6.036)
+
+
+
+  Q2: What challenges arise in real-world ML settings?
+  #
+
+Real-world data is:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Data-Centric AI vs Model-Centric AI">
+  <meta property="og:description" content="Data-Centric AI vs Model-Centric AI MIT Lecture : https://dcai.csail.mit.edu/ GitHub for Labs: https://github.com/dcai-course/dcai-lab Q1: What is the traditional model-centric approach to machine learning? # Traditionally, machine learning has focused on model-centric AI, where the dataset is fixed and the goal is to tune the model:
+Learn different model architectures Modify hyperparameters and training losses Focus on improving model performance given clean data This is how ML is often taught in courses (e.g., MIT 6.036) Q2: What challenges arise in real-world ML settings? # Real-world data is:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Data-Centric AI vs Model-Centric AI | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/data-centric-vs-model-centric/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle" checked />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle" checked />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Data-Centric AI vs Model-Centric AI</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-what-is-the-traditional-model-centric-approach-to-machine-learning">Q1: What is the traditional model-centric approach to machine learning?</a></li>
+            <li><a href="#q2-what-challenges-arise-in-real-world-ml-settings">Q2: What challenges arise in real-world ML settings?</a></li>
+            <li><a href="#q3-what-is-data-centric-ai-dcai">Q3: What is <em>Data-Centric AI (DCAI)</em>?</a></li>
+            <li><a href="#q4-how-is-data-centric-ai-different-from-model-centric-ai">Q4: How is Data-Centric AI different from Model-Centric AI?</a></li>
+            <li><a href="#q5-what-techniques-fall-under-data-centric-ai">Q5: What techniques fall under Data-Centric AI?</a></li>
+            <li><a href="#q6-why-is-dcai-gaining-attention-now">Q6: Why is DCAI gaining attention now?</a></li>
+            <li><a href="#q7-whats-a-real-example-of-a-label-error-found-in-a-famous-dataset">Q7: What’s a real example of a label error found in a famous dataset?</a></li>
+            <li><a href="#q8-what-is-pu-learning-and-why-is-it-called-the-perceptron-of-data-centric-ai">Q8: What is PU Learning and why is it called &ldquo;the perceptron of Data-Centric AI&rdquo;?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Data-Centric AI vs Model-Centric AI 
+</strong>
+</p>
+<hr>
+<ul>
+<li>MIT Lecture : <a href="https://dcai.csail.mit.edu/">https://dcai.csail.mit.edu/</a></li>
+<li>GitHub for Labs: <a href="https://github.com/dcai-course/dcai-lab">https://github.com/dcai-course/dcai-lab</a></li>
+</ul>
+<hr>
+<h3 id="q1-what-is-the-traditional-model-centric-approach-to-machine-learning">
+  Q1: What is the traditional model-centric approach to machine learning?
+  <a class="anchor" href="#q1-what-is-the-traditional-model-centric-approach-to-machine-learning">#</a>
+</h3>
+<p>Traditionally, machine learning has focused on <em>model-centric AI</em>, where the dataset is fixed and the goal is to tune the model:</p>
+<ul>
+<li>Learn different model architectures</li>
+<li>Modify hyperparameters and training losses</li>
+<li>Focus on improving model performance given clean data</li>
+<li>This is how ML is often taught in courses (e.g., MIT 6.036)</li>
+</ul>
+<hr>
+<h3 id="q2-what-challenges-arise-in-real-world-ml-settings">
+  Q2: What challenges arise in real-world ML settings?
+  <a class="anchor" href="#q2-what-challenges-arise-in-real-world-ml-settings">#</a>
+</h3>
+<p>Real-world data is:</p>
+<ul>
+<li>Often messy and error-prone</li>
+<li>Not fixed or clean</li>
+<li>Contains label errors, noise, and distribution shifts</li>
+</ul>
+<blockquote>
+<p>Therefore, improving data quality can be more impactful than model tinkering.</p>
+</blockquote>
+<hr>
+<h3 id="q3-what-is-data-centric-ai-dcai">
+  Q3: What is <em>Data-Centric AI (DCAI)</em>?
+  <a class="anchor" href="#q3-what-is-data-centric-ai-dcai">#</a>
+</h3>
+<p>Data-Centric AI focuses on improving <strong>data quality</strong> to enhance model performance:</p>
+<ul>
+<li>Given any model, systematically improve the dataset.</li>
+<li>Examples:
+<ul>
+<li>Curriculum Learning (easy to hard examples)</li>
+<li>Confident Learning (identify and remove label errors)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="q4-how-is-data-centric-ai-different-from-model-centric-ai">
+  Q4: How is Data-Centric AI different from Model-Centric AI?
+  <a class="anchor" href="#q4-how-is-data-centric-ai-different-from-model-centric-ai">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Model-Centric AI</th>
+          <th>Data-Centric AI</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Goal</td>
+          <td>Improve model</td>
+          <td>Improve dataset</td>
+      </tr>
+      <tr>
+          <td>Fixed/Variable</td>
+          <td>Dataset is fixed</td>
+          <td>Dataset is changeable</td>
+      </tr>
+      <tr>
+          <td>Techniques</td>
+          <td>Tuning, loss functions, archs</td>
+          <td>Error correction, augmentation, etc.</td>
+      </tr>
+      <tr>
+          <td>Real-world use</td>
+          <td>Less applicable in messy domains</td>
+          <td>Highly applicable</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="q5-what-techniques-fall-under-data-centric-ai">
+  Q5: What techniques fall under Data-Centric AI?
+  <a class="anchor" href="#q5-what-techniques-fall-under-data-centric-ai">#</a>
+</h3>
+<ul>
+<li>Outlier detection and removal</li>
+<li>Error correction</li>
+<li>Data augmentation</li>
+<li>Feature selection</li>
+<li>Active learning</li>
+<li>Establishing consensus labels</li>
+</ul>
+<hr>
+<h3 id="q6-why-is-dcai-gaining-attention-now">
+  Q6: Why is DCAI gaining attention now?
+  <a class="anchor" href="#q6-why-is-dcai-gaining-attention-now">#</a>
+</h3>
+<ul>
+<li>Large foundation models (e.g., DALL-E, GPT-3) suffer from data issues</li>
+<li>Examples:
+<ul>
+<li>OpenAI identified label errors as major performance bottlenecks</li>
+<li>ChatGPT fine-tuned using better data, with human ranking</li>
+<li>Tesla’s Data Engine loops model outputs back to dataset improvements</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="q7-whats-a-real-example-of-a-label-error-found-in-a-famous-dataset">
+  Q7: What’s a real example of a label error found in a famous dataset?
+  <a class="anchor" href="#q7-whats-a-real-example-of-a-label-error-found-in-a-famous-dataset">#</a>
+</h3>
+<p>Hinton demonstrated a label error in the MNIST dataset (e.g., mislabeling of digit ‘3’) using data-centric techniques.</p>
+<hr>
+<h3 id="q8-what-is-pu-learning-and-why-is-it-called-the-perceptron-of-data-centric-ai">
+  Q8: What is PU Learning and why is it called &ldquo;the perceptron of Data-Centric AI&rdquo;?
+  <a class="anchor" href="#q8-what-is-pu-learning-and-why-is-it-called-the-perceptron-of-data-centric-ai">#</a>
+</h3>
+<p>PU Learning stands for <strong>Positive-Unlabeled Learning</strong>. It deals with training models using:</p>
+<ul>
+<li>
+<p>A small set of <strong>positive examples</strong></p>
+</li>
+<li>
+<p>A large set of <strong>unlabeled data</strong></p>
+</li>
+<li>
+<p>No explicitly labeled negatives</p>
+</li>
+<li>
+<p>It&rsquo;s called &ldquo;the perceptron of DCAI&rdquo; because:</p>
+<ul>
+<li>It is a <strong>foundational concept</strong> that demonstrates the importance of improving data rather than models.</li>
+<li>Just as the perceptron is a gateway to model-centric ML, PU Learning introduces core data-centric thinking.</li>
+</ul>
+</li>
+<li>
+<p>PU Learning is used when:</p>
+<ul>
+<li>Full labeling is impractical or costly (e.g., medical records, fraud detection)</li>
+<li>You need to build a classifier using partial label information</li>
+</ul>
+</li>
+<li>
+<p>Example:</p>
+<ul>
+<li>If you only know a few patients with a disease (positives), and the rest of your records are unlabeled, PU Learning helps build a classifier without assuming all unlabeled cases are negative.</li>
+</ul>
+</li>
+</ul>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-what-is-the-traditional-model-centric-approach-to-machine-learning">Q1: What is the traditional model-centric approach to machine learning?</a></li>
+            <li><a href="#q2-what-challenges-arise-in-real-world-ml-settings">Q2: What challenges arise in real-world ML settings?</a></li>
+            <li><a href="#q3-what-is-data-centric-ai-dcai">Q3: What is <em>Data-Centric AI (DCAI)</em>?</a></li>
+            <li><a href="#q4-how-is-data-centric-ai-different-from-model-centric-ai">Q4: How is Data-Centric AI different from Model-Centric AI?</a></li>
+            <li><a href="#q5-what-techniques-fall-under-data-centric-ai">Q5: What techniques fall under Data-Centric AI?</a></li>
+            <li><a href="#q6-why-is-dcai-gaining-attention-now">Q6: Why is DCAI gaining attention now?</a></li>
+            <li><a href="#q7-whats-a-real-example-of-a-label-error-found-in-a-famous-dataset">Q7: What’s a real example of a label error found in a famous dataset?</a></li>
+            <li><a href="#q8-what-is-pu-learning-and-why-is-it-called-the-perceptron-of-data-centric-ai">Q8: What is PU Learning and why is it called &ldquo;the perceptron of Data-Centric AI&rdquo;?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

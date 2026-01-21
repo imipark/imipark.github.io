@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Eval Infra: Verifiable (STEM) vs Non-Verifiable vs Hybrid
+
+
+
+
+  Why These 5 Layers? Separation of Concerns
+  #
+
+Each layer serves a distinct purpose in the AI evaluation lifecycle, from research to production deployment.
+
+  
+      
+          Layer
+          Purpose
+          Key Question
+          Stakeholder
+          Output
+      
+  
+  
+      
+          L1: Benchmark Design
+          Define what &ldquo;good&rdquo; means
+          What are we measuring?
+          Research Scientists
+          Test suite &#43; evaluation protocol
+      
+      
+          L2: Evaluation Execution
+          Actually measure performance
+          How do we score it?
+          ML Engineers
+          Raw scores/labels per example
+      
+      
+          L3: Scalability
+          Handle volume &amp; iteration speed
+          Can we do this 1000x?
+          MLOps/Infrastructure
+          Evaluation pipeline infrastructure
+      
+      
+          L4: Metrics &amp; Reliability
+          Trust the measurements
+          Is this signal real?
+          Data Scientists, Leadership
+          Aggregate metrics &#43; confidence intervals
+      
+      
+          L5: Production Monitoring
+          Maintain quality in the wild
+          Is it still working?
+          SREs, Product Managers
+          Live dashboards &#43; alerting systems
+      
+  
+
+
+  How Layers Map to Natural Workflow
+  #
+
+
+RESEARCH PHASE (Offline Development)
+│
+├─ L1: Design Benchmarks
+│   └─ &#34;What constitutes correct/good performance?&#34;
+│
+├─ L2: Run Evaluations  
+│   └─ &#34;Generate responses and score them&#34;
+│
+├─ L3: Scale Infrastructure
+│   └─ &#34;Need to iterate fast → evaluate 10K examples/day&#34;
+│
+└─ L4: Analyze Results
+    └─ &#34;Aggregate metrics, validate reliability&#34;
+
+DEPLOYMENT PHASE (Online Production)
+│
+└─ L5: Monitor Production
+    └─ &#34;Continuous validation, catch regressions&#34;
+    └─ Feed failures back to L1 (closed loop)
+
+
+  Different Stakeholders Own Each Layern
+  #
+
+
+┌─────────────────────────────────────────────────────┐
+│ L1: Research Scientists                             │
+│     → Design evaluation protocols                   │
+│     → Define what &#34;good&#34; means for the domain       │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ L2: ML Engineers                                    │
+│     → Implement evaluation scripts                  │
+│     → Run model inference &#43; scoring                 │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ L3: MLOps / Infrastructure Engineers                │
+│     → Build scalable eval pipelines                 │
+│     → Manage compute resources                      │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ L4: Data Scientists / Research Leadership           │
+│     → Statistical analysis of eval results          │
+│     → Validate metric reliability                   │
+│     → Make deployment decisions                     │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ L5: SREs / Product Managers                         │
+│     → Monitor production performance                │
+│     → Alert on regressions                          │
+│     → Coordinate incident response                  │
+└─────────────────────────────────────────────────────┘
+
+
+  The Spectrum of Verifiability
+  #
+
+
+Fully Verifiable ←――――――――――――――――――――――――→ Non-Verifiable
+      │                    │                      │
+   Code/Math          Technical Writing      Creative/Social
+   (external          (hybrid: facts &#43;       (judgment only)
+    oracle)            style/clarity)
+
+
+  Examples by Category
+  #
+
+
+  
+      
+          Fully Verifiable
+          Hybrid (Partially Verifiable)
+          Non-Verifiable
+      
+  
+  
+      
+          • Code execution
+          • Technical writing (facts ✓, clarity ✗)
+          • Creative writing
+      
+      
+          • Math computation
+          • Translation (accuracy ✓, style ✗)
+          • Persuasive marketing
+      
+      
+          • Logic proofs
+          • Legal analysis (precedent ✓, judgment ✗)
+          • Empathetic therapy
+      
+      
+          • Data extraction
+          • Medical diagnosis (tests ✓, manner ✗)
+          • Humor generation
+      
+      
+          • Fact checking
+          • Recipe generation (chemistry ✓, taste ✗)
+          • Art critique
+      
+      
+          • Physics simulation
+          • Code review (bugs ✓, readability ✗)
+          • Storytelling
+      
+  
+
+
+  LAYER 1: BENCHMARK DESIGN
+  #
+
+
+  
+      
+          Verifiable (Code/Math/Logic)
+          Hybrid (Technical/Professional)
+          Non-Verifiable (Creative/Social)
+      
+  
+  
+      
+          Structure: Problem &#43; Test Suite → Automated Oracle
+          Structure: Task &#43; Mixed Criteria → Automated &#43; Human
+          Structure: Prompt &#43; Rubric → Human/AI Judgment
+      
+      
+          Key Benchmarks:• HumanEval (164 code problems)• MATH (12K competition problems)• GPQA (448 PhD questions)
+          Key Benchmarks:• Technical Writing Quality• Translation (BLEU &#43; human eval)• Medical Q&amp;A (facts &#43; empathy)
+          Key Benchmarks:• MT-Bench (80 conversations)• AlpacaEval (805 prompts)• Chatbot Arena (live voting)
+      
+      
+          Properties:✅ Tests are deterministic✅ Can generate infinite variants✅ No human disagreement
+          Properties:⚠️ Some aspects objective⚠️ Some aspects subjective⚠️ Requires dual evaluation
+          Properties:❌ Ratings are subjective❌ Context-dependent quality❌ Humans disagree frequently
+      
+      
+          Creation Time: 1-2 weeks
+          Creation Time: 2-3 weeks
+          Creation Time: 3-4 weeks
+      
+      
+          Example:assert reverse([1,2,3]) == [3,2,1]
+          Example:Accuracy: Does translation preserve meaning? (✓)Fluency: Does it sound natural? (human)
+          Example:&ldquo;Is this story engaging?&quot;→ 5-point Likert scale (human)
+      
+  
+
+
+  LAYER 2: EVALUATION EXECUTION
+  #
+
+
+  
+      
+          Verifiable
+          Hybrid
+          Non-Verifiable
+      
+  
+  
+      
+          Pipeline:1. Generate solutions (10 min)2. Execute &amp; verify (5 min)3. Compute metrics (&lt;1 min)
+          Pipeline:1. Generate outputs (10 min)2. Automated checks (5 min)3. Human evaluation (4-20 hours)4. Combine scores (30 min)
+          Pipeline:1. Generate responses (5 min)2. Human/AI rating (8-40 hours)3. Aggregate &amp; validate (1 hour)
+      
+      
+          Verification:python result = execute_code(solution)&lt;br&gt;label = PASS if tests_pass else FAIL&lt;br&gt;
+          Verification:python # Automated component&lt;br&gt;facts_correct = verify_facts(output)&lt;br&gt;# Human component&lt;br&gt;clarity = human_rate_clarity(output)&lt;br&gt;score = 0.5*facts &#43; 0.5*clarity&lt;br&gt;
+          Verification:python ratings = get_human_ratings(n=3)&lt;br&gt;score = mean(ratings)&lt;br&gt;# Then validate inter-rater agreement&lt;br&gt;
+      
+      
+          Throughput: 10K-100K evals/hour
+          Throughput: 500-5K evals/hour
+          Throughput: 100-1K evals/hour
+      
+      
+          Cost per eval: $0.001-0.01
+          Cost per eval: $0.05-1.00
+          Cost per eval: $0.10-5.00
+      
+      
+          Human time: 0 hours
+          Human time: 4-20 hours (partial)
+          Human time: 24-120 hours (full)
+      
+  
+
+
+  LAYER 3: SCALABILITY
+  #
+
+
+  
+      
+          Verifiable
+          Hybrid
+          Non-Verifiable
+      
+  
+  
+      
+          Bottleneck: Compute (GPU time)
+          Bottleneck: Human time for subjective parts
+          Bottleneck: Human bandwidth
+      
+      
+          Scaling Examples:• 164 problems → $2, 15 min• 10K problems → $122, 2 hours• 100K problems → $1,220, 8 hours
+          Scaling Examples:• 100 docs → $50, 4 hours• 1K docs → $500, 20 hours• 10K docs → $5K, 200 hours(Mix of automated &#43; human)
+          Scaling Examples:• 80 prompts → $400, 8-40 hours• 10K prompts → $37,500, 2,500 hours• (Or $8K hybrid with AI judges)
+      
+      
+          Human scaling: 0 hours regardless of scale
+          Human scaling: Sub-linear (automate what&rsquo;s possible)
+          Human scaling: Linear or super-linear
+      
+      
+          Constraint: Money (buy more GPUs)
+          Constraint: Time &#43; money (human for quality checks)
+          Constraint: Time (recruit, train raters)
+      
+      
+          Automation: 99.9%
+          Automation: 40-70% (depends on domain)
+          Automation: 5-30% (AI judges need validation)
+      
+      
+          Scalability Strategy:• Parallelize across GPUs• Generate synthetic test cases• Cost scales linearly
+          Scalability Strategy:• Automate objective criteria• Sample human evaluation (10-20%)• Use AI judges for subjective parts (with validation)
+          Scalability Strategy:• Train reward models on human labels• Use LLM-as-judge (must validate)• Spot-check 5-10% with humans
+      
+  
+
+
+  LAYER 4: METRICS &amp; RELIABILITY
+  #
+
+
+  
+      
+          Verifiable
+          Hybrid
+          Non-Verifiable
+      
+  
+  
+      
+          Metrics:• pass@k (% solved in k tries)• Compile rate• Exact match accuracy• Error tolerance
+          Metrics:• Factual accuracy (automated)• Readability score (formula)• Clarity rating (human)• Combined weighted score
+          Metrics:• Likert scale (1-5 ratings)• Win rate vs baseline• Elo ratings (head-to-head)• Thumbs up/down ratio
+      
+      
+          Properties:✅ Objective &amp; reproducible✅ Labs can compare directly✅ No gaming (oracle is external)✅ Leaderboards meaningful
+          Properties:⚠️ Partially objective⚠️ Requires careful weighting⚠️ Some gaming risk on subjective parts⚠️ Need to report both auto &#43; human metrics
+          Properties:❌ Subjective &amp; noisy❌ Different protocols → incomparable❌ Gaming risk (optimize for judge)❌ Leaderboards have selection bias
+      
+      
+          Inter-evaluator agreement: 100%
+          Inter-evaluator agreement:Facts: 95-100%Quality: 70-85%
+          Inter-evaluator agreement: 60-80%
+      
+      
+          Example Metrics:• HumanEval pass@1: 67.8%• MATH accuracy: 82.3%• Error rate: 5.2%
+          Example Metrics:• Translation BLEU: 45.2 (auto)• Fluency: 4.1/5 (human)• Medical accuracy: 94% (auto), Empathy: 3.8/5 (human)
+          Example Metrics:• MT-Bench: 7.9/10 (GPT-4 judge)• Human preference: 78% win rate• Elo rating: 1,245
+      
+  
+
+
+  LAYER 5: PRODUCTION MONITORING
+  #
+
+
+  
+      
+          Verifiable
+          Hybrid
+          Non-Verifiable
+      
+  
+  
+      
+          Real-time signals:• Does code compile? ✓/✗• Tests pass? ✓/✗• User accepted? ✓/✗• Execution time OK? ✓/✗
+          Real-time signals:• Facts verified? ✓/✗• Format correct? ✓/✗• User satisfaction proxy (usage time)• Error rate
+          Proxy signals:• Thumbs up/down ratio• Session length• Regeneration rate• Response length
+      
+      
+          Monitoring:• Every request → Automated check• Dashboard updates: Real-time• Regression alerts: Instant
+          Monitoring:• Automated checks: Real-time• Human spot-checks: Weekly (10% sample)• Combined quality score trending
+          Monitoring:• Sample 100 conversations/week• 3 humans rate each• Compare to last month
+      
+      
+          Action:• Compile rate &lt;90% → Auto rollback• Pass@1 drops &gt;5% → Alert engineer
+          Action:• Fact accuracy &lt;95% → Auto rollback• Quality score drops &gt;0.3 → Investigate• Run deeper human eval if needed
+          Action:• Quality drops &gt;0.3 → Investigate• A/B test for 7 days• Need human eval to decide
+      
+      
+          Human role: Only when alerts fire
+          Human role: Weekly spot-checks (10%)
+          Human role: Continuous (weekly audits)
+      
+      
+          Dashboard Example:Compile Rate: 94.2% 🟢Pass@1: 67.8% 🟢Latency: 1.2s 🟡
+          Dashboard Example:Fact Check: 96.1% 🟢User Rating: 4.2/5 🟢Clarity (sampled): 3.9/5 🟡
+          Dashboard Example:Human Rating: 4.2/5 🔴Thumbs Up: 78% 🟢Session Time: 8.2min 🟢
+      
+  
+
+
+  EACH LAYER HAS DIFFERENT BOTTLENECK
+  #
+
+
+  
+      
+          Layer
+          Verifiable Bottleneck
+          Hybrid Bottleneck
+          Non-Verifiable Bottleneck
+      
+  
+  
+      
+          L1: Design
+          Writing test suite
+          Defining which parts are verifiable
+          Getting human agreement on rubric
+      
+      
+          L2: Execute
+          GPU inference time
+          Human time for quality checks
+          Human annotation time
+      
+      
+          L3: Scale
+          Compute budget
+          Hiring raters for quality
+          Hiring/training many raters
+      
+      
+          L4: Metrics
+          Statistical analysis
+          Balancing auto vs human metrics
+          Inter-rater reliability
+      
+      
+          L5: Monitor
+          Infrastructure cost
+          Continuous spot-checking
+          Continuous human auditing
+      
+  
+
+
+
+  REAL-WORLD EXAMPLES BY CATEGORY
+  #
+
+
+
+Verifiable:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/eval/eval_infra/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Eval Infra: Verifiable vs Non-Verifiable vs Hybrid">
+  <meta property="og:description" content="Eval Infra: Verifiable (STEM) vs Non-Verifiable vs Hybrid Why These 5 Layers? Separation of Concerns # Each layer serves a distinct purpose in the AI evaluation lifecycle, from research to production deployment.
+Layer Purpose Key Question Stakeholder Output L1: Benchmark Design Define what “good” means What are we measuring? Research Scientists Test suite &#43; evaluation protocol L2: Evaluation Execution Actually measure performance How do we score it? ML Engineers Raw scores/labels per example L3: Scalability Handle volume &amp; iteration speed Can we do this 1000x? MLOps/Infrastructure Evaluation pipeline infrastructure L4: Metrics &amp; Reliability Trust the measurements Is this signal real? Data Scientists, Leadership Aggregate metrics &#43; confidence intervals L5: Production Monitoring Maintain quality in the wild Is it still working? SREs, Product Managers Live dashboards &#43; alerting systems How Layers Map to Natural Workflow # RESEARCH PHASE (Offline Development) │ ├─ L1: Design Benchmarks │ └─ &#34;What constitutes correct/good performance?&#34; │ ├─ L2: Run Evaluations │ └─ &#34;Generate responses and score them&#34; │ ├─ L3: Scale Infrastructure │ └─ &#34;Need to iterate fast → evaluate 10K examples/day&#34; │ └─ L4: Analyze Results └─ &#34;Aggregate metrics, validate reliability&#34; DEPLOYMENT PHASE (Online Production) │ └─ L5: Monitor Production └─ &#34;Continuous validation, catch regressions&#34; └─ Feed failures back to L1 (closed loop) Different Stakeholders Own Each Layern # ┌─────────────────────────────────────────────────────┐ │ L1: Research Scientists │ │ → Design evaluation protocols │ │ → Define what &#34;good&#34; means for the domain │ └─────────────────────────────────────────────────────┘ ┌─────────────────────────────────────────────────────┐ │ L2: ML Engineers │ │ → Implement evaluation scripts │ │ → Run model inference &#43; scoring │ └─────────────────────────────────────────────────────┘ ┌─────────────────────────────────────────────────────┐ │ L3: MLOps / Infrastructure Engineers │ │ → Build scalable eval pipelines │ │ → Manage compute resources │ └─────────────────────────────────────────────────────┘ ┌─────────────────────────────────────────────────────┐ │ L4: Data Scientists / Research Leadership │ │ → Statistical analysis of eval results │ │ → Validate metric reliability │ │ → Make deployment decisions │ └─────────────────────────────────────────────────────┘ ┌─────────────────────────────────────────────────────┐ │ L5: SREs / Product Managers │ │ → Monitor production performance │ │ → Alert on regressions │ │ → Coordinate incident response │ └─────────────────────────────────────────────────────┘ The Spectrum of Verifiability # Fully Verifiable ←――――――――――――――――――――――――→ Non-Verifiable │ │ │ Code/Math Technical Writing Creative/Social (external (hybrid: facts &#43; (judgment only) oracle) style/clarity) Examples by Category # Fully Verifiable Hybrid (Partially Verifiable) Non-Verifiable • Code execution • Technical writing (facts ✓, clarity ✗) • Creative writing • Math computation • Translation (accuracy ✓, style ✗) • Persuasive marketing • Logic proofs • Legal analysis (precedent ✓, judgment ✗) • Empathetic therapy • Data extraction • Medical diagnosis (tests ✓, manner ✗) • Humor generation • Fact checking • Recipe generation (chemistry ✓, taste ✗) • Art critique • Physics simulation • Code review (bugs ✓, readability ✗) • Storytelling LAYER 1: BENCHMARK DESIGN # Verifiable (Code/Math/Logic) Hybrid (Technical/Professional) Non-Verifiable (Creative/Social) Structure: Problem &#43; Test Suite → Automated Oracle Structure: Task &#43; Mixed Criteria → Automated &#43; Human Structure: Prompt &#43; Rubric → Human/AI Judgment Key Benchmarks:
+• HumanEval (164 code problems)
+• MATH (12K competition problems)
+• GPQA (448 PhD questions) Key Benchmarks:
+• Technical Writing Quality
+• Translation (BLEU &#43; human eval)
+• Medical Q&amp;A (facts &#43; empathy) Key Benchmarks:
+• MT-Bench (80 conversations)
+• AlpacaEval (805 prompts)
+• Chatbot Arena (live voting) Properties:
+✅ Tests are deterministic
+✅ Can generate infinite variants
+✅ No human disagreement Properties:
+⚠️ Some aspects objective
+⚠️ Some aspects subjective
+⚠️ Requires dual evaluation Properties:
+❌ Ratings are subjective
+❌ Context-dependent quality
+❌ Humans disagree frequently Creation Time: 1-2 weeks Creation Time: 2-3 weeks Creation Time: 3-4 weeks Example:
+assert reverse([1,2,3]) == [3,2,1] Example:
+Accuracy: Does translation preserve meaning? (✓)
+Fluency: Does it sound natural? (human) Example:
+“Is this story engaging?&#34;
+→ 5-point Likert scale (human) LAYER 2: EVALUATION EXECUTION # Verifiable Hybrid Non-Verifiable Pipeline:
+1. Generate solutions (10 min)
+2. Execute &amp; verify (5 min)
+3. Compute metrics (&lt;1 min) Pipeline:
+1. Generate outputs (10 min)
+2. Automated checks (5 min)
+3. Human evaluation (4-20 hours)
+4. Combine scores (30 min) Pipeline:
+1. Generate responses (5 min)
+2. Human/AI rating (8-40 hours)
+3. Aggregate &amp; validate (1 hour) Verification:
+python result = execute_code(solution)&lt;br&gt;label = PASS if tests_pass else FAIL&lt;br&gt; Verification:
+python # Automated component&lt;br&gt;facts_correct = verify_facts(output)&lt;br&gt;# Human component&lt;br&gt;clarity = human_rate_clarity(output)&lt;br&gt;score = 0.5*facts &#43; 0.5*clarity&lt;br&gt; Verification:
+python ratings = get_human_ratings(n=3)&lt;br&gt;score = mean(ratings)&lt;br&gt;# Then validate inter-rater agreement&lt;br&gt; Throughput: 10K-100K evals/hour Throughput: 500-5K evals/hour Throughput: 100-1K evals/hour Cost per eval: $0.001-0.01 Cost per eval: $0.05-1.00 Cost per eval: $0.10-5.00 Human time: 0 hours Human time: 4-20 hours (partial) Human time: 24-120 hours (full) LAYER 3: SCALABILITY # Verifiable Hybrid Non-Verifiable Bottleneck: Compute (GPU time) Bottleneck: Human time for subjective parts Bottleneck: Human bandwidth Scaling Examples:
+• 164 problems → $2, 15 min
+• 10K problems → $122, 2 hours
+• 100K problems → $1,220, 8 hours Scaling Examples:
+• 100 docs → $50, 4 hours
+• 1K docs → $500, 20 hours
+• 10K docs → $5K, 200 hours
+(Mix of automated &#43; human) Scaling Examples:
+• 80 prompts → $400, 8-40 hours
+• 10K prompts → $37,500, 2,500 hours
+• (Or $8K hybrid with AI judges) Human scaling: 0 hours regardless of scale Human scaling: Sub-linear (automate what’s possible) Human scaling: Linear or super-linear Constraint: Money (buy more GPUs) Constraint: Time &#43; money (human for quality checks) Constraint: Time (recruit, train raters) Automation: 99.9% Automation: 40-70% (depends on domain) Automation: 5-30% (AI judges need validation) Scalability Strategy:
+• Parallelize across GPUs
+• Generate synthetic test cases
+• Cost scales linearly Scalability Strategy:
+• Automate objective criteria
+• Sample human evaluation (10-20%)
+• Use AI judges for subjective parts (with validation) Scalability Strategy:
+• Train reward models on human labels
+• Use LLM-as-judge (must validate)
+• Spot-check 5-10% with humans LAYER 4: METRICS &amp; RELIABILITY # Verifiable Hybrid Non-Verifiable Metrics:
+• pass@k (% solved in k tries)
+• Compile rate
+• Exact match accuracy
+• Error tolerance Metrics:
+• Factual accuracy (automated)
+• Readability score (formula)
+• Clarity rating (human)
+• Combined weighted score Metrics:
+• Likert scale (1-5 ratings)
+• Win rate vs baseline
+• Elo ratings (head-to-head)
+• Thumbs up/down ratio Properties:
+✅ Objective &amp; reproducible
+✅ Labs can compare directly
+✅ No gaming (oracle is external)
+✅ Leaderboards meaningful Properties:
+⚠️ Partially objective
+⚠️ Requires careful weighting
+⚠️ Some gaming risk on subjective parts
+⚠️ Need to report both auto &#43; human metrics Properties:
+❌ Subjective &amp; noisy
+❌ Different protocols → incomparable
+❌ Gaming risk (optimize for judge)
+❌ Leaderboards have selection bias Inter-evaluator agreement: 100% Inter-evaluator agreement:
+Facts: 95-100%
+Quality: 70-85% Inter-evaluator agreement: 60-80% Example Metrics:
+• HumanEval pass@1: 67.8%
+• MATH accuracy: 82.3%
+• Error rate: 5.2% Example Metrics:
+• Translation BLEU: 45.2 (auto)
+• Fluency: 4.1/5 (human)
+• Medical accuracy: 94% (auto), Empathy: 3.8/5 (human) Example Metrics:
+• MT-Bench: 7.9/10 (GPT-4 judge)
+• Human preference: 78% win rate
+• Elo rating: 1,245 LAYER 5: PRODUCTION MONITORING # Verifiable Hybrid Non-Verifiable Real-time signals:
+• Does code compile? ✓/✗
+• Tests pass? ✓/✗
+• User accepted? ✓/✗
+• Execution time OK? ✓/✗ Real-time signals:
+• Facts verified? ✓/✗
+• Format correct? ✓/✗
+• User satisfaction proxy (usage time)
+• Error rate Proxy signals:
+• Thumbs up/down ratio
+• Session length
+• Regeneration rate
+• Response length Monitoring:
+• Every request → Automated check
+• Dashboard updates: Real-time
+• Regression alerts: Instant Monitoring:
+• Automated checks: Real-time
+• Human spot-checks: Weekly (10% sample)
+• Combined quality score trending Monitoring:
+• Sample 100 conversations/week
+• 3 humans rate each
+• Compare to last month Action:
+• Compile rate &lt;90% → Auto rollback
+• Pass@1 drops &gt;5% → Alert engineer Action:
+• Fact accuracy &lt;95% → Auto rollback
+• Quality score drops &gt;0.3 → Investigate
+• Run deeper human eval if needed Action:
+• Quality drops &gt;0.3 → Investigate
+• A/B test for 7 days
+• Need human eval to decide Human role: Only when alerts fire Human role: Weekly spot-checks (10%) Human role: Continuous (weekly audits) Dashboard Example:
+Compile Rate: 94.2% 🟢
+Pass@1: 67.8% 🟢
+Latency: 1.2s 🟡 Dashboard Example:
+Fact Check: 96.1% 🟢
+User Rating: 4.2/5 🟢
+Clarity (sampled): 3.9/5 🟡 Dashboard Example:
+Human Rating: 4.2/5 🔴
+Thumbs Up: 78% 🟢
+Session Time: 8.2min 🟢 EACH LAYER HAS DIFFERENT BOTTLENECK # Layer Verifiable Bottleneck Hybrid Bottleneck Non-Verifiable Bottleneck L1: Design Writing test suite Defining which parts are verifiable Getting human agreement on rubric L2: Execute GPU inference time Human time for quality checks Human annotation time L3: Scale Compute budget Hiring raters for quality Hiring/training many raters L4: Metrics Statistical analysis Balancing auto vs human metrics Inter-rater reliability L5: Monitor Infrastructure cost Continuous spot-checking Continuous human auditing REAL-WORLD EXAMPLES BY CATEGORY # Verifiable:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Eval Infra: Verifiable vs Non-Verifiable vs Hybrid | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/eval/eval_infra/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle" checked />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Eval Infra: Verifiable vs Non-Verifiable vs Hybrid</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#why-these-5-layers-separation-of-concerns">Why These 5 Layers? Separation of Concerns</a></li>
+            <li><a href="#how-layers-map-to-natural-workflow">How Layers Map to Natural Workflow</a></li>
+            <li><a href="#different-stakeholders-own-each-layern">Different Stakeholders Own Each Layern</a></li>
+            <li><a href="#the-spectrum-of-verifiability">The Spectrum of Verifiability</a></li>
+            <li><a href="#examples-by-category">Examples by Category</a></li>
+            <li><a href="#layer-1-benchmark-design"><strong>LAYER 1: BENCHMARK DESIGN</strong></a></li>
+            <li><a href="#layer-2-evaluation-execution"><strong>LAYER 2: EVALUATION EXECUTION</strong></a></li>
+            <li><a href="#layer-3-scalability"><strong>LAYER 3: SCALABILITY</strong></a></li>
+            <li><a href="#layer-4-metrics--reliability"><strong>LAYER 4: METRICS &amp; RELIABILITY</strong></a></li>
+            <li><a href="#layer-5-production-monitoring"><strong>LAYER 5: PRODUCTION MONITORING</strong></a></li>
+            <li><a href="#each-layer-has-different-bottleneck">EACH LAYER HAS DIFFERENT BOTTLENECK</a></li>
+            <li><a href="#real-world-examples-by-category">REAL-WORLD EXAMPLES BY CATEGORY</a></li>
+            <li><a href="#the-three-way-split">The Three-Way Split:</a></li>
+            <li><a href="#why-this-matters">Why This Matters:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Eval Infra: Verifiable (STEM) vs Non-Verifiable vs Hybrid
+</strong>
+</p>
+<hr>
+<h3 id="why-these-5-layers-separation-of-concerns">
+  Why These 5 Layers? Separation of Concerns
+  <a class="anchor" href="#why-these-5-layers-separation-of-concerns">#</a>
+</h3>
+<p>Each layer serves a <strong>distinct purpose</strong> in the AI evaluation lifecycle, from research to production deployment.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Layer</strong></th>
+          <th><strong>Purpose</strong></th>
+          <th><strong>Key Question</strong></th>
+          <th><strong>Stakeholder</strong></th>
+          <th><strong>Output</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>L1: Benchmark Design</strong></td>
+          <td>Define what &ldquo;good&rdquo; means</td>
+          <td>What are we measuring?</td>
+          <td>Research Scientists</td>
+          <td>Test suite + evaluation protocol</td>
+      </tr>
+      <tr>
+          <td><strong>L2: Evaluation Execution</strong></td>
+          <td>Actually measure performance</td>
+          <td>How do we score it?</td>
+          <td>ML Engineers</td>
+          <td>Raw scores/labels per example</td>
+      </tr>
+      <tr>
+          <td><strong>L3: Scalability</strong></td>
+          <td>Handle volume &amp; iteration speed</td>
+          <td>Can we do this 1000x?</td>
+          <td>MLOps/Infrastructure</td>
+          <td>Evaluation pipeline infrastructure</td>
+      </tr>
+      <tr>
+          <td><strong>L4: Metrics &amp; Reliability</strong></td>
+          <td>Trust the measurements</td>
+          <td>Is this signal real?</td>
+          <td>Data Scientists, Leadership</td>
+          <td>Aggregate metrics + confidence intervals</td>
+      </tr>
+      <tr>
+          <td><strong>L5: Production Monitoring</strong></td>
+          <td>Maintain quality in the wild</td>
+          <td>Is it still working?</td>
+          <td>SREs, Product Managers</td>
+          <td>Live dashboards + alerting systems</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="how-layers-map-to-natural-workflow">
+  How Layers Map to Natural Workflow
+  <a class="anchor" href="#how-layers-map-to-natural-workflow">#</a>
+</h3>
+<pre style="line-height: 1.0;">
+RESEARCH PHASE (Offline Development)
+│
+├─ L1: Design Benchmarks
+│   └─ "What constitutes correct/good performance?"
+│
+├─ L2: Run Evaluations  
+│   └─ "Generate responses and score them"
+│
+├─ L3: Scale Infrastructure
+│   └─ "Need to iterate fast → evaluate 10K examples/day"
+│
+└─ L4: Analyze Results
+    └─ "Aggregate metrics, validate reliability"
+
+DEPLOYMENT PHASE (Online Production)
+│
+└─ L5: Monitor Production
+    └─ "Continuous validation, catch regressions"
+    └─ Feed failures back to L1 (closed loop)
+</pre>
+<h3 id="different-stakeholders-own-each-layern">
+  Different Stakeholders Own Each Layern
+  <a class="anchor" href="#different-stakeholders-own-each-layern">#</a>
+</h3>
+<pre style="line-height: 1.0;">
+┌─────────────────────────────────────────────────────┐
+│ L1: Research Scientists                             │
+│     → Design evaluation protocols                   │
+│     → Define what "good" means for the domain       │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ L2: ML Engineers                                    │
+│     → Implement evaluation scripts                  │
+│     → Run model inference + scoring                 │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ L3: MLOps / Infrastructure Engineers                │
+│     → Build scalable eval pipelines                 │
+│     → Manage compute resources                      │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ L4: Data Scientists / Research Leadership           │
+│     → Statistical analysis of eval results          │
+│     → Validate metric reliability                   │
+│     → Make deployment decisions                     │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ L5: SREs / Product Managers                         │
+│     → Monitor production performance                │
+│     → Alert on regressions                          │
+│     → Coordinate incident response                  │
+└─────────────────────────────────────────────────────┘
+</pre>
+<h3 id="the-spectrum-of-verifiability">
+  The Spectrum of Verifiability
+  <a class="anchor" href="#the-spectrum-of-verifiability">#</a>
+</h3>
+<pre style="line-height: 1.0;">
+Fully Verifiable ←――――――――――――――――――――――――→ Non-Verifiable
+      │                    │                      │
+   Code/Math          Technical Writing      Creative/Social
+   (external          (hybrid: facts +       (judgment only)
+    oracle)            style/clarity)
+</pre>
+<h3 id="examples-by-category">
+  Examples by Category
+  <a class="anchor" href="#examples-by-category">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Fully Verifiable</strong></th>
+          <th><strong>Hybrid (Partially Verifiable)</strong></th>
+          <th><strong>Non-Verifiable</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>• Code execution</td>
+          <td>• Technical writing (facts ✓, clarity ✗)</td>
+          <td>• Creative writing</td>
+      </tr>
+      <tr>
+          <td>• Math computation</td>
+          <td>• Translation (accuracy ✓, style ✗)</td>
+          <td>• Persuasive marketing</td>
+      </tr>
+      <tr>
+          <td>• Logic proofs</td>
+          <td>• Legal analysis (precedent ✓, judgment ✗)</td>
+          <td>• Empathetic therapy</td>
+      </tr>
+      <tr>
+          <td>• Data extraction</td>
+          <td>• Medical diagnosis (tests ✓, manner ✗)</td>
+          <td>• Humor generation</td>
+      </tr>
+      <tr>
+          <td>• Fact checking</td>
+          <td>• Recipe generation (chemistry ✓, taste ✗)</td>
+          <td>• Art critique</td>
+      </tr>
+      <tr>
+          <td>• Physics simulation</td>
+          <td>• Code review (bugs ✓, readability ✗)</td>
+          <td>• Storytelling</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="layer-1-benchmark-design">
+  <strong>LAYER 1: BENCHMARK DESIGN</strong>
+  <a class="anchor" href="#layer-1-benchmark-design">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Verifiable (Code/Math/Logic)</strong></th>
+          <th><strong>Hybrid (Technical/Professional)</strong></th>
+          <th><strong>Non-Verifiable (Creative/Social)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Structure:</strong> Problem + Test Suite → Automated Oracle</td>
+          <td><strong>Structure:</strong> Task + Mixed Criteria → Automated + Human</td>
+          <td><strong>Structure:</strong> Prompt + Rubric → Human/AI Judgment</td>
+      </tr>
+      <tr>
+          <td><strong>Key Benchmarks:</strong><br>• HumanEval (164 code problems)<br>• MATH (12K competition problems)<br>• GPQA (448 PhD questions)</td>
+          <td><strong>Key Benchmarks:</strong><br>• Technical Writing Quality<br>• Translation (BLEU + human eval)<br>• Medical Q&amp;A (facts + empathy)</td>
+          <td><strong>Key Benchmarks:</strong><br>• MT-Bench (80 conversations)<br>• AlpacaEval (805 prompts)<br>• Chatbot Arena (live voting)</td>
+      </tr>
+      <tr>
+          <td><strong>Properties:</strong><br>✅ Tests are deterministic<br>✅ Can generate infinite variants<br>✅ No human disagreement</td>
+          <td><strong>Properties:</strong><br>⚠️ Some aspects objective<br>⚠️ Some aspects subjective<br>⚠️ Requires dual evaluation</td>
+          <td><strong>Properties:</strong><br>❌ Ratings are subjective<br>❌ Context-dependent quality<br>❌ Humans disagree frequently</td>
+      </tr>
+      <tr>
+          <td><strong>Creation Time:</strong> 1-2 weeks</td>
+          <td><strong>Creation Time:</strong> 2-3 weeks</td>
+          <td><strong>Creation Time:</strong> 3-4 weeks</td>
+      </tr>
+      <tr>
+          <td><strong>Example:</strong><br><code>assert reverse([1,2,3]) == [3,2,1]</code></td>
+          <td><strong>Example:</strong><br>Accuracy: Does translation preserve meaning? (✓)<br>Fluency: Does it sound natural? (human)</td>
+          <td><strong>Example:</strong><br>&ldquo;Is this story engaging?&quot;<br>→ 5-point Likert scale (human)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="layer-2-evaluation-execution">
+  <strong>LAYER 2: EVALUATION EXECUTION</strong>
+  <a class="anchor" href="#layer-2-evaluation-execution">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Verifiable</strong></th>
+          <th><strong>Hybrid</strong></th>
+          <th><strong>Non-Verifiable</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Pipeline:</strong><br>1. Generate solutions (10 min)<br>2. <strong>Execute &amp; verify (5 min)</strong><br>3. Compute metrics (&lt;1 min)</td>
+          <td><strong>Pipeline:</strong><br>1. Generate outputs (10 min)<br>2. <strong>Automated checks (5 min)</strong><br>3. <strong>Human evaluation (4-20 hours)</strong><br>4. Combine scores (30 min)</td>
+          <td><strong>Pipeline:</strong><br>1. Generate responses (5 min)<br>2. <strong>Human/AI rating (8-40 hours)</strong><br>3. Aggregate &amp; validate (1 hour)</td>
+      </tr>
+      <tr>
+          <td><strong>Verification:</strong><br><code>python result = execute_code(solution)&lt;br&gt;label = PASS if tests_pass else FAIL&lt;br&gt;</code></td>
+          <td><strong>Verification:</strong><br><code>python # Automated component&lt;br&gt;facts_correct = verify_facts(output)&lt;br&gt;# Human component&lt;br&gt;clarity = human_rate_clarity(output)&lt;br&gt;score = 0.5*facts + 0.5*clarity&lt;br&gt;</code></td>
+          <td><strong>Verification:</strong><br><code>python ratings = get_human_ratings(n=3)&lt;br&gt;score = mean(ratings)&lt;br&gt;# Then validate inter-rater agreement&lt;br&gt;</code></td>
+      </tr>
+      <tr>
+          <td><strong>Throughput:</strong> 10K-100K evals/hour</td>
+          <td><strong>Throughput:</strong> 500-5K evals/hour</td>
+          <td><strong>Throughput:</strong> 100-1K evals/hour</td>
+      </tr>
+      <tr>
+          <td><strong>Cost per eval:</strong> $0.001-0.01</td>
+          <td><strong>Cost per eval:</strong> $0.05-1.00</td>
+          <td><strong>Cost per eval:</strong> $0.10-5.00</td>
+      </tr>
+      <tr>
+          <td><strong>Human time:</strong> 0 hours</td>
+          <td><strong>Human time:</strong> 4-20 hours (partial)</td>
+          <td><strong>Human time:</strong> 24-120 hours (full)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="layer-3-scalability">
+  <strong>LAYER 3: SCALABILITY</strong>
+  <a class="anchor" href="#layer-3-scalability">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Verifiable</strong></th>
+          <th><strong>Hybrid</strong></th>
+          <th><strong>Non-Verifiable</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Bottleneck:</strong> Compute (GPU time)</td>
+          <td><strong>Bottleneck:</strong> Human time for subjective parts</td>
+          <td><strong>Bottleneck:</strong> Human bandwidth</td>
+      </tr>
+      <tr>
+          <td><strong>Scaling Examples:</strong><br>• 164 problems → $2, 15 min<br>• 10K problems → $122, 2 hours<br>• 100K problems → $1,220, 8 hours</td>
+          <td><strong>Scaling Examples:</strong><br>• 100 docs → $50, 4 hours<br>• 1K docs → $500, 20 hours<br>• 10K docs → $5K, 200 hours<br>(Mix of automated + human)</td>
+          <td><strong>Scaling Examples:</strong><br>• 80 prompts → $400, 8-40 hours<br>• 10K prompts → $37,500, 2,500 hours<br>• (Or $8K hybrid with AI judges)</td>
+      </tr>
+      <tr>
+          <td><strong>Human scaling:</strong> 0 hours regardless of scale</td>
+          <td><strong>Human scaling:</strong> Sub-linear (automate what&rsquo;s possible)</td>
+          <td><strong>Human scaling:</strong> Linear or super-linear</td>
+      </tr>
+      <tr>
+          <td><strong>Constraint:</strong> Money (buy more GPUs)</td>
+          <td><strong>Constraint:</strong> Time + money (human for quality checks)</td>
+          <td><strong>Constraint:</strong> Time (recruit, train raters)</td>
+      </tr>
+      <tr>
+          <td><strong>Automation:</strong> 99.9%</td>
+          <td><strong>Automation:</strong> 40-70% (depends on domain)</td>
+          <td><strong>Automation:</strong> 5-30% (AI judges need validation)</td>
+      </tr>
+      <tr>
+          <td><strong>Scalability Strategy:</strong><br>• Parallelize across GPUs<br>• Generate synthetic test cases<br>• Cost scales linearly</td>
+          <td><strong>Scalability Strategy:</strong><br>• Automate objective criteria<br>• Sample human evaluation (10-20%)<br>• Use AI judges for subjective parts (with validation)</td>
+          <td><strong>Scalability Strategy:</strong><br>• Train reward models on human labels<br>• Use LLM-as-judge (must validate)<br>• Spot-check 5-10% with humans</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="layer-4-metrics--reliability">
+  <strong>LAYER 4: METRICS &amp; RELIABILITY</strong>
+  <a class="anchor" href="#layer-4-metrics--reliability">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Verifiable</strong></th>
+          <th><strong>Hybrid</strong></th>
+          <th><strong>Non-Verifiable</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Metrics:</strong><br>• pass@k (% solved in k tries)<br>• Compile rate<br>• Exact match accuracy<br>• Error tolerance</td>
+          <td><strong>Metrics:</strong><br>• Factual accuracy (automated)<br>• Readability score (formula)<br>• Clarity rating (human)<br>• Combined weighted score</td>
+          <td><strong>Metrics:</strong><br>• Likert scale (1-5 ratings)<br>• Win rate vs baseline<br>• Elo ratings (head-to-head)<br>• Thumbs up/down ratio</td>
+      </tr>
+      <tr>
+          <td><strong>Properties:</strong><br>✅ Objective &amp; reproducible<br>✅ Labs can compare directly<br>✅ No gaming (oracle is external)<br>✅ Leaderboards meaningful</td>
+          <td><strong>Properties:</strong><br>⚠️ Partially objective<br>⚠️ Requires careful weighting<br>⚠️ Some gaming risk on subjective parts<br>⚠️ Need to report both auto + human metrics</td>
+          <td><strong>Properties:</strong><br>❌ Subjective &amp; noisy<br>❌ Different protocols → incomparable<br>❌ Gaming risk (optimize for judge)<br>❌ Leaderboards have selection bias</td>
+      </tr>
+      <tr>
+          <td><strong>Inter-evaluator agreement:</strong> 100%</td>
+          <td><strong>Inter-evaluator agreement:</strong><br>Facts: 95-100%<br>Quality: 70-85%</td>
+          <td><strong>Inter-evaluator agreement:</strong> 60-80%</td>
+      </tr>
+      <tr>
+          <td><strong>Example Metrics:</strong><br>• HumanEval pass@1: 67.8%<br>• MATH accuracy: 82.3%<br>• Error rate: 5.2%</td>
+          <td><strong>Example Metrics:</strong><br>• Translation BLEU: 45.2 (auto)<br>• Fluency: 4.1/5 (human)<br>• Medical accuracy: 94% (auto), Empathy: 3.8/5 (human)</td>
+          <td><strong>Example Metrics:</strong><br>• MT-Bench: 7.9/10 (GPT-4 judge)<br>• Human preference: 78% win rate<br>• Elo rating: 1,245</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="layer-5-production-monitoring">
+  <strong>LAYER 5: PRODUCTION MONITORING</strong>
+  <a class="anchor" href="#layer-5-production-monitoring">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Verifiable</strong></th>
+          <th><strong>Hybrid</strong></th>
+          <th><strong>Non-Verifiable</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Real-time signals:</strong><br>• Does code compile? ✓/✗<br>• Tests pass? ✓/✗<br>• User accepted? ✓/✗<br>• Execution time OK? ✓/✗</td>
+          <td><strong>Real-time signals:</strong><br>• Facts verified? ✓/✗<br>• Format correct? ✓/✗<br>• User satisfaction proxy (usage time)<br>• Error rate</td>
+          <td><strong>Proxy signals:</strong><br>• Thumbs up/down ratio<br>• Session length<br>• Regeneration rate<br>• Response length</td>
+      </tr>
+      <tr>
+          <td><strong>Monitoring:</strong><br>• Every request → Automated check<br>• Dashboard updates: Real-time<br>• Regression alerts: Instant</td>
+          <td><strong>Monitoring:</strong><br>• Automated checks: Real-time<br>• Human spot-checks: Weekly (10% sample)<br>• Combined quality score trending</td>
+          <td><strong>Monitoring:</strong><br>• Sample 100 conversations/week<br>• 3 humans rate each<br>• Compare to last month</td>
+      </tr>
+      <tr>
+          <td><strong>Action:</strong><br>• Compile rate &lt;90% → Auto rollback<br>• Pass@1 drops &gt;5% → Alert engineer</td>
+          <td><strong>Action:</strong><br>• Fact accuracy &lt;95% → Auto rollback<br>• Quality score drops &gt;0.3 → Investigate<br>• Run deeper human eval if needed</td>
+          <td><strong>Action:</strong><br>• Quality drops &gt;0.3 → Investigate<br>• A/B test for 7 days<br>• Need human eval to decide</td>
+      </tr>
+      <tr>
+          <td><strong>Human role:</strong> Only when alerts fire</td>
+          <td><strong>Human role:</strong> Weekly spot-checks (10%)</td>
+          <td><strong>Human role:</strong> Continuous (weekly audits)</td>
+      </tr>
+      <tr>
+          <td><strong>Dashboard Example:</strong><br>Compile Rate: 94.2% 🟢<br>Pass@1: 67.8% 🟢<br>Latency: 1.2s 🟡</td>
+          <td><strong>Dashboard Example:</strong><br>Fact Check: 96.1% 🟢<br>User Rating: 4.2/5 🟢<br>Clarity (sampled): 3.9/5 🟡</td>
+          <td><strong>Dashboard Example:</strong><br>Human Rating: 4.2/5 🔴<br>Thumbs Up: 78% 🟢<br>Session Time: 8.2min 🟢</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="each-layer-has-different-bottleneck">
+  EACH LAYER HAS DIFFERENT BOTTLENECK
+  <a class="anchor" href="#each-layer-has-different-bottleneck">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Layer</strong></th>
+          <th><strong>Verifiable Bottleneck</strong></th>
+          <th><strong>Hybrid Bottleneck</strong></th>
+          <th><strong>Non-Verifiable Bottleneck</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>L1: Design</strong></td>
+          <td>Writing test suite</td>
+          <td>Defining which parts are verifiable</td>
+          <td>Getting human agreement on rubric</td>
+      </tr>
+      <tr>
+          <td><strong>L2: Execute</strong></td>
+          <td>GPU inference time</td>
+          <td><strong>Human time for quality checks</strong></td>
+          <td><strong>Human annotation time</strong></td>
+      </tr>
+      <tr>
+          <td><strong>L3: Scale</strong></td>
+          <td>Compute budget</td>
+          <td><strong>Hiring raters for quality</strong></td>
+          <td><strong>Hiring/training many raters</strong></td>
+      </tr>
+      <tr>
+          <td><strong>L4: Metrics</strong></td>
+          <td>Statistical analysis</td>
+          <td><strong>Balancing auto vs human metrics</strong></td>
+          <td><strong>Inter-rater reliability</strong></td>
+      </tr>
+      <tr>
+          <td><strong>L5: Monitor</strong></td>
+          <td>Infrastructure cost</td>
+          <td><strong>Continuous spot-checking</strong></td>
+          <td><strong>Continuous human auditing</strong></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="real-world-examples-by-category">
+  REAL-WORLD EXAMPLES BY CATEGORY
+  <a class="anchor" href="#real-world-examples-by-category">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Verifiable:</strong></p>
+<pre tabindex="0"><code>    ✅ Code Generation (GitHub Copilot, Cursor)
+       → Unit tests verify correctness
+       → Compile rate is objective
+
+    ✅ Math Problem Solving (Khan Academy AI)
+       → Symbolic solver verifies answers
+       → Can generate infinite practice problems
+
+    ✅ Data Extraction (GPT-4 with function calling)
+       → Schema validation is deterministic
+       → JSON parsing either works or fails
+    ```
+</code></pre></li>
+<li>
+<p><strong>Hybrid:</strong></p>
+<pre tabindex="0"><code>    ⚠️ Medical Diagnosis Assistant
+       → Facts: Test results, drug interactions (verifiable)
+       → Quality: Bedside manner, explanation clarity (human eval)
+
+    ⚠️ Legal Document Analysis
+       → Facts: Case precedents, statutes (verifiable)
+       → Quality: Argument strength, writing quality (human eval)
+
+    ⚠️ Translation Systems
+       → Accuracy: BLEU score, term consistency (automated)
+       → Fluency: Natural phrasing, cultural adaptation (human eval)
+    ```
+</code></pre></li>
+<li>
+<p><strong>Non-Verifiable:</strong></p>
+<pre tabindex="0"><code>    ❌ Creative Writing (Claude, ChatGPT creative mode)
+       → &#34;Is this story engaging?&#34; → Subjective
+       → No automated test possible
+
+    ❌ Therapy Chatbots (Woebot, Replika)
+       → &#34;Is this empathetic?&#34; → Cultural/personal
+       → Requires human evaluation
+
+    ❌ Marketing Copy Generation
+       → &#34;Is this persuasive?&#34; → Audience-dependent
+       → A/B testing required (slow, expensive)
+    ```
+</code></pre></li>
+</ul>
+<hr>
+<h3 id="the-three-way-split">
+  The Three-Way Split:
+  <a class="anchor" href="#the-three-way-split">#</a>
+</h3>
+<p><strong>Verifiable</strong> = Evaluation bottlenecked by <strong>compute budget</strong></p>
+<ul>
+<li>Fast iteration, predictable costs, objective metrics</li>
+<li>Future: Unlimited synthetic data generation</li>
+</ul>
+<p><strong>Hybrid</strong> = Evaluation bottlenecked by <strong>smart automation + targeted human input</strong></p>
+<ul>
+<li>Medium iteration speed, mixed costs, dual metrics</li>
+<li>Future: Better AI judges for subjective aspects</li>
+</ul>
+<p><strong>Non-Verifiable</strong> = Evaluation bottlenecked by <strong>human labor availability</strong></p>
+<ul>
+<li>Slow iteration, uncertain costs, noisy metrics</li>
+<li>Future: Constitutional AI, better preference learning</li>
+</ul>
+<hr>
+<h3 id="why-this-matters">
+  Why This Matters:
+  <a class="anchor" href="#why-this-matters">#</a>
+</h3>
+<p>This three-way framework explains why:</p>
+<ul>
+<li>✅ Coding assistants improve faster than creative writing tools</li>
+<li>✅ Math tutors are more reliable than therapy chatbots</li>
+<li>✅ Technical Q&amp;A is easier to align than open-ended conversation</li>
+<li>⚠️ Medical AI needs dual evaluation (facts + empathy)</li>
+<li>⚠️ Translation quality requires both automated + human metrics</li>
+</ul>
+<p><strong>The future of AI alignment depends on:</strong></p>
+<ol>
+<li>For verifiable domains: More efficient compute</li>
+<li>For hybrid domains: Better decomposition of verifiable vs subjective aspects</li>
+<li>For non-verifiable domains: Creating reliable &ldquo;oracles&rdquo; (AI judges as good as compilers)</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#why-these-5-layers-separation-of-concerns">Why These 5 Layers? Separation of Concerns</a></li>
+            <li><a href="#how-layers-map-to-natural-workflow">How Layers Map to Natural Workflow</a></li>
+            <li><a href="#different-stakeholders-own-each-layern">Different Stakeholders Own Each Layern</a></li>
+            <li><a href="#the-spectrum-of-verifiability">The Spectrum of Verifiability</a></li>
+            <li><a href="#examples-by-category">Examples by Category</a></li>
+            <li><a href="#layer-1-benchmark-design"><strong>LAYER 1: BENCHMARK DESIGN</strong></a></li>
+            <li><a href="#layer-2-evaluation-execution"><strong>LAYER 2: EVALUATION EXECUTION</strong></a></li>
+            <li><a href="#layer-3-scalability"><strong>LAYER 3: SCALABILITY</strong></a></li>
+            <li><a href="#layer-4-metrics--reliability"><strong>LAYER 4: METRICS &amp; RELIABILITY</strong></a></li>
+            <li><a href="#layer-5-production-monitoring"><strong>LAYER 5: PRODUCTION MONITORING</strong></a></li>
+            <li><a href="#each-layer-has-different-bottleneck">EACH LAYER HAS DIFFERENT BOTTLENECK</a></li>
+            <li><a href="#real-world-examples-by-category">REAL-WORLD EXAMPLES BY CATEGORY</a></li>
+            <li><a href="#the-three-way-split">The Three-Way Split:</a></li>
+            <li><a href="#why-this-matters">Why This Matters:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

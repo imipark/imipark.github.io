@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data on AI Reasoning</title>
+    <link>https://imipark.github.io/healthcare/data/</link>
+    <description>Recent content in Data on AI Reasoning</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://imipark.github.io/healthcare/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Healthcare Data Layers</title>
+      <link>https://imipark.github.io/healthcare/data/healthcare_data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/healthcare/data/healthcare_data/</guid>
+      <description>&lt;p align=&#34;center&#34;&gt;&#xA;&lt;img src=&#34;https://imipark.github.io/images/AIR_logo.png&#34; alt=&#34;AI Reasoning Logo&#34; width=&#34;200&#34;/&gt;&#xA;&lt;strong style=&#34;font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;&#34;&gt;&#xA;Healthcare Data Layers&#xA;&lt;/strong&gt;&#xA;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1--data-sources-raw-data--collection-level&#34;&gt;&#xA;  1️⃣  &lt;strong&gt;Data Sources (Raw Data &amp;amp; Collection Level)&lt;/strong&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1--data-sources-raw-data--collection-level&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;These are the foundational data sources used in healthcare analysis, originating from clinical trials, hospitals, insurance claims, and patient records.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Clinical Data (RCTs, EHR, OMOP, CDM)&lt;/strong&gt; – Structured, controlled, and often randomized data used for regulatory and research applications.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Real-World Data (RWD: EHR, Claims, Registries)&lt;/strong&gt; – Observational and confounded, requiring advanced causal inference methods to extract meaningful insights.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Relationship:&lt;/strong&gt; Clinical Data is typically highly structured and standardized, whereas RWD is heterogeneous, requiring bias correction.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;2--data-management--standardization-processing--infrastructure-level&#34;&gt;&#xA;  2️⃣  &lt;strong&gt;Data Management &amp;amp; Standardization (Processing &amp;amp; Infrastructure Level)&lt;/strong&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#2--data-management--standardization-processing--infrastructure-level&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;This layer ensures that raw clinical &amp;amp; real-world data are cleaned, structured, and made interoperable for analysis.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Healthcare Data Sources</title>
+      <link>https://imipark.github.io/healthcare/data/healthcare_sources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/healthcare/data/healthcare_sources/</guid>
+      <description>&lt;p align=&#34;center&#34;&gt;&#xA;&lt;img src=&#34;https://imipark.github.io/images/AIR_logo.png&#34; alt=&#34;AI Reasoning Logo&#34; width=&#34;200&#34;/&gt;&#xA;&lt;strong style=&#34;font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;&#34;&gt;&#xA;Healthcare Data Sources&#xA;&lt;/strong&gt;&#xA;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;phenotype-knowledgebase-phekbhttpswwwphekborg&#34;&gt;&#xA;  &lt;a href=&#34;https://www.phekb.org/&#34;&gt;Phenotype KnowledgeBase (PheKB)&lt;/a&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#phenotype-knowledgebase-phekbhttpswwwphekborg&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;:&lt;br&gt;&#xA;A collaborative portal for sharing and validating electronic phenotype definitions used in observational health research.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags&lt;/strong&gt;: &lt;code&gt;phenotyping&lt;/code&gt;, &lt;code&gt;EHR&lt;/code&gt;, &lt;code&gt;cohort definitions&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Use Cases&lt;/strong&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Standardized phenotype definitions for conditions like diabetes, asthma, etc.&lt;/li&gt;&#xA;&lt;li&gt;Sharing phenotype algorithms across institutions&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;mimic-iv-medical-information-mart-for-intensive-carehttpsphysionetorgcontentmimiciv&#34;&gt;&#xA;  &lt;a href=&#34;https://physionet.org/content/mimiciv/&#34;&gt;MIMIC-IV (Medical Information Mart for Intensive Care)&lt;/a&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#mimic-iv-medical-information-mart-for-intensive-carehttpsphysionetorgcontentmimiciv&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Description&lt;/strong&gt;:&lt;br&gt;&#xA;A large, publicly available critical care database containing de-identified health data from ICU patients at the Beth Israel Deaconess Medical Center.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

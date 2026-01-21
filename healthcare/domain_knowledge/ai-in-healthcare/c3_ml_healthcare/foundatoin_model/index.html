@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Foundation Models for Healthcare
+  #
+
+
+  What are Foundation Models?
+  #
+
+
+Foundation models are trained on massive amounts of unlabeled data using self-supervised or unsupervised learning.
+They are &ldquo;foundational&rdquo; because they can be adapted to multiple downstream tasks with high efficiency and minimal data.
+They demonstrate sample efficiency and can handle multiple modalities like text, images, genomics, etc.
+
+
+  Few-Shot vs. Zero-Shot Learning
+  #
+
+
+Few-Shot Learning: Learns from just a few labeled examples per class and generalizes to new examples.
+Zero-Shot Learning: Learns to perform tasks it hasn’t seen in training, relying on general knowledge from pretraining.
+
+➡️  These abilities allow foundation models to generalize efficiently across healthcare tasks, even with limited supervision.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/foundatoin_model/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Foundation Models for Healthcare">
+  <meta property="og:description" content="Foundation Models for Healthcare # What are Foundation Models? # Foundation models are trained on massive amounts of unlabeled data using self-supervised or unsupervised learning. They are “foundational” because they can be adapted to multiple downstream tasks with high efficiency and minimal data. They demonstrate sample efficiency and can handle multiple modalities like text, images, genomics, etc. Few-Shot vs. Zero-Shot Learning # Few-Shot Learning: Learns from just a few labeled examples per class and generalizes to new examples. Zero-Shot Learning: Learns to perform tasks it hasn’t seen in training, relying on general knowledge from pretraining. ➡️ These abilities allow foundation models to generalize efficiently across healthcare tasks, even with limited supervision.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Foundation Models for Healthcare | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/foundatoin_model/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle" checked />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Foundation Models for Healthcare</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#foundation-models-for-healthcare">Foundation Models for Healthcare</a>
+          <ul>
+            <li><a href="#what-are-foundation-models">What are Foundation Models?</a></li>
+            <li><a href="#few-shot-vs-zero-shot-learning">Few-Shot vs. Zero-Shot Learning</a></li>
+            <li><a href="#what-kind-of-data-powers-these-models">What kind of data powers these models?</a></li>
+            <li><a href="#who-provides-this-data">Who provides this data?</a></li>
+            <li><a href="#downstream-use-cases">Downstream Use Cases</a></li>
+            <li><a href="#why-foundation-models-are-timely-now">Why foundation models are <em>timely</em> now</a></li>
+            <li><a href="#the-chessboard-paradox">The Chessboard Paradox</a></li>
+            <li><a href="#compute-acceleration">Compute acceleration</a></li>
+            <li><a href="#narrow-vs-general-ai">Narrow vs. General AI</a></li>
+            <li><a href="#emergent-behaviors">Emergent Behaviors</a></li>
+            <li><a href="#risk-hallucination">Risk: Hallucination</a></li>
+            <li><a href="#transformer-components">Transformer Components</a></li>
+            <li><a href="#rlhf-reinforcement-learning-with-human-feedback">RLHF: Reinforcement Learning with Human Feedback</a></li>
+            <li><a href="#what-is-prompt-engineering">What is Prompt Engineering?</a></li>
+            <li><a href="#prompt-types">Prompt Types</a></li>
+            <li><a href="#text-based-applications-in-healthcare">Text-Based Applications in Healthcare</a></li>
+            <li><a href="#modalities-beyond-text">Modalities Beyond Text</a></li>
+            <li><a href="#do-foundation-models-understand-imaging">Do Foundation Models “Understand” Imaging?</a></li>
+            <li><a href="#imaging-as-a-biomarker-source">Imaging as a Biomarker Source</a></li>
+            <li><a href="#clinical-readiness-gaps">Clinical Readiness Gaps</a></li>
+            <li><a href="#academia-vs-industry">Academia vs. Industry</a></li>
+            <li><a href="#model-drift-risks">Model Drift Risks</a></li>
+            <li><a href="#deployment-best-practices">Deployment Best Practices</a></li>
+          </ul>
+        </li>
+        <li><a href="#-additional-readings">📚 Additional Readings</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="foundation-models-for-healthcare">
+  Foundation Models for Healthcare
+  <a class="anchor" href="#foundation-models-for-healthcare">#</a>
+</h2>
+<h3 id="what-are-foundation-models">
+  What are Foundation Models?
+  <a class="anchor" href="#what-are-foundation-models">#</a>
+</h3>
+<ul>
+<li>Foundation models are trained on massive amounts of <strong>unlabeled data</strong> using <strong>self-supervised</strong> or <strong>unsupervised learning</strong>.</li>
+<li>They are &ldquo;foundational&rdquo; because they can be <strong>adapted to multiple downstream tasks</strong> with high efficiency and minimal data.</li>
+<li>They demonstrate <strong>sample efficiency</strong> and can handle multiple modalities like text, images, genomics, etc.</li>
+</ul>
+<h3 id="few-shot-vs-zero-shot-learning">
+  Few-Shot vs. Zero-Shot Learning
+  <a class="anchor" href="#few-shot-vs-zero-shot-learning">#</a>
+</h3>
+<ul>
+<li><strong>Few-Shot Learning</strong>: Learns from just a few labeled examples per class and generalizes to new examples.</li>
+<li><strong>Zero-Shot Learning</strong>: Learns to perform tasks it hasn’t seen in training, relying on general knowledge from pretraining.</li>
+</ul>
+<p>➡️  These abilities allow foundation models to generalize efficiently across healthcare tasks, even with limited supervision.</p>
+<h3 id="what-kind-of-data-powers-these-models">
+  What kind of data powers these models?
+  <a class="anchor" href="#what-kind-of-data-powers-these-models">#</a>
+</h3>
+<p>Foundation models are trained on <strong>multi-modal health data</strong>:</p>
+<ul>
+<li><strong>Text</strong>: Clinical notes, EHRs, literature</li>
+<li><strong>Images</strong>: X-rays, MRIs, CTs</li>
+<li><strong>Sequences</strong>: Genomics, proteomics</li>
+<li><strong>Graphs</strong>: Molecular structures</li>
+<li><strong>Time Series</strong>: ECGs, continuous monitoring</li>
+<li><strong>Video</strong>: Ultrasound</li>
+</ul>
+<h3 id="who-provides-this-data">
+  Who provides this data?
+  <a class="anchor" href="#who-provides-this-data">#</a>
+</h3>
+<ul>
+<li>Hospitals, pharma, insurance payers, academic researchers, patients (via wearables), and public forums.</li>
+</ul>
+<h3 id="downstream-use-cases">
+  Downstream Use Cases
+  <a class="anchor" href="#downstream-use-cases">#</a>
+</h3>
+<ul>
+<li><strong>For providers</strong>: Diagnosis, treatment planning, trial recruitment, drug discovery.</li>
+<li><strong>For patients</strong>: QA, health education, personalized guidance, assistive care.</li>
+</ul>
+<p>Foundation models serve as <strong>AI interfaces</strong> to improve decision-making and patient engagement.</p>
+<h3 id="why-foundation-models-are-timely-now">
+  Why foundation models are <em>timely</em> now
+  <a class="anchor" href="#why-foundation-models-are-timely-now">#</a>
+</h3>
+<ul>
+<li>Human systems evolve <strong>linearly</strong>, but <strong>technology is exponential</strong>.</li>
+<li>Data is growing rapidly, e.g.:
+<ul>
+<li>1950s: Data doubled every 50 years.</li>
+<li>2020s: Every 73 days.</li>
+</ul>
+</li>
+<li>Healthcare data exploded from 150 EB (2013) → over 2,000 EB (2020).</li>
+</ul>
+<h3 id="the-chessboard-paradox">
+  The Chessboard Paradox
+  <a class="anchor" href="#the-chessboard-paradox">#</a>
+</h3>
+<ul>
+<li>A grain of rice doubled per square = &gt;9B grains by square 64.</li>
+<li>Shows how exponential growth is <strong>counterintuitive</strong> to humans.</li>
+</ul>
+<h3 id="compute-acceleration">
+  Compute acceleration
+  <a class="anchor" href="#compute-acceleration">#</a>
+</h3>
+<ul>
+<li>Moore’s Law + AI accelerators (e.g., GPUs) made it feasible to train large foundation models.</li>
+</ul>
+<p>➡️  These forces combine to make now the <strong>critical window</strong> to apply foundation models in healthcare.</p>
+<h3 id="narrow-vs-general-ai">
+  Narrow vs. General AI
+  <a class="anchor" href="#narrow-vs-general-ai">#</a>
+</h3>
+<ul>
+<li><strong>Narrow AI</strong>: Performs one task; static.</li>
+<li><strong>General AI</strong>: Learns multiple tasks and evolves over time.</li>
+<li>Foundation models aim for <strong>General AI characteristics</strong>.</li>
+</ul>
+<h3 id="emergent-behaviors">
+  Emergent Behaviors
+  <a class="anchor" href="#emergent-behaviors">#</a>
+</h3>
+<ul>
+<li>Large-scale models exhibit behaviors <strong>not explicitly programmed</strong>.</li>
+<li>Example: Google’s PaLM:
+<ul>
+<li>8B: Basic QA &amp; language understanding</li>
+<li>62B: Summarization, code completion</li>
+<li>540B: Common-sense reasoning, joke explanation, logic chaining</li>
+</ul>
+</li>
+</ul>
+<h3 id="risk-hallucination">
+  Risk: Hallucination
+  <a class="anchor" href="#risk-hallucination">#</a>
+</h3>
+<ul>
+<li>Model may generate <strong>confident but false outputs</strong> (e.g., imaging results that don’t exist).</li>
+<li>Needs human oversight for reliability.</li>
+</ul>
+<h3 id="transformer-components">
+  Transformer Components
+  <a class="anchor" href="#transformer-components">#</a>
+</h3>
+<ul>
+<li><strong>Self-attention</strong>: Captures relationships between all tokens.</li>
+<li><strong>Encoder</strong>: Converts input tokens into vector embeddings.</li>
+<li><strong>Decoder</strong>: Generates output from internal representation.</li>
+</ul>
+<h3 id="rlhf-reinforcement-learning-with-human-feedback">
+  RLHF: Reinforcement Learning with Human Feedback
+  <a class="anchor" href="#rlhf-reinforcement-learning-with-human-feedback">#</a>
+</h3>
+<ul>
+<li>Step 1: Train a supervised model on human examples.</li>
+<li>Step 2: Collect human preferences to train a reward model.</li>
+<li>Step 3: Fine-tune the language model using reinforcement learning (PPO).</li>
+</ul>
+<p>This aligns model outputs with <strong>human intent and preferences</strong>.</p>
+<h3 id="what-is-prompt-engineering">
+  What is Prompt Engineering?
+  <a class="anchor" href="#what-is-prompt-engineering">#</a>
+</h3>
+<ul>
+<li>Crafting inputs to <strong>steer output behavior</strong> of foundation models.</li>
+</ul>
+<h3 id="prompt-types">
+  Prompt Types
+  <a class="anchor" href="#prompt-types">#</a>
+</h3>
+<ul>
+<li>Simple instructions</li>
+<li>Role-based prompts</li>
+<li>Few-shot examples</li>
+<li>Chain-of-Thought (CoT)</li>
+<li>Zero-shot-CoT (&ldquo;Let&rsquo;s think step by step.&rdquo;)</li>
+<li>Self-consistency (multiple CoTs, pick majority)</li>
+<li>Generative knowledge prep (generate before answering)</li>
+</ul>
+<h3 id="text-based-applications-in-healthcare">
+  Text-Based Applications in Healthcare
+  <a class="anchor" href="#text-based-applications-in-healthcare">#</a>
+</h3>
+<ul>
+<li>Appointment scheduling</li>
+<li>Inbox management</li>
+<li>Chart summarization</li>
+<li>Trial eligibility</li>
+<li>Decision support</li>
+<li>Medical QA and patient communication</li>
+</ul>
+<p>➡️  These tools <strong>reduce burnout</strong> and support both <strong>provider productivity</strong> and <strong>patient engagement</strong>.</p>
+<h3 id="modalities-beyond-text">
+  Modalities Beyond Text
+  <a class="anchor" href="#modalities-beyond-text">#</a>
+</h3>
+<ul>
+<li>Imaging (X-rays, CTs)</li>
+<li>Genomics/proteomics</li>
+<li>Signal data (ECG)</li>
+<li>VATT-like models process multiple data types in a unified transformer architecture.</li>
+</ul>
+<h3 id="do-foundation-models-understand-imaging">
+  Do Foundation Models “Understand” Imaging?
+  <a class="anchor" href="#do-foundation-models-understand-imaging">#</a>
+</h3>
+<ul>
+<li>They can <strong>generate plausible results</strong>, but:
+<ul>
+<li>Miss clinical context</li>
+<li>Can&rsquo;t compare time-series or integrate history like radiologists</li>
+</ul>
+</li>
+</ul>
+<h3 id="imaging-as-a-biomarker-source">
+  Imaging as a Biomarker Source
+  <a class="anchor" href="#imaging-as-a-biomarker-source">#</a>
+</h3>
+<ul>
+<li>CT @ L3 can yield:
+<ul>
+<li>Fat/muscle measurements</li>
+<li>Aortic calcification</li>
+<li>Organomegaly</li>
+<li>Predictive health markers</li>
+</ul>
+</li>
+</ul>
+<p>Foundation models unlock <strong>quantitative phenotyping from visual data</strong>.</p>
+<h3 id="clinical-readiness-gaps">
+  Clinical Readiness Gaps
+  <a class="anchor" href="#clinical-readiness-gaps">#</a>
+</h3>
+<ul>
+<li>83% clinicians want AI in training</li>
+<li>70% feel overwhelmed by new tech</li>
+</ul>
+<h3 id="academia-vs-industry">
+  Academia vs. Industry
+  <a class="anchor" href="#academia-vs-industry">#</a>
+</h3>
+<ul>
+<li>Industry dominates in compute + data</li>
+<li>Collaboration is essential for clinical relevance &amp; ethical development</li>
+</ul>
+<h3 id="model-drift-risks">
+  Model Drift Risks
+  <a class="anchor" href="#model-drift-risks">#</a>
+</h3>
+<ul>
+<li><strong>Data Drift</strong>: Input data distribution changes</li>
+<li><strong>Model Drift</strong>: Degrading performance over time</li>
+</ul>
+<h3 id="deployment-best-practices">
+  Deployment Best Practices
+  <a class="anchor" href="#deployment-best-practices">#</a>
+</h3>
+<ol>
+<li>Monitor performance regularly</li>
+<li>Update models with new data</li>
+<li>Ensure data quality</li>
+<li>Audit for fairness and bias</li>
+<li>Collaborate across sectors</li>
+</ol>
+<p>➡️  Treat foundation models like <strong>medical devices</strong> — with continuous monitoring, recalibration, and governance.</p>
+<hr>
+<h2 id="-additional-readings">
+  📚 Additional Readings
+  <a class="anchor" href="#-additional-readings">#</a>
+</h2>
+<ol>
+<li><a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a></li>
+<li><a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></li>
+<li><a href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">The Annotated Transformer</a></li>
+<li><a href="https://arxiv.org/pdf/2108.07258.pdf">Opportunities and Risks of Foundation Models (CRFM)</a></li>
+<li><a href="https://www.nature.com/articles/s41551-022-00898-y">Shifting ML for Healthcare – Nature Biomedical Engineering</a></li>
+</ol>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#foundation-models-for-healthcare">Foundation Models for Healthcare</a>
+          <ul>
+            <li><a href="#what-are-foundation-models">What are Foundation Models?</a></li>
+            <li><a href="#few-shot-vs-zero-shot-learning">Few-Shot vs. Zero-Shot Learning</a></li>
+            <li><a href="#what-kind-of-data-powers-these-models">What kind of data powers these models?</a></li>
+            <li><a href="#who-provides-this-data">Who provides this data?</a></li>
+            <li><a href="#downstream-use-cases">Downstream Use Cases</a></li>
+            <li><a href="#why-foundation-models-are-timely-now">Why foundation models are <em>timely</em> now</a></li>
+            <li><a href="#the-chessboard-paradox">The Chessboard Paradox</a></li>
+            <li><a href="#compute-acceleration">Compute acceleration</a></li>
+            <li><a href="#narrow-vs-general-ai">Narrow vs. General AI</a></li>
+            <li><a href="#emergent-behaviors">Emergent Behaviors</a></li>
+            <li><a href="#risk-hallucination">Risk: Hallucination</a></li>
+            <li><a href="#transformer-components">Transformer Components</a></li>
+            <li><a href="#rlhf-reinforcement-learning-with-human-feedback">RLHF: Reinforcement Learning with Human Feedback</a></li>
+            <li><a href="#what-is-prompt-engineering">What is Prompt Engineering?</a></li>
+            <li><a href="#prompt-types">Prompt Types</a></li>
+            <li><a href="#text-based-applications-in-healthcare">Text-Based Applications in Healthcare</a></li>
+            <li><a href="#modalities-beyond-text">Modalities Beyond Text</a></li>
+            <li><a href="#do-foundation-models-understand-imaging">Do Foundation Models “Understand” Imaging?</a></li>
+            <li><a href="#imaging-as-a-biomarker-source">Imaging as a Biomarker Source</a></li>
+            <li><a href="#clinical-readiness-gaps">Clinical Readiness Gaps</a></li>
+            <li><a href="#academia-vs-industry">Academia vs. Industry</a></li>
+            <li><a href="#model-drift-risks">Model Drift Risks</a></li>
+            <li><a href="#deployment-best-practices">Deployment Best Practices</a></li>
+          </ul>
+        </li>
+        <li><a href="#-additional-readings">📚 Additional Readings</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

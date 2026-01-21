@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Healthcare Data Sources
+
+
+
+
+  Phenotype KnowledgeBase (PheKB)
+  #
+
+Description:
+A collaborative portal for sharing and validating electronic phenotype definitions used in observational health research.
+Tags: phenotyping, EHR, cohort definitions
+Use Cases:
+
+Standardized phenotype definitions for conditions like diabetes, asthma, etc.
+Sharing phenotype algorithms across institutions
+
+
+
+  MIMIC-IV (Medical Information Mart for Intensive Care)
+  #
+
+Description:
+A large, publicly available critical care database containing de-identified health data from ICU patients at the Beth Israel Deaconess Medical Center.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/data/healthcare_sources/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Healthcare Data Sources">
+  <meta property="og:description" content="Healthcare Data Sources Phenotype KnowledgeBase (PheKB) # Description:
+A collaborative portal for sharing and validating electronic phenotype definitions used in observational health research.
+Tags: phenotyping, EHR, cohort definitions
+Use Cases:
+Standardized phenotype definitions for conditions like diabetes, asthma, etc. Sharing phenotype algorithms across institutions MIMIC-IV (Medical Information Mart for Intensive Care) # Description:
+A large, publicly available critical care database containing de-identified health data from ICU patients at the Beth Israel Deaconess Medical Center.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>Healthcare Data Sources | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/data/healthcare_sources/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Healthcare Data Sources</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#phenotype-knowledgebase-phekbhttpswwwphekborg"><a href="https://www.phekb.org/">Phenotype KnowledgeBase (PheKB)</a></a></li>
+            <li><a href="#mimic-iv-medical-information-mart-for-intensive-carehttpsphysionetorgcontentmimiciv"><a href="https://physionet.org/content/mimiciv/">MIMIC-IV (Medical Information Mart for Intensive Care)</a></a></li>
+            <li><a href="#ohdsi--omop-common-data-modelhttpswwwohdsiorgdata-standardizationthe-common-data-model"><a href="https://www.ohdsi.org/data-standardization/the-common-data-model/">OHDSI / OMOP Common Data Model</a></a></li>
+            <li><a href="#national-covid-cohort-collaborative-n3chttpscovidcd2horg"><a href="https://covid.cd2h.org/">National COVID Cohort Collaborative (N3C)</a></a></li>
+            <li><a href="#bioportalhttpsbioportalbioontologyorg"><a href="https://bioportal.bioontology.org/">BioPortal</a></a></li>
+            <li><a href="#unified-medical-language-system-umlshttpswwwnlmnihgovresearchumls"><a href="https://www.nlm.nih.gov/research/umls/">Unified Medical Language System (UMLS)</a></a></li>
+            <li><a href="#aphroditehttpsgithubcomohdsiaphrodite"><a href="https://github.com/OHDSI/Aphrodite">Aphrodite</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Healthcare Data Sources
+</strong>
+</p>
+<hr>
+<h3 id="phenotype-knowledgebase-phekbhttpswwwphekborg">
+  <a href="https://www.phekb.org/">Phenotype KnowledgeBase (PheKB)</a>
+  <a class="anchor" href="#phenotype-knowledgebase-phekbhttpswwwphekborg">#</a>
+</h3>
+<p><strong>Description</strong>:<br>
+A collaborative portal for sharing and validating electronic phenotype definitions used in observational health research.</p>
+<p><strong>Tags</strong>: <code>phenotyping</code>, <code>EHR</code>, <code>cohort definitions</code></p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Standardized phenotype definitions for conditions like diabetes, asthma, etc.</li>
+<li>Sharing phenotype algorithms across institutions</li>
+</ul>
+<hr>
+<h3 id="mimic-iv-medical-information-mart-for-intensive-carehttpsphysionetorgcontentmimiciv">
+  <a href="https://physionet.org/content/mimiciv/">MIMIC-IV (Medical Information Mart for Intensive Care)</a>
+  <a class="anchor" href="#mimic-iv-medical-information-mart-for-intensive-carehttpsphysionetorgcontentmimiciv">#</a>
+</h3>
+<p><strong>Description</strong>:<br>
+A large, publicly available critical care database containing de-identified health data from ICU patients at the Beth Israel Deaconess Medical Center.</p>
+<p><strong>Tags</strong>: <code>ICU</code>, <code>de-identified data</code>, <code>clinical research</code></p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Predictive modeling in critical care</li>
+<li>Benchmarking clinical algorithms</li>
+<li>Training deep learning models</li>
+</ul>
+<p><strong>Access Requirements</strong>:<br>
+Requires credentialed training and data use agreement via PhysioNet</p>
+<hr>
+<h3 id="ohdsi--omop-common-data-modelhttpswwwohdsiorgdata-standardizationthe-common-data-model">
+  <a href="https://www.ohdsi.org/data-standardization/the-common-data-model/">OHDSI / OMOP Common Data Model</a>
+  <a class="anchor" href="#ohdsi--omop-common-data-modelhttpswwwohdsiorgdata-standardizationthe-common-data-model">#</a>
+</h3>
+<p><strong>Description</strong>:<br>
+An open community initiative and standard model for organizing observational health data across institutions and studies.</p>
+<p><strong>Tags</strong>: <code>standardization</code>, <code>EHR</code>, <code>interoperability</code>, <code>CDM</code></p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Converting disparate data sources into a consistent format</li>
+<li>Enabling federated analysis across healthcare systems</li>
+<li>Supporting tools like ATLAS for cohort building</li>
+</ul>
+<hr>
+<h3 id="national-covid-cohort-collaborative-n3chttpscovidcd2horg">
+  <a href="https://covid.cd2h.org/">National COVID Cohort Collaborative (N3C)</a>
+  <a class="anchor" href="#national-covid-cohort-collaborative-n3chttpscovidcd2horg">#</a>
+</h3>
+<p><strong>Description</strong>:<br>
+A centralized, secure platform for analyzing harmonized COVID-19 clinical data from dozens of healthcare providers across the US.</p>
+<p><strong>Tags</strong>: <code>COVID-19</code>, <code>federated research</code>, <code>clinical data</code></p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Studying disease trajectories and treatment effects</li>
+<li>Multisite analytics using harmonized EHR data</li>
+<li>Evaluating outcomes for long COVID</li>
+</ul>
+<p><strong>Access Requirements</strong>:<br>
+Application and institutional affiliation required</p>
+<hr>
+<h3 id="bioportalhttpsbioportalbioontologyorg">
+  <a href="https://bioportal.bioontology.org/">BioPortal</a>
+  <a class="anchor" href="#bioportalhttpsbioportalbioontologyorg">#</a>
+</h3>
+<p><strong>Description</strong>:<br>
+A comprehensive repository of biomedical ontologies from the National Center for Biomedical Ontology.</p>
+<p><strong>Tags</strong>: <code>ontologies</code>, <code>terminology</code>, <code>semantic web</code>, <code>linked data</code></p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Accessing ontologies like SNOMED CT, ICD, LOINC, RxNorm</li>
+<li>Mapping data to standard vocabularies</li>
+<li>Enabling semantic interoperability</li>
+</ul>
+<hr>
+<h3 id="unified-medical-language-system-umlshttpswwwnlmnihgovresearchumls">
+  <a href="https://www.nlm.nih.gov/research/umls/">Unified Medical Language System (UMLS)</a>
+  <a class="anchor" href="#unified-medical-language-system-umlshttpswwwnlmnihgovresearchumls">#</a>
+</h3>
+<p><strong>Description</strong>:<br>
+Integrates over 200 biomedical vocabularies to support natural language processing, terminology mapping, and EHR data harmonization.</p>
+<p><strong>Tags</strong>: <code>NLP</code>, <code>standard vocabularies</code>, <code>concept mapping</code></p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Linking clinical terms to standard codes</li>
+<li>Enhancing search and retrieval in clinical systems</li>
+<li>Supporting NLP tools like MetaMap and cTAKES</li>
+</ul>
+<p><strong>Access Requirements</strong>:<br>
+Free license from NLM, requires annual agreement</p>
+<hr>
+<h3 id="aphroditehttpsgithubcomohdsiaphrodite">
+  <a href="https://github.com/OHDSI/Aphrodite">Aphrodite</a>
+  <a class="anchor" href="#aphroditehttpsgithubcomohdsiaphrodite">#</a>
+</h3>
+<p><strong>Description</strong>:<br>
+An R package developed by OHDSI that supports semi-supervised phenotype algorithm development using feature engineering and machine learning methods on OMOP Common Data Model (CDM) datasets.</p>
+<p><strong>Tags</strong>: <code>phenotyping</code>, <code>machine learning</code>, <code>semi-supervised</code>, <code>OMOP</code>, <code>OHDSI</code></p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Rapid development of phenotype classifiers using imperfectly labeled data.</li>
+<li>Applying machine learning models to predict phenotypes based on structured EHR data.</li>
+<li>Feature extraction from OMOP CDM to support supervised or semi-supervised learning tasks.</li>
+</ul>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#phenotype-knowledgebase-phekbhttpswwwphekborg"><a href="https://www.phekb.org/">Phenotype KnowledgeBase (PheKB)</a></a></li>
+            <li><a href="#mimic-iv-medical-information-mart-for-intensive-carehttpsphysionetorgcontentmimiciv"><a href="https://physionet.org/content/mimiciv/">MIMIC-IV (Medical Information Mart for Intensive Care)</a></a></li>
+            <li><a href="#ohdsi--omop-common-data-modelhttpswwwohdsiorgdata-standardizationthe-common-data-model"><a href="https://www.ohdsi.org/data-standardization/the-common-data-model/">OHDSI / OMOP Common Data Model</a></a></li>
+            <li><a href="#national-covid-cohort-collaborative-n3chttpscovidcd2horg"><a href="https://covid.cd2h.org/">National COVID Cohort Collaborative (N3C)</a></a></li>
+            <li><a href="#bioportalhttpsbioportalbioontologyorg"><a href="https://bioportal.bioontology.org/">BioPortal</a></a></li>
+            <li><a href="#unified-medical-language-system-umlshttpswwwnlmnihgovresearchumls"><a href="https://www.nlm.nih.gov/research/umls/">Unified Medical Language System (UMLS)</a></a></li>
+            <li><a href="#aphroditehttpsgithubcomohdsiaphrodite"><a href="https://github.com/OHDSI/Aphrodite">Aphrodite</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

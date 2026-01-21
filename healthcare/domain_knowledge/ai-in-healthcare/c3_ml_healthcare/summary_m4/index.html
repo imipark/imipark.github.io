@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Module 4: Evaluation and Metrics for ML in Healthcare
+  #
+
+
+  1 Introduction to Model Performance Evaluation
+  #
+
+
+
+  Q1: Why is model evaluation critical in healthcare machine learning?
+  #
+
+In healthcare, decisions informed by ML models can have life-altering consequences:
+
+It’s not enough for a model to perform well on training data.
+We need to ensure that the model performs well on unseen patients and real-world conditions.
+Rigorous evaluation is essential to trust and validate clinical usefulness.
+
+➡️  What does it mean for a model to generalize?">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/summary_m4/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="[Summary] Module 4: Evaluation and Metrics for ML in Healthcare">
+  <meta property="og:description" content="Module 4: Evaluation and Metrics for ML in Healthcare # 1 Introduction to Model Performance Evaluation # Q1: Why is model evaluation critical in healthcare machine learning? # In healthcare, decisions informed by ML models can have life-altering consequences:
+It’s not enough for a model to perform well on training data. We need to ensure that the model performs well on unseen patients and real-world conditions. Rigorous evaluation is essential to trust and validate clinical usefulness. ➡️ What does it mean for a model to generalize?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>[Summary] Module 4: Evaluation and Metrics for ML in Healthcare | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/summary_m4/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle" checked />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>[Summary] Module 4: Evaluation and Metrics for ML in Healthcare</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module-4-evaluation-and-metrics-for-ml-in-healthcare"><strong>Module 4: Evaluation and Metrics for ML in Healthcare</strong></a></li>
+        <li><a href="#1-introduction-to-model-performance-evaluation">1 Introduction to Model Performance Evaluation</a>
+          <ul>
+            <li><a href="#q1-why-is-model-evaluation-critical-in-healthcare-machine-learning">Q1: Why is model evaluation critical in healthcare machine learning?</a></li>
+            <li><a href="#q2-what-is-generalization-and-how-is-it-assessed">Q2: What is generalization and how is it assessed?</a></li>
+            <li><a href="#q3-what-is-data-splitting-and-why-is-it-important">Q3: What is data splitting and why is it important?</a></li>
+            <li><a href="#q4-what-is-cross-validation-and-when-is-it-useful">Q4: What is cross-validation and when is it useful?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-overfitting-and-underfitting">2 Overfitting and Underfitting</a>
+          <ul>
+            <li><a href="#q1-what-are-overfitting-and-underfitting-in-machine-learning">Q1: What are overfitting and underfitting in machine learning?</a></li>
+            <li><a href="#q2-how-can-we-detect-overfitting-and-underfitting">Q2: How can we detect overfitting and underfitting?</a></li>
+            <li><a href="#q3-what-factors-contribute-to-overfitting-in-ml-models">Q3: What factors contribute to overfitting in ML models?</a></li>
+            <li><a href="#q4-why-might-a-model-underfit-the-data">Q4: Why might a model underfit the data?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-strategies-to-address-overfitting-underfitting-and-introduction-to-regularization">3 Strategies to Address Overfitting, Underfitting and Introduction to Regularization</a>
+          <ul>
+            <li><a href="#q1-how-can-we-address-overfitting-in-ml-models">Q1: How can we address overfitting in ML models?</a></li>
+            <li><a href="#q2-what-is-l1-and-l2-regularization">Q2: What is L1 and L2 regularization?</a></li>
+            <li><a href="#q3-what-is-dropout-and-how-does-it-help-prevent-overfitting">Q3: What is dropout and how does it help prevent overfitting?</a></li>
+            <li><a href="#q4-how-can-we-fix-underfitting-in-a-model">Q4: How can we fix underfitting in a model?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-statistical-approaches-to-model-evaluation">4 Statistical Approaches to Model Evaluation</a>
+          <ul>
+            <li><a href="#q1-why-are-statistical-methods-important-in-evaluating-ml-models">Q1: Why are statistical methods important in evaluating ML models?</a></li>
+            <li><a href="#q2-what-is-bootstrapping-and-how-is-it-used-in-model-evaluation">Q2: What is bootstrapping and how is it used in model evaluation?</a></li>
+            <li><a href="#q3-how-do-permutation-tests-assess-model-significance">Q3: How do permutation tests assess model significance?</a></li>
+            <li><a href="#q4-what-is-the-paired-t-test-and-when-should-it-be-used">Q4: What is the paired t-test and when should it be used?</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-receiver-operator-and-precision-recall-curves-as-evaluation-metrics">5 Receiver Operator and Precision Recall Curves as Evaluation Metrics</a>
+          <ul>
+            <li><a href="#q1-why-do-we-need-different-evaluation-metrics-beyond-accuracy">Q1: Why do we need different evaluation metrics beyond accuracy?</a></li>
+            <li><a href="#q2-what-is-the-roc-curve-and-auc">Q2: What is the ROC curve and AUC?</a></li>
+            <li><a href="#q3-when-should-we-prefer-precision-recall-pr-curves-over-roc">Q3: When should we prefer Precision-Recall (PR) curves over ROC?</a></li>
+            <li><a href="#q4-what-are-precision-recall-and-f1-score">Q4: What are precision, recall, and F1 score?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="module-4-evaluation-and-metrics-for-ml-in-healthcare">
+  <strong>Module 4: Evaluation and Metrics for ML in Healthcare</strong>
+  <a class="anchor" href="#module-4-evaluation-and-metrics-for-ml-in-healthcare">#</a>
+</h2>
+<h2 id="1-introduction-to-model-performance-evaluation">
+  1 Introduction to Model Performance Evaluation
+  <a class="anchor" href="#1-introduction-to-model-performance-evaluation">#</a>
+</h2>
+<hr>
+<h3 id="q1-why-is-model-evaluation-critical-in-healthcare-machine-learning">
+  Q1: Why is model evaluation critical in healthcare machine learning?
+  <a class="anchor" href="#q1-why-is-model-evaluation-critical-in-healthcare-machine-learning">#</a>
+</h3>
+<p>In healthcare, decisions informed by ML models can have life-altering consequences:</p>
+<ul>
+<li>It’s not enough for a model to perform well on training data.</li>
+<li>We need to ensure that the model performs well on <strong>unseen patients</strong> and <strong>real-world conditions</strong>.</li>
+<li>Rigorous evaluation is essential to <strong>trust and validate clinical usefulness</strong>.</li>
+</ul>
+<p>➡️  What does it mean for a model to generalize?</p>
+<h3 id="q2-what-is-generalization-and-how-is-it-assessed">
+  Q2: What is generalization and how is it assessed?
+  <a class="anchor" href="#q2-what-is-generalization-and-how-is-it-assessed">#</a>
+</h3>
+<p>Generalization refers to the model&rsquo;s ability to perform well on new, unseen data:</p>
+<ul>
+<li>Indicates how well the model has learned the underlying patterns.</li>
+<li>We measure this using <strong>validation and test sets</strong>.</li>
+<li>High training accuracy but poor test accuracy implies <strong>overfitting</strong>.</li>
+</ul>
+<p>➡️  What techniques help ensure fair and reliable evaluation?</p>
+<h3 id="q3-what-is-data-splitting-and-why-is-it-important">
+  Q3: What is data splitting and why is it important?
+  <a class="anchor" href="#q3-what-is-data-splitting-and-why-is-it-important">#</a>
+</h3>
+<p>Common splits:</p>
+<ul>
+<li><strong>Training set</strong>: For model learning.</li>
+<li><strong>Validation set</strong>: For tuning hyperparameters and model selection.</li>
+<li><strong>Test set</strong>: For final performance estimation.</li>
+</ul>
+<p>These splits help avoid <strong>data leakage</strong> and <strong>optimism bias</strong> in evaluation.</p>
+<p>➡️  Are there methods more robust than simple train/test splits?</p>
+<h3 id="q4-what-is-cross-validation-and-when-is-it-useful">
+  Q4: What is cross-validation and when is it useful?
+  <a class="anchor" href="#q4-what-is-cross-validation-and-when-is-it-useful">#</a>
+</h3>
+<p>Cross-validation is a strategy to make evaluation more robust:</p>
+<ul>
+<li>Data is divided into k folds.</li>
+<li>Model trains on k-1 folds and validates on the remaining one.</li>
+<li>Repeated multiple times to average out variability.</li>
+</ul>
+<p>It’s particularly useful in <strong>small datasets</strong>, common in healthcare studies.</p>
+<h2 id="2-overfitting-and-underfitting">
+  2 Overfitting and Underfitting
+  <a class="anchor" href="#2-overfitting-and-underfitting">#</a>
+</h2>
+<hr>
+<h3 id="q1-what-are-overfitting-and-underfitting-in-machine-learning">
+  Q1: What are overfitting and underfitting in machine learning?
+  <a class="anchor" href="#q1-what-are-overfitting-and-underfitting-in-machine-learning">#</a>
+</h3>
+<p>These are two common problems that reduce model effectiveness:</p>
+<ul>
+<li><strong>Overfitting</strong>: The model learns noise and specifics of the training set, performing poorly on new data.</li>
+<li><strong>Underfitting</strong>: The model fails to capture underlying trends, resulting in poor performance on both training and test sets.</li>
+</ul>
+<p>➡️  What are the visual signs of overfitting and underfitting during training?</p>
+<h3 id="q2-how-can-we-detect-overfitting-and-underfitting">
+  Q2: How can we detect overfitting and underfitting?
+  <a class="anchor" href="#q2-how-can-we-detect-overfitting-and-underfitting">#</a>
+</h3>
+<p>By plotting <strong>training and validation accuracy/loss</strong>:</p>
+<ul>
+<li>Overfitting: Training accuracy increases while validation accuracy drops or plateaus.</li>
+<li>Underfitting: Both training and validation accuracies remain low.</li>
+<li>Regular monitoring helps identify these trends early.</li>
+</ul>
+<p>➡️  What causes models to overfit?</p>
+<h3 id="q3-what-factors-contribute-to-overfitting-in-ml-models">
+  Q3: What factors contribute to overfitting in ML models?
+  <a class="anchor" href="#q3-what-factors-contribute-to-overfitting-in-ml-models">#</a>
+</h3>
+<ul>
+<li><strong>High model complexity</strong> (deep networks, too many parameters).</li>
+<li><strong>Small training dataset</strong> or lack of representative diversity.</li>
+<li><strong>Too many epochs</strong> without early stopping.</li>
+</ul>
+<p>Overfitting is especially risky in healthcare due to variability in real-world patient populations.</p>
+<p>➡️  Conversely, what might cause underfitting?</p>
+<h3 id="q4-why-might-a-model-underfit-the-data">
+  Q4: Why might a model underfit the data?
+  <a class="anchor" href="#q4-why-might-a-model-underfit-the-data">#</a>
+</h3>
+<ul>
+<li>The model is <strong>too simple</strong> (e.g., linear models for nonlinear problems).</li>
+<li><strong>Insufficient training time</strong> or <strong>suboptimal hyperparameters</strong>.</li>
+<li><strong>Poor feature engineering</strong> or missing important data signals.</li>
+</ul>
+<p>Underfitting leads to missed patterns—dangerous in diagnostic or predictive tools.</p>
+<h2 id="3-strategies-to-address-overfitting-underfitting-and-introduction-to-regularization">
+  3 Strategies to Address Overfitting, Underfitting and Introduction to Regularization
+  <a class="anchor" href="#3-strategies-to-address-overfitting-underfitting-and-introduction-to-regularization">#</a>
+</h2>
+<hr>
+<h3 id="q1-how-can-we-address-overfitting-in-ml-models">
+  Q1: How can we address overfitting in ML models?
+  <a class="anchor" href="#q1-how-can-we-address-overfitting-in-ml-models">#</a>
+</h3>
+<p>Strategies include:</p>
+<ul>
+<li><strong>Reducing model complexity</strong>: Use fewer layers or parameters.</li>
+<li><strong>Early stopping</strong>: Halt training when validation performance stops improving.</li>
+<li><strong>Data augmentation</strong>: Increase data diversity artificially (especially for images).</li>
+<li><strong>Regularization</strong>: Penalize model complexity.</li>
+</ul>
+<p>➡️  What types of regularization techniques are commonly used?</p>
+<h3 id="q2-what-is-l1-and-l2-regularization">
+  Q2: What is L1 and L2 regularization?
+  <a class="anchor" href="#q2-what-is-l1-and-l2-regularization">#</a>
+</h3>
+<p>These techniques add penalty terms to the loss function:</p>
+<ul>
+<li><strong>L1 (Lasso)</strong>: Adds absolute value of weights → encourages sparsity (some weights become zero).</li>
+<li><strong>L2 (Ridge)</strong>: Adds square of weights → discourages large weights.</li>
+</ul>
+<p>They help control overfitting by <strong>shrinking parameter magnitudes</strong>.</p>
+<p>➡️  Besides weight penalties, are there other techniques to improve generalization?</p>
+<h3 id="q3-what-is-dropout-and-how-does-it-help-prevent-overfitting">
+  Q3: What is dropout and how does it help prevent overfitting?
+  <a class="anchor" href="#q3-what-is-dropout-and-how-does-it-help-prevent-overfitting">#</a>
+</h3>
+<p>Dropout randomly <strong>disables neurons</strong> during training:</p>
+<ul>
+<li>Prevents co-adaptation of features.</li>
+<li>Encourages the network to learn <strong>redundant, distributed representations</strong>.</li>
+<li>Typically used in deep networks.</li>
+</ul>
+<p>➡️  Can underfitting also be addressed through specific strategies?</p>
+<h3 id="q4-how-can-we-fix-underfitting-in-a-model">
+  Q4: How can we fix underfitting in a model?
+  <a class="anchor" href="#q4-how-can-we-fix-underfitting-in-a-model">#</a>
+</h3>
+<p>Underfitting can be resolved by:</p>
+<ul>
+<li>Increasing model capacity (deeper or more complex models).</li>
+<li>Training longer or using better optimization.</li>
+<li>Improving data quality or features.</li>
+<li>Adjusting learning rate and other hyperparameters.</li>
+</ul>
+<h2 id="4-statistical-approaches-to-model-evaluation">
+  4 Statistical Approaches to Model Evaluation
+  <a class="anchor" href="#4-statistical-approaches-to-model-evaluation">#</a>
+</h2>
+<hr>
+<h3 id="q1-why-are-statistical-methods-important-in-evaluating-ml-models">
+  Q1: Why are statistical methods important in evaluating ML models?
+  <a class="anchor" href="#q1-why-are-statistical-methods-important-in-evaluating-ml-models">#</a>
+</h3>
+<p>Statistical tools help us <strong>quantify confidence and variability</strong> in model performance:</p>
+<ul>
+<li>Avoid over-interpreting single-point metrics.</li>
+<li>Make decisions grounded in <strong>significance and uncertainty</strong>.</li>
+<li>Essential when models may be deployed in clinical practice.</li>
+</ul>
+<p>➡️  What’s a simple way to estimate uncertainty in metrics?</p>
+<h3 id="q2-what-is-bootstrapping-and-how-is-it-used-in-model-evaluation">
+  Q2: What is bootstrapping and how is it used in model evaluation?
+  <a class="anchor" href="#q2-what-is-bootstrapping-and-how-is-it-used-in-model-evaluation">#</a>
+</h3>
+<p>Bootstrapping is a resampling technique:</p>
+<ul>
+<li>Repeatedly sample with replacement from the test set.</li>
+<li>Evaluate the model on each sample to get a distribution of performance metrics.</li>
+<li>Helps compute <strong>confidence intervals</strong> for metrics like accuracy or AUC.</li>
+</ul>
+<p>➡️  Are there other methods for statistical comparison of models?</p>
+<h3 id="q3-how-do-permutation-tests-assess-model-significance">
+  Q3: How do permutation tests assess model significance?
+  <a class="anchor" href="#q3-how-do-permutation-tests-assess-model-significance">#</a>
+</h3>
+<p>Permutation testing involves:</p>
+<ul>
+<li>Randomly shuffling labels on test data.</li>
+<li>Evaluating model performance on this randomized data.</li>
+<li>Repeating multiple times to build a <strong>null distribution</strong>.</li>
+</ul>
+<p>If the true model significantly outperforms the null, it&rsquo;s <strong>statistically meaningful</strong>.</p>
+<p>➡️  How do we assess reliability when comparing two models?</p>
+<h3 id="q4-what-is-the-paired-t-test-and-when-should-it-be-used">
+  Q4: What is the paired t-test and when should it be used?
+  <a class="anchor" href="#q4-what-is-the-paired-t-test-and-when-should-it-be-used">#</a>
+</h3>
+<p>Used to compare two models’ predictions on the <strong>same test samples</strong>:</p>
+<ul>
+<li>Measures whether the difference in performance is statistically significant.</li>
+<li>Assumes approximately normal distribution of differences.</li>
+</ul>
+<p>Can be useful in evaluating if <strong>model A is better than model B</strong>.</p>
+<h2 id="5-receiver-operator-and-precision-recall-curves-as-evaluation-metrics">
+  5 Receiver Operator and Precision Recall Curves as Evaluation Metrics
+  <a class="anchor" href="#5-receiver-operator-and-precision-recall-curves-as-evaluation-metrics">#</a>
+</h2>
+<hr>
+<h3 id="q1-why-do-we-need-different-evaluation-metrics-beyond-accuracy">
+  Q1: Why do we need different evaluation metrics beyond accuracy?
+  <a class="anchor" href="#q1-why-do-we-need-different-evaluation-metrics-beyond-accuracy">#</a>
+</h3>
+<p>Accuracy alone can be misleading, especially in imbalanced datasets:</p>
+<ul>
+<li>In healthcare, positive cases (e.g., disease presence) may be rare.</li>
+<li>A model that predicts only the majority class can appear highly accurate.</li>
+<li>Metrics like <strong>precision</strong>, <strong>recall</strong>, and <strong>AUC</strong> provide better insight into real performance.</li>
+</ul>
+<p>➡️  What is the ROC curve and how is it interpreted?</p>
+<h3 id="q2-what-is-the-roc-curve-and-auc">
+  Q2: What is the ROC curve and AUC?
+  <a class="anchor" href="#q2-what-is-the-roc-curve-and-auc">#</a>
+</h3>
+<ul>
+<li><strong>ROC (Receiver Operating Characteristic)</strong> curve plots <strong>True Positive Rate (TPR)</strong> vs. <strong>False Positive Rate (FPR)</strong>.</li>
+<li><strong>AUC (Area Under the Curve)</strong> summarizes this curve into a single number (0.5 = random, 1.0 = perfect).</li>
+<li>AUC reflects the model’s <strong>ranking ability</strong>—how well it separates classes.</li>
+</ul>
+<p>➡️  Are ROC curves always the best choice?</p>
+<h3 id="q3-when-should-we-prefer-precision-recall-pr-curves-over-roc">
+  Q3: When should we prefer Precision-Recall (PR) curves over ROC?
+  <a class="anchor" href="#q3-when-should-we-prefer-precision-recall-pr-curves-over-roc">#</a>
+</h3>
+<ul>
+<li>PR curves focus on <strong>positive class performance</strong>, plotting <strong>Precision vs. Recall</strong>.</li>
+<li>More informative than ROC when dealing with <strong>imbalanced data</strong>.</li>
+<li>Helpful for screening tools or rare disease prediction.</li>
+</ul>
+<p>➡️  How are these metrics computed and interpreted?</p>
+<h3 id="q4-what-are-precision-recall-and-f1-score">
+  Q4: What are precision, recall, and F1 score?
+  <a class="anchor" href="#q4-what-are-precision-recall-and-f1-score">#</a>
+</h3>
+<ul>
+<li><strong>Precision</strong>: TP / (TP + FP) → Of predicted positives, how many were correct?</li>
+<li><strong>Recall</strong>: TP / (TP + FN) → Of actual positives, how many did we find?</li>
+<li><strong>F1 Score</strong>: Harmonic mean of precision and recall.</li>
+</ul>
+<p>These metrics give a fuller picture of model trade-offs, especially in clinical use cases.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module-4-evaluation-and-metrics-for-ml-in-healthcare"><strong>Module 4: Evaluation and Metrics for ML in Healthcare</strong></a></li>
+        <li><a href="#1-introduction-to-model-performance-evaluation">1 Introduction to Model Performance Evaluation</a>
+          <ul>
+            <li><a href="#q1-why-is-model-evaluation-critical-in-healthcare-machine-learning">Q1: Why is model evaluation critical in healthcare machine learning?</a></li>
+            <li><a href="#q2-what-is-generalization-and-how-is-it-assessed">Q2: What is generalization and how is it assessed?</a></li>
+            <li><a href="#q3-what-is-data-splitting-and-why-is-it-important">Q3: What is data splitting and why is it important?</a></li>
+            <li><a href="#q4-what-is-cross-validation-and-when-is-it-useful">Q4: What is cross-validation and when is it useful?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-overfitting-and-underfitting">2 Overfitting and Underfitting</a>
+          <ul>
+            <li><a href="#q1-what-are-overfitting-and-underfitting-in-machine-learning">Q1: What are overfitting and underfitting in machine learning?</a></li>
+            <li><a href="#q2-how-can-we-detect-overfitting-and-underfitting">Q2: How can we detect overfitting and underfitting?</a></li>
+            <li><a href="#q3-what-factors-contribute-to-overfitting-in-ml-models">Q3: What factors contribute to overfitting in ML models?</a></li>
+            <li><a href="#q4-why-might-a-model-underfit-the-data">Q4: Why might a model underfit the data?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-strategies-to-address-overfitting-underfitting-and-introduction-to-regularization">3 Strategies to Address Overfitting, Underfitting and Introduction to Regularization</a>
+          <ul>
+            <li><a href="#q1-how-can-we-address-overfitting-in-ml-models">Q1: How can we address overfitting in ML models?</a></li>
+            <li><a href="#q2-what-is-l1-and-l2-regularization">Q2: What is L1 and L2 regularization?</a></li>
+            <li><a href="#q3-what-is-dropout-and-how-does-it-help-prevent-overfitting">Q3: What is dropout and how does it help prevent overfitting?</a></li>
+            <li><a href="#q4-how-can-we-fix-underfitting-in-a-model">Q4: How can we fix underfitting in a model?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-statistical-approaches-to-model-evaluation">4 Statistical Approaches to Model Evaluation</a>
+          <ul>
+            <li><a href="#q1-why-are-statistical-methods-important-in-evaluating-ml-models">Q1: Why are statistical methods important in evaluating ML models?</a></li>
+            <li><a href="#q2-what-is-bootstrapping-and-how-is-it-used-in-model-evaluation">Q2: What is bootstrapping and how is it used in model evaluation?</a></li>
+            <li><a href="#q3-how-do-permutation-tests-assess-model-significance">Q3: How do permutation tests assess model significance?</a></li>
+            <li><a href="#q4-what-is-the-paired-t-test-and-when-should-it-be-used">Q4: What is the paired t-test and when should it be used?</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-receiver-operator-and-precision-recall-curves-as-evaluation-metrics">5 Receiver Operator and Precision Recall Curves as Evaluation Metrics</a>
+          <ul>
+            <li><a href="#q1-why-do-we-need-different-evaluation-metrics-beyond-accuracy">Q1: Why do we need different evaluation metrics beyond accuracy?</a></li>
+            <li><a href="#q2-what-is-the-roc-curve-and-auc">Q2: What is the ROC curve and AUC?</a></li>
+            <li><a href="#q3-when-should-we-prefer-precision-recall-pr-curves-over-roc">Q3: When should we prefer Precision-Recall (PR) curves over ROC?</a></li>
+            <li><a href="#q4-what-are-precision-recall-and-f1-score">Q4: What are precision, recall, and F1 score?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Neo4j GDS (Graph Data Science) vs. Core Neo4j (Cypher) 
+
+
+
+
+  1. Purpose Comparison
+  #
+
+
+  
+      
+          Aspect
+          Neo4j (Cypher)
+          GDS (Graph Data Science)
+      
+  
+  
+      
+          Primary Purpose
+          Transactional queries, CRUD operations
+          Graph analytics, algorithms, machine learning
+      
+      
+          Execution
+          Works directly on disk database
+          Projects optimized graph into memory
+      
+      
+          Speed
+          Good for pattern match and retrieval
+          Fast for graph-wide computations
+      
+      
+          Scale
+          Suited for operational systems
+          Handles millions-billions of nodes/relationships
+      
+      
+          Isolation
+          Operates on live data
+          Safe, read-only in-memory graphs
+      
+      
+          Flexibility
+          Good for flexible queries
+          Pre-built scalable algorithms (PageRank, Louvain, etc.)
+      
+      
+          Optimization
+          Query optimization on indexes
+          Memory-efficient subgraph projection
+      
+      
+          Persistence
+          Directly modifies database (unless read-only)
+          Results can stay in memory or optionally write back
+      
+  
+
+
+  2. Summary Flow of GDS Workflow
+  #
+
+
+  
+      
+          Step
+          Cypher Call
+          Purpose
+      
+  
+  
+      
+          ① Project Graph
+          gds.graph.project
+          Create an in-memory optimized graph
+      
+      
+          ② List Graphs
+          gds.graph.list
+          Manage in-memory graph catalog
+      
+      
+          ③ Run Algorithm (Mutate)
+          gds.pageRank.mutate, gds.degree.mutate, etc.
+          Compute and store properties in memory
+      
+      
+          ④ Stream Results
+          gds.graph.nodeProperties.stream
+          Retrieve computed properties
+      
+      
+          ⑤ (Optional) Write to DB
+          gds.pageRank.write, etc.
+          Persist computed results to database
+      
+      
+          ⑥ Drop Graph
+          gds.graph.drop
+          Free memory by deleting in-memory graphs
+      
+  
+
+// Neo4j GDS Flow Diagram
+&#43;----------------&#43;   &#43;-----------------------&#43;   &#43;----------------------&#43;
+| Neo4j Database |==&gt;|  GDS Graph Projection |==&gt;|  Graph Catalog       |
+| (Stored Nodes, |   |  (In-Memory Subgraph) |   | (Manage In-Memory    |
+|  Relationships)|   |                       |   |  Graphs: List, Drop) |
+&#43;----------------&#43;   &#43;-----------------------&#43;   &#43;----------------------&#43;
+                                                           ||
+                                                           ||
+                                                           \/
+                                                 &#43;---------------------&#43;
+                                                 |   GDS Algorithms    |
+                                                 |  (PageRank,         |
+                                                 |  Community Detect., |
+                                                 |  Similarity, ML)    |
+                                                 &#43;---------------------&#43;
+                                                           ||
+                                                           ||
+                                                           \/
+                                                 &#43;---------------------&#43;
+                                                 |      Results        |
+                                                 | (Mutate, Write back,|
+                                                 |  Stream to client)  |
+                                                 &#43;---------------------&#43;
+
+  3. Example: GDS Workflow Code Snippet (Impossible by Cypher Alone)
+  #
+
+// Project graph into memory
+CALL gds.graph.project(
+  &#39;friends-graph&#39;,
+  &#39;Person&#39;,
+  &#39;FRIEND&#39;
+);
+
+// Run PageRank algorithm and store scores in memory
+CALL gds.pageRank.mutate(
+  &#39;friends-graph&#39;,
+  { mutateProperty: &#39;pageRankScore&#39; }
+);
+
+// Stream top PageRank results
+CALL gds.graph.nodeProperties.stream(
+  &#39;friends-graph&#39;,
+  [&#39;pageRankScore&#39;]
+)
+YIELD nodeId, propertyValue
+RETURN gds.util.asNode(nodeId).name AS personName, propertyValue AS pageRankScore
+ORDER BY pageRankScore DESC
+LIMIT 10;
+
+// Clean up memory
+CALL gds.graph.drop(&#39;friends-graph&#39;);
+
+🚀 This full in-memory graph analysis flow cannot be achieved using Cypher alone.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/gds_vs_cypher/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Neo4j GDS (Graph Data Science) vs. Core Neo4j (Cypher)">
+  <meta property="og:description" content="Neo4j GDS (Graph Data Science) vs. Core Neo4j (Cypher) 1. Purpose Comparison # Aspect Neo4j (Cypher) GDS (Graph Data Science) Primary Purpose Transactional queries, CRUD operations Graph analytics, algorithms, machine learning Execution Works directly on disk database Projects optimized graph into memory Speed Good for pattern match and retrieval Fast for graph-wide computations Scale Suited for operational systems Handles millions-billions of nodes/relationships Isolation Operates on live data Safe, read-only in-memory graphs Flexibility Good for flexible queries Pre-built scalable algorithms (PageRank, Louvain, etc.) Optimization Query optimization on indexes Memory-efficient subgraph projection Persistence Directly modifies database (unless read-only) Results can stay in memory or optionally write back 2. Summary Flow of GDS Workflow # Step Cypher Call Purpose ① Project Graph gds.graph.project Create an in-memory optimized graph ② List Graphs gds.graph.list Manage in-memory graph catalog ③ Run Algorithm (Mutate) gds.pageRank.mutate, gds.degree.mutate, etc. Compute and store properties in memory ④ Stream Results gds.graph.nodeProperties.stream Retrieve computed properties ⑤ (Optional) Write to DB gds.pageRank.write, etc. Persist computed results to database ⑥ Drop Graph gds.graph.drop Free memory by deleting in-memory graphs // Neo4j GDS Flow Diagram &#43;----------------&#43; &#43;-----------------------&#43; &#43;----------------------&#43; | Neo4j Database |==&gt;| GDS Graph Projection |==&gt;| Graph Catalog | | (Stored Nodes, | | (In-Memory Subgraph) | | (Manage In-Memory | | Relationships)| | | | Graphs: List, Drop) | &#43;----------------&#43; &#43;-----------------------&#43; &#43;----------------------&#43; || || \/ &#43;---------------------&#43; | GDS Algorithms | | (PageRank, | | Community Detect., | | Similarity, ML) | &#43;---------------------&#43; || || \/ &#43;---------------------&#43; | Results | | (Mutate, Write back,| | Stream to client) | &#43;---------------------&#43; 3. Example: GDS Workflow Code Snippet (Impossible by Cypher Alone) # // Project graph into memory CALL gds.graph.project( &#39;friends-graph&#39;, &#39;Person&#39;, &#39;FRIEND&#39; ); // Run PageRank algorithm and store scores in memory CALL gds.pageRank.mutate( &#39;friends-graph&#39;, { mutateProperty: &#39;pageRankScore&#39; } ); // Stream top PageRank results CALL gds.graph.nodeProperties.stream( &#39;friends-graph&#39;, [&#39;pageRankScore&#39;] ) YIELD nodeId, propertyValue RETURN gds.util.asNode(nodeId).name AS personName, propertyValue AS pageRankScore ORDER BY pageRankScore DESC LIMIT 10; // Clean up memory CALL gds.graph.drop(&#39;friends-graph&#39;); 🚀 This full in-memory graph analysis flow cannot be achieved using Cypher alone.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Neo4j GDS (Graph Data Science) vs. Core Neo4j (Cypher) | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/gds_vs_cypher/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle" checked />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle" checked />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Neo4j GDS (Graph Data Science) vs. Core Neo4j (Cypher)</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-purpose-comparison">1. Purpose Comparison</a></li>
+            <li><a href="#2-summary-flow-of-gds-workflow">2. Summary Flow of GDS Workflow</a></li>
+            <li><a href="#3-example-gds-workflow-code-snippet-impossible-by-cypher-alone">3. Example: GDS Workflow Code Snippet (Impossible by Cypher Alone)</a></li>
+            <li><a href="#4-key-points">4. Key Points</a></li>
+            <li><a href="#-final-mindset">🚀 Final Mindset</a></li>
+            <li><a href="#-reference">📚 Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Neo4j GDS (Graph Data Science) vs. Core Neo4j (Cypher) 
+</strong>
+</p>
+<hr>
+<h3 id="1-purpose-comparison">
+  1. Purpose Comparison
+  <a class="anchor" href="#1-purpose-comparison">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Aspect</th>
+          <th style="text-align: left">Neo4j (Cypher)</th>
+          <th style="text-align: left">GDS (Graph Data Science)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Primary Purpose</strong></td>
+          <td style="text-align: left">Transactional queries, CRUD operations</td>
+          <td style="text-align: left">Graph analytics, algorithms, machine learning</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Execution</strong></td>
+          <td style="text-align: left">Works directly on disk database</td>
+          <td style="text-align: left">Projects optimized graph into memory</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Speed</strong></td>
+          <td style="text-align: left">Good for pattern match and retrieval</td>
+          <td style="text-align: left">Fast for graph-wide computations</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Scale</strong></td>
+          <td style="text-align: left">Suited for operational systems</td>
+          <td style="text-align: left">Handles millions-billions of nodes/relationships</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Isolation</strong></td>
+          <td style="text-align: left">Operates on live data</td>
+          <td style="text-align: left">Safe, read-only in-memory graphs</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Flexibility</strong></td>
+          <td style="text-align: left">Good for flexible queries</td>
+          <td style="text-align: left">Pre-built scalable algorithms (PageRank, Louvain, etc.)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Optimization</strong></td>
+          <td style="text-align: left">Query optimization on indexes</td>
+          <td style="text-align: left">Memory-efficient subgraph projection</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Persistence</strong></td>
+          <td style="text-align: left">Directly modifies database (unless read-only)</td>
+          <td style="text-align: left">Results can stay in memory or optionally write back</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="2-summary-flow-of-gds-workflow">
+  2. Summary Flow of GDS Workflow
+  <a class="anchor" href="#2-summary-flow-of-gds-workflow">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Step</th>
+          <th>Cypher Call</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>① Project Graph</td>
+          <td><code>gds.graph.project</code></td>
+          <td>Create an in-memory optimized graph</td>
+      </tr>
+      <tr>
+          <td>② List Graphs</td>
+          <td><code>gds.graph.list</code></td>
+          <td>Manage in-memory graph catalog</td>
+      </tr>
+      <tr>
+          <td>③ Run Algorithm (Mutate)</td>
+          <td><code>gds.pageRank.mutate</code>, <code>gds.degree.mutate</code>, etc.</td>
+          <td>Compute and store properties in memory</td>
+      </tr>
+      <tr>
+          <td>④ Stream Results</td>
+          <td><code>gds.graph.nodeProperties.stream</code></td>
+          <td>Retrieve computed properties</td>
+      </tr>
+      <tr>
+          <td>⑤ (Optional) Write to DB</td>
+          <td><code>gds.pageRank.write</code>, etc.</td>
+          <td>Persist computed results to database</td>
+      </tr>
+      <tr>
+          <td>⑥ Drop Graph</td>
+          <td><code>gds.graph.drop</code></td>
+          <td>Free memory by deleting in-memory graphs</td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#4c4f69;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>// Neo4j GDS Flow Diagram
+</span></span><span style="display:flex;"><span>+----------------+   +-----------------------+   +----------------------+
+</span></span><span style="display:flex;"><span>| Neo4j Database |==&gt;|  GDS Graph Projection |==&gt;|  Graph Catalog       |
+</span></span><span style="display:flex;"><span>| (Stored Nodes, |   |  (In-Memory Subgraph) |   | (Manage In-Memory    |
+</span></span><span style="display:flex;"><span>|  Relationships)|   |                       |   |  Graphs: List, Drop) |
+</span></span><span style="display:flex;"><span>+----------------+   +-----------------------+   +----------------------+
+</span></span><span style="display:flex;"><span>                                                           ||
+</span></span><span style="display:flex;"><span>                                                           ||
+</span></span><span style="display:flex;"><span>                                                           \/
+</span></span><span style="display:flex;"><span>                                                 +---------------------+
+</span></span><span style="display:flex;"><span>                                                 |   GDS Algorithms    |
+</span></span><span style="display:flex;"><span>                                                 |  (PageRank,         |
+</span></span><span style="display:flex;"><span>                                                 |  Community Detect., |
+</span></span><span style="display:flex;"><span>                                                 |  Similarity, ML)    |
+</span></span><span style="display:flex;"><span>                                                 +---------------------+
+</span></span><span style="display:flex;"><span>                                                           ||
+</span></span><span style="display:flex;"><span>                                                           ||
+</span></span><span style="display:flex;"><span>                                                           \/
+</span></span><span style="display:flex;"><span>                                                 +---------------------+
+</span></span><span style="display:flex;"><span>                                                 |      Results        |
+</span></span><span style="display:flex;"><span>                                                 | (Mutate, Write back,|
+</span></span><span style="display:flex;"><span>                                                 |  Stream to client)  |
+</span></span><span style="display:flex;"><span>                                                 +---------------------+
+</span></span></code></pre></div><h3 id="3-example-gds-workflow-code-snippet-impossible-by-cypher-alone">
+  3. Example: GDS Workflow Code Snippet (Impossible by Cypher Alone)
+  <a class="anchor" href="#3-example-gds-workflow-code-snippet-impossible-by-cypher-alone">#</a>
+</h3>
+<pre tabindex="0"><code class="language-cypher" data-lang="cypher">// Project graph into memory
+CALL gds.graph.project(
+  &#39;friends-graph&#39;,
+  &#39;Person&#39;,
+  &#39;FRIEND&#39;
+);
+
+// Run PageRank algorithm and store scores in memory
+CALL gds.pageRank.mutate(
+  &#39;friends-graph&#39;,
+  { mutateProperty: &#39;pageRankScore&#39; }
+);
+
+// Stream top PageRank results
+CALL gds.graph.nodeProperties.stream(
+  &#39;friends-graph&#39;,
+  [&#39;pageRankScore&#39;]
+)
+YIELD nodeId, propertyValue
+RETURN gds.util.asNode(nodeId).name AS personName, propertyValue AS pageRankScore
+ORDER BY pageRankScore DESC
+LIMIT 10;
+
+// Clean up memory
+CALL gds.graph.drop(&#39;friends-graph&#39;);
+</code></pre><blockquote>
+<p>🚀 This full in-memory graph analysis flow <strong>cannot be achieved</strong> using Cypher alone.</p>
+</blockquote>
+<h3 id="4-key-points">
+  4. Key Points
+  <a class="anchor" href="#4-key-points">#</a>
+</h3>
+<ul>
+<li><strong>GDS Graphs ≠ Neo4j Database</strong>: They are temporary, in-memory copies optimized for analytics.</li>
+<li><strong>Projection</strong>: Only include nodes, relationships, properties you need.</li>
+<li><strong>Graph Catalog</strong>: Manage multiple in-memory graphs independently.</li>
+<li><strong>Mutate Mode</strong>: Save computed values without touching database.</li>
+<li><strong>Write Mode</strong>: Explicitly write analytics results back to database if needed.</li>
+<li><strong>Drop</strong>: Always free memory after analytics is complete.</li>
+</ul>
+<h3 id="-final-mindset">
+  🚀 Final Mindset
+  <a class="anchor" href="#-final-mindset">#</a>
+</h3>
+<blockquote>
+<p>Use <strong>Cypher</strong> for database operations.<br>
+Use <strong>GDS</strong> for <strong>fast, scalable, and isolated</strong> graph analytics and machine learning.</p>
+</blockquote>
+<h3 id="-reference">
+  📚 Reference
+  <a class="anchor" href="#-reference">#</a>
+</h3>
+<ul>
+<li><a href="https://graphacademy.neo4j.com/courses/gds-product-introduction/2-graph-management/1-graph-catalog/">Neo4j GraphAcademy - GDS Product Introduction</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-purpose-comparison">1. Purpose Comparison</a></li>
+            <li><a href="#2-summary-flow-of-gds-workflow">2. Summary Flow of GDS Workflow</a></li>
+            <li><a href="#3-example-gds-workflow-code-snippet-impossible-by-cypher-alone">3. Example: GDS Workflow Code Snippet (Impossible by Cypher Alone)</a></li>
+            <li><a href="#4-key-points">4. Key Points</a></li>
+            <li><a href="#-final-mindset">🚀 Final Mindset</a></li>
+            <li><a href="#-reference">📚 Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

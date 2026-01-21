@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+
+
+Dataset Creation and Curation 
+
+
+
+
+  Q1: What are the main themes of dataset creation and curation?
+  #
+
+
+Framing the ML task correctly.
+Addressing data sourcing concerns like selection bias.
+Handling label sourcing and quality control.
+
+
+  Q2: Why is careful sourcing of data important?
+  #
+
+
+ML models exploit spurious correlations.
+If training data does not match real-world deployment conditions, models can fail badly.
+
+
+  Q3: What is selection bias and what are its common causes?
+  #
+
+
+Selection bias: Systematic mismatch between training data and deployment data.
+Causes: Time/location bias, demographic bias, response bias, availability bias, long tail bias.
+
+
+  Q4: How can we deal with selection bias during data collection?
+  #
+
+
+Hold out validation sets that mimic deployment conditions, such as latest data, new locations, or oversampled rare events.
+
+
+  Q5: How can we estimate how much data we need?
+  #
+
+
+Use a method to measure learning curves by sub-sampling data and fitting a simple log-log model to predict performance scaling.
+
+
+  Q6: What is the formula used to predict model error with more data?
+  #
+
+
+( \log(	ext{error}) = -a \cdot \log(n) &#43; b )
+
+
+  Q7: What are concerns when labeling data with crowdsourced workers?
+  #
+
+
+Variability in annotator accuracy.
+Possibility of annotator collusion.
+
+
+  Q8: How can we maintain label quality during crowdsourcing?
+  #
+
+
+Insert &ldquo;quality control&rdquo; examples with known ground-truth to monitor annotator performance.
+
+
+  Q9: What methods are used to curate labels from multiple annotators?
+  #
+
+
+Majority Vote and Inter-Annotator Agreement.
+Dawid-Skene model.
+CROWDLAB.
+
+
+  Q10: How does Majority Vote work?
+  #
+
+
+Assigns the label chosen by the majority of annotators.
+Confidence is based on inter-annotator agreement.
+
+
+  Q11: What are downsides of Majority Vote?
+  #
+
+
+Ties are ambiguous.
+Bad annotators have equal influence as good ones.
+
+
+  Q12: What is the Dawid-Skene model?
+  #
+
+
+Models each annotator with a confusion matrix.
+Uses Bayesian inference (often approximated with EM) to estimate consensus labels and annotator quality.
+
+
+  Q13: What are limitations of Dawid-Skene?
+  #
+
+
+Requires strong assumptions.
+Performs poorly if examples are labeled by few annotators.
+
+
+  Q14: What is CROWDLAB?
+  #
+
+
+Combines classifier predictions and annotator labels for better consensus.
+Weights depend on model confidence and inter-annotator agreement.
+
+
+  Q15: How does CROWDLAB work?
+  #
+
+
+For examples labeled by few annotators, rely more on the classifier.
+For examples labeled by many annotators, rely more on label agreement.
+
+
+  Q16: How are weights estimated in CROWDLAB?
+  #
+
+
+Based on annotator agreement rates and classifier accuracy normalized against a majority-class baseline.
+
+
+  Q17: What is the hands-on lab assignment for this lecture?
+  #
+
+
+Analyze a multi-annotator dataset and implement methods for estimating consensus labels and annotator quality.
+
+
+
+  References
+  #
+
+
+Human-in-the-Loop ML textbook
+Recognition in terra incognita (Beery et al., 2018)
+Constructive prediction of generalization error (Rosenfeld et al., 2020)
+CROWDLAB paper (Goh et al., 2022)
+Catalogue of Bias (Selection Bias)
+Dataset curation lab notebook
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/dataset-creation-curation/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="Dataset Creation and Curation">
+  <meta property="og:description" content="Dataset Creation and Curation Q1: What are the main themes of dataset creation and curation? # Framing the ML task correctly. Addressing data sourcing concerns like selection bias. Handling label sourcing and quality control. Q2: Why is careful sourcing of data important? # ML models exploit spurious correlations. If training data does not match real-world deployment conditions, models can fail badly. Q3: What is selection bias and what are its common causes? # Selection bias: Systematic mismatch between training data and deployment data. Causes: Time/location bias, demographic bias, response bias, availability bias, long tail bias. Q4: How can we deal with selection bias during data collection? # Hold out validation sets that mimic deployment conditions, such as latest data, new locations, or oversampled rare events. Q5: How can we estimate how much data we need? # Use a method to measure learning curves by sub-sampling data and fitting a simple log-log model to predict performance scaling. Q6: What is the formula used to predict model error with more data? # ( \log(	ext{error}) = -a \cdot \log(n) &#43; b ) Q7: What are concerns when labeling data with crowdsourced workers? # Variability in annotator accuracy. Possibility of annotator collusion. Q8: How can we maintain label quality during crowdsourcing? # Insert “quality control” examples with known ground-truth to monitor annotator performance. Q9: What methods are used to curate labels from multiple annotators? # Majority Vote and Inter-Annotator Agreement. Dawid-Skene model. CROWDLAB. Q10: How does Majority Vote work? # Assigns the label chosen by the majority of annotators. Confidence is based on inter-annotator agreement. Q11: What are downsides of Majority Vote? # Ties are ambiguous. Bad annotators have equal influence as good ones. Q12: What is the Dawid-Skene model? # Models each annotator with a confusion matrix. Uses Bayesian inference (often approximated with EM) to estimate consensus labels and annotator quality. Q13: What are limitations of Dawid-Skene? # Requires strong assumptions. Performs poorly if examples are labeled by few annotators. Q14: What is CROWDLAB? # Combines classifier predictions and annotator labels for better consensus. Weights depend on model confidence and inter-annotator agreement. Q15: How does CROWDLAB work? # For examples labeled by few annotators, rely more on the classifier. For examples labeled by many annotators, rely more on label agreement. Q16: How are weights estimated in CROWDLAB? # Based on annotator agreement rates and classifier accuracy normalized against a majority-class baseline. Q17: What is the hands-on lab assignment for this lecture? # Analyze a multi-annotator dataset and implement methods for estimating consensus labels and annotator quality. References # Human-in-the-Loop ML textbook Recognition in terra incognita (Beery et al., 2018) Constructive prediction of generalization error (Rosenfeld et al., 2020) CROWDLAB paper (Goh et al., 2022) Catalogue of Bias (Selection Bias) Dataset curation lab notebook">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Dataset Creation and Curation | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/ai-workflows/data-modeling/data-centric-ai/dataset-creation-curation/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle" checked />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle" checked />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Dataset Creation and Curation</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-what-are-the-main-themes-of-dataset-creation-and-curation">Q1: What are the main themes of dataset creation and curation?</a></li>
+            <li><a href="#q2-why-is-careful-sourcing-of-data-important">Q2: Why is careful sourcing of data important?</a></li>
+            <li><a href="#q3-what-is-selection-bias-and-what-are-its-common-causes">Q3: What is selection bias and what are its common causes?</a></li>
+            <li><a href="#q4-how-can-we-deal-with-selection-bias-during-data-collection">Q4: How can we deal with selection bias during data collection?</a></li>
+            <li><a href="#q5-how-can-we-estimate-how-much-data-we-need">Q5: How can we estimate how much data we need?</a></li>
+            <li><a href="#q6-what-is-the-formula-used-to-predict-model-error-with-more-data">Q6: What is the formula used to predict model error with more data?</a></li>
+            <li><a href="#q7-what-are-concerns-when-labeling-data-with-crowdsourced-workers">Q7: What are concerns when labeling data with crowdsourced workers?</a></li>
+            <li><a href="#q8-how-can-we-maintain-label-quality-during-crowdsourcing">Q8: How can we maintain label quality during crowdsourcing?</a></li>
+            <li><a href="#q9-what-methods-are-used-to-curate-labels-from-multiple-annotators">Q9: What methods are used to curate labels from multiple annotators?</a></li>
+            <li><a href="#q10-how-does-majority-vote-work">Q10: How does Majority Vote work?</a></li>
+            <li><a href="#q11-what-are-downsides-of-majority-vote">Q11: What are downsides of Majority Vote?</a></li>
+            <li><a href="#q12-what-is-the-dawid-skene-model">Q12: What is the Dawid-Skene model?</a></li>
+            <li><a href="#q13-what-are-limitations-of-dawid-skene">Q13: What are limitations of Dawid-Skene?</a></li>
+            <li><a href="#q14-what-is-crowdlab">Q14: What is CROWDLAB?</a></li>
+            <li><a href="#q15-how-does-crowdlab-work">Q15: How does CROWDLAB work?</a></li>
+            <li><a href="#q16-how-are-weights-estimated-in-crowdlab">Q16: How are weights estimated in CROWDLAB?</a></li>
+            <li><a href="#q17-what-is-the-hands-on-lab-assignment-for-this-lecture">Q17: What is the hands-on lab assignment for this lecture?</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p align="center">
+<img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Dataset Creation and Curation 
+</strong>
+</p>
+<hr>
+<h3 id="q1-what-are-the-main-themes-of-dataset-creation-and-curation">
+  Q1: What are the main themes of dataset creation and curation?
+  <a class="anchor" href="#q1-what-are-the-main-themes-of-dataset-creation-and-curation">#</a>
+</h3>
+<ul>
+<li>Framing the ML task correctly.</li>
+<li>Addressing data sourcing concerns like selection bias.</li>
+<li>Handling label sourcing and quality control.</li>
+</ul>
+<h3 id="q2-why-is-careful-sourcing-of-data-important">
+  Q2: Why is careful sourcing of data important?
+  <a class="anchor" href="#q2-why-is-careful-sourcing-of-data-important">#</a>
+</h3>
+<ul>
+<li>ML models exploit spurious correlations.</li>
+<li>If training data does not match real-world deployment conditions, models can fail badly.</li>
+</ul>
+<h3 id="q3-what-is-selection-bias-and-what-are-its-common-causes">
+  Q3: What is selection bias and what are its common causes?
+  <a class="anchor" href="#q3-what-is-selection-bias-and-what-are-its-common-causes">#</a>
+</h3>
+<ul>
+<li><strong>Selection bias</strong>: Systematic mismatch between training data and deployment data.</li>
+<li><strong>Causes</strong>: Time/location bias, demographic bias, response bias, availability bias, long tail bias.</li>
+</ul>
+<h3 id="q4-how-can-we-deal-with-selection-bias-during-data-collection">
+  Q4: How can we deal with selection bias during data collection?
+  <a class="anchor" href="#q4-how-can-we-deal-with-selection-bias-during-data-collection">#</a>
+</h3>
+<ul>
+<li>Hold out validation sets that mimic deployment conditions, such as latest data, new locations, or oversampled rare events.</li>
+</ul>
+<h3 id="q5-how-can-we-estimate-how-much-data-we-need">
+  Q5: How can we estimate how much data we need?
+  <a class="anchor" href="#q5-how-can-we-estimate-how-much-data-we-need">#</a>
+</h3>
+<ul>
+<li>Use a method to measure learning curves by sub-sampling data and fitting a simple log-log model to predict performance scaling.</li>
+</ul>
+<h3 id="q6-what-is-the-formula-used-to-predict-model-error-with-more-data">
+  Q6: What is the formula used to predict model error with more data?
+  <a class="anchor" href="#q6-what-is-the-formula-used-to-predict-model-error-with-more-data">#</a>
+</h3>
+<ul>
+<li>( \log(	ext{error}) = -a \cdot \log(n) + b )</li>
+</ul>
+<h3 id="q7-what-are-concerns-when-labeling-data-with-crowdsourced-workers">
+  Q7: What are concerns when labeling data with crowdsourced workers?
+  <a class="anchor" href="#q7-what-are-concerns-when-labeling-data-with-crowdsourced-workers">#</a>
+</h3>
+<ul>
+<li>Variability in annotator accuracy.</li>
+<li>Possibility of annotator collusion.</li>
+</ul>
+<h3 id="q8-how-can-we-maintain-label-quality-during-crowdsourcing">
+  Q8: How can we maintain label quality during crowdsourcing?
+  <a class="anchor" href="#q8-how-can-we-maintain-label-quality-during-crowdsourcing">#</a>
+</h3>
+<ul>
+<li>Insert &ldquo;quality control&rdquo; examples with known ground-truth to monitor annotator performance.</li>
+</ul>
+<h3 id="q9-what-methods-are-used-to-curate-labels-from-multiple-annotators">
+  Q9: What methods are used to curate labels from multiple annotators?
+  <a class="anchor" href="#q9-what-methods-are-used-to-curate-labels-from-multiple-annotators">#</a>
+</h3>
+<ul>
+<li><strong>Majority Vote and Inter-Annotator Agreement</strong>.</li>
+<li><strong>Dawid-Skene model</strong>.</li>
+<li><strong>CROWDLAB</strong>.</li>
+</ul>
+<h3 id="q10-how-does-majority-vote-work">
+  Q10: How does Majority Vote work?
+  <a class="anchor" href="#q10-how-does-majority-vote-work">#</a>
+</h3>
+<ul>
+<li>Assigns the label chosen by the majority of annotators.</li>
+<li>Confidence is based on inter-annotator agreement.</li>
+</ul>
+<h3 id="q11-what-are-downsides-of-majority-vote">
+  Q11: What are downsides of Majority Vote?
+  <a class="anchor" href="#q11-what-are-downsides-of-majority-vote">#</a>
+</h3>
+<ul>
+<li>Ties are ambiguous.</li>
+<li>Bad annotators have equal influence as good ones.</li>
+</ul>
+<h3 id="q12-what-is-the-dawid-skene-model">
+  Q12: What is the Dawid-Skene model?
+  <a class="anchor" href="#q12-what-is-the-dawid-skene-model">#</a>
+</h3>
+<ul>
+<li>Models each annotator with a confusion matrix.</li>
+<li>Uses Bayesian inference (often approximated with EM) to estimate consensus labels and annotator quality.</li>
+</ul>
+<h3 id="q13-what-are-limitations-of-dawid-skene">
+  Q13: What are limitations of Dawid-Skene?
+  <a class="anchor" href="#q13-what-are-limitations-of-dawid-skene">#</a>
+</h3>
+<ul>
+<li>Requires strong assumptions.</li>
+<li>Performs poorly if examples are labeled by few annotators.</li>
+</ul>
+<h3 id="q14-what-is-crowdlab">
+  Q14: What is CROWDLAB?
+  <a class="anchor" href="#q14-what-is-crowdlab">#</a>
+</h3>
+<ul>
+<li>Combines classifier predictions and annotator labels for better consensus.</li>
+<li>Weights depend on model confidence and inter-annotator agreement.</li>
+</ul>
+<h3 id="q15-how-does-crowdlab-work">
+  Q15: How does CROWDLAB work?
+  <a class="anchor" href="#q15-how-does-crowdlab-work">#</a>
+</h3>
+<ul>
+<li>For examples labeled by few annotators, rely more on the classifier.</li>
+<li>For examples labeled by many annotators, rely more on label agreement.</li>
+</ul>
+<h3 id="q16-how-are-weights-estimated-in-crowdlab">
+  Q16: How are weights estimated in CROWDLAB?
+  <a class="anchor" href="#q16-how-are-weights-estimated-in-crowdlab">#</a>
+</h3>
+<ul>
+<li>Based on annotator agreement rates and classifier accuracy normalized against a majority-class baseline.</li>
+</ul>
+<h3 id="q17-what-is-the-hands-on-lab-assignment-for-this-lecture">
+  Q17: What is the hands-on lab assignment for this lecture?
+  <a class="anchor" href="#q17-what-is-the-hands-on-lab-assignment-for-this-lecture">#</a>
+</h3>
+<ul>
+<li>Analyze a multi-annotator dataset and implement methods for estimating consensus labels and annotator quality.</li>
+</ul>
+<hr>
+<h3 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h3>
+<ul>
+<li><a href="https://books.google.com/books/about/Human_in_the_Loop_Machine_Learning.html?id=LCh0zQEACAAJ">Human-in-the-Loop ML textbook</a></li>
+<li><a href="https://arxiv.org/abs/1807.04975">Recognition in terra incognita (Beery et al., 2018)</a></li>
+<li><a href="https://arxiv.org/abs/1909.12673">Constructive prediction of generalization error (Rosenfeld et al., 2020)</a></li>
+<li><a href="https://arxiv.org/abs/2210.06812">CROWDLAB paper (Goh et al., 2022)</a></li>
+<li><a href="https://catalogofbias.org/biases/selection-bias/">Catalogue of Bias (Selection Bias)</a></li>
+<li><a href="https://github.com/dcai-course/dcai-lab/blob/master/dataset_curation/Lab%20-%20Dataset%20Curation.ipynb">Dataset curation lab notebook</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#q1-what-are-the-main-themes-of-dataset-creation-and-curation">Q1: What are the main themes of dataset creation and curation?</a></li>
+            <li><a href="#q2-why-is-careful-sourcing-of-data-important">Q2: Why is careful sourcing of data important?</a></li>
+            <li><a href="#q3-what-is-selection-bias-and-what-are-its-common-causes">Q3: What is selection bias and what are its common causes?</a></li>
+            <li><a href="#q4-how-can-we-deal-with-selection-bias-during-data-collection">Q4: How can we deal with selection bias during data collection?</a></li>
+            <li><a href="#q5-how-can-we-estimate-how-much-data-we-need">Q5: How can we estimate how much data we need?</a></li>
+            <li><a href="#q6-what-is-the-formula-used-to-predict-model-error-with-more-data">Q6: What is the formula used to predict model error with more data?</a></li>
+            <li><a href="#q7-what-are-concerns-when-labeling-data-with-crowdsourced-workers">Q7: What are concerns when labeling data with crowdsourced workers?</a></li>
+            <li><a href="#q8-how-can-we-maintain-label-quality-during-crowdsourcing">Q8: How can we maintain label quality during crowdsourcing?</a></li>
+            <li><a href="#q9-what-methods-are-used-to-curate-labels-from-multiple-annotators">Q9: What methods are used to curate labels from multiple annotators?</a></li>
+            <li><a href="#q10-how-does-majority-vote-work">Q10: How does Majority Vote work?</a></li>
+            <li><a href="#q11-what-are-downsides-of-majority-vote">Q11: What are downsides of Majority Vote?</a></li>
+            <li><a href="#q12-what-is-the-dawid-skene-model">Q12: What is the Dawid-Skene model?</a></li>
+            <li><a href="#q13-what-are-limitations-of-dawid-skene">Q13: What are limitations of Dawid-Skene?</a></li>
+            <li><a href="#q14-what-is-crowdlab">Q14: What is CROWDLAB?</a></li>
+            <li><a href="#q15-how-does-crowdlab-work">Q15: How does CROWDLAB work?</a></li>
+            <li><a href="#q16-how-are-weights-estimated-in-crowdlab">Q16: How are weights estimated in CROWDLAB?</a></li>
+            <li><a href="#q17-what-is-the-hands-on-lab-assignment-for-this-lecture">Q17: What is the hands-on lab assignment for this lecture?</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Module2: Data Available From Healthcare Systems
+  #
+
+
+  1 Review of the healthcare system
+  #
+
+
+
+  Q: What is the focus of this module&rsquo;s introduction?
+  #
+
+A: To demonstrate how clinical data from the healthcare system can be used to ask and answer meaningful research questions.
+
+  Q: What key topics are introduced in this session?
+  #
+
+A:
+
+Common data sources in healthcare
+Types of data generated
+Systematic inaccuracies in the data
+Strategies for working with imperfect data
+
+
+  Q: How does this connect to the earlier module?
+  #
+
+A: It builds on the discussion of research question formulation and data mining workflows by diving into real-world data availability and limitations.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/summary_m2/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="[Summary] Module2: Data Available From Healthcare Systems">
+  <meta property="og:description" content="Module2: Data Available From Healthcare Systems # 1 Review of the healthcare system # Q: What is the focus of this module’s introduction? # A: To demonstrate how clinical data from the healthcare system can be used to ask and answer meaningful research questions.
+Q: What key topics are introduced in this session? # A:
+Common data sources in healthcare Types of data generated Systematic inaccuracies in the data Strategies for working with imperfect data Q: How does this connect to the earlier module? # A: It builds on the discussion of research question formulation and data mining workflows by diving into real-world data availability and limitations.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="healthcare">
+<title>[Summary] Module2: Data Available From Healthcare Systems | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://imipark.github.io/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/summary_m2/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.4014c58b4ff93b711a1e1d78f5ec4df7c78de5b479f64af51be6af1f4dace7eb.js" integrity="sha256-QBTFi0/5O3EaHh149exN98eN5bR59kr1G&#43;avH02s5&#43;s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8e502c34e18a04e1c3aecf192b0355a" class="toggle"  />
+    <label for="section-f8e502c34e18a04e1c3aecf192b0355a" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/" class="">Data Modeling</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-906a2243f4790a09188fae70fbc32dbd" class="toggle"  />
+    <label for="section-906a2243f4790a09188fae70fbc32dbd" class="flex justify-between">
+      <a href="/ai-workflows/data-modeling/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bf1c216f4b747bd7c2f992550ff09a1" class="toggle"  />
+    <label for="section-5bf1c216f4b747bd7c2f992550ff09a1" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/" class="">GenAI Systems</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cbfd420d91de13f61964bf971127312" class="toggle"  />
+    <label for="section-8cbfd420d91de13f61964bf971127312" class="flex justify-between">
+      <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai-systems/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle"  />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">AI Evaluation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle" checked />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle" checked />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>[Summary] Module2: Data Available From Healthcare Systems</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module2-data-available-from-healthcare-systems">Module2: Data Available From Healthcare Systems</a></li>
+        <li><a href="#1-review-of-the-healthcare-system">1 Review of the healthcare system</a>
+          <ul>
+            <li><a href="#q-what-is-the-focus-of-this-modules-introduction">Q: What is the focus of this module&rsquo;s introduction?</a></li>
+            <li><a href="#q-what-key-topics-are-introduced-in-this-session">Q: What key topics are introduced in this session?</a></li>
+            <li><a href="#q-how-does-this-connect-to-the-earlier-module">Q: How does this connect to the earlier module?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-review-of-key-entities-and-the-data-they-collect">2 Review of key entities and the data they collect</a>
+          <ul>
+            <li><a href="#q-who-are-the-key-entities-in-the-healthcare-system-that-generate-data">Q: Who are the key entities in the healthcare system that generate data?</a></li>
+            <li><a href="#q-what-kind-of-data-is-produced-at-each-step-of-care">Q: What kind of data is produced at each step of care?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-actors-with-different-interests">3 Actors with different interests</a>
+          <ul>
+            <li><a href="#q-who-are-the-main-actors-in-the-healthcare-system">Q: Who are the main actors in the healthcare system?</a></li>
+            <li><a href="#q-what-are-the-interests-of-these-different-actors">Q: What are the interests of these different actors?</a></li>
+            <li><a href="#q-how-do-differing-interests-create-conflict">Q: How do differing interests create conflict?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-common-data-types-in-healthcare">4 Common data types in Healthcare</a>
+          <ul>
+            <li><a href="#q-what-are-the-major-types-of-healthcare-data">Q: What are the major types of healthcare data?</a></li>
+            <li><a href="#q-what-is-structured-data">Q: What is structured data?</a></li>
+            <li><a href="#q-what-is-unstructured-data">Q: What is unstructured data?</a></li>
+            <li><a href="#q-why-is-this-distinction-important">Q: Why is this distinction important?</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-strengths-and-weaknesses-of-observational-data">5 Strengths and weaknesses of observational data</a>
+          <ul>
+            <li><a href="#q-what-are-observational-data-in-healthcare">Q: What are observational data in healthcare?</a></li>
+            <li><a href="#q-what-are-the-main-strengths-of-observational-data">Q: What are the main strengths of observational data?</a></li>
+            <li><a href="#q-what-are-the-weaknesses-of-observational-data">Q: What are the weaknesses of observational data?</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-bias-and-error-from-the-healthcare-system-perspective">6 Bias and error from the healthcare system perspective</a>
+          <ul>
+            <li><a href="#q-how-can-data-from-the-healthcare-system-be-biased-or-inaccurate">Q: How can data from the healthcare system be biased or inaccurate?</a></li>
+            <li><a href="#q-what-is-selection-bias-in-this-context">Q: What is selection bias in this context?</a></li>
+            <li><a href="#q-what-patient-level-factors-influence-bias">Q: What patient-level factors influence bias?</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-bias-and-error-of-exposures-and-outcomes">7 Bias and error of exposures and outcomes</a>
+          <ul>
+            <li><a href="#q-what-are-exposures-and-outcomes-in-clinical-data-analysis">Q: What are exposures and outcomes in clinical data analysis?</a></li>
+            <li><a href="#q-why-is-distinguishing-exposures-and-outcomes-important">Q: Why is distinguishing exposures and outcomes important?</a></li>
+            <li><a href="#q-what-type-of-biases-can-arise-in-this-context">Q: What type of biases can arise in this context?</a></li>
+          </ul>
+        </li>
+        <li><a href="#8-how-a-patient-exposure-might-be-misclassified">8 How a patient exposure might be misclassified</a>
+          <ul>
+            <li><a href="#q-how-can-exposure-to-medication-be-misclassified-in-clinical-data">Q: How can exposure to medication be misclassified in clinical data?</a></li>
+            <li><a href="#q-what-example-illustrates-this-misclassification">Q: What example illustrates this misclassification?</a></li>
+            <li><a href="#q-why-does-this-matter">Q: Why does this matter?</a></li>
+          </ul>
+        </li>
+        <li><a href="#9-how-a-patient-outcome-could-be-misclassified">9 How a patient outcome could be misclassified</a>
+          <ul>
+            <li><a href="#q-how-can-a-patients-outcome-be-misclassified-in-the-medical-record">Q: How can a patient’s outcome be misclassified in the medical record?</a></li>
+            <li><a href="#q-what-strategies-help-reduce-outcome-misclassification">Q: What strategies help reduce outcome misclassification?</a></li>
+            <li><a href="#q-why-are-procedure-codes-more-reliable">Q: Why are procedure codes more reliable?</a></li>
+          </ul>
+        </li>
+        <li><a href="#10-electronic-medical-record-data">10 Electronic medical record data</a>
+          <ul>
+            <li><a href="#q-what-are-electronic-medical-records-emrs">Q: What are electronic medical records (EMRs)?</a></li>
+            <li><a href="#q-what-types-of-data-are-typically-stored-in-emrs">Q: What types of data are typically stored in EMRs?</a></li>
+            <li><a href="#q-how-are-emrs-generated">Q: How are EMRs generated?</a></li>
+            <li><a href="#q-are-emrs-and-ehrs-the-same">Q: Are EMRs and EHRs the same?</a></li>
+          </ul>
+        </li>
+        <li><a href="#11-claims-data">11 Claims data</a>
+          <ul>
+            <li><a href="#q-what-are-claims-data-in-healthcare">Q: What are claims data in healthcare?</a></li>
+            <li><a href="#q-what-information-do-claims-typically-include">Q: What information do claims typically include?</a></li>
+            <li><a href="#q-how-is-coding-related-to-billing">Q: How is coding related to billing?</a></li>
+            <li><a href="#q-why-are-claims-data-valuable">Q: Why are claims data valuable?</a></li>
+          </ul>
+        </li>
+        <li><a href="#12-pharmacy">12 Pharmacy</a>
+          <ul>
+            <li><a href="#q-what-kind-of-data-do-pharmacies-provide">Q: What kind of data do pharmacies provide?</a></li>
+            <li><a href="#q-why-is-pharmacy-data-valuable">Q: Why is pharmacy data valuable?</a></li>
+            <li><a href="#q-what-are-limitations-of-pharmacy-data">Q: What are limitations of pharmacy data?</a></li>
+            <li><a href="#q-how-can-pharmacy-records-be-fragmented">Q: How can pharmacy records be fragmented?</a></li>
+          </ul>
+        </li>
+        <li><a href="#13-surveillance-datasets-and-registries">13 Surveillance datasets and Registries</a>
+          <ul>
+            <li><a href="#q-what-are-surveillance-datasets-and-why-are-they-important">Q: What are surveillance datasets and why are they important?</a></li>
+            <li><a href="#q-what-are-examples-of-surveillance-systems-in-the-us">Q: What are examples of surveillance systems in the U.S.?</a></li>
+            <li><a href="#q-who-uses-these-datasets-and-for-what-purpose">Q: Who uses these datasets and for what purpose?</a></li>
+            <li><a href="#q-what-are-registries">Q: What are registries?</a></li>
+          </ul>
+        </li>
+        <li><a href="#14-population-health-data-sets">14 Population health data sets</a>
+          <ul>
+            <li><a href="#q-how-do-population-health-datasets-differ-from-patient-centric-data">Q: How do population health datasets differ from patient-centric data?</a></li>
+            <li><a href="#q-what-are-key-examples-of-us-population-health-datasets">Q: What are key examples of U.S. population health datasets?</a></li>
+            <li><a href="#q-why-are-these-datasets-useful">Q: Why are these datasets useful?</a></li>
+          </ul>
+        </li>
+        <li><a href="#15-a-framework-to-assess-if-a-data-source-is-useful">15 A framework to assess if a data source is useful</a>
+          <ul>
+            <li><a href="#q-what-questions-should-you-ask-to-assess-a-healthcare-datasets-usefulness">Q: What questions should you ask to assess a healthcare dataset&rsquo;s usefulness?</a></li>
+            <li><a href="#q-why-is-this-framework-important">Q: Why is this framework important?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="module2-data-available-from-healthcare-systems">
+  Module2: Data Available From Healthcare Systems
+  <a class="anchor" href="#module2-data-available-from-healthcare-systems">#</a>
+</h2>
+<h2 id="1-review-of-the-healthcare-system">
+  1 Review of the healthcare system
+  <a class="anchor" href="#1-review-of-the-healthcare-system">#</a>
+</h2>
+<hr>
+<h3 id="q-what-is-the-focus-of-this-modules-introduction">
+  Q: What is the focus of this module&rsquo;s introduction?
+  <a class="anchor" href="#q-what-is-the-focus-of-this-modules-introduction">#</a>
+</h3>
+<p>A: To demonstrate how clinical data from the healthcare system can be used to ask and answer meaningful research questions.</p>
+<h3 id="q-what-key-topics-are-introduced-in-this-session">
+  Q: What key topics are introduced in this session?
+  <a class="anchor" href="#q-what-key-topics-are-introduced-in-this-session">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Common data sources in healthcare</li>
+<li>Types of data generated</li>
+<li>Systematic inaccuracies in the data</li>
+<li>Strategies for working with imperfect data</li>
+</ul>
+<h3 id="q-how-does-this-connect-to-the-earlier-module">
+  Q: How does this connect to the earlier module?
+  <a class="anchor" href="#q-how-does-this-connect-to-the-earlier-module">#</a>
+</h3>
+<p>A: It builds on the discussion of research question formulation and data mining workflows by diving into real-world data availability and limitations.</p>
+<p>➡️   What entities exist in the healthcare system and what data do they collect?</p>
+<h2 id="2-review-of-key-entities-and-the-data-they-collect">
+  2 Review of key entities and the data they collect
+  <a class="anchor" href="#2-review-of-key-entities-and-the-data-they-collect">#</a>
+</h2>
+<hr>
+<h3 id="q-who-are-the-key-entities-in-the-healthcare-system-that-generate-data">
+  Q: Who are the key entities in the healthcare system that generate data?
+  <a class="anchor" href="#q-who-are-the-key-entities-in-the-healthcare-system-that-generate-data">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Patients : Generate little data when healthy, but more when they seek treatment.</li>
+<li>Search Engines : Capture data from patients researching health online.</li>
+<li>Healthcare Providers : Generate EMR data including diagnoses, test orders, and prescriptions.</li>
+<li>Pharmacies : Record dispensing data.</li>
+<li>Pharmaceutical Companies : Design and manufacture drugs.</li>
+<li>Insurers/Payers : Capture claims and billing data.</li>
+</ul>
+<h3 id="q-what-kind-of-data-is-produced-at-each-step-of-care">
+  Q: What kind of data is produced at each step of care?
+  <a class="anchor" href="#q-what-kind-of-data-is-produced-at-each-step-of-care">#</a>
+</h3>
+<p>A: Data are produced at nearly every step — from search behavior before treatment, to EMR entries during care, to dispensing records from pharmacies, and payment data from insurers.</p>
+<p>➡️   Who are the actors in the healthcare system and what interests do they have?</p>
+<h2 id="3-actors-with-different-interests">
+  3 Actors with different interests
+  <a class="anchor" href="#3-actors-with-different-interests">#</a>
+</h2>
+<hr>
+<h3 id="q-who-are-the-main-actors-in-the-healthcare-system">
+  Q: Who are the main actors in the healthcare system?
+  <a class="anchor" href="#q-who-are-the-main-actors-in-the-healthcare-system">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Patients and their families</li>
+<li>Healthcare professionals</li>
+<li>Payers (e.g. insurance companies)</li>
+<li>Government and regulatory agencies</li>
+</ul>
+<h3 id="q-what-are-the-interests-of-these-different-actors">
+  Q: What are the interests of these different actors?
+  <a class="anchor" href="#q-what-are-the-interests-of-these-different-actors">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Patients  want to stay healthy and recover quickly.</li>
+<li>Clinicians  seek best practices to maximize benefit and minimize harm.</li>
+<li>Payers and regulators  aim for societal cost-effectiveness, fairness, and justice.</li>
+</ul>
+<h3 id="q-how-do-differing-interests-create-conflict">
+  Q: How do differing interests create conflict?
+  <a class="anchor" href="#q-how-do-differing-interests-create-conflict">#</a>
+</h3>
+<p>A: A patient may want to pursue a high-risk treatment for hope, while a clinician may focus on safety, and insurers may prioritize cost-effectiveness — leading to tension in care decisions.</p>
+<p>➡️   What are the common data types used in healthcare?</p>
+<h2 id="4-common-data-types-in-healthcare">
+  4 Common data types in Healthcare
+  <a class="anchor" href="#4-common-data-types-in-healthcare">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-the-major-types-of-healthcare-data">
+  Q: What are the major types of healthcare data?
+  <a class="anchor" href="#q-what-are-the-major-types-of-healthcare-data">#</a>
+</h3>
+<p>A: Structured and unstructured data.</p>
+<h3 id="q-what-is-structured-data">
+  Q: What is structured data?
+  <a class="anchor" href="#q-what-is-structured-data">#</a>
+</h3>
+<p>A: Data organized in consistent formats like tables with rows (patients) and columns (attributes such as age, DOB). Missing values are often marked with placeholders like &ldquo;NA&rdquo;.</p>
+<h3 id="q-what-is-unstructured-data">
+  Q: What is unstructured data?
+  <a class="anchor" href="#q-what-is-unstructured-data">#</a>
+</h3>
+<p>A: Data without a uniform format, including clinical notes, images, biomedical signals, and free text.</p>
+<h3 id="q-why-is-this-distinction-important">
+  Q: Why is this distinction important?
+  <a class="anchor" href="#q-why-is-this-distinction-important">#</a>
+</h3>
+<p>A: Structured data is easier to analyze computationally, while unstructured data requires specialized methods (e.g. NLP, image processing) to extract insights.</p>
+<p>➡️   What are the strengths and weaknesses of observational healthcare data?</p>
+<h2 id="5-strengths-and-weaknesses-of-observational-data">
+  5 Strengths and weaknesses of observational data
+  <a class="anchor" href="#5-strengths-and-weaknesses-of-observational-data">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-observational-data-in-healthcare">
+  Q: What are observational data in healthcare?
+  <a class="anchor" href="#q-what-are-observational-data-in-healthcare">#</a>
+</h3>
+<p>A: Data collected during routine clinical care for the primary purpose of delivering care — not for research. They&rsquo;re used secondarily for analysis.</p>
+<h3 id="q-what-are-the-main-strengths-of-observational-data">
+  Q: What are the main strengths of observational data?
+  <a class="anchor" href="#q-what-are-the-main-strengths-of-observational-data">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Large scale : Covers millions to billions of records, capturing rare events.</li>
+<li>Real-world relevance : Reflects actual clinical practices and patient behaviors.</li>
+<li>Efficiency : Already collected, so no additional data gathering is needed.</li>
+</ul>
+<h3 id="q-what-are-the-weaknesses-of-observational-data">
+  Q: What are the weaknesses of observational data?
+  <a class="anchor" href="#q-what-are-the-weaknesses-of-observational-data">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Bias and incompleteness : Not collected with research goals in mind.</li>
+<li>Lack of standardization : Varies across sites and systems.</li>
+<li>Potential confounding : Causal inference is difficult without randomized control.</li>
+</ul>
+<p>➡️   What are the biases and errors introduced by the healthcare system itself?</p>
+<h2 id="6-bias-and-error-from-the-healthcare-system-perspective">
+  6 Bias and error from the healthcare system perspective
+  <a class="anchor" href="#6-bias-and-error-from-the-healthcare-system-perspective">#</a>
+</h2>
+<hr>
+<h3 id="q-how-can-data-from-the-healthcare-system-be-biased-or-inaccurate">
+  Q: How can data from the healthcare system be biased or inaccurate?
+  <a class="anchor" href="#q-how-can-data-from-the-healthcare-system-be-biased-or-inaccurate">#</a>
+</h3>
+<p>A: Each entity in the healthcare system contributes potential sources of bias, especially due to who seeks care and how care is recorded.</p>
+<h3 id="q-what-is-selection-bias-in-this-context">
+  Q: What is selection bias in this context?
+  <a class="anchor" href="#q-what-is-selection-bias-in-this-context">#</a>
+</h3>
+<p>A: It occurs when only certain patients (e.g., those who seek care) are recorded, leaving out healthy individuals or those managing illness at home or outside the system.</p>
+<h3 id="q-what-patient-level-factors-influence-bias">
+  Q: What patient-level factors influence bias?
+  <a class="anchor" href="#q-what-patient-level-factors-influence-bias">#</a>
+</h3>
+<p>A: Health literacy, financial situation, insurance coverage, and cultural beliefs can all affect whether and how patients engage with the healthcare system.</p>
+<p>➡️   How do biases and errors affect recorded exposures and outcomes?</p>
+<h2 id="7-bias-and-error-of-exposures-and-outcomes">
+  7 Bias and error of exposures and outcomes
+  <a class="anchor" href="#7-bias-and-error-of-exposures-and-outcomes">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-exposures-and-outcomes-in-clinical-data-analysis">
+  Q: What are exposures and outcomes in clinical data analysis?
+  <a class="anchor" href="#q-what-are-exposures-and-outcomes-in-clinical-data-analysis">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Exposures  are events or conditions that occur to a patient (e.g., diseases, procedures, medications).</li>
+<li>Outcomes  are events or conditions assessed after the exposure (e.g., complications, lab results, costs).</li>
+</ul>
+<h3 id="q-why-is-distinguishing-exposures-and-outcomes-important">
+  Q: Why is distinguishing exposures and outcomes important?
+  <a class="anchor" href="#q-why-is-distinguishing-exposures-and-outcomes-important">#</a>
+</h3>
+<p>A: It provides a framework for analyzing how prior events influence later results and helps in identifying where bias or error may occur.</p>
+<h3 id="q-what-type-of-biases-can-arise-in-this-context">
+  Q: What type of biases can arise in this context?
+  <a class="anchor" href="#q-what-type-of-biases-can-arise-in-this-context">#</a>
+</h3>
+<p>A: Misclassification, timing errors, or missing data related to either exposures or outcomes can distort analysis and conclusions.</p>
+<p>➡️   How can patient exposure be misclassified in clinical data?</p>
+<h2 id="8-how-a-patient-exposure-might-be-misclassified">
+  8 How a patient exposure might be misclassified
+  <a class="anchor" href="#8-how-a-patient-exposure-might-be-misclassified">#</a>
+</h2>
+<hr>
+<h3 id="q-how-can-exposure-to-medication-be-misclassified-in-clinical-data">
+  Q: How can exposure to medication be misclassified in clinical data?
+  <a class="anchor" href="#q-how-can-exposure-to-medication-be-misclassified-in-clinical-data">#</a>
+</h3>
+<p>A: When prescription records don’t align with actual medication use, such as delays in filling, use of free samples, or interruptions in adherence.</p>
+<h3 id="q-what-example-illustrates-this-misclassification">
+  Q: What example illustrates this misclassification?
+  <a class="anchor" href="#q-what-example-illustrates-this-misclassification">#</a>
+</h3>
+<p>A: A doctor gives a 15-day free sample before a prescription is filled. The patient begins treatment immediately, but data may only show the pharmacy fill date, not the true start date.</p>
+<h3 id="q-why-does-this-matter">
+  Q: Why does this matter?
+  <a class="anchor" href="#q-why-does-this-matter">#</a>
+</h3>
+<p>A: Misclassification of the timing or existence of exposure can distort analyses linking exposures to outcomes, especially for time-sensitive effects.</p>
+<p>➡️   How might a patient outcome be misclassified in clinical records?</p>
+<h2 id="9-how-a-patient-outcome-could-be-misclassified">
+  9 How a patient outcome could be misclassified
+  <a class="anchor" href="#9-how-a-patient-outcome-could-be-misclassified">#</a>
+</h2>
+<hr>
+<h3 id="q-how-can-a-patients-outcome-be-misclassified-in-the-medical-record">
+  Q: How can a patient’s outcome be misclassified in the medical record?
+  <a class="anchor" href="#q-how-can-a-patients-outcome-be-misclassified-in-the-medical-record">#</a>
+</h3>
+<p>A: Sometimes a diagnosis code is added based on suspicion (e.g., diabetes) before a condition is confirmed, and it may remain even if the diagnosis is later ruled out.</p>
+<h3 id="q-what-strategies-help-reduce-outcome-misclassification">
+  Q: What strategies help reduce outcome misclassification?
+  <a class="anchor" href="#q-what-strategies-help-reduce-outcome-misclassification">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Require multiple instances of a diagnosis code.</li>
+<li>Pair diagnosis codes with procedure codes specific to the condition.</li>
+<li>Look for treatment or intervention evidence supporting the diagnosis.</li>
+</ul>
+<h3 id="q-why-are-procedure-codes-more-reliable">
+  Q: Why are procedure codes more reliable?
+  <a class="anchor" href="#q-why-are-procedure-codes-more-reliable">#</a>
+</h3>
+<p>A: Procedures are typically documented only if they were actually performed, adding confirmatory weight to a diagnosis.</p>
+<p>➡️   What are the key sources of electronic medical record data?</p>
+<h2 id="10-electronic-medical-record-data">
+  10 Electronic medical record data
+  <a class="anchor" href="#10-electronic-medical-record-data">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-electronic-medical-records-emrs">
+  Q: What are electronic medical records (EMRs)?
+  <a class="anchor" href="#q-what-are-electronic-medical-records-emrs">#</a>
+</h3>
+<p>A: EMRs are digital versions of the traditional paper patient charts. They store detailed information collected in clinical settings.</p>
+<h3 id="q-what-types-of-data-are-typically-stored-in-emrs">
+  Q: What types of data are typically stored in EMRs?
+  <a class="anchor" href="#q-what-types-of-data-are-typically-stored-in-emrs">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Patient demographics</li>
+<li>Diagnosis and procedure codes</li>
+<li>Clinical notes</li>
+<li>Medication records</li>
+<li>Imaging and lab test results</li>
+<li>(Increasingly) genetic test results and wearable device data</li>
+</ul>
+<h3 id="q-how-are-emrs-generated">
+  Q: How are EMRs generated?
+  <a class="anchor" href="#q-how-are-emrs-generated">#</a>
+</h3>
+<p>A: As a byproduct of routine clinical care and documentation processes in hospitals and clinics.</p>
+<h3 id="q-are-emrs-and-ehrs-the-same">
+  Q: Are EMRs and EHRs the same?
+  <a class="anchor" href="#q-are-emrs-and-ehrs-the-same">#</a>
+</h3>
+<p>A: The terms are often used interchangeably, though technically EHR may imply a broader, longitudinal view across providers.</p>
+<p>➡️   What can we learn from claims data in healthcare systems?</p>
+<h2 id="11-claims-data">
+  11 Claims data
+  <a class="anchor" href="#11-claims-data">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-claims-data-in-healthcare">
+  Q: What are claims data in healthcare?
+  <a class="anchor" href="#q-what-are-claims-data-in-healthcare">#</a>
+</h3>
+<p>A: Claims data are records generated when healthcare providers submit bills to insurers for services rendered.</p>
+<h3 id="q-what-information-do-claims-typically-include">
+  Q: What information do claims typically include?
+  <a class="anchor" href="#q-what-information-do-claims-typically-include">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>Patient identifiers</li>
+<li>Insurance status</li>
+<li>Diagnosis and procedure codes</li>
+<li>Requested charges and actual payments</li>
+</ul>
+<h3 id="q-how-is-coding-related-to-billing">
+  Q: How is coding related to billing?
+  <a class="anchor" href="#q-how-is-coding-related-to-billing">#</a>
+</h3>
+<p>A: Specific codes are used to categorize services for billing. These may differ between clinician entries, hospital submissions, and what insurers reimburse.</p>
+<h3 id="q-why-are-claims-data-valuable">
+  Q: Why are claims data valuable?
+  <a class="anchor" href="#q-why-are-claims-data-valuable">#</a>
+</h3>
+<p>A: They include detailed information on costs, utilization, and provider-payer interactions — data often missing from EMRs.</p>
+<p>➡️   What data do pharmacies provide, and how is it used?</p>
+<h2 id="12-pharmacy">
+  12 Pharmacy
+  <a class="anchor" href="#12-pharmacy">#</a>
+</h2>
+<hr>
+<h3 id="q-what-kind-of-data-do-pharmacies-provide">
+  Q: What kind of data do pharmacies provide?
+  <a class="anchor" href="#q-what-kind-of-data-do-pharmacies-provide">#</a>
+</h3>
+<p>A: They document when prescriptions are written, filled, and paid for — offering insight into medication access and fulfillment.</p>
+<h3 id="q-why-is-pharmacy-data-valuable">
+  Q: Why is pharmacy data valuable?
+  <a class="anchor" href="#q-why-is-pharmacy-data-valuable">#</a>
+</h3>
+<p>A: It goes beyond prescription intent (EMR) to show that a patient actually obtained the medication, which is a step closer to actual use.</p>
+<h3 id="q-what-are-limitations-of-pharmacy-data">
+  Q: What are limitations of pharmacy data?
+  <a class="anchor" href="#q-what-are-limitations-of-pharmacy-data">#</a>
+</h3>
+<p>A: It doesn&rsquo;t guarantee the patient took the medication — only that it was picked up.</p>
+<h3 id="q-how-can-pharmacy-records-be-fragmented">
+  Q: How can pharmacy records be fragmented?
+  <a class="anchor" href="#q-how-can-pharmacy-records-be-fragmented">#</a>
+</h3>
+<p>A: Patients may use multiple sources: retail chains (e.g., CVS), mail-order services, and online pharmacies, dispersing data across datasets.</p>
+<p>➡️   What are surveillance datasets and registries, and how are they used?</p>
+<h2 id="13-surveillance-datasets-and-registries">
+  13 Surveillance datasets and Registries
+  <a class="anchor" href="#13-surveillance-datasets-and-registries">#</a>
+</h2>
+<hr>
+<h3 id="q-what-are-surveillance-datasets-and-why-are-they-important">
+  Q: What are surveillance datasets and why are they important?
+  <a class="anchor" href="#q-what-are-surveillance-datasets-and-why-are-they-important">#</a>
+</h3>
+<p>A: They monitor adverse events and side effects of drugs or devices after approval (post-marketing surveillance) to catch safety issues early.</p>
+<h3 id="q-what-are-examples-of-surveillance-systems-in-the-us">
+  Q: What are examples of surveillance systems in the U.S.?
+  <a class="anchor" href="#q-what-are-examples-of-surveillance-systems-in-the-us">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>FAERS : FDA Adverse Event Reporting System</li>
+<li>MAUDE : Manufacturer and User Facility Device Experience database</li>
+</ul>
+<h3 id="q-who-uses-these-datasets-and-for-what-purpose">
+  Q: Who uses these datasets and for what purpose?
+  <a class="anchor" href="#q-who-uses-these-datasets-and-for-what-purpose">#</a>
+</h3>
+<p>A: Government agencies like the FDA and CDC use them to track disease outbreaks (e.g. flu, Ebola) and monitor product safety. Local and state agencies often assist.</p>
+<h3 id="q-what-are-registries">
+  Q: What are registries?
+  <a class="anchor" href="#q-what-are-registries">#</a>
+</h3>
+<p>A: Registries are organized systems maintained by agencies or societies to collect consistent clinical data on specific conditions, devices, or populations.</p>
+<p>➡️   What are population health datasets and how are they used?</p>
+<h2 id="14-population-health-data-sets">
+  14 Population health data sets
+  <a class="anchor" href="#14-population-health-data-sets">#</a>
+</h2>
+<hr>
+<h3 id="q-how-do-population-health-datasets-differ-from-patient-centric-data">
+  Q: How do population health datasets differ from patient-centric data?
+  <a class="anchor" href="#q-how-do-population-health-datasets-differ-from-patient-centric-data">#</a>
+</h3>
+<p>A: They focus on aggregated health trends, costs, and resource use across populations — not on individual patient records.</p>
+<h3 id="q-what-are-key-examples-of-us-population-health-datasets">
+  Q: What are key examples of U.S. population health datasets?
+  <a class="anchor" href="#q-what-are-key-examples-of-us-population-health-datasets">#</a>
+</h3>
+<p>A:</p>
+<ul>
+<li>National Inpatient Sample (NIS) : Tracks hospital resource utilization, costs, and outcomes.</li>
+<li>Medical Expenditure Panel Survey (MEPS) : Surveys patients, providers, and employers on healthcare usage and spending.</li>
+<li>NHANES : Measures demographic, nutritional, and health variables through national surveys conducted by the CDC.</li>
+</ul>
+<h3 id="q-why-are-these-datasets-useful">
+  Q: Why are these datasets useful?
+  <a class="anchor" href="#q-why-are-these-datasets-useful">#</a>
+</h3>
+<p>A: They offer broad insights into national health patterns, disparities, and costs — helping guide public policy and resource planning.</p>
+<p>➡️   How do we assess if a healthcare data source is useful?</p>
+<h2 id="15-a-framework-to-assess-if-a-data-source-is-useful">
+  15 A framework to assess if a data source is useful
+  <a class="anchor" href="#15-a-framework-to-assess-if-a-data-source-is-useful">#</a>
+</h2>
+<hr>
+<h3 id="q-what-questions-should-you-ask-to-assess-a-healthcare-datasets-usefulness">
+  Q: What questions should you ask to assess a healthcare dataset&rsquo;s usefulness?
+  <a class="anchor" href="#q-what-questions-should-you-ask-to-assess-a-healthcare-datasets-usefulness">#</a>
+</h3>
+<p>A:</p>
+<ol>
+<li>Is there a well-documented data model?</li>
+</ol>
+<ul>
+<li>Poor or missing documentation makes the data hard to use.</li>
+</ul>
+<ol start="2">
+<li>What is the data provenance?</li>
+</ol>
+<ul>
+<li>Understand how and where the data were collected.</li>
+</ul>
+<ol start="3">
+<li>Are the data accessible and in what form?</li>
+</ol>
+<ul>
+<li>Consider legal restrictions and costs.</li>
+</ul>
+<ol start="4">
+<li>What known errors or missingness exist?</li>
+</ol>
+<ul>
+<li>Evaluate data quality and be prepared to address gaps.</li>
+</ul>
+<ol start="5">
+<li>Are data standards used (e.g., vocabularies or formats)?</li>
+</ol>
+<ul>
+<li>Standardization affects interoperability and analysis readiness.</li>
+</ul>
+<h3 id="q-why-is-this-framework-important">
+  Q: Why is this framework important?
+  <a class="anchor" href="#q-why-is-this-framework-important">#</a>
+</h3>
+<p>A: It helps researchers avoid costly or infeasible data efforts and ensures they can trust and interpret results from the dataset effectively.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#module2-data-available-from-healthcare-systems">Module2: Data Available From Healthcare Systems</a></li>
+        <li><a href="#1-review-of-the-healthcare-system">1 Review of the healthcare system</a>
+          <ul>
+            <li><a href="#q-what-is-the-focus-of-this-modules-introduction">Q: What is the focus of this module&rsquo;s introduction?</a></li>
+            <li><a href="#q-what-key-topics-are-introduced-in-this-session">Q: What key topics are introduced in this session?</a></li>
+            <li><a href="#q-how-does-this-connect-to-the-earlier-module">Q: How does this connect to the earlier module?</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-review-of-key-entities-and-the-data-they-collect">2 Review of key entities and the data they collect</a>
+          <ul>
+            <li><a href="#q-who-are-the-key-entities-in-the-healthcare-system-that-generate-data">Q: Who are the key entities in the healthcare system that generate data?</a></li>
+            <li><a href="#q-what-kind-of-data-is-produced-at-each-step-of-care">Q: What kind of data is produced at each step of care?</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-actors-with-different-interests">3 Actors with different interests</a>
+          <ul>
+            <li><a href="#q-who-are-the-main-actors-in-the-healthcare-system">Q: Who are the main actors in the healthcare system?</a></li>
+            <li><a href="#q-what-are-the-interests-of-these-different-actors">Q: What are the interests of these different actors?</a></li>
+            <li><a href="#q-how-do-differing-interests-create-conflict">Q: How do differing interests create conflict?</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-common-data-types-in-healthcare">4 Common data types in Healthcare</a>
+          <ul>
+            <li><a href="#q-what-are-the-major-types-of-healthcare-data">Q: What are the major types of healthcare data?</a></li>
+            <li><a href="#q-what-is-structured-data">Q: What is structured data?</a></li>
+            <li><a href="#q-what-is-unstructured-data">Q: What is unstructured data?</a></li>
+            <li><a href="#q-why-is-this-distinction-important">Q: Why is this distinction important?</a></li>
+          </ul>
+        </li>
+        <li><a href="#5-strengths-and-weaknesses-of-observational-data">5 Strengths and weaknesses of observational data</a>
+          <ul>
+            <li><a href="#q-what-are-observational-data-in-healthcare">Q: What are observational data in healthcare?</a></li>
+            <li><a href="#q-what-are-the-main-strengths-of-observational-data">Q: What are the main strengths of observational data?</a></li>
+            <li><a href="#q-what-are-the-weaknesses-of-observational-data">Q: What are the weaknesses of observational data?</a></li>
+          </ul>
+        </li>
+        <li><a href="#6-bias-and-error-from-the-healthcare-system-perspective">6 Bias and error from the healthcare system perspective</a>
+          <ul>
+            <li><a href="#q-how-can-data-from-the-healthcare-system-be-biased-or-inaccurate">Q: How can data from the healthcare system be biased or inaccurate?</a></li>
+            <li><a href="#q-what-is-selection-bias-in-this-context">Q: What is selection bias in this context?</a></li>
+            <li><a href="#q-what-patient-level-factors-influence-bias">Q: What patient-level factors influence bias?</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-bias-and-error-of-exposures-and-outcomes">7 Bias and error of exposures and outcomes</a>
+          <ul>
+            <li><a href="#q-what-are-exposures-and-outcomes-in-clinical-data-analysis">Q: What are exposures and outcomes in clinical data analysis?</a></li>
+            <li><a href="#q-why-is-distinguishing-exposures-and-outcomes-important">Q: Why is distinguishing exposures and outcomes important?</a></li>
+            <li><a href="#q-what-type-of-biases-can-arise-in-this-context">Q: What type of biases can arise in this context?</a></li>
+          </ul>
+        </li>
+        <li><a href="#8-how-a-patient-exposure-might-be-misclassified">8 How a patient exposure might be misclassified</a>
+          <ul>
+            <li><a href="#q-how-can-exposure-to-medication-be-misclassified-in-clinical-data">Q: How can exposure to medication be misclassified in clinical data?</a></li>
+            <li><a href="#q-what-example-illustrates-this-misclassification">Q: What example illustrates this misclassification?</a></li>
+            <li><a href="#q-why-does-this-matter">Q: Why does this matter?</a></li>
+          </ul>
+        </li>
+        <li><a href="#9-how-a-patient-outcome-could-be-misclassified">9 How a patient outcome could be misclassified</a>
+          <ul>
+            <li><a href="#q-how-can-a-patients-outcome-be-misclassified-in-the-medical-record">Q: How can a patient’s outcome be misclassified in the medical record?</a></li>
+            <li><a href="#q-what-strategies-help-reduce-outcome-misclassification">Q: What strategies help reduce outcome misclassification?</a></li>
+            <li><a href="#q-why-are-procedure-codes-more-reliable">Q: Why are procedure codes more reliable?</a></li>
+          </ul>
+        </li>
+        <li><a href="#10-electronic-medical-record-data">10 Electronic medical record data</a>
+          <ul>
+            <li><a href="#q-what-are-electronic-medical-records-emrs">Q: What are electronic medical records (EMRs)?</a></li>
+            <li><a href="#q-what-types-of-data-are-typically-stored-in-emrs">Q: What types of data are typically stored in EMRs?</a></li>
+            <li><a href="#q-how-are-emrs-generated">Q: How are EMRs generated?</a></li>
+            <li><a href="#q-are-emrs-and-ehrs-the-same">Q: Are EMRs and EHRs the same?</a></li>
+          </ul>
+        </li>
+        <li><a href="#11-claims-data">11 Claims data</a>
+          <ul>
+            <li><a href="#q-what-are-claims-data-in-healthcare">Q: What are claims data in healthcare?</a></li>
+            <li><a href="#q-what-information-do-claims-typically-include">Q: What information do claims typically include?</a></li>
+            <li><a href="#q-how-is-coding-related-to-billing">Q: How is coding related to billing?</a></li>
+            <li><a href="#q-why-are-claims-data-valuable">Q: Why are claims data valuable?</a></li>
+          </ul>
+        </li>
+        <li><a href="#12-pharmacy">12 Pharmacy</a>
+          <ul>
+            <li><a href="#q-what-kind-of-data-do-pharmacies-provide">Q: What kind of data do pharmacies provide?</a></li>
+            <li><a href="#q-why-is-pharmacy-data-valuable">Q: Why is pharmacy data valuable?</a></li>
+            <li><a href="#q-what-are-limitations-of-pharmacy-data">Q: What are limitations of pharmacy data?</a></li>
+            <li><a href="#q-how-can-pharmacy-records-be-fragmented">Q: How can pharmacy records be fragmented?</a></li>
+          </ul>
+        </li>
+        <li><a href="#13-surveillance-datasets-and-registries">13 Surveillance datasets and Registries</a>
+          <ul>
+            <li><a href="#q-what-are-surveillance-datasets-and-why-are-they-important">Q: What are surveillance datasets and why are they important?</a></li>
+            <li><a href="#q-what-are-examples-of-surveillance-systems-in-the-us">Q: What are examples of surveillance systems in the U.S.?</a></li>
+            <li><a href="#q-who-uses-these-datasets-and-for-what-purpose">Q: Who uses these datasets and for what purpose?</a></li>
+            <li><a href="#q-what-are-registries">Q: What are registries?</a></li>
+          </ul>
+        </li>
+        <li><a href="#14-population-health-data-sets">14 Population health data sets</a>
+          <ul>
+            <li><a href="#q-how-do-population-health-datasets-differ-from-patient-centric-data">Q: How do population health datasets differ from patient-centric data?</a></li>
+            <li><a href="#q-what-are-key-examples-of-us-population-health-datasets">Q: What are key examples of U.S. population health datasets?</a></li>
+            <li><a href="#q-why-are-these-datasets-useful">Q: Why are these datasets useful?</a></li>
+          </ul>
+        </li>
+        <li><a href="#15-a-framework-to-assess-if-a-data-source-is-useful">15 A framework to assess if a data source is useful</a>
+          <ul>
+            <li><a href="#q-what-questions-should-you-ask-to-assess-a-healthcare-datasets-usefulness">Q: What questions should you ask to assess a healthcare dataset&rsquo;s usefulness?</a></li>
+            <li><a href="#q-why-is-this-framework-important">Q: Why is this framework important?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

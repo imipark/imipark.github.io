@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Art School on AI Reasoning</title>
+    <link>https://imipark.github.io/tags/art-school/</link>
+    <description>Recent content in Art School on AI Reasoning</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://imipark.github.io/tags/art-school/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ChatGPT Images 2026 - Art School, InkWork</title>
+      <link>https://imipark.github.io/posts/chatgpt_image_2026/</link>
+      <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://imipark.github.io/posts/chatgpt_image_2026/</guid>
+      <description>&lt;img src=&#34;https://imipark.github.io/images/ipark-art.png&#34; width=&#34;200&#34; /&gt;&#xA;&lt;img src=&#34;https://imipark.github.io/images/ipark-inkwork.png&#34; width=&#34;200&#34; /&gt;</description>
+    </item>
+  </channel>
+</rss>
