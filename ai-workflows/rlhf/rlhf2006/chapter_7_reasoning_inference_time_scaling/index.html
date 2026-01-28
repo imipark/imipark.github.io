@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Ch 7: REASONING &amp; INFERENCE-TIME SCALING
+  #
+
+
+  Q&amp;A Format - Understanding the 2025 Breakthrough
+  #
+
+
+
+  SECTION 1: THE BIG PICTURE - WHY IS THIS BREAKTHROUGH?
+  #
+
+
+  Q1: What actually happened in 2025 that makes Chapter 7 revolutionary?
+  #
+
+A: Two seismic events changed everything:
+
+OpenAI o1 (Sep 2024) - Showed reasoning models work at scale
+DeepSeek R1 (Jan 2025) - Fully documented the recipe openly
+
+Timeline:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/rlhf/rlhf2006/chapter_7_reasoning_inference_time_scaling/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="AI Reasoning">
+  <meta property="og:description" content="Ch 7: REASONING &amp; INFERENCE-TIME SCALING # Q&amp;A Format - Understanding the 2025 Breakthrough # SECTION 1: THE BIG PICTURE - WHY IS THIS BREAKTHROUGH? # Q1: What actually happened in 2025 that makes Chapter 7 revolutionary? # A: Two seismic events changed everything:
+OpenAI o1 (Sep 2024) - Showed reasoning models work at scale DeepSeek R1 (Jan 2025) - Fully documented the recipe openly Timeline:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Chapter 7 Reasoning Inference Time Scaling | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/rlhf/rlhf2006/chapter_7_reasoning_inference_time_scaling/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.12c464738ba290f8778b1330333ee3050e46a7727dfcebbecd756875b4574bbb.js" integrity="sha256-EsRkc4uikPh3ixMwMz7jBQ5Gp3J9/Ou&#43;zXVodbRXS7s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7f3f4cf59430750c2ad109248c8c879b" class="toggle"  />
+    <label for="section-7f3f4cf59430750c2ad109248c8c879b" class="flex justify-between">
+      <a href="/ai-workflows/data/" class="">Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fc566bddf8394fb4d0c5cff688d2febc" class="toggle"  />
+    <label for="section-fc566bddf8394fb4d0c5cff688d2febc" class="flex justify-between">
+      <a href="/ai-workflows/data/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff08f084db31c8732ef81d1fe1c4130" class="toggle"  />
+    <label for="section-cff08f084db31c8732ef81d1fe1c4130" class="flex justify-between">
+      <a href="/ai-workflows/genai/" class="">GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b806a012c3062adb6281022ca8468f" class="toggle"  />
+    <label for="section-63b806a012c3062adb6281022ca8468f" class="flex justify-between">
+      <a href="/ai-workflows/genai/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle" checked />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle" checked />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/chapter_7_reasoning_inference_time_scaling/" class="active">Chapter 7 Reasoning Inference Time Scaling</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">Eval</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Chapter 7 Reasoning Inference Time Scaling</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ch-7-reasoning--inference-time-scaling">Ch 7: REASONING &amp; INFERENCE-TIME SCALING</a>
+      <ul>
+        <li><a href="#qa-format---understanding-the-2025-breakthrough">Q&amp;A Format - Understanding the 2025 Breakthrough</a></li>
+        <li><a href="#section-1-the-big-picture---why-is-this-breakthrough">SECTION 1: THE BIG PICTURE - WHY IS THIS BREAKTHROUGH?</a>
+          <ul>
+            <li><a href="#q1-what-actually-happened-in-2025-that-makes-chapter-7-revolutionary">Q1: What actually happened in 2025 that makes Chapter 7 revolutionary?</a></li>
+            <li><a href="#q2-why-couldnt-we-do-this-before-2024">Q2: Why couldn&rsquo;t we do this before 2024?</a></li>
+            <li><a href="#q3-whats-the-difference-between-rlhf-and-rlvr">Q3: What&rsquo;s the difference between RLHF and RLVR?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-2-core-concepts---what-is-inference-time-scaling">SECTION 2: CORE CONCEPTS - WHAT IS INFERENCE-TIME SCALING?</a>
+          <ul>
+            <li><a href="#q4-what-is-inference-time-scaling">Q4: What is &ldquo;inference-time scaling&rdquo;?</a></li>
+            <li><a href="#q5-whats-the-difference-between-training-time-and-inference-time-scaling">Q5: What&rsquo;s the difference between training-time and inference-time scaling?</a></li>
+            <li><a href="#q6-how-does-rl-training-create-inference-time-scaling">Q6: How does RL training create inference-time scaling?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-3-the-canonical-recipe---deepseek-r1">SECTION 3: THE CANONICAL RECIPE - DEEPSEEK R1</a>
+          <ul>
+            <li><a href="#q7-what-is-deepseek-r1s-training-recipe">Q7: What is DeepSeek R1&rsquo;s training recipe?</a></li>
+            <li><a href="#q8-whats-revolutionary-about-this-recipe-vs-previous-rlhf">Q8: What&rsquo;s revolutionary about this recipe vs previous RLHF?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-4-the-explosion---20-models-in-6-months">SECTION 4: THE EXPLOSION - 20+ MODELS IN 6 MONTHS</a>
+          <ul>
+            <li><a href="#q9-who-released-reasoning-models-in-2025">Q9: Who released reasoning models in 2025?</a></li>
+            <li><a href="#q10-what-are-the-common-training-techniques-across-these-models">Q10: What are the common training techniques across these models?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-5-why-this-matters-for-your-google-interview">SECTION 5: WHY THIS MATTERS FOR YOUR GOOGLE INTERVIEW</a>
+          <ul>
+            <li><a href="#q11-why-is-this-relevant-to-evaluating-gemini">Q11: Why is this relevant to evaluating Gemini?</a></li>
+            <li><a href="#q12-what-questions-might-google-ask-you-about-chapter-7">Q12: What questions might Google ask you about Chapter 7?</a></li>
+            <li><a href="#q13-how-does-this-connect-to-your-actual-work">Q13: How does this connect to your actual work?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-6-key-takeaways-for-interview">SECTION 6: KEY TAKEAWAYS FOR INTERVIEW</a>
+          <ul>
+            <li><a href="#q14-what-are-the-3-sentences-to-remember-about-chapter-7">Q14: What are the 3 sentences to remember about Chapter 7?</a></li>
+            <li><a href="#q15-how-do-i-sound-smart-about-this-in-the-interview">Q15: How do I sound smart about this in the interview?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-7-bonus---future-directions">SECTION 7: BONUS - FUTURE DIRECTIONS</a>
+          <ul>
+            <li><a href="#q16-where-is-this-field-going-next">Q16: Where is this field going next?</a></li>
+            <li><a href="#q17-whats-the-one-thing-experts-still-debate">Q17: What&rsquo;s the one thing experts still debate?</a></li>
+          </ul>
+        </li>
+        <li><a href="#final-exam-question">FINAL EXAM QUESTION</a>
+          <ul>
+            <li><a href="#sample-answer">SAMPLE ANSWER:</a></li>
+          </ul>
+        </li>
+        <li><a href="#quick-reference-summary">QUICK REFERENCE SUMMARY</a>
+          <ul>
+            <li><a href="#key-timeline">Key Timeline</a></li>
+            <li><a href="#core-concepts">Core Concepts</a></li>
+            <li><a href="#deepseek-r1-recipe-4-stages">DeepSeek R1 Recipe (4 Stages)</a></li>
+            <li><a href="#top-10-training-techniques">Top 10 Training Techniques</a></li>
+            <li><a href="#connection-to-your-work">Connection to Your Work</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="ch-7-reasoning--inference-time-scaling">
+  Ch 7: REASONING &amp; INFERENCE-TIME SCALING
+  <a class="anchor" href="#ch-7-reasoning--inference-time-scaling">#</a>
+</h1>
+<h2 id="qa-format---understanding-the-2025-breakthrough">
+  Q&amp;A Format - Understanding the 2025 Breakthrough
+  <a class="anchor" href="#qa-format---understanding-the-2025-breakthrough">#</a>
+</h2>
+<hr>
+<h2 id="section-1-the-big-picture---why-is-this-breakthrough">
+  SECTION 1: THE BIG PICTURE - WHY IS THIS BREAKTHROUGH?
+  <a class="anchor" href="#section-1-the-big-picture---why-is-this-breakthrough">#</a>
+</h2>
+<h3 id="q1-what-actually-happened-in-2025-that-makes-chapter-7-revolutionary">
+  Q1: What actually happened in 2025 that makes Chapter 7 revolutionary?
+  <a class="anchor" href="#q1-what-actually-happened-in-2025-that-makes-chapter-7-revolutionary">#</a>
+</h3>
+<p><strong>A:</strong> Two seismic events changed everything:</p>
+<ol>
+<li><strong>OpenAI o1 (Sep 2024)</strong> - Showed reasoning models work at scale</li>
+<li><strong>DeepSeek R1 (Jan 2025)</strong> - Fully documented the recipe openly</li>
+</ol>
+<p><strong>Timeline:</strong></p>
+<ul>
+<li><strong>Before:</strong> &ldquo;RL doesn&rsquo;t work&rdquo; (2018 famous blog post)</li>
+<li><strong>After:</strong> 20+ reasoning models released in 6 months (Jan-Jul 2025)</li>
+</ul>
+<p>This is like going from &ldquo;flight is impossible&rdquo; to &ldquo;commercial airlines everywhere&rdquo; in 6 months. The paradigm shifted THAT fast.</p>
+<hr>
+<h3 id="q2-why-couldnt-we-do-this-before-2024">
+  Q2: Why couldn&rsquo;t we do this before 2024?
+  <a class="anchor" href="#q2-why-couldnt-we-do-this-before-2024">#</a>
+</h3>
+<p><strong>A:</strong> Three critical barriers were overcome:</p>
+<h4 id="barrier-1-rl-stability">
+  BARRIER 1: RL Stability
+  <a class="anchor" href="#barrier-1-rl-stability">#</a>
+</h4>
+<ul>
+<li><strong>Problem:</strong> RL training was &ldquo;fickle&rdquo; - crashed, failed randomly</li>
+<li><strong>Solution:</strong> Open-source tools matured (TRL, veRL, OpenRLHF)</li>
+<li><strong>Result:</strong> &ldquo;Technical barriers to entry at an all-time low&rdquo;</li>
+</ul>
+<h4 id="barrier-2-model-capability-threshold">
+  BARRIER 2: Model Capability Threshold
+  <a class="anchor" href="#barrier-2-model-capability-threshold">#</a>
+</h4>
+<ul>
+<li><strong>Problem:</strong> Smaller/weaker models couldn&rsquo;t learn reasoning via RL</li>
+<li><strong>Solution:</strong> Base models from ~2024 onwards were &ldquo;capable enough&rdquo;</li>
+<li><strong>Result:</strong> RL training could finally elicit reasoning behaviors</li>
+</ul>
+<h4 id="barrier-3-verifiable-rewards">
+  BARRIER 3: Verifiable Rewards
+  <a class="anchor" href="#barrier-3-verifiable-rewards">#</a>
+</h4>
+<ul>
+<li><strong>Problem:</strong> How do we know if reasoning is correct?</li>
+<li><strong>Solution:</strong> Math/coding have binary correctness (RLVR)</li>
+<li><strong>Result:</strong> Train without expensive preference data!</li>
+</ul>
+<hr>
+<h3 id="q3-whats-the-difference-between-rlhf-and-rlvr">
+  Q3: What&rsquo;s the difference between RLHF and RLVR?
+  <a class="anchor" href="#q3-whats-the-difference-between-rlhf-and-rlvr">#</a>
+</h3>
+<p><strong>A:</strong> Critical distinction that defines the new era:</p>
+<h4 id="rlhf-old-way">
+  RLHF (Old Way)
+  <a class="anchor" href="#rlhf-old-way">#</a>
+</h4>
+<ul>
+<li><strong>Reward:</strong> Human preference labels (expensive, subjective)</li>
+<li><strong>Use case:</strong> Chat, safety, style, &ldquo;vibes&rdquo;</li>
+<li><strong>Cost:</strong> $1-10 per preference pair</li>
+<li><strong>Training:</strong> 1-2 epochs, careful not to overfit</li>
+<li><strong>Example:</strong> ChatGPT&rsquo;s politeness, Claude&rsquo;s helpfulness</li>
+</ul>
+<h4 id="rlvr-new-way---reinforcement-learning-from-verifiable-rewards">
+  RLVR (New Way) - &ldquo;Reinforcement Learning from Verifiable Rewards&rdquo;
+  <a class="anchor" href="#rlvr-new-way---reinforcement-learning-from-verifiable-rewards">#</a>
+</h4>
+<ul>
+<li><strong>Reward:</strong> Binary correctness (right/wrong answer)</li>
+<li><strong>Use case:</strong> Math, coding, reasoning, STEM</li>
+<li><strong>Cost:</strong> Nearly free (automated checking)</li>
+<li><strong>Training:</strong> Hundreds/thousands of epochs until convergence</li>
+<li><strong>Example:</strong> DeepSeek R1&rsquo;s math ability, o1&rsquo;s coding</li>
+</ul>
+<p><strong>KEY INSIGHT:</strong> RLVR doesn&rsquo;t need humans in the loop for correctness! Just check if <code>answer == ground_truth</code></p>
+<hr>
+<h2 id="section-2-core-concepts---what-is-inference-time-scaling">
+  SECTION 2: CORE CONCEPTS - WHAT IS INFERENCE-TIME SCALING?
+  <a class="anchor" href="#section-2-core-concepts---what-is-inference-time-scaling">#</a>
+</h2>
+<h3 id="q4-what-is-inference-time-scaling">
+  Q4: What is &ldquo;inference-time scaling&rdquo;?
+  <a class="anchor" href="#q4-what-is-inference-time-scaling">#</a>
+</h3>
+<p><strong>A:</strong> Using MORE COMPUTE at inference to get BETTER answers.</p>
+<h4 id="traditional-llm">
+  Traditional LLM:
+  <a class="anchor" href="#traditional-llm">#</a>
+</h4>
+<pre tabindex="0"><code>├─ User asks: &#34;Solve this math problem&#34;
+├─ Model generates: [answer in 100 tokens]
+└─ Done. Fixed cost.
+</code></pre><h4 id="reasoning-model-inference-time-scaling">
+  Reasoning Model (Inference-time Scaling):
+  <a class="anchor" href="#reasoning-model-inference-time-scaling">#</a>
+</h4>
+<pre tabindex="0"><code>├─ User asks: &#34;Solve this math problem&#34;
+├─ Model thinks: [2000 tokens of &lt;think&gt;...&lt;/think&gt; reasoning]
+├─ Model generates: [final answer]
+└─ Uses 20x more tokens = 20x more compute = better accuracy!
+</code></pre><p><strong>ANALOGY:</strong></p>
+<ul>
+<li>Traditional = &ldquo;quick guess&rdquo;</li>
+<li>Reasoning = &ldquo;show your work&rdquo; (like you did in school)</li>
+</ul>
+<hr>
+<h3 id="q5-whats-the-difference-between-training-time-and-inference-time-scaling">
+  Q5: What&rsquo;s the difference between training-time and inference-time scaling?
+  <a class="anchor" href="#q5-whats-the-difference-between-training-time-and-inference-time-scaling">#</a>
+</h3>
+<p><strong>A:</strong> Where you spend the compute:</p>
+<h4 id="training-time-scaling-traditional">
+  TRAINING-TIME SCALING (Traditional)
+  <a class="anchor" href="#training-time-scaling-traditional">#</a>
+</h4>
+<ul>
+<li><strong>Spend compute:</strong> During training (one-time cost)</li>
+<li><strong>Method:</strong> Bigger models, more training data, longer training</li>
+<li><strong>Result:</strong> Smarter model for ALL users</li>
+<li><strong>Example:</strong> GPT-3 (175B) → GPT-4 (1.7T) = bigger = smarter</li>
+<li><strong>Tradeoff:</strong> Expensive upfront, cheap at inference</li>
+</ul>
+<h4 id="inference-time-scaling-new-era">
+  INFERENCE-TIME SCALING (New Era)
+  <a class="anchor" href="#inference-time-scaling-new-era">#</a>
+</h4>
+<ul>
+<li><strong>Spend compute:</strong> During EACH query (per-user cost)</li>
+<li><strong>Method:</strong> Model &ldquo;thinks&rdquo; longer (more tokens) for hard Qs</li>
+<li><strong>Result:</strong> Same model, but &ldquo;tries harder&rdquo; on demand</li>
+<li><strong>Example:</strong> o1 generates 2K-30K thinking tokens per hard Q</li>
+<li><strong>Tradeoff:</strong> Cheaper training, expensive inference (but better!)</li>
+</ul>
+<p><strong>BREAKTHROUGH:</strong> You can now trade inference cost for accuracy! (Like buying &ldquo;thinking time&rdquo; on demand)</p>
+<hr>
+<h3 id="q6-how-does-rl-training-create-inference-time-scaling">
+  Q6: How does RL training create inference-time scaling?
+  <a class="anchor" href="#q6-how-does-rl-training-create-inference-time-scaling">#</a>
+</h3>
+<p><strong>A:</strong> RL teaches the model to &ldquo;think out loud&rdquo; for hard problems:</p>
+<h4 id="the-process">
+  The Process:
+  <a class="anchor" href="#the-process">#</a>
+</h4>
+<p><strong>Step 1:</strong> Model encounters hard math problem</p>
+<p><strong>Step 2:</strong> Model generates reasoning chain:</p>
+<pre tabindex="0"><code>&lt;think&gt;
+Let me break this down...
+First, I&#39;ll try approach A...
+Wait, that doesn&#39;t work...
+Let me try approach B...
+Ah! That works because...
+Therefore the answer is...
+&lt;/think&gt;
+</code></pre><p><strong>Step 3:</strong> Final answer: [correct]</p>
+<p><strong>Step 4:</strong> RL reward: +1 (correct!) → Reinforce this &ldquo;thinking behavior&rdquo;</p>
+<h4 id="after-thousands-of-epochs">
+  After thousands of epochs:
+  <a class="anchor" href="#after-thousands-of-epochs">#</a>
+</h4>
+<ul>
+<li>Model learns: &ldquo;Hard problems = think longer = higher accuracy&rdquo;</li>
+<li>Correlation emerges: More tokens → Better performance</li>
+<li>This is NOT length bias (old RLHF problem)</li>
+<li>This is PRODUCTIVE reasoning</li>
+</ul>
+<hr>
+<h2 id="section-3-the-canonical-recipe---deepseek-r1">
+  SECTION 3: THE CANONICAL RECIPE - DEEPSEEK R1
+  <a class="anchor" href="#section-3-the-canonical-recipe---deepseek-r1">#</a>
+</h2>
+<h3 id="q7-what-is-deepseek-r1s-training-recipe">
+  Q7: What is DeepSeek R1&rsquo;s training recipe?
+  <a class="anchor" href="#q7-what-is-deepseek-r1s-training-recipe">#</a>
+</h3>
+<p><strong>A:</strong> 4-stage process that became the blueprint for 2025:</p>
+<h4 id="stage-1-cold-start-100k-samples">
+  STAGE 1: &ldquo;Cold-Start&rdquo; (100K+ samples)
+  <a class="anchor" href="#stage-1-cold-start-100k-samples">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Sample from earlier RL checkpoint (R1-Zero)</li>
+<li><strong>Filter:</strong> Keep only high-quality reasoning chains</li>
+<li><strong>Goal:</strong> Teach model the PROCESS of reasoning</li>
+<li><strong>Why &ldquo;cold-start&rdquo;?</strong> Learning RL from minimal supervised data (Unlike traditional SFT which needs millions of examples)</li>
+</ul>
+<h4 id="stage-2-large-scale-rl-the-core">
+  STAGE 2: Large-Scale RL (The Core)
+  <a class="anchor" href="#stage-2-large-scale-rl-the-core">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Run RLVR &ldquo;until convergence&rdquo;</li>
+<li><strong>Data:</strong> Reasoning problems (math, coding, STEM)</li>
+<li><strong>Epochs:</strong> HUNDREDS (not 1-2 like traditional fine-tuning!)</li>
+<li><strong>Reward:</strong> Binary correctness (right/wrong)</li>
+<li><strong>Note:</strong> This is where the magic happens - model learns to reason!</li>
+</ul>
+<h4 id="stage-3-rejection-sampling-transition-to-general">
+  STAGE 3: Rejection Sampling (Transition to General)
+  <a class="anchor" href="#stage-3-rejection-sampling-transition-to-general">#</a>
+</h4>
+<ul>
+<li><strong>Mix:</strong> 3/4 reasoning problems + 1/4 general queries</li>
+<li><strong>Goal:</strong> Don&rsquo;t lose general chat ability</li>
+<li><strong>Method:</strong> Sample multiple answers, keep best ones</li>
+</ul>
+<h4 id="stage-4-mixed-rl-polish">
+  STAGE 4: Mixed RL (Polish)
+  <a class="anchor" href="#stage-4-mixed-rl-polish">#</a>
+</h4>
+<ul>
+<li><strong>RLVR:</strong> For reasoning domains (verifiable)</li>
+<li><strong>RLHF:</strong> For general domains (human preferences)</li>
+<li><strong>Goal:</strong> Final model that&rsquo;s both smart AND pleasant</li>
+</ul>
+<hr>
+<h3 id="q8-whats-revolutionary-about-this-recipe-vs-previous-rlhf">
+  Q8: What&rsquo;s revolutionary about this recipe vs previous RLHF?
+  <a class="anchor" href="#q8-whats-revolutionary-about-this-recipe-vs-previous-rlhf">#</a>
+</h3>
+<p><strong>A:</strong> Complete inversion of traditional priorities:</p>
+<h4 id="traditional-rlhf-instructgpt-chatgpt">
+  Traditional RLHF (InstructGPT, ChatGPT):
+  <a class="anchor" href="#traditional-rlhf-instructgpt-chatgpt">#</a>
+</h4>
+<pre tabindex="0"><code>├─ Stage 1: SFT (1M examples, 1-2 epochs) ← MAIN TRAINING
+├─ Stage 2: RLHF (100K pref pairs) ← &#34;Cherry on top&#34;
+└─ Focus: Behavior, style, safety
+</code></pre><h4 id="deepseek-r1-reasoning-era">
+  DeepSeek R1 (Reasoning Era):
+  <a class="anchor" href="#deepseek-r1-reasoning-era">#</a>
+</h4>
+<pre tabindex="0"><code>├─ Stage 1: Cold-start (100K, minimal SFT)
+├─ Stage 2: RLVR (until convergence) ← MAIN TRAINING
+├─ Stage 3-4: Polish with SFT+RLHF
+└─ Focus: Capability, performance, correctness
+</code></pre><p><strong>PARADIGM SHIFT:</strong> RL went from &ldquo;polish&rdquo; to &ldquo;core capability builder&rdquo;</p>
+<hr>
+<h2 id="section-4-the-explosion---20-models-in-6-months">
+  SECTION 4: THE EXPLOSION - 20+ MODELS IN 6 MONTHS
+  <a class="anchor" href="#section-4-the-explosion---20-models-in-6-months">#</a>
+</h2>
+<h3 id="q9-who-released-reasoning-models-in-2025">
+  Q9: Who released reasoning models in 2025?
+  <a class="anchor" href="#q9-who-released-reasoning-models-in-2025">#</a>
+</h3>
+<p><strong>A:</strong> Everyone. Literally everyone:</p>
+<ul>
+<li><strong>Jan 2025:</strong> DeepSeek R1, Kimi 1.5</li>
+<li><strong>Mar 2025:</strong> OpenReasoner-Zero (first fully open!)</li>
+<li><strong>Apr 2025:</strong> Seed-Thinking 1.5, Phi-4 Reasoning</li>
+<li><strong>May 2025:</strong> Llama-Nemotron, INTELLECT-2, Xiaomi MiMo, Qwen 3</li>
+<li><strong>Jun 2025:</strong> Hunyuan-TurboS, Skywork OR-1, OpenThoughts, Magistral</li>
+<li><strong>Jul 2025+:</strong> Kimi K2, GLM-4.5, Nemotron Nano 2, MiniMax-M1&hellip;</li>
+</ul>
+<p><strong>20+ models in ~6 months!</strong></p>
+<p><strong>Organizations:</strong> ByteDance, Microsoft, Meta, Alibaba, Mistral, Moonshot AI, OpenBMB, Zhipu AI, Nvidia, MiniMax&hellip;</p>
+<p><strong>KEY INSIGHT:</strong> This isn&rsquo;t one lab&rsquo;s secret sauce. This is a FIELD-WIDE revolution.</p>
+<hr>
+<h3 id="q10-what-are-the-common-training-techniques-across-these-models">
+  Q10: What are the common training techniques across these models?
+  <a class="anchor" href="#q10-what-are-the-common-training-techniques-across-these-models">#</a>
+</h3>
+<p><strong>A:</strong> 10 techniques repeatedly used (with examples):</p>
+<h4 id="1-offline-difficulty-filtering">
+  1. OFFLINE DIFFICULTY FILTERING
+  <a class="anchor" href="#1-offline-difficulty-filtering">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Pre-filter training data by difficulty</li>
+<li><strong>Why:</strong> Model can only learn from 20-80% solvable problems</li>
+<li><strong>Who:</strong> Seed-Thinking, OpenReasoner-Zero, Phi-4, Qwen 3</li>
+<li><strong>Logic:</strong>
+<ul>
+<li>Too easy (100% solve) = no gradient</li>
+<li>Too hard (0% solve) = no gradient</li>
+<li>Just right (20-80%) = optimal learning!</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-per-batch-online-filtering">
+  2. PER-BATCH ONLINE FILTERING
+  <a class="anchor" href="#2-per-batch-online-filtering">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> During training, filter problems dynamically</li>
+<li><strong>Why:</strong> Model capability changes as it learns</li>
+<li><strong>Who:</strong> Kimi 1.5, Magistral, Llama-Nemotron</li>
+<li><strong>Example:</strong>
+<ul>
+<li>Week 1: Model solves 30% → include these</li>
+<li>Week 4: Model solves 80% → filter out (too easy)</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-remove-kl-penalty">
+  3. REMOVE KL PENALTY
+  <a class="anchor" href="#3-remove-kl-penalty">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Turn off KL divergence regularization</li>
+<li><strong>Why:</strong> Let model explore reasoning space freely</li>
+<li><strong>Who:</strong> RAGEN, Magistral, OpenReasoner-Zero</li>
+<li><strong>Insight:</strong>
+<ul>
+<li>Traditional RLHF: KL penalty keeps model close to SFT init</li>
+<li>Reasoning: Remove KL → model can learn NEW behaviors</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-format-rewards">
+  4. FORMAT REWARDS
+  <a class="anchor" href="#4-format-rewards">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Reward model for using <code>&lt;think&gt;...&lt;/think&gt;</code> tags</li>
+<li><strong>Why:</strong> Ensure consistent, parseable reasoning format</li>
+<li><strong>Who:</strong> DeepSeek R1, OpenReasoner-Zero, Magistral</li>
+<li><strong>Impact:</strong>
+<ul>
+<li>Without: Model might reason in inconsistent ways</li>
+<li>With: Guaranteed structured output for downstream systems</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-language-consistency-rewards">
+  5. LANGUAGE CONSISTENCY REWARDS
+  <a class="anchor" href="#5-language-consistency-rewards">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Penalize switching languages mid-reasoning</li>
+<li><strong>Why:</strong> Better UX, easier to debug</li>
+<li><strong>Who:</strong> DeepSeek R1, Magistral (multilingual models)</li>
+<li><strong>Example:</strong>
+<ul>
+<li>Bad: &ldquo;Let me solve&hellip; 让我们计算&hellip; donc la réponse est&hellip;&rdquo;</li>
+<li>Good: Stick to one language throughout reasoning</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-length-penalties">
+  6. LENGTH PENALTIES
+  <a class="anchor" href="#6-length-penalties">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Penalize overthinking (too many reasoning tokens)</li>
+<li><strong>Why:</strong> Combat diminishing returns on long chains</li>
+<li><strong>Who:</strong> Kimi 1.5, INTELLECT-2</li>
+<li><strong>Problem:</strong> Model might generate 50K tokens to solve 2+2</li>
+<li><strong>Solution:</strong> Progressive length limits or small penalties</li>
+</ul>
+<h4 id="7-loss-normalization-batch-vs-group">
+  7. LOSS NORMALIZATION (Batch vs Group)
+  <a class="anchor" href="#7-loss-normalization-batch-vs-group">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Normalize advantages at batch level (not group)</li>
+<li><strong>Why:</strong> Avoid bias towards low-variance problems</li>
+<li><strong>Who:</strong> Magistral, MiMo</li>
+<li><strong>Comparison:</strong>
+<ul>
+<li>GRPO original: Normalize per group of responses</li>
+<li>Alternative: Normalize across entire batch</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-parallel-test-time-compute">
+  8. PARALLEL TEST-TIME COMPUTE
+  <a class="anchor" href="#8-parallel-test-time-compute">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Generate N answers, pick best via majority/scorer</li>
+<li><strong>Why:</strong> Boosts accuracy without retraining</li>
+<li><strong>Who:</strong> DeepSeek R1, Phi-4, Claude 4, DeepSeek-GRM</li>
+<li><strong>Methods:</strong>
+<ul>
+<li>Method 1: Majority voting (most common answer)</li>
+<li>Method 2: Scorer model (trained to pick best)</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-text-only-reasoning-boosts-multimodal">
+  9. TEXT-ONLY REASONING BOOSTS MULTIMODAL
+  <a class="anchor" href="#9-text-only-reasoning-boosts-multimodal">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> Train reasoning on text, improves vision+text too!</li>
+<li><strong>Why:</strong> Reasoning transfers across modalities</li>
+<li><strong>Who:</strong> Magistral, MiMo-VL</li>
+<li><strong>Surprising finding:</strong> Don&rsquo;t need vision data for vision boost!</li>
+</ul>
+<h4 id="10-toggleable-reasoning-system-prompt">
+  10. TOGGLEABLE REASONING (System Prompt)
+  <a class="anchor" href="#10-toggleable-reasoning-system-prompt">#</a>
+</h4>
+<ul>
+<li><strong>What:</strong> User controls reasoning depth via system prompt</li>
+<li><strong>Why:</strong> Fast answers for easy Q&rsquo;s, deep for hard Q&rsquo;s</li>
+<li><strong>Who:</strong> Llama-Nemotron, Qwen 3</li>
+<li><strong>Example:</strong>
+<ul>
+<li>System: &ldquo;Use minimal thinking&rdquo;
+<ul>
+<li>Model: [short chain] → fast, cheap</li>
+</ul>
+</li>
+<li>System: &ldquo;Think deeply&rdquo;
+<ul>
+<li>Model: [long chain] → accurate, expensive</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="section-5-why-this-matters-for-your-google-interview">
+  SECTION 5: WHY THIS MATTERS FOR YOUR GOOGLE INTERVIEW
+  <a class="anchor" href="#section-5-why-this-matters-for-your-google-interview">#</a>
+</h2>
+<h3 id="q11-why-is-this-relevant-to-evaluating-gemini">
+  Q11: Why is this relevant to evaluating Gemini?
+  <a class="anchor" href="#q11-why-is-this-relevant-to-evaluating-gemini">#</a>
+</h3>
+<p><strong>A:</strong> You&rsquo;re literally working in this domain!</p>
+<h4 id="your-work-at-google">
+  Your Work at Google:
+  <a class="anchor" href="#your-work-at-google">#</a>
+</h4>
+<ul>
+<li>&ldquo;Auto-hinting system&rdquo; → Relates to format rewards</li>
+<li>&ldquo;Auto-verification&rdquo; → Relates to RLVR (verifiable rewards)</li>
+<li>&ldquo;Reasoning-error metrics&rdquo; → Relates to quality measurement</li>
+<li>&ldquo;Evaluating Gemini Pro reasoning&rdquo; → This is Chapter 7!</li>
+<li>&ldquo;Informing RLHF/RLAIF training&rdquo; → You&rsquo;re in the loop!</li>
+</ul>
+<p><strong>Your Evaluation Systems ARE the Chapter 7 Infrastructure!</strong></p>
+<hr>
+<h3 id="q12-what-questions-might-google-ask-you-about-chapter-7">
+  Q12: What questions might Google ask you about Chapter 7?
+  <a class="anchor" href="#q12-what-questions-might-google-ask-you-about-chapter-7">#</a>
+</h3>
+<p><strong>A:</strong> Likely evaluation design questions:</p>
+<h4 id="q-how-would-you-evaluate-a-reasoning-model">
+  Q: &ldquo;How would you evaluate a reasoning model?&rdquo;
+  <a class="anchor" href="#q-how-would-you-evaluate-a-reasoning-model">#</a>
+</h4>
+<h4 id="your-answer-framework">
+  YOUR ANSWER FRAMEWORK:
+  <a class="anchor" href="#your-answer-framework">#</a>
+</h4>
+<p>&ldquo;I&rsquo;d design evaluation across 4 dimensions from Chapter 7:</p>
+<h4 id="1-accuracy-traditional">
+  1. ACCURACY (Traditional)
+  <a class="anchor" href="#1-accuracy-traditional">#</a>
+</h4>
+<ul>
+<li>Benchmarks: MATH, GSM8K, GPQA, AIME</li>
+<li>Stratified by difficulty (20-80% solvable)</li>
+<li>This is what I&rsquo;ve been doing with auto-verification</li>
+</ul>
+<h4 id="2-reasoning-quality-new">
+  2. REASONING QUALITY (New!)
+  <a class="anchor" href="#2-reasoning-quality-new">#</a>
+</h4>
+<ul>
+<li>Chain coherence (LLM-as-a-judge)</li>
+<li>Reasoning length vs accuracy correlation</li>
+<li>Format compliance (<code>&lt;think&gt;</code> tags)</li>
+<li>This relates to my reasoning-error metrics</li>
+</ul>
+<h4 id="3-efficiency-cost">
+  3. EFFICIENCY (Cost)
+  <a class="anchor" href="#3-efficiency-cost">#</a>
+</h4>
+<ul>
+<li>Tokens-to-solution ratio</li>
+<li>Overthinking detection (length penalties)</li>
+<li>First-token latency</li>
+<li>This is why my auto-hinting improved efficiency</li>
+</ul>
+<h4 id="4-failure-modes-debug">
+  4. FAILURE MODES (Debug)
+  <a class="anchor" href="#4-failure-modes-debug">#</a>
+</h4>
+<ul>
+<li>Where does reasoning go wrong?</li>
+<li>Systematic biases?</li>
+<li>Hallucinations in reasoning steps?</li>
+<li>My multi-agent verification catches these</li>
+</ul>
+<p>I&rsquo;d combine automated benchmarks (fast, scalable) with human evaluation (edge cases, quality) - exactly like the RLVR → RLHF transition in DeepSeek R1&rsquo;s recipe.&rdquo;</p>
+<hr>
+<h3 id="q13-how-does-this-connect-to-your-actual-work">
+  Q13: How does this connect to your actual work?
+  <a class="anchor" href="#q13-how-does-this-connect-to-your-actual-work">#</a>
+</h3>
+<p><strong>A:</strong> Direct parallels:</p>
+<table>
+  <thead>
+      <tr>
+          <th>CHAPTER 7 CONCEPT</th>
+          <th>YOUR WORK</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Difficulty filtering</td>
+          <td>Auto-hinting (20-40% accuracy boost)</td>
+      </tr>
+      <tr>
+          <td>Format rewards</td>
+          <td>Reasoning-error metrics formulation</td>
+      </tr>
+      <tr>
+          <td>Verification</td>
+          <td>Auto-verification (80% false pos reduction)</td>
+      </tr>
+      <tr>
+          <td>Evaluation speed</td>
+          <td>MCP automation (days → &lt;1 hour)</td>
+      </tr>
+      <tr>
+          <td>RLVR training data</td>
+          <td>&ldquo;Informing RLHF/RLAIF training&rdquo;</td>
+      </tr>
+      <tr>
+          <td>Multi-agent consensus</td>
+          <td>Analyzer→Planner→Verifier pipeline</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>YOU ARE BUILDING THE EVALUATION INFRASTRUCTURE FOR CH 7!</strong></p>
+<hr>
+<h2 id="section-6-key-takeaways-for-interview">
+  SECTION 6: KEY TAKEAWAYS FOR INTERVIEW
+  <a class="anchor" href="#section-6-key-takeaways-for-interview">#</a>
+</h2>
+<h3 id="q14-what-are-the-3-sentences-to-remember-about-chapter-7">
+  Q14: What are the 3 sentences to remember about Chapter 7?
+  <a class="anchor" href="#q14-what-are-the-3-sentences-to-remember-about-chapter-7">#</a>
+</h3>
+<p><strong>A:</strong> If you remember NOTHING else, remember this:</p>
+<ol>
+<li>
+<p><strong>&ldquo;2025 saw a paradigm shift from RLHF (human preferences for chat) to RLVR (verifiable rewards for reasoning). RL went from &lsquo;polish&rsquo; to &lsquo;core capability builder&rsquo;.&rdquo;</strong></p>
+</li>
+<li>
+<p><strong>&ldquo;DeepSeek R1 showed you can train reasoning from scratch using massive RL on math/code problems with binary correctness rewards, then polish with traditional RLHF. This recipe spawned 20+ open models in 6 months.&rdquo;</strong></p>
+</li>
+<li>
+<p><strong>&ldquo;Inference-time scaling means we can now trade compute for accuracy at test time - models &rsquo;think longer&rsquo; on hard problems by generating reasoning chains, creating a new performance axis beyond just model size.&rdquo;</strong></p>
+</li>
+</ol>
+<hr>
+<h3 id="q15-how-do-i-sound-smart-about-this-in-the-interview">
+  Q15: How do I sound smart about this in the interview?
+  <a class="anchor" href="#q15-how-do-i-sound-smart-about-this-in-the-interview">#</a>
+</h3>
+<p><strong>A:</strong> Strategic talking points:</p>
+<h4 id="-dont-say-reasoning-models-are-cool">
+  ❌ DON&rsquo;T SAY: &ldquo;Reasoning models are cool&rdquo;
+  <a class="anchor" href="#-dont-say-reasoning-models-are-cool">#</a>
+</h4>
+<h4 id="-do-say">
+  ✅ DO SAY:
+  <a class="anchor" href="#-do-say">#</a>
+</h4>
+<p>&ldquo;Working on Gemini evaluation, I&rsquo;ve seen firsthand how reasoning model evaluation differs from traditional chat evaluation. The difficulty filtering challenge - keeping problems in the 20-80% solvable range - directly motivated my auto-hinting system design. And the verification bottleneck is why my auto-verification reducing false positives by 80% had such high impact on RLVR training data quality.&rdquo;</p>
+<hr>
+<h4 id="-dont-say-rlvr-is-different-from-rlhf">
+  ❌ DON&rsquo;T SAY: &ldquo;RLVR is different from RLHF&rdquo;
+  <a class="anchor" href="#-dont-say-rlvr-is-different-from-rlhf">#</a>
+</h4>
+<h4 id="-do-say-1">
+  ✅ DO SAY:
+  <a class="anchor" href="#-do-say-1">#</a>
+</h4>
+<p>&ldquo;The shift from RLHF to RLVR changes the data quality requirements fundamentally. Instead of nuanced preference judgments, we need fast, accurate binary verification. That&rsquo;s exactly what my multi-agent consensus framework provides - automated verification with 80% fewer false positives than manual review.&rdquo;</p>
+<hr>
+<h4 id="-dont-say-inference-time-scaling-is-interesting">
+  ❌ DON&rsquo;T SAY: &ldquo;Inference-time scaling is interesting&rdquo;
+  <a class="anchor" href="#-dont-say-inference-time-scaling-is-interesting">#</a>
+</h4>
+<h4 id="-do-say-2">
+  ✅ DO SAY:
+  <a class="anchor" href="#-do-say-2">#</a>
+</h4>
+<p>&ldquo;Evaluating inference-time scaling introduces new challenges. How do we measure &rsquo;thinking quality&rsquo; vs just &rsquo;thinking length&rsquo;? The reasoning-error metrics I formulated help distinguish productive reasoning from overthinking, which directly informs length penalty design in RL training.&rdquo;</p>
+<hr>
+<h2 id="section-7-bonus---future-directions">
+  SECTION 7: BONUS - FUTURE DIRECTIONS
+  <a class="anchor" href="#section-7-bonus---future-directions">#</a>
+</h2>
+<h3 id="q16-where-is-this-field-going-next">
+  Q16: Where is this field going next?
+  <a class="anchor" href="#q16-where-is-this-field-going-next">#</a>
+</h3>
+<p><strong>A:</strong> Three frontier areas (from the book):</p>
+<h4 id="1-beyond-mathcode">
+  1. BEYOND MATH/CODE
+  <a class="anchor" href="#1-beyond-mathcode">#</a>
+</h4>
+<ul>
+<li><strong>Current:</strong> RLVR works great for verifiable domains</li>
+<li><strong>Next:</strong> How to apply to non-verifiable domains?</li>
+<li><strong>Challenge:</strong> Need new reward signal types</li>
+</ul>
+<h4 id="2-distillation">
+  2. DISTILLATION
+  <a class="anchor" href="#2-distillation">#</a>
+</h4>
+<ul>
+<li><strong>Current:</strong> Train big reasoning model → distill to small</li>
+<li><strong>Next:</strong> Can small models learn reasoning directly?</li>
+<li><strong>Trend:</strong> OpenThoughts dataset (distilled reasoning chains)</li>
+</ul>
+<h4 id="3-multimodal-reasoning">
+  3. MULTIMODAL REASONING
+  <a class="anchor" href="#3-multimodal-reasoning">#</a>
+</h4>
+<ul>
+<li><strong>Current:</strong> Text-only reasoning boosts vision (surprising!)</li>
+<li><strong>Next:</strong> End-to-end multimodal reasoning training</li>
+<li><strong>Example:</strong> MiMo-VL, Xiaomi&rsquo;s multimodal reasoning</li>
+</ul>
+<hr>
+<h3 id="q17-whats-the-one-thing-experts-still-debate">
+  Q17: What&rsquo;s the one thing experts still debate?
+  <a class="anchor" href="#q17-whats-the-one-thing-experts-still-debate">#</a>
+</h3>
+<p><strong>A:</strong> Whether RL is necessary or if distillation is enough:</p>
+<h4 id="camp-1-rl-is-essential">
+  CAMP 1: &ldquo;RL is essential&rdquo;
+  <a class="anchor" href="#camp-1-rl-is-essential">#</a>
+</h4>
+<ul>
+<li><strong>Evidence:</strong> DeepSeek R1 cold-start shows RL creates novel behaviors</li>
+<li><strong>Claim:</strong> Can&rsquo;t just imitate, must explore via RL</li>
+</ul>
+<h4 id="camp-2-distillation-is-enough">
+  CAMP 2: &ldquo;Distillation is enough&rdquo;
+  <a class="anchor" href="#camp-2-distillation-is-enough">#</a>
+</h4>
+<ul>
+<li><strong>Evidence:</strong> OpenThoughts (distilled from QwQ) works well</li>
+<li><strong>Claim:</strong> Cheaper, faster, good enough for most uses</li>
+</ul>
+<h4 id="reality-probably-both-have-roles">
+  REALITY: Probably both have roles
+  <a class="anchor" href="#reality-probably-both-have-roles">#</a>
+</h4>
+<ul>
+<li><strong>Frontier:</strong> Use RL to discover new reasoning patterns</li>
+<li><strong>Production:</strong> Distill to smaller models for deployment</li>
+</ul>
+<hr>
+<h2 id="final-exam-question">
+  FINAL EXAM QUESTION
+  <a class="anchor" href="#final-exam-question">#</a>
+</h2>
+<p><strong>Test yourself:</strong></p>
+<p>&ldquo;In one paragraph, explain why Chapter 7 represents a breakthrough and how your work at Google relates to it.&rdquo;</p>
+<h3 id="sample-answer">
+  SAMPLE ANSWER:
+  <a class="anchor" href="#sample-answer">#</a>
+</h3>
+<p>&ldquo;Chapter 7 documents the 2025 paradigm shift where RL transitioned from a &lsquo;polish&rsquo; step (RLHF for chat) to a core capability builder (RLVR for reasoning). DeepSeek R1 proved you can train reasoning from scratch using verifiable rewards on math/code problems, spawning 20+ open models in 6 months. This created new evaluation challenges - measuring reasoning quality vs just accuracy, handling inference-time compute trade-offs, and maintaining data quality for RLVR training. My work directly addresses these: auto-verification provides the fast, accurate binary rewards RLVR needs; reasoning-error metrics distinguish productive vs wasteful thinking; and auto-hinting ensures training data stays in the optimal 20-80% difficulty range. I&rsquo;m essentially building the evaluation infrastructure that makes Chapter 7&rsquo;s breakthrough scalable for Gemini.&rdquo;</p>
+<hr>
+<h2 id="quick-reference-summary">
+  QUICK REFERENCE SUMMARY
+  <a class="anchor" href="#quick-reference-summary">#</a>
+</h2>
+<h3 id="key-timeline">
+  Key Timeline
+  <a class="anchor" href="#key-timeline">#</a>
+</h3>
+<ul>
+<li><strong>2018:</strong> &ldquo;RL doesn&rsquo;t work&rdquo; conventional wisdom</li>
+<li><strong>Sep 2024:</strong> OpenAI o1 proves reasoning at scale</li>
+<li><strong>Jan 2025:</strong> DeepSeek R1 releases full recipe</li>
+<li><strong>Jan-Jul 2025:</strong> 20+ reasoning models released</li>
+</ul>
+<h3 id="core-concepts">
+  Core Concepts
+  <a class="anchor" href="#core-concepts">#</a>
+</h3>
+<ul>
+<li><strong>RLHF:</strong> Human preferences, chat/safety, expensive, 1-2 epochs</li>
+<li><strong>RLVR:</strong> Binary correctness, math/code, free, hundreds of epochs</li>
+<li><strong>Inference-time scaling:</strong> Trade compute for accuracy at test time</li>
+<li><strong>Reasoning chains:</strong> Model &ldquo;thinks out loud&rdquo; in <code>&lt;think&gt;</code> tags</li>
+</ul>
+<h3 id="deepseek-r1-recipe-4-stages">
+  DeepSeek R1 Recipe (4 Stages)
+  <a class="anchor" href="#deepseek-r1-recipe-4-stages">#</a>
+</h3>
+<ol>
+<li>Cold-start (100K samples)</li>
+<li>Large-scale RL (core training)</li>
+<li>Rejection sampling (generalization)</li>
+<li>Mixed RL (polish)</li>
+</ol>
+<h3 id="top-10-training-techniques">
+  Top 10 Training Techniques
+  <a class="anchor" href="#top-10-training-techniques">#</a>
+</h3>
+<ol>
+<li>Offline difficulty filtering (20-80% sweet spot)</li>
+<li>Per-batch online filtering (dynamic adjustment)</li>
+<li>Remove KL penalty (exploration freedom)</li>
+<li>Format rewards (structured output)</li>
+<li>Language consistency (better UX)</li>
+<li>Length penalties (combat overthinking)</li>
+<li>Loss normalization (batch vs group)</li>
+<li>Parallel test-time compute (majority voting)</li>
+<li>Text-only boosts multimodal (transfer learning)</li>
+<li>Toggleable reasoning (user control)</li>
+</ol>
+<h3 id="connection-to-your-work">
+  Connection to Your Work
+  <a class="anchor" href="#connection-to-your-work">#</a>
+</h3>
+<ul>
+<li><strong>Auto-hinting</strong> → Difficulty filtering</li>
+<li><strong>Auto-verification</strong> → RLVR rewards</li>
+<li><strong>Reasoning-error metrics</strong> → Quality measurement</li>
+<li><strong>MCP automation</strong> → Evaluation speed</li>
+<li><strong>Multi-agent consensus</strong> → Verification pipeline</li>
+</ul>
+<hr>
+<p><strong>End of Chapter 7</strong></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ch-7-reasoning--inference-time-scaling">Ch 7: REASONING &amp; INFERENCE-TIME SCALING</a>
+      <ul>
+        <li><a href="#qa-format---understanding-the-2025-breakthrough">Q&amp;A Format - Understanding the 2025 Breakthrough</a></li>
+        <li><a href="#section-1-the-big-picture---why-is-this-breakthrough">SECTION 1: THE BIG PICTURE - WHY IS THIS BREAKTHROUGH?</a>
+          <ul>
+            <li><a href="#q1-what-actually-happened-in-2025-that-makes-chapter-7-revolutionary">Q1: What actually happened in 2025 that makes Chapter 7 revolutionary?</a></li>
+            <li><a href="#q2-why-couldnt-we-do-this-before-2024">Q2: Why couldn&rsquo;t we do this before 2024?</a></li>
+            <li><a href="#q3-whats-the-difference-between-rlhf-and-rlvr">Q3: What&rsquo;s the difference between RLHF and RLVR?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-2-core-concepts---what-is-inference-time-scaling">SECTION 2: CORE CONCEPTS - WHAT IS INFERENCE-TIME SCALING?</a>
+          <ul>
+            <li><a href="#q4-what-is-inference-time-scaling">Q4: What is &ldquo;inference-time scaling&rdquo;?</a></li>
+            <li><a href="#q5-whats-the-difference-between-training-time-and-inference-time-scaling">Q5: What&rsquo;s the difference between training-time and inference-time scaling?</a></li>
+            <li><a href="#q6-how-does-rl-training-create-inference-time-scaling">Q6: How does RL training create inference-time scaling?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-3-the-canonical-recipe---deepseek-r1">SECTION 3: THE CANONICAL RECIPE - DEEPSEEK R1</a>
+          <ul>
+            <li><a href="#q7-what-is-deepseek-r1s-training-recipe">Q7: What is DeepSeek R1&rsquo;s training recipe?</a></li>
+            <li><a href="#q8-whats-revolutionary-about-this-recipe-vs-previous-rlhf">Q8: What&rsquo;s revolutionary about this recipe vs previous RLHF?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-4-the-explosion---20-models-in-6-months">SECTION 4: THE EXPLOSION - 20+ MODELS IN 6 MONTHS</a>
+          <ul>
+            <li><a href="#q9-who-released-reasoning-models-in-2025">Q9: Who released reasoning models in 2025?</a></li>
+            <li><a href="#q10-what-are-the-common-training-techniques-across-these-models">Q10: What are the common training techniques across these models?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-5-why-this-matters-for-your-google-interview">SECTION 5: WHY THIS MATTERS FOR YOUR GOOGLE INTERVIEW</a>
+          <ul>
+            <li><a href="#q11-why-is-this-relevant-to-evaluating-gemini">Q11: Why is this relevant to evaluating Gemini?</a></li>
+            <li><a href="#q12-what-questions-might-google-ask-you-about-chapter-7">Q12: What questions might Google ask you about Chapter 7?</a></li>
+            <li><a href="#q13-how-does-this-connect-to-your-actual-work">Q13: How does this connect to your actual work?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-6-key-takeaways-for-interview">SECTION 6: KEY TAKEAWAYS FOR INTERVIEW</a>
+          <ul>
+            <li><a href="#q14-what-are-the-3-sentences-to-remember-about-chapter-7">Q14: What are the 3 sentences to remember about Chapter 7?</a></li>
+            <li><a href="#q15-how-do-i-sound-smart-about-this-in-the-interview">Q15: How do I sound smart about this in the interview?</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-7-bonus---future-directions">SECTION 7: BONUS - FUTURE DIRECTIONS</a>
+          <ul>
+            <li><a href="#q16-where-is-this-field-going-next">Q16: Where is this field going next?</a></li>
+            <li><a href="#q17-whats-the-one-thing-experts-still-debate">Q17: What&rsquo;s the one thing experts still debate?</a></li>
+          </ul>
+        </li>
+        <li><a href="#final-exam-question">FINAL EXAM QUESTION</a>
+          <ul>
+            <li><a href="#sample-answer">SAMPLE ANSWER:</a></li>
+          </ul>
+        </li>
+        <li><a href="#quick-reference-summary">QUICK REFERENCE SUMMARY</a>
+          <ul>
+            <li><a href="#key-timeline">Key Timeline</a></li>
+            <li><a href="#core-concepts">Core Concepts</a></li>
+            <li><a href="#deepseek-r1-recipe-4-stages">DeepSeek R1 Recipe (4 Stages)</a></li>
+            <li><a href="#top-10-training-techniques">Top 10 Training Techniques</a></li>
+            <li><a href="#connection-to-your-work">Connection to Your Work</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

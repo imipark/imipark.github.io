@@ -6,26 +6,151 @@
 <meta name="description" content="
 
 
-Reinforcement Learning from Human Feedback, alignment, and post-training LLMs (Manning Book by Nathan Lambert 2026)
+RLHF Book by Nathan Lambert 2026
 
 
 
+  FOUNDATION LAYER
+  #
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ 1. Overview         2. History        3. Training Overview  │
+│ [What & Why]       [Evolution]        [Problem Setup]       │
+└─────────────────────────────────────────────────────────────┘
+
+
+  CORE METHODOLOGY LAYER
+  #
+
+
+┌─────────────────────────────────────────────────────────────┐
+│  4. Instruction Fine-tuning  [Data Preparation]             │
+│  5. Reward Modeling          [Preference Learning]          │
+│  6. Reinforcement Learning   [Core Optimization]            │
+└─────────────────────────────────────────────────────────────┘
+
+
+  ADVANCED TECHNIQUES LAYER
+  #
+
+
+┌─────────────────────────────────────────────────────────────┐
+│  7. Reasoning & Inference-Time Scaling  [2024-25 Frontier]  │
+│  8. Direct Alignment Algorithms         [DPO & Variants]    │
+│  9. Rejection Sampling                  [Simple RL Alt]     │
+└─────────────────────────────────────────────────────────────┘
+
+
+  DATA &amp; THEORY LAYER
+  #
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ 10. Nature of Preferences  [Philosophy]                     │
+│ 11. Preference Data        [Collection & Design]            │
+│ 12. Synthetic Data         [AI Feedback & CAI]              │
+└─────────────────────────────────────────────────────────────┘
+
+
+  APPLICATION &amp; CONTROL LAYER
+  #
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ 13. Tool Use & Function Calling  [Agentic Capabilities]     │
+│ 14. Style and Information        [Format & Tone]            │
+│ 15. Regularization              [Stability Controls]        │
+│ 16. Over-Optimization           [Failure Modes]             │
+└─────────────────────────────────────────────────────────────┘
+
+
+  EVALUATION &amp; DEPLOYMENT LAYER
+  #
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ 17. Evaluation                   [Measurement]              │
+│ 18. Product, UX, Model Character [Real-World Deploy]        │
+└─────────────────────────────────────────────────────────────┘
+
+
+  REFERENCE
+  #
+
+
+┌─────────────────────────────────────────────────────────────┐
+│ Appendix A: Definitions  [Technical Reference]              │
+└─────────────────────────────────────────────────────────────┘
 
 
 
+  Foundation Layer
+  #
 
 
+Chapter 1: Overview - What RLHF is and why it matters
+Chapter 2: History - Evolution of the field
+Chapter 3: Training Overview - Problem setup and fundamentals
 
 
+  Core Methodology Layer
+  #
 
 
+Chapter 4: Instruction Fine-tuning - Data preparation techniques
+Chapter 5: Reward Modeling - Learning from preferences
+Chapter 6: Reinforcement Learning - Core optimization algorithms
+
+
+  Advanced Techniques Layer
+  #
+
+
+Chapter 7: Reasoning &amp; Inference-Time Scaling - 2024-25 frontier methods
+Chapter 8: Direct Alignment Algorithms - DPO and variants
+Chapter 9: Rejection Sampling - Simple RL alternatives
+
+
+  Data &amp; Theory Layer
+  #
+
+
+Chapter 10: Nature of Preferences - Philosophical foundations
+Chapter 11: Preference Data - Collection and design strategies
+Chapter 12: Synthetic Data - AI feedback and Constitutional AI
+
+
+  Application &amp; Control Layer
+  #
+
+
+Chapter 13: Tool Use &amp; Function Calling - Agentic capabilities
+Chapter 14: Style and Information - Format and tone control
+Chapter 15: Regularization - Stability controls
+Chapter 16: Over-Optimization - Failure modes and mitigation
+
+
+  Evaluation &amp; Deployment Layer
+  #
+
+
+Chapter 17: Evaluation - Measurement techniques
+Chapter 18: Product, UX, Model Character - Real-world deployment
+
+
+  Reference
+  #
+
+
+Appendix A: Definitions - Technical reference guide
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/rlhf/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="RLHF">
-  <meta property="og:description" content="Reinforcement Learning from Human Feedback, alignment, and post-training LLMs (Manning Book by Nathan Lambert 2026)">
+  <meta property="og:description" content="RLHF Book by Nathan Lambert 2026 FOUNDATION LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 1. Overview 2. History 3. Training Overview │ │ [What &amp; Why] [Evolution] [Problem Setup] │ └─────────────────────────────────────────────────────────────┘ CORE METHODOLOGY LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 4. Instruction Fine-tuning [Data Preparation] │ │ 5. Reward Modeling [Preference Learning] │ │ 6. Reinforcement Learning [Core Optimization] │ └─────────────────────────────────────────────────────────────┘ ADVANCED TECHNIQUES LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 7. Reasoning &amp; Inference-Time Scaling [2024-25 Frontier] │ │ 8. Direct Alignment Algorithms [DPO &amp; Variants] │ │ 9. Rejection Sampling [Simple RL Alt] │ └─────────────────────────────────────────────────────────────┘ DATA &amp; THEORY LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 10. Nature of Preferences [Philosophy] │ │ 11. Preference Data [Collection &amp; Design] │ │ 12. Synthetic Data [AI Feedback &amp; CAI] │ └─────────────────────────────────────────────────────────────┘ APPLICATION &amp; CONTROL LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 13. Tool Use &amp; Function Calling [Agentic Capabilities] │ │ 14. Style and Information [Format &amp; Tone] │ │ 15. Regularization [Stability Controls] │ │ 16. Over-Optimization [Failure Modes] │ └─────────────────────────────────────────────────────────────┘ EVALUATION &amp; DEPLOYMENT LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 17. Evaluation [Measurement] │ │ 18. Product, UX, Model Character [Real-World Deploy] │ └─────────────────────────────────────────────────────────────┘ REFERENCE # ┌─────────────────────────────────────────────────────────────┐ │ Appendix A: Definitions [Technical Reference] │ └─────────────────────────────────────────────────────────────┘ Foundation Layer # Chapter 1: Overview - What RLHF is and why it matters Chapter 2: History - Evolution of the field Chapter 3: Training Overview - Problem setup and fundamentals Core Methodology Layer # Chapter 4: Instruction Fine-tuning - Data preparation techniques Chapter 5: Reward Modeling - Learning from preferences Chapter 6: Reinforcement Learning - Core optimization algorithms Advanced Techniques Layer # Chapter 7: Reasoning &amp; Inference-Time Scaling - 2024-25 frontier methods Chapter 8: Direct Alignment Algorithms - DPO and variants Chapter 9: Rejection Sampling - Simple RL alternatives Data &amp; Theory Layer # Chapter 10: Nature of Preferences - Philosophical foundations Chapter 11: Preference Data - Collection and design strategies Chapter 12: Synthetic Data - AI feedback and Constitutional AI Application &amp; Control Layer # Chapter 13: Tool Use &amp; Function Calling - Agentic capabilities Chapter 14: Style and Information - Format and tone control Chapter 15: Regularization - Stability controls Chapter 16: Over-Optimization - Failure modes and mitigation Evaluation &amp; Deployment Layer # Chapter 17: Evaluation - Measurement techniques Chapter 18: Product, UX, Model Character - Real-world deployment Reference # Appendix A: Definitions - Technical reference guide">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>RLHF | AI Reasoning</title>
@@ -34,7 +159,7 @@ Reinforcement Learning from Human Feedback, alignment, and post-training LLMs (M
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/rlhf/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.c4e10013ea577c4e1908c5eaa1f1303fe07b484ac90714514291bb2f12aaae31.js" integrity="sha256-xOEAE&#43;pXfE4ZCMXqofEwP&#43;B7SErJBxRRQpG7LxKqrjE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0173bbefee938ca18415a40e44b93e080353b5ef582efcbf2ea5007cdddc86e0.js" integrity="sha256-AXO77&#43;6TjKGEFaQORLk&#43;CANTte9YLvy/LqUAfN3chuA=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/rlhf/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
@@ -777,7 +902,32 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#foundation-layer">FOUNDATION LAYER</a></li>
+            <li><a href="#core-methodology-layer">CORE METHODOLOGY LAYER</a></li>
+            <li><a href="#advanced-techniques-layer">ADVANCED TECHNIQUES LAYER</a></li>
+            <li><a href="#data--theory-layer">DATA &amp; THEORY LAYER</a></li>
+            <li><a href="#application--control-layer">APPLICATION &amp; CONTROL LAYER</a></li>
+            <li><a href="#evaluation--deployment-layer">EVALUATION &amp; DEPLOYMENT LAYER</a></li>
+            <li><a href="#reference">REFERENCE</a></li>
+            <li><a href="#foundation-layer-1">Foundation Layer</a></li>
+            <li><a href="#core-methodology-layer-1">Core Methodology Layer</a></li>
+            <li><a href="#advanced-techniques-layer-1">Advanced Techniques Layer</a></li>
+            <li><a href="#data--theory-layer-1">Data &amp; Theory Layer</a></li>
+            <li><a href="#application--control-layer-1">Application &amp; Control Layer</a></li>
+            <li><a href="#evaluation--deployment-layer-1">Evaluation &amp; Deployment Layer</a></li>
+            <li><a href="#reference-1">Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -791,20 +941,145 @@ https://github.com/alex-shpak/hugo-book
   <article class="markdown book-article"><p align="center">
 <img src="/images/AIR_logo.png" alt="AI Reasoning Logo" width="200"/>
 <strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
-Reinforcement Learning from Human Feedback, alignment, and post-training LLMs (Manning Book by Nathan Lambert 2026)
+RLHF Book by Nathan Lambert 2026
 </strong>
 </p>
+<h3 id="foundation-layer">
+  FOUNDATION LAYER
+  <a class="anchor" href="#foundation-layer">#</a>
+</h3>
+<pre style="line-height: 1.2;">
+┌─────────────────────────────────────────────────────────────┐
+│ 1. Overview         2. History        3. Training Overview  │
+│ [What & Why]       [Evolution]        [Problem Setup]       │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+<h3 id="core-methodology-layer">
+  CORE METHODOLOGY LAYER
+  <a class="anchor" href="#core-methodology-layer">#</a>
+</h3>
+<pre style="line-height: 1.2;">
+┌─────────────────────────────────────────────────────────────┐
+│  4. Instruction Fine-tuning  [Data Preparation]             │
+│  5. Reward Modeling          [Preference Learning]          │
+│  6. Reinforcement Learning   [Core Optimization]            │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+<h3 id="advanced-techniques-layer">
+  ADVANCED TECHNIQUES LAYER
+  <a class="anchor" href="#advanced-techniques-layer">#</a>
+</h3>
+<pre style="line-height: 1.2;">
+┌─────────────────────────────────────────────────────────────┐
+│  7. Reasoning & Inference-Time Scaling  [2024-25 Frontier]  │
+│  8. Direct Alignment Algorithms         [DPO & Variants]    │
+│  9. Rejection Sampling                  [Simple RL Alt]     │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+<h3 id="data--theory-layer">
+  DATA &amp; THEORY LAYER
+  <a class="anchor" href="#data--theory-layer">#</a>
+</h3>
+<pre style="line-height: 1.2;">
+┌─────────────────────────────────────────────────────────────┐
+│ 10. Nature of Preferences  [Philosophy]                     │
+│ 11. Preference Data        [Collection & Design]            │
+│ 12. Synthetic Data         [AI Feedback & CAI]              │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+<h3 id="application--control-layer">
+  APPLICATION &amp; CONTROL LAYER
+  <a class="anchor" href="#application--control-layer">#</a>
+</h3>
+<pre style="line-height: 1.2;">
+┌─────────────────────────────────────────────────────────────┐
+│ 13. Tool Use & Function Calling  [Agentic Capabilities]     │
+│ 14. Style and Information        [Format & Tone]            │
+│ 15. Regularization              [Stability Controls]        │
+│ 16. Over-Optimization           [Failure Modes]             │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+<h3 id="evaluation--deployment-layer">
+  EVALUATION &amp; DEPLOYMENT LAYER
+  <a class="anchor" href="#evaluation--deployment-layer">#</a>
+</h3>
+<pre style="line-height: 1.2;">
+┌─────────────────────────────────────────────────────────────┐
+│ 17. Evaluation                   [Measurement]              │
+│ 18. Product, UX, Model Character [Real-World Deploy]        │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+<h3 id="reference">
+  REFERENCE
+  <a class="anchor" href="#reference">#</a>
+</h3>
+<pre style="line-height: 1.2;">
+┌─────────────────────────────────────────────────────────────┐
+│ Appendix A: Definitions  [Technical Reference]              │
+└─────────────────────────────────────────────────────────────┘
+</pre>
 <hr>
-<div align="center">
-<img src="/images/RLHF_Book_overview_001.png" alt="RLHF Overview Page 1" width="800" style="max-width:100%; height:auto; margin-bottom:0px;"/>
-<hr>
-<img src="/images/RLHF_Book_overview_002.png" alt="RLHF Overview Page 2" width="800" style="max-width:100%; height:auto; margin-bottom:-320px;"/>
-<img src="/images/RLHF_Book_overview_003.png" alt="RLHF Overview Page 3" width="800" style="max-width:100%; height:auto; margin-bottom:0px;"/>
-<hr>
-<img src="/images/RLHF_Book_overview_004.png" alt="RLHF Overview Page 4" width="800" style="max-width:100%; height:auto; margin-bottom:0px;"/>
-<hr>
-<img src="/images/RLHF_Book_overview_005.png" alt="RLHF Overview Page 5" width="800" style="max-width:100%; height:auto; margin-bottom:0px;"/>
-</div>
+<h3 id="foundation-layer-1">
+  Foundation Layer
+  <a class="anchor" href="#foundation-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 1: Overview</strong> - What RLHF is and why it matters</li>
+<li><strong>Chapter 2: History</strong> - Evolution of the field</li>
+<li><strong>Chapter 3: Training Overview</strong> - Problem setup and fundamentals</li>
+</ul>
+<h3 id="core-methodology-layer-1">
+  Core Methodology Layer
+  <a class="anchor" href="#core-methodology-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 4: Instruction Fine-tuning</strong> - Data preparation techniques</li>
+<li><strong>Chapter 5: Reward Modeling</strong> - Learning from preferences</li>
+<li><strong>Chapter 6: Reinforcement Learning</strong> - Core optimization algorithms</li>
+</ul>
+<h3 id="advanced-techniques-layer-1">
+  Advanced Techniques Layer
+  <a class="anchor" href="#advanced-techniques-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 7: Reasoning &amp; Inference-Time Scaling</strong> - 2024-25 frontier methods</li>
+<li><strong>Chapter 8: Direct Alignment Algorithms</strong> - DPO and variants</li>
+<li><strong>Chapter 9: Rejection Sampling</strong> - Simple RL alternatives</li>
+</ul>
+<h3 id="data--theory-layer-1">
+  Data &amp; Theory Layer
+  <a class="anchor" href="#data--theory-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 10: Nature of Preferences</strong> - Philosophical foundations</li>
+<li><strong>Chapter 11: Preference Data</strong> - Collection and design strategies</li>
+<li><strong>Chapter 12: Synthetic Data</strong> - AI feedback and Constitutional AI</li>
+</ul>
+<h3 id="application--control-layer-1">
+  Application &amp; Control Layer
+  <a class="anchor" href="#application--control-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 13: Tool Use &amp; Function Calling</strong> - Agentic capabilities</li>
+<li><strong>Chapter 14: Style and Information</strong> - Format and tone control</li>
+<li><strong>Chapter 15: Regularization</strong> - Stability controls</li>
+<li><strong>Chapter 16: Over-Optimization</strong> - Failure modes and mitigation</li>
+</ul>
+<h3 id="evaluation--deployment-layer-1">
+  Evaluation &amp; Deployment Layer
+  <a class="anchor" href="#evaluation--deployment-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 17: Evaluation</strong> - Measurement techniques</li>
+<li><strong>Chapter 18: Product, UX, Model Character</strong> - Real-world deployment</li>
+</ul>
+<h3 id="reference-1">
+  Reference
+  <a class="anchor" href="#reference-1">#</a>
+</h3>
+<ul>
+<li><strong>Appendix A: Definitions</strong> - Technical reference guide</li>
+</ul>
 </article>
  
       
@@ -844,7 +1119,32 @@ Reinforcement Learning from Human Feedback, alignment, and post-training LLMs (M
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#foundation-layer">FOUNDATION LAYER</a></li>
+            <li><a href="#core-methodology-layer">CORE METHODOLOGY LAYER</a></li>
+            <li><a href="#advanced-techniques-layer">ADVANCED TECHNIQUES LAYER</a></li>
+            <li><a href="#data--theory-layer">DATA &amp; THEORY LAYER</a></li>
+            <li><a href="#application--control-layer">APPLICATION &amp; CONTROL LAYER</a></li>
+            <li><a href="#evaluation--deployment-layer">EVALUATION &amp; DEPLOYMENT LAYER</a></li>
+            <li><a href="#reference">REFERENCE</a></li>
+            <li><a href="#foundation-layer-1">Foundation Layer</a></li>
+            <li><a href="#core-methodology-layer-1">Core Methodology Layer</a></li>
+            <li><a href="#advanced-techniques-layer-1">Advanced Techniques Layer</a></li>
+            <li><a href="#data--theory-layer-1">Data &amp; Theory Layer</a></li>
+            <li><a href="#application--control-layer-1">Application &amp; Control Layer</a></li>
+            <li><a href="#evaluation--deployment-layer-1">Evaluation &amp; Deployment Layer</a></li>
+            <li><a href="#reference-1">Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

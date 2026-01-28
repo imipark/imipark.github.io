@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  THE RLHF BOOK v2 - LOGICAL FLOW DIAGRAM
+  #
+
+
+
+  FOUNDATION LAYER
+  #
+
+┌─────────────────────────────────────────────────────────────┐
+│ 1. Overview         2. History        3. Training Overview  │
+│ [What &amp; Why]       [Evolution]        [Problem Setup]       │
+└─────────────────────────────────────────────────────────────┘
+↓
+
+  CORE METHODOLOGY LAYER
+  #
+
+┌─────────────────────────────────────────────────────────────┐
+│  4. Instruction Fine-tuning  [Data Preparation]              │
+│  5. Reward Modeling          [Preference Learning]           │
+│  6. Reinforcement Learning   [Core Optimization]             │
+└─────────────────────────────────────────────────────────────┘
+↓
+
+  ADVANCED TECHNIQUES LAYER
+  #
+
+┌─────────────────────────────────────────────────────────────┐
+│  7. Reasoning &amp; Inference-Time Scaling  [2024-25 Frontier]  │
+│  8. Direct Alignment Algorithms         [DPO &amp; Variants]    │
+│  9. Rejection Sampling                  [Simple RL Alt]     │
+└─────────────────────────────────────────────────────────────┘
+↓">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/ai-workflows/rlhf/rlhf_book_v2_flow_diagram/">
+  <meta property="og:site_name" content="AI Reasoning">
+  <meta property="og:title" content="AI Reasoning">
+  <meta property="og:description" content="THE RLHF BOOK v2 - LOGICAL FLOW DIAGRAM # FOUNDATION LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 1. Overview 2. History 3. Training Overview │ │ [What &amp; Why] [Evolution] [Problem Setup] │ └─────────────────────────────────────────────────────────────┘ ↓
+CORE METHODOLOGY LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 4. Instruction Fine-tuning [Data Preparation] │ │ 5. Reward Modeling [Preference Learning] │ │ 6. Reinforcement Learning [Core Optimization] │ └─────────────────────────────────────────────────────────────┘ ↓
+ADVANCED TECHNIQUES LAYER # ┌─────────────────────────────────────────────────────────────┐ │ 7. Reasoning &amp; Inference-Time Scaling [2024-25 Frontier] │ │ 8. Direct Alignment Algorithms [DPO &amp; Variants] │ │ 9. Rejection Sampling [Simple RL Alt] │ └─────────────────────────────────────────────────────────────┘ ↓">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ai-workflows">
+<title>Rlhf Book V2 Flow Diagram | AI Reasoning</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/ai-workflows/rlhf/rlhf_book_v2_flow_diagram/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.12c464738ba290f8778b1330333ee3050e46a7727dfcebbecd756875b4574bbb.js" integrity="sha256-EsRkc4uikPh3ixMwMz7jBQ5Gp3J9/Ou&#43;zXVodbRXS7s=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>AI Reasoning</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ai-workflows/" class="">AI Reasoning Stack</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7f3f4cf59430750c2ad109248c8c879b" class="toggle"  />
+    <label for="section-7f3f4cf59430750c2ad109248c8c879b" class="flex justify-between">
+      <a href="/ai-workflows/data/" class="">Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fc566bddf8394fb4d0c5cff688d2febc" class="toggle"  />
+    <label for="section-fc566bddf8394fb4d0c5cff688d2febc" class="flex justify-between">
+      <a href="/ai-workflows/data/data-centric-ai/" class="">Data-Centric AI (DCAI)</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cff08f084db31c8732ef81d1fe1c4130" class="toggle"  />
+    <label for="section-cff08f084db31c8732ef81d1fe1c4130" class="flex justify-between">
+      <a href="/ai-workflows/genai/" class="">GenAI</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-63b806a012c3062adb6281022ca8468f" class="toggle"  />
+    <label for="section-63b806a012c3062adb6281022ca8468f" class="flex justify-between">
+      <a href="/ai-workflows/genai/5-day-genai-google-2025/" class="">5-Day GenAI with Google 2005</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_foundational_llm_text_generation/" class="">Day 1 - Foundational LLMs &amp; Text Generation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day1_prompt_engineering/" class="">Day 1 – Prompt Engineering</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day2_embeddings_vectordb/" class="">Day 2 – Embeddings &amp; Vector Databases</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day3_generative_agents/" class="">Day 3 – Generative Agents</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day4_domainspecific_llms/" class="">Day 4 – Domain-Specific LLMs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/5-day-genai-google-2025/day5_mlops/" class="">Day 5 – MLOps for Generative AI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/genai/multimodel_llms/" class="">Multimodal LLMs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-17ba62e37c896ad50105fedeb71549dd" class="toggle"  />
+    <label for="section-17ba62e37c896ad50105fedeb71549dd" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/" class="">Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cd94e161670d28ecff992edf840d76e8" class="toggle"  />
+    <label for="section-cd94e161670d28ecff992edf840d76e8" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/causality/" class="">Causality</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-ai/" class="">Causal AI</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/causality/causal-inference/" class="">Causal Inference</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e468aa05ceb7c844f07a2e754606b76" class="toggle"  />
+    <label for="section-7e468aa05ceb7c844f07a2e754606b76" class="flex justify-between">
+      <a href="/ai-workflows/reasoning/graph-reasoning/" class="">Graph Reasoning</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/graphrag/" class="">GraphRAG</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/reasoning/graph-reasoning/knowledge-graphs/" class="">Knowledge Graphs</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="toggle" checked />
+    <label for="section-1b0623a0f68c821d1e7c5de8bd43d2fb" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/" class="">RLHF</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b1afcafdefac57f3420f64e23d73f05d" class="toggle"  />
+    <label for="section-b1afcafdefac57f3420f64e23d73f05d" class="flex justify-between">
+      <a href="/ai-workflows/rlhf/rlhf2006/" class="">RLHF 2006</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf2006/instruct_gpt_codes_params/" class="">Instruct Gpt Codes Params</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/ai-workflows/rlhf/rlhf_book_v2_flow_diagram/" class="active">Rlhf Book V2 Flow Diagram</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ca53d32fab0e1a54fdf5627349d86bfc" class="toggle"  />
+    <label for="section-ca53d32fab0e1a54fdf5627349d86bfc" class="flex justify-between">
+      <a href="/ai-workflows/eval/" class="">Eval</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/healthcare/" class="">Healthcare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="toggle"  />
+    <label for="section-fd1d2eede2c2d7e81bbbc100c0b57829" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/" class="">Domain</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45ba5974905f86df95925365835eadbb" class="toggle"  />
+    <label for="section-45ba5974905f86df95925365835eadbb" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/ai-in-healthcare/" class="">AI in Healthcare</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c2_clinical_data/" class="">C2 Clinical Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c3_ml_healthcare/" class="">C3 ML Healthcare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c4_ai_evaluation/" class="">C4 AI Evaluations</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/domain_knowledge/ai-in-healthcare/c5_capstone/" class="">C5 Capstone Projects</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9722ba71bf098ab02c3220d6e8d9056f" class="toggle"  />
+    <label for="section-9722ba71bf098ab02c3220d6e8d9056f" class="flex justify-between">
+      <a href="/healthcare/domain_knowledge/hands-on-healthcare-data/" class="">Hands-On Healthcare Data</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/data/" class="">Data</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/healthcare/clinical_ai/" class="">AI Applications</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/ipark/" class="">Inhee Park, PhD - Resume</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://www.linkedin.com/in/inheepark/"  target="_blank" rel="noopener">
+        ╰──LinkedIn
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/imipark/"  target="_blank" rel="noopener">
+        ╰──GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/"  target="_blank" rel="noopener">
+        ╰──Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://iparkirk.github.io"  target="_blank" rel="noopener">
+        ╰──Old Web
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Rlhf Book V2 Flow Diagram</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-rlhf-book-v2---logical-flow-diagram">THE RLHF BOOK v2 - LOGICAL FLOW DIAGRAM</a>
+      <ul>
+        <li><a href="#foundation-layer">FOUNDATION LAYER</a></li>
+        <li><a href="#core-methodology-layer">CORE METHODOLOGY LAYER</a></li>
+        <li><a href="#advanced-techniques-layer">ADVANCED TECHNIQUES LAYER</a></li>
+        <li><a href="#data--theory-layer">DATA &amp; THEORY LAYER</a></li>
+        <li><a href="#application--control-layer">APPLICATION &amp; CONTROL LAYER</a></li>
+        <li><a href="#evaluation--deployment-layer">EVALUATION &amp; DEPLOYMENT LAYER</a></li>
+        <li><a href="#reference">REFERENCE</a></li>
+        <li><a href="#chapter-breakdown-by-layer">Chapter Breakdown by Layer</a>
+          <ul>
+            <li><a href="#foundation-layer-1">Foundation Layer</a></li>
+            <li><a href="#core-methodology-layer-1">Core Methodology Layer</a></li>
+            <li><a href="#advanced-techniques-layer-1">Advanced Techniques Layer</a></li>
+            <li><a href="#data--theory-layer-1">Data &amp; Theory Layer</a></li>
+            <li><a href="#application--control-layer-1">Application &amp; Control Layer</a></li>
+            <li><a href="#evaluation--deployment-layer-1">Evaluation &amp; Deployment Layer</a></li>
+            <li><a href="#reference-1">Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="the-rlhf-book-v2---logical-flow-diagram">
+  THE RLHF BOOK v2 - LOGICAL FLOW DIAGRAM
+  <a class="anchor" href="#the-rlhf-book-v2---logical-flow-diagram">#</a>
+</h1>
+<hr>
+<h2 id="foundation-layer">
+  FOUNDATION LAYER
+  <a class="anchor" href="#foundation-layer">#</a>
+</h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│ 1. Overview         2. History        3. Training Overview  │
+│ [What &amp; Why]       [Evolution]        [Problem Setup]       │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><p>↓</p>
+<h2 id="core-methodology-layer">
+  CORE METHODOLOGY LAYER
+  <a class="anchor" href="#core-methodology-layer">#</a>
+</h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│  4. Instruction Fine-tuning  [Data Preparation]              │
+│  5. Reward Modeling          [Preference Learning]           │
+│  6. Reinforcement Learning   [Core Optimization]             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><p>↓</p>
+<h2 id="advanced-techniques-layer">
+  ADVANCED TECHNIQUES LAYER
+  <a class="anchor" href="#advanced-techniques-layer">#</a>
+</h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│  7. Reasoning &amp; Inference-Time Scaling  [2024-25 Frontier]  │
+│  8. Direct Alignment Algorithms         [DPO &amp; Variants]    │
+│  9. Rejection Sampling                  [Simple RL Alt]     │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><p>↓</p>
+<h2 id="data--theory-layer">
+  DATA &amp; THEORY LAYER
+  <a class="anchor" href="#data--theory-layer">#</a>
+</h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│ 10. Nature of Preferences  [Philosophy]                     │
+│ 11. Preference Data        [Collection &amp; Design]            │
+│ 12. Synthetic Data         [AI Feedback &amp; CAI]              │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><p>↓</p>
+<h2 id="application--control-layer">
+  APPLICATION &amp; CONTROL LAYER
+  <a class="anchor" href="#application--control-layer">#</a>
+</h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│ 13. Tool Use &amp; Function Calling  [Agentic Capabilities]     │
+│ 14. Style and Information        [Format &amp; Tone]            │
+│ 15. Regularization              [Stability Controls]        │
+│ 16. Over-Optimization           [Failure Modes]             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><p>↓</p>
+<h2 id="evaluation--deployment-layer">
+  EVALUATION &amp; DEPLOYMENT LAYER
+  <a class="anchor" href="#evaluation--deployment-layer">#</a>
+</h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│ 17. Evaluation                   [Measurement]              │
+│ 18. Product, UX, Model Character [Real-World Deploy]        │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><p>↓</p>
+<h2 id="reference">
+  REFERENCE
+  <a class="anchor" href="#reference">#</a>
+</h2>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────┐
+│ Appendix A: Definitions  [Technical Reference]              │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><hr>
+<h2 id="chapter-breakdown-by-layer">
+  Chapter Breakdown by Layer
+  <a class="anchor" href="#chapter-breakdown-by-layer">#</a>
+</h2>
+<h3 id="foundation-layer-1">
+  Foundation Layer
+  <a class="anchor" href="#foundation-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 1: Overview</strong> - What RLHF is and why it matters</li>
+<li><strong>Chapter 2: History</strong> - Evolution of the field</li>
+<li><strong>Chapter 3: Training Overview</strong> - Problem setup and fundamentals</li>
+</ul>
+<h3 id="core-methodology-layer-1">
+  Core Methodology Layer
+  <a class="anchor" href="#core-methodology-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 4: Instruction Fine-tuning</strong> - Data preparation techniques</li>
+<li><strong>Chapter 5: Reward Modeling</strong> - Learning from preferences</li>
+<li><strong>Chapter 6: Reinforcement Learning</strong> - Core optimization algorithms</li>
+</ul>
+<h3 id="advanced-techniques-layer-1">
+  Advanced Techniques Layer
+  <a class="anchor" href="#advanced-techniques-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 7: Reasoning &amp; Inference-Time Scaling</strong> - 2024-25 frontier methods</li>
+<li><strong>Chapter 8: Direct Alignment Algorithms</strong> - DPO and variants</li>
+<li><strong>Chapter 9: Rejection Sampling</strong> - Simple RL alternatives</li>
+</ul>
+<h3 id="data--theory-layer-1">
+  Data &amp; Theory Layer
+  <a class="anchor" href="#data--theory-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 10: Nature of Preferences</strong> - Philosophical foundations</li>
+<li><strong>Chapter 11: Preference Data</strong> - Collection and design strategies</li>
+<li><strong>Chapter 12: Synthetic Data</strong> - AI feedback and Constitutional AI</li>
+</ul>
+<h3 id="application--control-layer-1">
+  Application &amp; Control Layer
+  <a class="anchor" href="#application--control-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 13: Tool Use &amp; Function Calling</strong> - Agentic capabilities</li>
+<li><strong>Chapter 14: Style and Information</strong> - Format and tone control</li>
+<li><strong>Chapter 15: Regularization</strong> - Stability controls</li>
+<li><strong>Chapter 16: Over-Optimization</strong> - Failure modes and mitigation</li>
+</ul>
+<h3 id="evaluation--deployment-layer-1">
+  Evaluation &amp; Deployment Layer
+  <a class="anchor" href="#evaluation--deployment-layer-1">#</a>
+</h3>
+<ul>
+<li><strong>Chapter 17: Evaluation</strong> - Measurement techniques</li>
+<li><strong>Chapter 18: Product, UX, Model Character</strong> - Real-world deployment</li>
+</ul>
+<h3 id="reference-1">
+  Reference
+  <a class="anchor" href="#reference-1">#</a>
+</h3>
+<ul>
+<li><strong>Appendix A: Definitions</strong> - Technical reference guide</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-rlhf-book-v2---logical-flow-diagram">THE RLHF BOOK v2 - LOGICAL FLOW DIAGRAM</a>
+      <ul>
+        <li><a href="#foundation-layer">FOUNDATION LAYER</a></li>
+        <li><a href="#core-methodology-layer">CORE METHODOLOGY LAYER</a></li>
+        <li><a href="#advanced-techniques-layer">ADVANCED TECHNIQUES LAYER</a></li>
+        <li><a href="#data--theory-layer">DATA &amp; THEORY LAYER</a></li>
+        <li><a href="#application--control-layer">APPLICATION &amp; CONTROL LAYER</a></li>
+        <li><a href="#evaluation--deployment-layer">EVALUATION &amp; DEPLOYMENT LAYER</a></li>
+        <li><a href="#reference">REFERENCE</a></li>
+        <li><a href="#chapter-breakdown-by-layer">Chapter Breakdown by Layer</a>
+          <ul>
+            <li><a href="#foundation-layer-1">Foundation Layer</a></li>
+            <li><a href="#core-methodology-layer-1">Core Methodology Layer</a></li>
+            <li><a href="#advanced-techniques-layer-1">Advanced Techniques Layer</a></li>
+            <li><a href="#data--theory-layer-1">Data &amp; Theory Layer</a></li>
+            <li><a href="#application--control-layer-1">Application &amp; Control Layer</a></li>
+            <li><a href="#evaluation--deployment-layer-1">Evaluation &amp; Deployment Layer</a></li>
+            <li><a href="#reference-1">Reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

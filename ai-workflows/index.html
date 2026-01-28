@@ -66,7 +66,7 @@ Lifecyle of Frontier AI vs Traditional ML
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.c4e10013ea577c4e1908c5eaa1f1303fe07b484ac90714514291bb2f12aaae31.js" integrity="sha256-xOEAE&#43;pXfE4ZCMXqofEwP&#43;B7SErJBxRRQpG7LxKqrjE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0173bbefee938ca18415a40e44b93e080353b5ef582efcbf2ea5007cdddc86e0.js" integrity="sha256-AXO77&#43;6TjKGEFaQORLk&#43;CANTte9YLvy/LqUAfN3chuA=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
@@ -918,23 +918,23 @@ Deploy with prompt engineering/RAG
   <tbody>
       <tr>
           <td>Starting point</td>
-          <td>Define task, collect data from scratch</td>
-          <td>Select pretrained base model</td>
+          <td>Define task, <strong>collect data</strong> from scratch</td>
+          <td><strong>Select pretrained base model</strong></td>
       </tr>
       <tr>
           <td>Main question</td>
-          <td>&ldquo;What features predict Y?&rdquo;</td>
-          <td>&ldquo;Which foundation model to build on?&rdquo;</td>
+          <td>&ldquo;What <strong>features</strong> predict Y?&rdquo;</td>
+          <td>&ldquo;Which <strong>foundation model</strong> to build on?&rdquo;</td>
       </tr>
       <tr>
           <td>Data needs</td>
-          <td>Collect labeled training data</td>
-          <td>Select/acquire base model + design post-training data</td>
+          <td>Collect <strong>labeled training data</strong></td>
+          <td>Select/acquire <strong>base model + design post-training data</strong></td>
       </tr>
       <tr>
           <td>Model architecture</td>
           <td>Design custom architecture</td>
-          <td>Foundation model already exists</td>
+          <td><strong>Foundation model</strong> already exists</td>
       </tr>
       <tr>
           <td>Roles</td>
@@ -946,7 +946,7 @@ Deploy with prompt engineering/RAG
 <p>Key Insight:</p>
 <ul>
 <li>Traditional ML: Build from scratch</li>
-<li>Frontier LLM: Start with billion-parameter pretrained model</li>
+<li><strong>Frontier LLM: Start with billion-parameter pretrained model</strong></li>
 </ul>
 <br>
 <h3 id="phase-2-development--training">
@@ -964,13 +964,13 @@ Deploy with prompt engineering/RAG
   <tbody>
       <tr>
           <td>Training approach</td>
-          <td>Single-stage training on task-specific data</td>
-          <td>Multi-stage post-training pipeline</td>
+          <td><strong>Single-stage</strong> training on task-specific data</td>
+          <td><strong>Multi-stage post-training</strong> pipeline</td>
       </tr>
       <tr>
           <td>Stages</td>
           <td>1. Train model on labeled data</td>
-          <td>1. Instruction Fine-tuning (SFT)<br>2. Reward Model training<br>3. RLHF/Preference tuning<br>4. RLVR (for reasoning)</td>
+          <td><strong>1. Instruction Fine-tuning (SFT)<br>2. Reward Model training<br>3. RLHF/Preference tuning<br>4. RLVR (for reasoning)</strong></td>
       </tr>
       <tr>
           <td>Data scale</td>
@@ -979,8 +979,8 @@ Deploy with prompt engineering/RAG
       </tr>
       <tr>
           <td>Training objective</td>
-          <td>Task loss (e.g., cross-entropy)</td>
-          <td>Multiple objectives: next-token → Q&amp;A format → human preferences → verifiable rewards</td>
+          <td>Task <strong>loss</strong> (e.g., cross-entropy)</td>
+          <td><strong>Multiple objectives: next-token → Q&amp;A format → human preferences → verifiable rewards</strong></td>
       </tr>
       <tr>
           <td>Compute</td>
@@ -989,8 +989,8 @@ Deploy with prompt engineering/RAG
       </tr>
       <tr>
           <td>What&rsquo;s learned</td>
-          <td>Task-specific patterns</td>
-          <td>Eliciting latent capabilities from base model</td>
+          <td>Task-specific <strong>patterns</strong></td>
+          <td><strong>Eliciting latent capabilities from base model</strong></td>
       </tr>
   </tbody>
 </table>
