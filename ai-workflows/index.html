@@ -44,13 +44,20 @@ AI Reasoning Pipeline
           Performance measurement and quality assurance
       
   
+
+
+
+
+
+Lifecyle of Frontier AI vs Traditional ML
+
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://imipark.github.io/ai-workflows/">
   <meta property="og:site_name" content="AI Reasoning">
   <meta property="og:title" content="AI Reasoning Stack">
-  <meta property="og:description" content="AI Reasoning Pipeline Stage Component Purpose 1. Data Layer Data Define schemas, relationships, and data structure 2. Model Layer GenAI Core neural architecture and training 3. Reasoning Layer Reasoning Logical operations and inference capabilities 4. Feedback Layer RLHF Human preference learning and alignment 5. Evaluation Layer Eval Performance measurement and quality assurance">
+  <meta property="og:description" content="AI Reasoning Pipeline Stage Component Purpose 1. Data Layer Data Define schemas, relationships, and data structure 2. Model Layer GenAI Core neural architecture and training 3. Reasoning Layer Reasoning Logical operations and inference capabilities 4. Feedback Layer RLHF Human preference learning and alignment 5. Evaluation Layer Eval Performance measurement and quality assurance Lifecyle of Frontier AI vs Traditional ML">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>AI Reasoning Stack | AI Reasoning</title>
@@ -59,7 +66,7 @@ AI Reasoning Pipeline
 <link rel="canonical" href="https://imipark.github.io/ai-workflows/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.4ddc672eeb84245fa7864c180b2b6afa0c779ad1eedcf805d6cdf4d6d9e1195c.js" integrity="sha256-TdxnLuuEJF&#43;nhkwYCytq&#43;gx3mtHu3PgF1s301tnhGVw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c4e10013ea577c4e1908c5eaa1f1303fe07b484ac90714514291bb2f12aaae31.js" integrity="sha256-xOEAE&#43;pXfE4ZCMXqofEwP&#43;B7SErJBxRRQpG7LxKqrjE=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://imipark.github.io/ai-workflows/index.xml" title="AI Reasoning" />
 <!--
 Made with Book Theme
@@ -802,7 +809,24 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#phase-1-ideation--design"><strong>Phase 1: Ideation &amp; Design</strong></a></li>
+            <li><a href="#phase-2-development--training"><strong>Phase 2: Development &amp; Training</strong></a></li>
+            <li><a href="#phase-3-evaluation--testing"><strong>Phase 3: Evaluation &amp; Testing</strong></a></li>
+            <li><a href="#phase-4-deployment"><strong>Phase 4: Deployment</strong></a></li>
+            <li><a href="#phase-5-production--monitoring"><strong>Phase 5: Production &amp; Monitoring</strong></a></li>
+            <li><a href="#phase-6-continuous-optimization"><strong>Phase 6: Continuous Optimization</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -855,6 +879,296 @@ AI Reasoning Pipeline
       </tr>
   </tbody>
 </table>
+<p><br><br></p>
+<hr>
+<p align="center">
+<strong style="font-size:1.4rem; color:#374151; display:block; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.0rem;">
+Lifecyle of Frontier AI vs Traditional ML
+</strong>
+</p>
+<p><strong>Traditional ML:</strong> Train a single model end-to-end for a specific task</p>
+<pre tabindex="0"><code>Data → Model Architecture → Training → Evaluation → Deploy
+</code></pre><p><strong>Frontier LLM:</strong> Customize pretrained foundation models through multi-stage alignment</p>
+<pre tabindex="0"><code>Base Model Selection
+    ↓
+Instruction Fine-tuning (~1M examples)
+    ↓
+Reward Model Training (~100K preferences)
+    ↓
+RLHF Optimization (~100K prompts)
+    ↓
+RLVR (for reasoning, ~millions of attempts)
+    ↓
+Multiple evaluation stages
+    ↓
+Deploy with prompt engineering/RAG
+</code></pre><br>
+<h3 id="phase-1-ideation--design">
+  <strong>Phase 1: Ideation &amp; Design</strong>
+  <a class="anchor" href="#phase-1-ideation--design">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Traditional ML</th>
+          <th><strong>Frontiner LLM</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starting point</td>
+          <td>Define task, collect data from scratch</td>
+          <td>Select pretrained base model</td>
+      </tr>
+      <tr>
+          <td>Main question</td>
+          <td>&ldquo;What features predict Y?&rdquo;</td>
+          <td>&ldquo;Which foundation model to build on?&rdquo;</td>
+      </tr>
+      <tr>
+          <td>Data needs</td>
+          <td>Collect labeled training data</td>
+          <td>Select/acquire base model + design post-training data</td>
+      </tr>
+      <tr>
+          <td>Model architecture</td>
+          <td>Design custom architecture</td>
+          <td>Foundation model already exists</td>
+      </tr>
+      <tr>
+          <td>Roles</td>
+          <td>ML Engineer designs everything</td>
+          <td>AI Engineer selects &amp; customizes</td>
+      </tr>
+  </tbody>
+</table>
+<p>Key Insight:</p>
+<ul>
+<li>Traditional ML: Build from scratch</li>
+<li>Frontier LLM: Start with billion-parameter pretrained model</li>
+</ul>
+<br>
+<h3 id="phase-2-development--training">
+  <strong>Phase 2: Development &amp; Training</strong>
+  <a class="anchor" href="#phase-2-development--training">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Traditional ML</th>
+          <th><strong>Frontiner LLM</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Training approach</td>
+          <td>Single-stage training on task-specific data</td>
+          <td>Multi-stage post-training pipeline</td>
+      </tr>
+      <tr>
+          <td>Stages</td>
+          <td>1. Train model on labeled data</td>
+          <td>1. Instruction Fine-tuning (SFT)<br>2. Reward Model training<br>3. RLHF/Preference tuning<br>4. RLVR (for reasoning)</td>
+      </tr>
+      <tr>
+          <td>Data scale</td>
+          <td>1K - 1M examples</td>
+          <td>100K - 10M+ examples across stages</td>
+      </tr>
+      <tr>
+          <td>Training objective</td>
+          <td>Task loss (e.g., cross-entropy)</td>
+          <td>Multiple objectives: next-token → Q&amp;A format → human preferences → verifiable rewards</td>
+      </tr>
+      <tr>
+          <td>Compute</td>
+          <td>Hours to days on GPUs</td>
+          <td>Days to weeks on massive GPU clusters</td>
+      </tr>
+      <tr>
+          <td>What&rsquo;s learned</td>
+          <td>Task-specific patterns</td>
+          <td>Eliciting latent capabilities from base model</td>
+      </tr>
+  </tbody>
+</table>
+<p>Key Insight from RLHF Book:</p>
+<blockquote>
+<p><em>&ldquo;Post-training can be summarized as a many-stage training process using three optimization methods: (1) Instruction Fine-tuning, (2) Preference Fine-tuning (PreFT), (3) RLVR&rdquo;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&ldquo;Modern versions of post-training involve many, many more model versions and training stages&hellip; numerous training iterations before convergence&rdquo;</em></p>
+</blockquote>
+<br>
+<h3 id="phase-3-evaluation--testing">
+  <strong>Phase 3: Evaluation &amp; Testing</strong>
+  <a class="anchor" href="#phase-3-evaluation--testing">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Traditional ML</th>
+          <th><strong>Frontiner LLM</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Evaluation scope</td>
+          <td>Single task metrics</td>
+          <td>Multi-domain benchmarks (knowledge, reasoning, coding, safety)</td>
+      </tr>
+      <tr>
+          <td>Benchmarks</td>
+          <td>Task-specific test set</td>
+          <td>Standardized suites: MMLU, GPQA, HumanEval, MATH, etc.</td>
+      </tr>
+      <tr>
+          <td>Evaluation methods</td>
+          <td>Offline metrics only</td>
+          <td>4-layer evaluation:<br>1. Offline benchmarks<br>2. LLM-as-a-judge<br>3. Human evaluation<br>4. Online A/B testing</td>
+      </tr>
+      <tr>
+          <td>Contamination concern</td>
+          <td>Low</td>
+          <td>CRITICAL - test data may leak into training</td>
+      </tr>
+      <tr>
+          <td>Evolution</td>
+          <td>Static benchmarks</td>
+          <td>Benchmarks saturate rapidly → need new harder ones</td>
+      </tr>
+  </tbody>
+</table>
+<p>Key Insight from RLHF Book Ch17:</p>
+<blockquote>
+<p><em>&ldquo;Evaluation for RLHF has gone through distinct phases: Early chat-phase → Multi-skill era → Reasoning &amp; tools&rdquo;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&ldquo;Benchmarks approaching 100% saturation become less reliable&hellip; necessitates creating perturbed versions&rdquo;</em></p>
+</blockquote>
+<br>
+<h3 id="phase-4-deployment">
+  <strong>Phase 4: Deployment</strong>
+  <a class="anchor" href="#phase-4-deployment">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Traditional ML</th>
+          <th><strong>Frontiner LLM</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Deployment unit</td>
+          <td>Single trained model</td>
+          <td>Base + post-training checkpoints</td>
+      </tr>
+      <tr>
+          <td>Inference</td>
+          <td>Forward pass</td>
+          <td>Complex generation with sampling, special tokens</td>
+      </tr>
+      <tr>
+          <td>Customization</td>
+          <td>Retrain or fine-tune</td>
+          <td>Prompt engineering, RAG, lightweight fine-tuning</td>
+      </tr>
+      <tr>
+          <td>Infrastructure</td>
+          <td>Standard ML serving</td>
+          <td>Massive inference clusters + caching</td>
+      </tr>
+      <tr>
+          <td>Cost</td>
+          <td>Low to moderate</td>
+          <td>High ($0.01-$10 per request)</td>
+      </tr>
+  </tbody>
+</table>
+<p>Key Insight from Art of AI Product Dev:</p>
+<blockquote>
+<p><em>&ldquo;AI engineers focus on integrating AI models into real-world applications&hellip; prompt engineering, API integration&rdquo;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&ldquo;Most teams will start with AI engineering [not ML engineering]. As your product matures, you can consider&hellip; training your own models&rdquo;</em></p>
+</blockquote>
+<br>
+<h3 id="phase-5-production--monitoring">
+  <strong>Phase 5: Production &amp; Monitoring</strong>
+  <a class="anchor" href="#phase-5-production--monitoring">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Traditional ML</th>
+          <th><strong>Frontiner LLM</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>What to monitor</td>
+          <td>Model drift, accuracy</td>
+          <td>Hallucinations, safety violations, user satisfaction</td>
+      </tr>
+      <tr>
+          <td>Failure modes</td>
+          <td>Accuracy degradation</td>
+          <td>Hallucinations, harmful content, prompt injection</td>
+      </tr>
+      <tr>
+          <td>User feedback</td>
+          <td>Click-through, conversions</td>
+          <td>Thumbs up/down, human ratings, red teaming</td>
+      </tr>
+      <tr>
+          <td>Retraining</td>
+          <td>Periodic model updates</td>
+          <td>Continuous post-training with new data</td>
+      </tr>
+  </tbody>
+</table>
+<br>
+<h3 id="phase-6-continuous-optimization">
+  <strong>Phase 6: Continuous Optimization</strong>
+  <a class="anchor" href="#phase-6-continuous-optimization">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Traditional ML</th>
+          <th><strong>Frontiner LLM</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Improvement method</td>
+          <td>Collect more labeled data → retrain</td>
+          <td>Multiple paths:<br>• Prompt engineering<br>• RAG integration<br>• Domain fine-tuning<br>• Additional post-training stages</td>
+      </tr>
+      <tr>
+          <td>Speed</td>
+          <td>Weeks to months</td>
+          <td>Hours (prompting) to weeks (fine-tuning)</td>
+      </tr>
+      <tr>
+          <td>Cost</td>
+          <td>Data labeling + compute</td>
+          <td>Synthetic data generation + post-training</td>
+      </tr>
+      <tr>
+          <td>Data needs</td>
+          <td>More task labels</td>
+          <td>Preference data, synthetic data, distillation</td>
+      </tr>
+  </tbody>
+</table>
 </article>
  
       
@@ -894,7 +1208,24 @@ AI Reasoning Pipeline
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#phase-1-ideation--design"><strong>Phase 1: Ideation &amp; Design</strong></a></li>
+            <li><a href="#phase-2-development--training"><strong>Phase 2: Development &amp; Training</strong></a></li>
+            <li><a href="#phase-3-evaluation--testing"><strong>Phase 3: Evaluation &amp; Testing</strong></a></li>
+            <li><a href="#phase-4-deployment"><strong>Phase 4: Deployment</strong></a></li>
+            <li><a href="#phase-5-production--monitoring"><strong>Phase 5: Production &amp; Monitoring</strong></a></li>
+            <li><a href="#phase-6-continuous-optimization"><strong>Phase 6: Continuous Optimization</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
